@@ -121,15 +121,15 @@ export class CommentGenerator {
     makeGeneratedTag(desc: AnyDesc) {
         switch (desc.kind) {
             case "oneof":
-                return `@generated from protobuf oneof: ${desc.name}`;
+                return `@generated from protobuf oneof: ${desc.name};`;
             case "enum_value":
                 return `@generated from protobuf enum value: ${getDeclarationString(desc)};`;
             case "field":
-                return `@generated from protobuf field: ${getDeclarationString(desc)}`;
+                return `@generated from protobuf field: ${getDeclarationString(desc)};`;
             case "extension":
-                return `@generated from protobuf extension: ${getDeclarationString(desc)}`;
+                return `@generated from protobuf extension: ${getDeclarationString(desc)};`;
             case "rpc":
-                return `@generated from protobuf rpc: ${desc.name}`;
+                return `@generated from protobuf rpc: ${desc.name};`;
             case "message":
             case "enum":
             case "service":

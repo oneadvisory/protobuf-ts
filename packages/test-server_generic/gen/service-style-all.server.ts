@@ -11,19 +11,19 @@ import { ServerCallContext } from "@protobuf-ts/runtime-rpc";
  */
 export interface IAllStyleService<T = ServerCallContext> {
     /**
-     * @generated from protobuf rpc: Unary
+     * @generated from protobuf rpc: Unary;
      */
     unary(request: StringValue, context: T): Promise<Int32Value>;
     /**
-     * @generated from protobuf rpc: ServerStream
+     * @generated from protobuf rpc: ServerStream;
      */
     serverStream(request: StringValue, responses: RpcInputStream<Int32Value>, context: T): Promise<void>;
     /**
-     * @generated from protobuf rpc: ClientStream
+     * @generated from protobuf rpc: ClientStream;
      */
     clientStream(requests: RpcOutputStream<StringValue>, context: T): Promise<Int32Value>;
     /**
-     * @generated from protobuf rpc: Bidi
+     * @generated from protobuf rpc: Bidi;
      */
     bidi(requests: RpcOutputStream<StringValue>, responses: RpcInputStream<Int32Value>, context: T): Promise<void>;
 }

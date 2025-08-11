@@ -9,19 +9,19 @@ import type * as grpc from "@grpc/grpc-js";
  */
 export interface IExampleService extends grpc.UntypedServiceImplementation {
     /**
-     * @generated from protobuf rpc: Unary
+     * @generated from protobuf rpc: Unary;
      */
     unary: grpc.handleUnaryCall<ExampleRequest, ExampleResponse>;
     /**
-     * @generated from protobuf rpc: ServerStream
+     * @generated from protobuf rpc: ServerStream;
      */
     serverStream: grpc.handleServerStreamingCall<ExampleRequest, ExampleResponse>;
     /**
-     * @generated from protobuf rpc: ClientStream
+     * @generated from protobuf rpc: ClientStream;
      */
     clientStream: grpc.handleClientStreamingCall<ExampleRequest, ExampleResponse>;
     /**
-     * @generated from protobuf rpc: Bidi
+     * @generated from protobuf rpc: Bidi;
      */
     bidi: grpc.handleBidiStreamingCall<ExampleRequest, ExampleResponse>;
 }

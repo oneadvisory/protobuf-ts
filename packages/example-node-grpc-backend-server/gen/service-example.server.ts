@@ -11,19 +11,19 @@ import { ServerCallContext } from "@protobuf-ts/runtime-rpc";
  */
 export interface IExampleService<T = ServerCallContext> {
     /**
-     * @generated from protobuf rpc: Unary
+     * @generated from protobuf rpc: Unary;
      */
     unary(request: ExampleRequest, context: T): Promise<ExampleResponse>;
     /**
-     * @generated from protobuf rpc: ServerStream
+     * @generated from protobuf rpc: ServerStream;
      */
     serverStream(request: ExampleRequest, responses: RpcInputStream<ExampleResponse>, context: T): Promise<void>;
     /**
-     * @generated from protobuf rpc: ClientStream
+     * @generated from protobuf rpc: ClientStream;
      */
     clientStream(requests: RpcOutputStream<ExampleRequest>, context: T): Promise<ExampleResponse>;
     /**
-     * @generated from protobuf rpc: Bidi
+     * @generated from protobuf rpc: Bidi;
      */
     bidi(requests: RpcOutputStream<ExampleRequest>, responses: RpcInputStream<ExampleResponse>, context: T): Promise<void>;
 }

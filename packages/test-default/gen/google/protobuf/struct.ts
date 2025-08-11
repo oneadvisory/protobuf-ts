@@ -63,7 +63,7 @@ export interface Struct {
     /**
      * Unordered map of dynamically typed values.
      *
-     * @generated from protobuf field: map<string, google.protobuf.Value> fields = 1
+     * @generated from protobuf field: map<string, google.protobuf.Value> fields = 1;
      */
     fields: {
         [key: string]: Value;
@@ -83,14 +83,14 @@ export interface Value {
     /**
      * The kind of value.
      *
-     * @generated from protobuf oneof: kind
+     * @generated from protobuf oneof: kind;
      */
     kind: {
         oneofKind: "nullValue";
         /**
          * Represents a null value.
          *
-         * @generated from protobuf field: google.protobuf.NullValue null_value = 1
+         * @generated from protobuf field: google.protobuf.NullValue null_value = 1;
          */
         nullValue: NullValue;
     } | {
@@ -98,7 +98,7 @@ export interface Value {
         /**
          * Represents a double value.
          *
-         * @generated from protobuf field: double number_value = 2
+         * @generated from protobuf field: double number_value = 2;
          */
         numberValue: number;
     } | {
@@ -106,7 +106,7 @@ export interface Value {
         /**
          * Represents a string value.
          *
-         * @generated from protobuf field: string string_value = 3
+         * @generated from protobuf field: string string_value = 3;
          */
         stringValue: string;
     } | {
@@ -114,7 +114,7 @@ export interface Value {
         /**
          * Represents a boolean value.
          *
-         * @generated from protobuf field: bool bool_value = 4
+         * @generated from protobuf field: bool bool_value = 4;
          */
         boolValue: boolean;
     } | {
@@ -122,7 +122,7 @@ export interface Value {
         /**
          * Represents a structured value.
          *
-         * @generated from protobuf field: google.protobuf.Struct struct_value = 5
+         * @generated from protobuf field: google.protobuf.Struct struct_value = 5;
          */
         structValue: Struct;
     } | {
@@ -130,7 +130,7 @@ export interface Value {
         /**
          * Represents a repeated `Value`.
          *
-         * @generated from protobuf field: google.protobuf.ListValue list_value = 6
+         * @generated from protobuf field: google.protobuf.ListValue list_value = 6;
          */
         listValue: ListValue;
     } | {
@@ -148,7 +148,7 @@ export interface ListValue {
     /**
      * Repeated field of dynamically typed values.
      *
-     * @generated from protobuf field: repeated google.protobuf.Value values = 1
+     * @generated from protobuf field: repeated google.protobuf.Value values = 1;
      */
     values: Value[];
 }
