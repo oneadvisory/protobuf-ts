@@ -388,8 +388,8 @@ Some things to note:
 - If you declare a protobuf `enum`, a TypeScript enum is generated.
   Learn more about the [enum representation](#enum-representation).
 
-- If you declare a protobuf `oneof`, a special property is generated
-  that ensures that only one member field is set. Learn more about the
+- If you declare a protobuf `oneof`, the oneof fields are flattened
+  directly into the message interface as optional properties. Learn more about the
   [oneof representation](#oneof-representation).
 
 - If you declare a protobuf `service`, a service client is generated.
@@ -634,8 +634,14 @@ idiosyncrasies.
 
 ## Oneof representation
 
-`protobuf-ts` uses an algebraic data type for oneof groups. The following
-`.proto`:
+> **Note:** This implementation is forked from upstream protobuf-ts and deviates
+> from the protobuf specification. It uses a flattened oneof representation that
+> does not include the `oneofKind` discriminator and does not enforce oneof
+> uniqueness constraints. Instead, oneof fields are flattened directly into the
+> message interface to match the JSON serialized data sent on the wire.
+
+`protobuf-ts` represents oneof groups by flattening the oneof fields directly into
+the message interface as optional properties. The following `.proto`:
 
 ```proto
 message OneofExample {
@@ -647,26 +653,34 @@ message OneofExample {
 }
 ```
 
-Compiles the `oneof` group to a union type that ensures that only one member
-field is set:
+Compiles to a flattened interface where oneof fields become optional properties:
 
 ```ts
 interface OneofExample {
-  result:
-    | { oneofKind: 'value'; value: number }
-    | { oneofKind: 'error'; error: string }
-    | { oneofKind: undefined };
+  value?: number;
+  error?: string;
 }
 
-let message: OneofExample;
-if (message.result.oneofKind === 'value') {
-  message.result.value; // the union has been narrowed down
-}
+let message: OneofExample = { value: 42 };
+// Unlike standard protobuf, multiple oneof fields can be set without error
+let invalidMessage: OneofExample = { value: 42, error: 'Also set' }; // No runtime error
+// This matches the JSON representation on the wire
 ```
 
-> **Note:** This feature requires the TypeScript compiler option `strictNullChecks`
-> to be true. The option is enabled by default if you set the option `strict` to
-> true, which is recommended. See the [documentation](https://www.typescriptlang.org/tsconfig#strictNullChecks) for details.
+This representation directly matches the JSON format used for protocol buffer
+serialization, where oneof fields appear as regular optional fields in the JSON
+object.
+
+> **Important:** This implementation deviates from the protobuf specification by
+> not enforcing oneof uniqueness constraints. Multiple oneof fields can be set
+> simultaneously without any runtime validation or error. This is a deliberate
+> deviation from the standard protobuf behavior where setting one oneof field
+> should automatically clear others in the same oneof group.
+
+> **Note:** Developers are responsible for manually ensuring oneof semantics in
+> their application code if needed. The TypeScript type system and runtime do not
+> prevent or detect violations of the "only one field set" constraint that is
+> typically enforced in standard protobuf implementations.
 
 ## BigInt support
 
