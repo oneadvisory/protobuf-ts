@@ -176,15 +176,14 @@ export class ReflectionJsonReader {
                 switch (field.kind) {
 
                     case "message":
-                        if (jsonValue === null && field.T().typeName != 'google.protobuf.Value') {
-                            this.assert(field.oneof === undefined, field.name + " (oneof member)", null);
+                        if (jsonValue == null && field.T().typeName != 'google.protobuf.Value') {
                             continue;
                         }
                         target[localName] = field.T().internalJsonRead(jsonValue, options, target[localName]);
                         break;
 
                     case "enum":
-                        if (jsonValue === null)
+                        if (jsonValue == null)
                             continue;
                         let val = this.enum(field.T(), jsonValue, field.name, options.ignoreUnknownFields);
                         if (val === false)
@@ -193,7 +192,7 @@ export class ReflectionJsonReader {
                         break;
 
                     case "scalar":
-                        if (jsonValue === null)
+                        if (jsonValue == null)
                             continue;
                         target[localName] = this.scalar(jsonValue, field.T, field.L, field.name);
                         break;

@@ -26,7 +26,7 @@ export class ReflectionTypeCheck {
             switch (field.kind) {
                 case "scalar":
                 case "enum":
-                    if (!field.opt || field.repeat)
+                    if ((!field.opt || field.repeat) && !field.oneof)
                         req.push(field.localName);
                     break;
                 case "message":

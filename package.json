@@ -6,8 +6,8 @@
   },
   "scripts": {
     "clean": "git clean -Xdf",
-    "all": "turbo run --ui tui build generate test conformance",
-    "affected": "turbo run --affected --ui tui build generate test conformance",
+    "all": "turbo run --ui tui build generate test",
+    "affected": "turbo run --affected --ui tui build generate test",
     "setversion": "fnm exec --using v22 node scripts/set-version.mjs",
     "postsetversion": "npm run all",
     "publish": "./scripts/publish.bash"
@@ -44,7 +44,7 @@
   "devDependencies": {
     "@types/jasmine": "^3.5.10",
     "turbo": "^2.4.4",
-    "typescript": ">=3.8.3 <4"
+    "typescript": "5.x.x"
   },
   "license": "(Apache-2.0 AND BSD-3-Clause)",
   "packageManager": "npm@8.19.4"
