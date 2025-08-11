@@ -32,20 +32,20 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
-import type { IBinaryWriter } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
-import type { BinaryReadOptions } from "@protobuf-ts/runtime";
-import type { IBinaryReader } from "@protobuf-ts/runtime";
-import { UnknownFieldHandler } from "@protobuf-ts/runtime";
-import type { PartialMessage } from "@protobuf-ts/runtime";
-import { reflectionMergePartial } from "@protobuf-ts/runtime";
-import { typeofJsonValue } from "@protobuf-ts/runtime";
-import type { JsonValue } from "@protobuf-ts/runtime";
-import type { JsonReadOptions } from "@protobuf-ts/runtime";
-import type { JsonWriteOptions } from "@protobuf-ts/runtime";
-import { PbLong } from "@protobuf-ts/runtime";
-import { MessageType } from "@protobuf-ts/runtime";
+import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
+import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
+import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
+import type { PartialMessage } from "@oneadvisory/protobuf-ts-runtime";
+import { reflectionMergePartial } from "@oneadvisory/protobuf-ts-runtime";
+import { typeofJsonValue } from "@oneadvisory/protobuf-ts-runtime";
+import type { JsonValue } from "@oneadvisory/protobuf-ts-runtime";
+import type { JsonReadOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { JsonWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import { PbLong } from "@oneadvisory/protobuf-ts-runtime";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * A Duration represents a signed, fixed-length span of time represented
  * as a count of seconds and fractions of seconds at nanosecond

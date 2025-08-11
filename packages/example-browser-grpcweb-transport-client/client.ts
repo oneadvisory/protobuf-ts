@@ -1,4 +1,4 @@
-import {GrpcWebFetchTransport} from "@protobuf-ts/grpcweb-transport";
+import {GrpcWebFetchTransport} from "@oneadvisory/protobuf-ts-grpcweb-transport";
 import {ElizaServiceClient, IElizaServiceClient} from "./eliza.client";
 
 

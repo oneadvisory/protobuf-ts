@@ -1,5 +1,5 @@
-import {isJsonObject, JsonValue} from "@protobuf-ts/runtime";
-import {RpcError, RpcMetadata} from "@protobuf-ts/runtime-rpc";
+import {isJsonObject, JsonValue} from "@oneadvisory/protobuf-ts-runtime";
+import {RpcError, RpcMetadata} from "@oneadvisory/protobuf-ts-runtime-rpc";
 import {TwirpErrorCode} from "./twitch-twirp-error-code";
 
 /**

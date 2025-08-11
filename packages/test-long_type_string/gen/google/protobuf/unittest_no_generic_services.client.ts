@@ -12,13 +12,13 @@
 //
 // Author: kenton@google.com (Kenton Varda)
 //
-import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
-import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
+import type { RpcTransport } from "@oneadvisory/protobuf-ts-runtime-rpc";
+import type { ServiceInfo } from "@oneadvisory/protobuf-ts-runtime-rpc";
 import { TestService } from "./unittest_no_generic_services";
-import { stackIntercept } from "@protobuf-ts/runtime-rpc";
+import { stackIntercept } from "@oneadvisory/protobuf-ts-runtime-rpc";
 import type { TestMessage } from "./unittest_no_generic_services";
-import type { UnaryCall } from "@protobuf-ts/runtime-rpc";
-import type { RpcOptions } from "@protobuf-ts/runtime-rpc";
+import type { UnaryCall } from "@oneadvisory/protobuf-ts-runtime-rpc";
+import type { RpcOptions } from "@oneadvisory/protobuf-ts-runtime-rpc";
 /**
  * @generated from protobuf service protobuf_unittest.no_generic_services_test.TestService
  */

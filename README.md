@@ -1,13 +1,12 @@
-protobuf-ts [![npm](https://img.shields.io/npm/v/@protobuf-ts/plugin?x)](https://www.npmjs.com/package/@protobuf-ts/plugin)
-===========
+# @oneadvisory/protobuf-ts [![npm](https://img.shields.io/npm/v/@oneadvisory/protobuf-ts-plugin?x)](https://www.npmjs.com/package/@oneadvisory/protobuf-ts-plugin)
 
-
-[Protocol buffers](https://developers.google.com/protocol-buffers) 
-and [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) 
-for Node.js and the Web Browser. 
+[Protocol buffers](https://developers.google.com/protocol-buffers)
+and [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call)
+for Node.js and the Web Browser.
 Pure TypeScript.
 
 For the following `.proto` file:
+
 ```proto
 syntax = "proto3";
 
@@ -19,84 +18,81 @@ message Person {
 }
 ```
 
-`protobuf-ts` generates code that can be used like this:
+`@oneadvisory/protobuf-ts` generates code that can be used like this:
 
 ```typescript
 let pete: Person = {
-    name: "pete", 
-    id: 123n, // it's a bigint
-    years: 30
-    // data: new Uint8Array([0xDE, 0xAD, 0xBE, 0xEF]);
+  name: 'pete',
+  id: 123n, // it's a bigint
+  years: 30,
+  // data: new Uint8Array([0xDE, 0xAD, 0xBE, 0xEF]);
 };
 
 let bytes = Person.toBinary(pete);
 pete = Person.fromBinary(bytes);
 
-pete = Person.fromJsonString('{"name":"pete", "id":"123", "years": 30}')
+pete = Person.fromJsonString('{"name":"pete", "id":"123", "years": 30}');
 ```
 
 ### What are protocol buffers?
 
-Protocol buffers is an [interface definition language](https://en.wikipedia.org/wiki/Interface_description_language) 
+Protocol buffers is an [interface definition language](https://en.wikipedia.org/wiki/Interface_description_language)
 and binary serialization format.  
-Data structures defined in `.proto` files are platform-independent and can 
+Data structures defined in `.proto` files are platform-independent and can
 be used in many languages.  
 To learn more about the capabilities, please check the
 official [language guide](https://developers.google.com/protocol-buffers/docs/overview).
 
-
 ### Quickstart
 
-- `npm install @protobuf-ts/plugin`
-  > installs the plugin and the compiler "protoc"  
+- `npm install @oneadvisory/protobuf-ts-plugin`
 
-- download the example file [msg-readme.proto](https://raw.githubusercontent.com/timostamm/protobuf-ts/main/packages/proto/msg-readme.proto) and place it into a `protos/` directory
+  > installs the plugin and the compiler "protoc"
+
+- download the example file [msg-readme.proto](https://raw.githubusercontent.com/oneadvisory/protobuf-ts/main/packages/proto/msg-readme.proto) and place it into a `protos/` directory
 
 - `npx protoc --ts_out . --proto_path protos protos/msg-readme.proto`
   > generates msg-readme.ts  
   > if your protoc version asks for it, add the flag "--experimental_allow_proto3_optional"
-
 
 ### Features
 
 - [x] implements the [canonical proto3 JSON format](MANUAL.md#json-format)
 - [x] implements the [binary format](MANUAL.md#binary-format) and respects [unknown fields](MANUAL.md#unknown-field-handling)
 - [x] strictly [conforms to the protobuf spec](MANUAL.md#conformance)
-- [x] generates clients that can be used with the [gRPC web](MANUAL.md#grpc-web-transport), 
+- [x] generates clients that can be used with the [gRPC web](MANUAL.md#grpc-web-transport),
       [Twirp](MANUAL.md#twirp-transport) or [gRPC](MANUAL.md#grpc-transport) protocol
-- [x] generates [native gRPC servers](MANUAL.md#native-grpc-server) and 
+- [x] generates [native gRPC servers](MANUAL.md#native-grpc-server) and
       [clients](MANUAL.md#native-grpc-client) for usage with `@grpc/grpc-js`
 - [x] supported by [Twirp-TS](https://github.com/hopin-team/twirp-ts) for Twirp servers running on Node.js
 - [x] automatically [installs protoc](./packages/protoc/README.md) (with Yarn berry, please use [node-protoc](https://www.npmjs.com/package/node-protoc))
-- [x] can optimize for [speed or code size](MANUAL.md#code-size-vs-speed)  
+- [x] can optimize for [speed or code size](MANUAL.md#code-size-vs-speed)
 - [x] supports [proto3 optionals](MANUAL.md#proto3-optionals)
 - [x] [supports bigint](MANUAL.md#bigint-support) for 64 bit integers
 - [x] every [message type](MANUAL.md#imessagetype) has methods to compare, clone, merge and type guard messages
-- [x] provides [reflection information](MANUAL.md#reflection), 
-  including [custom options](MANUAL.md#custom-options)
+- [x] provides [reflection information](MANUAL.md#reflection),
+      including [custom options](MANUAL.md#custom-options)
 - [x] supports all [well-known-types](MANUAL.md#well-known-types) with custom JSON representation and helper methods
 - [x] uses standard [TypeScript enums](MANUAL.md#enum-representation)
 - [x] runs [in the Web Browser](MANUAL.md#running-in-the-web-browser) and in [Node.js](MANUAL.md#running-in-nodejs)
 - [x] uses an [algebraic data type for oneof](MANUAL.md#oneof-representation) groups
 - [x] can generate TypeScript [or JavaScript](MANUAL.md#outputting-javascript)
-- [x] available as a [plugin on the BSR](https://github.com/timostamm/protobuf-ts/tree/master/packages/bsr-plugin)
-- [x] can be [used with buf](https://github.com/timostamm/protobuf-ts/issues/93)
-
+- [x] available as a [plugin on the BSR](https://github.com/oneadvisory/protobuf-ts/tree/master/packages/bsr-plugin)
+- [x] can be [used with buf](https://github.com/oneadvisory/protobuf-ts/issues/93)
 
 Read the [MANUAL](MANUAL.md) to learn more.
 
+### Attribution & Copyright
 
+This project is a fork of the original [protobuf-ts](https://github.com/timostamm/protobuf-ts) by Timo Stamm, which provided the foundation for this enhanced variant.
 
-
-### Copyright
-
+- Original protobuf-ts library: Copyright Timo Stamm, licensed under Apache-2.0
 - The [code to decode UTF8](./packages/runtime/src/protobufjs-utf8.ts) is Copyright 2016 by Daniel Wirtz, licensed under BSD-3-Clause.
 - The [code to encode and decode varint](./packages/runtime/src/goog-varint.ts) is Copyright 2008 Google Inc., licensed under BSD-3-Clause.
 - The [gRPC status codes](./packages/grpcweb-transport/src/goog-grpc-status-code.ts) are Copyright 2016 gRPC authors, licensed under Apache-2.0.
 - The [Twirp error codes](./packages/twirp-transport/src/twitch-twirp-error-code.ts) are Copyright 2018 Twitch Interactive, Inc., licensed under Apache-2.0.
 - The proto files in [proto/google](./packages/proto/google) and [test-conformance/proto](./packages/test-conformance/proto) are Copyright Google Inc. / Google LLC, licensed under Apache-2.0 / BSD-3-Clause.
-- All other files are licensed under Apache-2.0, see [LICENSE](./LICENSE). 
-
+- All other files are licensed under Apache-2.0, see [LICENSE](./LICENSE).
 
 ### Support
 

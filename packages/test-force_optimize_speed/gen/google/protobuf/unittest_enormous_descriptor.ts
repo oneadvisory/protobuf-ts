@@ -19,15 +19,15 @@
 // descriptors over 64k don't break language-specific limits in generated code,
 // such as the string literal length limit in Java.
 //
-import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
-import type { IBinaryWriter } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
-import type { BinaryReadOptions } from "@protobuf-ts/runtime";
-import type { IBinaryReader } from "@protobuf-ts/runtime";
-import { UnknownFieldHandler } from "@protobuf-ts/runtime";
-import type { PartialMessage } from "@protobuf-ts/runtime";
-import { reflectionMergePartial } from "@protobuf-ts/runtime";
-import { MessageType } from "@protobuf-ts/runtime";
+import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
+import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
+import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
+import type { PartialMessage } from "@oneadvisory/protobuf-ts-runtime";
+import { reflectionMergePartial } from "@oneadvisory/protobuf-ts-runtime";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * clang-format off
  *

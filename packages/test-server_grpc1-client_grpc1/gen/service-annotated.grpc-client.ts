@@ -2,8 +2,8 @@
 // @generated from protobuf file "service-annotated.proto" (package "spec", syntax proto3)
 // tslint:disable
 import { AnnotatedService } from "./service-annotated";
-import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
-import type { BinaryReadOptions } from "@protobuf-ts/runtime";
+import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { AnnoGetResponse } from "./service-annotated";
 import type { AnnoGetRequest } from "./service-annotated";
 import * as grpc from "@grpc/grpc-js";

@@ -1,5 +1,5 @@
 {
-  "name": "@protobuf-ts/example-buf",
+  "name": "@oneadvisory/protobuf-ts-example-buf",
   "version": "2.11.1",
   "private": true,
   "author": "Timo Stamm <ts@timostamm.com>",
@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "typescript": "^5.x.x",
-    "@protobuf-ts/plugin": "^2.11.1",
+    "@oneadvisory/protobuf-ts-plugin": "^2.11.1",
     "@bufbuild/buf": "^1.50.1"
   }
 }

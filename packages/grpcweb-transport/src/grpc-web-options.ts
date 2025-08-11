@@ -1,4 +1,4 @@
-import {RpcOptions} from "@protobuf-ts/runtime-rpc";
+import {RpcOptions} from "@oneadvisory/protobuf-ts-runtime-rpc";
 
 
 /**

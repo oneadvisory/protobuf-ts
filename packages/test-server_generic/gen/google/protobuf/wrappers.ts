@@ -42,20 +42,20 @@
 // These wrappers have no meaningful use within a map or a oneof since
 // individual entries of a map or fields of a oneof can already detect presence.
 //
-import { ScalarType } from "@protobuf-ts/runtime";
-import { LongType } from "@protobuf-ts/runtime";
-import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
-import type { IBinaryWriter } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
-import type { BinaryReadOptions } from "@protobuf-ts/runtime";
-import type { IBinaryReader } from "@protobuf-ts/runtime";
-import { UnknownFieldHandler } from "@protobuf-ts/runtime";
-import type { PartialMessage } from "@protobuf-ts/runtime";
-import { reflectionMergePartial } from "@protobuf-ts/runtime";
-import type { JsonValue } from "@protobuf-ts/runtime";
-import type { JsonReadOptions } from "@protobuf-ts/runtime";
-import type { JsonWriteOptions } from "@protobuf-ts/runtime";
-import { MessageType } from "@protobuf-ts/runtime";
+import { ScalarType } from "@oneadvisory/protobuf-ts-runtime";
+import { LongType } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
+import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
+import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
+import type { PartialMessage } from "@oneadvisory/protobuf-ts-runtime";
+import { reflectionMergePartial } from "@oneadvisory/protobuf-ts-runtime";
+import type { JsonValue } from "@oneadvisory/protobuf-ts-runtime";
+import type { JsonReadOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { JsonWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * Wrapper message for `double`.
  *

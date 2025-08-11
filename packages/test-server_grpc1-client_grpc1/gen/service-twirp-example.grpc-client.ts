@@ -6,8 +6,8 @@
 // https://github.com/twitchtv/twirp-example/blob/c1501aeb89609a522db7d79d4c2e71b6c032af28/rpc/haberdasher/haberdasher.proto
 //
 import { Haberdasher } from "./service-twirp-example";
-import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
-import type { BinaryReadOptions } from "@protobuf-ts/runtime";
+import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { Hat } from "./service-twirp-example";
 import type { Size } from "./service-twirp-example";
 import * as grpc from "@grpc/grpc-js";

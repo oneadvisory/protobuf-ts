@@ -17,15 +17,15 @@
 // limitations under the License.
 //
 //
-import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
-import type { IBinaryWriter } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
-import type { BinaryReadOptions } from "@protobuf-ts/runtime";
-import type { IBinaryReader } from "@protobuf-ts/runtime";
-import { UnknownFieldHandler } from "@protobuf-ts/runtime";
-import type { PartialMessage } from "@protobuf-ts/runtime";
-import { reflectionMergePartial } from "@protobuf-ts/runtime";
-import { MessageType } from "@protobuf-ts/runtime";
+import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
+import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
+import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
+import type { PartialMessage } from "@oneadvisory/protobuf-ts-runtime";
+import { reflectionMergePartial } from "@oneadvisory/protobuf-ts-runtime";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * Represents a time of day. The date and time zone are either not significant
  * or are specified elsewhere. An API may choose to allow leap seconds. Related

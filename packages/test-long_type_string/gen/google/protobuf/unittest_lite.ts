@@ -37,7 +37,7 @@
 //
 // This is like unittest.proto but with optimize_for = LITE_RUNTIME.
 //
-import { MessageType } from "@protobuf-ts/runtime";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 import { PublicImportMessageLite } from "./unittest_import_public_lite";
 import { ImportEnumLite } from "./unittest_import_lite";
 import { ImportMessageLite } from "./unittest_import_lite";

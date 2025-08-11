@@ -2,8 +2,8 @@
 // @generated from protobuf file "service-empty.proto" (package "spec", syntax proto3)
 // tslint:disable
 import { EmptyService } from "./service-empty";
-import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
-import type { BinaryReadOptions } from "@protobuf-ts/runtime";
+import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { Empty } from "./google/protobuf/empty";
 import * as grpc from "@grpc/grpc-js";
 /**

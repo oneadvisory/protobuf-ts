@@ -7,8 +7,8 @@
 // be written under a different name.
 //
 import * as grpc from "@grpc/grpc-js";
-import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
-import type { BinaryReadOptions } from "@protobuf-ts/runtime";
+import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * @generated from protobuf service spec.ClashService
  */

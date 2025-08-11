@@ -5,16 +5,16 @@
 // Twirp example RPC
 // https://github.com/twitchtv/twirp-example/blob/c1501aeb89609a522db7d79d4c2e71b6c032af28/rpc/haberdasher/haberdasher.proto
 //
-import { ServiceType } from "@protobuf-ts/runtime-rpc";
-import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
-import type { IBinaryWriter } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
-import type { BinaryReadOptions } from "@protobuf-ts/runtime";
-import type { IBinaryReader } from "@protobuf-ts/runtime";
-import { UnknownFieldHandler } from "@protobuf-ts/runtime";
-import type { PartialMessage } from "@protobuf-ts/runtime";
-import { reflectionMergePartial } from "@protobuf-ts/runtime";
-import { MessageType } from "@protobuf-ts/runtime";
+import { ServiceType } from "@oneadvisory/protobuf-ts-runtime-rpc";
+import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
+import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
+import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
+import type { PartialMessage } from "@oneadvisory/protobuf-ts-runtime";
+import { reflectionMergePartial } from "@oneadvisory/protobuf-ts-runtime";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * A Hat is a piece of headwear made by a Haberdasher.
  *

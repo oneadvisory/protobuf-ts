@@ -2,7 +2,7 @@
 // @generated from protobuf file "service-empty.proto" (package "spec", syntax proto3)
 // tslint:disable
 import { Empty } from "./google/protobuf/empty";
-import { ServerCallContext } from "@protobuf-ts/runtime-rpc";
+import { ServerCallContext } from "@oneadvisory/protobuf-ts-runtime-rpc";
 /**
  * @generated from protobuf service spec.EmptyService
  */

@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import * as rt from '@protobuf-ts/runtime';
+import * as rt from '@oneadvisory/protobuf-ts-runtime';
 import { addCommentBlockAsJsDoc } from './typescript-comments';
 
 /**
@@ -26,7 +26,10 @@ export class TypescriptEnumBuilder {
       let member = ts.factory.createEnumMember(
         ts.factory.createIdentifier(name),
         number < 0
-          ? ts.factory.createPrefixUnaryExpression(ts.SyntaxKind.MinusToken, ts.factory.createNumericLiteral((Math.abs(number)).toString()))
+          ? ts.factory.createPrefixUnaryExpression(
+              ts.SyntaxKind.MinusToken,
+              ts.factory.createNumericLiteral(Math.abs(number).toString())
+            )
           : ts.factory.createNumericLiteral(number.toString())
       );
       if (comment) {

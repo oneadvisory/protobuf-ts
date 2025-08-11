@@ -1,44 +1,49 @@
-import {TypescriptFile} from "../framework/typescript-file";
-import * as ts from "typescript";
-import {LongType} from "@protobuf-ts/runtime";
-import {CustomMethodGenerator} from "../code-gen/message-type-generator";
-import { FieldInfoGenerator } from "../code-gen/field-info-generator";
-import {DescMessage} from "@bufbuild/protobuf";
-import {TypeScriptImports} from "../framework/typescript-imports";
-import {typescriptMethodFromText} from "../framework/typescript-method-from-text";
-
+import { TypescriptFile } from '../framework/typescript-file';
+import * as ts from 'typescript';
+import { LongType } from '@oneadvisory/protobuf-ts-runtime';
+import { CustomMethodGenerator } from '../code-gen/message-type-generator';
+import { FieldInfoGenerator } from '../code-gen/field-info-generator';
+import { DescMessage } from '@bufbuild/protobuf';
+import { TypeScriptImports } from '../framework/typescript-imports';
+import { typescriptMethodFromText } from '../framework/typescript-method-from-text';
 
 export class GoogleTypes implements CustomMethodGenerator {
-
-    constructor(
-        private readonly imports: TypeScriptImports,
-        private readonly options: { normalLongType: LongType; runtimeImportPath: string; useProtoFieldName: boolean },
-    ) {
+  constructor(
+    private readonly imports: TypeScriptImports,
+    private readonly options: {
+      normalLongType: LongType;
+      runtimeImportPath: string;
+      useProtoFieldName: boolean;
     }
+  ) {}
 
-
-    /**
-     * Create custom methods for the handlers of some google types.
-     */
-    make(source: TypescriptFile, descMessage: DescMessage): ts.MethodDeclaration[] {
-        const fn = this[descMessage.typeName as keyof this] as unknown as (source: TypescriptFile, descMessage: DescMessage) => void | string | string[];
-        if (fn) {
-            let r = fn.apply(this, [source, descMessage]);
-            if (typeof r == "string") {
-                return [typescriptMethodFromText(r)];
-            }
-            if (Array.isArray(r)) {
-                return r.map(txt => typescriptMethodFromText(txt));
-            }
-        }
-        return [];
+  /**
+   * Create custom methods for the handlers of some google types.
+   */
+  make(
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): ts.MethodDeclaration[] {
+    const fn = this[descMessage.typeName as keyof this] as unknown as (
+      source: TypescriptFile,
+      descMessage: DescMessage
+    ) => void | string | string[];
+    if (fn) {
+      let r = fn.apply(this, [source, descMessage]);
+      if (typeof r == 'string') {
+        return [typescriptMethodFromText(r)];
+      }
+      if (Array.isArray(r)) {
+        return r.map((txt) => typescriptMethodFromText(txt));
+      }
     }
+    return [];
+  }
 
-
-    ['google.type.Color'](source: TypescriptFile, descMessage: DescMessage) {
-        const Color = this.imports.type(source, descMessage);
-        return [
-            `
+  ['google.type.Color'](source: TypescriptFile, descMessage: DescMessage) {
+    const Color = this.imports.type(source, descMessage);
+    return [
+      `
             /**
              * Returns hexadecimal notation of the color: #RRGGBB[AA]
              *
@@ -61,7 +66,7 @@ export class GoogleTypes implements CustomMethodGenerator {
                 return '#' + hex.map(i => i.length < 2 ? '0' + i : i).join('');
             }
             `,
-            `
+      `
             /**
              * Parses a hexadecimal color notation.
              *
@@ -113,13 +118,13 @@ export class GoogleTypes implements CustomMethodGenerator {
                 throw new Error('invalid hex color');
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.type.Date'](source: TypescriptFile, descMessage: DescMessage) {
-        const Date = this.imports.type(source, descMessage);
-        return [
-            `
+  ['google.type.Date'](source: TypescriptFile, descMessage: DescMessage) {
+    const Date = this.imports.type(source, descMessage);
+    return [
+      `
             /**
              * Creates a javascript Date object from the message.
              *
@@ -138,7 +143,8 @@ export class GoogleTypes implements CustomMethodGenerator {
                     ms ?? now.getMilliseconds(),
                 );
             }
-            `, `
+            `,
+      `
             /**
              * Creates a Date message from a javascript Date object. 
              */
@@ -150,29 +156,43 @@ export class GoogleTypes implements CustomMethodGenerator {
                 };
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.type.DateTime'](source: TypescriptFile, descMessage: DescMessage) {
-        const DateTime = this.imports.type(source, descMessage);
-        const PbLong = this.imports.name(source, 'PbLong', this.options.runtimeImportPath);
-        let longConvertMethod = 'toBigInt';
-        if (this.options.normalLongType === LongType.NUMBER)
-            longConvertMethod = 'toNumber';
-        else if (this.options.normalLongType === LongType.STRING)
-            longConvertMethod = 'toString';
-        const utcOffsetField = FieldInfoGenerator.createTypescriptLocalName('utc_offset', this.options),
-              timeOffsetField = FieldInfoGenerator.createTypescriptLocalName('time_offset', this.options),
-              timeZoneField = FieldInfoGenerator.createTypescriptLocalName('time_zone', this.options);
-        return [
-            `
+  ['google.type.DateTime'](source: TypescriptFile, descMessage: DescMessage) {
+    const DateTime = this.imports.type(source, descMessage);
+    const PbLong = this.imports.name(
+      source,
+      'PbLong',
+      this.options.runtimeImportPath
+    );
+    let longConvertMethod = 'toBigInt';
+    if (this.options.normalLongType === LongType.NUMBER)
+      longConvertMethod = 'toNumber';
+    else if (this.options.normalLongType === LongType.STRING)
+      longConvertMethod = 'toString';
+    const utcOffsetField = FieldInfoGenerator.createTypescriptLocalName(
+        'utc_offset',
+        this.options
+      ),
+      timeOffsetField = FieldInfoGenerator.createTypescriptLocalName(
+        'time_offset',
+        this.options
+      ),
+      timeZoneField = FieldInfoGenerator.createTypescriptLocalName(
+        'time_zone',
+        this.options
+      );
+    return [
+      `
             /**
              * Creates \`DateTime\` for the current time.
              */
             function now(): ${DateTime} {
                 return this.fromJsDate(new globalThis.Date());
             }
-            `, `
+            `,
+      `
             /**
              * Creates a javascript Date object from the message.
              *
@@ -205,7 +225,8 @@ export class GoogleTypes implements CustomMethodGenerator {
                 }
                 return dt;
             }
-            `, `
+            `,
+      `
             /**
              * Creates a Date message from a javascript Date object.
              *  
@@ -227,13 +248,13 @@ export class GoogleTypes implements CustomMethodGenerator {
                 };
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.type.TimeOfDay'](source: TypescriptFile, descMessage: DescMessage) {
-        const TimeOfDay = this.imports.type(source, descMessage);
-        return [
-            `
+  ['google.type.TimeOfDay'](source: TypescriptFile, descMessage: DescMessage) {
+    const TimeOfDay = this.imports.type(source, descMessage);
+    return [
+      `
             /**
              * Creates a TimeOfDay message from a javascript Date object.
              */
@@ -246,7 +267,6 @@ export class GoogleTypes implements CustomMethodGenerator {
                 };
             }
             `,
-        ];
-    }
-
+    ];
+  }
 }

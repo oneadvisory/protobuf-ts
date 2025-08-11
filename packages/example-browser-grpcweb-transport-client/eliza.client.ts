@@ -16,20 +16,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
-import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
+import type { RpcTransport } from "@oneadvisory/protobuf-ts-runtime-rpc";
+import type { ServiceInfo } from "@oneadvisory/protobuf-ts-runtime-rpc";
 import { ElizaService } from "./eliza";
 import type { IntroduceResponse } from "./eliza";
 import type { IntroduceRequest } from "./eliza";
-import type { ServerStreamingCall } from "@protobuf-ts/runtime-rpc";
+import type { ServerStreamingCall } from "@oneadvisory/protobuf-ts-runtime-rpc";
 import type { ConverseResponse } from "./eliza";
 import type { ConverseRequest } from "./eliza";
-import type { DuplexStreamingCall } from "@protobuf-ts/runtime-rpc";
-import { stackIntercept } from "@protobuf-ts/runtime-rpc";
+import type { DuplexStreamingCall } from "@oneadvisory/protobuf-ts-runtime-rpc";
+import { stackIntercept } from "@oneadvisory/protobuf-ts-runtime-rpc";
 import type { SayResponse } from "./eliza";
 import type { SayRequest } from "./eliza";
-import type { UnaryCall } from "@protobuf-ts/runtime-rpc";
-import type { RpcOptions } from "@protobuf-ts/runtime-rpc";
+import type { UnaryCall } from "@oneadvisory/protobuf-ts-runtime-rpc";
+import type { RpcOptions } from "@oneadvisory/protobuf-ts-runtime-rpc";
 /**
  * ElizaService provides a way to talk to Eliza, a port of the DOCTOR script
  * for Joseph Weizenbaum's original ELIZA program. Created in the mid-1960s at

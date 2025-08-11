@@ -16,8 +16,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-import { ServiceType } from "@protobuf-ts/runtime-rpc";
-import { MessageType } from "@protobuf-ts/runtime";
+import { ServiceType } from "@oneadvisory/protobuf-ts-runtime-rpc";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * SayRequest is a single-sentence request.
  *

@@ -12,7 +12,7 @@ import {
     ServerStreamingCall,
     UnaryCall,
     mergeRpcOptions
-} from "@protobuf-ts/runtime-rpc";
+} from "@oneadvisory/protobuf-ts-runtime-rpc";
 import {
     GrpcWebFrame,
     createGrpcWebRequestBody,

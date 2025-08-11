@@ -1,4 +1,4 @@
-import {RpcOptions} from "@protobuf-ts/runtime-rpc";
+import {RpcOptions} from "@oneadvisory/protobuf-ts-runtime-rpc";
 import {CallOptions, ChannelCredentials, ClientOptions,Metadata,MetadataOptions} from "@grpc/grpc-js";
 
 export interface GrpcOptions extends RpcOptions {

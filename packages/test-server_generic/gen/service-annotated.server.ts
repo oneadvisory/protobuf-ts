@@ -3,7 +3,7 @@
 // tslint:disable
 import { AnnoGetResponse } from "./service-annotated";
 import { AnnoGetRequest } from "./service-annotated";
-import { ServerCallContext } from "@protobuf-ts/runtime-rpc";
+import { ServerCallContext } from "@oneadvisory/protobuf-ts-runtime-rpc";
 /**
  * @generated from protobuf service spec.AnnotatedService
  */

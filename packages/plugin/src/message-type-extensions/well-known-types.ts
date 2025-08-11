@@ -1,82 +1,124 @@
-import {TypescriptFile} from "../framework/typescript-file";
-import * as ts from "typescript";
-import {LongType} from "@protobuf-ts/runtime";
-import {CustomMethodGenerator} from "../code-gen/message-type-generator";
-import { FieldInfoGenerator } from "../code-gen/field-info-generator";
-import {DescMessage} from "@bufbuild/protobuf";
-import {TypeScriptImports} from "../framework/typescript-imports";
-import {typescriptMethodFromText} from "../framework/typescript-method-from-text";
-import {FieldDescriptorProto_Type} from "@bufbuild/protobuf/wkt";
-
+import { TypescriptFile } from '../framework/typescript-file';
+import * as ts from 'typescript';
+import { LongType } from '@oneadvisory/protobuf-ts-runtime';
+import { CustomMethodGenerator } from '../code-gen/message-type-generator';
+import { FieldInfoGenerator } from '../code-gen/field-info-generator';
+import { DescMessage } from '@bufbuild/protobuf';
+import { TypeScriptImports } from '../framework/typescript-imports';
+import { typescriptMethodFromText } from '../framework/typescript-method-from-text';
+import { FieldDescriptorProto_Type } from '@bufbuild/protobuf/wkt';
 
 export class WellKnownTypes implements CustomMethodGenerator {
+  static readonly protoFilenames = [
+    'google/protobuf/any.proto',
+    'google/protobuf/api.proto',
+    'google/protobuf/descriptor.proto',
+    'google/protobuf/duration.proto',
+    'google/protobuf/empty.proto',
+    'google/protobuf/field_mask.proto',
+    'google/protobuf/source_context.proto',
+    'google/protobuf/struct.proto',
+    'google/protobuf/timestamp.proto',
+    'google/protobuf/type.proto',
+    'google/protobuf/wrappers.proto',
+    'google/protobuf/compiler/plugin.proto',
+    'google/protobuf/any.proto',
+  ];
 
-
-    static readonly protoFilenames = [
-        "google/protobuf/any.proto",
-        "google/protobuf/api.proto",
-        "google/protobuf/descriptor.proto",
-        "google/protobuf/duration.proto",
-        "google/protobuf/empty.proto",
-        "google/protobuf/field_mask.proto",
-        "google/protobuf/source_context.proto",
-        "google/protobuf/struct.proto",
-        "google/protobuf/timestamp.proto",
-        "google/protobuf/type.proto",
-        "google/protobuf/wrappers.proto",
-        "google/protobuf/compiler/plugin.proto",
-        "google/protobuf/any.proto",
-    ];
-
-
-    constructor(
-        private readonly imports: TypeScriptImports,
-        private readonly options: { normalLongType: LongType; runtimeImportPath: string, useProtoFieldName: boolean },
-    ) {
+  constructor(
+    private readonly imports: TypeScriptImports,
+    private readonly options: {
+      normalLongType: LongType;
+      runtimeImportPath: string;
+      useProtoFieldName: boolean;
     }
+  ) {}
 
-
-    /**
-     * Create custom methods for the handlers of well known types.
-     *
-     * Well known types have a custom JSON representation and we
-     * also add some convenience methods, for example to convert a
-     * `google.protobuf.Timestamp` to a javascript Date.
-     */
-    make(source: TypescriptFile, descMessage: DescMessage): ts.MethodDeclaration[] {
-        const fn = this[descMessage.typeName as keyof this] as unknown as (source: TypescriptFile, descMessage: DescMessage) => void | string | string[];
-        if (fn) {
-            let r = fn.apply(this, [source, descMessage]);
-            if (typeof r == "string") {
-                return [typescriptMethodFromText(r)];
-            }
-            if (Array.isArray(r)) {
-                return r.map(txt => typescriptMethodFromText(txt));
-            }
-        }
-        return [];
+  /**
+   * Create custom methods for the handlers of well known types.
+   *
+   * Well known types have a custom JSON representation and we
+   * also add some convenience methods, for example to convert a
+   * `google.protobuf.Timestamp` to a javascript Date.
+   */
+  make(
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): ts.MethodDeclaration[] {
+    const fn = this[descMessage.typeName as keyof this] as unknown as (
+      source: TypescriptFile,
+      descMessage: DescMessage
+    ) => void | string | string[];
+    if (fn) {
+      let r = fn.apply(this, [source, descMessage]);
+      if (typeof r == 'string') {
+        return [typescriptMethodFromText(r)];
+      }
+      if (Array.isArray(r)) {
+        return r.map((txt) => typescriptMethodFromText(txt));
+      }
     }
+    return [];
+  }
 
+  ['google.protobuf.Empty'](/*source: TypescriptFile, descriptor: DescriptorProto*/) {
+    // that´s ok, Empty already has the required JSON representation by default
+  }
 
-    ['google.protobuf.Empty'](/*source: TypescriptFile, descriptor: DescriptorProto*/) {
-        // that´s ok, Empty already has the required JSON representation by default
-    }
+  ['google.protobuf.Any'](source: TypescriptFile, descMessage: DescMessage) {
+    const Any = this.imports.type(source, descMessage),
+      IMessageType = this.imports.name(
+        source,
+        'IMessageType',
+        this.options.runtimeImportPath,
+        true
+      ),
+      BinaryReadOptions = this.imports.name(
+        source,
+        'BinaryReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      jsonWriteOptions = this.imports.name(
+        source,
+        'jsonWriteOptions',
+        this.options.runtimeImportPath
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      ),
+      typeofJsonValue = this.imports.name(
+        source,
+        'typeofJsonValue',
+        this.options.runtimeImportPath
+      ),
+      isJsonObject = this.imports.name(
+        source,
+        'isJsonObject',
+        this.options.runtimeImportPath
+      ),
+      typeUrlField = FieldInfoGenerator.createTypescriptLocalName(
+        'type_url',
+        this.options
+      );
 
-    ['google.protobuf.Any'](source: TypescriptFile, descMessage: DescMessage) {
-        const
-            Any = this.imports.type(source, descMessage),
-            IMessageType = this.imports.name(source,'IMessageType', this.options.runtimeImportPath, true),
-            BinaryReadOptions = this.imports.name(source,'BinaryReadOptions', this.options.runtimeImportPath, true),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            jsonWriteOptions = this.imports.name(source,'jsonWriteOptions', this.options.runtimeImportPath),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true),
-            typeofJsonValue = this.imports.name(source,'typeofJsonValue', this.options.runtimeImportPath),
-            isJsonObject = this.imports.name(source,'isJsonObject', this.options.runtimeImportPath),
-            typeUrlField = FieldInfoGenerator.createTypescriptLocalName('type_url', this.options);
-
-        return [
-            `
+    return [
+      `
 			/**
 			 * Pack the message into a new \`Any\`.
 			 *
@@ -88,7 +130,8 @@ export class WellKnownTypes implements CustomMethodGenerator {
 					value: type.toBinary(message),
 				};
 			}
-            `, `
+            `,
+      `
             /**
 			 * Unpack the message from the \`Any\`.
 			 */
@@ -97,7 +140,8 @@ export class WellKnownTypes implements CustomMethodGenerator {
 					throw new Error("Cannot unpack google.protobuf.Any with ${typeUrlField} '" + any.${typeUrlField} + "' as " + type.typeName + ".");
                 return type.fromBinary(any.value, options);
 			}
-            `, `
+            `,
+      `
             /**
              * Does the given \`Any\` contain a packed message of the given type?
 			 */
@@ -108,7 +152,8 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 let has = this.typeUrlToName(any.${typeUrlField});
                 return wants === has;
 			}
-            `, `
+            `,
+      `
 			/**
 			 * Convert the message to canonical JSON value.
 			 *
@@ -133,7 +178,8 @@ export class WellKnownTypes implements CustomMethodGenerator {
 				json['@type'] = any.${typeUrlField};
 				return json;
 			}
-            `, `
+            `,
+      `
             function internalJsonRead(json: ${JsonValue}, options: ${JsonReadOptions}, target?: ${Any}): ${Any} {
 				if (!${isJsonObject}(json))
 					throw new globalThis.Error("Unable to parse google.protobuf.Any from JSON " + ${typeofJsonValue}(json) + ".");
@@ -157,13 +203,15 @@ export class WellKnownTypes implements CustomMethodGenerator {
 				target.value = type.toBinary(value);
 				return target;
 			}
-           `, `
+           `,
+      `
             function typeNameToUrl(name: string): string {
                 if (!name.length)
                     throw new Error('invalid type name: ' + name);
                 return "type.googleapis.com/" + name;
             }
-            `, `
+            `,
+      `
             function typeUrlToName(url: string): string {
                 if (!url.length)
                     throw new Error('invalid type url: ' + url);
@@ -173,25 +221,50 @@ export class WellKnownTypes implements CustomMethodGenerator {
                     throw new Error('invalid type url: ' + url);
                 return name;
             }
-            `
-        ];
-    }
+            `,
+    ];
+  }
 
-    ['google.protobuf.Timestamp'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            Timestamp = this.imports.type(source, descMessage),
-            PbLong = this.imports.name(source,'PbLong', this.options.runtimeImportPath),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true),
-            typeofJsonValue = this.imports.name(source,'typeofJsonValue', this.options.runtimeImportPath);
-        let longConvertMethod = 'toBigInt';
-        if (this.options.normalLongType === LongType.NUMBER)
-            longConvertMethod = 'toNumber';
-        else if (this.options.normalLongType === LongType.STRING)
-            longConvertMethod = 'toString';
-        return [
-            `
+  ['google.protobuf.Timestamp'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const Timestamp = this.imports.type(source, descMessage),
+      PbLong = this.imports.name(
+        source,
+        'PbLong',
+        this.options.runtimeImportPath
+      ),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      ),
+      typeofJsonValue = this.imports.name(
+        source,
+        'typeofJsonValue',
+        this.options.runtimeImportPath
+      );
+    let longConvertMethod = 'toBigInt';
+    if (this.options.normalLongType === LongType.NUMBER)
+      longConvertMethod = 'toNumber';
+    else if (this.options.normalLongType === LongType.STRING)
+      longConvertMethod = 'toString';
+    return [
+      `
             /**
              * Creates a new \`Timestamp\` for the current time.
              */ 
@@ -202,14 +275,16 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 msg.nanos = (ms % 1000) * 1000000;
                 return msg;
             }
-            `, `
+            `,
+      `
             /**
              * Converts a \`Timestamp\` to a JavaScript Date.
              */ 
             function toDate(message: ${Timestamp}): Date {
                 return new Date(${PbLong}.from(message.seconds).toNumber() * 1000 + Math.ceil(message.nanos / 1000000));
             }
-            `, `
+            `,
+      `
             /**
              * Converts a JavaScript Date to a \`Timestamp\`.
              */ 
@@ -220,7 +295,8 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 msg.nanos = ((ms % 1000) + (ms < 0 && ms % 1000 !== 0 ? 1000 : 0)) * 1000000;
                 return msg;
             }
-            `, `
+            `,
+      `
             /**
              * In JSON format, the \`Timestamp\` type is encoded as a string 
              * in the RFC 3339 format.
@@ -243,7 +319,8 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 }
                 return new Date(ms).toISOString().replace(".000Z", z)
             }
-            `, `
+            `,
+      `
             /**
              * In JSON format, the \`Timestamp\` type is encoded as a string 
              * in the RFC 3339 format.
@@ -271,24 +348,49 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.Duration'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            Duration = this.imports.type(source, descMessage),
-            PbLong = this.imports.name(source,'PbLong', this.options.runtimeImportPath),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true),
-            typeofJsonValue = this.imports.name(source,'typeofJsonValue', this.options.runtimeImportPath);
-        let longConvertMethod = 'toBigInt';
-        if (this.options.normalLongType === LongType.NUMBER)
-            longConvertMethod = 'toNumber';
-        else if (this.options.normalLongType === LongType.STRING)
-            longConvertMethod = 'toString';
-        return [
-            `
+  ['google.protobuf.Duration'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const Duration = this.imports.type(source, descMessage),
+      PbLong = this.imports.name(
+        source,
+        'PbLong',
+        this.options.runtimeImportPath
+      ),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      ),
+      typeofJsonValue = this.imports.name(
+        source,
+        'typeofJsonValue',
+        this.options.runtimeImportPath
+      );
+    let longConvertMethod = 'toBigInt';
+    if (this.options.normalLongType === LongType.NUMBER)
+      longConvertMethod = 'toNumber';
+    else if (this.options.normalLongType === LongType.STRING)
+      longConvertMethod = 'toString';
+    return [
+      `
             /**
              * Encode \`Duration\` to JSON string like "3.000001s". 
              */
@@ -310,7 +412,8 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 }
                 return text + "s";
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`Duration\` from JSON string like "3.000001s"
              */
@@ -334,20 +437,44 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
+    ];
+  }
 
-    }
-
-    ['google.protobuf.FieldMask'](source: TypescriptFile, descMessage: DescMessage) {
-        const
-            FieldMask = this.imports.type(source, descMessage),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            lowerCamelCase = this.imports.name(source,'lowerCamelCase', this.options.runtimeImportPath),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true),
-            typeofJsonValue = this.imports.name(source,'typeofJsonValue', this.options.runtimeImportPath);
-        return [
-            `
+  ['google.protobuf.FieldMask'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ) {
+    const FieldMask = this.imports.type(source, descMessage),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      lowerCamelCase = this.imports.name(
+        source,
+        'lowerCamelCase',
+        this.options.runtimeImportPath
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      ),
+      typeofJsonValue = this.imports.name(
+        source,
+        'typeofJsonValue',
+        this.options.runtimeImportPath
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON object. 
              */
@@ -359,7 +486,8 @@ export class WellKnownTypes implements CustomMethodGenerator {
                     return ${lowerCamelCase}(p);
                 }).join(",") ?? "";
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON object.
              */
@@ -380,20 +508,50 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.Struct'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            Struct = this.imports.type(source, descMessage),
-            JsonObject = this.imports.name(source,'JsonObject', this.options.runtimeImportPath, true),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true),
-            typeofJsonValue = this.imports.name(source,'typeofJsonValue', this.options.runtimeImportPath),
-            isJsonObject = this.imports.name(source,'isJsonObject', this.options.runtimeImportPath);
-        return [
-            `
+  ['google.protobuf.Struct'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const Struct = this.imports.type(source, descMessage),
+      JsonObject = this.imports.name(
+        source,
+        'JsonObject',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      ),
+      typeofJsonValue = this.imports.name(
+        source,
+        'typeofJsonValue',
+        this.options.runtimeImportPath
+      ),
+      isJsonObject = this.imports.name(
+        source,
+        'isJsonObject',
+        this.options.runtimeImportPath
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON object. 
              */
@@ -404,7 +562,8 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 }
                 return json;
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON object.
              */
@@ -419,24 +578,63 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.Value'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            Value = this.imports.type(source, descMessage),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true),
-            typeofJsonValue = this.imports.name(source,'typeofJsonValue', this.options.runtimeImportPath),
-            nullValueField = FieldInfoGenerator.createTypescriptLocalName('null_value', this.options),
-            boolValueField = FieldInfoGenerator.createTypescriptLocalName('bool_value', this.options),
-            numberValueField = FieldInfoGenerator.createTypescriptLocalName('number_value', this.options),
-            stringValueField = FieldInfoGenerator.createTypescriptLocalName('string_value', this.options),
-            listValueField = FieldInfoGenerator.createTypescriptLocalName('list_value', this.options),
-            structValueField = FieldInfoGenerator.createTypescriptLocalName('struct_value', this.options);
-        return [
-          `
+  ['google.protobuf.Value'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const Value = this.imports.type(source, descMessage),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      ),
+      typeofJsonValue = this.imports.name(
+        source,
+        'typeofJsonValue',
+        this.options.runtimeImportPath
+      ),
+      nullValueField = FieldInfoGenerator.createTypescriptLocalName(
+        'null_value',
+        this.options
+      ),
+      boolValueField = FieldInfoGenerator.createTypescriptLocalName(
+        'bool_value',
+        this.options
+      ),
+      numberValueField = FieldInfoGenerator.createTypescriptLocalName(
+        'number_value',
+        this.options
+      ),
+      stringValueField = FieldInfoGenerator.createTypescriptLocalName(
+        'string_value',
+        this.options
+      ),
+      listValueField = FieldInfoGenerator.createTypescriptLocalName(
+        'list_value',
+        this.options
+      ),
+      structValueField = FieldInfoGenerator.createTypescriptLocalName(
+        'struct_value',
+        this.options
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON value. 
              */
@@ -463,7 +661,7 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 throw new globalThis.Error();
             }
             `,
-          `
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON value.
              */
@@ -495,29 +693,51 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.NullValue'](/*source: TypescriptFile, descMessage: DescMessage*/) {
-        // that´s ok, NullValue is actually an enum, and special JSON representation is handled by the reflection json reader
-    }
+  ['google.protobuf.NullValue'](/*source: TypescriptFile, descMessage: DescMessage*/) {
+    // that´s ok, NullValue is actually an enum, and special JSON representation is handled by the reflection json reader
+  }
 
-    ['google.protobuf.ListValue'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            ListValue = this.imports.type(source, descMessage),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true),
-            typeofJsonValue = this.imports.name(source,'typeofJsonValue', this.options.runtimeImportPath);
-        return [
-            `
+  ['google.protobuf.ListValue'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const ListValue = this.imports.type(source, descMessage),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      ),
+      typeofJsonValue = this.imports.name(
+        source,
+        'typeofJsonValue',
+        this.options.runtimeImportPath
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON array. 
              */
             function internalJsonWrite(message: ${ListValue}, options: ${JsonWriteOptions}): ${JsonValue} {
                 return message.values?.map(v => Value.toJson(v)) ?? [];
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON array.
              */
@@ -534,24 +754,42 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.BoolValue'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            BoolValue = this.imports.type(source, descMessage),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true);
-        return [
-            `
+  ['google.protobuf.BoolValue'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const BoolValue = this.imports.type(source, descMessage),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON bool. 
              */
             function internalJsonWrite(message: ${BoolValue}, options: ${JsonWriteOptions}): ${JsonValue} {
                 return message.value;
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON bool.
              */
@@ -562,25 +800,42 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
+    ];
+  }
 
-    }
-
-    ['google.protobuf.StringValue'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            StringValue = this.imports.type(source, descMessage),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true);
-        return [
-            `
+  ['google.protobuf.StringValue'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const StringValue = this.imports.type(source, descMessage),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON string. 
              */
             function internalJsonWrite(message: ${StringValue}, options: ${JsonWriteOptions}): ${JsonValue} {
                 return message.value;
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON string.
              */
@@ -591,25 +846,42 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
+    ];
+  }
 
-    }
-
-    ['google.protobuf.DoubleValue'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            DoubleValue = this.imports.type(source, descMessage),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true);
-        return [
-            `
+  ['google.protobuf.DoubleValue'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const DoubleValue = this.imports.type(source, descMessage),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON number. 
              */
             function internalJsonWrite(message: ${DoubleValue}, options: ${JsonWriteOptions}): ${JsonValue} {
                 return this.refJsonWriter.scalar(${FieldDescriptorProto_Type.FLOAT}, message.value, "value", false, true);
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON number.
              */
@@ -620,24 +892,42 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.FloatValue'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            FloatValue = this.imports.type(source, descMessage),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true);
-        return [
-            `
+  ['google.protobuf.FloatValue'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const FloatValue = this.imports.type(source, descMessage),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON number. 
              */
             function internalJsonWrite(message: ${FloatValue}, options: ${JsonWriteOptions}): ${JsonValue} {
                 return this.refJsonWriter.scalar(${FieldDescriptorProto_Type.DOUBLE}, message.value, "value", false, true);
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON number.
              */
@@ -648,24 +938,42 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.Int32Value'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            Int32Value = this.imports.type(source, descMessage),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true);
-        return [
-            `
+  ['google.protobuf.Int32Value'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const Int32Value = this.imports.type(source, descMessage),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON string. 
              */
             function internalJsonWrite(message: ${Int32Value}, options: ${JsonWriteOptions}): ${JsonValue} {
                 return this.refJsonWriter.scalar(${FieldDescriptorProto_Type.INT32}, message.value, "value", false, true);
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON string.
              */
@@ -676,24 +984,42 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.UInt32Value'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            UInt32Value = this.imports.type(source, descMessage),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true);
-        return [
-            `
+  ['google.protobuf.UInt32Value'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const UInt32Value = this.imports.type(source, descMessage),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON string. 
              */
             function internalJsonWrite(message: ${UInt32Value}, options: ${JsonWriteOptions}): ${JsonValue} {
                 return this.refJsonWriter.scalar(${FieldDescriptorProto_Type.UINT32}, message.value, "value", false, true);
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON string.
              */
@@ -704,31 +1030,57 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.Int64Value'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            Int64Value = this.imports.type(source, descMessage),
-            iLongType = this.imports.name(source,'LongType', this.options.runtimeImportPath),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true),
-            ScalarType = this.imports.name(source,'ScalarType', this.options.runtimeImportPath);
-        let longTypeEnumValue = 'BIGINT';
-        if (this.options.normalLongType === LongType.NUMBER)
-            longTypeEnumValue = 'NUMBER';
-        else if (this.options.normalLongType === LongType.STRING)
-            longTypeEnumValue = 'STRING';
-        return [
-            `
+  ['google.protobuf.Int64Value'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const Int64Value = this.imports.type(source, descMessage),
+      iLongType = this.imports.name(
+        source,
+        'LongType',
+        this.options.runtimeImportPath
+      ),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      ),
+      ScalarType = this.imports.name(
+        source,
+        'ScalarType',
+        this.options.runtimeImportPath
+      );
+    let longTypeEnumValue = 'BIGINT';
+    if (this.options.normalLongType === LongType.NUMBER)
+      longTypeEnumValue = 'NUMBER';
+    else if (this.options.normalLongType === LongType.STRING)
+      longTypeEnumValue = 'STRING';
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON string. 
              */
             function internalJsonWrite(message: ${Int64Value}, options: ${JsonWriteOptions}): ${JsonValue} {
                 return this.refJsonWriter.scalar(${ScalarType}.INT64, message.value, "value", false, true);
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON string.
              */
@@ -739,31 +1091,57 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.UInt64Value'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            UInt64Value = this.imports.type(source, descMessage),
-            iLongType = this.imports.name(source,'LongType', this.options.runtimeImportPath),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true),
-            ScalarType = this.imports.name(source,'ScalarType', this.options.runtimeImportPath);
-        let longTypeEnumValue = 'BIGINT';
-        if (this.options.normalLongType === LongType.NUMBER)
-            longTypeEnumValue = 'NUMBER';
-        else if (this.options.normalLongType === LongType.STRING)
-            longTypeEnumValue = 'STRING';
-        return [
-            `
+  ['google.protobuf.UInt64Value'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const UInt64Value = this.imports.type(source, descMessage),
+      iLongType = this.imports.name(
+        source,
+        'LongType',
+        this.options.runtimeImportPath
+      ),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      ),
+      ScalarType = this.imports.name(
+        source,
+        'ScalarType',
+        this.options.runtimeImportPath
+      );
+    let longTypeEnumValue = 'BIGINT';
+    if (this.options.normalLongType === LongType.NUMBER)
+      longTypeEnumValue = 'NUMBER';
+    else if (this.options.normalLongType === LongType.STRING)
+      longTypeEnumValue = 'STRING';
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON string. 
              */
             function internalJsonWrite(message: ${UInt64Value}, options: ${JsonWriteOptions}): ${JsonValue} {
                 return this.refJsonWriter.scalar(${ScalarType}.UINT64, message.value, "value", false, true);
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON string.
              */
@@ -774,24 +1152,42 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
+    ];
+  }
 
-    ['google.protobuf.BytesValue'](source: TypescriptFile, descMessage: DescMessage): string[] {
-        const
-            BytesValue = this.imports.type(source, descMessage),
-            JsonWriteOptions = this.imports.name(source,'JsonWriteOptions', this.options.runtimeImportPath, true),
-            JsonReadOptions = this.imports.name(source,'JsonReadOptions', this.options.runtimeImportPath, true),
-            JsonValue = this.imports.name(source,'JsonValue', this.options.runtimeImportPath, true);
-        return [
-            `
+  ['google.protobuf.BytesValue'](
+    source: TypescriptFile,
+    descMessage: DescMessage
+  ): string[] {
+    const BytesValue = this.imports.type(source, descMessage),
+      JsonWriteOptions = this.imports.name(
+        source,
+        'JsonWriteOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonReadOptions = this.imports.name(
+        source,
+        'JsonReadOptions',
+        this.options.runtimeImportPath,
+        true
+      ),
+      JsonValue = this.imports.name(
+        source,
+        'JsonValue',
+        this.options.runtimeImportPath,
+        true
+      );
+    return [
+      `
             /**
              * Encode \`${descMessage.name}\` to JSON string. 
              */
             function internalJsonWrite(message: ${BytesValue}, options: ${JsonWriteOptions}): ${JsonValue} {
                 return this.refJsonWriter.scalar(${FieldDescriptorProto_Type.BYTES}, message.value, "value", false, true);
             }
-            `, `
+            `,
+      `
             /**
              * Decode \`${descMessage.name}\` from JSON string.
              */
@@ -802,10 +1198,6 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 return target;
             }
             `,
-        ];
-    }
-
-
+    ];
+  }
 }
-
-

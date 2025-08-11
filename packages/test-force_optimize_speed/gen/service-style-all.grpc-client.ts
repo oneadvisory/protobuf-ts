@@ -2,8 +2,8 @@
 // @generated from protobuf file "service-style-all.proto" (package "spec", syntax proto3)
 // tslint:disable
 import { AllStyleService } from "./service-style-all";
-import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
-import type { BinaryReadOptions } from "@protobuf-ts/runtime";
+import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
+import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { Int32Value } from "./google/protobuf/wrappers";
 import type { StringValue } from "./google/protobuf/wrappers";
 import * as grpc from "@grpc/grpc-js";

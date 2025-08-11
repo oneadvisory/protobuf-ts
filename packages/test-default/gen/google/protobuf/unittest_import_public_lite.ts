@@ -35,7 +35,7 @@
 //
 // Author: liujisi@google.com (Pherl Liu)
 //
-import { MessageType } from "@protobuf-ts/runtime";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * @generated from protobuf message protobuf_unittest_import.PublicImportMessageLite
  */

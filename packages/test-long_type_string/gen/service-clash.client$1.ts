@@ -6,8 +6,8 @@
 // Because the latter is already taken by a proto file, the client file should
 // be written under a different name.
 //
-import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
-import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
+import type { RpcTransport } from "@oneadvisory/protobuf-ts-runtime-rpc";
+import type { ServiceInfo } from "@oneadvisory/protobuf-ts-runtime-rpc";
 import { ClashService } from "./service-clash";
 /**
  * @generated from protobuf service spec.ClashService

@@ -37,7 +37,7 @@
 //
 // This is like unittest_import.proto but with optimize_for = LITE_RUNTIME.
 //
-import { MessageType } from "@protobuf-ts/runtime";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * @generated from protobuf message protobuf_unittest_import.ImportMessageLite
  */

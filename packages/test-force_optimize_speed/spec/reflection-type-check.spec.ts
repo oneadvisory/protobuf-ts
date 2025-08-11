@@ -5,7 +5,7 @@ import {
   ReflectionTypeCheck,
   ScalarType,
   UnknownMessage,
-} from '@protobuf-ts/runtime';
+} from '@oneadvisory/protobuf-ts-runtime';
 import {
   RepeatedScalarValuesMessage,
   ScalarValuesMessage,

@@ -1,6 +1,6 @@
-import {assert} from "@protobuf-ts/runtime";
+import {assert} from "@oneadvisory/protobuf-ts-runtime";
 import {MessageWithExcludedOptions} from "../gen/exclude-options";
-import type {RpcTransport} from "@protobuf-ts/runtime-rpc";
+import type {RpcTransport} from "@oneadvisory/protobuf-ts-runtime-rpc";
 import {ServiceWithExcludedOptionsClient} from "../gen/exclude-options.client";
 
 // Copied from test-default/exclude-options.spec.ts. Do not edit.

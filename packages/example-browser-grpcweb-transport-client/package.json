@@ -1,5 +1,5 @@
 {
-  "name": "@protobuf-ts/example-browser-grpcweb-transport-client",
+  "name": "@oneadvisory/protobuf-ts-example-browser-grpcweb-transport-client",
   "version": "2.11.1",
   "description": "",
   "private": true,
@@ -11,15 +11,15 @@
   },
   "author": "Timo Stamm <ts@timostamm.com>",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/timostamm/protobuf-ts",
+  "homepage": "https://github.com/oneadvisory/protobuf-ts",
   "dependencies": {
-    "@protobuf-ts/grpcweb-transport": "^2.11.1",
-    "@protobuf-ts/runtime": "^2.11.1",
-    "@protobuf-ts/runtime-rpc": "^2.11.1"
+    "@oneadvisory/protobuf-ts-grpcweb-transport": "^2.11.1",
+    "@oneadvisory/protobuf-ts-runtime": "^2.11.1",
+    "@oneadvisory/protobuf-ts-runtime-rpc": "^2.11.1"
   },
   "devDependencies": {
-    "@protobuf-ts/plugin": "^2.11.1",
-    "@protobuf-ts/protoc": "^2.11.1",
+    "@oneadvisory/protobuf-ts-plugin": "^2.11.1",
+    "@oneadvisory/protobuf-ts-protoc": "^2.11.1",
     "esbuild": "^0.25.0",
     "typescript": "5.x.x"
   }

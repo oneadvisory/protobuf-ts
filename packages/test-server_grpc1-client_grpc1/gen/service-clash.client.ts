@@ -5,7 +5,7 @@
 // This file generates to service-clash.client.ts.
 // It blocks the client file for service.clash.proto.
 //
-import { MessageType } from "@protobuf-ts/runtime";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * @generated from protobuf message spec.ClashWithExampleServiceClient
  */

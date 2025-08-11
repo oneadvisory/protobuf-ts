@@ -1,5 +1,5 @@
-import { base64decode, base64encode } from '@protobuf-ts/runtime';
-import { RpcError, RpcMetadata } from '@protobuf-ts/runtime-rpc';
+import { base64decode, base64encode } from '@oneadvisory/protobuf-ts-runtime';
+import { RpcError, RpcMetadata } from '@oneadvisory/protobuf-ts-runtime-rpc';
 import { GrpcStatusCode } from './goog-grpc-status-code';
 
 /**

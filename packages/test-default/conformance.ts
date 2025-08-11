@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node
 
 import {readSync, writeSync} from "fs";
-import type {IMessageType} from "@protobuf-ts/runtime";
+import type {IMessageType} from "@oneadvisory/protobuf-ts-runtime";
 import {ConformanceRequest, ConformanceResponse, TestCategory, WireFormat} from "./gen/conformance/conformance";
 import {TestAllTypesProto3} from "./gen/google/protobuf/test_messages_proto3";
 import {TestAllTypesProto2} from "./gen/google/protobuf/test_messages_proto2";

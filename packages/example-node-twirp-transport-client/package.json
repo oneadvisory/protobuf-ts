@@ -1,5 +1,5 @@
 {
-  "name": "@protobuf-ts/example-node-twirp-transport-client",
+  "name": "@oneadvisory/protobuf-ts-example-node-twirp-transport-client",
   "version": "2.11.1",
   "description": "",
   "private": true,
@@ -10,11 +10,11 @@
   },
   "author": "Timo Stamm <ts@timostamm.com>",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/timostamm/protobuf-ts",
+  "homepage": "https://github.com/oneadvisory/protobuf-ts",
   "dependencies": {
-    "@protobuf-ts/runtime": "^2.11.1",
-    "@protobuf-ts/runtime-rpc": "^2.11.1",
-    "@protobuf-ts/twirp-transport": "^2.11.1",
+    "@oneadvisory/protobuf-ts-runtime": "^2.11.1",
+    "@oneadvisory/protobuf-ts-runtime-rpc": "^2.11.1",
+    "@oneadvisory/protobuf-ts-twirp-transport": "^2.11.1",
     "@types/node-fetch": "^2.5.8",
     "abort-controller": "^3.0.0",
     "node-fetch": "^2.6.0",
@@ -23,6 +23,6 @@
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.50.1",
-    "@protobuf-ts/plugin": "^2.11.1"
+    "@oneadvisory/protobuf-ts-plugin": "^2.11.1"
   }
 }

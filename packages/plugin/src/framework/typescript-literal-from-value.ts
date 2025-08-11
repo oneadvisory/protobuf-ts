@@ -1,4 +1,4 @@
-import { assertNever } from '@protobuf-ts/runtime';
+import { assertNever } from '@oneadvisory/protobuf-ts-runtime';
 import * as ts from 'typescript';
 
 export type SimpleJsValue =
@@ -42,7 +42,7 @@ export function typescriptLiteralFromValue(
     case 'undefined':
       return ts.factory.createIdentifier('undefined');
     case 'boolean':
-        return value ? ts.factory.createTrue() : ts.factory.createFalse();
+      return value ? ts.factory.createTrue() : ts.factory.createFalse();
     case 'string':
       return ts.factory.createStringLiteral(value);
     case 'bigint':

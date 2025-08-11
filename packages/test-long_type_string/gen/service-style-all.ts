@@ -3,7 +3,7 @@
 // tslint:disable
 import { Int32Value } from "./google/protobuf/wrappers";
 import { StringValue } from "./google/protobuf/wrappers";
-import { ServiceType } from "@protobuf-ts/runtime-rpc";
+import { ServiceType } from "@oneadvisory/protobuf-ts-runtime-rpc";
 /**
  * @generated ServiceType for protobuf service spec.AllStyleService
  */

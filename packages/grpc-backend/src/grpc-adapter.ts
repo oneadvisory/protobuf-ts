@@ -8,9 +8,9 @@ import {
     ServerCallContext,
     ServerCallContextController,
     ServiceInfo
-} from "@protobuf-ts/runtime-rpc";
+} from "@oneadvisory/protobuf-ts-runtime-rpc";
 import * as grpc from "@grpc/grpc-js";
-import {assert} from "@protobuf-ts/runtime";
+import {assert} from "@oneadvisory/protobuf-ts-runtime";
 import {metadataFromGrpc, metadataToGrpc, rpcCodeToGrpc} from "./util";
 
 type ContextFactory = (

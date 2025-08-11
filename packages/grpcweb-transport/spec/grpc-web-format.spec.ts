@@ -10,7 +10,7 @@ import {
 } from '../src/grpc-web-format';
 import { asciiToBin, asciiToCharCodes, assertFrames, getFrameRef } from './support/utils.spec';
 
-import { RpcError } from '@protobuf-ts/runtime-rpc';
+import { RpcError } from '@oneadvisory/protobuf-ts-runtime-rpc';
 
 const D = GrpcWebFrame.DATA;
 const T = GrpcWebFrame.TRAILER;

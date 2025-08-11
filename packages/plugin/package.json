@@ -1,5 +1,5 @@
 {
-  "name": "@protobuf-ts/plugin",
+  "name": "@oneadvisory/protobuf-ts-plugin",
   "version": "2.11.1",
   "description": "The protocol buffer compiler plugin \"protobuf-ts\" generates TypeScript, gRPC-web, Twirp, and more.",
   "scripts": {
@@ -16,7 +16,7 @@
   },
   "license": "Apache-2.0",
   "author": "Timo Stamm <ts@timostamm.com>",
-  "homepage": "https://github.com/timostamm/protobuf-ts",
+  "homepage": "https://github.com/oneadvisory/protobuf-ts",
   "keywords": [
     "Protocol Buffers",
     "protobuf",
@@ -30,7 +30,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/timostamm/protobuf-ts.git",
+    "url": "https://github.com/oneadvisory/protobuf-ts.git",
     "directory": "packages/plugin"
   },
   "publishConfig": {
@@ -49,9 +49,9 @@
   "dependencies": {
     "@bufbuild/protobuf": "^2.4.0",
     "@bufbuild/protoplugin": "^2.4.0",
-    "@protobuf-ts/protoc": "^2.11.1",
-    "@protobuf-ts/runtime": "^2.11.1",
-    "@protobuf-ts/runtime-rpc": "^2.11.1",
+    "@oneadvisory/protobuf-ts-protoc": "^2.11.1",
+    "@oneadvisory/protobuf-ts-runtime": "^2.11.1",
+    "@oneadvisory/protobuf-ts-runtime-rpc": "^2.11.1",
     "typescript": "^5.x.x"
   }
 }

@@ -1,18 +1,18 @@
-@protobuf-ts/protoc
+@oneadvisory/protobuf-ts-protoc
 ===================
 
 
 Installs the protocol buffer compiler "protoc" for you. 
 
 
-Installation (not necessary if you use the [protobuf-ts plugin](https://github.com/timostamm/protobuf-ts/tree/master/packages/plugin)):
+Installation (not necessary if you use the [protobuf-ts plugin](https://github.com/oneadvisory/protobuf-ts/tree/master/packages/plugin)):
 
 ```shell script
 # with npm:
-npm install @protobuf-ts/protoc
+npm install @oneadvisory/protobuf-ts-protoc
 
 # with yarn:
-yarn add @protobuf-ts/protoc
+yarn add @oneadvisory/protobuf-ts-protoc
 ```
 
 Now you can run protoc as usual, you just have to prefix your command with 
@@ -60,5 +60,5 @@ following arguments:
 1. `--proto_path` that points to the `include/` directory of the 
    downloaded release (skipped when found on `$PATH`)
 2. `--plugin` argument for all plugins found in `node_modules/.bin/`
-3. `--proto_path` argument for `node_modules/@protobuf-ts/plugin` 
+3. `--proto_path` argument for `node_modules/@oneadvisory/protobuf-ts-plugin` 
 

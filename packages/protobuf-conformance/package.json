@@ -1,5 +1,5 @@
 {
-  "name": "@protobuf-ts/protobuf-conformance",
+  "name": "@oneadvisory/protobuf-ts-protobuf-conformance",
   "version": "2.11.1",
   "license": "Apache-2.0",
   "private": true,

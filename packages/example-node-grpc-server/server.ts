@@ -1,7 +1,7 @@
 import * as grpc from '@grpc/grpc-js';
-import {ExampleRequest, ExampleResponse, FailRequest} from "./gen/service-example";
-import {exampleServiceDefinition, IExampleService} from "./gen/service-example.grpc-server";
-import {assert} from "@protobuf-ts/runtime";
+import { ExampleRequest, ExampleResponse, FailRequest } from './gen/service-example';
+import { exampleServiceDefinition, IExampleService } from './gen/service-example.grpc-server';
+import { assert } from '@oneadvisory/protobuf-ts-runtime';
 
 
 const host = '0.0.0.0:5000';

@@ -1,4 +1,4 @@
-import { assert } from '@protobuf-ts/runtime';
+import { assert } from '@oneadvisory/protobuf-ts-runtime';
 import * as ts from 'typescript';
 import * as path from 'path';
 import { SymbolTable } from './symbol-table';
@@ -166,7 +166,7 @@ function createNamespaceImport(
     ts.factory.createImportClause(
       isTypeOnly ? ts.SyntaxKind.TypeKeyword : undefined,
       undefined,
-      ts.factory.createNamespaceImport(ts.factory.createIdentifier(asName)),
+      ts.factory.createNamespaceImport(ts.factory.createIdentifier(asName))
     ),
     ts.factory.createStringLiteral(importFrom)
   );
@@ -241,11 +241,7 @@ function ensureNamedImportPresent(
       importName,
       importFrom,
       isTypeOnly,
-      all.find(
-        (ni) =>
-          ni.name === importName &&
-          ni.from === importFrom
-      )
+      all.find((ni) => ni.name === importName && ni.from === importFrom)
     );
     let i = 0;
     as = importName;
@@ -301,8 +297,12 @@ function createNamedImport(
       isTypeOnly ? ts.SyntaxKind.TypeKeyword : undefined,
       undefined,
       ts.factory.createNamedImports([
-        ts.factory.createImportSpecifier(false, undefined, ts.factory.createIdentifier(name)),
-      ]),
+        ts.factory.createImportSpecifier(
+          false,
+          undefined,
+          ts.factory.createIdentifier(name)
+        ),
+      ])
     ),
     ts.factory.createStringLiteral(from)
   );
@@ -314,9 +314,7 @@ function createNamedImport(
  * import type {<name>} from '<from>';
  * import type {<name> as <as>} from '<from>';
  */
-function findNamedImports(
-  sourceFile: ts.SourceFile
-): {
+function findNamedImports(sourceFile: ts.SourceFile): {
   name: string;
   as: string | undefined;
   from: string;

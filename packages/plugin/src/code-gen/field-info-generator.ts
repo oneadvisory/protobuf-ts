@@ -1,9 +1,9 @@
-import * as rt from '@protobuf-ts/runtime';
+import * as rt from '@oneadvisory/protobuf-ts-runtime';
 import * as ts from 'typescript';
 import { TypescriptFile } from '../framework/typescript-file';
 import { TypeScriptImports } from '../framework/typescript-imports';
 import { FileRegistry } from '@bufbuild/protobuf';
-import { assert } from '@protobuf-ts/runtime';
+import { assert } from '@oneadvisory/protobuf-ts-runtime';
 import { typescriptLiteralFromValue } from '../framework/typescript-literal-from-value';
 
 /**
@@ -84,13 +84,19 @@ export class FieldInfoGenerator {
       case 'scalar':
         // T: Scalar field type.
         properties.push(
-          ts.factory.createPropertyAssignment('T', this.createScalarType(fieldInfo.T))
+          ts.factory.createPropertyAssignment(
+            'T',
+            this.createScalarType(fieldInfo.T)
+          )
         );
 
         // L?: JavaScript long type
         if (fieldInfo.L !== undefined) {
           properties.push(
-            ts.factory.createPropertyAssignment('L', this.createLongType(fieldInfo.L))
+            ts.factory.createPropertyAssignment(
+              'L',
+              this.createLongType(fieldInfo.L)
+            )
           );
         }
         break;
@@ -118,12 +124,18 @@ export class FieldInfoGenerator {
       case 'map':
         // K: Map field key type.
         properties.push(
-          ts.factory.createPropertyAssignment('K', this.createScalarType(fieldInfo.K))
+          ts.factory.createPropertyAssignment(
+            'K',
+            this.createScalarType(fieldInfo.K)
+          )
         );
 
         // V: Map field value type.
         properties.push(
-          ts.factory.createPropertyAssignment('V', this.createMapV(source, fieldInfo.V))
+          ts.factory.createPropertyAssignment(
+            'V',
+            this.createMapV(source, fieldInfo.V)
+          )
         );
         break;
     }

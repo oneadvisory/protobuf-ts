@@ -7,7 +7,7 @@
 //
 import { Hat } from "./service-twirp-example";
 import { Size } from "./service-twirp-example";
-import { ServerCallContext } from "@protobuf-ts/runtime-rpc";
+import { ServerCallContext } from "@oneadvisory/protobuf-ts-runtime-rpc";
 /**
  * A Haberdasher makes hats for clients.
  *

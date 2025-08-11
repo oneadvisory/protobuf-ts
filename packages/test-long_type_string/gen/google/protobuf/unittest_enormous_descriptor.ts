@@ -19,7 +19,7 @@
 // descriptors over 64k don't break language-specific limits in generated code,
 // such as the string literal length limit in Java.
 //
-import { MessageType } from "@protobuf-ts/runtime";
+import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 /**
  * clang-format off
  *

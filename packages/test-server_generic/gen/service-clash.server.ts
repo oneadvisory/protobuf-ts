@@ -6,7 +6,7 @@
 // Because the latter is already taken by a proto file, the client file should
 // be written under a different name.
 //
-import { ServerCallContext } from "@protobuf-ts/runtime-rpc";
+import { ServerCallContext } from "@oneadvisory/protobuf-ts-runtime-rpc";
 /**
  * @generated from protobuf service spec.ClashService
  */

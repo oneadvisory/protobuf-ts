@@ -1,96 +1,110 @@
-import * as rt from "@protobuf-ts/runtime";
-import * as rpc from "@protobuf-ts/runtime-rpc";
-import * as ts from "typescript";
-import {TypescriptFile} from "../framework/typescript-file";
-import {TypeScriptImports} from "../framework/typescript-imports";
-import {typescriptLiteralFromValue} from "../framework/typescript-literal-from-value";
-
+import * as rt from '@oneadvisory/protobuf-ts-runtime';
+import * as rpc from '@oneadvisory/protobuf-ts-runtime-rpc';
+import * as ts from 'typescript';
+import { TypescriptFile } from '../framework/typescript-file';
+import { TypeScriptImports } from '../framework/typescript-imports';
+import { typescriptLiteralFromValue } from '../framework/typescript-literal-from-value';
 
 /**
  * Generates TypeScript code for runtime method information,
  * from method field information.
  */
 export class MethodInfoGenerator {
+  constructor(private readonly imports: TypeScriptImports) {}
 
+  createMethodInfoLiterals(
+    source: TypescriptFile,
+    methodInfos: readonly rpc.PartialMethodInfo[]
+  ): ts.ArrayLiteralExpression {
+    const mi = methodInfos
+      .map((mi) => MethodInfoGenerator.denormalizeMethodInfo(mi))
+      .map((mi) => this.createMethodInfoLiteral(source, mi));
+    return ts.factory.createArrayLiteralExpression(mi, true);
+  }
 
-    constructor(
-        private readonly imports: TypeScriptImports,
-    ) {
+  createMethodInfoLiteral(
+    source: TypescriptFile,
+    methodInfo: rpc.PartialMethodInfo
+  ): ts.ObjectLiteralExpression {
+    methodInfo = MethodInfoGenerator.denormalizeMethodInfo(methodInfo);
+    const properties: ts.PropertyAssignment[] = [];
+
+    // name: The name of the method as declared in .proto
+    // localName: The name of the method in the runtime.
+    // idempotency: The idempotency level as specified in .proto.
+    // serverStreaming: Was the rpc declared with server streaming?
+    // clientStreaming: Was the rpc declared with client streaming?
+    // options: Contains custom method options from the .proto source in JSON format.
+    for (let key of [
+      'name',
+      'localName',
+      'idempotency',
+      'serverStreaming',
+      'clientStreaming',
+      'options',
+    ] as const) {
+      if (methodInfo[key] !== undefined) {
+        properties.push(
+          ts.factory.createPropertyAssignment(
+            key,
+            ts.factory.createAsExpression(
+              typescriptLiteralFromValue(methodInfo[key]),
+              ts.factory.createKeywordTypeNode(
+                ts.SyntaxKind.ConstKeyword as ts.KeywordTypeSyntaxKind
+              )
+            )
+          )
+        );
+      }
     }
 
+    // I: The generated type handler for the input message.
+    properties.push(
+      ts.factory.createPropertyAssignment(
+        ts.factory.createIdentifier('I'),
+        ts.factory.createIdentifier(
+          this.imports.typeByName(source, methodInfo.I.typeName)
+        )
+      )
+    );
 
-    createMethodInfoLiterals(source: TypescriptFile, methodInfos: readonly rpc.PartialMethodInfo[]): ts.ArrayLiteralExpression {
-        const mi = methodInfos
-            .map(mi => MethodInfoGenerator.denormalizeMethodInfo(mi))
-            .map(mi => this.createMethodInfoLiteral(source, mi));
-        return ts.factory.createArrayLiteralExpression(mi, true);
+    // O: The generated type handler for the output message.
+    properties.push(
+      ts.factory.createPropertyAssignment(
+        ts.factory.createIdentifier('O'),
+        ts.factory.createIdentifier(
+          this.imports.typeByName(source, methodInfo.O.typeName)
+        )
+      )
+    );
+
+    return ts.factory.createObjectLiteralExpression(properties, false);
+  }
+
+  /**
+   * Turn normalized method info returned by normalizeMethodInfo() back into
+   * the minimized form.
+   */
+  private static denormalizeMethodInfo(
+    info: rpc.PartialMethodInfo
+  ): rpc.PartialMethodInfo {
+    let partial: any = { ...info };
+    delete partial.service;
+    if (info.localName === rt.lowerCamelCase(info.name)) {
+      delete partial.localName;
     }
-
-
-    createMethodInfoLiteral(source: TypescriptFile, methodInfo: rpc.PartialMethodInfo): ts.ObjectLiteralExpression {
-        methodInfo = MethodInfoGenerator.denormalizeMethodInfo(methodInfo);
-        const properties: ts.PropertyAssignment[] = [];
-
-        // name: The name of the method as declared in .proto
-        // localName: The name of the method in the runtime.
-        // idempotency: The idempotency level as specified in .proto.
-        // serverStreaming: Was the rpc declared with server streaming?
-        // clientStreaming: Was the rpc declared with client streaming?
-        // options: Contains custom method options from the .proto source in JSON format.
-        for (let key of ["name", "localName", "idempotency", "serverStreaming", "clientStreaming", "options"] as const) {
-            if (methodInfo[key] !== undefined) {
-                properties.push(ts.factory.createPropertyAssignment(
-                    key, ts.factory.createAsExpression(typescriptLiteralFromValue(methodInfo[key]), ts.factory.createKeywordTypeNode(ts.SyntaxKind.ConstKeyword as ts.KeywordTypeSyntaxKind))
-                ));
-            }
-        }
-
-        // I: The generated type handler for the input message.
-        properties.push(ts.factory.createPropertyAssignment(
-            ts.factory.createIdentifier('I'),
-            ts.factory.createIdentifier(this.imports.typeByName(
-                source,
-                methodInfo.I.typeName,
-            ))
-        ));
-
-        // O: The generated type handler for the output message.
-        properties.push(ts.factory.createPropertyAssignment(
-            ts.factory.createIdentifier('O'),
-            ts.factory.createIdentifier(this.imports.typeByName(
-                source,
-                methodInfo.O.typeName,
-            ))
-        ));
-
-        return ts.factory.createObjectLiteralExpression(properties, false);
+    if (!info.serverStreaming) {
+      delete partial.serverStreaming;
     }
-
-
-    /**
-     * Turn normalized method info returned by normalizeMethodInfo() back into
-     * the minimized form.
-     */
-    private static denormalizeMethodInfo(info: rpc.PartialMethodInfo): rpc.PartialMethodInfo {
-        let partial: any = {...info};
-        delete partial.service;
-        if (info.localName === rt.lowerCamelCase(info.name)) {
-            delete partial.localName;
-        }
-        if (!info.serverStreaming) {
-            delete partial.serverStreaming;
-        }
-        if (!info.clientStreaming) {
-            delete partial.clientStreaming;
-        }
-        if (info.options && Object.keys(info.options).length) {
-            delete partial.info;
-        }
-        if (info.idempotency === undefined) {
-            delete partial.idempotency;
-        }
-        return partial;
+    if (!info.clientStreaming) {
+      delete partial.clientStreaming;
     }
-
-
+    if (info.options && Object.keys(info.options).length) {
+      delete partial.info;
+    }
+    if (info.idempotency === undefined) {
+      delete partial.idempotency;
+    }
+    return partial;
+  }
 }
