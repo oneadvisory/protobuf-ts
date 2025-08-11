@@ -34,7 +34,8 @@
     "directory": "packages/plugin"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.53.0",

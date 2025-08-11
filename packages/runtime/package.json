@@ -25,7 +25,8 @@
     "directory": "packages/runtime"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   },
   "main": "./build/commonjs/index.js",
   "module": "./build/es2015/index.js",

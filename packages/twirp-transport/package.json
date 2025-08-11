@@ -32,7 +32,8 @@
   "typings": "./build/types/index.d.ts",
   "sideEffects": false,
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.50.1",
