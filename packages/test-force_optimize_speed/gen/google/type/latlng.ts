@@ -57,7 +57,7 @@ class LatLng$Type extends MessageType<LatLng> {
         ]);
     }
     create(value?: PartialMessage<LatLng>): LatLng {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.latitude = 0;
         message.longitude = 0;
         if (value !== undefined)

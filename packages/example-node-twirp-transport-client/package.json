@@ -19,7 +19,7 @@
     "abort-controller": "^3.0.0",
     "node-fetch": "^2.6.0",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "typescript": "5.x.x"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.50.1",

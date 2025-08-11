@@ -50,7 +50,7 @@ export interface Status {
      *
      * @generated from protobuf field: repeated google.protobuf.Any details = 3;
      */
-    details: Any[];
+    details?: Any[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class Status$Type extends MessageType<Status> {

@@ -3,7 +3,7 @@ import {isJsonObject, typeofJsonValue} from "./json-typings";
 import {base64decode} from "./base64";
 import type {JsonReadOptions} from "./json-format-contract";
 import type {EnumInfo, FieldInfo} from "./reflection-info";
-import {LongType, PartialMessageInfo, ScalarType} from "./reflection-info";
+import {LongType, type PartialMessageInfo, ScalarType} from "./reflection-info";
 import {PbLong, PbULong} from "./pb-long";
 import {assert, assertFloat32, assertInt32, assertUInt32} from "./assert";
 import {reflectionLongConvert} from "./reflection-long-convert";
@@ -82,11 +82,9 @@ export class ReflectionJsonReader {
                     continue;
                 }
                 // since json objects are unordered by specification, it is not possible to take the last of multiple oneofs
-                if (oneofsHandled.includes(field.oneof)) throw new Error(`Multiple members of the oneof group "${field.oneof}" of ${this.info.typeName} are present in JSON.`);
+                // if (oneofsHandled.includes(field.oneof)) throw new Error(`Multiple members of the oneof group "${field.oneof}" of ${this.info.typeName} are present in JSON.`);
                 oneofsHandled.push(field.oneof);
-                target = (message as UnknownMessage)[field.oneof] = {
-                    oneofKind: localName
-                }
+                target = (message as UnknownMessage)
             } else {
                 target = message as UnknownMessage;
             }
@@ -362,7 +360,7 @@ export class ReflectionJsonReader {
 
             }
         } catch (error) {
-            e = error.message;
+            e = error instanceof Error ? error.message : String(error);
         }
         this.assert(false, fieldName + (e ? " - " + e : ""), json);
     }

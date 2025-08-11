@@ -239,7 +239,7 @@ class Timestamp$Type extends MessageType<Timestamp> {
         return target;
     }
     create(value?: PartialMessage<Timestamp>): Timestamp {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.seconds = 0n;
         message.nanos = 0;
         if (value !== undefined)

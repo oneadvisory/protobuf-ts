@@ -17,39 +17,39 @@ export interface Proto3PackedMessage {
     /**
      * @generated from protobuf field: repeated double double_field = 1;
      */
-    doubleField: number[];
+    doubleField?: number[];
     /**
      * @generated from protobuf field: repeated uint32 uint32_field = 2;
      */
-    uint32Field: number[];
+    uint32Field?: number[];
     /**
      * @generated from protobuf field: repeated uint64 uint64_field = 3;
      */
-    uint64Field: bigint[];
+    uint64Field?: bigint[];
     /**
      * @generated from protobuf field: repeated double packed_double_field = 101 [packed = true];
      */
-    packedDoubleField: number[];
+    packedDoubleField?: number[];
     /**
      * @generated from protobuf field: repeated uint32 packed_uint32_field = 102 [packed = true];
      */
-    packedUint32Field: number[];
+    packedUint32Field?: number[];
     /**
      * @generated from protobuf field: repeated uint64 packed_uint64_field = 103 [packed = true];
      */
-    packedUint64Field: bigint[];
+    packedUint64Field?: bigint[];
     /**
      * @generated from protobuf field: repeated double unpacked_double_field = 201 [packed = false];
      */
-    unpackedDoubleField: number[];
+    unpackedDoubleField?: number[];
     /**
      * @generated from protobuf field: repeated uint32 unpacked_uint32_field = 202 [packed = false];
      */
-    unpackedUint32Field: number[];
+    unpackedUint32Field?: number[];
     /**
      * @generated from protobuf field: repeated uint64 unpacked_uint64_field = 203 [packed = false];
      */
-    unpackedUint64Field: bigint[];
+    unpackedUint64Field?: bigint[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class Proto3PackedMessage$Type extends MessageType<Proto3PackedMessage> {
@@ -67,7 +67,7 @@ class Proto3PackedMessage$Type extends MessageType<Proto3PackedMessage> {
         ]);
     }
     create(value?: PartialMessage<Proto3PackedMessage>): Proto3PackedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.doubleField = [];
         message.uint32Field = [];
         message.uint64Field = [];
@@ -89,65 +89,65 @@ class Proto3PackedMessage$Type extends MessageType<Proto3PackedMessage> {
                 case /* repeated double double_field */ 1:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.doubleField.push(reader.double());
+                            message.doubleField?.push?.(reader.double());
                     else
-                        message.doubleField.push(reader.double());
+                        message.doubleField?.push?.(reader.double());
                     break;
                 case /* repeated uint32 uint32_field */ 2:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.uint32Field.push(reader.uint32());
+                            message.uint32Field?.push?.(reader.uint32());
                     else
-                        message.uint32Field.push(reader.uint32());
+                        message.uint32Field?.push?.(reader.uint32());
                     break;
                 case /* repeated uint64 uint64_field */ 3:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.uint64Field.push(reader.uint64().toBigInt());
+                            message.uint64Field?.push?.(reader.uint64().toBigInt());
                     else
-                        message.uint64Field.push(reader.uint64().toBigInt());
+                        message.uint64Field?.push?.(reader.uint64().toBigInt());
                     break;
                 case /* repeated double packed_double_field = 101 [packed = true] */ 101:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedDoubleField.push(reader.double());
+                            message.packedDoubleField?.push?.(reader.double());
                     else
-                        message.packedDoubleField.push(reader.double());
+                        message.packedDoubleField?.push?.(reader.double());
                     break;
                 case /* repeated uint32 packed_uint32_field = 102 [packed = true] */ 102:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedUint32Field.push(reader.uint32());
+                            message.packedUint32Field?.push?.(reader.uint32());
                     else
-                        message.packedUint32Field.push(reader.uint32());
+                        message.packedUint32Field?.push?.(reader.uint32());
                     break;
                 case /* repeated uint64 packed_uint64_field = 103 [packed = true] */ 103:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedUint64Field.push(reader.uint64().toBigInt());
+                            message.packedUint64Field?.push?.(reader.uint64().toBigInt());
                     else
-                        message.packedUint64Field.push(reader.uint64().toBigInt());
+                        message.packedUint64Field?.push?.(reader.uint64().toBigInt());
                     break;
                 case /* repeated double unpacked_double_field = 201 [packed = false] */ 201:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.unpackedDoubleField.push(reader.double());
+                            message.unpackedDoubleField?.push?.(reader.double());
                     else
-                        message.unpackedDoubleField.push(reader.double());
+                        message.unpackedDoubleField?.push?.(reader.double());
                     break;
                 case /* repeated uint32 unpacked_uint32_field = 202 [packed = false] */ 202:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.unpackedUint32Field.push(reader.uint32());
+                            message.unpackedUint32Field?.push?.(reader.uint32());
                     else
-                        message.unpackedUint32Field.push(reader.uint32());
+                        message.unpackedUint32Field?.push?.(reader.uint32());
                     break;
                 case /* repeated uint64 unpacked_uint64_field = 203 [packed = false] */ 203:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.unpackedUint64Field.push(reader.uint64().toBigInt());
+                            message.unpackedUint64Field?.push?.(reader.uint64().toBigInt());
                     else
-                        message.unpackedUint64Field.push(reader.uint64().toBigInt());
+                        message.unpackedUint64Field?.push?.(reader.uint64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -162,56 +162,56 @@ class Proto3PackedMessage$Type extends MessageType<Proto3PackedMessage> {
     }
     internalBinaryWrite(message: Proto3PackedMessage, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated double double_field = 1; */
-        if (message.doubleField.length) {
+        if (message.doubleField?.length) {
             writer.tag(1, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.doubleField.length; i++)
                 writer.double(message.doubleField[i]);
             writer.join();
         }
         /* repeated uint32 uint32_field = 2; */
-        if (message.uint32Field.length) {
+        if (message.uint32Field?.length) {
             writer.tag(2, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.uint32Field.length; i++)
                 writer.uint32(message.uint32Field[i]);
             writer.join();
         }
         /* repeated uint64 uint64_field = 3; */
-        if (message.uint64Field.length) {
+        if (message.uint64Field?.length) {
             writer.tag(3, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.uint64Field.length; i++)
                 writer.uint64(message.uint64Field[i]);
             writer.join();
         }
         /* repeated double packed_double_field = 101 [packed = true]; */
-        if (message.packedDoubleField.length) {
+        if (message.packedDoubleField?.length) {
             writer.tag(101, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedDoubleField.length; i++)
                 writer.double(message.packedDoubleField[i]);
             writer.join();
         }
         /* repeated uint32 packed_uint32_field = 102 [packed = true]; */
-        if (message.packedUint32Field.length) {
+        if (message.packedUint32Field?.length) {
             writer.tag(102, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedUint32Field.length; i++)
                 writer.uint32(message.packedUint32Field[i]);
             writer.join();
         }
         /* repeated uint64 packed_uint64_field = 103 [packed = true]; */
-        if (message.packedUint64Field.length) {
+        if (message.packedUint64Field?.length) {
             writer.tag(103, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedUint64Field.length; i++)
                 writer.uint64(message.packedUint64Field[i]);
             writer.join();
         }
         /* repeated double unpacked_double_field = 201 [packed = false]; */
-        for (let i = 0; i < message.unpackedDoubleField.length; i++)
-            writer.tag(201, WireType.Bit64).double(message.unpackedDoubleField[i]);
+        for (let i = 0; i < (message.unpackedDoubleField?.length || 0); i++)
+            writer.tag(201, WireType.Bit64).double(message.unpackedDoubleField?.[i] as any);
         /* repeated uint32 unpacked_uint32_field = 202 [packed = false]; */
-        for (let i = 0; i < message.unpackedUint32Field.length; i++)
-            writer.tag(202, WireType.Varint).uint32(message.unpackedUint32Field[i]);
+        for (let i = 0; i < (message.unpackedUint32Field?.length || 0); i++)
+            writer.tag(202, WireType.Varint).uint32(message.unpackedUint32Field?.[i] as any);
         /* repeated uint64 unpacked_uint64_field = 203 [packed = false]; */
-        for (let i = 0; i < message.unpackedUint64Field.length; i++)
-            writer.tag(203, WireType.Varint).uint64(message.unpackedUint64Field[i]);
+        for (let i = 0; i < (message.unpackedUint64Field?.length || 0); i++)
+            writer.tag(203, WireType.Varint).uint64(message.unpackedUint64Field?.[i] as any);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

@@ -1,7 +1,7 @@
 import type {BinaryWriteOptions, IBinaryWriter} from "./binary-format-contract";
 import {UnknownFieldHandler, WireType} from "./binary-format-contract";
 import type {FieldInfo} from "./reflection-info";
-import {PartialMessageInfo, RepeatType, ScalarType} from "./reflection-info";
+import {type PartialMessageInfo, RepeatType, ScalarType} from "./reflection-info";
 import type {IMessageType} from "./message-type-contract";
 import {assert} from "./assert";
 import {PbLong, PbULong} from "./pb-long";
@@ -43,17 +43,8 @@ export class ReflectionBinaryWriter {
                 repeated = field.repeat,
                 localName = field.localName;
 
-            // handle oneof ADT
-            if (field.oneof) {
-                const group = (message as UnknownMessage)[field.oneof] as UnknownOneofGroup;
-                if (group.oneofKind !== localName)
-                    continue; // if field is not selected, skip
-                value = group[localName];
-                emitDefault = true;
-            } else {
-                value = (message as UnknownMessage)[localName];
-                emitDefault = false;
-            }
+            value = (message as UnknownMessage)[localName];
+            emitDefault = false;
 
             // we have handled oneof above. we just have to honor `emitDefault`.
             switch (field.kind) {
@@ -68,7 +59,7 @@ export class ReflectionBinaryWriter {
                             for (const item of value)
                                 this.scalar(writer, T, field.no, item, true);
                     } else if (value === undefined)
-                        assert(field.opt);
+                        assert(field.opt || field.oneof);
                     else
                         this.scalar(writer, T, field.no, value, emitDefault || field.opt);
                     break;

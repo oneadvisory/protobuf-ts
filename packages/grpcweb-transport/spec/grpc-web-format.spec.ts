@@ -125,7 +125,7 @@ describe('createGrpcWebRequestHeader', () => {
             fail('The deadline was in the past and did not throw');
         } catch (e) {
             expect(e).toBeInstanceOf(RpcError);
-            expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.DEADLINE_EXCEEDED])
+            expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.DEADLINE_EXCEEDED])
         }
 
         try {
@@ -133,7 +133,7 @@ describe('createGrpcWebRequestHeader', () => {
             fail('The deadline was not in the future and did not throw');
         } catch (e) {
             expect(e).toBeInstanceOf(RpcError);
-            expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.DEADLINE_EXCEEDED])
+            expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.DEADLINE_EXCEEDED])
         }
 
         try {
@@ -141,7 +141,7 @@ describe('createGrpcWebRequestHeader', () => {
             fail('The deadline was in the past and did not throw');
         } catch (e) {
             expect(e).toBeInstanceOf(RpcError);
-            expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.DEADLINE_EXCEEDED])
+            expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.DEADLINE_EXCEEDED])
         }
 
         try {
@@ -149,7 +149,7 @@ describe('createGrpcWebRequestHeader', () => {
             fail('The deadline was not in the future and did not throw');
         } catch (e) {
             expect(e).toBeInstanceOf(RpcError);
-            expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.DEADLINE_EXCEEDED])
+            expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.DEADLINE_EXCEEDED])
         }
     });
 });

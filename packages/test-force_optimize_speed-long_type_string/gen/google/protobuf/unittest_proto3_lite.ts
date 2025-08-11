@@ -165,63 +165,63 @@ export interface TestAllTypes {
      *
      * @generated from protobuf field: repeated int32 repeated_int32 = 31;
      */
-    repeatedInt32: number[];
+    repeatedInt32?: number[];
     /**
      * @generated from protobuf field: repeated int64 repeated_int64 = 32;
      */
-    repeatedInt64: string[];
+    repeatedInt64?: string[];
     /**
      * @generated from protobuf field: repeated uint32 repeated_uint32 = 33;
      */
-    repeatedUint32: number[];
+    repeatedUint32?: number[];
     /**
      * @generated from protobuf field: repeated uint64 repeated_uint64 = 34;
      */
-    repeatedUint64: string[];
+    repeatedUint64?: string[];
     /**
      * @generated from protobuf field: repeated sint32 repeated_sint32 = 35;
      */
-    repeatedSint32: number[];
+    repeatedSint32?: number[];
     /**
      * @generated from protobuf field: repeated sint64 repeated_sint64 = 36;
      */
-    repeatedSint64: string[];
+    repeatedSint64?: string[];
     /**
      * @generated from protobuf field: repeated fixed32 repeated_fixed32 = 37;
      */
-    repeatedFixed32: number[];
+    repeatedFixed32?: number[];
     /**
      * @generated from protobuf field: repeated fixed64 repeated_fixed64 = 38;
      */
-    repeatedFixed64: string[];
+    repeatedFixed64?: string[];
     /**
      * @generated from protobuf field: repeated sfixed32 repeated_sfixed32 = 39;
      */
-    repeatedSfixed32: number[];
+    repeatedSfixed32?: number[];
     /**
      * @generated from protobuf field: repeated sfixed64 repeated_sfixed64 = 40;
      */
-    repeatedSfixed64: string[];
+    repeatedSfixed64?: string[];
     /**
      * @generated from protobuf field: repeated float repeated_float = 41;
      */
-    repeatedFloat: number[];
+    repeatedFloat?: number[];
     /**
      * @generated from protobuf field: repeated double repeated_double = 42;
      */
-    repeatedDouble: number[];
+    repeatedDouble?: number[];
     /**
      * @generated from protobuf field: repeated bool repeated_bool = 43;
      */
-    repeatedBool: boolean[];
+    repeatedBool?: boolean[];
     /**
      * @generated from protobuf field: repeated string repeated_string = 44;
      */
-    repeatedString: string[];
+    repeatedString?: string[];
     /**
      * @generated from protobuf field: repeated bytes repeated_bytes = 45;
      */
-    repeatedBytes: Uint8Array[];
+    repeatedBytes?: Uint8Array[];
     // Groups are not allowed in proto3.
     // repeated group RepeatedGroup = 46 {
     //   optional int32 a = 47;
@@ -230,23 +230,23 @@ export interface TestAllTypes {
     /**
      * @generated from protobuf field: repeated proto3_lite_unittest.TestAllTypes.NestedMessage repeated_nested_message = 48;
      */
-    repeatedNestedMessage: TestAllTypes_NestedMessage[];
+    repeatedNestedMessage?: TestAllTypes_NestedMessage[];
     /**
      * @generated from protobuf field: repeated proto3_lite_unittest.ForeignMessage repeated_foreign_message = 49;
      */
-    repeatedForeignMessage: ForeignMessage[];
+    repeatedForeignMessage?: ForeignMessage[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest_import.ImportMessage repeated_import_message = 50;
      */
-    repeatedImportMessage: ImportMessage[];
+    repeatedImportMessage?: ImportMessage[];
     /**
      * @generated from protobuf field: repeated proto3_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum = 51;
      */
-    repeatedNestedEnum: TestAllTypes_NestedEnum[];
+    repeatedNestedEnum?: TestAllTypes_NestedEnum[];
     /**
      * @generated from protobuf field: repeated proto3_lite_unittest.ForeignEnum repeated_foreign_enum = 52;
      */
-    repeatedForeignEnum: ForeignEnum[];
+    repeatedForeignEnum?: ForeignEnum[];
     // Omitted (compared to unittest.proto) because proto2 enums are not allowed
     // inside proto2 messages.
     // 
@@ -255,45 +255,31 @@ export interface TestAllTypes {
     /**
      * @generated from protobuf field: repeated string repeated_string_piece = 54;
      */
-    repeatedStringPiece: string[];
+    repeatedStringPiece?: string[];
     /**
      * @generated from protobuf field: repeated string repeated_cord = 55;
      */
-    repeatedCord: string[];
+    repeatedCord?: string[];
     /**
      * @generated from protobuf field: repeated proto3_lite_unittest.TestAllTypes.NestedMessage repeated_lazy_message = 57;
      */
-    repeatedLazyMessage: TestAllTypes_NestedMessage[];
+    repeatedLazyMessage?: TestAllTypes_NestedMessage[];
     /**
-     * @generated from protobuf oneof: oneof_field;
+     * @generated from protobuf field: uint32 oneof_uint32 = 111;
      */
-    oneofField: {
-        oneofKind: "oneofUint32";
-        /**
-         * @generated from protobuf field: uint32 oneof_uint32 = 111;
-         */
-        oneofUint32: number;
-    } | {
-        oneofKind: "oneofNestedMessage";
-        /**
-         * @generated from protobuf field: proto3_lite_unittest.TestAllTypes.NestedMessage oneof_nested_message = 112;
-         */
-        oneofNestedMessage: TestAllTypes_NestedMessage;
-    } | {
-        oneofKind: "oneofString";
-        /**
-         * @generated from protobuf field: string oneof_string = 113;
-         */
-        oneofString: string;
-    } | {
-        oneofKind: "oneofBytes";
-        /**
-         * @generated from protobuf field: bytes oneof_bytes = 114;
-         */
-        oneofBytes: Uint8Array;
-    } | {
-        oneofKind: undefined;
-    };
+    oneofUint32?: number;
+    /**
+     * @generated from protobuf field: proto3_lite_unittest.TestAllTypes.NestedMessage oneof_nested_message = 112;
+     */
+    oneofNestedMessage?: TestAllTypes_NestedMessage;
+    /**
+     * @generated from protobuf field: string oneof_string = 113;
+     */
+    oneofString?: string;
+    /**
+     * @generated from protobuf field: bytes oneof_bytes = 114;
+     */
+    oneofBytes?: Uint8Array;
 }
 /**
  * @generated from protobuf message proto3_lite_unittest.TestAllTypes.NestedMessage
@@ -344,59 +330,59 @@ export interface TestPackedTypes {
     /**
      * @generated from protobuf field: repeated int32 packed_int32 = 90 [packed = true];
      */
-    packedInt32: number[];
+    packedInt32?: number[];
     /**
      * @generated from protobuf field: repeated int64 packed_int64 = 91 [packed = true];
      */
-    packedInt64: string[];
+    packedInt64?: string[];
     /**
      * @generated from protobuf field: repeated uint32 packed_uint32 = 92 [packed = true];
      */
-    packedUint32: number[];
+    packedUint32?: number[];
     /**
      * @generated from protobuf field: repeated uint64 packed_uint64 = 93 [packed = true];
      */
-    packedUint64: string[];
+    packedUint64?: string[];
     /**
      * @generated from protobuf field: repeated sint32 packed_sint32 = 94 [packed = true];
      */
-    packedSint32: number[];
+    packedSint32?: number[];
     /**
      * @generated from protobuf field: repeated sint64 packed_sint64 = 95 [packed = true];
      */
-    packedSint64: string[];
+    packedSint64?: string[];
     /**
      * @generated from protobuf field: repeated fixed32 packed_fixed32 = 96 [packed = true];
      */
-    packedFixed32: number[];
+    packedFixed32?: number[];
     /**
      * @generated from protobuf field: repeated fixed64 packed_fixed64 = 97 [packed = true];
      */
-    packedFixed64: string[];
+    packedFixed64?: string[];
     /**
      * @generated from protobuf field: repeated sfixed32 packed_sfixed32 = 98 [packed = true];
      */
-    packedSfixed32: number[];
+    packedSfixed32?: number[];
     /**
      * @generated from protobuf field: repeated sfixed64 packed_sfixed64 = 99 [packed = true];
      */
-    packedSfixed64: string[];
+    packedSfixed64?: string[];
     /**
      * @generated from protobuf field: repeated float packed_float = 100 [packed = true];
      */
-    packedFloat: number[];
+    packedFloat?: number[];
     /**
      * @generated from protobuf field: repeated double packed_double = 101 [packed = true];
      */
-    packedDouble: number[];
+    packedDouble?: number[];
     /**
      * @generated from protobuf field: repeated bool packed_bool = 102 [packed = true];
      */
-    packedBool: boolean[];
+    packedBool?: boolean[];
     /**
      * @generated from protobuf field: repeated proto3_lite_unittest.ForeignEnum packed_enum = 103 [packed = true];
      */
-    packedEnum: ForeignEnum[];
+    packedEnum?: ForeignEnum[];
 }
 /**
  * Explicitly set packed to false
@@ -407,59 +393,59 @@ export interface TestUnpackedTypes {
     /**
      * @generated from protobuf field: repeated int32 repeated_int32 = 1 [packed = false];
      */
-    repeatedInt32: number[];
+    repeatedInt32?: number[];
     /**
      * @generated from protobuf field: repeated int64 repeated_int64 = 2 [packed = false];
      */
-    repeatedInt64: string[];
+    repeatedInt64?: string[];
     /**
      * @generated from protobuf field: repeated uint32 repeated_uint32 = 3 [packed = false];
      */
-    repeatedUint32: number[];
+    repeatedUint32?: number[];
     /**
      * @generated from protobuf field: repeated uint64 repeated_uint64 = 4 [packed = false];
      */
-    repeatedUint64: string[];
+    repeatedUint64?: string[];
     /**
      * @generated from protobuf field: repeated sint32 repeated_sint32 = 5 [packed = false];
      */
-    repeatedSint32: number[];
+    repeatedSint32?: number[];
     /**
      * @generated from protobuf field: repeated sint64 repeated_sint64 = 6 [packed = false];
      */
-    repeatedSint64: string[];
+    repeatedSint64?: string[];
     /**
      * @generated from protobuf field: repeated fixed32 repeated_fixed32 = 7 [packed = false];
      */
-    repeatedFixed32: number[];
+    repeatedFixed32?: number[];
     /**
      * @generated from protobuf field: repeated fixed64 repeated_fixed64 = 8 [packed = false];
      */
-    repeatedFixed64: string[];
+    repeatedFixed64?: string[];
     /**
      * @generated from protobuf field: repeated sfixed32 repeated_sfixed32 = 9 [packed = false];
      */
-    repeatedSfixed32: number[];
+    repeatedSfixed32?: number[];
     /**
      * @generated from protobuf field: repeated sfixed64 repeated_sfixed64 = 10 [packed = false];
      */
-    repeatedSfixed64: string[];
+    repeatedSfixed64?: string[];
     /**
      * @generated from protobuf field: repeated float repeated_float = 11 [packed = false];
      */
-    repeatedFloat: number[];
+    repeatedFloat?: number[];
     /**
      * @generated from protobuf field: repeated double repeated_double = 12 [packed = false];
      */
-    repeatedDouble: number[];
+    repeatedDouble?: number[];
     /**
      * @generated from protobuf field: repeated bool repeated_bool = 13 [packed = false];
      */
-    repeatedBool: boolean[];
+    repeatedBool?: boolean[];
     /**
      * @generated from protobuf field: repeated proto3_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum = 14 [packed = false];
      */
-    repeatedNestedEnum: TestAllTypes_NestedEnum[];
+    repeatedNestedEnum?: TestAllTypes_NestedEnum[];
 }
 /**
  * This proto includes a recursively nested message.
@@ -574,7 +560,7 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
         ]);
     }
     create(value?: PartialMessage<TestAllTypes>): TestAllTypes {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.optionalInt32 = 0;
         message.optionalInt64 = "0";
         message.optionalUint32 = 0;
@@ -617,7 +603,6 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
         message.repeatedStringPiece = [];
         message.repeatedCord = [];
         message.repeatedLazyMessage = [];
-        message.oneofField = { oneofKind: undefined };
         if (value !== undefined)
             reflectionMergePartial<TestAllTypes>(this, message, value);
         return message;
@@ -702,155 +687,143 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
                 case /* repeated int32 repeated_int32 */ 31:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedInt32.push(reader.int32());
+                            message.repeatedInt32?.push?.(reader.int32());
                     else
-                        message.repeatedInt32.push(reader.int32());
+                        message.repeatedInt32?.push?.(reader.int32());
                     break;
                 case /* repeated int64 repeated_int64 */ 32:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedInt64.push(reader.int64().toString());
+                            message.repeatedInt64?.push?.(reader.int64().toString());
                     else
-                        message.repeatedInt64.push(reader.int64().toString());
+                        message.repeatedInt64?.push?.(reader.int64().toString());
                     break;
                 case /* repeated uint32 repeated_uint32 */ 33:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedUint32.push(reader.uint32());
+                            message.repeatedUint32?.push?.(reader.uint32());
                     else
-                        message.repeatedUint32.push(reader.uint32());
+                        message.repeatedUint32?.push?.(reader.uint32());
                     break;
                 case /* repeated uint64 repeated_uint64 */ 34:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedUint64.push(reader.uint64().toString());
+                            message.repeatedUint64?.push?.(reader.uint64().toString());
                     else
-                        message.repeatedUint64.push(reader.uint64().toString());
+                        message.repeatedUint64?.push?.(reader.uint64().toString());
                     break;
                 case /* repeated sint32 repeated_sint32 */ 35:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSint32.push(reader.sint32());
+                            message.repeatedSint32?.push?.(reader.sint32());
                     else
-                        message.repeatedSint32.push(reader.sint32());
+                        message.repeatedSint32?.push?.(reader.sint32());
                     break;
                 case /* repeated sint64 repeated_sint64 */ 36:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSint64.push(reader.sint64().toString());
+                            message.repeatedSint64?.push?.(reader.sint64().toString());
                     else
-                        message.repeatedSint64.push(reader.sint64().toString());
+                        message.repeatedSint64?.push?.(reader.sint64().toString());
                     break;
                 case /* repeated fixed32 repeated_fixed32 */ 37:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFixed32.push(reader.fixed32());
+                            message.repeatedFixed32?.push?.(reader.fixed32());
                     else
-                        message.repeatedFixed32.push(reader.fixed32());
+                        message.repeatedFixed32?.push?.(reader.fixed32());
                     break;
                 case /* repeated fixed64 repeated_fixed64 */ 38:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFixed64.push(reader.fixed64().toString());
+                            message.repeatedFixed64?.push?.(reader.fixed64().toString());
                     else
-                        message.repeatedFixed64.push(reader.fixed64().toString());
+                        message.repeatedFixed64?.push?.(reader.fixed64().toString());
                     break;
                 case /* repeated sfixed32 repeated_sfixed32 */ 39:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSfixed32.push(reader.sfixed32());
+                            message.repeatedSfixed32?.push?.(reader.sfixed32());
                     else
-                        message.repeatedSfixed32.push(reader.sfixed32());
+                        message.repeatedSfixed32?.push?.(reader.sfixed32());
                     break;
                 case /* repeated sfixed64 repeated_sfixed64 */ 40:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSfixed64.push(reader.sfixed64().toString());
+                            message.repeatedSfixed64?.push?.(reader.sfixed64().toString());
                     else
-                        message.repeatedSfixed64.push(reader.sfixed64().toString());
+                        message.repeatedSfixed64?.push?.(reader.sfixed64().toString());
                     break;
                 case /* repeated float repeated_float */ 41:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFloat.push(reader.float());
+                            message.repeatedFloat?.push?.(reader.float());
                     else
-                        message.repeatedFloat.push(reader.float());
+                        message.repeatedFloat?.push?.(reader.float());
                     break;
                 case /* repeated double repeated_double */ 42:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedDouble.push(reader.double());
+                            message.repeatedDouble?.push?.(reader.double());
                     else
-                        message.repeatedDouble.push(reader.double());
+                        message.repeatedDouble?.push?.(reader.double());
                     break;
                 case /* repeated bool repeated_bool */ 43:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedBool.push(reader.bool());
+                            message.repeatedBool?.push?.(reader.bool());
                     else
-                        message.repeatedBool.push(reader.bool());
+                        message.repeatedBool?.push?.(reader.bool());
                     break;
                 case /* repeated string repeated_string */ 44:
-                    message.repeatedString.push(reader.string());
+                    message.repeatedString?.push?.(reader.string());
                     break;
                 case /* repeated bytes repeated_bytes */ 45:
-                    message.repeatedBytes.push(reader.bytes());
+                    message.repeatedBytes?.push?.(reader.bytes());
                     break;
                 case /* repeated proto3_lite_unittest.TestAllTypes.NestedMessage repeated_nested_message */ 48:
-                    message.repeatedNestedMessage.push(TestAllTypes_NestedMessage.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedNestedMessage?.push?.(TestAllTypes_NestedMessage.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated proto3_lite_unittest.ForeignMessage repeated_foreign_message */ 49:
-                    message.repeatedForeignMessage.push(ForeignMessage.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedForeignMessage?.push?.(ForeignMessage.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated protobuf_unittest_import.ImportMessage repeated_import_message */ 50:
-                    message.repeatedImportMessage.push(ImportMessage.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedImportMessage?.push?.(ImportMessage.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated proto3_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum */ 51:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedNestedEnum.push(reader.int32());
+                            message.repeatedNestedEnum?.push?.(reader.int32());
                     else
-                        message.repeatedNestedEnum.push(reader.int32());
+                        message.repeatedNestedEnum?.push?.(reader.int32());
                     break;
                 case /* repeated proto3_lite_unittest.ForeignEnum repeated_foreign_enum */ 52:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedForeignEnum.push(reader.int32());
+                            message.repeatedForeignEnum?.push?.(reader.int32());
                     else
-                        message.repeatedForeignEnum.push(reader.int32());
+                        message.repeatedForeignEnum?.push?.(reader.int32());
                     break;
                 case /* repeated string repeated_string_piece */ 54:
-                    message.repeatedStringPiece.push(reader.string());
+                    message.repeatedStringPiece?.push?.(reader.string());
                     break;
                 case /* repeated string repeated_cord */ 55:
-                    message.repeatedCord.push(reader.string());
+                    message.repeatedCord?.push?.(reader.string());
                     break;
                 case /* repeated proto3_lite_unittest.TestAllTypes.NestedMessage repeated_lazy_message */ 57:
-                    message.repeatedLazyMessage.push(TestAllTypes_NestedMessage.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedLazyMessage?.push?.(TestAllTypes_NestedMessage.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* uint32 oneof_uint32 */ 111:
-                    message.oneofField = {
-                        oneofKind: "oneofUint32",
-                        oneofUint32: reader.uint32()
-                    };
+                    message.oneofUint32 = reader.uint32();
                     break;
                 case /* proto3_lite_unittest.TestAllTypes.NestedMessage oneof_nested_message */ 112:
-                    message.oneofField = {
-                        oneofKind: "oneofNestedMessage",
-                        oneofNestedMessage: TestAllTypes_NestedMessage.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).oneofNestedMessage)
-                    };
+                    message.oneofNestedMessage = TestAllTypes_NestedMessage.internalBinaryRead(reader, reader.uint32(), options, (message as any).oneofNestedMessage);
                     break;
                 case /* string oneof_string */ 113:
-                    message.oneofField = {
-                        oneofKind: "oneofString",
-                        oneofString: reader.string()
-                    };
+                    message.oneofString = reader.string();
                     break;
                 case /* bytes oneof_bytes */ 114:
-                    message.oneofField = {
-                        oneofKind: "oneofBytes",
-                        oneofBytes: reader.bytes()
-                    };
+                    message.oneofBytes = reader.bytes();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -907,7 +880,7 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
         if (message.optionalString !== "")
             writer.tag(14, WireType.LengthDelimited).string(message.optionalString);
         /* bytes optional_bytes = 15; */
-        if (message.optionalBytes.length)
+        if (message.optionalBytes?.length)
             writer.tag(15, WireType.LengthDelimited).bytes(message.optionalBytes);
         /* proto3_lite_unittest.TestAllTypes.NestedMessage optional_nested_message = 18; */
         if (message.optionalNestedMessage)
@@ -937,146 +910,146 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
         if (message.optionalLazyMessage)
             TestAllTypes_NestedMessage.internalBinaryWrite(message.optionalLazyMessage, writer.tag(27, WireType.LengthDelimited).fork(), options).join();
         /* repeated int32 repeated_int32 = 31; */
-        if (message.repeatedInt32.length) {
+        if (message.repeatedInt32?.length) {
             writer.tag(31, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedInt32.length; i++)
                 writer.int32(message.repeatedInt32[i]);
             writer.join();
         }
         /* repeated int64 repeated_int64 = 32; */
-        if (message.repeatedInt64.length) {
+        if (message.repeatedInt64?.length) {
             writer.tag(32, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedInt64.length; i++)
                 writer.int64(message.repeatedInt64[i]);
             writer.join();
         }
         /* repeated uint32 repeated_uint32 = 33; */
-        if (message.repeatedUint32.length) {
+        if (message.repeatedUint32?.length) {
             writer.tag(33, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedUint32.length; i++)
                 writer.uint32(message.repeatedUint32[i]);
             writer.join();
         }
         /* repeated uint64 repeated_uint64 = 34; */
-        if (message.repeatedUint64.length) {
+        if (message.repeatedUint64?.length) {
             writer.tag(34, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedUint64.length; i++)
                 writer.uint64(message.repeatedUint64[i]);
             writer.join();
         }
         /* repeated sint32 repeated_sint32 = 35; */
-        if (message.repeatedSint32.length) {
+        if (message.repeatedSint32?.length) {
             writer.tag(35, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedSint32.length; i++)
                 writer.sint32(message.repeatedSint32[i]);
             writer.join();
         }
         /* repeated sint64 repeated_sint64 = 36; */
-        if (message.repeatedSint64.length) {
+        if (message.repeatedSint64?.length) {
             writer.tag(36, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedSint64.length; i++)
                 writer.sint64(message.repeatedSint64[i]);
             writer.join();
         }
         /* repeated fixed32 repeated_fixed32 = 37; */
-        if (message.repeatedFixed32.length) {
+        if (message.repeatedFixed32?.length) {
             writer.tag(37, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedFixed32.length; i++)
                 writer.fixed32(message.repeatedFixed32[i]);
             writer.join();
         }
         /* repeated fixed64 repeated_fixed64 = 38; */
-        if (message.repeatedFixed64.length) {
+        if (message.repeatedFixed64?.length) {
             writer.tag(38, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedFixed64.length; i++)
                 writer.fixed64(message.repeatedFixed64[i]);
             writer.join();
         }
         /* repeated sfixed32 repeated_sfixed32 = 39; */
-        if (message.repeatedSfixed32.length) {
+        if (message.repeatedSfixed32?.length) {
             writer.tag(39, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedSfixed32.length; i++)
                 writer.sfixed32(message.repeatedSfixed32[i]);
             writer.join();
         }
         /* repeated sfixed64 repeated_sfixed64 = 40; */
-        if (message.repeatedSfixed64.length) {
+        if (message.repeatedSfixed64?.length) {
             writer.tag(40, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedSfixed64.length; i++)
                 writer.sfixed64(message.repeatedSfixed64[i]);
             writer.join();
         }
         /* repeated float repeated_float = 41; */
-        if (message.repeatedFloat.length) {
+        if (message.repeatedFloat?.length) {
             writer.tag(41, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedFloat.length; i++)
                 writer.float(message.repeatedFloat[i]);
             writer.join();
         }
         /* repeated double repeated_double = 42; */
-        if (message.repeatedDouble.length) {
+        if (message.repeatedDouble?.length) {
             writer.tag(42, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedDouble.length; i++)
                 writer.double(message.repeatedDouble[i]);
             writer.join();
         }
         /* repeated bool repeated_bool = 43; */
-        if (message.repeatedBool.length) {
+        if (message.repeatedBool?.length) {
             writer.tag(43, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedBool.length; i++)
                 writer.bool(message.repeatedBool[i]);
             writer.join();
         }
         /* repeated string repeated_string = 44; */
-        for (let i = 0; i < message.repeatedString.length; i++)
-            writer.tag(44, WireType.LengthDelimited).string(message.repeatedString[i]);
+        for (let i = 0; i < (message.repeatedString?.length || 0); i++)
+            writer.tag(44, WireType.LengthDelimited).string(message.repeatedString?.[i] as any);
         /* repeated bytes repeated_bytes = 45; */
-        for (let i = 0; i < message.repeatedBytes.length; i++)
-            writer.tag(45, WireType.LengthDelimited).bytes(message.repeatedBytes[i]);
+        for (let i = 0; i < (message.repeatedBytes?.length || 0); i++)
+            writer.tag(45, WireType.LengthDelimited).bytes(message.repeatedBytes?.[i] as any);
         /* repeated proto3_lite_unittest.TestAllTypes.NestedMessage repeated_nested_message = 48; */
-        for (let i = 0; i < message.repeatedNestedMessage.length; i++)
-            TestAllTypes_NestedMessage.internalBinaryWrite(message.repeatedNestedMessage[i], writer.tag(48, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedNestedMessage?.length || 0); i++)
+            TestAllTypes_NestedMessage.internalBinaryWrite(message.repeatedNestedMessage?.[i] as any, writer.tag(48, WireType.LengthDelimited).fork(), options).join();
         /* repeated proto3_lite_unittest.ForeignMessage repeated_foreign_message = 49; */
-        for (let i = 0; i < message.repeatedForeignMessage.length; i++)
-            ForeignMessage.internalBinaryWrite(message.repeatedForeignMessage[i], writer.tag(49, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedForeignMessage?.length || 0); i++)
+            ForeignMessage.internalBinaryWrite(message.repeatedForeignMessage?.[i] as any, writer.tag(49, WireType.LengthDelimited).fork(), options).join();
         /* repeated protobuf_unittest_import.ImportMessage repeated_import_message = 50; */
-        for (let i = 0; i < message.repeatedImportMessage.length; i++)
-            ImportMessage.internalBinaryWrite(message.repeatedImportMessage[i], writer.tag(50, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedImportMessage?.length || 0); i++)
+            ImportMessage.internalBinaryWrite(message.repeatedImportMessage?.[i] as any, writer.tag(50, WireType.LengthDelimited).fork(), options).join();
         /* repeated proto3_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum = 51; */
-        if (message.repeatedNestedEnum.length) {
+        if (message.repeatedNestedEnum?.length) {
             writer.tag(51, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedNestedEnum.length; i++)
                 writer.int32(message.repeatedNestedEnum[i]);
             writer.join();
         }
         /* repeated proto3_lite_unittest.ForeignEnum repeated_foreign_enum = 52; */
-        if (message.repeatedForeignEnum.length) {
+        if (message.repeatedForeignEnum?.length) {
             writer.tag(52, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedForeignEnum.length; i++)
                 writer.int32(message.repeatedForeignEnum[i]);
             writer.join();
         }
         /* repeated string repeated_string_piece = 54; */
-        for (let i = 0; i < message.repeatedStringPiece.length; i++)
-            writer.tag(54, WireType.LengthDelimited).string(message.repeatedStringPiece[i]);
+        for (let i = 0; i < (message.repeatedStringPiece?.length || 0); i++)
+            writer.tag(54, WireType.LengthDelimited).string(message.repeatedStringPiece?.[i] as any);
         /* repeated string repeated_cord = 55; */
-        for (let i = 0; i < message.repeatedCord.length; i++)
-            writer.tag(55, WireType.LengthDelimited).string(message.repeatedCord[i]);
+        for (let i = 0; i < (message.repeatedCord?.length || 0); i++)
+            writer.tag(55, WireType.LengthDelimited).string(message.repeatedCord?.[i] as any);
         /* repeated proto3_lite_unittest.TestAllTypes.NestedMessage repeated_lazy_message = 57; */
-        for (let i = 0; i < message.repeatedLazyMessage.length; i++)
-            TestAllTypes_NestedMessage.internalBinaryWrite(message.repeatedLazyMessage[i], writer.tag(57, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedLazyMessage?.length || 0); i++)
+            TestAllTypes_NestedMessage.internalBinaryWrite(message.repeatedLazyMessage?.[i] as any, writer.tag(57, WireType.LengthDelimited).fork(), options).join();
         /* uint32 oneof_uint32 = 111; */
-        if (message.oneofField.oneofKind === "oneofUint32")
-            writer.tag(111, WireType.Varint).uint32(message.oneofField.oneofUint32);
+        if ("oneofUint32" in message && message.oneofUint32 != null)
+            writer.tag(111, WireType.Varint).uint32(message.oneofUint32);
         /* proto3_lite_unittest.TestAllTypes.NestedMessage oneof_nested_message = 112; */
-        if (message.oneofField.oneofKind === "oneofNestedMessage")
-            TestAllTypes_NestedMessage.internalBinaryWrite(message.oneofField.oneofNestedMessage, writer.tag(112, WireType.LengthDelimited).fork(), options).join();
+        if ("oneofNestedMessage" in message && message.oneofNestedMessage != null)
+            TestAllTypes_NestedMessage.internalBinaryWrite(message.oneofNestedMessage, writer.tag(112, WireType.LengthDelimited).fork(), options).join();
         /* string oneof_string = 113; */
-        if (message.oneofField.oneofKind === "oneofString")
-            writer.tag(113, WireType.LengthDelimited).string(message.oneofField.oneofString);
+        if ("oneofString" in message && message.oneofString != null)
+            writer.tag(113, WireType.LengthDelimited).string(message.oneofString);
         /* bytes oneof_bytes = 114; */
-        if (message.oneofField.oneofKind === "oneofBytes")
-            writer.tag(114, WireType.LengthDelimited).bytes(message.oneofField.oneofBytes);
+        if ("oneofBytes" in message && message.oneofBytes != null)
+            writer.tag(114, WireType.LengthDelimited).bytes(message.oneofBytes);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1095,7 +1068,7 @@ class TestAllTypes_NestedMessage$Type extends MessageType<TestAllTypes_NestedMes
         ]);
     }
     create(value?: PartialMessage<TestAllTypes_NestedMessage>): TestAllTypes_NestedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.bb = 0;
         if (value !== undefined)
             reflectionMergePartial<TestAllTypes_NestedMessage>(this, message, value);
@@ -1155,7 +1128,7 @@ class TestPackedTypes$Type extends MessageType<TestPackedTypes> {
         ]);
     }
     create(value?: PartialMessage<TestPackedTypes>): TestPackedTypes {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.packedInt32 = [];
         message.packedInt64 = [];
         message.packedUint32 = [];
@@ -1182,100 +1155,100 @@ class TestPackedTypes$Type extends MessageType<TestPackedTypes> {
                 case /* repeated int32 packed_int32 = 90 [packed = true] */ 90:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedInt32.push(reader.int32());
+                            message.packedInt32?.push?.(reader.int32());
                     else
-                        message.packedInt32.push(reader.int32());
+                        message.packedInt32?.push?.(reader.int32());
                     break;
                 case /* repeated int64 packed_int64 = 91 [packed = true] */ 91:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedInt64.push(reader.int64().toString());
+                            message.packedInt64?.push?.(reader.int64().toString());
                     else
-                        message.packedInt64.push(reader.int64().toString());
+                        message.packedInt64?.push?.(reader.int64().toString());
                     break;
                 case /* repeated uint32 packed_uint32 = 92 [packed = true] */ 92:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedUint32.push(reader.uint32());
+                            message.packedUint32?.push?.(reader.uint32());
                     else
-                        message.packedUint32.push(reader.uint32());
+                        message.packedUint32?.push?.(reader.uint32());
                     break;
                 case /* repeated uint64 packed_uint64 = 93 [packed = true] */ 93:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedUint64.push(reader.uint64().toString());
+                            message.packedUint64?.push?.(reader.uint64().toString());
                     else
-                        message.packedUint64.push(reader.uint64().toString());
+                        message.packedUint64?.push?.(reader.uint64().toString());
                     break;
                 case /* repeated sint32 packed_sint32 = 94 [packed = true] */ 94:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedSint32.push(reader.sint32());
+                            message.packedSint32?.push?.(reader.sint32());
                     else
-                        message.packedSint32.push(reader.sint32());
+                        message.packedSint32?.push?.(reader.sint32());
                     break;
                 case /* repeated sint64 packed_sint64 = 95 [packed = true] */ 95:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedSint64.push(reader.sint64().toString());
+                            message.packedSint64?.push?.(reader.sint64().toString());
                     else
-                        message.packedSint64.push(reader.sint64().toString());
+                        message.packedSint64?.push?.(reader.sint64().toString());
                     break;
                 case /* repeated fixed32 packed_fixed32 = 96 [packed = true] */ 96:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedFixed32.push(reader.fixed32());
+                            message.packedFixed32?.push?.(reader.fixed32());
                     else
-                        message.packedFixed32.push(reader.fixed32());
+                        message.packedFixed32?.push?.(reader.fixed32());
                     break;
                 case /* repeated fixed64 packed_fixed64 = 97 [packed = true] */ 97:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedFixed64.push(reader.fixed64().toString());
+                            message.packedFixed64?.push?.(reader.fixed64().toString());
                     else
-                        message.packedFixed64.push(reader.fixed64().toString());
+                        message.packedFixed64?.push?.(reader.fixed64().toString());
                     break;
                 case /* repeated sfixed32 packed_sfixed32 = 98 [packed = true] */ 98:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedSfixed32.push(reader.sfixed32());
+                            message.packedSfixed32?.push?.(reader.sfixed32());
                     else
-                        message.packedSfixed32.push(reader.sfixed32());
+                        message.packedSfixed32?.push?.(reader.sfixed32());
                     break;
                 case /* repeated sfixed64 packed_sfixed64 = 99 [packed = true] */ 99:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedSfixed64.push(reader.sfixed64().toString());
+                            message.packedSfixed64?.push?.(reader.sfixed64().toString());
                     else
-                        message.packedSfixed64.push(reader.sfixed64().toString());
+                        message.packedSfixed64?.push?.(reader.sfixed64().toString());
                     break;
                 case /* repeated float packed_float = 100 [packed = true] */ 100:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedFloat.push(reader.float());
+                            message.packedFloat?.push?.(reader.float());
                     else
-                        message.packedFloat.push(reader.float());
+                        message.packedFloat?.push?.(reader.float());
                     break;
                 case /* repeated double packed_double = 101 [packed = true] */ 101:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedDouble.push(reader.double());
+                            message.packedDouble?.push?.(reader.double());
                     else
-                        message.packedDouble.push(reader.double());
+                        message.packedDouble?.push?.(reader.double());
                     break;
                 case /* repeated bool packed_bool = 102 [packed = true] */ 102:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedBool.push(reader.bool());
+                            message.packedBool?.push?.(reader.bool());
                     else
-                        message.packedBool.push(reader.bool());
+                        message.packedBool?.push?.(reader.bool());
                     break;
                 case /* repeated proto3_lite_unittest.ForeignEnum packed_enum = 103 [packed = true] */ 103:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedEnum.push(reader.int32());
+                            message.packedEnum?.push?.(reader.int32());
                     else
-                        message.packedEnum.push(reader.int32());
+                        message.packedEnum?.push?.(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1290,98 +1263,98 @@ class TestPackedTypes$Type extends MessageType<TestPackedTypes> {
     }
     internalBinaryWrite(message: TestPackedTypes, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated int32 packed_int32 = 90 [packed = true]; */
-        if (message.packedInt32.length) {
+        if (message.packedInt32?.length) {
             writer.tag(90, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedInt32.length; i++)
                 writer.int32(message.packedInt32[i]);
             writer.join();
         }
         /* repeated int64 packed_int64 = 91 [packed = true]; */
-        if (message.packedInt64.length) {
+        if (message.packedInt64?.length) {
             writer.tag(91, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedInt64.length; i++)
                 writer.int64(message.packedInt64[i]);
             writer.join();
         }
         /* repeated uint32 packed_uint32 = 92 [packed = true]; */
-        if (message.packedUint32.length) {
+        if (message.packedUint32?.length) {
             writer.tag(92, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedUint32.length; i++)
                 writer.uint32(message.packedUint32[i]);
             writer.join();
         }
         /* repeated uint64 packed_uint64 = 93 [packed = true]; */
-        if (message.packedUint64.length) {
+        if (message.packedUint64?.length) {
             writer.tag(93, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedUint64.length; i++)
                 writer.uint64(message.packedUint64[i]);
             writer.join();
         }
         /* repeated sint32 packed_sint32 = 94 [packed = true]; */
-        if (message.packedSint32.length) {
+        if (message.packedSint32?.length) {
             writer.tag(94, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedSint32.length; i++)
                 writer.sint32(message.packedSint32[i]);
             writer.join();
         }
         /* repeated sint64 packed_sint64 = 95 [packed = true]; */
-        if (message.packedSint64.length) {
+        if (message.packedSint64?.length) {
             writer.tag(95, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedSint64.length; i++)
                 writer.sint64(message.packedSint64[i]);
             writer.join();
         }
         /* repeated fixed32 packed_fixed32 = 96 [packed = true]; */
-        if (message.packedFixed32.length) {
+        if (message.packedFixed32?.length) {
             writer.tag(96, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedFixed32.length; i++)
                 writer.fixed32(message.packedFixed32[i]);
             writer.join();
         }
         /* repeated fixed64 packed_fixed64 = 97 [packed = true]; */
-        if (message.packedFixed64.length) {
+        if (message.packedFixed64?.length) {
             writer.tag(97, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedFixed64.length; i++)
                 writer.fixed64(message.packedFixed64[i]);
             writer.join();
         }
         /* repeated sfixed32 packed_sfixed32 = 98 [packed = true]; */
-        if (message.packedSfixed32.length) {
+        if (message.packedSfixed32?.length) {
             writer.tag(98, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedSfixed32.length; i++)
                 writer.sfixed32(message.packedSfixed32[i]);
             writer.join();
         }
         /* repeated sfixed64 packed_sfixed64 = 99 [packed = true]; */
-        if (message.packedSfixed64.length) {
+        if (message.packedSfixed64?.length) {
             writer.tag(99, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedSfixed64.length; i++)
                 writer.sfixed64(message.packedSfixed64[i]);
             writer.join();
         }
         /* repeated float packed_float = 100 [packed = true]; */
-        if (message.packedFloat.length) {
+        if (message.packedFloat?.length) {
             writer.tag(100, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedFloat.length; i++)
                 writer.float(message.packedFloat[i]);
             writer.join();
         }
         /* repeated double packed_double = 101 [packed = true]; */
-        if (message.packedDouble.length) {
+        if (message.packedDouble?.length) {
             writer.tag(101, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedDouble.length; i++)
                 writer.double(message.packedDouble[i]);
             writer.join();
         }
         /* repeated bool packed_bool = 102 [packed = true]; */
-        if (message.packedBool.length) {
+        if (message.packedBool?.length) {
             writer.tag(102, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedBool.length; i++)
                 writer.bool(message.packedBool[i]);
             writer.join();
         }
         /* repeated proto3_lite_unittest.ForeignEnum packed_enum = 103 [packed = true]; */
-        if (message.packedEnum.length) {
+        if (message.packedEnum?.length) {
             writer.tag(103, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedEnum.length; i++)
                 writer.int32(message.packedEnum[i]);
@@ -1418,7 +1391,7 @@ class TestUnpackedTypes$Type extends MessageType<TestUnpackedTypes> {
         ]);
     }
     create(value?: PartialMessage<TestUnpackedTypes>): TestUnpackedTypes {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedInt32 = [];
         message.repeatedInt64 = [];
         message.repeatedUint32 = [];
@@ -1445,100 +1418,100 @@ class TestUnpackedTypes$Type extends MessageType<TestUnpackedTypes> {
                 case /* repeated int32 repeated_int32 = 1 [packed = false] */ 1:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedInt32.push(reader.int32());
+                            message.repeatedInt32?.push?.(reader.int32());
                     else
-                        message.repeatedInt32.push(reader.int32());
+                        message.repeatedInt32?.push?.(reader.int32());
                     break;
                 case /* repeated int64 repeated_int64 = 2 [packed = false] */ 2:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedInt64.push(reader.int64().toString());
+                            message.repeatedInt64?.push?.(reader.int64().toString());
                     else
-                        message.repeatedInt64.push(reader.int64().toString());
+                        message.repeatedInt64?.push?.(reader.int64().toString());
                     break;
                 case /* repeated uint32 repeated_uint32 = 3 [packed = false] */ 3:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedUint32.push(reader.uint32());
+                            message.repeatedUint32?.push?.(reader.uint32());
                     else
-                        message.repeatedUint32.push(reader.uint32());
+                        message.repeatedUint32?.push?.(reader.uint32());
                     break;
                 case /* repeated uint64 repeated_uint64 = 4 [packed = false] */ 4:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedUint64.push(reader.uint64().toString());
+                            message.repeatedUint64?.push?.(reader.uint64().toString());
                     else
-                        message.repeatedUint64.push(reader.uint64().toString());
+                        message.repeatedUint64?.push?.(reader.uint64().toString());
                     break;
                 case /* repeated sint32 repeated_sint32 = 5 [packed = false] */ 5:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSint32.push(reader.sint32());
+                            message.repeatedSint32?.push?.(reader.sint32());
                     else
-                        message.repeatedSint32.push(reader.sint32());
+                        message.repeatedSint32?.push?.(reader.sint32());
                     break;
                 case /* repeated sint64 repeated_sint64 = 6 [packed = false] */ 6:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSint64.push(reader.sint64().toString());
+                            message.repeatedSint64?.push?.(reader.sint64().toString());
                     else
-                        message.repeatedSint64.push(reader.sint64().toString());
+                        message.repeatedSint64?.push?.(reader.sint64().toString());
                     break;
                 case /* repeated fixed32 repeated_fixed32 = 7 [packed = false] */ 7:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFixed32.push(reader.fixed32());
+                            message.repeatedFixed32?.push?.(reader.fixed32());
                     else
-                        message.repeatedFixed32.push(reader.fixed32());
+                        message.repeatedFixed32?.push?.(reader.fixed32());
                     break;
                 case /* repeated fixed64 repeated_fixed64 = 8 [packed = false] */ 8:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFixed64.push(reader.fixed64().toString());
+                            message.repeatedFixed64?.push?.(reader.fixed64().toString());
                     else
-                        message.repeatedFixed64.push(reader.fixed64().toString());
+                        message.repeatedFixed64?.push?.(reader.fixed64().toString());
                     break;
                 case /* repeated sfixed32 repeated_sfixed32 = 9 [packed = false] */ 9:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSfixed32.push(reader.sfixed32());
+                            message.repeatedSfixed32?.push?.(reader.sfixed32());
                     else
-                        message.repeatedSfixed32.push(reader.sfixed32());
+                        message.repeatedSfixed32?.push?.(reader.sfixed32());
                     break;
                 case /* repeated sfixed64 repeated_sfixed64 = 10 [packed = false] */ 10:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSfixed64.push(reader.sfixed64().toString());
+                            message.repeatedSfixed64?.push?.(reader.sfixed64().toString());
                     else
-                        message.repeatedSfixed64.push(reader.sfixed64().toString());
+                        message.repeatedSfixed64?.push?.(reader.sfixed64().toString());
                     break;
                 case /* repeated float repeated_float = 11 [packed = false] */ 11:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFloat.push(reader.float());
+                            message.repeatedFloat?.push?.(reader.float());
                     else
-                        message.repeatedFloat.push(reader.float());
+                        message.repeatedFloat?.push?.(reader.float());
                     break;
                 case /* repeated double repeated_double = 12 [packed = false] */ 12:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedDouble.push(reader.double());
+                            message.repeatedDouble?.push?.(reader.double());
                     else
-                        message.repeatedDouble.push(reader.double());
+                        message.repeatedDouble?.push?.(reader.double());
                     break;
                 case /* repeated bool repeated_bool = 13 [packed = false] */ 13:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedBool.push(reader.bool());
+                            message.repeatedBool?.push?.(reader.bool());
                     else
-                        message.repeatedBool.push(reader.bool());
+                        message.repeatedBool?.push?.(reader.bool());
                     break;
                 case /* repeated proto3_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum = 14 [packed = false] */ 14:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedNestedEnum.push(reader.int32());
+                            message.repeatedNestedEnum?.push?.(reader.int32());
                     else
-                        message.repeatedNestedEnum.push(reader.int32());
+                        message.repeatedNestedEnum?.push?.(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1553,47 +1526,47 @@ class TestUnpackedTypes$Type extends MessageType<TestUnpackedTypes> {
     }
     internalBinaryWrite(message: TestUnpackedTypes, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated int32 repeated_int32 = 1 [packed = false]; */
-        for (let i = 0; i < message.repeatedInt32.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.repeatedInt32[i]);
+        for (let i = 0; i < (message.repeatedInt32?.length || 0); i++)
+            writer.tag(1, WireType.Varint).int32(message.repeatedInt32?.[i] as any);
         /* repeated int64 repeated_int64 = 2 [packed = false]; */
-        for (let i = 0; i < message.repeatedInt64.length; i++)
-            writer.tag(2, WireType.Varint).int64(message.repeatedInt64[i]);
+        for (let i = 0; i < (message.repeatedInt64?.length || 0); i++)
+            writer.tag(2, WireType.Varint).int64(message.repeatedInt64?.[i] as any);
         /* repeated uint32 repeated_uint32 = 3 [packed = false]; */
-        for (let i = 0; i < message.repeatedUint32.length; i++)
-            writer.tag(3, WireType.Varint).uint32(message.repeatedUint32[i]);
+        for (let i = 0; i < (message.repeatedUint32?.length || 0); i++)
+            writer.tag(3, WireType.Varint).uint32(message.repeatedUint32?.[i] as any);
         /* repeated uint64 repeated_uint64 = 4 [packed = false]; */
-        for (let i = 0; i < message.repeatedUint64.length; i++)
-            writer.tag(4, WireType.Varint).uint64(message.repeatedUint64[i]);
+        for (let i = 0; i < (message.repeatedUint64?.length || 0); i++)
+            writer.tag(4, WireType.Varint).uint64(message.repeatedUint64?.[i] as any);
         /* repeated sint32 repeated_sint32 = 5 [packed = false]; */
-        for (let i = 0; i < message.repeatedSint32.length; i++)
-            writer.tag(5, WireType.Varint).sint32(message.repeatedSint32[i]);
+        for (let i = 0; i < (message.repeatedSint32?.length || 0); i++)
+            writer.tag(5, WireType.Varint).sint32(message.repeatedSint32?.[i] as any);
         /* repeated sint64 repeated_sint64 = 6 [packed = false]; */
-        for (let i = 0; i < message.repeatedSint64.length; i++)
-            writer.tag(6, WireType.Varint).sint64(message.repeatedSint64[i]);
+        for (let i = 0; i < (message.repeatedSint64?.length || 0); i++)
+            writer.tag(6, WireType.Varint).sint64(message.repeatedSint64?.[i] as any);
         /* repeated fixed32 repeated_fixed32 = 7 [packed = false]; */
-        for (let i = 0; i < message.repeatedFixed32.length; i++)
-            writer.tag(7, WireType.Bit32).fixed32(message.repeatedFixed32[i]);
+        for (let i = 0; i < (message.repeatedFixed32?.length || 0); i++)
+            writer.tag(7, WireType.Bit32).fixed32(message.repeatedFixed32?.[i] as any);
         /* repeated fixed64 repeated_fixed64 = 8 [packed = false]; */
-        for (let i = 0; i < message.repeatedFixed64.length; i++)
-            writer.tag(8, WireType.Bit64).fixed64(message.repeatedFixed64[i]);
+        for (let i = 0; i < (message.repeatedFixed64?.length || 0); i++)
+            writer.tag(8, WireType.Bit64).fixed64(message.repeatedFixed64?.[i] as any);
         /* repeated sfixed32 repeated_sfixed32 = 9 [packed = false]; */
-        for (let i = 0; i < message.repeatedSfixed32.length; i++)
-            writer.tag(9, WireType.Bit32).sfixed32(message.repeatedSfixed32[i]);
+        for (let i = 0; i < (message.repeatedSfixed32?.length || 0); i++)
+            writer.tag(9, WireType.Bit32).sfixed32(message.repeatedSfixed32?.[i] as any);
         /* repeated sfixed64 repeated_sfixed64 = 10 [packed = false]; */
-        for (let i = 0; i < message.repeatedSfixed64.length; i++)
-            writer.tag(10, WireType.Bit64).sfixed64(message.repeatedSfixed64[i]);
+        for (let i = 0; i < (message.repeatedSfixed64?.length || 0); i++)
+            writer.tag(10, WireType.Bit64).sfixed64(message.repeatedSfixed64?.[i] as any);
         /* repeated float repeated_float = 11 [packed = false]; */
-        for (let i = 0; i < message.repeatedFloat.length; i++)
-            writer.tag(11, WireType.Bit32).float(message.repeatedFloat[i]);
+        for (let i = 0; i < (message.repeatedFloat?.length || 0); i++)
+            writer.tag(11, WireType.Bit32).float(message.repeatedFloat?.[i] as any);
         /* repeated double repeated_double = 12 [packed = false]; */
-        for (let i = 0; i < message.repeatedDouble.length; i++)
-            writer.tag(12, WireType.Bit64).double(message.repeatedDouble[i]);
+        for (let i = 0; i < (message.repeatedDouble?.length || 0); i++)
+            writer.tag(12, WireType.Bit64).double(message.repeatedDouble?.[i] as any);
         /* repeated bool repeated_bool = 13 [packed = false]; */
-        for (let i = 0; i < message.repeatedBool.length; i++)
-            writer.tag(13, WireType.Varint).bool(message.repeatedBool[i]);
+        for (let i = 0; i < (message.repeatedBool?.length || 0); i++)
+            writer.tag(13, WireType.Varint).bool(message.repeatedBool?.[i] as any);
         /* repeated proto3_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum = 14 [packed = false]; */
-        for (let i = 0; i < message.repeatedNestedEnum.length; i++)
-            writer.tag(14, WireType.Varint).int32(message.repeatedNestedEnum[i]);
+        for (let i = 0; i < (message.repeatedNestedEnum?.length || 0); i++)
+            writer.tag(14, WireType.Varint).int32(message.repeatedNestedEnum?.[i] as any);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1613,7 +1586,7 @@ class NestedTestAllTypes$Type extends MessageType<NestedTestAllTypes> {
         ]);
     }
     create(value?: PartialMessage<NestedTestAllTypes>): NestedTestAllTypes {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<NestedTestAllTypes>(this, message, value);
         return message;
@@ -1665,7 +1638,7 @@ class ForeignMessage$Type extends MessageType<ForeignMessage> {
         ]);
     }
     create(value?: PartialMessage<ForeignMessage>): ForeignMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.c = 0;
         if (value !== undefined)
             reflectionMergePartial<ForeignMessage>(this, message, value);
@@ -1710,7 +1683,7 @@ class TestEmptyMessage$Type extends MessageType<TestEmptyMessage> {
         super("proto3_lite_unittest.TestEmptyMessage", []);
     }
     create(value?: PartialMessage<TestEmptyMessage>): TestEmptyMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestEmptyMessage>(this, message, value);
         return message;

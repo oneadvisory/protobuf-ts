@@ -194,11 +194,11 @@ export class GoogleTypes implements CustomMethodGenerator {
                         message.seconds,
                         message.nanos / 1000,
                     ),
-                    to = message.${timeOffsetField};
+                    to = message;
                 if (to) {
-                    if (to.oneofKind === "${timeZoneField}")
+                    if ("${timeZoneField}" in to)
                         throw new globalThis.Error("IANA time zone not supported");
-                    if (to.oneofKind === "${utcOffsetField}") {
+                    if ("${utcOffsetField}" in to && to.${utcOffsetField}) {
                         let s = ${PbLong}.from(to.${utcOffsetField}.seconds).toNumber();
                         dt = new globalThis.Date(dt.getTime() - (s * 1000));
                     }
@@ -220,12 +220,9 @@ export class GoogleTypes implements CustomMethodGenerator {
                     minutes: date.getMinutes(),
                     seconds: date.getSeconds(),
                     nanos: date.getMilliseconds() * 1000,
-                    ${timeOffsetField}: {
-                        oneofKind: "${utcOffsetField}",
-                        ${utcOffsetField}: {
-                            seconds: ${PbLong}.from(date.getTimezoneOffset() * 60).${longConvertMethod}(),
-                            nanos: 0,
-                        }
+                    ${utcOffsetField}: {
+                        seconds: ${PbLong}.from(date.getTimezoneOffset() * 60).${longConvertMethod}(),
+                        nanos: 0,
                     }
                 };
             }

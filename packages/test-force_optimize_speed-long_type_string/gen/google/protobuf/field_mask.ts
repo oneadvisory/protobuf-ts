@@ -255,7 +255,7 @@ export interface FieldMask {
      *
      * @generated from protobuf field: repeated string paths = 1;
      */
-    paths: string[];
+    paths?: string[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class FieldMask$Type extends MessageType<FieldMask> {
@@ -269,11 +269,11 @@ class FieldMask$Type extends MessageType<FieldMask> {
      */
     internalJsonWrite(message: FieldMask, options: JsonWriteOptions): JsonValue {
         const invalidFieldMaskJsonRegex = /[A-Z]|(_([.0-9_]|$))/g;
-        return message.paths.map(p => {
+        return message.paths?.map(p => {
             if (invalidFieldMaskJsonRegex.test(p))
                 throw new Error("Unable to encode FieldMask to JSON. lowerCamelCase of path name \"" + p + "\" is irreversible.");
             return lowerCamelCase(p);
-        }).join(",");
+        }).join(",") ?? "";
     }
     /**
      * Decode `FieldMask` from JSON object.
@@ -295,7 +295,7 @@ class FieldMask$Type extends MessageType<FieldMask> {
         return target;
     }
     create(value?: PartialMessage<FieldMask>): FieldMask {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.paths = [];
         if (value !== undefined)
             reflectionMergePartial<FieldMask>(this, message, value);
@@ -307,7 +307,7 @@ class FieldMask$Type extends MessageType<FieldMask> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated string paths */ 1:
-                    message.paths.push(reader.string());
+                    message.paths?.push?.(reader.string());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -322,8 +322,8 @@ class FieldMask$Type extends MessageType<FieldMask> {
     }
     internalBinaryWrite(message: FieldMask, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated string paths = 1; */
-        for (let i = 0; i < message.paths.length; i++)
-            writer.tag(1, WireType.LengthDelimited).string(message.paths[i]);
+        for (let i = 0; i < (message.paths?.length || 0); i++)
+            writer.tag(1, WireType.LengthDelimited).string(message.paths?.[i] as any);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

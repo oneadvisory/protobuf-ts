@@ -30,7 +30,7 @@ class AnyMessage$Type extends MessageType<AnyMessage> {
         ]);
     }
     create(value?: PartialMessage<AnyMessage>): AnyMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<AnyMessage>(this, message, value);
         return message;

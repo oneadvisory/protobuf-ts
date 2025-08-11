@@ -62,7 +62,6 @@ export class Interpreter {
         private readonly registry: FileRegistry,
         private readonly options: {
             normalLongType: rt.LongType,
-            oneofKindDiscriminator: string,
             synthesizeEnumZeroValue: string | false,
             forceExcludeAllOptions: boolean,
             keepEnumPrefix: boolean,
@@ -357,9 +356,6 @@ export class Interpreter {
         assert(name !== undefined);
         name = FieldInfoGenerator.createTypescriptLocalName(name, this.options);
         if (reservedObjectProperties.includes(name)) {
-            name = name + escapeCharacter;
-        }
-        if (this.options.oneofKindDiscriminator.split(',').includes(name)) {
             name = name + escapeCharacter;
         }
         return name;

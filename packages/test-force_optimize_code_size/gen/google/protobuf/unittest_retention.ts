@@ -44,17 +44,9 @@ export interface TopLevelMessage {
      */
     f?: number;
     /**
-     * @generated from protobuf oneof: o;
+     * @generated from protobuf field: int64 i = 2;
      */
-    o: {
-        oneofKind: "i";
-        /**
-         * @generated from protobuf field: int64 i = 2;
-         */
-        i: bigint;
-    } | {
-        oneofKind: undefined;
-    };
+    i?: bigint;
 }
 /**
  * @generated from protobuf message protobuf_unittest.TopLevelMessage.NestedMessage
@@ -130,5 +122,5 @@ export const TopLevelMessage_NestedMessage = new TopLevelMessage_NestedMessage$T
  * @generated ServiceType for protobuf service protobuf_unittest.Service
  */
 export const Service = new ServiceType("protobuf_unittest.Service", [
-    { name: "DoStuff", options: { "protobuf_unittest.method_option": { plainField: 1, runtimeRetentionField: 2, sourceRetentionField: 3 } }, I: TopLevelMessage, O: TopLevelMessage }
+    { name: "DoStuff" as const, options: { "protobuf_unittest.method_option": { plainField: 1, runtimeRetentionField: 2, sourceRetentionField: 3 } } as const, I: TopLevelMessage, O: TopLevelMessage }
 ], { "protobuf_unittest.service_option": { plainField: 1, runtimeRetentionField: 2, sourceRetentionField: 3 } });

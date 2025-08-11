@@ -162,7 +162,7 @@ export const IntroduceResponse = new IntroduceResponse$Type();
  * @generated ServiceType for protobuf service connectrpc.eliza.v1.ElizaService
  */
 export const ElizaService = new ServiceType("connectrpc.eliza.v1.ElizaService", [
-    { name: "Say", idempotency: "NO_SIDE_EFFECTS", options: {}, I: SayRequest, O: SayResponse },
-    { name: "Converse", serverStreaming: true, clientStreaming: true, options: {}, I: ConverseRequest, O: ConverseResponse },
-    { name: "Introduce", serverStreaming: true, options: {}, I: IntroduceRequest, O: IntroduceResponse }
+    { name: "Say" as const, idempotency: "NO_SIDE_EFFECTS" as const, options: {} as const, I: SayRequest, O: SayResponse },
+    { name: "Converse" as const, serverStreaming: true as const, clientStreaming: true as const, options: {} as const, I: ConverseRequest, O: ConverseResponse },
+    { name: "Introduce" as const, serverStreaming: true as const, options: {} as const, I: IntroduceRequest, O: IntroduceResponse }
 ]);

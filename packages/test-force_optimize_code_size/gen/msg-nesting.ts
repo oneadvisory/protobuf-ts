@@ -13,7 +13,7 @@ export interface ParentMessage {
     /**
      * @generated from protobuf field: repeated spec.ParentMessage.ChildMessage children = 2;
      */
-    children: ParentMessage_ChildMessage[];
+    children?: ParentMessage_ChildMessage[];
     /**
      * @generated from protobuf field: spec.ParentMessage.ChildMessage.ChildEnum child_enum = 3;
      */

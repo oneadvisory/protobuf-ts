@@ -24,42 +24,30 @@ export interface ReservedFieldNames {
      *
      * @generated from protobuf field: string oneofKind = 3;
      */
-    oneofKind$: string;
+    oneofKind: string;
 }
 /**
  * @generated from protobuf message spec.ReservedFieldNamesInOneof
  */
 export interface ReservedFieldNamesInOneof {
     /**
-     * @generated from protobuf oneof: oneof_group;
+     * reserved for our ADT discriminator, should be escaped
+     *
+     * @generated from protobuf field: string oneofKind = 1;
      */
-    oneofGroup: {
-        oneofKind: "oneofKind$";
-        /**
-         * reserved for our ADT discriminator, should be escaped
-         *
-         * @generated from protobuf field: string oneofKind = 1;
-         */
-        oneofKind$: string;
-    } | {
-        oneofKind: "Proto";
-        /**
-         * not allowed as object property, should be escaped
-         *
-         * @generated from protobuf field: string __proto__ = 2;
-         */
-        Proto: string;
-    } | {
-        oneofKind: "toString$";
-        /**
-         * not allowed as object property, should be escaped
-         *
-         * @generated from protobuf field: string to_string = 3;
-         */
-        toString$: string;
-    } | {
-        oneofKind: undefined;
-    };
+    oneofKind?: string;
+    /**
+     * not allowed as object property, should be escaped
+     *
+     * @generated from protobuf field: string __proto__ = 2;
+     */
+    Proto?: string;
+    /**
+     * not allowed as object property, should be escaped
+     *
+     * @generated from protobuf field: string to_string = 3;
+     */
+    toString$?: string;
 }
 /**
  * reserved word, should be escaped
@@ -282,59 +270,41 @@ export interface NoClashFields {
  */
 export interface NoClashOneof {
     /**
-     * @generated from protobuf oneof: kind;
+     * ok as object property
+     *
+     * @generated from protobuf field: string const = 1;
      */
-    kind: {
-        oneofKind: "const";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string const = 1;
-         */
-        const: string;
-    } | {
-        oneofKind: "switch";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string switch = 2;
-         */
-        switch: string;
-    } | {
-        oneofKind: "case";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string case = 3;
-         */
-        case: string;
-    } | {
-        oneofKind: "function";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string function = 4;
-         */
-        function: string;
-    } | {
-        oneofKind: "interface";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string interface = 5;
-         */
-        interface: string;
-    } | {
-        oneofKind: "return";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string return = 6;
-         */
-        return: string;
-    } | {
-        oneofKind: undefined;
-    };
+    const?: string;
+    /**
+     * ok as object property
+     *
+     * @generated from protobuf field: string switch = 2;
+     */
+    switch?: string;
+    /**
+     * ok as object property
+     *
+     * @generated from protobuf field: string case = 3;
+     */
+    case?: string;
+    /**
+     * ok as object property
+     *
+     * @generated from protobuf field: string function = 4;
+     */
+    function?: string;
+    /**
+     * ok as object property
+     *
+     * @generated from protobuf field: string interface = 5;
+     */
+    interface?: string;
+    /**
+     * ok as object property
+     *
+     * @generated from protobuf field: string return = 6;
+     */
+    return?: string;
 }
 /**
  * just here as a "namespace" for the enum
@@ -390,7 +360,7 @@ class ReservedFieldNames$Type extends MessageType$<ReservedFieldNames> {
         super("spec.ReservedFieldNames", [
             { no: 1, name: "__proto__", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "to_string", kind: "scalar", localName: "toString$", T: 9 /*ScalarType.STRING*/ },
-            { no: 3, name: "oneofKind", kind: "scalar", localName: "oneofKind$", T: 9 /*ScalarType.STRING*/ }
+            { no: 3, name: "oneofKind", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
 }
@@ -402,7 +372,7 @@ export const ReservedFieldNames = new ReservedFieldNames$Type();
 class ReservedFieldNamesInOneof$Type extends MessageType$<ReservedFieldNamesInOneof> {
     constructor() {
         super("spec.ReservedFieldNamesInOneof", [
-            { no: 1, name: "oneofKind", kind: "scalar", localName: "oneofKind$", oneof: "oneofGroup", T: 9 /*ScalarType.STRING*/ },
+            { no: 1, name: "oneofKind", kind: "scalar", oneof: "oneofGroup", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "__proto__", kind: "scalar", oneof: "oneofGroup", T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "to_string", kind: "scalar", localName: "toString$", oneof: "oneofGroup", T: 9 /*ScalarType.STRING*/ }
         ]);
@@ -703,12 +673,12 @@ export const NoClashEnumWrap = new NoClashEnumWrap$Type();
  * @generated ServiceType for protobuf service spec.NameClashService
  */
 export const NameClashService = new ServiceType("spec.NameClashService", [
-    { name: "__proto__", options: {}, I: Error, O: Error },
-    { name: "toString", localName: "toString$", options: {}, I: Error, O: Error },
-    { name: "name", localName: "name$", options: {}, I: Error, O: Error },
-    { name: "constructor", localName: "constructor$", options: {}, I: Error, O: Error },
-    { name: "methods", localName: "methods$", options: {}, I: Error, O: Error },
-    { name: "typeName", localName: "typeName$", options: {}, I: Error, O: Error },
-    { name: "options", localName: "options$", options: {}, I: Error, O: Error },
-    { name: "_transport", options: {}, I: Error, O: Error }
+    { name: "__proto__" as const, options: {} as const, I: Error, O: Error },
+    { name: "toString" as const, localName: "toString$" as const, options: {} as const, I: Error, O: Error },
+    { name: "name" as const, localName: "name$" as const, options: {} as const, I: Error, O: Error },
+    { name: "constructor" as const, localName: "constructor$" as const, options: {} as const, I: Error, O: Error },
+    { name: "methods" as const, localName: "methods$" as const, options: {} as const, I: Error, O: Error },
+    { name: "typeName" as const, localName: "typeName$" as const, options: {} as const, I: Error, O: Error },
+    { name: "options" as const, localName: "options$" as const, options: {} as const, I: Error, O: Error },
+    { name: "_transport" as const, options: {} as const, I: Error, O: Error }
 ]);

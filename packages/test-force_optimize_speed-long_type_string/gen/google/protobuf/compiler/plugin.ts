@@ -73,7 +73,7 @@ export interface CodeGeneratorRequest {
      *
      * @generated from protobuf field: repeated string file_to_generate = 1;
      */
-    fileToGenerate: string[];
+    fileToGenerate?: string[];
     /**
      * The generator parameter passed on the command-line.
      *
@@ -103,7 +103,7 @@ export interface CodeGeneratorRequest {
      *
      * @generated from protobuf field: repeated google.protobuf.FileDescriptorProto proto_file = 15;
      */
-    protoFile: FileDescriptorProto[];
+    protoFile?: FileDescriptorProto[];
     /**
      * File descriptors with all options, including source-retention options.
      * These descriptors are only provided for the files listed in
@@ -111,7 +111,7 @@ export interface CodeGeneratorRequest {
      *
      * @generated from protobuf field: repeated google.protobuf.FileDescriptorProto source_file_descriptors = 17;
      */
-    sourceFileDescriptors: FileDescriptorProto[];
+    sourceFileDescriptors?: FileDescriptorProto[];
     /**
      * The version number of protocol compiler.
      *
@@ -166,7 +166,7 @@ export interface CodeGeneratorResponse {
     /**
      * @generated from protobuf field: repeated google.protobuf.compiler.CodeGeneratorResponse.File file = 15;
      */
-    file: CodeGeneratorResponse_File[];
+    file?: CodeGeneratorResponse_File[];
 }
 /**
  * Represents a single generated file.
@@ -277,7 +277,7 @@ class Version$Type extends MessageType<Version> {
         ]);
     }
     create(value?: PartialMessage<Version>): Version {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<Version>(this, message, value);
         return message;
@@ -345,7 +345,7 @@ class CodeGeneratorRequest$Type extends MessageType<CodeGeneratorRequest> {
         ]);
     }
     create(value?: PartialMessage<CodeGeneratorRequest>): CodeGeneratorRequest {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.fileToGenerate = [];
         message.protoFile = [];
         message.sourceFileDescriptors = [];
@@ -359,16 +359,16 @@ class CodeGeneratorRequest$Type extends MessageType<CodeGeneratorRequest> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated string file_to_generate */ 1:
-                    message.fileToGenerate.push(reader.string());
+                    message.fileToGenerate?.push?.(reader.string());
                     break;
                 case /* optional string parameter */ 2:
                     message.parameter = reader.string();
                     break;
                 case /* repeated google.protobuf.FileDescriptorProto proto_file */ 15:
-                    message.protoFile.push(FileDescriptorProto.internalBinaryRead(reader, reader.uint32(), options));
+                    message.protoFile?.push?.(FileDescriptorProto.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.FileDescriptorProto source_file_descriptors */ 17:
-                    message.sourceFileDescriptors.push(FileDescriptorProto.internalBinaryRead(reader, reader.uint32(), options));
+                    message.sourceFileDescriptors?.push?.(FileDescriptorProto.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional google.protobuf.compiler.Version compiler_version */ 3:
                     message.compilerVersion = Version.internalBinaryRead(reader, reader.uint32(), options, message.compilerVersion);
@@ -386,8 +386,8 @@ class CodeGeneratorRequest$Type extends MessageType<CodeGeneratorRequest> {
     }
     internalBinaryWrite(message: CodeGeneratorRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated string file_to_generate = 1; */
-        for (let i = 0; i < message.fileToGenerate.length; i++)
-            writer.tag(1, WireType.LengthDelimited).string(message.fileToGenerate[i]);
+        for (let i = 0; i < (message.fileToGenerate?.length || 0); i++)
+            writer.tag(1, WireType.LengthDelimited).string(message.fileToGenerate?.[i] as any);
         /* optional string parameter = 2; */
         if (message.parameter !== undefined)
             writer.tag(2, WireType.LengthDelimited).string(message.parameter);
@@ -395,11 +395,11 @@ class CodeGeneratorRequest$Type extends MessageType<CodeGeneratorRequest> {
         if (message.compilerVersion)
             Version.internalBinaryWrite(message.compilerVersion, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.FileDescriptorProto proto_file = 15; */
-        for (let i = 0; i < message.protoFile.length; i++)
-            FileDescriptorProto.internalBinaryWrite(message.protoFile[i], writer.tag(15, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.protoFile?.length || 0); i++)
+            FileDescriptorProto.internalBinaryWrite(message.protoFile?.[i] as any, writer.tag(15, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.FileDescriptorProto source_file_descriptors = 17; */
-        for (let i = 0; i < message.sourceFileDescriptors.length; i++)
-            FileDescriptorProto.internalBinaryWrite(message.sourceFileDescriptors[i], writer.tag(17, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.sourceFileDescriptors?.length || 0); i++)
+            FileDescriptorProto.internalBinaryWrite(message.sourceFileDescriptors?.[i] as any, writer.tag(17, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -422,7 +422,7 @@ class CodeGeneratorResponse$Type extends MessageType<CodeGeneratorResponse> {
         ]);
     }
     create(value?: PartialMessage<CodeGeneratorResponse>): CodeGeneratorResponse {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.file = [];
         if (value !== undefined)
             reflectionMergePartial<CodeGeneratorResponse>(this, message, value);
@@ -446,7 +446,7 @@ class CodeGeneratorResponse$Type extends MessageType<CodeGeneratorResponse> {
                     message.maximumEdition = reader.int32();
                     break;
                 case /* repeated google.protobuf.compiler.CodeGeneratorResponse.File file */ 15:
-                    message.file.push(CodeGeneratorResponse_File.internalBinaryRead(reader, reader.uint32(), options));
+                    message.file?.push?.(CodeGeneratorResponse_File.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -473,8 +473,8 @@ class CodeGeneratorResponse$Type extends MessageType<CodeGeneratorResponse> {
         if (message.maximumEdition !== undefined)
             writer.tag(4, WireType.Varint).int32(message.maximumEdition);
         /* repeated google.protobuf.compiler.CodeGeneratorResponse.File file = 15; */
-        for (let i = 0; i < message.file.length; i++)
-            CodeGeneratorResponse_File.internalBinaryWrite(message.file[i], writer.tag(15, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.file?.length || 0); i++)
+            CodeGeneratorResponse_File.internalBinaryWrite(message.file?.[i] as any, writer.tag(15, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -496,7 +496,7 @@ class CodeGeneratorResponse_File$Type extends MessageType<CodeGeneratorResponse_
         ]);
     }
     create(value?: PartialMessage<CodeGeneratorResponse_File>): CodeGeneratorResponse_File {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<CodeGeneratorResponse_File>(this, message, value);
         return message;

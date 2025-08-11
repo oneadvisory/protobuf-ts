@@ -13,7 +13,7 @@ export interface SelfReferencingMessage {
     /**
      * @generated from protobuf field: repeated spec.SelfReferencingMessage self_list = 2;
      */
-    selfList: SelfReferencingMessage[];
+    selfList?: SelfReferencingMessage[];
     /**
      * @generated from protobuf field: map<string, spec.SelfReferencingMessage> self_map = 3;
      */

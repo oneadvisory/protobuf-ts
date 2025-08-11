@@ -125,196 +125,154 @@ export interface RepeatedWellKnownTypes {
     /**
      * @generated from protobuf field: repeated google.protobuf.Any any_field = 1;
      */
-    anyField: Any[];
+    anyField?: Any[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Api api_field = 2;
      */
-    apiField: Api[];
+    apiField?: Api[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Duration duration_field = 3;
      */
-    durationField: Duration[];
+    durationField?: Duration[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Empty empty_field = 4;
      */
-    emptyField: Empty[];
+    emptyField?: Empty[];
     /**
      * @generated from protobuf field: repeated google.protobuf.FieldMask field_mask_field = 5;
      */
-    fieldMaskField: FieldMask[];
+    fieldMaskField?: FieldMask[];
     /**
      * @generated from protobuf field: repeated google.protobuf.SourceContext source_context_field = 6;
      */
-    sourceContextField: SourceContext[];
+    sourceContextField?: SourceContext[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Struct struct_field = 7;
      */
-    structField: Struct[];
+    structField?: Struct[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Timestamp timestamp_field = 8;
      */
-    timestampField: Timestamp[];
+    timestampField?: Timestamp[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Type type_field = 9;
      */
-    typeField: Type[];
+    typeField?: Type[];
     /**
      * These don't actually make a lot of sense, but they're not prohibited...
      *
      * @generated from protobuf field: repeated google.protobuf.DoubleValue double_field = 10;
      */
-    doubleField: DoubleValue[];
+    doubleField?: DoubleValue[];
     /**
      * @generated from protobuf field: repeated google.protobuf.FloatValue float_field = 11;
      */
-    floatField: FloatValue[];
+    floatField?: FloatValue[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Int64Value int64_field = 12;
      */
-    int64Field: Int64Value[];
+    int64Field?: Int64Value[];
     /**
      * @generated from protobuf field: repeated google.protobuf.UInt64Value uint64_field = 13;
      */
-    uint64Field: UInt64Value[];
+    uint64Field?: UInt64Value[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Int32Value int32_field = 14;
      */
-    int32Field: Int32Value[];
+    int32Field?: Int32Value[];
     /**
      * @generated from protobuf field: repeated google.protobuf.UInt32Value uint32_field = 15;
      */
-    uint32Field: UInt32Value[];
+    uint32Field?: UInt32Value[];
     /**
      * @generated from protobuf field: repeated google.protobuf.BoolValue bool_field = 16;
      */
-    boolField: BoolValue[];
+    boolField?: BoolValue[];
     /**
      * @generated from protobuf field: repeated google.protobuf.StringValue string_field = 17;
      */
-    stringField: StringValue[];
+    stringField?: StringValue[];
     /**
      * @generated from protobuf field: repeated google.protobuf.BytesValue bytes_field = 18;
      */
-    bytesField: BytesValue[];
+    bytesField?: BytesValue[];
 }
 /**
  * @generated from protobuf message protobuf_unittest.OneofWellKnownTypes
  */
 export interface OneofWellKnownTypes {
     /**
-     * @generated from protobuf oneof: oneof_field;
+     * @generated from protobuf field: google.protobuf.Any any_field = 1;
      */
-    oneofField: {
-        oneofKind: "anyField";
-        /**
-         * @generated from protobuf field: google.protobuf.Any any_field = 1;
-         */
-        anyField: Any;
-    } | {
-        oneofKind: "apiField";
-        /**
-         * @generated from protobuf field: google.protobuf.Api api_field = 2;
-         */
-        apiField: Api;
-    } | {
-        oneofKind: "durationField";
-        /**
-         * @generated from protobuf field: google.protobuf.Duration duration_field = 3;
-         */
-        durationField: Duration;
-    } | {
-        oneofKind: "emptyField";
-        /**
-         * @generated from protobuf field: google.protobuf.Empty empty_field = 4;
-         */
-        emptyField: Empty;
-    } | {
-        oneofKind: "fieldMaskField";
-        /**
-         * @generated from protobuf field: google.protobuf.FieldMask field_mask_field = 5;
-         */
-        fieldMaskField: FieldMask;
-    } | {
-        oneofKind: "sourceContextField";
-        /**
-         * @generated from protobuf field: google.protobuf.SourceContext source_context_field = 6;
-         */
-        sourceContextField: SourceContext;
-    } | {
-        oneofKind: "structField";
-        /**
-         * @generated from protobuf field: google.protobuf.Struct struct_field = 7;
-         */
-        structField: Struct;
-    } | {
-        oneofKind: "timestampField";
-        /**
-         * @generated from protobuf field: google.protobuf.Timestamp timestamp_field = 8;
-         */
-        timestampField: Timestamp;
-    } | {
-        oneofKind: "typeField";
-        /**
-         * @generated from protobuf field: google.protobuf.Type type_field = 9;
-         */
-        typeField: Type;
-    } | {
-        oneofKind: "doubleField";
-        /**
-         * @generated from protobuf field: google.protobuf.DoubleValue double_field = 10;
-         */
-        doubleField: DoubleValue;
-    } | {
-        oneofKind: "floatField";
-        /**
-         * @generated from protobuf field: google.protobuf.FloatValue float_field = 11;
-         */
-        floatField: FloatValue;
-    } | {
-        oneofKind: "int64Field";
-        /**
-         * @generated from protobuf field: google.protobuf.Int64Value int64_field = 12;
-         */
-        int64Field: Int64Value;
-    } | {
-        oneofKind: "uint64Field";
-        /**
-         * @generated from protobuf field: google.protobuf.UInt64Value uint64_field = 13;
-         */
-        uint64Field: UInt64Value;
-    } | {
-        oneofKind: "int32Field";
-        /**
-         * @generated from protobuf field: google.protobuf.Int32Value int32_field = 14;
-         */
-        int32Field: Int32Value;
-    } | {
-        oneofKind: "uint32Field";
-        /**
-         * @generated from protobuf field: google.protobuf.UInt32Value uint32_field = 15;
-         */
-        uint32Field: UInt32Value;
-    } | {
-        oneofKind: "boolField";
-        /**
-         * @generated from protobuf field: google.protobuf.BoolValue bool_field = 16;
-         */
-        boolField: BoolValue;
-    } | {
-        oneofKind: "stringField";
-        /**
-         * @generated from protobuf field: google.protobuf.StringValue string_field = 17;
-         */
-        stringField: StringValue;
-    } | {
-        oneofKind: "bytesField";
-        /**
-         * @generated from protobuf field: google.protobuf.BytesValue bytes_field = 18;
-         */
-        bytesField: BytesValue;
-    } | {
-        oneofKind: undefined;
-    };
+    anyField?: Any;
+    /**
+     * @generated from protobuf field: google.protobuf.Api api_field = 2;
+     */
+    apiField?: Api;
+    /**
+     * @generated from protobuf field: google.protobuf.Duration duration_field = 3;
+     */
+    durationField?: Duration;
+    /**
+     * @generated from protobuf field: google.protobuf.Empty empty_field = 4;
+     */
+    emptyField?: Empty;
+    /**
+     * @generated from protobuf field: google.protobuf.FieldMask field_mask_field = 5;
+     */
+    fieldMaskField?: FieldMask;
+    /**
+     * @generated from protobuf field: google.protobuf.SourceContext source_context_field = 6;
+     */
+    sourceContextField?: SourceContext;
+    /**
+     * @generated from protobuf field: google.protobuf.Struct struct_field = 7;
+     */
+    structField?: Struct;
+    /**
+     * @generated from protobuf field: google.protobuf.Timestamp timestamp_field = 8;
+     */
+    timestampField?: Timestamp;
+    /**
+     * @generated from protobuf field: google.protobuf.Type type_field = 9;
+     */
+    typeField?: Type;
+    /**
+     * @generated from protobuf field: google.protobuf.DoubleValue double_field = 10;
+     */
+    doubleField?: DoubleValue;
+    /**
+     * @generated from protobuf field: google.protobuf.FloatValue float_field = 11;
+     */
+    floatField?: FloatValue;
+    /**
+     * @generated from protobuf field: google.protobuf.Int64Value int64_field = 12;
+     */
+    int64Field?: Int64Value;
+    /**
+     * @generated from protobuf field: google.protobuf.UInt64Value uint64_field = 13;
+     */
+    uint64Field?: UInt64Value;
+    /**
+     * @generated from protobuf field: google.protobuf.Int32Value int32_field = 14;
+     */
+    int32Field?: Int32Value;
+    /**
+     * @generated from protobuf field: google.protobuf.UInt32Value uint32_field = 15;
+     */
+    uint32Field?: UInt32Value;
+    /**
+     * @generated from protobuf field: google.protobuf.BoolValue bool_field = 16;
+     */
+    boolField?: BoolValue;
+    /**
+     * @generated from protobuf field: google.protobuf.StringValue string_field = 17;
+     */
+    stringField?: StringValue;
+    /**
+     * @generated from protobuf field: google.protobuf.BytesValue bytes_field = 18;
+     */
+    bytesField?: BytesValue;
 }
 /**
  * A map field for each well-known type. We only

@@ -7,7 +7,7 @@
  * - object (with any JSON value as property)
  * - array (with any JSON value as element)
  */
-export type JsonValue = number | string | boolean | null | JsonObject | JsonArray;
+export type JsonValue = number | string | boolean | null | JsonObject | JsonArray | undefined;
 
 
 /**

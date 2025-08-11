@@ -28,7 +28,7 @@ class StructMessage$Type extends MessageType<StructMessage> {
         ]);
     }
     create(value?: PartialMessage<StructMessage>): StructMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<StructMessage>(this, message, value);
         return message;

@@ -32,6 +32,6 @@ export class EmptyServiceClient extends grpc.Client implements IEmptyServiceClie
      */
     get(input: Empty, metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: Empty) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: Empty) => void), callback?: ((err: grpc.ServiceError | null, value?: Empty) => void)): grpc.ClientUnaryCall {
         const method = EmptyService.methods[0];
-        return this.makeUnaryRequest<Empty, Empty>(`/${EmptyService.typeName}/${method.name}`, (value: Empty): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Empty => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), (options as any), (callback as any));
+        return this.makeUnaryRequest<Empty, Empty>(`/${EmptyService.typeName}/${method.name}`, (value: Empty): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Empty => method.O.fromBinary(value, this._binaryOptions), input, metadata as any, options as any, callback as any);
     }
 }

@@ -60,7 +60,7 @@ export class ExampleServiceClient extends grpc.Client implements IExampleService
      */
     unary(input: ExampleRequest, metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: ExampleResponse) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: ExampleResponse) => void), callback?: ((err: grpc.ServiceError | null, value?: ExampleResponse) => void)): grpc.ClientUnaryCall {
         const method = ExampleService.methods[0];
-        return this.makeUnaryRequest<ExampleRequest, ExampleResponse>(`/${ExampleService.typeName}/${method.name}`, (value: ExampleRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): ExampleResponse => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), (options as any), (callback as any));
+        return this.makeUnaryRequest<ExampleRequest, ExampleResponse>(`/${ExampleService.typeName}/${method.name}`, (value: ExampleRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): ExampleResponse => method.O.fromBinary(value, this._binaryOptions), input, metadata as any, options as any, callback as any);
     }
     /**
      * An example server-streaming call.
@@ -69,7 +69,7 @@ export class ExampleServiceClient extends grpc.Client implements IExampleService
      */
     serverStream(input: ExampleRequest, metadata?: grpc.Metadata | grpc.CallOptions, options?: grpc.CallOptions): grpc.ClientReadableStream<ExampleResponse> {
         const method = ExampleService.methods[1];
-        return this.makeServerStreamRequest<ExampleRequest, ExampleResponse>(`/${ExampleService.typeName}/${method.name}`, (value: ExampleRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): ExampleResponse => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), options);
+        return this.makeServerStreamRequest<ExampleRequest, ExampleResponse>(`/${ExampleService.typeName}/${method.name}`, (value: ExampleRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): ExampleResponse => method.O.fromBinary(value, this._binaryOptions), input, metadata as any, options);
     }
     /**
      * An example client-streaming call.
@@ -78,7 +78,7 @@ export class ExampleServiceClient extends grpc.Client implements IExampleService
      */
     clientStream(metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: ExampleResponse) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: ExampleResponse) => void), callback?: ((err: grpc.ServiceError | null, value?: ExampleResponse) => void)): grpc.ClientWritableStream<ExampleRequest> {
         const method = ExampleService.methods[2];
-        return this.makeClientStreamRequest<ExampleRequest, ExampleResponse>(`/${ExampleService.typeName}/${method.name}`, (value: ExampleRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): ExampleResponse => method.O.fromBinary(value, this._binaryOptions), (metadata as any), (options as any), (callback as any));
+        return this.makeClientStreamRequest<ExampleRequest, ExampleResponse>(`/${ExampleService.typeName}/${method.name}`, (value: ExampleRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): ExampleResponse => method.O.fromBinary(value, this._binaryOptions), metadata as any, options as any, callback as any);
     }
     /**
      * An example bidi-streaming call.
@@ -87,6 +87,6 @@ export class ExampleServiceClient extends grpc.Client implements IExampleService
      */
     bidi(metadata?: grpc.Metadata | grpc.CallOptions, options?: grpc.CallOptions): grpc.ClientDuplexStream<ExampleRequest, ExampleResponse> {
         const method = ExampleService.methods[3];
-        return this.makeBidiStreamRequest<ExampleRequest, ExampleResponse>(`/${ExampleService.typeName}/${method.name}`, (value: ExampleRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): ExampleResponse => method.O.fromBinary(value, this._binaryOptions), (metadata as any), options);
+        return this.makeBidiStreamRequest<ExampleRequest, ExampleResponse>(`/${ExampleService.typeName}/${method.name}`, (value: ExampleRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): ExampleResponse => method.O.fromBinary(value, this._binaryOptions), metadata as any, options);
     }
 }

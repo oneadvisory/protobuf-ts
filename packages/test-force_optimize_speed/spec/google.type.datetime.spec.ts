@@ -17,11 +17,9 @@ describe('google.type.DateTime', function () {
             expect(nowPb.hours).toBe(nowDate.getHours());
             expect(nowPb.minutes).toBe(nowDate.getMinutes());
             expect(nowPb.seconds).toBe(nowDate.getSeconds());
-            expect(nowPb.timeOffset.oneofKind).toBe("utcOffset");
-            if (nowPb.timeOffset.oneofKind === "utcOffset") {
-                let offsetSeconds = PbLong.from(nowPb.timeOffset.utcOffset.seconds).toNumber();
-                expect(offsetSeconds / 60).toBe(nowDate.getTimezoneOffset());
-            }
+            expect(nowPb.utcOffset).toBeTruthy();
+            let offsetSeconds = PbLong.from(nowPb.utcOffset!.seconds).toNumber();
+            expect(offsetSeconds / 60).toBe(nowDate.getTimezoneOffset());
         });
     });
 
@@ -36,9 +34,6 @@ describe('google.type.DateTime', function () {
                 minutes: 45,
                 seconds: 59,
                 nanos: 500 * 1000,
-                timeOffset: {
-                    oneofKind: undefined
-                }
             });
             expect(dt).toBeInstanceOf(globalThis.Date);
         });
@@ -51,9 +46,6 @@ describe('google.type.DateTime', function () {
                 minutes: 45,
                 seconds: 59,
                 nanos: 500 * 1000,
-                timeOffset: {
-                    oneofKind: undefined
-                }
             });
             expect(dt.getFullYear()).toBe(2020);
             expect(dt.getMonth()).toBe(11);
@@ -72,12 +64,9 @@ describe('google.type.DateTime', function () {
                 minutes: 45,
                 seconds: 59,
                 nanos: 500 * 1000,
-                timeOffset: {
-                    oneofKind: "timeZone",
-                    timeZone: {
-                        id: "foo",
-                        version: "bar"
-                    }
+                timeZone: {
+                    id: "foo",
+                    version: "bar"
                 }
             };
             expect(() => DateTime.toJsDate(dt))
@@ -94,10 +83,7 @@ describe('google.type.DateTime', function () {
                 minutes: now.getUTCMinutes(),
                 seconds: now.getUTCSeconds(),
                 nanos: now.getUTCMilliseconds() * 1000,
-                timeOffset: {
-                    oneofKind: "utcOffset",
-                    utcOffset: utcOffset
-                }
+                utcOffset: utcOffset
             });
             expect(dt.getFullYear()).toBe(now.getFullYear());
             expect(dt.getMonth()).toBe(now.getMonth());
@@ -120,12 +106,9 @@ describe('google.type.DateTime', function () {
             expect(dt.minutes).toBe(now.getMinutes());
             expect(dt.seconds).toBe(now.getSeconds());
             expect(dt.nanos).toBe(now.getMilliseconds() * 1000);
-            expect(dt.timeOffset.oneofKind).toBe("utcOffset");
-            if (dt.timeOffset.oneofKind === "utcOffset") {
-                let act = dt.timeOffset.utcOffset;
-                let exp = makeDuration(now.getTimezoneOffset() * 60);
-                expect(act).toEqual(exp);
-            }
+            let act = dt.utcOffset;
+            let exp = makeDuration(now.getTimezoneOffset() * 60);
+            expect(act).toEqual(exp);
         });
     });
 

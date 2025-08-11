@@ -157,63 +157,63 @@ export interface TestAllTypes {
      *
      * @generated from protobuf field: repeated int32 repeated_int32 = 31;
      */
-    repeatedInt32: number[];
+    repeatedInt32?: number[];
     /**
      * @generated from protobuf field: repeated int64 repeated_int64 = 32;
      */
-    repeatedInt64: string[];
+    repeatedInt64?: string[];
     /**
      * @generated from protobuf field: repeated uint32 repeated_uint32 = 33;
      */
-    repeatedUint32: number[];
+    repeatedUint32?: number[];
     /**
      * @generated from protobuf field: repeated uint64 repeated_uint64 = 34;
      */
-    repeatedUint64: string[];
+    repeatedUint64?: string[];
     /**
      * @generated from protobuf field: repeated sint32 repeated_sint32 = 35;
      */
-    repeatedSint32: number[];
+    repeatedSint32?: number[];
     /**
      * @generated from protobuf field: repeated sint64 repeated_sint64 = 36;
      */
-    repeatedSint64: string[];
+    repeatedSint64?: string[];
     /**
      * @generated from protobuf field: repeated fixed32 repeated_fixed32 = 37;
      */
-    repeatedFixed32: number[];
+    repeatedFixed32?: number[];
     /**
      * @generated from protobuf field: repeated fixed64 repeated_fixed64 = 38;
      */
-    repeatedFixed64: string[];
+    repeatedFixed64?: string[];
     /**
      * @generated from protobuf field: repeated sfixed32 repeated_sfixed32 = 39;
      */
-    repeatedSfixed32: number[];
+    repeatedSfixed32?: number[];
     /**
      * @generated from protobuf field: repeated sfixed64 repeated_sfixed64 = 40;
      */
-    repeatedSfixed64: string[];
+    repeatedSfixed64?: string[];
     /**
      * @generated from protobuf field: repeated float repeated_float = 41;
      */
-    repeatedFloat: number[];
+    repeatedFloat?: number[];
     /**
      * @generated from protobuf field: repeated double repeated_double = 42;
      */
-    repeatedDouble: number[];
+    repeatedDouble?: number[];
     /**
      * @generated from protobuf field: repeated bool repeated_bool = 43;
      */
-    repeatedBool: boolean[];
+    repeatedBool?: boolean[];
     /**
      * @generated from protobuf field: repeated string repeated_string = 44;
      */
-    repeatedString: string[];
+    repeatedString?: string[];
     /**
      * @generated from protobuf field: repeated bytes repeated_bytes = 45;
      */
-    repeatedBytes: Uint8Array[];
+    repeatedBytes?: Uint8Array[];
     // Groups are not allowed in proto3.
     // repeated group RepeatedGroup = 46 {
     //   optional int32 a = 47;
@@ -222,23 +222,23 @@ export interface TestAllTypes {
     /**
      * @generated from protobuf field: repeated proto3_arena_lite_unittest.TestAllTypes.NestedMessage repeated_nested_message = 48;
      */
-    repeatedNestedMessage: TestAllTypes_NestedMessage[];
+    repeatedNestedMessage?: TestAllTypes_NestedMessage[];
     /**
      * @generated from protobuf field: repeated proto3_arena_lite_unittest.ForeignMessage repeated_foreign_message = 49;
      */
-    repeatedForeignMessage: ForeignMessage[];
+    repeatedForeignMessage?: ForeignMessage[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest_import.ImportMessage repeated_import_message = 50;
      */
-    repeatedImportMessage: ImportMessage[];
+    repeatedImportMessage?: ImportMessage[];
     /**
      * @generated from protobuf field: repeated proto3_arena_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum = 51;
      */
-    repeatedNestedEnum: TestAllTypes_NestedEnum[];
+    repeatedNestedEnum?: TestAllTypes_NestedEnum[];
     /**
      * @generated from protobuf field: repeated proto3_arena_lite_unittest.ForeignEnum repeated_foreign_enum = 52;
      */
-    repeatedForeignEnum: ForeignEnum[];
+    repeatedForeignEnum?: ForeignEnum[];
     // Omitted (compared to unittest.proto) because proto2 enums are not allowed
     // inside proto2 messages.
     // 
@@ -247,45 +247,31 @@ export interface TestAllTypes {
     /**
      * @generated from protobuf field: repeated string repeated_string_piece = 54;
      */
-    repeatedStringPiece: string[];
+    repeatedStringPiece?: string[];
     /**
      * @generated from protobuf field: repeated string repeated_cord = 55;
      */
-    repeatedCord: string[];
+    repeatedCord?: string[];
     /**
      * @generated from protobuf field: repeated proto3_arena_lite_unittest.TestAllTypes.NestedMessage repeated_lazy_message = 57;
      */
-    repeatedLazyMessage: TestAllTypes_NestedMessage[];
+    repeatedLazyMessage?: TestAllTypes_NestedMessage[];
     /**
-     * @generated from protobuf oneof: oneof_field;
+     * @generated from protobuf field: uint32 oneof_uint32 = 111;
      */
-    oneofField: {
-        oneofKind: "oneofUint32";
-        /**
-         * @generated from protobuf field: uint32 oneof_uint32 = 111;
-         */
-        oneofUint32: number;
-    } | {
-        oneofKind: "oneofNestedMessage";
-        /**
-         * @generated from protobuf field: proto3_arena_lite_unittest.TestAllTypes.NestedMessage oneof_nested_message = 112;
-         */
-        oneofNestedMessage: TestAllTypes_NestedMessage;
-    } | {
-        oneofKind: "oneofString";
-        /**
-         * @generated from protobuf field: string oneof_string = 113;
-         */
-        oneofString: string;
-    } | {
-        oneofKind: "oneofBytes";
-        /**
-         * @generated from protobuf field: bytes oneof_bytes = 114;
-         */
-        oneofBytes: Uint8Array;
-    } | {
-        oneofKind: undefined;
-    };
+    oneofUint32?: number;
+    /**
+     * @generated from protobuf field: proto3_arena_lite_unittest.TestAllTypes.NestedMessage oneof_nested_message = 112;
+     */
+    oneofNestedMessage?: TestAllTypes_NestedMessage;
+    /**
+     * @generated from protobuf field: string oneof_string = 113;
+     */
+    oneofString?: string;
+    /**
+     * @generated from protobuf field: bytes oneof_bytes = 114;
+     */
+    oneofBytes?: Uint8Array;
 }
 /**
  * @generated from protobuf message proto3_arena_lite_unittest.TestAllTypes.NestedMessage
@@ -336,59 +322,59 @@ export interface TestPackedTypes {
     /**
      * @generated from protobuf field: repeated int32 packed_int32 = 90 [packed = true];
      */
-    packedInt32: number[];
+    packedInt32?: number[];
     /**
      * @generated from protobuf field: repeated int64 packed_int64 = 91 [packed = true];
      */
-    packedInt64: string[];
+    packedInt64?: string[];
     /**
      * @generated from protobuf field: repeated uint32 packed_uint32 = 92 [packed = true];
      */
-    packedUint32: number[];
+    packedUint32?: number[];
     /**
      * @generated from protobuf field: repeated uint64 packed_uint64 = 93 [packed = true];
      */
-    packedUint64: string[];
+    packedUint64?: string[];
     /**
      * @generated from protobuf field: repeated sint32 packed_sint32 = 94 [packed = true];
      */
-    packedSint32: number[];
+    packedSint32?: number[];
     /**
      * @generated from protobuf field: repeated sint64 packed_sint64 = 95 [packed = true];
      */
-    packedSint64: string[];
+    packedSint64?: string[];
     /**
      * @generated from protobuf field: repeated fixed32 packed_fixed32 = 96 [packed = true];
      */
-    packedFixed32: number[];
+    packedFixed32?: number[];
     /**
      * @generated from protobuf field: repeated fixed64 packed_fixed64 = 97 [packed = true];
      */
-    packedFixed64: string[];
+    packedFixed64?: string[];
     /**
      * @generated from protobuf field: repeated sfixed32 packed_sfixed32 = 98 [packed = true];
      */
-    packedSfixed32: number[];
+    packedSfixed32?: number[];
     /**
      * @generated from protobuf field: repeated sfixed64 packed_sfixed64 = 99 [packed = true];
      */
-    packedSfixed64: string[];
+    packedSfixed64?: string[];
     /**
      * @generated from protobuf field: repeated float packed_float = 100 [packed = true];
      */
-    packedFloat: number[];
+    packedFloat?: number[];
     /**
      * @generated from protobuf field: repeated double packed_double = 101 [packed = true];
      */
-    packedDouble: number[];
+    packedDouble?: number[];
     /**
      * @generated from protobuf field: repeated bool packed_bool = 102 [packed = true];
      */
-    packedBool: boolean[];
+    packedBool?: boolean[];
     /**
      * @generated from protobuf field: repeated proto3_arena_lite_unittest.ForeignEnum packed_enum = 103 [packed = true];
      */
-    packedEnum: ForeignEnum[];
+    packedEnum?: ForeignEnum[];
 }
 /**
  * Explicitly set packed to false
@@ -399,59 +385,59 @@ export interface TestUnpackedTypes {
     /**
      * @generated from protobuf field: repeated int32 repeated_int32 = 1 [packed = false];
      */
-    repeatedInt32: number[];
+    repeatedInt32?: number[];
     /**
      * @generated from protobuf field: repeated int64 repeated_int64 = 2 [packed = false];
      */
-    repeatedInt64: string[];
+    repeatedInt64?: string[];
     /**
      * @generated from protobuf field: repeated uint32 repeated_uint32 = 3 [packed = false];
      */
-    repeatedUint32: number[];
+    repeatedUint32?: number[];
     /**
      * @generated from protobuf field: repeated uint64 repeated_uint64 = 4 [packed = false];
      */
-    repeatedUint64: string[];
+    repeatedUint64?: string[];
     /**
      * @generated from protobuf field: repeated sint32 repeated_sint32 = 5 [packed = false];
      */
-    repeatedSint32: number[];
+    repeatedSint32?: number[];
     /**
      * @generated from protobuf field: repeated sint64 repeated_sint64 = 6 [packed = false];
      */
-    repeatedSint64: string[];
+    repeatedSint64?: string[];
     /**
      * @generated from protobuf field: repeated fixed32 repeated_fixed32 = 7 [packed = false];
      */
-    repeatedFixed32: number[];
+    repeatedFixed32?: number[];
     /**
      * @generated from protobuf field: repeated fixed64 repeated_fixed64 = 8 [packed = false];
      */
-    repeatedFixed64: string[];
+    repeatedFixed64?: string[];
     /**
      * @generated from protobuf field: repeated sfixed32 repeated_sfixed32 = 9 [packed = false];
      */
-    repeatedSfixed32: number[];
+    repeatedSfixed32?: number[];
     /**
      * @generated from protobuf field: repeated sfixed64 repeated_sfixed64 = 10 [packed = false];
      */
-    repeatedSfixed64: string[];
+    repeatedSfixed64?: string[];
     /**
      * @generated from protobuf field: repeated float repeated_float = 11 [packed = false];
      */
-    repeatedFloat: number[];
+    repeatedFloat?: number[];
     /**
      * @generated from protobuf field: repeated double repeated_double = 12 [packed = false];
      */
-    repeatedDouble: number[];
+    repeatedDouble?: number[];
     /**
      * @generated from protobuf field: repeated bool repeated_bool = 13 [packed = false];
      */
-    repeatedBool: boolean[];
+    repeatedBool?: boolean[];
     /**
      * @generated from protobuf field: repeated proto3_arena_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum = 14 [packed = false];
      */
-    repeatedNestedEnum: TestAllTypes_NestedEnum[];
+    repeatedNestedEnum?: TestAllTypes_NestedEnum[];
 }
 /**
  * This proto includes a recursively nested message.

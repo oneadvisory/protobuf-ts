@@ -75,5 +75,5 @@ export const Size = new Size$Type();
  * @generated ServiceType for protobuf service spec.haberdasher.Haberdasher
  */
 export const Haberdasher = new ServiceType("spec.haberdasher.Haberdasher", [
-    { name: "MakeHat", options: {}, I: Size, O: Hat }
+    { name: "MakeHat" as const, options: {} as const, I: Size, O: Hat }
 ]);

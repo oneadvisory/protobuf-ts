@@ -54,5 +54,5 @@ export const TestMessage = new TestMessage$Type();
  * @generated ServiceType for protobuf service protobuf_unittest.no_generic_services_test.TestService
  */
 export const TestService = new ServiceType("protobuf_unittest.no_generic_services_test.TestService", [
-    { name: "Foo", options: {}, I: TestMessage, O: TestMessage }
+    { name: "Foo" as const, options: {} as const, I: TestMessage, O: TestMessage }
 ]);

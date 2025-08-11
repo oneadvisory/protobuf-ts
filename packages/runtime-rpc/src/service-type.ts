@@ -1,4 +1,4 @@
-import {MethodInfo, normalizeMethodInfo, PartialMethodInfo, ServiceInfo} from "./reflection-info";
+import {type MethodInfo, normalizeMethodInfo, type PartialMethodInfo, type ServiceInfo} from "./reflection-info";
 import type {JsonValue} from "@protobuf-ts/runtime";
 
 

@@ -21,7 +21,7 @@ export interface ParentMessage {
     /**
      * @generated from protobuf field: repeated spec.ParentMessage.ChildMessage children = 2;
      */
-    children: ParentMessage_ChildMessage[];
+    children?: ParentMessage_ChildMessage[];
     /**
      * @generated from protobuf field: spec.ParentMessage.ChildMessage.ChildEnum child_enum = 3;
      */
@@ -116,7 +116,7 @@ class ParentMessage$Type extends MessageType<ParentMessage> {
         ]);
     }
     create(value?: PartialMessage<ParentMessage>): ParentMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.children = [];
         message.childEnum = 0;
         if (value !== undefined)
@@ -132,7 +132,7 @@ class ParentMessage$Type extends MessageType<ParentMessage> {
                     message.child = ParentMessage_ChildMessage.internalBinaryRead(reader, reader.uint32(), options, message.child);
                     break;
                 case /* repeated spec.ParentMessage.ChildMessage children */ 2:
-                    message.children.push(ParentMessage_ChildMessage.internalBinaryRead(reader, reader.uint32(), options));
+                    message.children?.push?.(ParentMessage_ChildMessage.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* spec.ParentMessage.ChildMessage.ChildEnum child_enum */ 3:
                     message.childEnum = reader.int32();
@@ -159,8 +159,8 @@ class ParentMessage$Type extends MessageType<ParentMessage> {
         if (message.child)
             ParentMessage_ChildMessage.internalBinaryWrite(message.child, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* repeated spec.ParentMessage.ChildMessage children = 2; */
-        for (let i = 0; i < message.children.length; i++)
-            ParentMessage_ChildMessage.internalBinaryWrite(message.children[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.children?.length || 0); i++)
+            ParentMessage_ChildMessage.internalBinaryWrite(message.children?.[i] as any, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* spec.ParentMessage.ChildMessage.ChildEnum child_enum = 3; */
         if (message.childEnum !== 0)
             writer.tag(3, WireType.Varint).int32(message.childEnum);
@@ -188,7 +188,7 @@ class ParentMessage_ChildMessage$Type extends MessageType<ParentMessage_ChildMes
         ]);
     }
     create(value?: PartialMessage<ParentMessage_ChildMessage>): ParentMessage_ChildMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.child = "";
         if (value !== undefined)
             reflectionMergePartial<ParentMessage_ChildMessage>(this, message, value);
@@ -235,7 +235,7 @@ class ParentMessage_ChildMessage_GrandChildMessage$Type extends MessageType<Pare
         ]);
     }
     create(value?: PartialMessage<ParentMessage_ChildMessage_GrandChildMessage>): ParentMessage_ChildMessage_GrandChildMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.grandChild = "";
         if (value !== undefined)
             reflectionMergePartial<ParentMessage_ChildMessage_GrandChildMessage>(this, message, value);

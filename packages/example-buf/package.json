@@ -12,7 +12,7 @@
     "ts-node": "^8.10.2"
   },
   "devDependencies": {
-    "typescript": "^4.4.3",
+    "typescript": "^5.x.x",
     "@protobuf-ts/plugin": "^2.11.1",
     "@bufbuild/buf": "^1.50.1"
   }

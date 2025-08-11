@@ -37,5 +37,5 @@ export const AnnoGetResponse = new AnnoGetResponse$Type();
  * @generated ServiceType for protobuf service spec.AnnotatedService
  */
 export const AnnotatedService = new ServiceType("spec.AnnotatedService", [
-    { name: "Get", idempotency: "NO_SIDE_EFFECTS", options: { "google.api.http": { get: "/v1/{name=messages/*}", additionalBindings: [{ get: "xxx" }, { get: "yyy" }] }, "spec.rpc_foo": true, "spec.rpc_bar": "hello", "spec.rpc_baz": 9, "spec.rpc_bay": 10 }, I: AnnoGetRequest, O: AnnoGetResponse }
+    { name: "Get" as const, idempotency: "NO_SIDE_EFFECTS" as const, options: { "google.api.http": { get: "/v1/{name=messages/*}", put: undefined, post: undefined, delete: undefined, patch: undefined, custom: undefined, additionalBindings: [{ get: "xxx", put: undefined, post: undefined, delete: undefined, patch: undefined, custom: undefined }, { get: "yyy", put: undefined, post: undefined, delete: undefined, patch: undefined, custom: undefined }] }, "spec.rpc_foo": true, "spec.rpc_bar": "hello", "spec.rpc_baz": 9, "spec.rpc_bay": 10 } as const, I: AnnoGetRequest, O: AnnoGetResponse }
 ], { "spec.service_foo": true });

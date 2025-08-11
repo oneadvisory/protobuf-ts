@@ -60,19 +60,19 @@ export interface Type {
      *
      * @generated from protobuf field: repeated google.protobuf.Field fields = 2;
      */
-    fields: Field[];
+    fields?: Field[];
     /**
      * The list of types appearing in `oneof` definitions in this type.
      *
      * @generated from protobuf field: repeated string oneofs = 3;
      */
-    oneofs: string[];
+    oneofs?: string[];
     /**
      * The protocol buffer options.
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 4;
      */
-    options: Option[];
+    options?: Option[];
     /**
      * The source context.
      *
@@ -147,7 +147,7 @@ export interface Field {
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 9;
      */
-    options: Option[];
+    options?: Option[];
     /**
      * The field JSON name.
      *
@@ -330,13 +330,13 @@ export interface Enum {
      *
      * @generated from protobuf field: repeated google.protobuf.EnumValue enumvalue = 2;
      */
-    enumvalue: EnumValue[];
+    enumvalue?: EnumValue[];
     /**
      * Protocol buffer options.
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 3;
      */
-    options: Option[];
+    options?: Option[];
     /**
      * The source context.
      *
@@ -379,7 +379,7 @@ export interface EnumValue {
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 3;
      */
-    options: Option[];
+    options?: Option[];
 }
 /**
  * A protocol buffer option, which can be attached to a message, field,
@@ -446,7 +446,7 @@ class Type$Type extends MessageType<Type> {
         ]);
     }
     create(value?: PartialMessage<Type>): Type {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         message.fields = [];
         message.oneofs = [];
@@ -466,13 +466,13 @@ class Type$Type extends MessageType<Type> {
                     message.name = reader.string();
                     break;
                 case /* repeated google.protobuf.Field fields */ 2:
-                    message.fields.push(Field.internalBinaryRead(reader, reader.uint32(), options));
+                    message.fields?.push?.(Field.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated string oneofs */ 3:
-                    message.oneofs.push(reader.string());
+                    message.oneofs?.push?.(reader.string());
                     break;
                 case /* repeated google.protobuf.Option options */ 4:
-                    message.options.push(Option.internalBinaryRead(reader, reader.uint32(), options));
+                    message.options?.push?.(Option.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* google.protobuf.SourceContext source_context */ 5:
                     message.sourceContext = SourceContext.internalBinaryRead(reader, reader.uint32(), options, message.sourceContext);
@@ -499,14 +499,14 @@ class Type$Type extends MessageType<Type> {
         if (message.name !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.name);
         /* repeated google.protobuf.Field fields = 2; */
-        for (let i = 0; i < message.fields.length; i++)
-            Field.internalBinaryWrite(message.fields[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.fields?.length || 0); i++)
+            Field.internalBinaryWrite(message.fields?.[i] as any, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* repeated string oneofs = 3; */
-        for (let i = 0; i < message.oneofs.length; i++)
-            writer.tag(3, WireType.LengthDelimited).string(message.oneofs[i]);
+        for (let i = 0; i < (message.oneofs?.length || 0); i++)
+            writer.tag(3, WireType.LengthDelimited).string(message.oneofs?.[i] as any);
         /* repeated google.protobuf.Option options = 4; */
-        for (let i = 0; i < message.options.length; i++)
-            Option.internalBinaryWrite(message.options[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.options?.length || 0); i++)
+            Option.internalBinaryWrite(message.options?.[i] as any, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.SourceContext source_context = 5; */
         if (message.sourceContext)
             SourceContext.internalBinaryWrite(message.sourceContext, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
@@ -543,7 +543,7 @@ class Field$Type extends MessageType<Field> {
         ]);
     }
     create(value?: PartialMessage<Field>): Field {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.kind = 0;
         message.cardinality = 0;
         message.number = 0;
@@ -585,7 +585,7 @@ class Field$Type extends MessageType<Field> {
                     message.packed = reader.bool();
                     break;
                 case /* repeated google.protobuf.Option options */ 9:
-                    message.options.push(Option.internalBinaryRead(reader, reader.uint32(), options));
+                    message.options?.push?.(Option.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* string json_name */ 10:
                     message.jsonName = reader.string();
@@ -627,8 +627,8 @@ class Field$Type extends MessageType<Field> {
         if (message.packed !== false)
             writer.tag(8, WireType.Varint).bool(message.packed);
         /* repeated google.protobuf.Option options = 9; */
-        for (let i = 0; i < message.options.length; i++)
-            Option.internalBinaryWrite(message.options[i], writer.tag(9, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.options?.length || 0); i++)
+            Option.internalBinaryWrite(message.options?.[i] as any, writer.tag(9, WireType.LengthDelimited).fork(), options).join();
         /* string json_name = 10; */
         if (message.jsonName !== "")
             writer.tag(10, WireType.LengthDelimited).string(message.jsonName);
@@ -658,7 +658,7 @@ class Enum$Type extends MessageType<Enum> {
         ]);
     }
     create(value?: PartialMessage<Enum>): Enum {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         message.enumvalue = [];
         message.options = [];
@@ -677,10 +677,10 @@ class Enum$Type extends MessageType<Enum> {
                     message.name = reader.string();
                     break;
                 case /* repeated google.protobuf.EnumValue enumvalue */ 2:
-                    message.enumvalue.push(EnumValue.internalBinaryRead(reader, reader.uint32(), options));
+                    message.enumvalue?.push?.(EnumValue.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.Option options */ 3:
-                    message.options.push(Option.internalBinaryRead(reader, reader.uint32(), options));
+                    message.options?.push?.(Option.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* google.protobuf.SourceContext source_context */ 4:
                     message.sourceContext = SourceContext.internalBinaryRead(reader, reader.uint32(), options, message.sourceContext);
@@ -707,11 +707,11 @@ class Enum$Type extends MessageType<Enum> {
         if (message.name !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.name);
         /* repeated google.protobuf.EnumValue enumvalue = 2; */
-        for (let i = 0; i < message.enumvalue.length; i++)
-            EnumValue.internalBinaryWrite(message.enumvalue[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.enumvalue?.length || 0); i++)
+            EnumValue.internalBinaryWrite(message.enumvalue?.[i] as any, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Option options = 3; */
-        for (let i = 0; i < message.options.length; i++)
-            Option.internalBinaryWrite(message.options[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.options?.length || 0); i++)
+            Option.internalBinaryWrite(message.options?.[i] as any, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.SourceContext source_context = 4; */
         if (message.sourceContext)
             SourceContext.internalBinaryWrite(message.sourceContext, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
@@ -741,7 +741,7 @@ class EnumValue$Type extends MessageType<EnumValue> {
         ]);
     }
     create(value?: PartialMessage<EnumValue>): EnumValue {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         message.number = 0;
         message.options = [];
@@ -761,7 +761,7 @@ class EnumValue$Type extends MessageType<EnumValue> {
                     message.number = reader.int32();
                     break;
                 case /* repeated google.protobuf.Option options */ 3:
-                    message.options.push(Option.internalBinaryRead(reader, reader.uint32(), options));
+                    message.options?.push?.(Option.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -782,8 +782,8 @@ class EnumValue$Type extends MessageType<EnumValue> {
         if (message.number !== 0)
             writer.tag(2, WireType.Varint).int32(message.number);
         /* repeated google.protobuf.Option options = 3; */
-        for (let i = 0; i < message.options.length; i++)
-            Option.internalBinaryWrite(message.options[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.options?.length || 0); i++)
+            Option.internalBinaryWrite(message.options?.[i] as any, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -803,7 +803,7 @@ class Option$Type extends MessageType<Option> {
         ]);
     }
     create(value?: PartialMessage<Option>): Option {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         if (value !== undefined)
             reflectionMergePartial<Option>(this, message, value);

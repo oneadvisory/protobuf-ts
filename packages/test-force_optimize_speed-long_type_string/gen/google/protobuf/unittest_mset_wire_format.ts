@@ -47,7 +47,7 @@ class TestMessageSet$Type extends MessageType<TestMessageSet> {
         super("proto2_wireformat_unittest.TestMessageSet", []);
     }
     create(value?: PartialMessage<TestMessageSet>): TestMessageSet {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestMessageSet>(this, message, value);
         return message;
@@ -87,7 +87,7 @@ class TestMessageSetWireFormatContainer$Type extends MessageType<TestMessageSetW
         ]);
     }
     create(value?: PartialMessage<TestMessageSetWireFormatContainer>): TestMessageSetWireFormatContainer {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestMessageSetWireFormatContainer>(this, message, value);
         return message;

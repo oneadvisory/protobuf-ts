@@ -22,7 +22,7 @@ class ImplicitlyDeprecatedMessage$Type extends MessageType<ImplicitlyDeprecatedM
         super("spec.ImplicitlyDeprecatedMessage", []);
     }
     create(value?: PartialMessage<ImplicitlyDeprecatedMessage>): ImplicitlyDeprecatedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ImplicitlyDeprecatedMessage>(this, message, value);
         return message;

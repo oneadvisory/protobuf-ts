@@ -29,7 +29,7 @@ class MessageWithExcludedOptions$Type extends MessageType<MessageWithExcludedOpt
         ]);
     }
     create(value?: PartialMessage<MessageWithExcludedOptions>): MessageWithExcludedOptions {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.field = 0;
         if (value !== undefined)
             reflectionMergePartial<MessageWithExcludedOptions>(this, message, value);
@@ -72,5 +72,5 @@ export const MessageWithExcludedOptions = new MessageWithExcludedOptions$Type();
  * @generated ServiceType for protobuf service spec.ServiceWithExcludedOptions
  */
 export const ServiceWithExcludedOptions = new ServiceType("spec.ServiceWithExcludedOptions", [
-    { name: "Test", options: { "spec.mtd_opt2": true, "spec.mtd_foo": true }, I: Empty, O: Empty }
+    { name: "Test" as const, options: { "spec.mtd_opt2": true, "spec.mtd_foo": true } as const, I: Empty, O: Empty }
 ]);

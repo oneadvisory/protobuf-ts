@@ -17,7 +17,7 @@
     "@protobuf-ts/runtime": "^2.11.1",
     "@protobuf-ts/runtime-rpc": "^2.11.1",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "typescript": "5.x.x"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.50.1",

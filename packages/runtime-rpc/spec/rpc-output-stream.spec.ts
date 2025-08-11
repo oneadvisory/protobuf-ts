@@ -21,7 +21,7 @@ describe('RpcOutputStreamController', function () {
             ctrl.notifyComplete();
             fail('missing expected error');
         } catch (e) {
-            expect(e.message).toBe('stream is closed')
+            expect((e as Error).message).toBe('stream is closed')
         }
     });
 
@@ -31,7 +31,7 @@ describe('RpcOutputStreamController', function () {
             ctrl.notifyError(new Error('testing'));
             fail('missing expected error');
         } catch (e) {
-            expect(e.message).toBe('stream is closed')
+            expect((e as Error).message).toBe('stream is closed')
         }
     });
 
@@ -41,7 +41,7 @@ describe('RpcOutputStreamController', function () {
             ctrl.notifyMessage({id: "foo"});
             fail('missing expected error');
         } catch (e) {
-            expect(e.message).toBe('stream is closed')
+            expect((e as Error).message).toBe('stream is closed')
         }
     });
 
@@ -51,9 +51,9 @@ describe('RpcOutputStreamController', function () {
         ctrl.notifyError(new Error());
         expect(calledBack).toBeDefined();
         if (calledBack) {
-            expect(calledBack!.message).toBeUndefined();
-            expect(calledBack!.error).toBeDefined();
-            expect(calledBack!.complete).toBeFalse();
+            expect((calledBack as any).message).toBeUndefined();
+            expect((calledBack as any).error).toBeDefined();
+            expect((calledBack as any).complete).toBeFalse();
         }
     });
 
@@ -278,7 +278,7 @@ describe('RpcOutputStream', function () {
                 }
                 fail('missing expected error');
             } catch (e) {
-                expect(e.message).toBe('testing')
+                expect((e as Error).message).toBe('testing')
             }
         });
 
@@ -336,7 +336,7 @@ describe('RpcOutputStream', function () {
                     fail('missing expected error');
                 }
             } catch (e) {
-                expect(e.message).toBe('testing')
+                expect((e as Error).message).toBe('testing')
             }
         });
 

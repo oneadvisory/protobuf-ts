@@ -7,5 +7,5 @@ import { ServiceType } from "@protobuf-ts/runtime-rpc";
  * @generated ServiceType for protobuf service spec.EmptyService
  */
 export const EmptyService = new ServiceType("spec.EmptyService", [
-    { name: "Get", options: {}, I: Empty, O: Empty }
+    { name: "Get" as const, options: {} as const, I: Empty, O: Empty }
 ]);

@@ -30,7 +30,7 @@ class FieldMaskMessage$Type extends MessageType<FieldMaskMessage> {
         ]);
     }
     create(value?: PartialMessage<FieldMaskMessage>): FieldMaskMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<FieldMaskMessage>(this, message, value);
         return message;

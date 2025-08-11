@@ -21,7 +21,7 @@ export interface EnumFieldMessage {
     /**
      * @generated from protobuf field: repeated spec.SimpleEnum repeated_enum_field = 2;
      */
-    repeatedEnumField: SimpleEnum[];
+    repeatedEnumField?: SimpleEnum[];
     /**
      * @generated from protobuf field: spec.AliasEnum alias_enum_field = 3;
      */
@@ -124,7 +124,7 @@ class EnumFieldMessage$Type extends MessageType<EnumFieldMessage> {
         ]);
     }
     create(value?: PartialMessage<EnumFieldMessage>): EnumFieldMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.enumField = 0;
         message.repeatedEnumField = [];
         message.aliasEnumField = 0;
@@ -144,9 +144,9 @@ class EnumFieldMessage$Type extends MessageType<EnumFieldMessage> {
                 case /* repeated spec.SimpleEnum repeated_enum_field */ 2:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedEnumField.push(reader.int32());
+                            message.repeatedEnumField?.push?.(reader.int32());
                     else
-                        message.repeatedEnumField.push(reader.int32());
+                        message.repeatedEnumField?.push?.(reader.int32());
                     break;
                 case /* spec.AliasEnum alias_enum_field */ 3:
                     message.aliasEnumField = reader.int32();
@@ -170,7 +170,7 @@ class EnumFieldMessage$Type extends MessageType<EnumFieldMessage> {
         if (message.enumField !== 0)
             writer.tag(1, WireType.Varint).int32(message.enumField);
         /* repeated spec.SimpleEnum repeated_enum_field = 2; */
-        if (message.repeatedEnumField.length) {
+        if (message.repeatedEnumField?.length) {
             writer.tag(2, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedEnumField.length; i++)
                 writer.int32(message.repeatedEnumField[i]);

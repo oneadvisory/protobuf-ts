@@ -49,7 +49,7 @@ export interface ArenaMessage {
     /**
      * @generated from protobuf field: repeated proto2_arena_unittest.NestedMessage repeated_nested_message = 1;
      */
-    repeatedNestedMessage: NestedMessage[];
+    repeatedNestedMessage?: NestedMessage[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class NestedMessage$Type extends MessageType<NestedMessage> {

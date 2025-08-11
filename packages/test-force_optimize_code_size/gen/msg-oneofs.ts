@@ -9,29 +9,17 @@ import { MessageType } from "@protobuf-ts/runtime";
  */
 export interface OneofScalarMemberMessage {
     /**
-     * Only one of (or none of) the fields below can be selected
+     * Contains the value if result available
      *
-     * @generated from protobuf oneof: result;
+     * @generated from protobuf field: int32 value = 1;
      */
-    result: {
-        oneofKind: "value";
-        /**
-         * Contains the value if result available
-         *
-         * @generated from protobuf field: int32 value = 1;
-         */
-        value: number;
-    } | {
-        oneofKind: "error";
-        /**
-         * Contains error message if result not available
-         *
-         * @generated from protobuf field: string error = 2;
-         */
-        error: string;
-    } | {
-        oneofKind: undefined;
-    };
+    value?: number;
+    /**
+     * Contains error message if result not available
+     *
+     * @generated from protobuf field: string error = 2;
+     */
+    error?: string;
 }
 /**
  * Oneof with 2 message members
@@ -40,23 +28,13 @@ export interface OneofScalarMemberMessage {
  */
 export interface OneofMessageMemberMessage {
     /**
-     * @generated from protobuf oneof: objects;
+     * @generated from protobuf field: spec.OneofMessageMemberMessage.TestMessageA a = 1;
      */
-    objects: {
-        oneofKind: "a";
-        /**
-         * @generated from protobuf field: spec.OneofMessageMemberMessage.TestMessageA a = 1;
-         */
-        a: OneofMessageMemberMessage_TestMessageA;
-    } | {
-        oneofKind: "b";
-        /**
-         * @generated from protobuf field: spec.OneofMessageMemberMessage.TestMessageB b = 2;
-         */
-        b: OneofMessageMemberMessage_TestMessageB;
-    } | {
-        oneofKind: undefined;
-    };
+    a?: OneofMessageMemberMessage_TestMessageA;
+    /**
+     * @generated from protobuf field: spec.OneofMessageMemberMessage.TestMessageB b = 2;
+     */
+    b?: OneofMessageMemberMessage_TestMessageB;
 }
 /**
  * @generated from protobuf message spec.OneofMessageMemberMessage.TestMessageA

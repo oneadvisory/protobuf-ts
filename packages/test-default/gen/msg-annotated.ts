@@ -123,7 +123,7 @@ class FieldUiBehaviour$Type extends MessageType<FieldUiBehaviour> {
         ]);
     }
     create(value?: PartialMessage<FieldUiBehaviour>): FieldUiBehaviour {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.label = "";
         message.required = false;
         if (value !== undefined)
@@ -185,7 +185,7 @@ class FieldUiBehaviour_DataSource$Type extends MessageType<FieldUiBehaviour_Data
         ]);
     }
     create(value?: PartialMessage<FieldUiBehaviour_DataSource>): FieldUiBehaviour_DataSource {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.serviceName = "";
         message.methodName = "";
         message.requestFieldName = "";
@@ -253,7 +253,7 @@ class AnnotatedMessage$Type extends MessageType<AnnotatedMessage> {
         ], { "spec.opt_example": true });
     }
     create(value?: PartialMessage<AnnotatedMessage>): AnnotatedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.notAnnotated = 0;
         message.userName = "";
         message.annScalar = 0;

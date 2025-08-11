@@ -213,7 +213,7 @@ export interface AttributeContext_Auth {
      *
      * @generated from protobuf field: repeated string audiences = 2;
      */
-    audiences: string[];
+    audiences?: string[];
     /**
      * The authorized presenter of the credential. Reflects the optional
      * Authorized Presenter (`azp`) claim within a JWT or the
@@ -254,7 +254,7 @@ export interface AttributeContext_Auth {
      *
      * @generated from protobuf field: repeated string access_levels = 5;
      */
-    accessLevels: string[];
+    accessLevels?: string[];
 }
 /**
  * This message defines attributes for an HTTP request. If the actual

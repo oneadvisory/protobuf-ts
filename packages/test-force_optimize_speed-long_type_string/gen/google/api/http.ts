@@ -40,7 +40,7 @@ export interface Http {
      *
      * @generated from protobuf field: repeated google.api.HttpRule rules = 1;
      */
-    rules: HttpRule[];
+    rules?: HttpRule[];
     /**
      * When set to true, URL path parameters will be fully URI-decoded except in
      * cases of single segment matches in reserved expansion, where "%2F" will be
@@ -336,67 +336,45 @@ export interface HttpRule {
      */
     selector: string;
     /**
-     * Determines the URL pattern is matched by this rules. This pattern can be
-     * used with any of the {get|put|post|delete|patch} methods. A custom method
-     * can be defined using the 'custom' field.
+     * Maps to HTTP GET. Used for listing and getting information about
+     * resources.
      *
-     * @generated from protobuf oneof: pattern;
+     * @generated from protobuf field: string get = 2;
      */
-    pattern: {
-        oneofKind: "get";
-        /**
-         * Maps to HTTP GET. Used for listing and getting information about
-         * resources.
-         *
-         * @generated from protobuf field: string get = 2;
-         */
-        get: string;
-    } | {
-        oneofKind: "put";
-        /**
-         * Maps to HTTP PUT. Used for replacing a resource.
-         *
-         * @generated from protobuf field: string put = 3;
-         */
-        put: string;
-    } | {
-        oneofKind: "post";
-        /**
-         * Maps to HTTP POST. Used for creating a resource or performing an action.
-         *
-         * @generated from protobuf field: string post = 4;
-         */
-        post: string;
-    } | {
-        oneofKind: "delete";
-        /**
-         * Maps to HTTP DELETE. Used for deleting a resource.
-         *
-         * @generated from protobuf field: string delete = 5;
-         */
-        delete: string;
-    } | {
-        oneofKind: "patch";
-        /**
-         * Maps to HTTP PATCH. Used for updating a resource.
-         *
-         * @generated from protobuf field: string patch = 6;
-         */
-        patch: string;
-    } | {
-        oneofKind: "custom";
-        /**
-         * The custom pattern is used for specifying an HTTP method that is not
-         * included in the `pattern` field, such as HEAD, or "*" to leave the
-         * HTTP method unspecified for this rule. The wild-card rule is useful
-         * for services that provide content to Web (HTML) clients.
-         *
-         * @generated from protobuf field: google.api.CustomHttpPattern custom = 8;
-         */
-        custom: CustomHttpPattern;
-    } | {
-        oneofKind: undefined;
-    };
+    get?: string;
+    /**
+     * Maps to HTTP PUT. Used for replacing a resource.
+     *
+     * @generated from protobuf field: string put = 3;
+     */
+    put?: string;
+    /**
+     * Maps to HTTP POST. Used for creating a resource or performing an action.
+     *
+     * @generated from protobuf field: string post = 4;
+     */
+    post?: string;
+    /**
+     * Maps to HTTP DELETE. Used for deleting a resource.
+     *
+     * @generated from protobuf field: string delete = 5;
+     */
+    delete?: string;
+    /**
+     * Maps to HTTP PATCH. Used for updating a resource.
+     *
+     * @generated from protobuf field: string patch = 6;
+     */
+    patch?: string;
+    /**
+     * The custom pattern is used for specifying an HTTP method that is not
+     * included in the `pattern` field, such as HEAD, or "*" to leave the
+     * HTTP method unspecified for this rule. The wild-card rule is useful
+     * for services that provide content to Web (HTML) clients.
+     *
+     * @generated from protobuf field: google.api.CustomHttpPattern custom = 8;
+     */
+    custom?: CustomHttpPattern;
     /**
      * The name of the request field whose value is mapped to the HTTP request
      * body, or `*` for mapping all request fields not captured by the path
@@ -426,7 +404,7 @@ export interface HttpRule {
      *
      * @generated from protobuf field: repeated google.api.HttpRule additional_bindings = 11;
      */
-    additionalBindings: HttpRule[];
+    additionalBindings?: HttpRule[];
 }
 /**
  * A custom pattern is used for defining custom HTTP verb.
@@ -456,7 +434,7 @@ class Http$Type extends MessageType<Http> {
         ]);
     }
     create(value?: PartialMessage<Http>): Http {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.rules = [];
         message.fullyDecodeReservedExpansion = false;
         if (value !== undefined)
@@ -469,7 +447,7 @@ class Http$Type extends MessageType<Http> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated google.api.HttpRule rules */ 1:
-                    message.rules.push(HttpRule.internalBinaryRead(reader, reader.uint32(), options));
+                    message.rules?.push?.(HttpRule.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* bool fully_decode_reserved_expansion */ 2:
                     message.fullyDecodeReservedExpansion = reader.bool();
@@ -487,8 +465,8 @@ class Http$Type extends MessageType<Http> {
     }
     internalBinaryWrite(message: Http, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated google.api.HttpRule rules = 1; */
-        for (let i = 0; i < message.rules.length; i++)
-            HttpRule.internalBinaryWrite(message.rules[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.rules?.length || 0); i++)
+            HttpRule.internalBinaryWrite(message.rules?.[i] as any, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* bool fully_decode_reserved_expansion = 2; */
         if (message.fullyDecodeReservedExpansion !== false)
             writer.tag(2, WireType.Varint).bool(message.fullyDecodeReservedExpansion);
@@ -519,9 +497,8 @@ class HttpRule$Type extends MessageType<HttpRule> {
         ]);
     }
     create(value?: PartialMessage<HttpRule>): HttpRule {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.selector = "";
-        message.pattern = { oneofKind: undefined };
         message.body = "";
         message.responseBody = "";
         message.additionalBindings = [];
@@ -538,40 +515,22 @@ class HttpRule$Type extends MessageType<HttpRule> {
                     message.selector = reader.string();
                     break;
                 case /* string get */ 2:
-                    message.pattern = {
-                        oneofKind: "get",
-                        get: reader.string()
-                    };
+                    message.get = reader.string();
                     break;
                 case /* string put */ 3:
-                    message.pattern = {
-                        oneofKind: "put",
-                        put: reader.string()
-                    };
+                    message.put = reader.string();
                     break;
                 case /* string post */ 4:
-                    message.pattern = {
-                        oneofKind: "post",
-                        post: reader.string()
-                    };
+                    message.post = reader.string();
                     break;
                 case /* string delete */ 5:
-                    message.pattern = {
-                        oneofKind: "delete",
-                        delete: reader.string()
-                    };
+                    message.delete = reader.string();
                     break;
                 case /* string patch */ 6:
-                    message.pattern = {
-                        oneofKind: "patch",
-                        patch: reader.string()
-                    };
+                    message.patch = reader.string();
                     break;
                 case /* google.api.CustomHttpPattern custom */ 8:
-                    message.pattern = {
-                        oneofKind: "custom",
-                        custom: CustomHttpPattern.internalBinaryRead(reader, reader.uint32(), options, (message.pattern as any).custom)
-                    };
+                    message.custom = CustomHttpPattern.internalBinaryRead(reader, reader.uint32(), options, (message as any).custom);
                     break;
                 case /* string body */ 7:
                     message.body = reader.string();
@@ -580,7 +539,7 @@ class HttpRule$Type extends MessageType<HttpRule> {
                     message.responseBody = reader.string();
                     break;
                 case /* repeated google.api.HttpRule additional_bindings */ 11:
-                    message.additionalBindings.push(HttpRule.internalBinaryRead(reader, reader.uint32(), options));
+                    message.additionalBindings?.push?.(HttpRule.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -598,29 +557,29 @@ class HttpRule$Type extends MessageType<HttpRule> {
         if (message.selector !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.selector);
         /* string get = 2; */
-        if (message.pattern.oneofKind === "get")
-            writer.tag(2, WireType.LengthDelimited).string(message.pattern.get);
+        if ("get" in message && message.get != null)
+            writer.tag(2, WireType.LengthDelimited).string(message.get);
         /* string put = 3; */
-        if (message.pattern.oneofKind === "put")
-            writer.tag(3, WireType.LengthDelimited).string(message.pattern.put);
+        if ("put" in message && message.put != null)
+            writer.tag(3, WireType.LengthDelimited).string(message.put);
         /* string post = 4; */
-        if (message.pattern.oneofKind === "post")
-            writer.tag(4, WireType.LengthDelimited).string(message.pattern.post);
+        if ("post" in message && message.post != null)
+            writer.tag(4, WireType.LengthDelimited).string(message.post);
         /* string delete = 5; */
-        if (message.pattern.oneofKind === "delete")
-            writer.tag(5, WireType.LengthDelimited).string(message.pattern.delete);
+        if ("delete" in message && message.delete != null)
+            writer.tag(5, WireType.LengthDelimited).string(message.delete);
         /* string patch = 6; */
-        if (message.pattern.oneofKind === "patch")
-            writer.tag(6, WireType.LengthDelimited).string(message.pattern.patch);
+        if ("patch" in message && message.patch != null)
+            writer.tag(6, WireType.LengthDelimited).string(message.patch);
         /* string body = 7; */
         if (message.body !== "")
             writer.tag(7, WireType.LengthDelimited).string(message.body);
         /* google.api.CustomHttpPattern custom = 8; */
-        if (message.pattern.oneofKind === "custom")
-            CustomHttpPattern.internalBinaryWrite(message.pattern.custom, writer.tag(8, WireType.LengthDelimited).fork(), options).join();
+        if ("custom" in message && message.custom != null)
+            CustomHttpPattern.internalBinaryWrite(message.custom, writer.tag(8, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.api.HttpRule additional_bindings = 11; */
-        for (let i = 0; i < message.additionalBindings.length; i++)
-            HttpRule.internalBinaryWrite(message.additionalBindings[i], writer.tag(11, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.additionalBindings?.length || 0); i++)
+            HttpRule.internalBinaryWrite(message.additionalBindings?.[i] as any, writer.tag(11, WireType.LengthDelimited).fork(), options).join();
         /* string response_body = 12; */
         if (message.responseBody !== "")
             writer.tag(12, WireType.LengthDelimited).string(message.responseBody);
@@ -643,7 +602,7 @@ class CustomHttpPattern$Type extends MessageType<CustomHttpPattern> {
         ]);
     }
     create(value?: PartialMessage<CustomHttpPattern>): CustomHttpPattern {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.kind = "";
         message.path = "";
         if (value !== undefined)

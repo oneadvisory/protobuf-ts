@@ -5042,7 +5042,7 @@ class TestEnormousDescriptor$Type extends MessageType<TestEnormousDescriptor> {
         ]);
     }
     create(value?: PartialMessage<TestEnormousDescriptor>): TestEnormousDescriptor {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestEnormousDescriptor>(this, message, value);
         return message;

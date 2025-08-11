@@ -32,7 +32,7 @@ class OptimizeForSpeedMessage$Type extends MessageType<OptimizeForSpeedMessage> 
         ]);
     }
     create(value?: PartialMessage<OptimizeForSpeedMessage>): OptimizeForSpeedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.doubleField = 0;
         message.floatField = 0;
         if (value !== undefined)

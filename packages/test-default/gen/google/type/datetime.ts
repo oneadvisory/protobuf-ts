@@ -98,35 +98,19 @@ export interface DateTime {
      */
     nanos: number;
     /**
-     * Optional. Specifies either the UTC offset or the time zone of the DateTime.
-     * Choose carefully between them, considering that time zone data may change
-     * in the future (for example, a country modifies their DST start/end dates,
-     * and future DateTimes in the affected range had already been stored).
-     * If omitted, the DateTime is considered to be in local time.
+     * UTC offset. Must be whole seconds, between -18 hours and +18 hours.
+     * For example, a UTC offset of -4:00 would be represented as
+     * { seconds: -14400 }.
      *
-     * @generated from protobuf oneof: time_offset;
+     * @generated from protobuf field: google.protobuf.Duration utc_offset = 8;
      */
-    timeOffset: {
-        oneofKind: "utcOffset";
-        /**
-         * UTC offset. Must be whole seconds, between -18 hours and +18 hours.
-         * For example, a UTC offset of -4:00 would be represented as
-         * { seconds: -14400 }.
-         *
-         * @generated from protobuf field: google.protobuf.Duration utc_offset = 8;
-         */
-        utcOffset: Duration;
-    } | {
-        oneofKind: "timeZone";
-        /**
-         * Time zone.
-         *
-         * @generated from protobuf field: google.type.TimeZone time_zone = 9;
-         */
-        timeZone: TimeZone;
-    } | {
-        oneofKind: undefined;
-    };
+    utcOffset?: Duration;
+    /**
+     * Time zone.
+     *
+     * @generated from protobuf field: google.type.TimeZone time_zone = 9;
+     */
+    timeZone?: TimeZone;
 }
 /**
  * Represents a time zone from the
@@ -181,11 +165,11 @@ class DateTime$Type extends MessageType<DateTime> {
      * ids.
      */
     toJsDate(message: DateTime): globalThis.Date {
-        let dt = new globalThis.Date(message.year, message.month - 1, message.day, message.hours, message.minutes, message.seconds, message.nanos / 1000), to = message.timeOffset;
+        let dt = new globalThis.Date(message.year, message.month - 1, message.day, message.hours, message.minutes, message.seconds, message.nanos / 1000), to = message;
         if (to) {
-            if (to.oneofKind === "timeZone")
+            if ("timeZone" in to)
                 throw new globalThis.Error("IANA time zone not supported");
-            if (to.oneofKind === "utcOffset") {
+            if ("utcOffset" in to && to.utcOffset) {
                 let s = PbLong.from(to.utcOffset.seconds).toNumber();
                 dt = new globalThis.Date(dt.getTime() - (s * 1000));
             }
@@ -199,15 +183,21 @@ class DateTime$Type extends MessageType<DateTime> {
      */
     fromJsDate(date: globalThis.Date): DateTime {
         return {
-            year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate(), hours: date.getHours(), minutes: date.getMinutes(), seconds: date.getSeconds(), nanos: date.getMilliseconds() * 1000, timeOffset: {
-                oneofKind: "utcOffset", utcOffset: {
-                    seconds: PbLong.from(date.getTimezoneOffset() * 60).toBigInt(), nanos: 0,
-                }
+            year: date.getFullYear(),
+            month: date.getMonth() + 1,
+            day: date.getDate(),
+            hours: date.getHours(),
+            minutes: date.getMinutes(),
+            seconds: date.getSeconds(),
+            nanos: date.getMilliseconds() * 1000,
+            utcOffset: {
+                seconds: PbLong.from(date.getTimezoneOffset() * 60).toBigInt(),
+                nanos: 0,
             }
         };
     }
     create(value?: PartialMessage<DateTime>): DateTime {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.year = 0;
         message.month = 0;
         message.day = 0;
@@ -215,7 +205,6 @@ class DateTime$Type extends MessageType<DateTime> {
         message.minutes = 0;
         message.seconds = 0;
         message.nanos = 0;
-        message.timeOffset = { oneofKind: undefined };
         if (value !== undefined)
             reflectionMergePartial<DateTime>(this, message, value);
         return message;
@@ -247,16 +236,10 @@ class DateTime$Type extends MessageType<DateTime> {
                     message.nanos = reader.int32();
                     break;
                 case /* google.protobuf.Duration utc_offset */ 8:
-                    message.timeOffset = {
-                        oneofKind: "utcOffset",
-                        utcOffset: Duration.internalBinaryRead(reader, reader.uint32(), options, (message.timeOffset as any).utcOffset)
-                    };
+                    message.utcOffset = Duration.internalBinaryRead(reader, reader.uint32(), options, (message as any).utcOffset);
                     break;
                 case /* google.type.TimeZone time_zone */ 9:
-                    message.timeOffset = {
-                        oneofKind: "timeZone",
-                        timeZone: TimeZone.internalBinaryRead(reader, reader.uint32(), options, (message.timeOffset as any).timeZone)
-                    };
+                    message.timeZone = TimeZone.internalBinaryRead(reader, reader.uint32(), options, (message as any).timeZone);
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -292,11 +275,11 @@ class DateTime$Type extends MessageType<DateTime> {
         if (message.nanos !== 0)
             writer.tag(7, WireType.Varint).int32(message.nanos);
         /* google.protobuf.Duration utc_offset = 8; */
-        if (message.timeOffset.oneofKind === "utcOffset")
-            Duration.internalBinaryWrite(message.timeOffset.utcOffset, writer.tag(8, WireType.LengthDelimited).fork(), options).join();
+        if ("utcOffset" in message && message.utcOffset != null)
+            Duration.internalBinaryWrite(message.utcOffset, writer.tag(8, WireType.LengthDelimited).fork(), options).join();
         /* google.type.TimeZone time_zone = 9; */
-        if (message.timeOffset.oneofKind === "timeZone")
-            TimeZone.internalBinaryWrite(message.timeOffset.timeZone, writer.tag(9, WireType.LengthDelimited).fork(), options).join();
+        if ("timeZone" in message && message.timeZone != null)
+            TimeZone.internalBinaryWrite(message.timeZone, writer.tag(9, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -316,7 +299,7 @@ class TimeZone$Type extends MessageType<TimeZone> {
         ]);
     }
     create(value?: PartialMessage<TimeZone>): TimeZone {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.id = "";
         message.version = "";
         if (value !== undefined)

@@ -38,7 +38,7 @@ class GetRequest$Type extends MessageType<GetRequest> {
         ]);
     }
     create(value?: PartialMessage<GetRequest>): GetRequest {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.a = 0;
         if (value !== undefined)
             reflectionMergePartial<GetRequest>(this, message, value);
@@ -85,7 +85,7 @@ class GetResponse$Type extends MessageType<GetResponse> {
         ]);
     }
     create(value?: PartialMessage<GetResponse>): GetResponse {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<GetResponse>(this, message, value);
         return message;
@@ -127,5 +127,5 @@ export const GetResponse = new GetResponse$Type();
  * @generated ServiceType for protobuf service bar.v1.BarService
  */
 export const BarService = new ServiceType("bar.v1.BarService", [
-    { name: "Get", options: {}, I: GetRequest, O: GetResponse }
+    { name: "Get" as const, options: {} as const, I: GetRequest, O: GetResponse }
 ]);

@@ -62,13 +62,13 @@ export interface Api {
      *
      * @generated from protobuf field: repeated google.protobuf.Method methods = 2;
      */
-    methods: Method[];
+    methods?: Method[];
     /**
      * Any metadata attached to the interface.
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 3;
      */
-    options: Option[];
+    options?: Option[];
     /**
      * A version string for this interface. If specified, must have the form
      * `major-version.minor-version`, as in `1.10`. If the minor version is
@@ -106,7 +106,7 @@ export interface Api {
      *
      * @generated from protobuf field: repeated google.protobuf.Mixin mixins = 6;
      */
-    mixins: Mixin[];
+    mixins?: Mixin[];
     /**
      * The source syntax of the service.
      *
@@ -155,7 +155,7 @@ export interface Method {
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 6;
      */
-    options: Option[];
+    options?: Option[];
     /**
      * The source syntax of this method.
      *

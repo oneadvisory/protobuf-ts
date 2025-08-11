@@ -78,7 +78,7 @@ class WrappersMessage$Type extends MessageType<WrappersMessage> {
         ]);
     }
     create(value?: PartialMessage<WrappersMessage>): WrappersMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<WrappersMessage>(this, message, value);
         return message;

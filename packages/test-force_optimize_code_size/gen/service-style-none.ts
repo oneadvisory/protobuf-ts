@@ -8,5 +8,5 @@ import { ServiceType } from "@protobuf-ts/runtime-rpc";
  * @generated ServiceType for protobuf service spec.NoneStyleService
  */
 export const NoneStyleService = new ServiceType("spec.NoneStyleService", [
-    { name: "Unary", options: {}, I: StringValue, O: Int32Value }
+    { name: "Unary" as const, options: {} as const, I: StringValue, O: Int32Value }
 ], { "ts.server": ["NO_SERVER"] });

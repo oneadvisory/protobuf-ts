@@ -53,7 +53,7 @@ export function createOptionParser<S extends OptionSpecs>(optionSpecs: S): Optio
                     }
                     seen.add(key);
                     if (rawOption.value.length > 0) {
-                        throwOptionError(optionSpecs, `Option "${key}" does not take a value.`);
+                        throwOptionError(optionSpecs, `Option "${String(key)}" does not take a value.`);
                     }
                     options[key] = true;
                     break;
@@ -105,11 +105,11 @@ function validateOptions<S extends OptionSpecs>(options: Options<S>, optionSpecs
                     const excludedKeys = (spec.excludes ?? []) as (keyof S)[];
                     const missingKeys = requiredKeys.filter(key => !options[key]);
                     if (missingKeys.length > 0) {
-                        throwOptionError(optionSpecs, `Option "${key}" requires option "${missingKeys.join('", "')}" to be set.`);
+                        throwOptionError(optionSpecs, `Option "${String(key)}" requires option "${missingKeys.join('", "')}" to be set.`);
                     }
                     const deniedKeys = excludedKeys.filter(key => options[key]);
                     if (deniedKeys.length > 0) {
-                        throwOptionError(optionSpecs, `If option "${key}" is set, option "${deniedKeys.join('", "')}" cannot be set.`);
+                        throwOptionError(optionSpecs, `If option "${String(key)}" is set, option "${deniedKeys.join('", "')}" cannot be set.`);
                     }
                 }
                 break;

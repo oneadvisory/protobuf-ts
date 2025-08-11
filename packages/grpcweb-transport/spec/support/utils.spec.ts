@@ -38,14 +38,20 @@ export function microTaskDelay<T>(p: Promise<T>): Promise<T> {
 }
 
 export function frame(type: GrpcWebFrame, bytes: Uint8Array): Uint8Array {
-    const output = createGrpcWebRequestBody(bytes, 'binary');
-    output[0] = type;
-    return output;
+  const output = createGrpcWebRequestBody(bytes, 'binary');
+  const uint8Array = new Uint8Array(output);
+  uint8Array[0] = type;
+  return uint8Array;
 }
 
-export function getTrailerFrame(status: GrpcStatusCode, message?: string): Uint8Array {
-    const ascii = message ? `grpc-status:${status}\r\ngrpc-message:${message}` : `grpc-status:${status}`;
-    return frame(GrpcWebFrame.TRAILER, asciiToBin(ascii));
+export function getTrailerFrame(
+  status: GrpcStatusCode,
+  message?: string
+): Uint8Array {
+  const ascii = message
+    ? `grpc-status:${status}\r\ngrpc-message:${message}`
+    : `grpc-status:${status}`;
+  return frame(GrpcWebFrame.TRAILER, asciiToBin(ascii));
 }
 
 export const asciiToCharCodes = (ascii: string): number[] => ascii.split('').map(c => c.charCodeAt(0));

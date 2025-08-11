@@ -21,7 +21,7 @@ export interface JsonNamesMessage {
     /**
      * @generated from protobuf field: repeated string repeated_scalar_field = 2 [json_name = "repeatedScalarFieldJsonName"];
      */
-    repeatedScalarField: string[];
+    repeatedScalarField?: string[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class JsonNamesMessage$Type extends MessageType<JsonNamesMessage> {
@@ -32,7 +32,7 @@ class JsonNamesMessage$Type extends MessageType<JsonNamesMessage> {
         ]);
     }
     create(value?: PartialMessage<JsonNamesMessage>): JsonNamesMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.scalarField = "";
         message.repeatedScalarField = [];
         if (value !== undefined)
@@ -48,7 +48,7 @@ class JsonNamesMessage$Type extends MessageType<JsonNamesMessage> {
                     message.scalarField = reader.string();
                     break;
                 case /* repeated string repeated_scalar_field = 2 [json_name = "repeatedScalarFieldJsonName"] */ 2:
-                    message.repeatedScalarField.push(reader.string());
+                    message.repeatedScalarField?.push?.(reader.string());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -66,8 +66,8 @@ class JsonNamesMessage$Type extends MessageType<JsonNamesMessage> {
         if (message.scalarField !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.scalarField);
         /* repeated string repeated_scalar_field = 2 [json_name = "repeatedScalarFieldJsonName"]; */
-        for (let i = 0; i < message.repeatedScalarField.length; i++)
-            writer.tag(2, WireType.LengthDelimited).string(message.repeatedScalarField[i]);
+        for (let i = 0; i < (message.repeatedScalarField?.length || 0); i++)
+            writer.tag(2, WireType.LengthDelimited).string(message.repeatedScalarField?.[i] as any);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

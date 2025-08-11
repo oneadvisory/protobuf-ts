@@ -13,7 +13,7 @@ export interface MessageFieldMessage {
     /**
      * @generated from protobuf field: repeated spec.MessageFieldMessage.TestMessage repeated_message_field = 2;
      */
-    repeatedMessageField: MessageFieldMessage_TestMessage[];
+    repeatedMessageField?: MessageFieldMessage_TestMessage[];
 }
 /**
  * @generated from protobuf message spec.MessageFieldMessage.TestMessage

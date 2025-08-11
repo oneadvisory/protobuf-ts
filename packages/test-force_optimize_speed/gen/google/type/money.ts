@@ -67,7 +67,7 @@ class Money$Type extends MessageType<Money> {
         ]);
     }
     create(value?: PartialMessage<Money>): Money {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.currencyCode = "";
         message.units = 0n;
         message.nanos = 0;

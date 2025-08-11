@@ -71,7 +71,7 @@ class CppFeatures$Type extends MessageType<CppFeatures> {
         ]);
     }
     create(value?: PartialMessage<CppFeatures>): CppFeatures {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<CppFeatures>(this, message, value);
         return message;

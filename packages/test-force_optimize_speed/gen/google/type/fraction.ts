@@ -55,7 +55,7 @@ class Fraction$Type extends MessageType<Fraction> {
         ]);
     }
     create(value?: PartialMessage<Fraction>): Fraction {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.numerator = 0n;
         message.denominator = 0n;
         if (value !== undefined)

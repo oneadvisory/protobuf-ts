@@ -37,15 +37,17 @@ export class TwirpFetchTransport implements RpcTransport {
 
     unary<I extends object, O extends object>(method: MethodInfo<I, O>, input: I, options: RpcOptions): UnaryCall<I, O> {
 
-        let
-            opt = options as TwirpOptions,
-            url = this.makeUrl(method, opt),
-            fetchInit = opt.fetchInit ?? {},
-            requestBody = opt.sendJson ? method.I.toJsonString(input, opt.jsonOptions) : method.I.toBinary(input, opt.binaryOptions),
-            defHeader = new Deferred<RpcMetadata>(),
-            defMessage = new Deferred<O>(),
-            defStatus = new Deferred<RpcStatus>(),
-            defTrailer = new Deferred<RpcMetadata>();
+        let opt = options as TwirpOptions,
+          url = this.makeUrl(method, opt),
+          fetchInit = opt.fetchInit ?? {},
+          requestBody = opt.sendJson
+            ? method.I.toJsonString(input, opt.jsonOptions)
+            : (method.I.toBinary(input, opt.binaryOptions)
+                .buffer as ArrayBuffer),
+          defHeader = new Deferred<RpcMetadata>(),
+          defMessage = new Deferred<O>(),
+          defStatus = new Deferred<RpcStatus>(),
+          defTrailer = new Deferred<RpcMetadata>();
 
         globalThis.fetch(url, {
             ...fetchInit,

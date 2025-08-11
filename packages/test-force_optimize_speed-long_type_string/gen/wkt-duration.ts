@@ -30,7 +30,7 @@ class DurationMessage$Type extends MessageType<DurationMessage> {
         ]);
     }
     create(value?: PartialMessage<DurationMessage>): DurationMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<DurationMessage>(this, message, value);
         return message;

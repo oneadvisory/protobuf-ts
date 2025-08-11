@@ -21,7 +21,7 @@ export interface SelfReferencingMessage {
     /**
      * @generated from protobuf field: repeated spec.SelfReferencingMessage self_list = 2;
      */
-    selfList: SelfReferencingMessage[];
+    selfList?: SelfReferencingMessage[];
     /**
      * @generated from protobuf field: map<string, spec.SelfReferencingMessage> self_map = 3;
      */
@@ -39,7 +39,7 @@ class SelfReferencingMessage$Type extends MessageType<SelfReferencingMessage> {
         ]);
     }
     create(value?: PartialMessage<SelfReferencingMessage>): SelfReferencingMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.selfList = [];
         message.selfMap = {};
         if (value !== undefined)
@@ -55,7 +55,7 @@ class SelfReferencingMessage$Type extends MessageType<SelfReferencingMessage> {
                     message.self = SelfReferencingMessage.internalBinaryRead(reader, reader.uint32(), options, message.self);
                     break;
                 case /* repeated spec.SelfReferencingMessage self_list */ 2:
-                    message.selfList.push(SelfReferencingMessage.internalBinaryRead(reader, reader.uint32(), options));
+                    message.selfList?.push?.(SelfReferencingMessage.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* map<string, spec.SelfReferencingMessage> self_map */ 3:
                     this.binaryReadMap3(message.selfMap, reader, options);
@@ -92,8 +92,8 @@ class SelfReferencingMessage$Type extends MessageType<SelfReferencingMessage> {
         if (message.self)
             SelfReferencingMessage.internalBinaryWrite(message.self, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* repeated spec.SelfReferencingMessage self_list = 2; */
-        for (let i = 0; i < message.selfList.length; i++)
-            SelfReferencingMessage.internalBinaryWrite(message.selfList[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.selfList?.length || 0); i++)
+            SelfReferencingMessage.internalBinaryWrite(message.selfList?.[i] as any, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* map<string, spec.SelfReferencingMessage> self_map = 3; */
         for (let k of globalThis.Object.keys(message.selfMap)) {
             writer.tag(3, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k);

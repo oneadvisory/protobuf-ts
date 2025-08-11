@@ -18,7 +18,9 @@
 
     // activated for issue #94
     // svelte requires this option
-    "importsNotUsedAsValues": "error",
+    // "importsNotUsedAsValues": "error",
+    // "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
 
     "lib": [
       "es2017",

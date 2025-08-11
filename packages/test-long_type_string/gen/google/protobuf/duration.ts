@@ -182,7 +182,7 @@ class Duration$Type extends MessageType<Duration> {
         return target;
     }
     create(value?: PartialMessage<Duration>): Duration {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.seconds = "0";
         message.nanos = 0;
         if (value !== undefined)

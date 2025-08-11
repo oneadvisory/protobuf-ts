@@ -19,7 +19,6 @@ export class MessageInterfaceGenerator {
         private readonly comments: CommentGenerator,
         private readonly interpreter: Interpreter,
         private readonly options: {
-            oneofKindDiscriminator: string;
             normalLongType: rt.LongType;
         },
     ) {
@@ -60,7 +59,14 @@ export class MessageInterfaceGenerator {
                 if (processedOneofs.includes(fieldInfo.oneof)) {
                     continue;
                 }
-                members.push(this.createOneofADTPropertySignature(source, descField.oneof));
+
+                // Create a single property for each oneof case
+                members.push(
+                    ...this.createOneofADTPropertySignatureList(
+                    source,
+                    descField.oneof
+                    )
+                );
                 processedOneofs.push(fieldInfo.oneof);
             } else {
                 // create regular properties
@@ -69,9 +75,8 @@ export class MessageInterfaceGenerator {
         }
 
         // export interface MyMessage { ...
-        const statement = ts.createInterfaceDeclaration(
-            undefined,
-            [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
+        const statement = ts.factory.createInterfaceDeclaration(
+            [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
             this.imports.type(source, descMessage),
             undefined,
             undefined,
@@ -91,7 +96,7 @@ export class MessageInterfaceGenerator {
      *    fieldName: number
      *
      */
-    private createFieldPropertySignature(source: TypescriptFile, descField: DescField, fieldInfo: rt.FieldInfo): ts.PropertySignature {
+    private createFieldPropertySignature(source: TypescriptFile, descField: DescField, fieldInfo: rt.FieldInfo, isOneOf?: boolean): ts.PropertySignature {
         let type: ts.TypeNode; // the property type, may be made optional or wrapped into array at the end
 
         switch (fieldInfo.kind) {
@@ -109,7 +114,7 @@ export class MessageInterfaceGenerator {
 
             case "map":
                 let keyType = fieldInfo.K === rt.ScalarType.BOOL
-                    ? ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
+                    ? ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
                     : this.createScalarTypeNode(fieldInfo.K, rt.LongType.STRING);
                 let valueType;
                 switch (fieldInfo.V.kind) {
@@ -123,16 +128,14 @@ export class MessageInterfaceGenerator {
                         valueType = this.createMessageTypeNode(source, fieldInfo.V.T());
                         break;
                 }
-                type = ts.createTypeLiteralNode([
-                    ts.createIndexSignature(
-                        undefined,
+                type = ts.factory.createTypeLiteralNode([
+                    ts.factory.createIndexSignature(
                         undefined,
                         [
-                            ts.createParameter(
+                            ts.factory.createParameterDeclaration(
                                 undefined,
                                 undefined,
-                                undefined,
-                                ts.createIdentifier('key'),
+                                ts.factory.createIdentifier('key'),
                                 undefined,
                                 keyType,
                                 undefined
@@ -148,97 +151,46 @@ export class MessageInterfaceGenerator {
 
         // if repeated, wrap type into array type
         if (fieldInfo.repeat) {
-            type = ts.createArrayTypeNode(type);
+            type = ts.factory.createArrayTypeNode(type);
         }
 
         // if optional, add question mark
-        let questionToken = fieldInfo.opt ? ts.createToken(ts.SyntaxKind.QuestionToken) : undefined;
+        let questionToken = fieldInfo.opt || fieldInfo.repeat || isOneOf ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined;
 
         // create property
-        const property = ts.createPropertySignature(
+        const property = ts.factory.createPropertySignature(
             undefined,
-            ts.createIdentifier(fieldInfo.localName),
+            ts.factory.createIdentifier(fieldInfo.localName),
             questionToken,
             type,
-            undefined
         );
         this.comments.addCommentsForDescriptor(property, descField, 'trailingLines');
         return property;
     }
 
-    /**
-     * `oneof` as an algebraic data type.
-     *
-     * For the following .proto:
-     *
-     *   oneof result {
-     *     int32 value = 1;
-     *     string error = 2;
-     *   }
-     *
-     * We generate the following property signature:
-     *
-     *   result: { oneofKind: "value"; value: number; }
-     *         | { oneofKind: "error"; error: string; }
-     *         | { oneofKind: undefined; };
-     */
-    private createOneofADTPropertySignature(source:TypescriptFile, descOneof: DescOneof): ts.PropertySignature {
+    private createOneofADTPropertySignatureList(source:TypescriptFile, descOneof: DescOneof): ts.PropertySignature[] {
         const
-            oneofCases: ts.TypeLiteralNode[] = [],
+            oneofCases: ts.PropertySignature[] = [],
             [parentMessageDesc, interpreterType, oneofLocalName] = this.oneofInfo(descOneof),
             memberFieldInfos = interpreterType.fields.filter(fi => fi.oneof === oneofLocalName);
 
         // create a type for each selection case
         for (let fieldInfo of memberFieldInfos) {
 
-            // { oneofKind: 'fieldName' ... } part
-            const kindProperty = ts.createPropertySignature(
-                undefined,
-                ts.createIdentifier(this.options.oneofKindDiscriminator),
-                undefined,
-                ts.createLiteralTypeNode(ts.createStringLiteral(fieldInfo.localName)),
-                undefined
-            );
-
             // { ..., fieldName: type } part
             let descField = parentMessageDesc.fields.find(fd => fd.number === fieldInfo.no);
             assert(descField !== undefined);
-            let valueProperty = this.createFieldPropertySignature(source, descField, fieldInfo);
+            let valueProperty = this.createFieldPropertySignature(source, descField, fieldInfo, true);
 
             // add this case
             oneofCases.push(
-                ts.createTypeLiteralNode([kindProperty, valueProperty])
+                valueProperty
             );
 
         }
 
-        // case for no selection: { oneofKind: undefined; }
-        oneofCases.push(
-            ts.createTypeLiteralNode([
-                ts.createPropertySignature(
-                    undefined,
-                    ts.createIdentifier(this.options.oneofKindDiscriminator),
-                    undefined,
-                    ts.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
-                    undefined
-                )
-            ])
-        );
-
-        // final property signature for the oneof group, with a union type for all oneof cases
-        const property = ts.createPropertySignature(
-            undefined,
-            ts.createIdentifier(oneofLocalName),
-            undefined,
-            ts.createUnionTypeNode(oneofCases),
-            undefined
-        );
-
-        // add comments
-        this.comments.addCommentsForDescriptor(property, descOneof, 'appendToLeadingBlock');
-        return property;
+        return oneofCases;
     }
-
 
     /**
      * Helper to find for a OneofDescriptorProto:
@@ -261,11 +213,11 @@ export class MessageInterfaceGenerator {
     private createScalarTypeNode(scalarType: rt.ScalarType, longType?: rt.LongType): ts.TypeNode {
         switch (scalarType) {
             case rt.ScalarType.BOOL:
-                return ts.createKeywordTypeNode(ts.SyntaxKind.BooleanKeyword);
+                return ts.factory.createKeywordTypeNode(ts.SyntaxKind.BooleanKeyword);
             case rt.ScalarType.STRING:
-                return ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword);
+                return ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword);
             case rt.ScalarType.BYTES:
-                return ts.createTypeReferenceNode('Uint8Array', undefined);
+                return ts.factory.createTypeReferenceNode('Uint8Array', undefined);
             case rt.ScalarType.DOUBLE:
             case rt.ScalarType.FLOAT:
             case rt.ScalarType.INT32:
@@ -273,7 +225,7 @@ export class MessageInterfaceGenerator {
             case rt.ScalarType.UINT32:
             case rt.ScalarType.SFIXED32:
             case rt.ScalarType.SINT32:
-                return ts.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword);
+                return ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword);
             case rt.ScalarType.SFIXED64:
             case rt.ScalarType.INT64:
             case rt.ScalarType.UINT64:
@@ -281,23 +233,23 @@ export class MessageInterfaceGenerator {
             case rt.ScalarType.SINT64:
                 switch (longType ?? rt.LongType.STRING) {
                     case rt.LongType.STRING:
-                        return ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword);
+                        return ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword);
                     case rt.LongType.NUMBER:
-                        return ts.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword);
+                        return ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword);
                     case rt.LongType.BIGINT:
-                        return ts.createKeywordTypeNode(ts.SyntaxKind.BigIntKeyword);
+                        return ts.factory.createKeywordTypeNode(ts.SyntaxKind.BigIntKeyword);
                 }
         }
     }
 
     private createMessageTypeNode(source: TypescriptFile, type: rt.IMessageType<rt.UnknownMessage>): ts.TypeNode {
-        return ts.createTypeReferenceNode(this.imports.typeByName(source, type.typeName), undefined);
+        return ts.factory.createTypeReferenceNode(this.imports.typeByName(source, type.typeName), undefined);
     }
 
 
     private createEnumTypeNode(source: TypescriptFile, ei: rt.EnumInfo): ts.TypeNode {
         let [enumTypeName] = ei;
-        return ts.createTypeReferenceNode(this.imports.typeByName(source, enumTypeName), undefined);
+        return ts.factory.createTypeReferenceNode(this.imports.typeByName(source, enumTypeName), undefined);
     }
 
 

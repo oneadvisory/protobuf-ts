@@ -21,7 +21,7 @@ export interface MessageFieldMessage {
     /**
      * @generated from protobuf field: repeated spec.MessageFieldMessage.TestMessage repeated_message_field = 2;
      */
-    repeatedMessageField: MessageFieldMessage_TestMessage[];
+    repeatedMessageField?: MessageFieldMessage_TestMessage[];
 }
 /**
  * @generated from protobuf message spec.MessageFieldMessage.TestMessage
@@ -41,7 +41,7 @@ class MessageFieldMessage$Type extends MessageType<MessageFieldMessage> {
         ]);
     }
     create(value?: PartialMessage<MessageFieldMessage>): MessageFieldMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedMessageField = [];
         if (value !== undefined)
             reflectionMergePartial<MessageFieldMessage>(this, message, value);
@@ -56,7 +56,7 @@ class MessageFieldMessage$Type extends MessageType<MessageFieldMessage> {
                     message.messageField = MessageFieldMessage_TestMessage.internalBinaryRead(reader, reader.uint32(), options, message.messageField);
                     break;
                 case /* repeated spec.MessageFieldMessage.TestMessage repeated_message_field */ 2:
-                    message.repeatedMessageField.push(MessageFieldMessage_TestMessage.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedMessageField?.push?.(MessageFieldMessage_TestMessage.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -74,8 +74,8 @@ class MessageFieldMessage$Type extends MessageType<MessageFieldMessage> {
         if (message.messageField)
             MessageFieldMessage_TestMessage.internalBinaryWrite(message.messageField, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* repeated spec.MessageFieldMessage.TestMessage repeated_message_field = 2; */
-        for (let i = 0; i < message.repeatedMessageField.length; i++)
-            MessageFieldMessage_TestMessage.internalBinaryWrite(message.repeatedMessageField[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedMessageField?.length || 0); i++)
+            MessageFieldMessage_TestMessage.internalBinaryWrite(message.repeatedMessageField?.[i] as any, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -94,7 +94,7 @@ class MessageFieldMessage_TestMessage$Type extends MessageType<MessageFieldMessa
         ]);
     }
     create(value?: PartialMessage<MessageFieldMessage_TestMessage>): MessageFieldMessage_TestMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         if (value !== undefined)
             reflectionMergePartial<MessageFieldMessage_TestMessage>(this, message, value);

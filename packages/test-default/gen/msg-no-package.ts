@@ -36,7 +36,7 @@ class NoPackageMessage$Type extends MessageType<NoPackageMessage> {
         ]);
     }
     create(value?: PartialMessage<NoPackageMessage>): NoPackageMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<NoPackageMessage>(this, message, value);
         return message;

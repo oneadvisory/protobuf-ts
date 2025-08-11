@@ -57,7 +57,7 @@ export interface ArenaMessage {
     /**
      * @generated from protobuf field: repeated proto2_arena_unittest.NestedMessage repeated_nested_message = 1;
      */
-    repeatedNestedMessage: NestedMessage[];
+    repeatedNestedMessage?: NestedMessage[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class NestedMessage$Type extends MessageType<NestedMessage> {
@@ -67,7 +67,7 @@ class NestedMessage$Type extends MessageType<NestedMessage> {
         ]);
     }
     create(value?: PartialMessage<NestedMessage>): NestedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<NestedMessage>(this, message, value);
         return message;
@@ -113,7 +113,7 @@ class ArenaMessage$Type extends MessageType<ArenaMessage> {
         ]);
     }
     create(value?: PartialMessage<ArenaMessage>): ArenaMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedNestedMessage = [];
         if (value !== undefined)
             reflectionMergePartial<ArenaMessage>(this, message, value);
@@ -125,7 +125,7 @@ class ArenaMessage$Type extends MessageType<ArenaMessage> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated proto2_arena_unittest.NestedMessage repeated_nested_message */ 1:
-                    message.repeatedNestedMessage.push(NestedMessage.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedNestedMessage?.push?.(NestedMessage.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -140,8 +140,8 @@ class ArenaMessage$Type extends MessageType<ArenaMessage> {
     }
     internalBinaryWrite(message: ArenaMessage, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated proto2_arena_unittest.NestedMessage repeated_nested_message = 1; */
-        for (let i = 0; i < message.repeatedNestedMessage.length; i++)
-            NestedMessage.internalBinaryWrite(message.repeatedNestedMessage[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedNestedMessage?.length || 0); i++)
+            NestedMessage.internalBinaryWrite(message.repeatedNestedMessage?.[i] as any, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

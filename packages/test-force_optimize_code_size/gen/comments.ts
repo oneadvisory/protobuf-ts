@@ -34,30 +34,14 @@ export interface MessageWithComments {
      * @generated from protobuf field: string foo = 1;
      */
     foo: string; // Comment next to field.
-    // Comment after field.
-
     /**
-     * Comment before oneof.
-     *
-     * Comment after start of oneof.
-     *
-     * @generated from protobuf oneof: result;
+     * @generated from protobuf field: int32 value = 2;
      */
-    result: {
-        oneofKind: "value";
-        /**
-         * @generated from protobuf field: int32 value = 2;
-         */
-        value: number;
-    } | {
-        oneofKind: "error";
-        /**
-         * @generated from protobuf field: string error = 3;
-         */
-        error: string;
-    } | {
-        oneofKind: undefined;
-    };
+    value?: number;
+    /**
+     * @generated from protobuf field: string error = 3;
+     */
+    error?: string;
     /**
      * @generated from protobuf field: string this_field_has_an_empty_comment = 4;
      */

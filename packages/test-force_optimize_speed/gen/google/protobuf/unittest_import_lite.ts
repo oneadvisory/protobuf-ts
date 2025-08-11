@@ -84,7 +84,7 @@ class ImportMessageLite$Type extends MessageType<ImportMessageLite> {
         ]);
     }
     create(value?: PartialMessage<ImportMessageLite>): ImportMessageLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ImportMessageLite>(this, message, value);
         return message;

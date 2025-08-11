@@ -24,7 +24,7 @@ class ClashWithExampleServiceClient$Type extends MessageType<ClashWithExampleSer
         super("spec.ClashWithExampleServiceClient", []);
     }
     create(value?: PartialMessage<ClashWithExampleServiceClient>): ClashWithExampleServiceClient {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ClashWithExampleServiceClient>(this, message, value);
         return message;

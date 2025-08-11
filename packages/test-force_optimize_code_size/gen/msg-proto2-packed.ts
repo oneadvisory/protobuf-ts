@@ -9,39 +9,39 @@ export interface Proto2PackedMessage {
     /**
      * @generated from protobuf field: repeated double double_field = 1;
      */
-    doubleField: number[];
+    doubleField?: number[];
     /**
      * @generated from protobuf field: repeated uint32 uint32_field = 2;
      */
-    uint32Field: number[];
+    uint32Field?: number[];
     /**
      * @generated from protobuf field: repeated uint64 uint64_field = 3;
      */
-    uint64Field: bigint[];
+    uint64Field?: bigint[];
     /**
      * @generated from protobuf field: repeated double packed_double_field = 101 [packed = true];
      */
-    packedDoubleField: number[];
+    packedDoubleField?: number[];
     /**
      * @generated from protobuf field: repeated uint32 packed_uint32_field = 102 [packed = true];
      */
-    packedUint32Field: number[];
+    packedUint32Field?: number[];
     /**
      * @generated from protobuf field: repeated uint64 packed_uint64_field = 103 [packed = true];
      */
-    packedUint64Field: bigint[];
+    packedUint64Field?: bigint[];
     /**
      * @generated from protobuf field: repeated double unpacked_double_field = 201 [packed = false];
      */
-    unpackedDoubleField: number[];
+    unpackedDoubleField?: number[];
     /**
      * @generated from protobuf field: repeated uint32 unpacked_uint32_field = 202 [packed = false];
      */
-    unpackedUint32Field: number[];
+    unpackedUint32Field?: number[];
     /**
      * @generated from protobuf field: repeated uint64 unpacked_uint64_field = 203 [packed = false];
      */
-    unpackedUint64Field: bigint[];
+    unpackedUint64Field?: bigint[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class Proto2PackedMessage$Type extends MessageType<Proto2PackedMessage> {

@@ -52,17 +52,9 @@ export interface TopLevelMessage {
      */
     f?: number;
     /**
-     * @generated from protobuf oneof: o;
+     * @generated from protobuf field: int64 i = 2;
      */
-    o: {
-        oneofKind: "i";
-        /**
-         * @generated from protobuf field: int64 i = 2;
-         */
-        i: bigint;
-    } | {
-        oneofKind: undefined;
-    };
+    i?: bigint;
 }
 /**
  * @generated from protobuf message protobuf_unittest.TopLevelMessage.NestedMessage
@@ -97,7 +89,7 @@ class OptionsMessage$Type extends MessageType<OptionsMessage> {
         ]);
     }
     create(value?: PartialMessage<OptionsMessage>): OptionsMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<OptionsMessage>(this, message, value);
         return message;
@@ -153,7 +145,7 @@ class Extendee$Type extends MessageType<Extendee> {
         super("protobuf_unittest.Extendee", []);
     }
     create(value?: PartialMessage<Extendee>): Extendee {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<Extendee>(this, message, value);
         return message;
@@ -194,8 +186,7 @@ class TopLevelMessage$Type extends MessageType<TopLevelMessage> {
         ], { "protobuf_unittest.message_option": { plainField: 1, runtimeRetentionField: 2, sourceRetentionField: 3 } });
     }
     create(value?: PartialMessage<TopLevelMessage>): TopLevelMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
-        message.o = { oneofKind: undefined };
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TopLevelMessage>(this, message, value);
         return message;
@@ -209,10 +200,7 @@ class TopLevelMessage$Type extends MessageType<TopLevelMessage> {
                     message.f = reader.float();
                     break;
                 case /* int64 i */ 2:
-                    message.o = {
-                        oneofKind: "i",
-                        i: reader.int64().toBigInt()
-                    };
+                    message.i = reader.int64().toBigInt();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -230,8 +218,8 @@ class TopLevelMessage$Type extends MessageType<TopLevelMessage> {
         if (message.f !== undefined)
             writer.tag(1, WireType.Bit32).float(message.f);
         /* int64 i = 2; */
-        if (message.o.oneofKind === "i")
-            writer.tag(2, WireType.Varint).int64(message.o.i);
+        if ("i" in message && message.i != null)
+            writer.tag(2, WireType.Varint).int64(message.i);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -248,7 +236,7 @@ class TopLevelMessage_NestedMessage$Type extends MessageType<TopLevelMessage_Nes
         super("protobuf_unittest.TopLevelMessage.NestedMessage", [], { "protobuf_unittest.message_option": { plainField: 1, runtimeRetentionField: 2, sourceRetentionField: 3 } });
     }
     create(value?: PartialMessage<TopLevelMessage_NestedMessage>): TopLevelMessage_NestedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TopLevelMessage_NestedMessage>(this, message, value);
         return message;
@@ -284,5 +272,5 @@ export const TopLevelMessage_NestedMessage = new TopLevelMessage_NestedMessage$T
  * @generated ServiceType for protobuf service protobuf_unittest.Service
  */
 export const Service = new ServiceType("protobuf_unittest.Service", [
-    { name: "DoStuff", options: { "protobuf_unittest.method_option": { plainField: 1, runtimeRetentionField: 2, sourceRetentionField: 3 } }, I: TopLevelMessage, O: TopLevelMessage }
+    { name: "DoStuff" as const, options: { "protobuf_unittest.method_option": { plainField: 1, runtimeRetentionField: 2, sourceRetentionField: 3 } } as const, I: TopLevelMessage, O: TopLevelMessage }
 ], { "protobuf_unittest.service_option": { plainField: 1, runtimeRetentionField: 2, sourceRetentionField: 3 } });

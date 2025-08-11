@@ -427,7 +427,7 @@ class TestMapLite$Type extends MessageType<TestMapLite> {
         ]);
     }
     create(value?: PartialMessage<TestMapLite>): TestMapLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.mapInt32Int32 = {};
         message.mapInt64Int64 = {};
         message.mapUint32Uint32 = {};
@@ -901,7 +901,7 @@ class TestArenaMapLite$Type extends MessageType<TestArenaMapLite> {
         ]);
     }
     create(value?: PartialMessage<TestArenaMapLite>): TestArenaMapLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.mapInt32Int32 = {};
         message.mapInt64Int64 = {};
         message.mapUint32Uint32 = {};
@@ -1336,7 +1336,7 @@ class TestRequiredMessageMapLite$Type extends MessageType<TestRequiredMessageMap
         ]);
     }
     create(value?: PartialMessage<TestRequiredMessageMapLite>): TestRequiredMessageMapLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.mapField = {};
         if (value !== undefined)
             reflectionMergePartial<TestRequiredMessageMapLite>(this, message, value);
@@ -1404,7 +1404,7 @@ class TestEnumMapLite$Type extends MessageType<TestEnumMapLite> {
         ]);
     }
     create(value?: PartialMessage<TestEnumMapLite>): TestEnumMapLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.knownMapField = {};
         message.unknownMapField = {};
         if (value !== undefined)
@@ -1491,7 +1491,7 @@ class TestEnumMapPlusExtraLite$Type extends MessageType<TestEnumMapPlusExtraLite
         ]);
     }
     create(value?: PartialMessage<TestEnumMapPlusExtraLite>): TestEnumMapPlusExtraLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.knownMapField = {};
         message.unknownMapField = {};
         if (value !== undefined)
@@ -1577,7 +1577,7 @@ class TestMessageMapLite$Type extends MessageType<TestMessageMapLite> {
         ]);
     }
     create(value?: PartialMessage<TestMessageMapLite>): TestMessageMapLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.mapInt32Message = {};
         if (value !== undefined)
             reflectionMergePartial<TestMessageMapLite>(this, message, value);
@@ -1646,7 +1646,7 @@ class TestRequiredLite$Type extends MessageType<TestRequiredLite> {
         ]);
     }
     create(value?: PartialMessage<TestRequiredLite>): TestRequiredLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.a = 0;
         message.b = 0;
         message.c = 0;
@@ -1707,7 +1707,7 @@ class ForeignMessageArenaLite$Type extends MessageType<ForeignMessageArenaLite> 
         ]);
     }
     create(value?: PartialMessage<ForeignMessageArenaLite>): ForeignMessageArenaLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ForeignMessageArenaLite>(this, message, value);
         return message;

@@ -149,7 +149,7 @@ export interface PostalAddress {
      *
      * @generated from protobuf field: repeated string address_lines = 9;
      */
-    addressLines: string[];
+    addressLines?: string[];
     /**
      * Optional. The recipient at the address.
      * This field may, under certain circumstances, contain multiline information.
@@ -157,7 +157,7 @@ export interface PostalAddress {
      *
      * @generated from protobuf field: repeated string recipients = 10;
      */
-    recipients: string[];
+    recipients?: string[];
     /**
      * Optional. The name of the organization at the address.
      *

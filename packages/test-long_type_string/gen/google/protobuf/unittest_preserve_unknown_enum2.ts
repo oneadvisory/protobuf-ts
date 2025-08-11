@@ -52,33 +52,23 @@ export interface MyMessage {
     /**
      * @generated from protobuf field: repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_e = 2;
      */
-    repeatedE: MyEnum[];
+    repeatedE?: MyEnum[];
     /**
      * @generated from protobuf field: repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_e = 3 [packed = true];
      */
-    repeatedPackedE: MyEnum[];
+    repeatedPackedE?: MyEnum[];
     /**
      * @generated from protobuf field: repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_unexpected_e = 4;
      */
-    repeatedPackedUnexpectedE: MyEnum[]; // not packed
+    repeatedPackedUnexpectedE?: MyEnum[]; // not packed
     /**
-     * @generated from protobuf oneof: o;
+     * @generated from protobuf field: proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_1 = 5;
      */
-    o: {
-        oneofKind: "oneofE1";
-        /**
-         * @generated from protobuf field: proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_1 = 5;
-         */
-        oneofE1: MyEnum;
-    } | {
-        oneofKind: "oneofE2";
-        /**
-         * @generated from protobuf field: proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_2 = 6;
-         */
-        oneofE2: MyEnum;
-    } | {
-        oneofKind: undefined;
-    };
+    oneofE1?: MyEnum;
+    /**
+     * @generated from protobuf field: proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_2 = 6;
+     */
+    oneofE2?: MyEnum;
 }
 /**
  * @generated from protobuf enum proto2_preserve_unknown_enum_unittest.MyEnum
@@ -110,11 +100,10 @@ class MyMessage$Type extends MessageType<MyMessage> {
         ]);
     }
     create(value?: PartialMessage<MyMessage>): MyMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedE = [];
         message.repeatedPackedE = [];
         message.repeatedPackedUnexpectedE = [];
-        message.o = { oneofKind: undefined };
         if (value !== undefined)
             reflectionMergePartial<MyMessage>(this, message, value);
         return message;
@@ -130,35 +119,29 @@ class MyMessage$Type extends MessageType<MyMessage> {
                 case /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_e */ 2:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedE.push(reader.int32());
+                            message.repeatedE?.push?.(reader.int32());
                     else
-                        message.repeatedE.push(reader.int32());
+                        message.repeatedE?.push?.(reader.int32());
                     break;
                 case /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_e = 3 [packed = true] */ 3:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedPackedE.push(reader.int32());
+                            message.repeatedPackedE?.push?.(reader.int32());
                     else
-                        message.repeatedPackedE.push(reader.int32());
+                        message.repeatedPackedE?.push?.(reader.int32());
                     break;
                 case /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_unexpected_e */ 4:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedPackedUnexpectedE.push(reader.int32());
+                            message.repeatedPackedUnexpectedE?.push?.(reader.int32());
                     else
-                        message.repeatedPackedUnexpectedE.push(reader.int32());
+                        message.repeatedPackedUnexpectedE?.push?.(reader.int32());
                     break;
                 case /* proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_1 */ 5:
-                    message.o = {
-                        oneofKind: "oneofE1",
-                        oneofE1: reader.int32()
-                    };
+                    message.oneofE1 = reader.int32();
                     break;
                 case /* proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_2 */ 6:
-                    message.o = {
-                        oneofKind: "oneofE2",
-                        oneofE2: reader.int32()
-                    };
+                    message.oneofE2 = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -176,24 +159,24 @@ class MyMessage$Type extends MessageType<MyMessage> {
         if (message.e !== undefined)
             writer.tag(1, WireType.Varint).int32(message.e);
         /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_e = 2; */
-        for (let i = 0; i < message.repeatedE.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.repeatedE[i]);
+        for (let i = 0; i < (message.repeatedE?.length || 0); i++)
+            writer.tag(2, WireType.Varint).int32(message.repeatedE?.[i] as any);
         /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_e = 3 [packed = true]; */
-        if (message.repeatedPackedE.length) {
+        if (message.repeatedPackedE?.length) {
             writer.tag(3, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedPackedE.length; i++)
                 writer.int32(message.repeatedPackedE[i]);
             writer.join();
         }
         /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_unexpected_e = 4; */
-        for (let i = 0; i < message.repeatedPackedUnexpectedE.length; i++)
-            writer.tag(4, WireType.Varint).int32(message.repeatedPackedUnexpectedE[i]);
+        for (let i = 0; i < (message.repeatedPackedUnexpectedE?.length || 0); i++)
+            writer.tag(4, WireType.Varint).int32(message.repeatedPackedUnexpectedE?.[i] as any);
         /* proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_1 = 5; */
-        if (message.o.oneofKind === "oneofE1")
-            writer.tag(5, WireType.Varint).int32(message.o.oneofE1);
+        if ("oneofE1" in message && message.oneofE1 != null)
+            writer.tag(5, WireType.Varint).int32(message.oneofE1);
         /* proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_2 = 6; */
-        if (message.o.oneofKind === "oneofE2")
-            writer.tag(6, WireType.Varint).int32(message.o.oneofE2);
+        if ("oneofE2" in message && message.oneofE2 != null)
+            writer.tag(6, WireType.Varint).int32(message.oneofE2);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

@@ -63,7 +63,7 @@ class Hat$Type extends MessageType<Hat> {
         ]);
     }
     create(value?: PartialMessage<Hat>): Hat {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.size = 0;
         message.color = "";
         message.name = "";
@@ -124,7 +124,7 @@ class Size$Type extends MessageType<Size> {
         ]);
     }
     create(value?: PartialMessage<Size>): Size {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.inches = 0;
         if (value !== undefined)
             reflectionMergePartial<Size>(this, message, value);
@@ -167,5 +167,5 @@ export const Size = new Size$Type();
  * @generated ServiceType for protobuf service spec.haberdasher.Haberdasher
  */
 export const Haberdasher = new ServiceType("spec.haberdasher.Haberdasher", [
-    { name: "MakeHat", options: {}, I: Size, O: Hat }
+    { name: "MakeHat" as const, options: {} as const, I: Size, O: Hat }
 ]);

@@ -1,7 +1,6 @@
 import type {FieldInfo, PartialMessageInfo} from "./reflection-info";
 import {LongType, ScalarType} from "./reflection-info";
 import type {IMessageType} from "./message-type-contract";
-import {isOneofGroup} from "./oneof";
 
 // noinspection JSMethodCanBeStatic
 export class ReflectionTypeCheck {
@@ -12,7 +11,6 @@ export class ReflectionTypeCheck {
     private data: undefined | {
         req: readonly string[], // required field names
         known: readonly string[], // known field names (including required)
-        oneofs: readonly string[], // oneof names
     };
 
     constructor(info: PartialMessageInfo) {
@@ -22,33 +20,25 @@ export class ReflectionTypeCheck {
     private prepare(): void {
         if (this.data)
             return;
-        const req: string[] = [], known: string[] = [], oneofs: string[] = [];
+        const req: string[] = [], known: string[] = [];
         for (let field of this.fields) {
-            if (field.oneof) {
-                if (!oneofs.includes(field.oneof)) {
-                    oneofs.push(field.oneof)
-                    req.push(field.oneof);
-                    known.push(field.oneof);
-                }
-            } else {
-                known.push(field.localName);
-                switch (field.kind) {
-                    case "scalar":
-                    case "enum":
-                        if (!field.opt || field.repeat)
-                            req.push(field.localName);
-                        break;
-                    case "message":
-                        if (field.repeat)
-                            req.push(field.localName);
-                        break;
-                    case "map":
+            known.push(field.localName);
+            switch (field.kind) {
+                case "scalar":
+                case "enum":
+                    if (!field.opt || field.repeat)
                         req.push(field.localName);
-                        break;
-                }
+                    break;
+                case "message":
+                    if (field.repeat)
+                        req.push(field.localName);
+                    break;
+                case "map":
+                    req.push(field.localName);
+                    break;
             }
         }
-        this.data = {req, known, oneofs: Object.values(oneofs)};
+        this.data = {req, known};
     }
 
 
@@ -98,20 +88,6 @@ export class ReflectionTypeCheck {
         // "With a depth of 1 or more, the field types are checked."
         if (depth < 1) {
             return true;
-        }
-
-        // check oneof group
-        for (const name of data.oneofs) {
-            const group = message[name];
-            if (!isOneofGroup(group))
-                return false;
-            if (group.oneofKind === undefined)
-                continue;
-            const field = this.fields.find(f => f.localName === group.oneofKind);
-            if (!field)
-                return false; // we found no field, but have a kind, something is wrong
-            if (!this.field(group[group.oneofKind], field, allowExcessProperties, depth))
-                return false;
         }
 
         // check types

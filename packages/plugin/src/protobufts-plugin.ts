@@ -122,10 +122,13 @@ export class ProtobuftsPlugin extends PluginBaseProtobufES {
             for (const desc of nestedTypes(descFile)) {
                 switch (desc.kind) {
                     case "message":
+                        if (options.typesOnly) {
+                            break;
+                        }
                         genMessageType.generateMessageType(outMain, desc, options.getOptimizeMode(descFile));
                         break;
                     case "service":
-                        if (options.forceDisableServices) {
+                        if (options.typesOnly || options.forceDisableServices) {
                             break;
                         }
                         // service type

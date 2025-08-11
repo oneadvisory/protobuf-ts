@@ -120,8 +120,8 @@ export const ExampleResponse = new ExampleResponse$Type();
  * @generated ServiceType for protobuf service spec.ExampleService
  */
 export const ExampleService = new ServiceType("spec.ExampleService", [
-    { name: "Unary", options: {}, I: ExampleRequest, O: ExampleResponse },
-    { name: "ServerStream", serverStreaming: true, options: {}, I: ExampleRequest, O: ExampleResponse },
-    { name: "ClientStream", clientStreaming: true, options: {}, I: ExampleRequest, O: ExampleResponse },
-    { name: "Bidi", serverStreaming: true, clientStreaming: true, options: {}, I: ExampleRequest, O: ExampleResponse }
+    { name: "Unary" as const, options: {} as const, I: ExampleRequest, O: ExampleResponse },
+    { name: "ServerStream" as const, serverStreaming: true as const, options: {} as const, I: ExampleRequest, O: ExampleResponse },
+    { name: "ClientStream" as const, clientStreaming: true as const, options: {} as const, I: ExampleRequest, O: ExampleResponse },
+    { name: "Bidi" as const, serverStreaming: true as const, clientStreaming: true as const, options: {} as const, I: ExampleRequest, O: ExampleResponse }
 ]);

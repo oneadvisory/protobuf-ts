@@ -20,7 +20,7 @@ import {binaryWriteOptions} from "./binary-writer";
 import {binaryReadOptions} from "./binary-reader";
 import {containsMessageType} from "./reflection-contains-message-type";
 
-const baseDescriptors = Object.getOwnPropertyDescriptors(Object.getPrototypeOf({})) as Record<typeof MESSAGE_TYPE, unknown>;
+const baseDescriptors = Object.getOwnPropertyDescriptors(Object.getPrototypeOf({})) as any
 const messageTypeDescriptor = baseDescriptors[MESSAGE_TYPE] = {} as {value?: unknown};
 
 /**

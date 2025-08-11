@@ -389,7 +389,7 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
         ]);
     }
     create(value?: PartialMessage<TestEnumMap>): TestEnumMap {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.knownMapField = {};
         message.unknownMapField = {};
         message.unknownMapFieldInt64 = {};
@@ -764,7 +764,7 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
         ]);
     }
     create(value?: PartialMessage<TestEnumMapPlusExtra>): TestEnumMapPlusExtra {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.knownMapField = {};
         message.unknownMapField = {};
         message.unknownMapFieldInt64 = {};
@@ -1126,7 +1126,7 @@ class TestImportEnumMap$Type extends MessageType<TestImportEnumMap> {
         ]);
     }
     create(value?: PartialMessage<TestImportEnumMap>): TestImportEnumMap {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.importEnumAmp = {};
         if (value !== undefined)
             reflectionMergePartial<TestImportEnumMap>(this, message, value);
@@ -1189,7 +1189,7 @@ class TestIntIntMap$Type extends MessageType<TestIntIntMap> {
         ]);
     }
     create(value?: PartialMessage<TestIntIntMap>): TestIntIntMap {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.m = {};
         if (value !== undefined)
             reflectionMergePartial<TestIntIntMap>(this, message, value);
@@ -1263,7 +1263,7 @@ class TestMaps$Type extends MessageType<TestMaps> {
         ]);
     }
     create(value?: PartialMessage<TestMaps>): TestMaps {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.mInt32 = {};
         message.mInt64 = {};
         message.mUint32 = {};
@@ -1627,7 +1627,7 @@ class TestSubmessageMaps$Type extends MessageType<TestSubmessageMaps> {
         ]);
     }
     create(value?: PartialMessage<TestSubmessageMaps>): TestSubmessageMaps {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestSubmessageMaps>(this, message, value);
         return message;
@@ -1674,7 +1674,7 @@ class TestProto2BytesMap$Type extends MessageType<TestProto2BytesMap> {
         ]);
     }
     create(value?: PartialMessage<TestProto2BytesMap>): TestProto2BytesMap {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.mapBytes = {};
         message.mapString = {};
         if (value !== undefined)

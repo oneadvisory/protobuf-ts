@@ -148,7 +148,7 @@ class TestMessageSetContainer$Type extends MessageType<TestMessageSetContainer> 
         ]);
     }
     create(value?: PartialMessage<TestMessageSetContainer>): TestMessageSetContainer {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestMessageSetContainer>(this, message, value);
         return message;
@@ -196,7 +196,7 @@ class NestedTestMessageSetContainer$Type extends MessageType<NestedTestMessageSe
         ]);
     }
     create(value?: PartialMessage<NestedTestMessageSetContainer>): NestedTestMessageSetContainer {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<NestedTestMessageSetContainer>(this, message, value);
         return message;
@@ -256,7 +256,7 @@ class NestedTestInt$Type extends MessageType<NestedTestInt> {
         ]);
     }
     create(value?: PartialMessage<NestedTestInt>): NestedTestInt {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<NestedTestInt>(this, message, value);
         return message;
@@ -316,7 +316,7 @@ class TestMessageSetExtension1$Type extends MessageType<TestMessageSetExtension1
         ]);
     }
     create(value?: PartialMessage<TestMessageSetExtension1>): TestMessageSetExtension1 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestMessageSetExtension1>(this, message, value);
         return message;
@@ -374,7 +374,7 @@ class TestMessageSetExtension2$Type extends MessageType<TestMessageSetExtension2
         ]);
     }
     create(value?: PartialMessage<TestMessageSetExtension2>): TestMessageSetExtension2 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestMessageSetExtension2>(this, message, value);
         return message;
@@ -421,7 +421,7 @@ class TestMessageSetExtension3$Type extends MessageType<TestMessageSetExtension3
         ]);
     }
     create(value?: PartialMessage<TestMessageSetExtension3>): TestMessageSetExtension3 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.requiredInt = 0;
         if (value !== undefined)
             reflectionMergePartial<TestMessageSetExtension3>(this, message, value);
@@ -472,7 +472,7 @@ class RawMessageSet$Type extends MessageType<RawMessageSet> {
         super("protobuf_unittest.RawMessageSet", []);
     }
     create(value?: PartialMessage<RawMessageSet>): RawMessageSet {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<RawMessageSet>(this, message, value);
         return message;
@@ -513,7 +513,7 @@ class RawMessageSet_Item$Type extends MessageType<RawMessageSet_Item> {
         ]);
     }
     create(value?: PartialMessage<RawMessageSet_Item>): RawMessageSet_Item {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.typeId = 0;
         message.message = new Uint8Array(0);
         if (value !== undefined)
@@ -547,7 +547,7 @@ class RawMessageSet_Item$Type extends MessageType<RawMessageSet_Item> {
         if (message.typeId !== 0)
             writer.tag(2, WireType.Varint).int32(message.typeId);
         /* required bytes message = 3; */
-        if (message.message.length)
+        if (message.message?.length)
             writer.tag(3, WireType.LengthDelimited).bytes(message.message);
         let u = options.writeUnknownFields;
         if (u !== false)

@@ -82,63 +82,63 @@ export interface RepeatedScalarValuesMessage {
     /**
      * @generated from protobuf field: repeated double double_field = 1;
      */
-    doubleField: number[];
+    doubleField?: number[];
     /**
      * @generated from protobuf field: repeated float float_field = 2;
      */
-    floatField: number[];
+    floatField?: number[];
     /**
      * @generated from protobuf field: repeated int64 int64_field = 3;
      */
-    int64Field: string[];
+    int64Field?: string[];
     /**
      * @generated from protobuf field: repeated uint64 uint64_field = 4;
      */
-    uint64Field: string[];
+    uint64Field?: string[];
     /**
      * @generated from protobuf field: repeated int32 int32_field = 5;
      */
-    int32Field: number[];
+    int32Field?: number[];
     /**
      * @generated from protobuf field: repeated fixed64 fixed64_field = 6;
      */
-    fixed64Field: string[];
+    fixed64Field?: string[];
     /**
      * @generated from protobuf field: repeated fixed32 fixed32_field = 7;
      */
-    fixed32Field: number[];
+    fixed32Field?: number[];
     /**
      * @generated from protobuf field: repeated bool bool_field = 8;
      */
-    boolField: boolean[];
+    boolField?: boolean[];
     /**
      * @generated from protobuf field: repeated string string_field = 9;
      */
-    stringField: string[];
+    stringField?: string[];
     /**
      * @generated from protobuf field: repeated bytes bytes_field = 11;
      */
-    bytesField: Uint8Array[];
+    bytesField?: Uint8Array[];
     /**
      * @generated from protobuf field: repeated uint32 uint32_field = 12;
      */
-    uint32Field: number[];
+    uint32Field?: number[];
     /**
      * @generated from protobuf field: repeated sfixed32 sfixed32_field = 14;
      */
-    sfixed32Field: number[];
+    sfixed32Field?: number[];
     /**
      * @generated from protobuf field: repeated sfixed64 sfixed64_field = 15;
      */
-    sfixed64Field: string[];
+    sfixed64Field?: string[];
     /**
      * @generated from protobuf field: repeated sint32 sint32_field = 16;
      */
-    sint32Field: number[];
+    sint32Field?: number[];
     /**
      * @generated from protobuf field: repeated sint64 sint64_field = 17;
      */
-    sint64Field: string[];
+    sint64Field?: string[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class ScalarValuesMessage$Type extends MessageType<ScalarValuesMessage> {
@@ -162,7 +162,7 @@ class ScalarValuesMessage$Type extends MessageType<ScalarValuesMessage> {
         ]);
     }
     create(value?: PartialMessage<ScalarValuesMessage>): ScalarValuesMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.doubleField = 0;
         message.floatField = 0;
         message.int64Field = "0";
@@ -272,7 +272,7 @@ class ScalarValuesMessage$Type extends MessageType<ScalarValuesMessage> {
         if (message.stringField !== "")
             writer.tag(9, WireType.LengthDelimited).string(message.stringField);
         /* bytes bytes_field = 11; */
-        if (message.bytesField.length)
+        if (message.bytesField?.length)
             writer.tag(11, WireType.LengthDelimited).bytes(message.bytesField);
         /* uint32 uint32_field = 12; */
         if (message.uint32Field !== 0)
@@ -321,7 +321,7 @@ class RepeatedScalarValuesMessage$Type extends MessageType<RepeatedScalarValuesM
         ]);
     }
     create(value?: PartialMessage<RepeatedScalarValuesMessage>): RepeatedScalarValuesMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.doubleField = [];
         message.floatField = [];
         message.int64Field = [];
@@ -349,99 +349,99 @@ class RepeatedScalarValuesMessage$Type extends MessageType<RepeatedScalarValuesM
                 case /* repeated double double_field */ 1:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.doubleField.push(reader.double());
+                            message.doubleField?.push?.(reader.double());
                     else
-                        message.doubleField.push(reader.double());
+                        message.doubleField?.push?.(reader.double());
                     break;
                 case /* repeated float float_field */ 2:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.floatField.push(reader.float());
+                            message.floatField?.push?.(reader.float());
                     else
-                        message.floatField.push(reader.float());
+                        message.floatField?.push?.(reader.float());
                     break;
                 case /* repeated int64 int64_field */ 3:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.int64Field.push(reader.int64().toString());
+                            message.int64Field?.push?.(reader.int64().toString());
                     else
-                        message.int64Field.push(reader.int64().toString());
+                        message.int64Field?.push?.(reader.int64().toString());
                     break;
                 case /* repeated uint64 uint64_field */ 4:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.uint64Field.push(reader.uint64().toString());
+                            message.uint64Field?.push?.(reader.uint64().toString());
                     else
-                        message.uint64Field.push(reader.uint64().toString());
+                        message.uint64Field?.push?.(reader.uint64().toString());
                     break;
                 case /* repeated int32 int32_field */ 5:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.int32Field.push(reader.int32());
+                            message.int32Field?.push?.(reader.int32());
                     else
-                        message.int32Field.push(reader.int32());
+                        message.int32Field?.push?.(reader.int32());
                     break;
                 case /* repeated fixed64 fixed64_field */ 6:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.fixed64Field.push(reader.fixed64().toString());
+                            message.fixed64Field?.push?.(reader.fixed64().toString());
                     else
-                        message.fixed64Field.push(reader.fixed64().toString());
+                        message.fixed64Field?.push?.(reader.fixed64().toString());
                     break;
                 case /* repeated fixed32 fixed32_field */ 7:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.fixed32Field.push(reader.fixed32());
+                            message.fixed32Field?.push?.(reader.fixed32());
                     else
-                        message.fixed32Field.push(reader.fixed32());
+                        message.fixed32Field?.push?.(reader.fixed32());
                     break;
                 case /* repeated bool bool_field */ 8:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.boolField.push(reader.bool());
+                            message.boolField?.push?.(reader.bool());
                     else
-                        message.boolField.push(reader.bool());
+                        message.boolField?.push?.(reader.bool());
                     break;
                 case /* repeated string string_field */ 9:
-                    message.stringField.push(reader.string());
+                    message.stringField?.push?.(reader.string());
                     break;
                 case /* repeated bytes bytes_field */ 11:
-                    message.bytesField.push(reader.bytes());
+                    message.bytesField?.push?.(reader.bytes());
                     break;
                 case /* repeated uint32 uint32_field */ 12:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.uint32Field.push(reader.uint32());
+                            message.uint32Field?.push?.(reader.uint32());
                     else
-                        message.uint32Field.push(reader.uint32());
+                        message.uint32Field?.push?.(reader.uint32());
                     break;
                 case /* repeated sfixed32 sfixed32_field */ 14:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.sfixed32Field.push(reader.sfixed32());
+                            message.sfixed32Field?.push?.(reader.sfixed32());
                     else
-                        message.sfixed32Field.push(reader.sfixed32());
+                        message.sfixed32Field?.push?.(reader.sfixed32());
                     break;
                 case /* repeated sfixed64 sfixed64_field */ 15:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.sfixed64Field.push(reader.sfixed64().toString());
+                            message.sfixed64Field?.push?.(reader.sfixed64().toString());
                     else
-                        message.sfixed64Field.push(reader.sfixed64().toString());
+                        message.sfixed64Field?.push?.(reader.sfixed64().toString());
                     break;
                 case /* repeated sint32 sint32_field */ 16:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.sint32Field.push(reader.sint32());
+                            message.sint32Field?.push?.(reader.sint32());
                     else
-                        message.sint32Field.push(reader.sint32());
+                        message.sint32Field?.push?.(reader.sint32());
                     break;
                 case /* repeated sint64 sint64_field */ 17:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.sint64Field.push(reader.sint64().toString());
+                            message.sint64Field?.push?.(reader.sint64().toString());
                     else
-                        message.sint64Field.push(reader.sint64().toString());
+                        message.sint64Field?.push?.(reader.sint64().toString());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -456,97 +456,97 @@ class RepeatedScalarValuesMessage$Type extends MessageType<RepeatedScalarValuesM
     }
     internalBinaryWrite(message: RepeatedScalarValuesMessage, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated double double_field = 1; */
-        if (message.doubleField.length) {
+        if (message.doubleField?.length) {
             writer.tag(1, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.doubleField.length; i++)
                 writer.double(message.doubleField[i]);
             writer.join();
         }
         /* repeated float float_field = 2; */
-        if (message.floatField.length) {
+        if (message.floatField?.length) {
             writer.tag(2, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.floatField.length; i++)
                 writer.float(message.floatField[i]);
             writer.join();
         }
         /* repeated int64 int64_field = 3; */
-        if (message.int64Field.length) {
+        if (message.int64Field?.length) {
             writer.tag(3, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.int64Field.length; i++)
                 writer.int64(message.int64Field[i]);
             writer.join();
         }
         /* repeated uint64 uint64_field = 4; */
-        if (message.uint64Field.length) {
+        if (message.uint64Field?.length) {
             writer.tag(4, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.uint64Field.length; i++)
                 writer.uint64(message.uint64Field[i]);
             writer.join();
         }
         /* repeated int32 int32_field = 5; */
-        if (message.int32Field.length) {
+        if (message.int32Field?.length) {
             writer.tag(5, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.int32Field.length; i++)
                 writer.int32(message.int32Field[i]);
             writer.join();
         }
         /* repeated fixed64 fixed64_field = 6; */
-        if (message.fixed64Field.length) {
+        if (message.fixed64Field?.length) {
             writer.tag(6, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.fixed64Field.length; i++)
                 writer.fixed64(message.fixed64Field[i]);
             writer.join();
         }
         /* repeated fixed32 fixed32_field = 7; */
-        if (message.fixed32Field.length) {
+        if (message.fixed32Field?.length) {
             writer.tag(7, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.fixed32Field.length; i++)
                 writer.fixed32(message.fixed32Field[i]);
             writer.join();
         }
         /* repeated bool bool_field = 8; */
-        if (message.boolField.length) {
+        if (message.boolField?.length) {
             writer.tag(8, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.boolField.length; i++)
                 writer.bool(message.boolField[i]);
             writer.join();
         }
         /* repeated string string_field = 9; */
-        for (let i = 0; i < message.stringField.length; i++)
-            writer.tag(9, WireType.LengthDelimited).string(message.stringField[i]);
+        for (let i = 0; i < (message.stringField?.length || 0); i++)
+            writer.tag(9, WireType.LengthDelimited).string(message.stringField?.[i] as any);
         /* repeated bytes bytes_field = 11; */
-        for (let i = 0; i < message.bytesField.length; i++)
-            writer.tag(11, WireType.LengthDelimited).bytes(message.bytesField[i]);
+        for (let i = 0; i < (message.bytesField?.length || 0); i++)
+            writer.tag(11, WireType.LengthDelimited).bytes(message.bytesField?.[i] as any);
         /* repeated uint32 uint32_field = 12; */
-        if (message.uint32Field.length) {
+        if (message.uint32Field?.length) {
             writer.tag(12, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.uint32Field.length; i++)
                 writer.uint32(message.uint32Field[i]);
             writer.join();
         }
         /* repeated sfixed32 sfixed32_field = 14; */
-        if (message.sfixed32Field.length) {
+        if (message.sfixed32Field?.length) {
             writer.tag(14, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.sfixed32Field.length; i++)
                 writer.sfixed32(message.sfixed32Field[i]);
             writer.join();
         }
         /* repeated sfixed64 sfixed64_field = 15; */
-        if (message.sfixed64Field.length) {
+        if (message.sfixed64Field?.length) {
             writer.tag(15, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.sfixed64Field.length; i++)
                 writer.sfixed64(message.sfixed64Field[i]);
             writer.join();
         }
         /* repeated sint32 sint32_field = 16; */
-        if (message.sint32Field.length) {
+        if (message.sint32Field?.length) {
             writer.tag(16, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.sint32Field.length; i++)
                 writer.sint32(message.sint32Field[i]);
             writer.join();
         }
         /* repeated sint64 sint64_field = 17; */
-        if (message.sint64Field.length) {
+        if (message.sint64Field?.length) {
             writer.tag(17, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.sint64Field.length; i++)
                 writer.sint64(message.sint64Field[i]);

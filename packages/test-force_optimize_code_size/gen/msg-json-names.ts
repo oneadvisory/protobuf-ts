@@ -13,7 +13,7 @@ export interface JsonNamesMessage {
     /**
      * @generated from protobuf field: repeated string repeated_scalar_field = 2 [json_name = "repeatedScalarFieldJsonName"];
      */
-    repeatedScalarField: string[];
+    repeatedScalarField?: string[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class JsonNamesMessage$Type extends MessageType<JsonNamesMessage> {

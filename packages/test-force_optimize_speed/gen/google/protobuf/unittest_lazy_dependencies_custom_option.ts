@@ -65,7 +65,7 @@ class LazyMessage$Type extends MessageType<LazyMessage> {
         ]);
     }
     create(value?: PartialMessage<LazyMessage>): LazyMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<LazyMessage>(this, message, value);
         return message;

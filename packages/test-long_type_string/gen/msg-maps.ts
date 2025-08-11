@@ -150,7 +150,7 @@ class ScalarMapsMessage$Type extends MessageType<ScalarMapsMessage> {
         ]);
     }
     create(value?: PartialMessage<ScalarMapsMessage>): ScalarMapsMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.strStrField = {};
         message.strInt32Field = {};
         message.strInt64Field = {};
@@ -376,7 +376,7 @@ class MessageMapMessage$Type extends MessageType<MessageMapMessage> {
         ]);
     }
     create(value?: PartialMessage<MessageMapMessage>): MessageMapMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.strMsgField = {};
         message.int32MsgField = {};
         message.int64MsgField = {};
@@ -497,7 +497,7 @@ class MessageMapMessage_MyItem$Type extends MessageType<MessageMapMessage_MyItem
         ]);
     }
     create(value?: PartialMessage<MessageMapMessage_MyItem>): MessageMapMessage_MyItem {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.text = "";
         if (value !== undefined)
             reflectionMergePartial<MessageMapMessage_MyItem>(this, message, value);
@@ -546,7 +546,7 @@ class EnumMapMessage$Type extends MessageType<EnumMapMessage> {
         ]);
     }
     create(value?: PartialMessage<EnumMapMessage>): EnumMapMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.strEnuField = {};
         message.int32EnuField = {};
         message.int64EnuField = {};

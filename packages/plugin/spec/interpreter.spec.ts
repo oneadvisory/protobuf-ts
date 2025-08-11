@@ -12,7 +12,6 @@ describe('interpreter', function () {
                 {
                     normalLongType,
                     synthesizeEnumZeroValue: 'UNSPECIFIED$',
-                    oneofKindDiscriminator: 'oneofKind',
                     forceExcludeAllOptions: false,
                     keepEnumPrefix: false,
                     useProtoFieldName: false,

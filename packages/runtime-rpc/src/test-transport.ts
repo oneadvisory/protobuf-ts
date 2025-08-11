@@ -5,7 +5,7 @@ import type {RpcTransport} from "./rpc-transport";
 import type {MethodInfo} from "./reflection-info";
 import {assert} from "@protobuf-ts/runtime";
 import {RpcOutputStreamController} from "./rpc-output-stream";
-import {mergeRpcOptions, RpcOptions} from "./rpc-options";
+import {mergeRpcOptions, type RpcOptions} from "./rpc-options";
 import {UnaryCall} from "./unary-call";
 import {ServerStreamingCall} from "./server-streaming-call";
 import {ClientStreamingCall} from "./client-streaming-call";
@@ -181,7 +181,7 @@ export class TestTransport implements RpcTransport {
         try {
             await delay(this.responseDelay, abort)(undefined);
         } catch (error) {
-            stream.notifyError(error);
+            stream.notifyError(error as Error);
             return;
         }
 
@@ -200,7 +200,7 @@ export class TestTransport implements RpcTransport {
             try {
                 await delay(this.betweenResponseDelay, abort)(undefined);
             } catch (error) {
-                stream.notifyError(error);
+                stream.notifyError(error as Error);
                 return;
             }
         }

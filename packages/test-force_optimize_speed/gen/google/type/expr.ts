@@ -80,7 +80,7 @@ class Expr$Type extends MessageType<Expr> {
         ]);
     }
     create(value?: PartialMessage<Expr>): Expr {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.expression = "";
         message.title = "";
         message.description = "";

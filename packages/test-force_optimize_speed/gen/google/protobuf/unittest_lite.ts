@@ -164,99 +164,99 @@ export interface TestAllTypesLite {
      *
      * @generated from protobuf field: repeated int32 repeated_int32 = 31;
      */
-    repeatedInt32: number[];
+    repeatedInt32?: number[];
     /**
      * @generated from protobuf field: repeated int64 repeated_int64 = 32;
      */
-    repeatedInt64: bigint[];
+    repeatedInt64?: bigint[];
     /**
      * @generated from protobuf field: repeated uint32 repeated_uint32 = 33;
      */
-    repeatedUint32: number[];
+    repeatedUint32?: number[];
     /**
      * @generated from protobuf field: repeated uint64 repeated_uint64 = 34;
      */
-    repeatedUint64: bigint[];
+    repeatedUint64?: bigint[];
     /**
      * @generated from protobuf field: repeated sint32 repeated_sint32 = 35;
      */
-    repeatedSint32: number[];
+    repeatedSint32?: number[];
     /**
      * @generated from protobuf field: repeated sint64 repeated_sint64 = 36;
      */
-    repeatedSint64: bigint[];
+    repeatedSint64?: bigint[];
     /**
      * @generated from protobuf field: repeated fixed32 repeated_fixed32 = 37;
      */
-    repeatedFixed32: number[];
+    repeatedFixed32?: number[];
     /**
      * @generated from protobuf field: repeated fixed64 repeated_fixed64 = 38;
      */
-    repeatedFixed64: bigint[];
+    repeatedFixed64?: bigint[];
     /**
      * @generated from protobuf field: repeated sfixed32 repeated_sfixed32 = 39;
      */
-    repeatedSfixed32: number[];
+    repeatedSfixed32?: number[];
     /**
      * @generated from protobuf field: repeated sfixed64 repeated_sfixed64 = 40;
      */
-    repeatedSfixed64: bigint[];
+    repeatedSfixed64?: bigint[];
     /**
      * @generated from protobuf field: repeated float repeated_float = 41;
      */
-    repeatedFloat: number[];
+    repeatedFloat?: number[];
     /**
      * @generated from protobuf field: repeated double repeated_double = 42;
      */
-    repeatedDouble: number[];
+    repeatedDouble?: number[];
     /**
      * @generated from protobuf field: repeated bool repeated_bool = 43;
      */
-    repeatedBool: boolean[];
+    repeatedBool?: boolean[];
     /**
      * @generated from protobuf field: repeated string repeated_string = 44;
      */
-    repeatedString: string[];
+    repeatedString?: string[];
     /**
      * @generated from protobuf field: repeated bytes repeated_bytes = 45;
      */
-    repeatedBytes: Uint8Array[];
+    repeatedBytes?: Uint8Array[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest.TestAllTypesLite.NestedMessage repeated_nested_message = 48;
      */
-    repeatedNestedMessage: TestAllTypesLite_NestedMessage[];
+    repeatedNestedMessage?: TestAllTypesLite_NestedMessage[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest.ForeignMessageLite repeated_foreign_message = 49;
      */
-    repeatedForeignMessage: ForeignMessageLite[];
+    repeatedForeignMessage?: ForeignMessageLite[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest_import.ImportMessageLite repeated_import_message = 50;
      */
-    repeatedImportMessage: ImportMessageLite[];
+    repeatedImportMessage?: ImportMessageLite[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest.TestAllTypesLite.NestedEnum repeated_nested_enum = 51;
      */
-    repeatedNestedEnum: TestAllTypesLite_NestedEnum[];
+    repeatedNestedEnum?: TestAllTypesLite_NestedEnum[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest.ForeignEnumLite repeated_foreign_enum = 52;
      */
-    repeatedForeignEnum: ForeignEnumLite[];
+    repeatedForeignEnum?: ForeignEnumLite[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest_import.ImportEnumLite repeated_import_enum = 53;
      */
-    repeatedImportEnum: ImportEnumLite[];
+    repeatedImportEnum?: ImportEnumLite[];
     /**
      * @generated from protobuf field: repeated string repeated_string_piece = 54;
      */
-    repeatedStringPiece: string[];
+    repeatedStringPiece?: string[];
     /**
      * @generated from protobuf field: repeated string repeated_cord = 55;
      */
-    repeatedCord: string[];
+    repeatedCord?: string[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest.TestAllTypesLite.NestedMessage repeated_lazy_message = 57;
      */
-    repeatedLazyMessage: TestAllTypesLite_NestedMessage[];
+    repeatedLazyMessage?: TestAllTypesLite_NestedMessage[];
     /**
      * Singular with defaults
      *
@@ -340,43 +340,25 @@ export interface TestAllTypesLite {
      */
     defaultCord?: string;
     /**
-     * For oneof test
-     *
-     * @generated from protobuf oneof: oneof_field;
+     * @generated from protobuf field: uint32 oneof_uint32 = 111;
      */
-    oneofField: {
-        oneofKind: "oneofUint32";
-        /**
-         * @generated from protobuf field: uint32 oneof_uint32 = 111;
-         */
-        oneofUint32: number;
-    } | {
-        oneofKind: "oneofNestedMessage";
-        /**
-         * @generated from protobuf field: protobuf_unittest.TestAllTypesLite.NestedMessage oneof_nested_message = 112;
-         */
-        oneofNestedMessage: TestAllTypesLite_NestedMessage;
-    } | {
-        oneofKind: "oneofString";
-        /**
-         * @generated from protobuf field: string oneof_string = 113;
-         */
-        oneofString: string;
-    } | {
-        oneofKind: "oneofBytes";
-        /**
-         * @generated from protobuf field: bytes oneof_bytes = 114;
-         */
-        oneofBytes: Uint8Array;
-    } | {
-        oneofKind: "oneofLazyNestedMessage";
-        /**
-         * @generated from protobuf field: protobuf_unittest.TestAllTypesLite.NestedMessage oneof_lazy_nested_message = 115;
-         */
-        oneofLazyNestedMessage: TestAllTypesLite_NestedMessage;
-    } | {
-        oneofKind: undefined;
-    };
+    oneofUint32?: number;
+    /**
+     * @generated from protobuf field: protobuf_unittest.TestAllTypesLite.NestedMessage oneof_nested_message = 112;
+     */
+    oneofNestedMessage?: TestAllTypesLite_NestedMessage;
+    /**
+     * @generated from protobuf field: string oneof_string = 113;
+     */
+    oneofString?: string;
+    /**
+     * @generated from protobuf field: bytes oneof_bytes = 114;
+     */
+    oneofBytes?: Uint8Array;
+    /**
+     * @generated from protobuf field: protobuf_unittest.TestAllTypesLite.NestedMessage oneof_lazy_nested_message = 115;
+     */
+    oneofLazyNestedMessage?: TestAllTypesLite_NestedMessage;
     /**
      * Tests toString for non-repeated fields with a list suffix
      *
@@ -452,59 +434,59 @@ export interface TestPackedTypesLite {
     /**
      * @generated from protobuf field: repeated int32 packed_int32 = 90 [packed = true];
      */
-    packedInt32: number[];
+    packedInt32?: number[];
     /**
      * @generated from protobuf field: repeated int64 packed_int64 = 91 [packed = true];
      */
-    packedInt64: bigint[];
+    packedInt64?: bigint[];
     /**
      * @generated from protobuf field: repeated uint32 packed_uint32 = 92 [packed = true];
      */
-    packedUint32: number[];
+    packedUint32?: number[];
     /**
      * @generated from protobuf field: repeated uint64 packed_uint64 = 93 [packed = true];
      */
-    packedUint64: bigint[];
+    packedUint64?: bigint[];
     /**
      * @generated from protobuf field: repeated sint32 packed_sint32 = 94 [packed = true];
      */
-    packedSint32: number[];
+    packedSint32?: number[];
     /**
      * @generated from protobuf field: repeated sint64 packed_sint64 = 95 [packed = true];
      */
-    packedSint64: bigint[];
+    packedSint64?: bigint[];
     /**
      * @generated from protobuf field: repeated fixed32 packed_fixed32 = 96 [packed = true];
      */
-    packedFixed32: number[];
+    packedFixed32?: number[];
     /**
      * @generated from protobuf field: repeated fixed64 packed_fixed64 = 97 [packed = true];
      */
-    packedFixed64: bigint[];
+    packedFixed64?: bigint[];
     /**
      * @generated from protobuf field: repeated sfixed32 packed_sfixed32 = 98 [packed = true];
      */
-    packedSfixed32: number[];
+    packedSfixed32?: number[];
     /**
      * @generated from protobuf field: repeated sfixed64 packed_sfixed64 = 99 [packed = true];
      */
-    packedSfixed64: bigint[];
+    packedSfixed64?: bigint[];
     /**
      * @generated from protobuf field: repeated float packed_float = 100 [packed = true];
      */
-    packedFloat: number[];
+    packedFloat?: number[];
     /**
      * @generated from protobuf field: repeated double packed_double = 101 [packed = true];
      */
-    packedDouble: number[];
+    packedDouble?: number[];
     /**
      * @generated from protobuf field: repeated bool packed_bool = 102 [packed = true];
      */
-    packedBool: boolean[];
+    packedBool?: boolean[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest.ForeignEnumLite packed_enum = 103 [packed = true];
      */
-    packedEnum: ForeignEnumLite[];
+    packedEnum?: ForeignEnumLite[];
 }
 /**
  * @generated from protobuf message protobuf_unittest.TestAllExtensionsLite
@@ -584,7 +566,7 @@ export interface TestParsingMergeLite {
     /**
      * @generated from protobuf field: repeated protobuf_unittest.TestAllTypesLite repeated_all_types = 3;
      */
-    repeatedAllTypes: TestAllTypesLite[];
+    repeatedAllTypes?: TestAllTypesLite[];
 }
 /**
  * @generated from protobuf message protobuf_unittest.TestParsingMergeLite.RepeatedFieldsGenerator
@@ -593,23 +575,23 @@ export interface TestParsingMergeLite_RepeatedFieldsGenerator {
     /**
      * @generated from protobuf field: repeated protobuf_unittest.TestAllTypesLite field1 = 1;
      */
-    field1: TestAllTypesLite[];
+    field1?: TestAllTypesLite[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest.TestAllTypesLite field2 = 2;
      */
-    field2: TestAllTypesLite[];
+    field2?: TestAllTypesLite[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest.TestAllTypesLite field3 = 3;
      */
-    field3: TestAllTypesLite[];
+    field3?: TestAllTypesLite[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest.TestAllTypesLite ext1 = 1000;
      */
-    ext1: TestAllTypesLite[];
+    ext1?: TestAllTypesLite[];
     /**
      * @generated from protobuf field: repeated protobuf_unittest.TestAllTypesLite ext2 = 1001;
      */
-    ext2: TestAllTypesLite[];
+    ext2?: TestAllTypesLite[];
 }
 /**
  * @generated from protobuf message protobuf_unittest.TestParsingMergeLite.RepeatedFieldsGenerator.Group1
@@ -703,11 +685,11 @@ export interface TestHugeFieldNumbersLite {
     /**
      * @generated from protobuf field: repeated int32 repeated_int32 = 536870002 [packed = false];
      */
-    repeatedInt32: number[];
+    repeatedInt32?: number[];
     /**
      * @generated from protobuf field: repeated int32 packed_int32 = 536870003 [packed = true];
      */
-    packedInt32: number[];
+    packedInt32?: number[];
     /**
      * @generated from protobuf field: optional protobuf_unittest.ForeignEnumLite optional_enum = 536870004;
      */
@@ -731,35 +713,21 @@ export interface TestHugeFieldNumbersLite {
         [key: string]: string;
     };
     /**
-     * @generated from protobuf oneof: oneof_field;
+     * @generated from protobuf field: uint32 oneof_uint32 = 536870011;
      */
-    oneofField: {
-        oneofKind: "oneofUint32";
-        /**
-         * @generated from protobuf field: uint32 oneof_uint32 = 536870011;
-         */
-        oneofUint32: number;
-    } | {
-        oneofKind: "oneofTestAllTypes";
-        /**
-         * @generated from protobuf field: protobuf_unittest.TestAllTypesLite oneof_test_all_types = 536870012;
-         */
-        oneofTestAllTypes: TestAllTypesLite;
-    } | {
-        oneofKind: "oneofString";
-        /**
-         * @generated from protobuf field: string oneof_string = 536870013;
-         */
-        oneofString: string;
-    } | {
-        oneofKind: "oneofBytes";
-        /**
-         * @generated from protobuf field: bytes oneof_bytes = 536870014;
-         */
-        oneofBytes: Uint8Array;
-    } | {
-        oneofKind: undefined;
-    };
+    oneofUint32?: number;
+    /**
+     * @generated from protobuf field: protobuf_unittest.TestAllTypesLite oneof_test_all_types = 536870012;
+     */
+    oneofTestAllTypes?: TestAllTypesLite;
+    /**
+     * @generated from protobuf field: string oneof_string = 536870013;
+     */
+    oneofString?: string;
+    /**
+     * @generated from protobuf field: bytes oneof_bytes = 536870014;
+     */
+    oneofBytes?: Uint8Array;
 }
 /**
  * @generated from protobuf message protobuf_unittest.TestHugeFieldNumbersLite.OptionalGroup
@@ -775,65 +743,41 @@ export interface TestHugeFieldNumbersLite_OptionalGroup {
  */
 export interface TestOneofParsingLite {
     /**
-     * @generated from protobuf oneof: oneof_field;
+     * @generated from protobuf field: int32 oneof_int32 = 1;
      */
-    oneofField: {
-        oneofKind: "oneofInt32";
-        /**
-         * @generated from protobuf field: int32 oneof_int32 = 1;
-         */
-        oneofInt32: number;
-    } | {
-        oneofKind: "oneofSubmessage";
-        /**
-         * @generated from protobuf field: protobuf_unittest.TestAllTypesLite oneof_submessage = 2;
-         */
-        oneofSubmessage: TestAllTypesLite;
-    } | {
-        oneofKind: "oneofString";
-        /**
-         * @generated from protobuf field: string oneof_string = 3;
-         */
-        oneofString: string;
-    } | {
-        oneofKind: "oneofBytes";
-        /**
-         * @generated from protobuf field: bytes oneof_bytes = 4 [default = "default bytes"];
-         */
-        oneofBytes: Uint8Array;
-    } | {
-        oneofKind: "oneofStringCord";
-        /**
-         * @generated from protobuf field: string oneof_string_cord = 5 [default = "default Cord"];
-         */
-        oneofStringCord: string;
-    } | {
-        oneofKind: "oneofBytesCord";
-        /**
-         * @generated from protobuf field: bytes oneof_bytes_cord = 6;
-         */
-        oneofBytesCord: Uint8Array;
-    } | {
-        oneofKind: "oneofStringStringPiece";
-        /**
-         * @generated from protobuf field: string oneof_string_string_piece = 7;
-         */
-        oneofStringStringPiece: string;
-    } | {
-        oneofKind: "oneofBytesStringPiece";
-        /**
-         * @generated from protobuf field: bytes oneof_bytes_string_piece = 8 [default = "default StringPiece"];
-         */
-        oneofBytesStringPiece: Uint8Array;
-    } | {
-        oneofKind: "oneofEnum";
-        /**
-         * @generated from protobuf field: protobuf_unittest.V2EnumLite oneof_enum = 9;
-         */
-        oneofEnum: V2EnumLite;
-    } | {
-        oneofKind: undefined;
-    };
+    oneofInt32?: number;
+    /**
+     * @generated from protobuf field: protobuf_unittest.TestAllTypesLite oneof_submessage = 2;
+     */
+    oneofSubmessage?: TestAllTypesLite;
+    /**
+     * @generated from protobuf field: string oneof_string = 3;
+     */
+    oneofString?: string;
+    /**
+     * @generated from protobuf field: bytes oneof_bytes = 4 [default = "default bytes"];
+     */
+    oneofBytes?: Uint8Array;
+    /**
+     * @generated from protobuf field: string oneof_string_cord = 5 [default = "default Cord"];
+     */
+    oneofStringCord?: string;
+    /**
+     * @generated from protobuf field: bytes oneof_bytes_cord = 6;
+     */
+    oneofBytesCord?: Uint8Array;
+    /**
+     * @generated from protobuf field: string oneof_string_string_piece = 7;
+     */
+    oneofStringStringPiece?: string;
+    /**
+     * @generated from protobuf field: bytes oneof_bytes_string_piece = 8 [default = "default StringPiece"];
+     */
+    oneofBytesStringPiece?: Uint8Array;
+    /**
+     * @generated from protobuf field: protobuf_unittest.V2EnumLite oneof_enum = 9;
+     */
+    oneofEnum?: V2EnumLite;
 }
 /**
  * The following four messages are set up to test for wire compatibility between
@@ -846,7 +790,7 @@ export interface PackedInt32 {
     /**
      * @generated from protobuf field: repeated int32 repeated_int32 = 2048 [packed = true];
      */
-    repeatedInt32: number[];
+    repeatedInt32?: number[];
 }
 /**
  * @generated from protobuf message protobuf_unittest.NonPackedInt32
@@ -855,7 +799,7 @@ export interface NonPackedInt32 {
     /**
      * @generated from protobuf field: repeated int32 repeated_int32 = 2048;
      */
-    repeatedInt32: number[];
+    repeatedInt32?: number[];
 }
 /**
  * @generated from protobuf message protobuf_unittest.PackedFixed32
@@ -864,7 +808,7 @@ export interface PackedFixed32 {
     /**
      * @generated from protobuf field: repeated fixed32 repeated_fixed32 = 2048 [packed = true];
      */
-    repeatedFixed32: number[];
+    repeatedFixed32?: number[];
 }
 /**
  * @generated from protobuf message protobuf_unittest.NonPackedFixed32
@@ -873,7 +817,7 @@ export interface NonPackedFixed32 {
     /**
      * @generated from protobuf field: repeated fixed32 repeated_fixed32 = 2048;
      */
-    repeatedFixed32: number[];
+    repeatedFixed32?: number[];
 }
 /**
  * Test an enum that has multiple values with the same number.
@@ -1044,7 +988,7 @@ class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
         ]);
     }
     create(value?: PartialMessage<TestAllTypesLite>): TestAllTypesLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedInt32 = [];
         message.repeatedInt64 = [];
         message.repeatedUint32 = [];
@@ -1069,7 +1013,6 @@ class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
         message.repeatedStringPiece = [];
         message.repeatedCord = [];
         message.repeatedLazyMessage = [];
-        message.oneofField = { oneofKind: undefined };
         if (value !== undefined)
             reflectionMergePartial<TestAllTypesLite>(this, message, value);
         return message;
@@ -1157,138 +1100,138 @@ class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
                 case /* repeated int32 repeated_int32 */ 31:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedInt32.push(reader.int32());
+                            message.repeatedInt32?.push?.(reader.int32());
                     else
-                        message.repeatedInt32.push(reader.int32());
+                        message.repeatedInt32?.push?.(reader.int32());
                     break;
                 case /* repeated int64 repeated_int64 */ 32:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedInt64.push(reader.int64().toBigInt());
+                            message.repeatedInt64?.push?.(reader.int64().toBigInt());
                     else
-                        message.repeatedInt64.push(reader.int64().toBigInt());
+                        message.repeatedInt64?.push?.(reader.int64().toBigInt());
                     break;
                 case /* repeated uint32 repeated_uint32 */ 33:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedUint32.push(reader.uint32());
+                            message.repeatedUint32?.push?.(reader.uint32());
                     else
-                        message.repeatedUint32.push(reader.uint32());
+                        message.repeatedUint32?.push?.(reader.uint32());
                     break;
                 case /* repeated uint64 repeated_uint64 */ 34:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedUint64.push(reader.uint64().toBigInt());
+                            message.repeatedUint64?.push?.(reader.uint64().toBigInt());
                     else
-                        message.repeatedUint64.push(reader.uint64().toBigInt());
+                        message.repeatedUint64?.push?.(reader.uint64().toBigInt());
                     break;
                 case /* repeated sint32 repeated_sint32 */ 35:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSint32.push(reader.sint32());
+                            message.repeatedSint32?.push?.(reader.sint32());
                     else
-                        message.repeatedSint32.push(reader.sint32());
+                        message.repeatedSint32?.push?.(reader.sint32());
                     break;
                 case /* repeated sint64 repeated_sint64 */ 36:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSint64.push(reader.sint64().toBigInt());
+                            message.repeatedSint64?.push?.(reader.sint64().toBigInt());
                     else
-                        message.repeatedSint64.push(reader.sint64().toBigInt());
+                        message.repeatedSint64?.push?.(reader.sint64().toBigInt());
                     break;
                 case /* repeated fixed32 repeated_fixed32 */ 37:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFixed32.push(reader.fixed32());
+                            message.repeatedFixed32?.push?.(reader.fixed32());
                     else
-                        message.repeatedFixed32.push(reader.fixed32());
+                        message.repeatedFixed32?.push?.(reader.fixed32());
                     break;
                 case /* repeated fixed64 repeated_fixed64 */ 38:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFixed64.push(reader.fixed64().toBigInt());
+                            message.repeatedFixed64?.push?.(reader.fixed64().toBigInt());
                     else
-                        message.repeatedFixed64.push(reader.fixed64().toBigInt());
+                        message.repeatedFixed64?.push?.(reader.fixed64().toBigInt());
                     break;
                 case /* repeated sfixed32 repeated_sfixed32 */ 39:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSfixed32.push(reader.sfixed32());
+                            message.repeatedSfixed32?.push?.(reader.sfixed32());
                     else
-                        message.repeatedSfixed32.push(reader.sfixed32());
+                        message.repeatedSfixed32?.push?.(reader.sfixed32());
                     break;
                 case /* repeated sfixed64 repeated_sfixed64 */ 40:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedSfixed64.push(reader.sfixed64().toBigInt());
+                            message.repeatedSfixed64?.push?.(reader.sfixed64().toBigInt());
                     else
-                        message.repeatedSfixed64.push(reader.sfixed64().toBigInt());
+                        message.repeatedSfixed64?.push?.(reader.sfixed64().toBigInt());
                     break;
                 case /* repeated float repeated_float */ 41:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFloat.push(reader.float());
+                            message.repeatedFloat?.push?.(reader.float());
                     else
-                        message.repeatedFloat.push(reader.float());
+                        message.repeatedFloat?.push?.(reader.float());
                     break;
                 case /* repeated double repeated_double */ 42:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedDouble.push(reader.double());
+                            message.repeatedDouble?.push?.(reader.double());
                     else
-                        message.repeatedDouble.push(reader.double());
+                        message.repeatedDouble?.push?.(reader.double());
                     break;
                 case /* repeated bool repeated_bool */ 43:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedBool.push(reader.bool());
+                            message.repeatedBool?.push?.(reader.bool());
                     else
-                        message.repeatedBool.push(reader.bool());
+                        message.repeatedBool?.push?.(reader.bool());
                     break;
                 case /* repeated string repeated_string */ 44:
-                    message.repeatedString.push(reader.string());
+                    message.repeatedString?.push?.(reader.string());
                     break;
                 case /* repeated bytes repeated_bytes */ 45:
-                    message.repeatedBytes.push(reader.bytes());
+                    message.repeatedBytes?.push?.(reader.bytes());
                     break;
                 case /* repeated protobuf_unittest.TestAllTypesLite.NestedMessage repeated_nested_message */ 48:
-                    message.repeatedNestedMessage.push(TestAllTypesLite_NestedMessage.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedNestedMessage?.push?.(TestAllTypesLite_NestedMessage.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated protobuf_unittest.ForeignMessageLite repeated_foreign_message */ 49:
-                    message.repeatedForeignMessage.push(ForeignMessageLite.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedForeignMessage?.push?.(ForeignMessageLite.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated protobuf_unittest_import.ImportMessageLite repeated_import_message */ 50:
-                    message.repeatedImportMessage.push(ImportMessageLite.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedImportMessage?.push?.(ImportMessageLite.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated protobuf_unittest.TestAllTypesLite.NestedEnum repeated_nested_enum */ 51:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedNestedEnum.push(reader.int32());
+                            message.repeatedNestedEnum?.push?.(reader.int32());
                     else
-                        message.repeatedNestedEnum.push(reader.int32());
+                        message.repeatedNestedEnum?.push?.(reader.int32());
                     break;
                 case /* repeated protobuf_unittest.ForeignEnumLite repeated_foreign_enum */ 52:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedForeignEnum.push(reader.int32());
+                            message.repeatedForeignEnum?.push?.(reader.int32());
                     else
-                        message.repeatedForeignEnum.push(reader.int32());
+                        message.repeatedForeignEnum?.push?.(reader.int32());
                     break;
                 case /* repeated protobuf_unittest_import.ImportEnumLite repeated_import_enum */ 53:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedImportEnum.push(reader.int32());
+                            message.repeatedImportEnum?.push?.(reader.int32());
                     else
-                        message.repeatedImportEnum.push(reader.int32());
+                        message.repeatedImportEnum?.push?.(reader.int32());
                     break;
                 case /* repeated string repeated_string_piece */ 54:
-                    message.repeatedStringPiece.push(reader.string());
+                    message.repeatedStringPiece?.push?.(reader.string());
                     break;
                 case /* repeated string repeated_cord */ 55:
-                    message.repeatedCord.push(reader.string());
+                    message.repeatedCord?.push?.(reader.string());
                     break;
                 case /* repeated protobuf_unittest.TestAllTypesLite.NestedMessage repeated_lazy_message */ 57:
-                    message.repeatedLazyMessage.push(TestAllTypesLite_NestedMessage.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedLazyMessage?.push?.(TestAllTypesLite_NestedMessage.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 default_int32 = 61 [default = 41] */ 61:
                     message.defaultInt32 = reader.int32();
@@ -1351,34 +1294,19 @@ class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
                     message.defaultCord = reader.string();
                     break;
                 case /* uint32 oneof_uint32 */ 111:
-                    message.oneofField = {
-                        oneofKind: "oneofUint32",
-                        oneofUint32: reader.uint32()
-                    };
+                    message.oneofUint32 = reader.uint32();
                     break;
                 case /* protobuf_unittest.TestAllTypesLite.NestedMessage oneof_nested_message */ 112:
-                    message.oneofField = {
-                        oneofKind: "oneofNestedMessage",
-                        oneofNestedMessage: TestAllTypesLite_NestedMessage.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).oneofNestedMessage)
-                    };
+                    message.oneofNestedMessage = TestAllTypesLite_NestedMessage.internalBinaryRead(reader, reader.uint32(), options, (message as any).oneofNestedMessage);
                     break;
                 case /* string oneof_string */ 113:
-                    message.oneofField = {
-                        oneofKind: "oneofString",
-                        oneofString: reader.string()
-                    };
+                    message.oneofString = reader.string();
                     break;
                 case /* bytes oneof_bytes */ 114:
-                    message.oneofField = {
-                        oneofKind: "oneofBytes",
-                        oneofBytes: reader.bytes()
-                    };
+                    message.oneofBytes = reader.bytes();
                     break;
                 case /* protobuf_unittest.TestAllTypesLite.NestedMessage oneof_lazy_nested_message */ 115:
-                    message.oneofField = {
-                        oneofKind: "oneofLazyNestedMessage",
-                        oneofLazyNestedMessage: TestAllTypesLite_NestedMessage.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).oneofLazyNestedMessage)
-                    };
+                    message.oneofLazyNestedMessage = TestAllTypesLite_NestedMessage.internalBinaryRead(reader, reader.uint32(), options, (message as any).oneofLazyNestedMessage);
                     break;
                 case /* optional int32 deceptively_named_list */ 116:
                     message.deceptivelyNamedList = reader.int32();
@@ -1471,77 +1399,77 @@ class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
         if (message.optionalLazyMessage)
             TestAllTypesLite_NestedMessage.internalBinaryWrite(message.optionalLazyMessage, writer.tag(27, WireType.LengthDelimited).fork(), options).join();
         /* repeated int32 repeated_int32 = 31; */
-        for (let i = 0; i < message.repeatedInt32.length; i++)
-            writer.tag(31, WireType.Varint).int32(message.repeatedInt32[i]);
+        for (let i = 0; i < (message.repeatedInt32?.length || 0); i++)
+            writer.tag(31, WireType.Varint).int32(message.repeatedInt32?.[i] as any);
         /* repeated int64 repeated_int64 = 32; */
-        for (let i = 0; i < message.repeatedInt64.length; i++)
-            writer.tag(32, WireType.Varint).int64(message.repeatedInt64[i]);
+        for (let i = 0; i < (message.repeatedInt64?.length || 0); i++)
+            writer.tag(32, WireType.Varint).int64(message.repeatedInt64?.[i] as any);
         /* repeated uint32 repeated_uint32 = 33; */
-        for (let i = 0; i < message.repeatedUint32.length; i++)
-            writer.tag(33, WireType.Varint).uint32(message.repeatedUint32[i]);
+        for (let i = 0; i < (message.repeatedUint32?.length || 0); i++)
+            writer.tag(33, WireType.Varint).uint32(message.repeatedUint32?.[i] as any);
         /* repeated uint64 repeated_uint64 = 34; */
-        for (let i = 0; i < message.repeatedUint64.length; i++)
-            writer.tag(34, WireType.Varint).uint64(message.repeatedUint64[i]);
+        for (let i = 0; i < (message.repeatedUint64?.length || 0); i++)
+            writer.tag(34, WireType.Varint).uint64(message.repeatedUint64?.[i] as any);
         /* repeated sint32 repeated_sint32 = 35; */
-        for (let i = 0; i < message.repeatedSint32.length; i++)
-            writer.tag(35, WireType.Varint).sint32(message.repeatedSint32[i]);
+        for (let i = 0; i < (message.repeatedSint32?.length || 0); i++)
+            writer.tag(35, WireType.Varint).sint32(message.repeatedSint32?.[i] as any);
         /* repeated sint64 repeated_sint64 = 36; */
-        for (let i = 0; i < message.repeatedSint64.length; i++)
-            writer.tag(36, WireType.Varint).sint64(message.repeatedSint64[i]);
+        for (let i = 0; i < (message.repeatedSint64?.length || 0); i++)
+            writer.tag(36, WireType.Varint).sint64(message.repeatedSint64?.[i] as any);
         /* repeated fixed32 repeated_fixed32 = 37; */
-        for (let i = 0; i < message.repeatedFixed32.length; i++)
-            writer.tag(37, WireType.Bit32).fixed32(message.repeatedFixed32[i]);
+        for (let i = 0; i < (message.repeatedFixed32?.length || 0); i++)
+            writer.tag(37, WireType.Bit32).fixed32(message.repeatedFixed32?.[i] as any);
         /* repeated fixed64 repeated_fixed64 = 38; */
-        for (let i = 0; i < message.repeatedFixed64.length; i++)
-            writer.tag(38, WireType.Bit64).fixed64(message.repeatedFixed64[i]);
+        for (let i = 0; i < (message.repeatedFixed64?.length || 0); i++)
+            writer.tag(38, WireType.Bit64).fixed64(message.repeatedFixed64?.[i] as any);
         /* repeated sfixed32 repeated_sfixed32 = 39; */
-        for (let i = 0; i < message.repeatedSfixed32.length; i++)
-            writer.tag(39, WireType.Bit32).sfixed32(message.repeatedSfixed32[i]);
+        for (let i = 0; i < (message.repeatedSfixed32?.length || 0); i++)
+            writer.tag(39, WireType.Bit32).sfixed32(message.repeatedSfixed32?.[i] as any);
         /* repeated sfixed64 repeated_sfixed64 = 40; */
-        for (let i = 0; i < message.repeatedSfixed64.length; i++)
-            writer.tag(40, WireType.Bit64).sfixed64(message.repeatedSfixed64[i]);
+        for (let i = 0; i < (message.repeatedSfixed64?.length || 0); i++)
+            writer.tag(40, WireType.Bit64).sfixed64(message.repeatedSfixed64?.[i] as any);
         /* repeated float repeated_float = 41; */
-        for (let i = 0; i < message.repeatedFloat.length; i++)
-            writer.tag(41, WireType.Bit32).float(message.repeatedFloat[i]);
+        for (let i = 0; i < (message.repeatedFloat?.length || 0); i++)
+            writer.tag(41, WireType.Bit32).float(message.repeatedFloat?.[i] as any);
         /* repeated double repeated_double = 42; */
-        for (let i = 0; i < message.repeatedDouble.length; i++)
-            writer.tag(42, WireType.Bit64).double(message.repeatedDouble[i]);
+        for (let i = 0; i < (message.repeatedDouble?.length || 0); i++)
+            writer.tag(42, WireType.Bit64).double(message.repeatedDouble?.[i] as any);
         /* repeated bool repeated_bool = 43; */
-        for (let i = 0; i < message.repeatedBool.length; i++)
-            writer.tag(43, WireType.Varint).bool(message.repeatedBool[i]);
+        for (let i = 0; i < (message.repeatedBool?.length || 0); i++)
+            writer.tag(43, WireType.Varint).bool(message.repeatedBool?.[i] as any);
         /* repeated string repeated_string = 44; */
-        for (let i = 0; i < message.repeatedString.length; i++)
-            writer.tag(44, WireType.LengthDelimited).string(message.repeatedString[i]);
+        for (let i = 0; i < (message.repeatedString?.length || 0); i++)
+            writer.tag(44, WireType.LengthDelimited).string(message.repeatedString?.[i] as any);
         /* repeated bytes repeated_bytes = 45; */
-        for (let i = 0; i < message.repeatedBytes.length; i++)
-            writer.tag(45, WireType.LengthDelimited).bytes(message.repeatedBytes[i]);
+        for (let i = 0; i < (message.repeatedBytes?.length || 0); i++)
+            writer.tag(45, WireType.LengthDelimited).bytes(message.repeatedBytes?.[i] as any);
         /* repeated protobuf_unittest.TestAllTypesLite.NestedMessage repeated_nested_message = 48; */
-        for (let i = 0; i < message.repeatedNestedMessage.length; i++)
-            TestAllTypesLite_NestedMessage.internalBinaryWrite(message.repeatedNestedMessage[i], writer.tag(48, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedNestedMessage?.length || 0); i++)
+            TestAllTypesLite_NestedMessage.internalBinaryWrite(message.repeatedNestedMessage?.[i] as any, writer.tag(48, WireType.LengthDelimited).fork(), options).join();
         /* repeated protobuf_unittest.ForeignMessageLite repeated_foreign_message = 49; */
-        for (let i = 0; i < message.repeatedForeignMessage.length; i++)
-            ForeignMessageLite.internalBinaryWrite(message.repeatedForeignMessage[i], writer.tag(49, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedForeignMessage?.length || 0); i++)
+            ForeignMessageLite.internalBinaryWrite(message.repeatedForeignMessage?.[i] as any, writer.tag(49, WireType.LengthDelimited).fork(), options).join();
         /* repeated protobuf_unittest_import.ImportMessageLite repeated_import_message = 50; */
-        for (let i = 0; i < message.repeatedImportMessage.length; i++)
-            ImportMessageLite.internalBinaryWrite(message.repeatedImportMessage[i], writer.tag(50, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedImportMessage?.length || 0); i++)
+            ImportMessageLite.internalBinaryWrite(message.repeatedImportMessage?.[i] as any, writer.tag(50, WireType.LengthDelimited).fork(), options).join();
         /* repeated protobuf_unittest.TestAllTypesLite.NestedEnum repeated_nested_enum = 51; */
-        for (let i = 0; i < message.repeatedNestedEnum.length; i++)
-            writer.tag(51, WireType.Varint).int32(message.repeatedNestedEnum[i]);
+        for (let i = 0; i < (message.repeatedNestedEnum?.length || 0); i++)
+            writer.tag(51, WireType.Varint).int32(message.repeatedNestedEnum?.[i] as any);
         /* repeated protobuf_unittest.ForeignEnumLite repeated_foreign_enum = 52; */
-        for (let i = 0; i < message.repeatedForeignEnum.length; i++)
-            writer.tag(52, WireType.Varint).int32(message.repeatedForeignEnum[i]);
+        for (let i = 0; i < (message.repeatedForeignEnum?.length || 0); i++)
+            writer.tag(52, WireType.Varint).int32(message.repeatedForeignEnum?.[i] as any);
         /* repeated protobuf_unittest_import.ImportEnumLite repeated_import_enum = 53; */
-        for (let i = 0; i < message.repeatedImportEnum.length; i++)
-            writer.tag(53, WireType.Varint).int32(message.repeatedImportEnum[i]);
+        for (let i = 0; i < (message.repeatedImportEnum?.length || 0); i++)
+            writer.tag(53, WireType.Varint).int32(message.repeatedImportEnum?.[i] as any);
         /* repeated string repeated_string_piece = 54; */
-        for (let i = 0; i < message.repeatedStringPiece.length; i++)
-            writer.tag(54, WireType.LengthDelimited).string(message.repeatedStringPiece[i]);
+        for (let i = 0; i < (message.repeatedStringPiece?.length || 0); i++)
+            writer.tag(54, WireType.LengthDelimited).string(message.repeatedStringPiece?.[i] as any);
         /* repeated string repeated_cord = 55; */
-        for (let i = 0; i < message.repeatedCord.length; i++)
-            writer.tag(55, WireType.LengthDelimited).string(message.repeatedCord[i]);
+        for (let i = 0; i < (message.repeatedCord?.length || 0); i++)
+            writer.tag(55, WireType.LengthDelimited).string(message.repeatedCord?.[i] as any);
         /* repeated protobuf_unittest.TestAllTypesLite.NestedMessage repeated_lazy_message = 57; */
-        for (let i = 0; i < message.repeatedLazyMessage.length; i++)
-            TestAllTypesLite_NestedMessage.internalBinaryWrite(message.repeatedLazyMessage[i], writer.tag(57, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedLazyMessage?.length || 0); i++)
+            TestAllTypesLite_NestedMessage.internalBinaryWrite(message.repeatedLazyMessage?.[i] as any, writer.tag(57, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 default_int32 = 61 [default = 41]; */
         if (message.defaultInt32 !== undefined)
             writer.tag(61, WireType.Varint).int32(message.defaultInt32);
@@ -1603,20 +1531,20 @@ class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
         if (message.defaultCord !== undefined)
             writer.tag(85, WireType.LengthDelimited).string(message.defaultCord);
         /* uint32 oneof_uint32 = 111; */
-        if (message.oneofField.oneofKind === "oneofUint32")
-            writer.tag(111, WireType.Varint).uint32(message.oneofField.oneofUint32);
+        if ("oneofUint32" in message && message.oneofUint32 != null)
+            writer.tag(111, WireType.Varint).uint32(message.oneofUint32);
         /* protobuf_unittest.TestAllTypesLite.NestedMessage oneof_nested_message = 112; */
-        if (message.oneofField.oneofKind === "oneofNestedMessage")
-            TestAllTypesLite_NestedMessage.internalBinaryWrite(message.oneofField.oneofNestedMessage, writer.tag(112, WireType.LengthDelimited).fork(), options).join();
+        if ("oneofNestedMessage" in message && message.oneofNestedMessage != null)
+            TestAllTypesLite_NestedMessage.internalBinaryWrite(message.oneofNestedMessage, writer.tag(112, WireType.LengthDelimited).fork(), options).join();
         /* string oneof_string = 113; */
-        if (message.oneofField.oneofKind === "oneofString")
-            writer.tag(113, WireType.LengthDelimited).string(message.oneofField.oneofString);
+        if ("oneofString" in message && message.oneofString != null)
+            writer.tag(113, WireType.LengthDelimited).string(message.oneofString);
         /* bytes oneof_bytes = 114; */
-        if (message.oneofField.oneofKind === "oneofBytes")
-            writer.tag(114, WireType.LengthDelimited).bytes(message.oneofField.oneofBytes);
+        if ("oneofBytes" in message && message.oneofBytes != null)
+            writer.tag(114, WireType.LengthDelimited).bytes(message.oneofBytes);
         /* protobuf_unittest.TestAllTypesLite.NestedMessage oneof_lazy_nested_message = 115; */
-        if (message.oneofField.oneofKind === "oneofLazyNestedMessage")
-            TestAllTypesLite_NestedMessage.internalBinaryWrite(message.oneofField.oneofLazyNestedMessage, writer.tag(115, WireType.LengthDelimited).fork(), options).join();
+        if ("oneofLazyNestedMessage" in message && message.oneofLazyNestedMessage != null)
+            TestAllTypesLite_NestedMessage.internalBinaryWrite(message.oneofLazyNestedMessage, writer.tag(115, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 deceptively_named_list = 116; */
         if (message.deceptivelyNamedList !== undefined)
             writer.tag(116, WireType.Varint).int32(message.deceptivelyNamedList);
@@ -1639,7 +1567,7 @@ class TestAllTypesLite_NestedMessage$Type extends MessageType<TestAllTypesLite_N
         ]);
     }
     create(value?: PartialMessage<TestAllTypesLite_NestedMessage>): TestAllTypesLite_NestedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestAllTypesLite_NestedMessage>(this, message, value);
         return message;
@@ -1691,7 +1619,7 @@ class TestAllTypesLite_OptionalGroup$Type extends MessageType<TestAllTypesLite_O
         ]);
     }
     create(value?: PartialMessage<TestAllTypesLite_OptionalGroup>): TestAllTypesLite_OptionalGroup {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestAllTypesLite_OptionalGroup>(this, message, value);
         return message;
@@ -1737,7 +1665,7 @@ class TestAllTypesLite_RepeatedGroup$Type extends MessageType<TestAllTypesLite_R
         ]);
     }
     create(value?: PartialMessage<TestAllTypesLite_RepeatedGroup>): TestAllTypesLite_RepeatedGroup {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestAllTypesLite_RepeatedGroup>(this, message, value);
         return message;
@@ -1783,7 +1711,7 @@ class ForeignMessageLite$Type extends MessageType<ForeignMessageLite> {
         ]);
     }
     create(value?: PartialMessage<ForeignMessageLite>): ForeignMessageLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ForeignMessageLite>(this, message, value);
         return message;
@@ -1842,7 +1770,7 @@ class TestPackedTypesLite$Type extends MessageType<TestPackedTypesLite> {
         ]);
     }
     create(value?: PartialMessage<TestPackedTypesLite>): TestPackedTypesLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.packedInt32 = [];
         message.packedInt64 = [];
         message.packedUint32 = [];
@@ -1869,100 +1797,100 @@ class TestPackedTypesLite$Type extends MessageType<TestPackedTypesLite> {
                 case /* repeated int32 packed_int32 = 90 [packed = true] */ 90:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedInt32.push(reader.int32());
+                            message.packedInt32?.push?.(reader.int32());
                     else
-                        message.packedInt32.push(reader.int32());
+                        message.packedInt32?.push?.(reader.int32());
                     break;
                 case /* repeated int64 packed_int64 = 91 [packed = true] */ 91:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedInt64.push(reader.int64().toBigInt());
+                            message.packedInt64?.push?.(reader.int64().toBigInt());
                     else
-                        message.packedInt64.push(reader.int64().toBigInt());
+                        message.packedInt64?.push?.(reader.int64().toBigInt());
                     break;
                 case /* repeated uint32 packed_uint32 = 92 [packed = true] */ 92:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedUint32.push(reader.uint32());
+                            message.packedUint32?.push?.(reader.uint32());
                     else
-                        message.packedUint32.push(reader.uint32());
+                        message.packedUint32?.push?.(reader.uint32());
                     break;
                 case /* repeated uint64 packed_uint64 = 93 [packed = true] */ 93:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedUint64.push(reader.uint64().toBigInt());
+                            message.packedUint64?.push?.(reader.uint64().toBigInt());
                     else
-                        message.packedUint64.push(reader.uint64().toBigInt());
+                        message.packedUint64?.push?.(reader.uint64().toBigInt());
                     break;
                 case /* repeated sint32 packed_sint32 = 94 [packed = true] */ 94:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedSint32.push(reader.sint32());
+                            message.packedSint32?.push?.(reader.sint32());
                     else
-                        message.packedSint32.push(reader.sint32());
+                        message.packedSint32?.push?.(reader.sint32());
                     break;
                 case /* repeated sint64 packed_sint64 = 95 [packed = true] */ 95:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedSint64.push(reader.sint64().toBigInt());
+                            message.packedSint64?.push?.(reader.sint64().toBigInt());
                     else
-                        message.packedSint64.push(reader.sint64().toBigInt());
+                        message.packedSint64?.push?.(reader.sint64().toBigInt());
                     break;
                 case /* repeated fixed32 packed_fixed32 = 96 [packed = true] */ 96:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedFixed32.push(reader.fixed32());
+                            message.packedFixed32?.push?.(reader.fixed32());
                     else
-                        message.packedFixed32.push(reader.fixed32());
+                        message.packedFixed32?.push?.(reader.fixed32());
                     break;
                 case /* repeated fixed64 packed_fixed64 = 97 [packed = true] */ 97:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedFixed64.push(reader.fixed64().toBigInt());
+                            message.packedFixed64?.push?.(reader.fixed64().toBigInt());
                     else
-                        message.packedFixed64.push(reader.fixed64().toBigInt());
+                        message.packedFixed64?.push?.(reader.fixed64().toBigInt());
                     break;
                 case /* repeated sfixed32 packed_sfixed32 = 98 [packed = true] */ 98:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedSfixed32.push(reader.sfixed32());
+                            message.packedSfixed32?.push?.(reader.sfixed32());
                     else
-                        message.packedSfixed32.push(reader.sfixed32());
+                        message.packedSfixed32?.push?.(reader.sfixed32());
                     break;
                 case /* repeated sfixed64 packed_sfixed64 = 99 [packed = true] */ 99:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedSfixed64.push(reader.sfixed64().toBigInt());
+                            message.packedSfixed64?.push?.(reader.sfixed64().toBigInt());
                     else
-                        message.packedSfixed64.push(reader.sfixed64().toBigInt());
+                        message.packedSfixed64?.push?.(reader.sfixed64().toBigInt());
                     break;
                 case /* repeated float packed_float = 100 [packed = true] */ 100:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedFloat.push(reader.float());
+                            message.packedFloat?.push?.(reader.float());
                     else
-                        message.packedFloat.push(reader.float());
+                        message.packedFloat?.push?.(reader.float());
                     break;
                 case /* repeated double packed_double = 101 [packed = true] */ 101:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedDouble.push(reader.double());
+                            message.packedDouble?.push?.(reader.double());
                     else
-                        message.packedDouble.push(reader.double());
+                        message.packedDouble?.push?.(reader.double());
                     break;
                 case /* repeated bool packed_bool = 102 [packed = true] */ 102:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedBool.push(reader.bool());
+                            message.packedBool?.push?.(reader.bool());
                     else
-                        message.packedBool.push(reader.bool());
+                        message.packedBool?.push?.(reader.bool());
                     break;
                 case /* repeated protobuf_unittest.ForeignEnumLite packed_enum = 103 [packed = true] */ 103:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedEnum.push(reader.int32());
+                            message.packedEnum?.push?.(reader.int32());
                     else
-                        message.packedEnum.push(reader.int32());
+                        message.packedEnum?.push?.(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1977,98 +1905,98 @@ class TestPackedTypesLite$Type extends MessageType<TestPackedTypesLite> {
     }
     internalBinaryWrite(message: TestPackedTypesLite, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated int32 packed_int32 = 90 [packed = true]; */
-        if (message.packedInt32.length) {
+        if (message.packedInt32?.length) {
             writer.tag(90, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedInt32.length; i++)
                 writer.int32(message.packedInt32[i]);
             writer.join();
         }
         /* repeated int64 packed_int64 = 91 [packed = true]; */
-        if (message.packedInt64.length) {
+        if (message.packedInt64?.length) {
             writer.tag(91, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedInt64.length; i++)
                 writer.int64(message.packedInt64[i]);
             writer.join();
         }
         /* repeated uint32 packed_uint32 = 92 [packed = true]; */
-        if (message.packedUint32.length) {
+        if (message.packedUint32?.length) {
             writer.tag(92, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedUint32.length; i++)
                 writer.uint32(message.packedUint32[i]);
             writer.join();
         }
         /* repeated uint64 packed_uint64 = 93 [packed = true]; */
-        if (message.packedUint64.length) {
+        if (message.packedUint64?.length) {
             writer.tag(93, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedUint64.length; i++)
                 writer.uint64(message.packedUint64[i]);
             writer.join();
         }
         /* repeated sint32 packed_sint32 = 94 [packed = true]; */
-        if (message.packedSint32.length) {
+        if (message.packedSint32?.length) {
             writer.tag(94, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedSint32.length; i++)
                 writer.sint32(message.packedSint32[i]);
             writer.join();
         }
         /* repeated sint64 packed_sint64 = 95 [packed = true]; */
-        if (message.packedSint64.length) {
+        if (message.packedSint64?.length) {
             writer.tag(95, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedSint64.length; i++)
                 writer.sint64(message.packedSint64[i]);
             writer.join();
         }
         /* repeated fixed32 packed_fixed32 = 96 [packed = true]; */
-        if (message.packedFixed32.length) {
+        if (message.packedFixed32?.length) {
             writer.tag(96, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedFixed32.length; i++)
                 writer.fixed32(message.packedFixed32[i]);
             writer.join();
         }
         /* repeated fixed64 packed_fixed64 = 97 [packed = true]; */
-        if (message.packedFixed64.length) {
+        if (message.packedFixed64?.length) {
             writer.tag(97, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedFixed64.length; i++)
                 writer.fixed64(message.packedFixed64[i]);
             writer.join();
         }
         /* repeated sfixed32 packed_sfixed32 = 98 [packed = true]; */
-        if (message.packedSfixed32.length) {
+        if (message.packedSfixed32?.length) {
             writer.tag(98, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedSfixed32.length; i++)
                 writer.sfixed32(message.packedSfixed32[i]);
             writer.join();
         }
         /* repeated sfixed64 packed_sfixed64 = 99 [packed = true]; */
-        if (message.packedSfixed64.length) {
+        if (message.packedSfixed64?.length) {
             writer.tag(99, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedSfixed64.length; i++)
                 writer.sfixed64(message.packedSfixed64[i]);
             writer.join();
         }
         /* repeated float packed_float = 100 [packed = true]; */
-        if (message.packedFloat.length) {
+        if (message.packedFloat?.length) {
             writer.tag(100, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedFloat.length; i++)
                 writer.float(message.packedFloat[i]);
             writer.join();
         }
         /* repeated double packed_double = 101 [packed = true]; */
-        if (message.packedDouble.length) {
+        if (message.packedDouble?.length) {
             writer.tag(101, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedDouble.length; i++)
                 writer.double(message.packedDouble[i]);
             writer.join();
         }
         /* repeated bool packed_bool = 102 [packed = true]; */
-        if (message.packedBool.length) {
+        if (message.packedBool?.length) {
             writer.tag(102, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedBool.length; i++)
                 writer.bool(message.packedBool[i]);
             writer.join();
         }
         /* repeated protobuf_unittest.ForeignEnumLite packed_enum = 103 [packed = true]; */
-        if (message.packedEnum.length) {
+        if (message.packedEnum?.length) {
             writer.tag(103, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedEnum.length; i++)
                 writer.int32(message.packedEnum[i]);
@@ -2090,7 +2018,7 @@ class TestAllExtensionsLite$Type extends MessageType<TestAllExtensionsLite> {
         super("protobuf_unittest.TestAllExtensionsLite", []);
     }
     create(value?: PartialMessage<TestAllExtensionsLite>): TestAllExtensionsLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestAllExtensionsLite>(this, message, value);
         return message;
@@ -2130,7 +2058,7 @@ class OptionalGroup_extension_lite$Type extends MessageType<OptionalGroup_extens
         ]);
     }
     create(value?: PartialMessage<OptionalGroup_extension_lite>): OptionalGroup_extension_lite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<OptionalGroup_extension_lite>(this, message, value);
         return message;
@@ -2176,7 +2104,7 @@ class RepeatedGroup_extension_lite$Type extends MessageType<RepeatedGroup_extens
         ]);
     }
     create(value?: PartialMessage<RepeatedGroup_extension_lite>): RepeatedGroup_extension_lite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<RepeatedGroup_extension_lite>(this, message, value);
         return message;
@@ -2220,7 +2148,7 @@ class TestPackedExtensionsLite$Type extends MessageType<TestPackedExtensionsLite
         super("protobuf_unittest.TestPackedExtensionsLite", []);
     }
     create(value?: PartialMessage<TestPackedExtensionsLite>): TestPackedExtensionsLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestPackedExtensionsLite>(this, message, value);
         return message;
@@ -2258,7 +2186,7 @@ class TestNestedExtensionLite$Type extends MessageType<TestNestedExtensionLite> 
         super("protobuf_unittest.TestNestedExtensionLite", []);
     }
     create(value?: PartialMessage<TestNestedExtensionLite>): TestNestedExtensionLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestNestedExtensionLite>(this, message, value);
         return message;
@@ -2301,7 +2229,7 @@ class TestDeprecatedLite$Type extends MessageType<TestDeprecatedLite> {
         ]);
     }
     create(value?: PartialMessage<TestDeprecatedLite>): TestDeprecatedLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.deprecatedField2 = 0;
         if (value !== undefined)
             reflectionMergePartial<TestDeprecatedLite>(this, message, value);
@@ -2368,7 +2296,7 @@ class TestParsingMergeLite$Type extends MessageType<TestParsingMergeLite> {
         ]);
     }
     create(value?: PartialMessage<TestParsingMergeLite>): TestParsingMergeLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedAllTypes = [];
         if (value !== undefined)
             reflectionMergePartial<TestParsingMergeLite>(this, message, value);
@@ -2386,7 +2314,7 @@ class TestParsingMergeLite$Type extends MessageType<TestParsingMergeLite> {
                     message.optionalAllTypes = TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options, message.optionalAllTypes);
                     break;
                 case /* repeated protobuf_unittest.TestAllTypesLite repeated_all_types */ 3:
-                    message.repeatedAllTypes.push(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
+                    message.repeatedAllTypes?.push?.(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2407,8 +2335,8 @@ class TestParsingMergeLite$Type extends MessageType<TestParsingMergeLite> {
         if (message.optionalAllTypes)
             TestAllTypesLite.internalBinaryWrite(message.optionalAllTypes, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* repeated protobuf_unittest.TestAllTypesLite repeated_all_types = 3; */
-        for (let i = 0; i < message.repeatedAllTypes.length; i++)
-            TestAllTypesLite.internalBinaryWrite(message.repeatedAllTypes[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.repeatedAllTypes?.length || 0); i++)
+            TestAllTypesLite.internalBinaryWrite(message.repeatedAllTypes?.[i] as any, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2431,7 +2359,7 @@ class TestParsingMergeLite_RepeatedFieldsGenerator$Type extends MessageType<Test
         ]);
     }
     create(value?: PartialMessage<TestParsingMergeLite_RepeatedFieldsGenerator>): TestParsingMergeLite_RepeatedFieldsGenerator {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.field1 = [];
         message.field2 = [];
         message.field3 = [];
@@ -2447,19 +2375,19 @@ class TestParsingMergeLite_RepeatedFieldsGenerator$Type extends MessageType<Test
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated protobuf_unittest.TestAllTypesLite field1 */ 1:
-                    message.field1.push(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
+                    message.field1?.push?.(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated protobuf_unittest.TestAllTypesLite field2 */ 2:
-                    message.field2.push(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
+                    message.field2?.push?.(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated protobuf_unittest.TestAllTypesLite field3 */ 3:
-                    message.field3.push(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
+                    message.field3?.push?.(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated protobuf_unittest.TestAllTypesLite ext1 */ 1000:
-                    message.ext1.push(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
+                    message.ext1?.push?.(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated protobuf_unittest.TestAllTypesLite ext2 */ 1001:
-                    message.ext2.push(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
+                    message.ext2?.push?.(TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2474,20 +2402,20 @@ class TestParsingMergeLite_RepeatedFieldsGenerator$Type extends MessageType<Test
     }
     internalBinaryWrite(message: TestParsingMergeLite_RepeatedFieldsGenerator, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated protobuf_unittest.TestAllTypesLite field1 = 1; */
-        for (let i = 0; i < message.field1.length; i++)
-            TestAllTypesLite.internalBinaryWrite(message.field1[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.field1?.length || 0); i++)
+            TestAllTypesLite.internalBinaryWrite(message.field1?.[i] as any, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* repeated protobuf_unittest.TestAllTypesLite field2 = 2; */
-        for (let i = 0; i < message.field2.length; i++)
-            TestAllTypesLite.internalBinaryWrite(message.field2[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.field2?.length || 0); i++)
+            TestAllTypesLite.internalBinaryWrite(message.field2?.[i] as any, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* repeated protobuf_unittest.TestAllTypesLite field3 = 3; */
-        for (let i = 0; i < message.field3.length; i++)
-            TestAllTypesLite.internalBinaryWrite(message.field3[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.field3?.length || 0); i++)
+            TestAllTypesLite.internalBinaryWrite(message.field3?.[i] as any, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* repeated protobuf_unittest.TestAllTypesLite ext1 = 1000; */
-        for (let i = 0; i < message.ext1.length; i++)
-            TestAllTypesLite.internalBinaryWrite(message.ext1[i], writer.tag(1000, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.ext1?.length || 0); i++)
+            TestAllTypesLite.internalBinaryWrite(message.ext1?.[i] as any, writer.tag(1000, WireType.LengthDelimited).fork(), options).join();
         /* repeated protobuf_unittest.TestAllTypesLite ext2 = 1001; */
-        for (let i = 0; i < message.ext2.length; i++)
-            TestAllTypesLite.internalBinaryWrite(message.ext2[i], writer.tag(1001, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.ext2?.length || 0); i++)
+            TestAllTypesLite.internalBinaryWrite(message.ext2?.[i] as any, writer.tag(1001, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2506,7 +2434,7 @@ class TestParsingMergeLite_RepeatedFieldsGenerator_Group1$Type extends MessageTy
         ]);
     }
     create(value?: PartialMessage<TestParsingMergeLite_RepeatedFieldsGenerator_Group1>): TestParsingMergeLite_RepeatedFieldsGenerator_Group1 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestParsingMergeLite_RepeatedFieldsGenerator_Group1>(this, message, value);
         return message;
@@ -2552,7 +2480,7 @@ class TestParsingMergeLite_RepeatedFieldsGenerator_Group2$Type extends MessageTy
         ]);
     }
     create(value?: PartialMessage<TestParsingMergeLite_RepeatedFieldsGenerator_Group2>): TestParsingMergeLite_RepeatedFieldsGenerator_Group2 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestParsingMergeLite_RepeatedFieldsGenerator_Group2>(this, message, value);
         return message;
@@ -2598,7 +2526,7 @@ class TestParsingMergeLite_OptionalGroup$Type extends MessageType<TestParsingMer
         ]);
     }
     create(value?: PartialMessage<TestParsingMergeLite_OptionalGroup>): TestParsingMergeLite_OptionalGroup {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestParsingMergeLite_OptionalGroup>(this, message, value);
         return message;
@@ -2644,7 +2572,7 @@ class TestParsingMergeLite_RepeatedGroup$Type extends MessageType<TestParsingMer
         ]);
     }
     create(value?: PartialMessage<TestParsingMergeLite_RepeatedGroup>): TestParsingMergeLite_RepeatedGroup {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestParsingMergeLite_RepeatedGroup>(this, message, value);
         return message;
@@ -2688,7 +2616,7 @@ class TestEmptyMessageLite$Type extends MessageType<TestEmptyMessageLite> {
         super("protobuf_unittest.TestEmptyMessageLite", []);
     }
     create(value?: PartialMessage<TestEmptyMessageLite>): TestEmptyMessageLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestEmptyMessageLite>(this, message, value);
         return message;
@@ -2726,7 +2654,7 @@ class TestEmptyMessageWithExtensionsLite$Type extends MessageType<TestEmptyMessa
         super("protobuf_unittest.TestEmptyMessageWithExtensionsLite", []);
     }
     create(value?: PartialMessage<TestEmptyMessageWithExtensionsLite>): TestEmptyMessageWithExtensionsLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestEmptyMessageWithExtensionsLite>(this, message, value);
         return message;
@@ -2767,7 +2695,7 @@ class V1MessageLite$Type extends MessageType<V1MessageLite> {
         ]);
     }
     create(value?: PartialMessage<V1MessageLite>): V1MessageLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.intField = 0;
         if (value !== undefined)
             reflectionMergePartial<V1MessageLite>(this, message, value);
@@ -2821,7 +2749,7 @@ class V2MessageLite$Type extends MessageType<V2MessageLite> {
         ]);
     }
     create(value?: PartialMessage<V2MessageLite>): V2MessageLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.intField = 0;
         if (value !== undefined)
             reflectionMergePartial<V2MessageLite>(this, message, value);
@@ -2886,11 +2814,10 @@ class TestHugeFieldNumbersLite$Type extends MessageType<TestHugeFieldNumbersLite
         ]);
     }
     create(value?: PartialMessage<TestHugeFieldNumbersLite>): TestHugeFieldNumbersLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedInt32 = [];
         message.packedInt32 = [];
         message.stringStringMap = {};
-        message.oneofField = { oneofKind: undefined };
         if (value !== undefined)
             reflectionMergePartial<TestHugeFieldNumbersLite>(this, message, value);
         return message;
@@ -2909,16 +2836,16 @@ class TestHugeFieldNumbersLite$Type extends MessageType<TestHugeFieldNumbersLite
                 case /* repeated int32 repeated_int32 = 536870002 [packed = false] */ 536870002:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedInt32.push(reader.int32());
+                            message.repeatedInt32?.push?.(reader.int32());
                     else
-                        message.repeatedInt32.push(reader.int32());
+                        message.repeatedInt32?.push?.(reader.int32());
                     break;
                 case /* repeated int32 packed_int32 = 536870003 [packed = true] */ 536870003:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedInt32.push(reader.int32());
+                            message.packedInt32?.push?.(reader.int32());
                     else
-                        message.packedInt32.push(reader.int32());
+                        message.packedInt32?.push?.(reader.int32());
                     break;
                 case /* optional protobuf_unittest.ForeignEnumLite optional_enum */ 536870004:
                     message.optionalEnum = reader.int32();
@@ -2936,28 +2863,16 @@ class TestHugeFieldNumbersLite$Type extends MessageType<TestHugeFieldNumbersLite
                     this.binaryReadMap536870010(message.stringStringMap, reader, options);
                     break;
                 case /* uint32 oneof_uint32 */ 536870011:
-                    message.oneofField = {
-                        oneofKind: "oneofUint32",
-                        oneofUint32: reader.uint32()
-                    };
+                    message.oneofUint32 = reader.uint32();
                     break;
                 case /* protobuf_unittest.TestAllTypesLite oneof_test_all_types */ 536870012:
-                    message.oneofField = {
-                        oneofKind: "oneofTestAllTypes",
-                        oneofTestAllTypes: TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).oneofTestAllTypes)
-                    };
+                    message.oneofTestAllTypes = TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options, (message as any).oneofTestAllTypes);
                     break;
                 case /* string oneof_string */ 536870013:
-                    message.oneofField = {
-                        oneofKind: "oneofString",
-                        oneofString: reader.string()
-                    };
+                    message.oneofString = reader.string();
                     break;
                 case /* bytes oneof_bytes */ 536870014:
-                    message.oneofField = {
-                        oneofKind: "oneofBytes",
-                        oneofBytes: reader.bytes()
-                    };
+                    message.oneofBytes = reader.bytes();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2994,10 +2909,10 @@ class TestHugeFieldNumbersLite$Type extends MessageType<TestHugeFieldNumbersLite
         if (message.fixed32 !== undefined)
             writer.tag(536870001, WireType.Varint).int32(message.fixed32);
         /* repeated int32 repeated_int32 = 536870002 [packed = false]; */
-        for (let i = 0; i < message.repeatedInt32.length; i++)
-            writer.tag(536870002, WireType.Varint).int32(message.repeatedInt32[i]);
+        for (let i = 0; i < (message.repeatedInt32?.length || 0); i++)
+            writer.tag(536870002, WireType.Varint).int32(message.repeatedInt32?.[i] as any);
         /* repeated int32 packed_int32 = 536870003 [packed = true]; */
-        if (message.packedInt32.length) {
+        if (message.packedInt32?.length) {
             writer.tag(536870003, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedInt32.length; i++)
                 writer.int32(message.packedInt32[i]);
@@ -3019,17 +2934,17 @@ class TestHugeFieldNumbersLite$Type extends MessageType<TestHugeFieldNumbersLite
         for (let k of globalThis.Object.keys(message.stringStringMap))
             writer.tag(536870010, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k).tag(2, WireType.LengthDelimited).string(message.stringStringMap[k]).join();
         /* uint32 oneof_uint32 = 536870011; */
-        if (message.oneofField.oneofKind === "oneofUint32")
-            writer.tag(536870011, WireType.Varint).uint32(message.oneofField.oneofUint32);
+        if ("oneofUint32" in message && message.oneofUint32 != null)
+            writer.tag(536870011, WireType.Varint).uint32(message.oneofUint32);
         /* protobuf_unittest.TestAllTypesLite oneof_test_all_types = 536870012; */
-        if (message.oneofField.oneofKind === "oneofTestAllTypes")
-            TestAllTypesLite.internalBinaryWrite(message.oneofField.oneofTestAllTypes, writer.tag(536870012, WireType.LengthDelimited).fork(), options).join();
+        if ("oneofTestAllTypes" in message && message.oneofTestAllTypes != null)
+            TestAllTypesLite.internalBinaryWrite(message.oneofTestAllTypes, writer.tag(536870012, WireType.LengthDelimited).fork(), options).join();
         /* string oneof_string = 536870013; */
-        if (message.oneofField.oneofKind === "oneofString")
-            writer.tag(536870013, WireType.LengthDelimited).string(message.oneofField.oneofString);
+        if ("oneofString" in message && message.oneofString != null)
+            writer.tag(536870013, WireType.LengthDelimited).string(message.oneofString);
         /* bytes oneof_bytes = 536870014; */
-        if (message.oneofField.oneofKind === "oneofBytes")
-            writer.tag(536870014, WireType.LengthDelimited).bytes(message.oneofField.oneofBytes);
+        if ("oneofBytes" in message && message.oneofBytes != null)
+            writer.tag(536870014, WireType.LengthDelimited).bytes(message.oneofBytes);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3048,7 +2963,7 @@ class TestHugeFieldNumbersLite_OptionalGroup$Type extends MessageType<TestHugeFi
         ]);
     }
     create(value?: PartialMessage<TestHugeFieldNumbersLite_OptionalGroup>): TestHugeFieldNumbersLite_OptionalGroup {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestHugeFieldNumbersLite_OptionalGroup>(this, message, value);
         return message;
@@ -3102,8 +3017,7 @@ class TestOneofParsingLite$Type extends MessageType<TestOneofParsingLite> {
         ]);
     }
     create(value?: PartialMessage<TestOneofParsingLite>): TestOneofParsingLite {
-        const message = globalThis.Object.create((this.messagePrototype!));
-        message.oneofField = { oneofKind: undefined };
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestOneofParsingLite>(this, message, value);
         return message;
@@ -3114,58 +3028,31 @@ class TestOneofParsingLite$Type extends MessageType<TestOneofParsingLite> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* int32 oneof_int32 */ 1:
-                    message.oneofField = {
-                        oneofKind: "oneofInt32",
-                        oneofInt32: reader.int32()
-                    };
+                    message.oneofInt32 = reader.int32();
                     break;
                 case /* protobuf_unittest.TestAllTypesLite oneof_submessage */ 2:
-                    message.oneofField = {
-                        oneofKind: "oneofSubmessage",
-                        oneofSubmessage: TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).oneofSubmessage)
-                    };
+                    message.oneofSubmessage = TestAllTypesLite.internalBinaryRead(reader, reader.uint32(), options, (message as any).oneofSubmessage);
                     break;
                 case /* string oneof_string */ 3:
-                    message.oneofField = {
-                        oneofKind: "oneofString",
-                        oneofString: reader.string()
-                    };
+                    message.oneofString = reader.string();
                     break;
                 case /* bytes oneof_bytes = 4 [default = "default bytes"] */ 4:
-                    message.oneofField = {
-                        oneofKind: "oneofBytes",
-                        oneofBytes: reader.bytes()
-                    };
+                    message.oneofBytes = reader.bytes();
                     break;
                 case /* string oneof_string_cord = 5 [default = "default Cord"] */ 5:
-                    message.oneofField = {
-                        oneofKind: "oneofStringCord",
-                        oneofStringCord: reader.string()
-                    };
+                    message.oneofStringCord = reader.string();
                     break;
                 case /* bytes oneof_bytes_cord */ 6:
-                    message.oneofField = {
-                        oneofKind: "oneofBytesCord",
-                        oneofBytesCord: reader.bytes()
-                    };
+                    message.oneofBytesCord = reader.bytes();
                     break;
                 case /* string oneof_string_string_piece */ 7:
-                    message.oneofField = {
-                        oneofKind: "oneofStringStringPiece",
-                        oneofStringStringPiece: reader.string()
-                    };
+                    message.oneofStringStringPiece = reader.string();
                     break;
                 case /* bytes oneof_bytes_string_piece = 8 [default = "default StringPiece"] */ 8:
-                    message.oneofField = {
-                        oneofKind: "oneofBytesStringPiece",
-                        oneofBytesStringPiece: reader.bytes()
-                    };
+                    message.oneofBytesStringPiece = reader.bytes();
                     break;
                 case /* protobuf_unittest.V2EnumLite oneof_enum */ 9:
-                    message.oneofField = {
-                        oneofKind: "oneofEnum",
-                        oneofEnum: reader.int32()
-                    };
+                    message.oneofEnum = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3180,32 +3067,32 @@ class TestOneofParsingLite$Type extends MessageType<TestOneofParsingLite> {
     }
     internalBinaryWrite(message: TestOneofParsingLite, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* int32 oneof_int32 = 1; */
-        if (message.oneofField.oneofKind === "oneofInt32")
-            writer.tag(1, WireType.Varint).int32(message.oneofField.oneofInt32);
+        if ("oneofInt32" in message && message.oneofInt32 != null)
+            writer.tag(1, WireType.Varint).int32(message.oneofInt32);
         /* protobuf_unittest.TestAllTypesLite oneof_submessage = 2; */
-        if (message.oneofField.oneofKind === "oneofSubmessage")
-            TestAllTypesLite.internalBinaryWrite(message.oneofField.oneofSubmessage, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        if ("oneofSubmessage" in message && message.oneofSubmessage != null)
+            TestAllTypesLite.internalBinaryWrite(message.oneofSubmessage, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* string oneof_string = 3; */
-        if (message.oneofField.oneofKind === "oneofString")
-            writer.tag(3, WireType.LengthDelimited).string(message.oneofField.oneofString);
+        if ("oneofString" in message && message.oneofString != null)
+            writer.tag(3, WireType.LengthDelimited).string(message.oneofString);
         /* bytes oneof_bytes = 4 [default = "default bytes"]; */
-        if (message.oneofField.oneofKind === "oneofBytes")
-            writer.tag(4, WireType.LengthDelimited).bytes(message.oneofField.oneofBytes);
+        if ("oneofBytes" in message && message.oneofBytes != null)
+            writer.tag(4, WireType.LengthDelimited).bytes(message.oneofBytes);
         /* string oneof_string_cord = 5 [default = "default Cord"]; */
-        if (message.oneofField.oneofKind === "oneofStringCord")
-            writer.tag(5, WireType.LengthDelimited).string(message.oneofField.oneofStringCord);
+        if ("oneofStringCord" in message && message.oneofStringCord != null)
+            writer.tag(5, WireType.LengthDelimited).string(message.oneofStringCord);
         /* bytes oneof_bytes_cord = 6; */
-        if (message.oneofField.oneofKind === "oneofBytesCord")
-            writer.tag(6, WireType.LengthDelimited).bytes(message.oneofField.oneofBytesCord);
+        if ("oneofBytesCord" in message && message.oneofBytesCord != null)
+            writer.tag(6, WireType.LengthDelimited).bytes(message.oneofBytesCord);
         /* string oneof_string_string_piece = 7; */
-        if (message.oneofField.oneofKind === "oneofStringStringPiece")
-            writer.tag(7, WireType.LengthDelimited).string(message.oneofField.oneofStringStringPiece);
+        if ("oneofStringStringPiece" in message && message.oneofStringStringPiece != null)
+            writer.tag(7, WireType.LengthDelimited).string(message.oneofStringStringPiece);
         /* bytes oneof_bytes_string_piece = 8 [default = "default StringPiece"]; */
-        if (message.oneofField.oneofKind === "oneofBytesStringPiece")
-            writer.tag(8, WireType.LengthDelimited).bytes(message.oneofField.oneofBytesStringPiece);
+        if ("oneofBytesStringPiece" in message && message.oneofBytesStringPiece != null)
+            writer.tag(8, WireType.LengthDelimited).bytes(message.oneofBytesStringPiece);
         /* protobuf_unittest.V2EnumLite oneof_enum = 9; */
-        if (message.oneofField.oneofKind === "oneofEnum")
-            writer.tag(9, WireType.Varint).int32(message.oneofField.oneofEnum);
+        if ("oneofEnum" in message && message.oneofEnum != null)
+            writer.tag(9, WireType.Varint).int32(message.oneofEnum);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3224,7 +3111,7 @@ class PackedInt32$Type extends MessageType<PackedInt32> {
         ]);
     }
     create(value?: PartialMessage<PackedInt32>): PackedInt32 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedInt32 = [];
         if (value !== undefined)
             reflectionMergePartial<PackedInt32>(this, message, value);
@@ -3238,9 +3125,9 @@ class PackedInt32$Type extends MessageType<PackedInt32> {
                 case /* repeated int32 repeated_int32 = 2048 [packed = true] */ 2048:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedInt32.push(reader.int32());
+                            message.repeatedInt32?.push?.(reader.int32());
                     else
-                        message.repeatedInt32.push(reader.int32());
+                        message.repeatedInt32?.push?.(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3255,7 +3142,7 @@ class PackedInt32$Type extends MessageType<PackedInt32> {
     }
     internalBinaryWrite(message: PackedInt32, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated int32 repeated_int32 = 2048 [packed = true]; */
-        if (message.repeatedInt32.length) {
+        if (message.repeatedInt32?.length) {
             writer.tag(2048, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedInt32.length; i++)
                 writer.int32(message.repeatedInt32[i]);
@@ -3279,7 +3166,7 @@ class NonPackedInt32$Type extends MessageType<NonPackedInt32> {
         ]);
     }
     create(value?: PartialMessage<NonPackedInt32>): NonPackedInt32 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedInt32 = [];
         if (value !== undefined)
             reflectionMergePartial<NonPackedInt32>(this, message, value);
@@ -3293,9 +3180,9 @@ class NonPackedInt32$Type extends MessageType<NonPackedInt32> {
                 case /* repeated int32 repeated_int32 */ 2048:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedInt32.push(reader.int32());
+                            message.repeatedInt32?.push?.(reader.int32());
                     else
-                        message.repeatedInt32.push(reader.int32());
+                        message.repeatedInt32?.push?.(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3310,8 +3197,8 @@ class NonPackedInt32$Type extends MessageType<NonPackedInt32> {
     }
     internalBinaryWrite(message: NonPackedInt32, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated int32 repeated_int32 = 2048; */
-        for (let i = 0; i < message.repeatedInt32.length; i++)
-            writer.tag(2048, WireType.Varint).int32(message.repeatedInt32[i]);
+        for (let i = 0; i < (message.repeatedInt32?.length || 0); i++)
+            writer.tag(2048, WireType.Varint).int32(message.repeatedInt32?.[i] as any);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3330,7 +3217,7 @@ class PackedFixed32$Type extends MessageType<PackedFixed32> {
         ]);
     }
     create(value?: PartialMessage<PackedFixed32>): PackedFixed32 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedFixed32 = [];
         if (value !== undefined)
             reflectionMergePartial<PackedFixed32>(this, message, value);
@@ -3344,9 +3231,9 @@ class PackedFixed32$Type extends MessageType<PackedFixed32> {
                 case /* repeated fixed32 repeated_fixed32 = 2048 [packed = true] */ 2048:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFixed32.push(reader.fixed32());
+                            message.repeatedFixed32?.push?.(reader.fixed32());
                     else
-                        message.repeatedFixed32.push(reader.fixed32());
+                        message.repeatedFixed32?.push?.(reader.fixed32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3361,7 +3248,7 @@ class PackedFixed32$Type extends MessageType<PackedFixed32> {
     }
     internalBinaryWrite(message: PackedFixed32, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated fixed32 repeated_fixed32 = 2048 [packed = true]; */
-        if (message.repeatedFixed32.length) {
+        if (message.repeatedFixed32?.length) {
             writer.tag(2048, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedFixed32.length; i++)
                 writer.fixed32(message.repeatedFixed32[i]);
@@ -3385,7 +3272,7 @@ class NonPackedFixed32$Type extends MessageType<NonPackedFixed32> {
         ]);
     }
     create(value?: PartialMessage<NonPackedFixed32>): NonPackedFixed32 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedFixed32 = [];
         if (value !== undefined)
             reflectionMergePartial<NonPackedFixed32>(this, message, value);
@@ -3399,9 +3286,9 @@ class NonPackedFixed32$Type extends MessageType<NonPackedFixed32> {
                 case /* repeated fixed32 repeated_fixed32 */ 2048:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFixed32.push(reader.fixed32());
+                            message.repeatedFixed32?.push?.(reader.fixed32());
                     else
-                        message.repeatedFixed32.push(reader.fixed32());
+                        message.repeatedFixed32?.push?.(reader.fixed32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3416,8 +3303,8 @@ class NonPackedFixed32$Type extends MessageType<NonPackedFixed32> {
     }
     internalBinaryWrite(message: NonPackedFixed32, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated fixed32 repeated_fixed32 = 2048; */
-        for (let i = 0; i < message.repeatedFixed32.length; i++)
-            writer.tag(2048, WireType.Bit32).fixed32(message.repeatedFixed32[i]);
+        for (let i = 0; i < (message.repeatedFixed32?.length || 0); i++)
+            writer.tag(2048, WireType.Bit32).fixed32(message.repeatedFixed32?.[i] as any);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3434,7 +3321,7 @@ class DupEnum$Type extends MessageType<DupEnum> {
         super("protobuf_unittest.DupEnum", []);
     }
     create(value?: PartialMessage<DupEnum>): DupEnum {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<DupEnum>(this, message, value);
         return message;

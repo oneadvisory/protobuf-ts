@@ -70,13 +70,13 @@ export interface Api {
      *
      * @generated from protobuf field: repeated google.protobuf.Method methods = 2;
      */
-    methods: Method[];
+    methods?: Method[];
     /**
      * Any metadata attached to the interface.
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 3;
      */
-    options: Option[];
+    options?: Option[];
     /**
      * A version string for this interface. If specified, must have the form
      * `major-version.minor-version`, as in `1.10`. If the minor version is
@@ -114,7 +114,7 @@ export interface Api {
      *
      * @generated from protobuf field: repeated google.protobuf.Mixin mixins = 6;
      */
-    mixins: Mixin[];
+    mixins?: Mixin[];
     /**
      * The source syntax of the service.
      *
@@ -163,7 +163,7 @@ export interface Method {
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 6;
      */
-    options: Option[];
+    options?: Option[];
     /**
      * The source syntax of this method.
      *
@@ -282,7 +282,7 @@ class Api$Type extends MessageType<Api> {
         ]);
     }
     create(value?: PartialMessage<Api>): Api {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         message.methods = [];
         message.options = [];
@@ -302,10 +302,10 @@ class Api$Type extends MessageType<Api> {
                     message.name = reader.string();
                     break;
                 case /* repeated google.protobuf.Method methods */ 2:
-                    message.methods.push(Method.internalBinaryRead(reader, reader.uint32(), options));
+                    message.methods?.push?.(Method.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.Option options */ 3:
-                    message.options.push(Option.internalBinaryRead(reader, reader.uint32(), options));
+                    message.options?.push?.(Option.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* string version */ 4:
                     message.version = reader.string();
@@ -314,7 +314,7 @@ class Api$Type extends MessageType<Api> {
                     message.sourceContext = SourceContext.internalBinaryRead(reader, reader.uint32(), options, message.sourceContext);
                     break;
                 case /* repeated google.protobuf.Mixin mixins */ 6:
-                    message.mixins.push(Mixin.internalBinaryRead(reader, reader.uint32(), options));
+                    message.mixins?.push?.(Mixin.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* google.protobuf.Syntax syntax */ 7:
                     message.syntax = reader.int32();
@@ -335,11 +335,11 @@ class Api$Type extends MessageType<Api> {
         if (message.name !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.name);
         /* repeated google.protobuf.Method methods = 2; */
-        for (let i = 0; i < message.methods.length; i++)
-            Method.internalBinaryWrite(message.methods[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.methods?.length || 0); i++)
+            Method.internalBinaryWrite(message.methods?.[i] as any, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Option options = 3; */
-        for (let i = 0; i < message.options.length; i++)
-            Option.internalBinaryWrite(message.options[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.options?.length || 0); i++)
+            Option.internalBinaryWrite(message.options?.[i] as any, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* string version = 4; */
         if (message.version !== "")
             writer.tag(4, WireType.LengthDelimited).string(message.version);
@@ -347,8 +347,8 @@ class Api$Type extends MessageType<Api> {
         if (message.sourceContext)
             SourceContext.internalBinaryWrite(message.sourceContext, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Mixin mixins = 6; */
-        for (let i = 0; i < message.mixins.length; i++)
-            Mixin.internalBinaryWrite(message.mixins[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.mixins?.length || 0); i++)
+            Mixin.internalBinaryWrite(message.mixins?.[i] as any, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Syntax syntax = 7; */
         if (message.syntax !== 0)
             writer.tag(7, WireType.Varint).int32(message.syntax);
@@ -376,7 +376,7 @@ class Method$Type extends MessageType<Method> {
         ]);
     }
     create(value?: PartialMessage<Method>): Method {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         message.requestTypeUrl = "";
         message.requestStreaming = false;
@@ -409,7 +409,7 @@ class Method$Type extends MessageType<Method> {
                     message.responseStreaming = reader.bool();
                     break;
                 case /* repeated google.protobuf.Option options */ 6:
-                    message.options.push(Option.internalBinaryRead(reader, reader.uint32(), options));
+                    message.options?.push?.(Option.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* google.protobuf.Syntax syntax */ 7:
                     message.syntax = reader.int32();
@@ -442,8 +442,8 @@ class Method$Type extends MessageType<Method> {
         if (message.responseStreaming !== false)
             writer.tag(5, WireType.Varint).bool(message.responseStreaming);
         /* repeated google.protobuf.Option options = 6; */
-        for (let i = 0; i < message.options.length; i++)
-            Option.internalBinaryWrite(message.options[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.options?.length || 0); i++)
+            Option.internalBinaryWrite(message.options?.[i] as any, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Syntax syntax = 7; */
         if (message.syntax !== 0)
             writer.tag(7, WireType.Varint).int32(message.syntax);
@@ -466,7 +466,7 @@ class Mixin$Type extends MessageType<Mixin> {
         ]);
     }
     create(value?: PartialMessage<Mixin>): Mixin {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         message.root = "";
         if (value !== undefined)

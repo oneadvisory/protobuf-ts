@@ -10,7 +10,7 @@
     "strict": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
 
     // ignore node_modules/@types - express typings raise errors
     "types": ["node"],

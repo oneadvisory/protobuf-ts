@@ -68,7 +68,10 @@ class TimeOfDay$Type extends MessageType<TimeOfDay> {
      */
     fromJsDate(date: globalThis.Date): TimeOfDay {
         return {
-            hours: date.getHours(), minutes: date.getMinutes(), seconds: date.getSeconds(), nanos: date.getMilliseconds() * 1000,
+            hours: date.getHours(),
+            minutes: date.getMinutes(),
+            seconds: date.getSeconds(),
+            nanos: date.getMilliseconds() * 1000,
         };
     }
 }

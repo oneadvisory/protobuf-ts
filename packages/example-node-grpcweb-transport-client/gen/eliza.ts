@@ -102,7 +102,7 @@ class SayRequest$Type extends MessageType<SayRequest> {
         ]);
     }
     create(value?: PartialMessage<SayRequest>): SayRequest {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.sentence = "";
         if (value !== undefined)
             reflectionMergePartial<SayRequest>(this, message, value);
@@ -149,7 +149,7 @@ class SayResponse$Type extends MessageType<SayResponse> {
         ]);
     }
     create(value?: PartialMessage<SayResponse>): SayResponse {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.sentence = "";
         if (value !== undefined)
             reflectionMergePartial<SayResponse>(this, message, value);
@@ -196,7 +196,7 @@ class ConverseRequest$Type extends MessageType<ConverseRequest> {
         ]);
     }
     create(value?: PartialMessage<ConverseRequest>): ConverseRequest {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.sentence = "";
         if (value !== undefined)
             reflectionMergePartial<ConverseRequest>(this, message, value);
@@ -243,7 +243,7 @@ class ConverseResponse$Type extends MessageType<ConverseResponse> {
         ]);
     }
     create(value?: PartialMessage<ConverseResponse>): ConverseResponse {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.sentence = "";
         if (value !== undefined)
             reflectionMergePartial<ConverseResponse>(this, message, value);
@@ -290,7 +290,7 @@ class IntroduceRequest$Type extends MessageType<IntroduceRequest> {
         ]);
     }
     create(value?: PartialMessage<IntroduceRequest>): IntroduceRequest {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         if (value !== undefined)
             reflectionMergePartial<IntroduceRequest>(this, message, value);
@@ -337,7 +337,7 @@ class IntroduceResponse$Type extends MessageType<IntroduceResponse> {
         ]);
     }
     create(value?: PartialMessage<IntroduceResponse>): IntroduceResponse {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.sentence = "";
         if (value !== undefined)
             reflectionMergePartial<IntroduceResponse>(this, message, value);
@@ -380,7 +380,7 @@ export const IntroduceResponse = new IntroduceResponse$Type();
  * @generated ServiceType for protobuf service connectrpc.eliza.v1.ElizaService
  */
 export const ElizaService = new ServiceType("connectrpc.eliza.v1.ElizaService", [
-    { name: "Say", idempotency: "NO_SIDE_EFFECTS", options: {}, I: SayRequest, O: SayResponse },
-    { name: "Converse", serverStreaming: true, clientStreaming: true, options: {}, I: ConverseRequest, O: ConverseResponse },
-    { name: "Introduce", serverStreaming: true, options: {}, I: IntroduceRequest, O: IntroduceResponse }
+    { name: "Say" as const, idempotency: "NO_SIDE_EFFECTS" as const, options: {} as const, I: SayRequest, O: SayResponse },
+    { name: "Converse" as const, serverStreaming: true as const, clientStreaming: true as const, options: {} as const, I: ConverseRequest, O: ConverseResponse },
+    { name: "Introduce" as const, serverStreaming: true as const, options: {} as const, I: IntroduceRequest, O: IntroduceResponse }
 ]);

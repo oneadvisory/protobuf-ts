@@ -73,61 +73,41 @@ export interface Struct {
  */
 export interface Value {
     /**
-     * The kind of value.
+     * Represents a null value.
      *
-     * @generated from protobuf oneof: kind;
+     * @generated from protobuf field: google.protobuf.NullValue null_value = 1;
      */
-    kind: {
-        oneofKind: "nullValue";
-        /**
-         * Represents a null value.
-         *
-         * @generated from protobuf field: google.protobuf.NullValue null_value = 1;
-         */
-        nullValue: NullValue;
-    } | {
-        oneofKind: "numberValue";
-        /**
-         * Represents a double value.
-         *
-         * @generated from protobuf field: double number_value = 2;
-         */
-        numberValue: number;
-    } | {
-        oneofKind: "stringValue";
-        /**
-         * Represents a string value.
-         *
-         * @generated from protobuf field: string string_value = 3;
-         */
-        stringValue: string;
-    } | {
-        oneofKind: "boolValue";
-        /**
-         * Represents a boolean value.
-         *
-         * @generated from protobuf field: bool bool_value = 4;
-         */
-        boolValue: boolean;
-    } | {
-        oneofKind: "structValue";
-        /**
-         * Represents a structured value.
-         *
-         * @generated from protobuf field: google.protobuf.Struct struct_value = 5;
-         */
-        structValue: Struct;
-    } | {
-        oneofKind: "listValue";
-        /**
-         * Represents a repeated `Value`.
-         *
-         * @generated from protobuf field: google.protobuf.ListValue list_value = 6;
-         */
-        listValue: ListValue;
-    } | {
-        oneofKind: undefined;
-    };
+    nullValue?: NullValue;
+    /**
+     * Represents a double value.
+     *
+     * @generated from protobuf field: double number_value = 2;
+     */
+    numberValue?: number;
+    /**
+     * Represents a string value.
+     *
+     * @generated from protobuf field: string string_value = 3;
+     */
+    stringValue?: string;
+    /**
+     * Represents a boolean value.
+     *
+     * @generated from protobuf field: bool bool_value = 4;
+     */
+    boolValue?: boolean;
+    /**
+     * Represents a structured value.
+     *
+     * @generated from protobuf field: google.protobuf.Struct struct_value = 5;
+     */
+    structValue?: Struct;
+    /**
+     * Represents a repeated `Value`.
+     *
+     * @generated from protobuf field: google.protobuf.ListValue list_value = 6;
+     */
+    listValue?: ListValue;
 }
 /**
  * `ListValue` is a wrapper around a repeated field of values.
@@ -142,7 +122,7 @@ export interface ListValue {
      *
      * @generated from protobuf field: repeated google.protobuf.Value values = 1;
      */
-    values: Value[];
+    values?: Value[];
 }
 /**
  * `NullValue` is a singleton enumeration to represent the null value for the
@@ -211,29 +191,34 @@ class Value$Type extends MessageType<Value> {
      * Encode `Value` to JSON value.
      */
     internalJsonWrite(message: Value, options: JsonWriteOptions): JsonValue {
-        if (message.kind.oneofKind === undefined)
-            throw new globalThis.Error();
-        switch (message.kind.oneofKind) {
-            case undefined: throw new globalThis.Error();
-            case "boolValue": return message.kind.boolValue;
-            case "nullValue": return null;
-            case "numberValue":
-                let numberValue = message.kind.numberValue;
-                if (typeof numberValue == "number" && !Number.isFinite(numberValue))
-                    throw new globalThis.Error();
-                return numberValue;
-            case "stringValue": return message.kind.stringValue;
-            case "listValue":
-                let listValueField = this.fields.find(f => f.no === 6);
-                if (listValueField?.kind !== "message")
-                    throw new globalThis.Error();
-                return listValueField.T().toJson(message.kind.listValue);
-            case "structValue":
-                let structValueField = this.fields.find(f => f.no === 5);
-                if (structValueField?.kind !== "message")
-                    throw new globalThis.Error();
-                return structValueField.T().toJson(message.kind.structValue);
+        if ("boolValue" in message) {
+            return message.boolValue;
         }
+        else if ("nullValue" in message) {
+            return null;
+        }
+        else if ("numberValue" in message) {
+            let numberValue = message.numberValue;
+            if (typeof numberValue == "number" && !Number.isFinite(numberValue))
+                throw new globalThis.Error();
+            return numberValue;
+        }
+        else if ("stringValue" in message) {
+            return message.stringValue;
+        }
+        else if ("listValue" in message) {
+            let listValueField = this.fields.find(f => f.no === 6);
+            if (listValueField?.kind !== "message")
+                throw new globalThis.Error();
+            return listValueField.T().toJson(message.listValue);
+        }
+        else if ("structValue" in message) {
+            let structValueField = this.fields.find(f => f.no === 5);
+            if (structValueField?.kind !== "message")
+                throw new globalThis.Error();
+            return structValueField.T().toJson(message.structValue);
+        }
+        throw new globalThis.Error();
     }
     /**
      * Decode `Value` from JSON value.
@@ -243,23 +228,23 @@ class Value$Type extends MessageType<Value> {
             target = this.create();
         switch (typeof json) {
             case "number":
-                target.kind = { oneofKind: "numberValue", numberValue: json };
+                target.numberValue = json;
                 break;
             case "string":
-                target.kind = { oneofKind: "stringValue", stringValue: json };
+                target.stringValue = json;
                 break;
             case "boolean":
-                target.kind = { oneofKind: "boolValue", boolValue: json };
+                target.boolValue = json;
                 break;
             case "object":
                 if (json === null) {
-                    target.kind = { oneofKind: "nullValue", nullValue: NullValue.NULL_VALUE };
+                    target.nullValue = NullValue.NULL_VALUE;
                 }
                 else if (globalThis.Array.isArray(json)) {
-                    target.kind = { oneofKind: "listValue", listValue: ListValue.fromJson(json) };
+                    target.listValue = ListValue.fromJson(json);
                 }
                 else {
-                    target.kind = { oneofKind: "structValue", structValue: Struct.fromJson(json) };
+                    target.structValue = Struct.fromJson(json);
                 }
                 break;
             default: throw new globalThis.Error("Unable to parse " + this.typeName + " from JSON " + typeofJsonValue(json));
@@ -282,7 +267,7 @@ class ListValue$Type extends MessageType<ListValue> {
      * Encode `ListValue` to JSON array.
      */
     internalJsonWrite(message: ListValue, options: JsonWriteOptions): JsonValue {
-        return message.values.map(v => Value.toJson(v));
+        return message.values?.map(v => Value.toJson(v)) ?? [];
     }
     /**
      * Decode `ListValue` from JSON array.
@@ -293,7 +278,12 @@ class ListValue$Type extends MessageType<ListValue> {
         if (!target)
             target = this.create();
         let values = json.map(v => Value.fromJson(v));
-        target.values.push(...values);
+        if (!target.values) {
+            target.values = values;
+        }
+        else {
+            target.values.push(...values);
+        }
         return target;
     }
 }

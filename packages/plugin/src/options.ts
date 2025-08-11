@@ -202,6 +202,12 @@ const parseParameter = createOptionParser({
         excludes: ['client_generic', 'client_grpc1', 'server_generic', 'server_grpc1']
     },
 
+    types_only: {
+        kind: "flag",
+        description: "Only generate type definitions, do not generate any code.",
+        excludes: ['server_generic', 'server_grpc1', 'client_generic', 'client_grpc1']
+    },
+
     // optimization
     optimize_speed: {
         kind: "flag",
@@ -242,7 +248,6 @@ export interface Options {
     readonly normalClientStyle: ClientStyle,
     readonly forcedClientStyle: ClientStyle | undefined,
     readonly synthesizeEnumZeroValue: string | false; // create a "synthetic" enum value with this string as name if no 0 value is present
-    readonly oneofKindDiscriminator: string;
     readonly runtimeRpcImportPath: string;
     readonly runtimeImportPath: string;
     readonly forceExcludeAllOptions: boolean;
@@ -253,6 +258,7 @@ export interface Options {
     readonly transpileTarget: ts.ScriptTarget | undefined,
     readonly transpileModule: ts.ModuleKind,
     readonly forceDisableServices: boolean;
+    readonly typesOnly: boolean;
     readonly addPbSuffix: boolean;
     getOptimizeMode(file: DescFile): FileOptions_OptimizeMode;
     getClientStyles(descriptor: DescService): ClientStyle[];
@@ -275,7 +281,6 @@ export function parseOptions(
         normalServerStyle: ServerStyle.NO_SERVER,
         forcedServerStyle: undefined,
         synthesizeEnumZeroValue: 'UNSPECIFIED$',
-        oneofKindDiscriminator: 'oneofKind',
         runtimeRpcImportPath: '@protobuf-ts/runtime-rpc',
         runtimeImportPath: '@protobuf-ts/runtime',
         forceExcludeAllOptions: false,
@@ -287,6 +292,7 @@ export function parseOptions(
         transpileModule: ts.ModuleKind.ES2015,
         forceDisableServices: false,
         addPbSuffix: false,
+        typesOnly: false,
         getOptimizeMode(file: DescFile): FileOptions_OptimizeMode {
             if (this.forcedOptimizeMode !== undefined) {
                 return this.forcedOptimizeMode;
@@ -371,6 +377,9 @@ export function parseOptions(
     }
     if (params.long_type_number) {
         o.normalLongType = rt.LongType.NUMBER;
+    }
+    if (params.types_only) {
+        o.typesOnly = true;
     }
     if (params.optimize_code_size) {
         o.normalOptimizeMode = FileOptions_OptimizeMode.CODE_SIZE;

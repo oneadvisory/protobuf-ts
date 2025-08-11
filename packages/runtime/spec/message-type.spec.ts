@@ -8,9 +8,8 @@ describe('MessageType', () => {
         boolField: boolean;
         repeatedInt32Field: number[],
         msg?: MyMessage;
-        result: { oneofKind: 'error'; readonly error: string; }
-            | { oneofKind: 'value'; readonly value: number; }
-            | { oneofKind: undefined; };
+        value?: number;
+        error?: string;
         messageMap: { [key: string]: MyMessage };
     }
 
@@ -29,10 +28,7 @@ describe('MessageType', () => {
     it('create() creates instance from partial data', () => {
         const msg = MyMessage.create({
             stringField: "hello world",
-            result: {
-                oneofKind: 'value',
-                value: 123
-            },
+            value: 123,
             messageMap: {
                 "abc": {}
             }
@@ -44,16 +40,12 @@ describe('MessageType', () => {
             boolField: false,
             repeatedInt32Field: [],
             // msg: undefined,
-            result: {
-                oneofKind: 'value',
-                value: 123
-            },
+            value: 123,
             messageMap: {
                 "abc": {
                     stringField: "",
                     boolField: false,
                     // msg: undefined,
-                    result: {oneofKind: undefined},
                     messageMap: {},
                     repeatedInt32Field: [],
                 }
@@ -92,9 +84,6 @@ describe('MessageType', () => {
             messageMap: {},
             stringField: "hello world",
             repeatedInt32Field: [],
-            result: {
-                oneofKind: undefined
-            },
         }
         expect(msg).toEqual(exp);
     })

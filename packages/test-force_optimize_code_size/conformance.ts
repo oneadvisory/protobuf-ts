@@ -40,84 +40,57 @@ function doTest(request: ConformanceRequest, typeRegistry: readonly IMessageType
     const testMessageType = typeRegistry.find(mt => request.messageType === mt.typeName);
     if (testMessageType === undefined) {
         return ConformanceResponse.create({
-            result: {
-                oneofKind: "runtimeError",
-                runtimeError: `unknown request message type ${request.messageType}`
-            }
+            runtimeError: `unknown request message type ${request.messageType}`
         });
     }
 
     try {
-        switch (request.payload.oneofKind) {
-            case "protobufPayload":
-                testMessage = testMessageType.fromBinary(request.payload.protobufPayload);
-                break;
-
-            case "jsonPayload":
-                testMessage = testMessageType.fromJsonString(request.payload.jsonPayload, {
-                    ignoreUnknownFields: request.testCategory === TestCategory.JSON_IGNORE_UNKNOWN_PARSING_TEST,
-                    typeRegistry,
-                });
-                break;
-
-            default:
-                return ConformanceResponse.create({
-                    result: {
-                        oneofKind: "skipped",
-                        skipped: `${request.payload.oneofKind} not supported.`,
-                    }
-                });
-
+        if (request.protobufPayload) {
+            testMessage = testMessageType.fromBinary(request.protobufPayload);
+        } else if (request.jsonPayload) {
+            testMessage = testMessageType.fromJsonString(request.jsonPayload, {
+                ignoreUnknownFields: request.testCategory === TestCategory.JSON_IGNORE_UNKNOWN_PARSING_TEST,
+                typeRegistry,
+            });
+        } else {
+            return ConformanceResponse.create({
+                skipped: `Unknown payload type.`,
+            });
         }
     } catch (err) {
         return ConformanceResponse.create({
-            result: {
-                oneofKind: "parseError",
-                parseError: err.toString() + "\n" + err.stack,
-            }
+            parseError: (err as Error).toString() + "\n" + (err as Error).stack,
         });
     }
 
     try {
         switch (request.requestedOutputFormat) {
             case WireFormat.PROTOBUF:
-                response.result = {
-                    oneofKind: "protobufPayload",
-                    protobufPayload: testMessageType.toBinary(testMessage),
-                };
+                response.protobufPayload = testMessageType.toBinary(testMessage);
                 break;
 
             case WireFormat.JSON:
-                response.result = {
-                    oneofKind: "jsonPayload",
-                    jsonPayload: testMessageType.toJsonString(testMessage, {
-                        typeRegistry
-                    })
-                };
+                response.jsonPayload = testMessageType.toJsonString(testMessage, {
+                    typeRegistry
+                });
                 break;
 
             case WireFormat.JSPB:
-                response.result = {oneofKind: "skipped", skipped: "JSPB not supported."};
+                response.skipped = "JSPB not supported.";
                 return response;
 
             case WireFormat.TEXT_FORMAT:
-                response.result = {oneofKind: "skipped", skipped: "Text format not supported."};
+                response.skipped = "Text format not supported.";
                 return response;
 
             default:
                 return ConformanceResponse.create({
-                    result: {
-                        oneofKind: "runtimeError",
-                        runtimeError: `unknown requested output format ${request.requestedOutputFormat}`
-                    }
+                    runtimeError: `unknown requested output format ${request.requestedOutputFormat}`
                 });
         }
     } catch (err) {
         return ConformanceResponse.create({
-            result: {
-                oneofKind: "serializeError",
-                serializeError: err.toString() + "\n" + err.stack
-            }
+            serializeError: (err as Error).toString() + "\n" + (err as Error).stack
         });
     }
     return response;

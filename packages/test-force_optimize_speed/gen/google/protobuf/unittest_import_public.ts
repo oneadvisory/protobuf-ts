@@ -38,7 +38,7 @@ class PublicImportMessage$Type extends MessageType<PublicImportMessage> {
         ]);
     }
     create(value?: PartialMessage<PublicImportMessage>): PublicImportMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<PublicImportMessage>(this, message, value);
         return message;

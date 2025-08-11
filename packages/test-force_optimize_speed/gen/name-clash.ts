@@ -32,42 +32,30 @@ export interface ReservedFieldNames {
      *
      * @generated from protobuf field: string oneofKind = 3;
      */
-    oneofKind$: string;
+    oneofKind: string;
 }
 /**
  * @generated from protobuf message spec.ReservedFieldNamesInOneof
  */
 export interface ReservedFieldNamesInOneof {
     /**
-     * @generated from protobuf oneof: oneof_group;
+     * reserved for our ADT discriminator, should be escaped
+     *
+     * @generated from protobuf field: string oneofKind = 1;
      */
-    oneofGroup: {
-        oneofKind: "oneofKind$";
-        /**
-         * reserved for our ADT discriminator, should be escaped
-         *
-         * @generated from protobuf field: string oneofKind = 1;
-         */
-        oneofKind$: string;
-    } | {
-        oneofKind: "Proto";
-        /**
-         * not allowed as object property, should be escaped
-         *
-         * @generated from protobuf field: string __proto__ = 2;
-         */
-        Proto: string;
-    } | {
-        oneofKind: "toString$";
-        /**
-         * not allowed as object property, should be escaped
-         *
-         * @generated from protobuf field: string to_string = 3;
-         */
-        toString$: string;
-    } | {
-        oneofKind: undefined;
-    };
+    oneofKind?: string;
+    /**
+     * not allowed as object property, should be escaped
+     *
+     * @generated from protobuf field: string __proto__ = 2;
+     */
+    Proto?: string;
+    /**
+     * not allowed as object property, should be escaped
+     *
+     * @generated from protobuf field: string to_string = 3;
+     */
+    toString$?: string;
 }
 /**
  * reserved word, should be escaped
@@ -290,59 +278,41 @@ export interface NoClashFields {
  */
 export interface NoClashOneof {
     /**
-     * @generated from protobuf oneof: kind;
+     * ok as object property
+     *
+     * @generated from protobuf field: string const = 1;
      */
-    kind: {
-        oneofKind: "const";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string const = 1;
-         */
-        const: string;
-    } | {
-        oneofKind: "switch";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string switch = 2;
-         */
-        switch: string;
-    } | {
-        oneofKind: "case";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string case = 3;
-         */
-        case: string;
-    } | {
-        oneofKind: "function";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string function = 4;
-         */
-        function: string;
-    } | {
-        oneofKind: "interface";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string interface = 5;
-         */
-        interface: string;
-    } | {
-        oneofKind: "return";
-        /**
-         * ok as object property
-         *
-         * @generated from protobuf field: string return = 6;
-         */
-        return: string;
-    } | {
-        oneofKind: undefined;
-    };
+    const?: string;
+    /**
+     * ok as object property
+     *
+     * @generated from protobuf field: string switch = 2;
+     */
+    switch?: string;
+    /**
+     * ok as object property
+     *
+     * @generated from protobuf field: string case = 3;
+     */
+    case?: string;
+    /**
+     * ok as object property
+     *
+     * @generated from protobuf field: string function = 4;
+     */
+    function?: string;
+    /**
+     * ok as object property
+     *
+     * @generated from protobuf field: string interface = 5;
+     */
+    interface?: string;
+    /**
+     * ok as object property
+     *
+     * @generated from protobuf field: string return = 6;
+     */
+    return?: string;
 }
 /**
  * just here as a "namespace" for the enum
@@ -398,14 +368,14 @@ class ReservedFieldNames$Type extends MessageType$<ReservedFieldNames> {
         super("spec.ReservedFieldNames", [
             { no: 1, name: "__proto__", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "to_string", kind: "scalar", localName: "toString$", T: 9 /*ScalarType.STRING*/ },
-            { no: 3, name: "oneofKind", kind: "scalar", localName: "oneofKind$", T: 9 /*ScalarType.STRING*/ }
+            { no: 3, name: "oneofKind", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<ReservedFieldNames>): ReservedFieldNames {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.Proto = "";
         message.toString$ = "";
-        message.oneofKind$ = "";
+        message.oneofKind = "";
         if (value !== undefined)
             reflectionMergePartial<ReservedFieldNames>(this, message, value);
         return message;
@@ -422,7 +392,7 @@ class ReservedFieldNames$Type extends MessageType$<ReservedFieldNames> {
                     message.toString$ = reader.string();
                     break;
                 case /* string oneofKind */ 3:
-                    message.oneofKind$ = reader.string();
+                    message.oneofKind = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -443,8 +413,8 @@ class ReservedFieldNames$Type extends MessageType$<ReservedFieldNames> {
         if (message.toString$ !== "")
             writer.tag(2, WireType.LengthDelimited).string(message.toString$);
         /* string oneofKind = 3; */
-        if (message.oneofKind$ !== "")
-            writer.tag(3, WireType.LengthDelimited).string(message.oneofKind$);
+        if (message.oneofKind !== "")
+            writer.tag(3, WireType.LengthDelimited).string(message.oneofKind);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -459,14 +429,13 @@ export const ReservedFieldNames = new ReservedFieldNames$Type();
 class ReservedFieldNamesInOneof$Type extends MessageType$<ReservedFieldNamesInOneof> {
     constructor() {
         super("spec.ReservedFieldNamesInOneof", [
-            { no: 1, name: "oneofKind", kind: "scalar", localName: "oneofKind$", oneof: "oneofGroup", T: 9 /*ScalarType.STRING*/ },
+            { no: 1, name: "oneofKind", kind: "scalar", oneof: "oneofGroup", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "__proto__", kind: "scalar", oneof: "oneofGroup", T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "to_string", kind: "scalar", localName: "toString$", oneof: "oneofGroup", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<ReservedFieldNamesInOneof>): ReservedFieldNamesInOneof {
-        const message = globalThis.Object.create((this.messagePrototype!));
-        message.oneofGroup = { oneofKind: undefined };
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ReservedFieldNamesInOneof>(this, message, value);
         return message;
@@ -477,22 +446,13 @@ class ReservedFieldNamesInOneof$Type extends MessageType$<ReservedFieldNamesInOn
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* string oneofKind */ 1:
-                    message.oneofGroup = {
-                        oneofKind: "oneofKind$",
-                        oneofKind$: reader.string()
-                    };
+                    message.oneofKind = reader.string();
                     break;
                 case /* string __proto__ */ 2:
-                    message.oneofGroup = {
-                        oneofKind: "Proto",
-                        Proto: reader.string()
-                    };
+                    message.Proto = reader.string();
                     break;
                 case /* string to_string */ 3:
-                    message.oneofGroup = {
-                        oneofKind: "toString$",
-                        toString$: reader.string()
-                    };
+                    message.toString$ = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -507,14 +467,14 @@ class ReservedFieldNamesInOneof$Type extends MessageType$<ReservedFieldNamesInOn
     }
     internalBinaryWrite(message: ReservedFieldNamesInOneof, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* string oneofKind = 1; */
-        if (message.oneofGroup.oneofKind === "oneofKind$")
-            writer.tag(1, WireType.LengthDelimited).string(message.oneofGroup.oneofKind$);
+        if ("oneofKind" in message && message.oneofKind != null)
+            writer.tag(1, WireType.LengthDelimited).string(message.oneofKind);
         /* string __proto__ = 2; */
-        if (message.oneofGroup.oneofKind === "Proto")
-            writer.tag(2, WireType.LengthDelimited).string(message.oneofGroup.Proto);
+        if ("Proto" in message && message.Proto != null)
+            writer.tag(2, WireType.LengthDelimited).string(message.Proto);
         /* string to_string = 3; */
-        if (message.oneofGroup.oneofKind === "toString$")
-            writer.tag(3, WireType.LengthDelimited).string(message.oneofGroup.toString$);
+        if ("toString$" in message && message.toString$ != null)
+            writer.tag(3, WireType.LengthDelimited).string(message.toString$);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -531,7 +491,7 @@ class interface$$Type extends MessageType$<interface$> {
         super("spec.interface", []);
     }
     create(value?: PartialMessage<interface$>): interface$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<interface$>(this, message, value);
         return message;
@@ -569,7 +529,7 @@ class function$$Type extends MessageType$<function$> {
         super("spec.function", []);
     }
     create(value?: PartialMessage<function$>): function$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<function$>(this, message, value);
         return message;
@@ -607,7 +567,7 @@ class instanceof$$Type extends MessageType$<instanceof$> {
         super("spec.instanceof", []);
     }
     create(value?: PartialMessage<instanceof$>): instanceof$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<instanceof$>(this, message, value);
         return message;
@@ -645,7 +605,7 @@ class switch$$Type extends MessageType$<switch$> {
         super("spec.switch", []);
     }
     create(value?: PartialMessage<switch$>): switch$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<switch$>(this, message, value);
         return message;
@@ -683,7 +643,7 @@ class case$$Type extends MessageType$<case$> {
         super("spec.case", []);
     }
     create(value?: PartialMessage<case$>): case$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<case$>(this, message, value);
         return message;
@@ -721,7 +681,7 @@ class return$$Type extends MessageType$<return$> {
         super("spec.return", []);
     }
     create(value?: PartialMessage<return$>): return$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<return$>(this, message, value);
         return message;
@@ -759,7 +719,7 @@ class MessageType$Type extends MessageType$<MessageType> {
         super("spec.MessageType", []);
     }
     create(value?: PartialMessage<MessageType>): MessageType {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<MessageType>(this, message, value);
         return message;
@@ -800,7 +760,7 @@ class Error$Type extends MessageType$<Error> {
         ]);
     }
     create(value?: PartialMessage<Error>): Error {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.fieldName = "";
         message.message = "";
         if (value !== undefined)
@@ -852,7 +812,7 @@ class Object$Type extends MessageType$<Object> {
         super("spec.Object", []);
     }
     create(value?: PartialMessage<Object>): Object {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<Object>(this, message, value);
         return message;
@@ -890,7 +850,7 @@ class object$$Type extends MessageType$<object$> {
         super("spec.object", []);
     }
     create(value?: PartialMessage<object$>): object$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<object$>(this, message, value);
         return message;
@@ -928,7 +888,7 @@ class Uint8Array$$Type extends MessageType$<Uint8Array$> {
         super("spec.Uint8Array", []);
     }
     create(value?: PartialMessage<Uint8Array$>): Uint8Array$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<Uint8Array$>(this, message, value);
         return message;
@@ -966,7 +926,7 @@ class array$$Type extends MessageType$<array$> {
         super("spec.array", []);
     }
     create(value?: PartialMessage<array$>): array$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<array$>(this, message, value);
         return message;
@@ -1004,7 +964,7 @@ class Array$$Type extends MessageType$<Array$> {
         super("spec.Array", []);
     }
     create(value?: PartialMessage<Array$>): Array$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<Array$>(this, message, value);
         return message;
@@ -1042,7 +1002,7 @@ class string$$Type extends MessageType$<string$> {
         super("spec.string", []);
     }
     create(value?: PartialMessage<string$>): string$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<string$>(this, message, value);
         return message;
@@ -1080,7 +1040,7 @@ class String$$Type extends MessageType$<String$> {
         super("spec.String", []);
     }
     create(value?: PartialMessage<String$>): String$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<String$>(this, message, value);
         return message;
@@ -1118,7 +1078,7 @@ class number$$Type extends MessageType$<number$> {
         super("spec.number", []);
     }
     create(value?: PartialMessage<number$>): number$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<number$>(this, message, value);
         return message;
@@ -1156,7 +1116,7 @@ class Number$$Type extends MessageType$<Number$> {
         super("spec.Number", []);
     }
     create(value?: PartialMessage<Number$>): Number$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<Number$>(this, message, value);
         return message;
@@ -1194,7 +1154,7 @@ class boolean$$Type extends MessageType$<boolean$> {
         super("spec.boolean", []);
     }
     create(value?: PartialMessage<boolean$>): boolean$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<boolean$>(this, message, value);
         return message;
@@ -1232,7 +1192,7 @@ class Boolean$$Type extends MessageType$<Boolean$> {
         super("spec.Boolean", []);
     }
     create(value?: PartialMessage<Boolean$>): Boolean$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<Boolean$>(this, message, value);
         return message;
@@ -1270,7 +1230,7 @@ class bigint$$Type extends MessageType$<bigint$> {
         super("spec.bigint", []);
     }
     create(value?: PartialMessage<bigint$>): bigint$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<bigint$>(this, message, value);
         return message;
@@ -1308,7 +1268,7 @@ class BigInt$$Type extends MessageType$<BigInt$> {
         super("spec.BigInt", []);
     }
     create(value?: PartialMessage<BigInt$>): BigInt$ {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<BigInt$>(this, message, value);
         return message;
@@ -1346,7 +1306,7 @@ class ClashParent$Type extends MessageType$<ClashParent> {
         super("spec.ClashParent", []);
     }
     create(value?: PartialMessage<ClashParent>): ClashParent {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ClashParent>(this, message, value);
         return message;
@@ -1384,7 +1344,7 @@ class ClashParent_ClashChild$Type extends MessageType$<ClashParent_ClashChild> {
         super("spec.ClashParent.ClashChild", []);
     }
     create(value?: PartialMessage<ClashParent_ClashChild>): ClashParent_ClashChild {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ClashParent_ClashChild>(this, message, value);
         return message;
@@ -1422,7 +1382,7 @@ class ClashParent_ClashChild$1$Type extends MessageType$<ClashParent_ClashChild$
         super("spec.ClashParent_ClashChild", []);
     }
     create(value?: PartialMessage<ClashParent_ClashChild$1>): ClashParent_ClashChild$1 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ClashParent_ClashChild$1>(this, message, value);
         return message;
@@ -1467,7 +1427,7 @@ class NoClashFields$Type extends MessageType$<NoClashFields> {
         ]);
     }
     create(value?: PartialMessage<NoClashFields>): NoClashFields {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.const = "";
         message.switch = "";
         message.case = "";
@@ -1554,8 +1514,7 @@ class NoClashOneof$Type extends MessageType$<NoClashOneof> {
         ]);
     }
     create(value?: PartialMessage<NoClashOneof>): NoClashOneof {
-        const message = globalThis.Object.create((this.messagePrototype!));
-        message.kind = { oneofKind: undefined };
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<NoClashOneof>(this, message, value);
         return message;
@@ -1566,40 +1525,22 @@ class NoClashOneof$Type extends MessageType$<NoClashOneof> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* string const */ 1:
-                    message.kind = {
-                        oneofKind: "const",
-                        const: reader.string()
-                    };
+                    message.const = reader.string();
                     break;
                 case /* string switch */ 2:
-                    message.kind = {
-                        oneofKind: "switch",
-                        switch: reader.string()
-                    };
+                    message.switch = reader.string();
                     break;
                 case /* string case */ 3:
-                    message.kind = {
-                        oneofKind: "case",
-                        case: reader.string()
-                    };
+                    message.case = reader.string();
                     break;
                 case /* string function */ 4:
-                    message.kind = {
-                        oneofKind: "function",
-                        function: reader.string()
-                    };
+                    message.function = reader.string();
                     break;
                 case /* string interface */ 5:
-                    message.kind = {
-                        oneofKind: "interface",
-                        interface: reader.string()
-                    };
+                    message.interface = reader.string();
                     break;
                 case /* string return */ 6:
-                    message.kind = {
-                        oneofKind: "return",
-                        return: reader.string()
-                    };
+                    message.return = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1614,23 +1555,23 @@ class NoClashOneof$Type extends MessageType$<NoClashOneof> {
     }
     internalBinaryWrite(message: NoClashOneof, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* string const = 1; */
-        if (message.kind.oneofKind === "const")
-            writer.tag(1, WireType.LengthDelimited).string(message.kind.const);
+        if ("const" in message && message.const != null)
+            writer.tag(1, WireType.LengthDelimited).string(message.const);
         /* string switch = 2; */
-        if (message.kind.oneofKind === "switch")
-            writer.tag(2, WireType.LengthDelimited).string(message.kind.switch);
+        if ("switch" in message && message.switch != null)
+            writer.tag(2, WireType.LengthDelimited).string(message.switch);
         /* string case = 3; */
-        if (message.kind.oneofKind === "case")
-            writer.tag(3, WireType.LengthDelimited).string(message.kind.case);
+        if ("case" in message && message.case != null)
+            writer.tag(3, WireType.LengthDelimited).string(message.case);
         /* string function = 4; */
-        if (message.kind.oneofKind === "function")
-            writer.tag(4, WireType.LengthDelimited).string(message.kind.function);
+        if ("function" in message && message.function != null)
+            writer.tag(4, WireType.LengthDelimited).string(message.function);
         /* string interface = 5; */
-        if (message.kind.oneofKind === "interface")
-            writer.tag(5, WireType.LengthDelimited).string(message.kind.interface);
+        if ("interface" in message && message.interface != null)
+            writer.tag(5, WireType.LengthDelimited).string(message.interface);
         /* string return = 6; */
-        if (message.kind.oneofKind === "return")
-            writer.tag(6, WireType.LengthDelimited).string(message.kind.return);
+        if ("return" in message && message.return != null)
+            writer.tag(6, WireType.LengthDelimited).string(message.return);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1647,7 +1588,7 @@ class NoClashEnumWrap$Type extends MessageType$<NoClashEnumWrap> {
         super("spec.NoClashEnumWrap", []);
     }
     create(value?: PartialMessage<NoClashEnumWrap>): NoClashEnumWrap {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<NoClashEnumWrap>(this, message, value);
         return message;
@@ -1683,12 +1624,12 @@ export const NoClashEnumWrap = new NoClashEnumWrap$Type();
  * @generated ServiceType for protobuf service spec.NameClashService
  */
 export const NameClashService = new ServiceType("spec.NameClashService", [
-    { name: "__proto__", options: {}, I: Error, O: Error },
-    { name: "toString", localName: "toString$", options: {}, I: Error, O: Error },
-    { name: "name", localName: "name$", options: {}, I: Error, O: Error },
-    { name: "constructor", localName: "constructor$", options: {}, I: Error, O: Error },
-    { name: "methods", localName: "methods$", options: {}, I: Error, O: Error },
-    { name: "typeName", localName: "typeName$", options: {}, I: Error, O: Error },
-    { name: "options", localName: "options$", options: {}, I: Error, O: Error },
-    { name: "_transport", options: {}, I: Error, O: Error }
+    { name: "__proto__" as const, options: {} as const, I: Error, O: Error },
+    { name: "toString" as const, localName: "toString$" as const, options: {} as const, I: Error, O: Error },
+    { name: "name" as const, localName: "name$" as const, options: {} as const, I: Error, O: Error },
+    { name: "constructor" as const, localName: "constructor$" as const, options: {} as const, I: Error, O: Error },
+    { name: "methods" as const, localName: "methods$" as const, options: {} as const, I: Error, O: Error },
+    { name: "typeName" as const, localName: "typeName$" as const, options: {} as const, I: Error, O: Error },
+    { name: "options" as const, localName: "options$" as const, options: {} as const, I: Error, O: Error },
+    { name: "_transport" as const, options: {} as const, I: Error, O: Error }
 ]);

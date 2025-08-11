@@ -65,7 +65,7 @@ export interface CodeGeneratorRequest {
      *
      * @generated from protobuf field: repeated string file_to_generate = 1;
      */
-    fileToGenerate: string[];
+    fileToGenerate?: string[];
     /**
      * The generator parameter passed on the command-line.
      *
@@ -95,7 +95,7 @@ export interface CodeGeneratorRequest {
      *
      * @generated from protobuf field: repeated google.protobuf.FileDescriptorProto proto_file = 15;
      */
-    protoFile: FileDescriptorProto[];
+    protoFile?: FileDescriptorProto[];
     /**
      * File descriptors with all options, including source-retention options.
      * These descriptors are only provided for the files listed in
@@ -103,7 +103,7 @@ export interface CodeGeneratorRequest {
      *
      * @generated from protobuf field: repeated google.protobuf.FileDescriptorProto source_file_descriptors = 17;
      */
-    sourceFileDescriptors: FileDescriptorProto[];
+    sourceFileDescriptors?: FileDescriptorProto[];
     /**
      * The version number of protocol compiler.
      *
@@ -158,7 +158,7 @@ export interface CodeGeneratorResponse {
     /**
      * @generated from protobuf field: repeated google.protobuf.compiler.CodeGeneratorResponse.File file = 15;
      */
-    file: CodeGeneratorResponse_File[];
+    file?: CodeGeneratorResponse_File[];
 }
 /**
  * Represents a single generated file.

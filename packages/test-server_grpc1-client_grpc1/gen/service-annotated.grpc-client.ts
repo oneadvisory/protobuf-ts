@@ -33,6 +33,6 @@ export class AnnotatedServiceClient extends grpc.Client implements IAnnotatedSer
      */
     get(input: AnnoGetRequest, metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: AnnoGetResponse) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: AnnoGetResponse) => void), callback?: ((err: grpc.ServiceError | null, value?: AnnoGetResponse) => void)): grpc.ClientUnaryCall {
         const method = AnnotatedService.methods[0];
-        return this.makeUnaryRequest<AnnoGetRequest, AnnoGetResponse>(`/${AnnotatedService.typeName}/${method.name}`, (value: AnnoGetRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): AnnoGetResponse => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), (options as any), (callback as any));
+        return this.makeUnaryRequest<AnnoGetRequest, AnnoGetResponse>(`/${AnnotatedService.typeName}/${method.name}`, (value: AnnoGetRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): AnnoGetResponse => method.O.fromBinary(value, this._binaryOptions), input, metadata as any, options as any, callback as any);
     }
 }

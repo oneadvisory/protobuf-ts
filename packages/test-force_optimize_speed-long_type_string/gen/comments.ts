@@ -42,30 +42,14 @@ export interface MessageWithComments {
      * @generated from protobuf field: string foo = 1;
      */
     foo: string; // Comment next to field.
-    // Comment after field.
-
     /**
-     * Comment before oneof.
-     *
-     * Comment after start of oneof.
-     *
-     * @generated from protobuf oneof: result;
+     * @generated from protobuf field: int32 value = 2;
      */
-    result: {
-        oneofKind: "value";
-        /**
-         * @generated from protobuf field: int32 value = 2;
-         */
-        value: number;
-    } | {
-        oneofKind: "error";
-        /**
-         * @generated from protobuf field: string error = 3;
-         */
-        error: string;
-    } | {
-        oneofKind: undefined;
-    };
+    value?: number;
+    /**
+     * @generated from protobuf field: string error = 3;
+     */
+    error?: string;
     /**
      * @generated from protobuf field: string this_field_has_an_empty_comment = 4;
      */
@@ -193,9 +177,8 @@ class MessageWithComments$Type extends MessageType<MessageWithComments> {
         ]);
     }
     create(value?: PartialMessage<MessageWithComments>): MessageWithComments {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.foo = "";
-        message.result = { oneofKind: undefined };
         message.thisFieldHasAnEmptyComment = "";
         message.thisFieldIsDeprecated = "";
         if (value !== undefined)
@@ -211,16 +194,10 @@ class MessageWithComments$Type extends MessageType<MessageWithComments> {
                     message.foo = reader.string();
                     break;
                 case /* int32 value */ 2:
-                    message.result = {
-                        oneofKind: "value",
-                        value: reader.int32()
-                    };
+                    message.value = reader.int32();
                     break;
                 case /* string error */ 3:
-                    message.result = {
-                        oneofKind: "error",
-                        error: reader.string()
-                    };
+                    message.error = reader.string();
                     break;
                 case /* string this_field_has_an_empty_comment */ 4:
                     message.thisFieldHasAnEmptyComment = reader.string();
@@ -244,11 +221,11 @@ class MessageWithComments$Type extends MessageType<MessageWithComments> {
         if (message.foo !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.foo);
         /* int32 value = 2; */
-        if (message.result.oneofKind === "value")
-            writer.tag(2, WireType.Varint).int32(message.result.value);
+        if ("value" in message && message.value != null)
+            writer.tag(2, WireType.Varint).int32(message.value);
         /* string error = 3; */
-        if (message.result.oneofKind === "error")
-            writer.tag(3, WireType.LengthDelimited).string(message.result.error);
+        if ("error" in message && message.error != null)
+            writer.tag(3, WireType.LengthDelimited).string(message.error);
         /* string this_field_has_an_empty_comment = 4; */
         if (message.thisFieldHasAnEmptyComment !== "")
             writer.tag(4, WireType.LengthDelimited).string(message.thisFieldHasAnEmptyComment);
@@ -271,7 +248,7 @@ class EmptyMessageWithComment$Type extends MessageType<EmptyMessageWithComment> 
         super("spec.EmptyMessageWithComment", []);
     }
     create(value?: PartialMessage<EmptyMessageWithComment>): EmptyMessageWithComment {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<EmptyMessageWithComment>(this, message, value);
         return message;
@@ -316,7 +293,7 @@ class GoogleCommentExample$Type extends MessageType<GoogleCommentExample> {
         ]);
     }
     create(value?: PartialMessage<GoogleCommentExample>): GoogleCommentExample {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.foo = 0;
         message.bar = 0;
         message.baz = "";

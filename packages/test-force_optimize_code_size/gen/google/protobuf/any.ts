@@ -188,7 +188,8 @@ class Any$Type extends MessageType<Any> {
      */
     pack<T extends object>(message: T, type: IMessageType<T>): Any {
         return {
-            typeUrl: this.typeNameToUrl(type.typeName), value: type.toBinary(message),
+            typeUrl: this.typeNameToUrl(type.typeName),
+            value: type.toBinary(message),
         };
     }
     /**

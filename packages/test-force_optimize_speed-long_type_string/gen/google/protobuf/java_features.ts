@@ -73,7 +73,7 @@ class JavaFeatures$Type extends MessageType<JavaFeatures> {
         ]);
     }
     create(value?: PartialMessage<JavaFeatures>): JavaFeatures {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<JavaFeatures>(this, message, value);
         return message;

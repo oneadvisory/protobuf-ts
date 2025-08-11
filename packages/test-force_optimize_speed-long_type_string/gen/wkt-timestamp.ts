@@ -30,7 +30,7 @@ class TimestampMessage$Type extends MessageType<TimestampMessage> {
         ]);
     }
     create(value?: PartialMessage<TimestampMessage>): TimestampMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TimestampMessage>(this, message, value);
         return message;

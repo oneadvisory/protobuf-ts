@@ -45,7 +45,7 @@ export interface FailureSet {
     /**
      * @generated from protobuf field: repeated conformance.TestStatus test = 2;
      */
-    test: TestStatus[];
+    test?: TestStatus[];
 }
 /**
  * Represents a single test case's input.  The testee should:
@@ -58,41 +58,23 @@ export interface FailureSet {
  */
 export interface ConformanceRequest {
     /**
-     * The payload (whether protobuf of JSON) is always for a
-     * protobuf_test_messages.proto3.TestAllTypes proto (as defined in
-     * src/google/protobuf/proto3_test_messages.proto).
-     *
-     * @generated from protobuf oneof: payload;
+     * @generated from protobuf field: bytes protobuf_payload = 1;
      */
-    payload: {
-        oneofKind: "protobufPayload";
-        /**
-         * @generated from protobuf field: bytes protobuf_payload = 1;
-         */
-        protobufPayload: Uint8Array;
-    } | {
-        oneofKind: "jsonPayload";
-        /**
-         * @generated from protobuf field: string json_payload = 2;
-         */
-        jsonPayload: string;
-    } | {
-        oneofKind: "jspbPayload";
-        /**
-         * Only used inside Google.  Opensource testees just skip it.
-         *
-         * @generated from protobuf field: string jspb_payload = 7;
-         */
-        jspbPayload: string;
-    } | {
-        oneofKind: "textPayload";
-        /**
-         * @generated from protobuf field: string text_payload = 8;
-         */
-        textPayload: string;
-    } | {
-        oneofKind: undefined;
-    };
+    protobufPayload?: Uint8Array;
+    /**
+     * @generated from protobuf field: string json_payload = 2;
+     */
+    jsonPayload?: string;
+    /**
+     * Only used inside Google.  Opensource testees just skip it.
+     *
+     * @generated from protobuf field: string jspb_payload = 7;
+     */
+    jspbPayload?: string;
+    /**
+     * @generated from protobuf field: string text_payload = 8;
+     */
+    textPayload?: string;
     /**
      * Which format should the testee serialize its message to?
      *
@@ -139,99 +121,75 @@ export interface ConformanceRequest {
  */
 export interface ConformanceResponse {
     /**
-     * @generated from protobuf oneof: result;
+     * This string should be set to indicate parsing failed.  The string can
+     * provide more information about the parse error if it is available.
+     *
+     * Setting this string does not necessarily mean the testee failed the
+     * test.  Some of the test cases are intentionally invalid input.
+     *
+     * @generated from protobuf field: string parse_error = 1;
      */
-    result: {
-        oneofKind: "parseError";
-        /**
-         * This string should be set to indicate parsing failed.  The string can
-         * provide more information about the parse error if it is available.
-         *
-         * Setting this string does not necessarily mean the testee failed the
-         * test.  Some of the test cases are intentionally invalid input.
-         *
-         * @generated from protobuf field: string parse_error = 1;
-         */
-        parseError: string;
-    } | {
-        oneofKind: "serializeError";
-        /**
-         * If the input was successfully parsed but errors occurred when
-         * serializing it to the requested output format, set the error message in
-         * this field.
-         *
-         * @generated from protobuf field: string serialize_error = 6;
-         */
-        serializeError: string;
-    } | {
-        oneofKind: "timeoutError";
-        /**
-         * This should be set if the test program timed out.  The string should
-         * provide more information about what the child process was doing when it
-         * was killed.
-         *
-         * @generated from protobuf field: string timeout_error = 9;
-         */
-        timeoutError: string;
-    } | {
-        oneofKind: "runtimeError";
-        /**
-         * This should be set if some other error occurred.  This will always
-         * indicate that the test failed.  The string can provide more information
-         * about the failure.
-         *
-         * @generated from protobuf field: string runtime_error = 2;
-         */
-        runtimeError: string;
-    } | {
-        oneofKind: "protobufPayload";
-        /**
-         * If the input was successfully parsed and the requested output was
-         * protobuf, serialize it to protobuf and set it in this field.
-         *
-         * @generated from protobuf field: bytes protobuf_payload = 3;
-         */
-        protobufPayload: Uint8Array;
-    } | {
-        oneofKind: "jsonPayload";
-        /**
-         * If the input was successfully parsed and the requested output was JSON,
-         * serialize to JSON and set it in this field.
-         *
-         * @generated from protobuf field: string json_payload = 4;
-         */
-        jsonPayload: string;
-    } | {
-        oneofKind: "skipped";
-        /**
-         * For when the testee skipped the test, likely because a certain feature
-         * wasn't supported, like JSON input/output.
-         *
-         * @generated from protobuf field: string skipped = 5;
-         */
-        skipped: string;
-    } | {
-        oneofKind: "jspbPayload";
-        /**
-         * If the input was successfully parsed and the requested output was JSPB,
-         * serialize to JSPB and set it in this field. JSPB is only used inside
-         * Google. Opensource testees can just skip it.
-         *
-         * @generated from protobuf field: string jspb_payload = 7;
-         */
-        jspbPayload: string;
-    } | {
-        oneofKind: "textPayload";
-        /**
-         * If the input was successfully parsed and the requested output was
-         * TEXT_FORMAT, serialize to TEXT_FORMAT and set it in this field.
-         *
-         * @generated from protobuf field: string text_payload = 8;
-         */
-        textPayload: string;
-    } | {
-        oneofKind: undefined;
-    };
+    parseError?: string;
+    /**
+     * If the input was successfully parsed but errors occurred when
+     * serializing it to the requested output format, set the error message in
+     * this field.
+     *
+     * @generated from protobuf field: string serialize_error = 6;
+     */
+    serializeError?: string;
+    /**
+     * This should be set if the test program timed out.  The string should
+     * provide more information about what the child process was doing when it
+     * was killed.
+     *
+     * @generated from protobuf field: string timeout_error = 9;
+     */
+    timeoutError?: string;
+    /**
+     * This should be set if some other error occurred.  This will always
+     * indicate that the test failed.  The string can provide more information
+     * about the failure.
+     *
+     * @generated from protobuf field: string runtime_error = 2;
+     */
+    runtimeError?: string;
+    /**
+     * If the input was successfully parsed and the requested output was
+     * protobuf, serialize it to protobuf and set it in this field.
+     *
+     * @generated from protobuf field: bytes protobuf_payload = 3;
+     */
+    protobufPayload?: Uint8Array;
+    /**
+     * If the input was successfully parsed and the requested output was JSON,
+     * serialize to JSON and set it in this field.
+     *
+     * @generated from protobuf field: string json_payload = 4;
+     */
+    jsonPayload?: string;
+    /**
+     * For when the testee skipped the test, likely because a certain feature
+     * wasn't supported, like JSON input/output.
+     *
+     * @generated from protobuf field: string skipped = 5;
+     */
+    skipped?: string;
+    /**
+     * If the input was successfully parsed and the requested output was JSPB,
+     * serialize to JSPB and set it in this field. JSPB is only used inside
+     * Google. Opensource testees can just skip it.
+     *
+     * @generated from protobuf field: string jspb_payload = 7;
+     */
+    jspbPayload?: string;
+    /**
+     * If the input was successfully parsed and the requested output was
+     * TEXT_FORMAT, serialize to TEXT_FORMAT and set it in this field.
+     *
+     * @generated from protobuf field: string text_payload = 8;
+     */
+    textPayload?: string;
 }
 /**
  * Encoding options for jspb format.

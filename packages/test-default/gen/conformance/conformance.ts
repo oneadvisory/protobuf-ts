@@ -53,7 +53,7 @@ export interface FailureSet {
     /**
      * @generated from protobuf field: repeated conformance.TestStatus test = 2;
      */
-    test: TestStatus[];
+    test?: TestStatus[];
 }
 /**
  * Represents a single test case's input.  The testee should:
@@ -66,41 +66,23 @@ export interface FailureSet {
  */
 export interface ConformanceRequest {
     /**
-     * The payload (whether protobuf of JSON) is always for a
-     * protobuf_test_messages.proto3.TestAllTypes proto (as defined in
-     * src/google/protobuf/proto3_test_messages.proto).
-     *
-     * @generated from protobuf oneof: payload;
+     * @generated from protobuf field: bytes protobuf_payload = 1;
      */
-    payload: {
-        oneofKind: "protobufPayload";
-        /**
-         * @generated from protobuf field: bytes protobuf_payload = 1;
-         */
-        protobufPayload: Uint8Array;
-    } | {
-        oneofKind: "jsonPayload";
-        /**
-         * @generated from protobuf field: string json_payload = 2;
-         */
-        jsonPayload: string;
-    } | {
-        oneofKind: "jspbPayload";
-        /**
-         * Only used inside Google.  Opensource testees just skip it.
-         *
-         * @generated from protobuf field: string jspb_payload = 7;
-         */
-        jspbPayload: string;
-    } | {
-        oneofKind: "textPayload";
-        /**
-         * @generated from protobuf field: string text_payload = 8;
-         */
-        textPayload: string;
-    } | {
-        oneofKind: undefined;
-    };
+    protobufPayload?: Uint8Array;
+    /**
+     * @generated from protobuf field: string json_payload = 2;
+     */
+    jsonPayload?: string;
+    /**
+     * Only used inside Google.  Opensource testees just skip it.
+     *
+     * @generated from protobuf field: string jspb_payload = 7;
+     */
+    jspbPayload?: string;
+    /**
+     * @generated from protobuf field: string text_payload = 8;
+     */
+    textPayload?: string;
     /**
      * Which format should the testee serialize its message to?
      *
@@ -147,99 +129,75 @@ export interface ConformanceRequest {
  */
 export interface ConformanceResponse {
     /**
-     * @generated from protobuf oneof: result;
+     * This string should be set to indicate parsing failed.  The string can
+     * provide more information about the parse error if it is available.
+     *
+     * Setting this string does not necessarily mean the testee failed the
+     * test.  Some of the test cases are intentionally invalid input.
+     *
+     * @generated from protobuf field: string parse_error = 1;
      */
-    result: {
-        oneofKind: "parseError";
-        /**
-         * This string should be set to indicate parsing failed.  The string can
-         * provide more information about the parse error if it is available.
-         *
-         * Setting this string does not necessarily mean the testee failed the
-         * test.  Some of the test cases are intentionally invalid input.
-         *
-         * @generated from protobuf field: string parse_error = 1;
-         */
-        parseError: string;
-    } | {
-        oneofKind: "serializeError";
-        /**
-         * If the input was successfully parsed but errors occurred when
-         * serializing it to the requested output format, set the error message in
-         * this field.
-         *
-         * @generated from protobuf field: string serialize_error = 6;
-         */
-        serializeError: string;
-    } | {
-        oneofKind: "timeoutError";
-        /**
-         * This should be set if the test program timed out.  The string should
-         * provide more information about what the child process was doing when it
-         * was killed.
-         *
-         * @generated from protobuf field: string timeout_error = 9;
-         */
-        timeoutError: string;
-    } | {
-        oneofKind: "runtimeError";
-        /**
-         * This should be set if some other error occurred.  This will always
-         * indicate that the test failed.  The string can provide more information
-         * about the failure.
-         *
-         * @generated from protobuf field: string runtime_error = 2;
-         */
-        runtimeError: string;
-    } | {
-        oneofKind: "protobufPayload";
-        /**
-         * If the input was successfully parsed and the requested output was
-         * protobuf, serialize it to protobuf and set it in this field.
-         *
-         * @generated from protobuf field: bytes protobuf_payload = 3;
-         */
-        protobufPayload: Uint8Array;
-    } | {
-        oneofKind: "jsonPayload";
-        /**
-         * If the input was successfully parsed and the requested output was JSON,
-         * serialize to JSON and set it in this field.
-         *
-         * @generated from protobuf field: string json_payload = 4;
-         */
-        jsonPayload: string;
-    } | {
-        oneofKind: "skipped";
-        /**
-         * For when the testee skipped the test, likely because a certain feature
-         * wasn't supported, like JSON input/output.
-         *
-         * @generated from protobuf field: string skipped = 5;
-         */
-        skipped: string;
-    } | {
-        oneofKind: "jspbPayload";
-        /**
-         * If the input was successfully parsed and the requested output was JSPB,
-         * serialize to JSPB and set it in this field. JSPB is only used inside
-         * Google. Opensource testees can just skip it.
-         *
-         * @generated from protobuf field: string jspb_payload = 7;
-         */
-        jspbPayload: string;
-    } | {
-        oneofKind: "textPayload";
-        /**
-         * If the input was successfully parsed and the requested output was
-         * TEXT_FORMAT, serialize to TEXT_FORMAT and set it in this field.
-         *
-         * @generated from protobuf field: string text_payload = 8;
-         */
-        textPayload: string;
-    } | {
-        oneofKind: undefined;
-    };
+    parseError?: string;
+    /**
+     * If the input was successfully parsed but errors occurred when
+     * serializing it to the requested output format, set the error message in
+     * this field.
+     *
+     * @generated from protobuf field: string serialize_error = 6;
+     */
+    serializeError?: string;
+    /**
+     * This should be set if the test program timed out.  The string should
+     * provide more information about what the child process was doing when it
+     * was killed.
+     *
+     * @generated from protobuf field: string timeout_error = 9;
+     */
+    timeoutError?: string;
+    /**
+     * This should be set if some other error occurred.  This will always
+     * indicate that the test failed.  The string can provide more information
+     * about the failure.
+     *
+     * @generated from protobuf field: string runtime_error = 2;
+     */
+    runtimeError?: string;
+    /**
+     * If the input was successfully parsed and the requested output was
+     * protobuf, serialize it to protobuf and set it in this field.
+     *
+     * @generated from protobuf field: bytes protobuf_payload = 3;
+     */
+    protobufPayload?: Uint8Array;
+    /**
+     * If the input was successfully parsed and the requested output was JSON,
+     * serialize to JSON and set it in this field.
+     *
+     * @generated from protobuf field: string json_payload = 4;
+     */
+    jsonPayload?: string;
+    /**
+     * For when the testee skipped the test, likely because a certain feature
+     * wasn't supported, like JSON input/output.
+     *
+     * @generated from protobuf field: string skipped = 5;
+     */
+    skipped?: string;
+    /**
+     * If the input was successfully parsed and the requested output was JSPB,
+     * serialize to JSPB and set it in this field. JSPB is only used inside
+     * Google. Opensource testees can just skip it.
+     *
+     * @generated from protobuf field: string jspb_payload = 7;
+     */
+    jspbPayload?: string;
+    /**
+     * If the input was successfully parsed and the requested output was
+     * TEXT_FORMAT, serialize to TEXT_FORMAT and set it in this field.
+     *
+     * @generated from protobuf field: string text_payload = 8;
+     */
+    textPayload?: string;
 }
 /**
  * Encoding options for jspb format.
@@ -355,7 +313,7 @@ class TestStatus$Type extends MessageType<TestStatus> {
         ]);
     }
     create(value?: PartialMessage<TestStatus>): TestStatus {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         message.failureMessage = "";
         message.matchedName = "";
@@ -416,7 +374,7 @@ class FailureSet$Type extends MessageType<FailureSet> {
         ]);
     }
     create(value?: PartialMessage<FailureSet>): FailureSet {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.test = [];
         if (value !== undefined)
             reflectionMergePartial<FailureSet>(this, message, value);
@@ -428,7 +386,7 @@ class FailureSet$Type extends MessageType<FailureSet> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated conformance.TestStatus test */ 2:
-                    message.test.push(TestStatus.internalBinaryRead(reader, reader.uint32(), options));
+                    message.test?.push?.(TestStatus.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -443,8 +401,8 @@ class FailureSet$Type extends MessageType<FailureSet> {
     }
     internalBinaryWrite(message: FailureSet, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated conformance.TestStatus test = 2; */
-        for (let i = 0; i < message.test.length; i++)
-            TestStatus.internalBinaryWrite(message.test[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.test?.length || 0); i++)
+            TestStatus.internalBinaryWrite(message.test?.[i] as any, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -471,8 +429,7 @@ class ConformanceRequest$Type extends MessageType<ConformanceRequest> {
         ]);
     }
     create(value?: PartialMessage<ConformanceRequest>): ConformanceRequest {
-        const message = globalThis.Object.create((this.messagePrototype!));
-        message.payload = { oneofKind: undefined };
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.requestedOutputFormat = 0;
         message.messageType = "";
         message.testCategory = 0;
@@ -487,28 +444,16 @@ class ConformanceRequest$Type extends MessageType<ConformanceRequest> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* bytes protobuf_payload */ 1:
-                    message.payload = {
-                        oneofKind: "protobufPayload",
-                        protobufPayload: reader.bytes()
-                    };
+                    message.protobufPayload = reader.bytes();
                     break;
                 case /* string json_payload */ 2:
-                    message.payload = {
-                        oneofKind: "jsonPayload",
-                        jsonPayload: reader.string()
-                    };
+                    message.jsonPayload = reader.string();
                     break;
                 case /* string jspb_payload */ 7:
-                    message.payload = {
-                        oneofKind: "jspbPayload",
-                        jspbPayload: reader.string()
-                    };
+                    message.jspbPayload = reader.string();
                     break;
                 case /* string text_payload */ 8:
-                    message.payload = {
-                        oneofKind: "textPayload",
-                        textPayload: reader.string()
-                    };
+                    message.textPayload = reader.string();
                     break;
                 case /* conformance.WireFormat requested_output_format */ 3:
                     message.requestedOutputFormat = reader.int32();
@@ -538,11 +483,11 @@ class ConformanceRequest$Type extends MessageType<ConformanceRequest> {
     }
     internalBinaryWrite(message: ConformanceRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* bytes protobuf_payload = 1; */
-        if (message.payload.oneofKind === "protobufPayload")
-            writer.tag(1, WireType.LengthDelimited).bytes(message.payload.protobufPayload);
+        if ("protobufPayload" in message && message.protobufPayload != null)
+            writer.tag(1, WireType.LengthDelimited).bytes(message.protobufPayload);
         /* string json_payload = 2; */
-        if (message.payload.oneofKind === "jsonPayload")
-            writer.tag(2, WireType.LengthDelimited).string(message.payload.jsonPayload);
+        if ("jsonPayload" in message && message.jsonPayload != null)
+            writer.tag(2, WireType.LengthDelimited).string(message.jsonPayload);
         /* conformance.WireFormat requested_output_format = 3; */
         if (message.requestedOutputFormat !== 0)
             writer.tag(3, WireType.Varint).int32(message.requestedOutputFormat);
@@ -556,11 +501,11 @@ class ConformanceRequest$Type extends MessageType<ConformanceRequest> {
         if (message.jspbEncodingOptions)
             JspbEncodingConfig.internalBinaryWrite(message.jspbEncodingOptions, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         /* string jspb_payload = 7; */
-        if (message.payload.oneofKind === "jspbPayload")
-            writer.tag(7, WireType.LengthDelimited).string(message.payload.jspbPayload);
+        if ("jspbPayload" in message && message.jspbPayload != null)
+            writer.tag(7, WireType.LengthDelimited).string(message.jspbPayload);
         /* string text_payload = 8; */
-        if (message.payload.oneofKind === "textPayload")
-            writer.tag(8, WireType.LengthDelimited).string(message.payload.textPayload);
+        if ("textPayload" in message && message.textPayload != null)
+            writer.tag(8, WireType.LengthDelimited).string(message.textPayload);
         /* bool print_unknown_fields = 9; */
         if (message.printUnknownFields !== false)
             writer.tag(9, WireType.Varint).bool(message.printUnknownFields);
@@ -590,8 +535,7 @@ class ConformanceResponse$Type extends MessageType<ConformanceResponse> {
         ]);
     }
     create(value?: PartialMessage<ConformanceResponse>): ConformanceResponse {
-        const message = globalThis.Object.create((this.messagePrototype!));
-        message.result = { oneofKind: undefined };
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ConformanceResponse>(this, message, value);
         return message;
@@ -602,58 +546,31 @@ class ConformanceResponse$Type extends MessageType<ConformanceResponse> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* string parse_error */ 1:
-                    message.result = {
-                        oneofKind: "parseError",
-                        parseError: reader.string()
-                    };
+                    message.parseError = reader.string();
                     break;
                 case /* string serialize_error */ 6:
-                    message.result = {
-                        oneofKind: "serializeError",
-                        serializeError: reader.string()
-                    };
+                    message.serializeError = reader.string();
                     break;
                 case /* string timeout_error */ 9:
-                    message.result = {
-                        oneofKind: "timeoutError",
-                        timeoutError: reader.string()
-                    };
+                    message.timeoutError = reader.string();
                     break;
                 case /* string runtime_error */ 2:
-                    message.result = {
-                        oneofKind: "runtimeError",
-                        runtimeError: reader.string()
-                    };
+                    message.runtimeError = reader.string();
                     break;
                 case /* bytes protobuf_payload */ 3:
-                    message.result = {
-                        oneofKind: "protobufPayload",
-                        protobufPayload: reader.bytes()
-                    };
+                    message.protobufPayload = reader.bytes();
                     break;
                 case /* string json_payload */ 4:
-                    message.result = {
-                        oneofKind: "jsonPayload",
-                        jsonPayload: reader.string()
-                    };
+                    message.jsonPayload = reader.string();
                     break;
                 case /* string skipped */ 5:
-                    message.result = {
-                        oneofKind: "skipped",
-                        skipped: reader.string()
-                    };
+                    message.skipped = reader.string();
                     break;
                 case /* string jspb_payload */ 7:
-                    message.result = {
-                        oneofKind: "jspbPayload",
-                        jspbPayload: reader.string()
-                    };
+                    message.jspbPayload = reader.string();
                     break;
                 case /* string text_payload */ 8:
-                    message.result = {
-                        oneofKind: "textPayload",
-                        textPayload: reader.string()
-                    };
+                    message.textPayload = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -668,32 +585,32 @@ class ConformanceResponse$Type extends MessageType<ConformanceResponse> {
     }
     internalBinaryWrite(message: ConformanceResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* string parse_error = 1; */
-        if (message.result.oneofKind === "parseError")
-            writer.tag(1, WireType.LengthDelimited).string(message.result.parseError);
+        if ("parseError" in message && message.parseError != null)
+            writer.tag(1, WireType.LengthDelimited).string(message.parseError);
         /* string runtime_error = 2; */
-        if (message.result.oneofKind === "runtimeError")
-            writer.tag(2, WireType.LengthDelimited).string(message.result.runtimeError);
+        if ("runtimeError" in message && message.runtimeError != null)
+            writer.tag(2, WireType.LengthDelimited).string(message.runtimeError);
         /* bytes protobuf_payload = 3; */
-        if (message.result.oneofKind === "protobufPayload")
-            writer.tag(3, WireType.LengthDelimited).bytes(message.result.protobufPayload);
+        if ("protobufPayload" in message && message.protobufPayload != null)
+            writer.tag(3, WireType.LengthDelimited).bytes(message.protobufPayload);
         /* string json_payload = 4; */
-        if (message.result.oneofKind === "jsonPayload")
-            writer.tag(4, WireType.LengthDelimited).string(message.result.jsonPayload);
+        if ("jsonPayload" in message && message.jsonPayload != null)
+            writer.tag(4, WireType.LengthDelimited).string(message.jsonPayload);
         /* string skipped = 5; */
-        if (message.result.oneofKind === "skipped")
-            writer.tag(5, WireType.LengthDelimited).string(message.result.skipped);
+        if ("skipped" in message && message.skipped != null)
+            writer.tag(5, WireType.LengthDelimited).string(message.skipped);
         /* string serialize_error = 6; */
-        if (message.result.oneofKind === "serializeError")
-            writer.tag(6, WireType.LengthDelimited).string(message.result.serializeError);
+        if ("serializeError" in message && message.serializeError != null)
+            writer.tag(6, WireType.LengthDelimited).string(message.serializeError);
         /* string jspb_payload = 7; */
-        if (message.result.oneofKind === "jspbPayload")
-            writer.tag(7, WireType.LengthDelimited).string(message.result.jspbPayload);
+        if ("jspbPayload" in message && message.jspbPayload != null)
+            writer.tag(7, WireType.LengthDelimited).string(message.jspbPayload);
         /* string text_payload = 8; */
-        if (message.result.oneofKind === "textPayload")
-            writer.tag(8, WireType.LengthDelimited).string(message.result.textPayload);
+        if ("textPayload" in message && message.textPayload != null)
+            writer.tag(8, WireType.LengthDelimited).string(message.textPayload);
         /* string timeout_error = 9; */
-        if (message.result.oneofKind === "timeoutError")
-            writer.tag(9, WireType.LengthDelimited).string(message.result.timeoutError);
+        if ("timeoutError" in message && message.timeoutError != null)
+            writer.tag(9, WireType.LengthDelimited).string(message.timeoutError);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -712,7 +629,7 @@ class JspbEncodingConfig$Type extends MessageType<JspbEncodingConfig> {
         ]);
     }
     create(value?: PartialMessage<JspbEncodingConfig>): JspbEncodingConfig {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.useJspbArrayAnyFormat = false;
         if (value !== undefined)
             reflectionMergePartial<JspbEncodingConfig>(this, message, value);

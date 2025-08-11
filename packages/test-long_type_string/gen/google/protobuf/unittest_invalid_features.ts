@@ -25,7 +25,7 @@ export interface TestInvalidFeatures {
     /**
      * @generated from protobuf field: repeated int32 repeated_feature = 1;
      */
-    repeatedFeature: number[];
+    repeatedFeature?: number[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class TestInvalidFeatures$Type extends MessageType<TestInvalidFeatures> {
@@ -35,7 +35,7 @@ class TestInvalidFeatures$Type extends MessageType<TestInvalidFeatures> {
         ]);
     }
     create(value?: PartialMessage<TestInvalidFeatures>): TestInvalidFeatures {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.repeatedFeature = [];
         if (value !== undefined)
             reflectionMergePartial<TestInvalidFeatures>(this, message, value);
@@ -49,9 +49,9 @@ class TestInvalidFeatures$Type extends MessageType<TestInvalidFeatures> {
                 case /* repeated int32 repeated_feature */ 1:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedFeature.push(reader.int32());
+                            message.repeatedFeature?.push?.(reader.int32());
                     else
-                        message.repeatedFeature.push(reader.int32());
+                        message.repeatedFeature?.push?.(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -66,8 +66,8 @@ class TestInvalidFeatures$Type extends MessageType<TestInvalidFeatures> {
     }
     internalBinaryWrite(message: TestInvalidFeatures, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated int32 repeated_feature = 1; */
-        for (let i = 0; i < message.repeatedFeature.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.repeatedFeature[i]);
+        for (let i = 0; i < (message.repeatedFeature?.length || 0); i++)
+            writer.tag(1, WireType.Varint).int32(message.repeatedFeature?.[i] as any);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

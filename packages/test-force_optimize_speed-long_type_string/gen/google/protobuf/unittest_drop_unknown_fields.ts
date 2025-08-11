@@ -118,7 +118,7 @@ class Foo$Type extends MessageType<Foo> {
         ]);
     }
     create(value?: PartialMessage<Foo>): Foo {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.int32Value = 0;
         message.enumValue = 0;
         if (value !== undefined)
@@ -174,7 +174,7 @@ class FooWithExtraFields$Type extends MessageType<FooWithExtraFields> {
         ]);
     }
     create(value?: PartialMessage<FooWithExtraFields>): FooWithExtraFields {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.int32Value = 0;
         message.enumValue = 0;
         message.extraInt32Value = 0;

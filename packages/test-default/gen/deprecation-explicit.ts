@@ -82,7 +82,7 @@ class DeprecatedMessage$Type extends MessageType<DeprecatedMessage> {
         ]);
     }
     create(value?: PartialMessage<DeprecatedMessage>): DeprecatedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.field = "";
         if (value !== undefined)
             reflectionMergePartial<DeprecatedMessage>(this, message, value);
@@ -131,7 +131,7 @@ class DeprecatedFieldMessage$Type extends MessageType<DeprecatedFieldMessage> {
         ]);
     }
     create(value?: PartialMessage<DeprecatedFieldMessage>): DeprecatedFieldMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.deprecatedField = "";
         message.currentField = "";
         if (value !== undefined)

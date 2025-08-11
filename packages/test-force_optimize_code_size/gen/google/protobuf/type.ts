@@ -52,19 +52,19 @@ export interface Type {
      *
      * @generated from protobuf field: repeated google.protobuf.Field fields = 2;
      */
-    fields: Field[];
+    fields?: Field[];
     /**
      * The list of types appearing in `oneof` definitions in this type.
      *
      * @generated from protobuf field: repeated string oneofs = 3;
      */
-    oneofs: string[];
+    oneofs?: string[];
     /**
      * The protocol buffer options.
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 4;
      */
-    options: Option[];
+    options?: Option[];
     /**
      * The source context.
      *
@@ -139,7 +139,7 @@ export interface Field {
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 9;
      */
-    options: Option[];
+    options?: Option[];
     /**
      * The field JSON name.
      *
@@ -322,13 +322,13 @@ export interface Enum {
      *
      * @generated from protobuf field: repeated google.protobuf.EnumValue enumvalue = 2;
      */
-    enumvalue: EnumValue[];
+    enumvalue?: EnumValue[];
     /**
      * Protocol buffer options.
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 3;
      */
-    options: Option[];
+    options?: Option[];
     /**
      * The source context.
      *
@@ -371,7 +371,7 @@ export interface EnumValue {
      *
      * @generated from protobuf field: repeated google.protobuf.Option options = 3;
      */
-    options: Option[];
+    options?: Option[];
 }
 /**
  * A protocol buffer option, which can be attached to a message, field,

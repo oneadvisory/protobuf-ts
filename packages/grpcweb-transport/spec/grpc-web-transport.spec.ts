@@ -100,7 +100,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('this should not be implemented');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.UNIMPLEMENTED])
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.UNIMPLEMENTED])
             }
         });
     });
@@ -128,7 +128,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('this should not be implemented');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.UNIMPLEMENTED])
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.UNIMPLEMENTED])
             }
         });
     });
@@ -328,9 +328,9 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.message).toBe('client error');
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.INVALID_ARGUMENT]);
-                expect(e.meta).toEqual({ some: 'header' });
+                expect((e as Error).message).toBe('client error');
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.INVALID_ARGUMENT]);
+                expect((e as RpcError).meta).toEqual({ some: 'header' });
             }
         });
 
@@ -343,9 +343,9 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.message).toBe('Precondition failed');
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.FAILED_PRECONDITION]);
-                expect(e.meta).toEqual({});
+                expect((e as Error).message).toBe('Precondition failed');
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.FAILED_PRECONDITION]);
+                expect((e as RpcError).meta).toEqual({});
             }
         });
 
@@ -360,7 +360,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
             }
         });
 
@@ -372,7 +372,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
             }
         });
 
@@ -392,7 +392,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.DATA_LOSS]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.DATA_LOSS]);
             }
         });
 
@@ -404,7 +404,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.DATA_LOSS]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.DATA_LOSS]);
             }
         });
 
@@ -417,7 +417,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.DATA_LOSS]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.DATA_LOSS]);
             }
         });
 
@@ -429,7 +429,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.RESOURCE_EXHAUSTED]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.RESOURCE_EXHAUSTED]);
             }
         });
 
@@ -441,7 +441,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.DATA_LOSS]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.DATA_LOSS]);
             }
         });
 
@@ -454,7 +454,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.CANCELLED]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.CANCELLED]);
             }
         });
 
@@ -467,7 +467,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
             }
 
             // non-Error instance
@@ -478,7 +478,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
             }
         });
 
@@ -724,9 +724,9 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.message).toBe('client error');
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.INVALID_ARGUMENT]);
-                expect(e.meta).toEqual({ some: 'header' });
+                expect((e as Error).message).toBe('client error');
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.INVALID_ARGUMENT]);
+                expect((e as RpcError).meta).toEqual({ some: 'header' });
             }
         });
 
@@ -739,9 +739,9 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.message).toBe('Precondition failed');
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.FAILED_PRECONDITION]);
-                expect(e.meta).toEqual({});
+                expect((e as Error).message).toBe('Precondition failed');
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.FAILED_PRECONDITION]);
+                expect((e as RpcError).meta).toEqual({});
             }
         });
 
@@ -756,7 +756,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
             }
         });
 
@@ -768,7 +768,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
             }
         });
 
@@ -796,7 +796,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.DATA_LOSS]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.DATA_LOSS]);
             }
         });
 
@@ -808,7 +808,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.RESOURCE_EXHAUSTED]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.RESOURCE_EXHAUSTED]);
             }
         });
 
@@ -821,7 +821,7 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.CANCELLED]);
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.CANCELLED]);
             }
         });
 
@@ -835,8 +835,8 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.message).toBe('something else');
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
+                expect((e as Error).message).toBe('something else');
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
             }
 
             // non-Error instance
@@ -848,8 +848,8 @@ describe('GrpcWebFetchTransport', () => {
                 fail('should fail');
             } catch (e) {
                 expect(e).toBeInstanceOf(RpcError);
-                expect(e.message).toBe('something else');
-                expect(e.code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
+                expect((e as Error).message).toBe('something else');
+                expect((e as RpcError).code).toBe(GrpcStatusCode[GrpcStatusCode.INTERNAL]);
             }
         });
 

@@ -10,7 +10,7 @@
     "strict": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "lib": [
       "es2017",
       "dom"

@@ -195,7 +195,8 @@ class Any$Type extends MessageType<Any> {
      */
     pack<T extends object>(message: T, type: IMessageType<T>): Any {
         return {
-            typeUrl: this.typeNameToUrl(type.typeName), value: type.toBinary(message),
+            typeUrl: this.typeNameToUrl(type.typeName),
+            value: type.toBinary(message),
         };
     }
     /**
@@ -278,7 +279,7 @@ class Any$Type extends MessageType<Any> {
         return name;
     }
     create(value?: PartialMessage<Any>): Any {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.typeUrl = "";
         message.value = new Uint8Array(0);
         if (value !== undefined)
@@ -312,7 +313,7 @@ class Any$Type extends MessageType<Any> {
         if (message.typeUrl !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.typeUrl);
         /* bytes value = 2; */
-        if (message.value.length)
+        if (message.value?.length)
             writer.tag(2, WireType.LengthDelimited).bytes(message.value);
         let u = options.writeUnknownFields;
         if (u !== false)

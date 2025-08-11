@@ -62,7 +62,7 @@ export interface DebugInfo {
      *
      * @generated from protobuf field: repeated string stack_entries = 1;
      */
-    stackEntries: string[];
+    stackEntries?: string[];
     /**
      * Additional debugging information provided by the server.
      *
@@ -91,7 +91,7 @@ export interface QuotaFailure {
      *
      * @generated from protobuf field: repeated google.rpc.QuotaFailure.Violation violations = 1;
      */
-    violations: QuotaFailure_Violation[];
+    violations?: QuotaFailure_Violation[];
 }
 /**
  * A message type used to describe a single quota violation.  For example, a
@@ -198,7 +198,7 @@ export interface PreconditionFailure {
      *
      * @generated from protobuf field: repeated google.rpc.PreconditionFailure.Violation violations = 1;
      */
-    violations: PreconditionFailure_Violation[];
+    violations?: PreconditionFailure_Violation[];
 }
 /**
  * A message type used to describe a single precondition failure.
@@ -244,7 +244,7 @@ export interface BadRequest {
      *
      * @generated from protobuf field: repeated google.rpc.BadRequest.FieldViolation field_violations = 1;
      */
-    fieldViolations: BadRequest_FieldViolation[];
+    fieldViolations?: BadRequest_FieldViolation[];
 }
 /**
  * A message type used to describe a single bad request field.
@@ -343,7 +343,7 @@ export interface Help {
      *
      * @generated from protobuf field: repeated google.rpc.Help.Link links = 1;
      */
-    links: Help_Link[];
+    links?: Help_Link[];
 }
 /**
  * Describes a URL link.
@@ -394,7 +394,7 @@ class RetryInfo$Type extends MessageType<RetryInfo> {
         ]);
     }
     create(value?: PartialMessage<RetryInfo>): RetryInfo {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<RetryInfo>(this, message, value);
         return message;
@@ -441,7 +441,7 @@ class DebugInfo$Type extends MessageType<DebugInfo> {
         ]);
     }
     create(value?: PartialMessage<DebugInfo>): DebugInfo {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.stackEntries = [];
         message.detail = "";
         if (value !== undefined)
@@ -454,7 +454,7 @@ class DebugInfo$Type extends MessageType<DebugInfo> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated string stack_entries */ 1:
-                    message.stackEntries.push(reader.string());
+                    message.stackEntries?.push?.(reader.string());
                     break;
                 case /* string detail */ 2:
                     message.detail = reader.string();
@@ -472,8 +472,8 @@ class DebugInfo$Type extends MessageType<DebugInfo> {
     }
     internalBinaryWrite(message: DebugInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated string stack_entries = 1; */
-        for (let i = 0; i < message.stackEntries.length; i++)
-            writer.tag(1, WireType.LengthDelimited).string(message.stackEntries[i]);
+        for (let i = 0; i < (message.stackEntries?.length || 0); i++)
+            writer.tag(1, WireType.LengthDelimited).string(message.stackEntries?.[i] as any);
         /* string detail = 2; */
         if (message.detail !== "")
             writer.tag(2, WireType.LengthDelimited).string(message.detail);
@@ -495,7 +495,7 @@ class QuotaFailure$Type extends MessageType<QuotaFailure> {
         ]);
     }
     create(value?: PartialMessage<QuotaFailure>): QuotaFailure {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.violations = [];
         if (value !== undefined)
             reflectionMergePartial<QuotaFailure>(this, message, value);
@@ -507,7 +507,7 @@ class QuotaFailure$Type extends MessageType<QuotaFailure> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated google.rpc.QuotaFailure.Violation violations */ 1:
-                    message.violations.push(QuotaFailure_Violation.internalBinaryRead(reader, reader.uint32(), options));
+                    message.violations?.push?.(QuotaFailure_Violation.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -522,8 +522,8 @@ class QuotaFailure$Type extends MessageType<QuotaFailure> {
     }
     internalBinaryWrite(message: QuotaFailure, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated google.rpc.QuotaFailure.Violation violations = 1; */
-        for (let i = 0; i < message.violations.length; i++)
-            QuotaFailure_Violation.internalBinaryWrite(message.violations[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.violations?.length || 0); i++)
+            QuotaFailure_Violation.internalBinaryWrite(message.violations?.[i] as any, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -543,7 +543,7 @@ class QuotaFailure_Violation$Type extends MessageType<QuotaFailure_Violation> {
         ]);
     }
     create(value?: PartialMessage<QuotaFailure_Violation>): QuotaFailure_Violation {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.subject = "";
         message.description = "";
         if (value !== undefined)
@@ -599,7 +599,7 @@ class ErrorInfo$Type extends MessageType<ErrorInfo> {
         ]);
     }
     create(value?: PartialMessage<ErrorInfo>): ErrorInfo {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.reason = "";
         message.domain = "";
         message.metadata = {};
@@ -676,7 +676,7 @@ class PreconditionFailure$Type extends MessageType<PreconditionFailure> {
         ]);
     }
     create(value?: PartialMessage<PreconditionFailure>): PreconditionFailure {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.violations = [];
         if (value !== undefined)
             reflectionMergePartial<PreconditionFailure>(this, message, value);
@@ -688,7 +688,7 @@ class PreconditionFailure$Type extends MessageType<PreconditionFailure> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated google.rpc.PreconditionFailure.Violation violations */ 1:
-                    message.violations.push(PreconditionFailure_Violation.internalBinaryRead(reader, reader.uint32(), options));
+                    message.violations?.push?.(PreconditionFailure_Violation.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -703,8 +703,8 @@ class PreconditionFailure$Type extends MessageType<PreconditionFailure> {
     }
     internalBinaryWrite(message: PreconditionFailure, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated google.rpc.PreconditionFailure.Violation violations = 1; */
-        for (let i = 0; i < message.violations.length; i++)
-            PreconditionFailure_Violation.internalBinaryWrite(message.violations[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.violations?.length || 0); i++)
+            PreconditionFailure_Violation.internalBinaryWrite(message.violations?.[i] as any, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -725,7 +725,7 @@ class PreconditionFailure_Violation$Type extends MessageType<PreconditionFailure
         ]);
     }
     create(value?: PartialMessage<PreconditionFailure_Violation>): PreconditionFailure_Violation {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.type = "";
         message.subject = "";
         message.description = "";
@@ -786,7 +786,7 @@ class BadRequest$Type extends MessageType<BadRequest> {
         ]);
     }
     create(value?: PartialMessage<BadRequest>): BadRequest {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.fieldViolations = [];
         if (value !== undefined)
             reflectionMergePartial<BadRequest>(this, message, value);
@@ -798,7 +798,7 @@ class BadRequest$Type extends MessageType<BadRequest> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated google.rpc.BadRequest.FieldViolation field_violations */ 1:
-                    message.fieldViolations.push(BadRequest_FieldViolation.internalBinaryRead(reader, reader.uint32(), options));
+                    message.fieldViolations?.push?.(BadRequest_FieldViolation.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -813,8 +813,8 @@ class BadRequest$Type extends MessageType<BadRequest> {
     }
     internalBinaryWrite(message: BadRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated google.rpc.BadRequest.FieldViolation field_violations = 1; */
-        for (let i = 0; i < message.fieldViolations.length; i++)
-            BadRequest_FieldViolation.internalBinaryWrite(message.fieldViolations[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.fieldViolations?.length || 0); i++)
+            BadRequest_FieldViolation.internalBinaryWrite(message.fieldViolations?.[i] as any, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -834,7 +834,7 @@ class BadRequest_FieldViolation$Type extends MessageType<BadRequest_FieldViolati
         ]);
     }
     create(value?: PartialMessage<BadRequest_FieldViolation>): BadRequest_FieldViolation {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.field = "";
         message.description = "";
         if (value !== undefined)
@@ -889,7 +889,7 @@ class RequestInfo$Type extends MessageType<RequestInfo> {
         ]);
     }
     create(value?: PartialMessage<RequestInfo>): RequestInfo {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.requestId = "";
         message.servingData = "";
         if (value !== undefined)
@@ -946,7 +946,7 @@ class ResourceInfo$Type extends MessageType<ResourceInfo> {
         ]);
     }
     create(value?: PartialMessage<ResourceInfo>): ResourceInfo {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.resourceType = "";
         message.resourceName = "";
         message.owner = "";
@@ -1014,7 +1014,7 @@ class Help$Type extends MessageType<Help> {
         ]);
     }
     create(value?: PartialMessage<Help>): Help {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.links = [];
         if (value !== undefined)
             reflectionMergePartial<Help>(this, message, value);
@@ -1026,7 +1026,7 @@ class Help$Type extends MessageType<Help> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated google.rpc.Help.Link links */ 1:
-                    message.links.push(Help_Link.internalBinaryRead(reader, reader.uint32(), options));
+                    message.links?.push?.(Help_Link.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1041,8 +1041,8 @@ class Help$Type extends MessageType<Help> {
     }
     internalBinaryWrite(message: Help, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated google.rpc.Help.Link links = 1; */
-        for (let i = 0; i < message.links.length; i++)
-            Help_Link.internalBinaryWrite(message.links[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.links?.length || 0); i++)
+            Help_Link.internalBinaryWrite(message.links?.[i] as any, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1062,7 +1062,7 @@ class Help_Link$Type extends MessageType<Help_Link> {
         ]);
     }
     create(value?: PartialMessage<Help_Link>): Help_Link {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.description = "";
         message.url = "";
         if (value !== undefined)
@@ -1117,7 +1117,7 @@ class LocalizedMessage$Type extends MessageType<LocalizedMessage> {
         ]);
     }
     create(value?: PartialMessage<LocalizedMessage>): LocalizedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.locale = "";
         message.message = "";
         if (value !== undefined)

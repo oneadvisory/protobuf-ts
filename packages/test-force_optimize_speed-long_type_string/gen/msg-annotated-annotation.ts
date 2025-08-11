@@ -34,7 +34,7 @@ class MsgOptSelf$Type extends MessageType<MsgOptSelf> {
         ], { "spec.msg_opt_str": "x", "spec.msg_opt_msg": { a: true, b: { a: true } } });
     }
     create(value?: PartialMessage<MsgOptSelf>): MsgOptSelf {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.a = false;
         if (value !== undefined)
             reflectionMergePartial<MsgOptSelf>(this, message, value);

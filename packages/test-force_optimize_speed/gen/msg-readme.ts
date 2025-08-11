@@ -46,7 +46,7 @@ class Person$Type extends MessageType<Person> {
         ]);
     }
     create(value?: PartialMessage<Person>): Person {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         message.id = 0n;
         message.years = 0;

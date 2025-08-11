@@ -54,7 +54,7 @@ export interface DebugInfo {
      *
      * @generated from protobuf field: repeated string stack_entries = 1;
      */
-    stackEntries: string[];
+    stackEntries?: string[];
     /**
      * Additional debugging information provided by the server.
      *
@@ -83,7 +83,7 @@ export interface QuotaFailure {
      *
      * @generated from protobuf field: repeated google.rpc.QuotaFailure.Violation violations = 1;
      */
-    violations: QuotaFailure_Violation[];
+    violations?: QuotaFailure_Violation[];
 }
 /**
  * A message type used to describe a single quota violation.  For example, a
@@ -190,7 +190,7 @@ export interface PreconditionFailure {
      *
      * @generated from protobuf field: repeated google.rpc.PreconditionFailure.Violation violations = 1;
      */
-    violations: PreconditionFailure_Violation[];
+    violations?: PreconditionFailure_Violation[];
 }
 /**
  * A message type used to describe a single precondition failure.
@@ -236,7 +236,7 @@ export interface BadRequest {
      *
      * @generated from protobuf field: repeated google.rpc.BadRequest.FieldViolation field_violations = 1;
      */
-    fieldViolations: BadRequest_FieldViolation[];
+    fieldViolations?: BadRequest_FieldViolation[];
 }
 /**
  * A message type used to describe a single bad request field.
@@ -335,7 +335,7 @@ export interface Help {
      *
      * @generated from protobuf field: repeated google.rpc.Help.Link links = 1;
      */
-    links: Help_Link[];
+    links?: Help_Link[];
 }
 /**
  * Describes a URL link.

@@ -13,7 +13,7 @@ export interface EnumFieldMessage {
     /**
      * @generated from protobuf field: repeated spec.SimpleEnum repeated_enum_field = 2;
      */
-    repeatedEnumField: SimpleEnum[];
+    repeatedEnumField?: SimpleEnum[];
     /**
      * @generated from protobuf field: spec.AliasEnum alias_enum_field = 3;
      */

@@ -353,11 +353,11 @@ export class WellKnownTypes implements CustomMethodGenerator {
              */
             function internalJsonWrite(message: ${FieldMask}, options: ${JsonWriteOptions}): ${JsonValue} {
                 const invalidFieldMaskJsonRegex = /[A-Z]|(_([.0-9_]|$))/g;
-                return message.paths.map(p => {
+                return message.paths?.map(p => {
                     if (invalidFieldMaskJsonRegex.test(p))
                         throw new Error("Unable to encode FieldMask to JSON. lowerCamelCase of path name \\""+p+"\\" is irreversible.");
                     return ${lowerCamelCase}(p);
-                }).join(",");
+                }).join(",") ?? "";
             }
             `, `
             /**
@@ -436,36 +436,34 @@ export class WellKnownTypes implements CustomMethodGenerator {
             listValueField = FieldInfoGenerator.createTypescriptLocalName('list_value', this.options),
             structValueField = FieldInfoGenerator.createTypescriptLocalName('struct_value', this.options);
         return [
-            `
+          `
             /**
              * Encode \`${descMessage.name}\` to JSON value. 
              */
             function internalJsonWrite(message: ${Value}, options: ${JsonWriteOptions}): ${JsonValue} {
-                if (message.kind.oneofKind === undefined) throw new globalThis.Error();
-                switch (message.kind.oneofKind) {
-                    case undefined:
-                        throw new globalThis.Error();
-                    case "${boolValueField}":
-                        return message.kind.${boolValueField};
-                    case "${nullValueField}":
-                        return null;
-                    case "${numberValueField}":
-                        let numberValue = message.kind.${numberValueField};
-                        if (typeof numberValue == "number" && !Number.isFinite(numberValue)) throw new globalThis.Error();
-                        return numberValue;
-                    case "${stringValueField}":
-                        return message.kind.${stringValueField};
-                    case "${listValueField}":
-                        let listValueField = this.fields.find(f => f.no === 6);
-                        if (listValueField?.kind !== 'message') throw new globalThis.Error();
-                        return listValueField.T().toJson(message.kind.${listValueField});
-                    case "${structValueField}":
-                        let structValueField = this.fields.find(f => f.no === 5);
-                        if (structValueField?.kind !== 'message') throw new globalThis.Error();
-                        return structValueField.T().toJson(message.kind.${structValueField});
+                if ("${boolValueField}" in message) {
+                    return message.${boolValueField};
+                } else if ("${nullValueField}" in message) {
+                    return null;
+                } else if ("${numberValueField}" in message) {
+                    let numberValue = message.${numberValueField};
+                    if (typeof numberValue == "number" && !Number.isFinite(numberValue)) throw new globalThis.Error();
+                    return numberValue;
+                } else if ("${stringValueField}" in message) {
+                    return message.${stringValueField};
+                } else if ("${listValueField}" in message) {
+                    let listValueField = this.fields.find(f => f.no === 6);
+                    if (listValueField?.kind !== 'message') throw new globalThis.Error();
+                    return listValueField.T().toJson(message.${listValueField});
+                } else if ("${structValueField}" in message) {
+                    let structValueField = this.fields.find(f => f.no === 5);
+                    if (structValueField?.kind !== 'message') throw new globalThis.Error();
+                    return structValueField.T().toJson(message.${structValueField});
                 }
+                throw new globalThis.Error();
             }
-            `, `
+            `,
+          `
             /**
              * Decode \`${descMessage.name}\` from JSON value.
              */
@@ -474,21 +472,21 @@ export class WellKnownTypes implements CustomMethodGenerator {
                     target = this.create();
                 switch (typeof json) {
                     case "number":
-                        target.kind = {oneofKind: "${numberValueField}", ${numberValueField}: json};
+                        target.${numberValueField} = json;
                         break;
                     case "string":
-                        target.kind = {oneofKind: "${stringValueField}", ${stringValueField}: json};
+                        target.${stringValueField} = json;
                         break;
                     case "boolean":
-                        target.kind = {oneofKind: "${boolValueField}", ${boolValueField}: json};
+                        target.${boolValueField} = json;
                         break;
                     case "object":
                         if (json === null) {
-                            target.kind = {oneofKind: "${nullValueField}", ${nullValueField}: NullValue.NULL_VALUE};
+                            target.${nullValueField} = NullValue.NULL_VALUE;
                         } else if (globalThis.Array.isArray(json)) {
-                            target.kind = {oneofKind: "${listValueField}", ${listValueField}: ListValue.fromJson(json)};
+                            target.${listValueField} = ListValue.fromJson(json);
                         } else {
-                            target.kind = {oneofKind: "${structValueField}", ${structValueField}: Struct.fromJson(json)};
+                            target.${structValueField} = Struct.fromJson(json);
                         }
                         break;
                     default:
@@ -517,7 +515,7 @@ export class WellKnownTypes implements CustomMethodGenerator {
              * Encode \`${descMessage.name}\` to JSON array. 
              */
             function internalJsonWrite(message: ${ListValue}, options: ${JsonWriteOptions}): ${JsonValue} {
-                return message.values.map(v => Value.toJson(v));
+                return message.values?.map(v => Value.toJson(v)) ?? [];
             }
             `, `
             /**
@@ -528,7 +526,11 @@ export class WellKnownTypes implements CustomMethodGenerator {
                 if (!target) 
                     target = this.create();
                 let values = json.map(v => Value.fromJson(v));
-                target.values.push(...values);
+                if (!target.values) {
+                    target.values = values;
+                } else {
+                    target.values.push(...values);
+                }
                 return target;
             }
             `,

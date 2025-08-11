@@ -157,7 +157,7 @@ export interface PostalAddress {
      *
      * @generated from protobuf field: repeated string address_lines = 9;
      */
-    addressLines: string[];
+    addressLines?: string[];
     /**
      * Optional. The recipient at the address.
      * This field may, under certain circumstances, contain multiline information.
@@ -165,7 +165,7 @@ export interface PostalAddress {
      *
      * @generated from protobuf field: repeated string recipients = 10;
      */
-    recipients: string[];
+    recipients?: string[];
     /**
      * Optional. The name of the organization at the address.
      *
@@ -191,7 +191,7 @@ class PostalAddress$Type extends MessageType<PostalAddress> {
         ]);
     }
     create(value?: PartialMessage<PostalAddress>): PostalAddress {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.revision = 0;
         message.regionCode = "";
         message.languageCode = "";
@@ -237,10 +237,10 @@ class PostalAddress$Type extends MessageType<PostalAddress> {
                     message.sublocality = reader.string();
                     break;
                 case /* repeated string address_lines */ 9:
-                    message.addressLines.push(reader.string());
+                    message.addressLines?.push?.(reader.string());
                     break;
                 case /* repeated string recipients */ 10:
-                    message.recipients.push(reader.string());
+                    message.recipients?.push?.(reader.string());
                     break;
                 case /* string organization */ 11:
                     message.organization = reader.string();
@@ -282,11 +282,11 @@ class PostalAddress$Type extends MessageType<PostalAddress> {
         if (message.sublocality !== "")
             writer.tag(8, WireType.LengthDelimited).string(message.sublocality);
         /* repeated string address_lines = 9; */
-        for (let i = 0; i < message.addressLines.length; i++)
-            writer.tag(9, WireType.LengthDelimited).string(message.addressLines[i]);
+        for (let i = 0; i < (message.addressLines?.length || 0); i++)
+            writer.tag(9, WireType.LengthDelimited).string(message.addressLines?.[i] as any);
         /* repeated string recipients = 10; */
-        for (let i = 0; i < message.recipients.length; i++)
-            writer.tag(10, WireType.LengthDelimited).string(message.recipients[i]);
+        for (let i = 0; i < (message.recipients?.length || 0); i++)
+            writer.tag(10, WireType.LengthDelimited).string(message.recipients?.[i] as any);
         /* string organization = 11; */
         if (message.organization !== "")
             writer.tag(11, WireType.LengthDelimited).string(message.organization);

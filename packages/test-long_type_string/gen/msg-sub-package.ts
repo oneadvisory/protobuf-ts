@@ -30,7 +30,7 @@ class SubPackageMessage$Type extends MessageType<SubPackageMessage> {
         ]);
     }
     create(value?: PartialMessage<SubPackageMessage>): SubPackageMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<SubPackageMessage>(this, message, value);
         return message;

@@ -221,7 +221,7 @@ export interface AttributeContext_Auth {
      *
      * @generated from protobuf field: repeated string audiences = 2;
      */
-    audiences: string[];
+    audiences?: string[];
     /**
      * The authorized presenter of the credential. Reflects the optional
      * Authorized Presenter (`azp`) claim within a JWT or the
@@ -262,7 +262,7 @@ export interface AttributeContext_Auth {
      *
      * @generated from protobuf field: repeated string access_levels = 5;
      */
-    accessLevels: string[];
+    accessLevels?: string[];
 }
 /**
  * This message defines attributes for an HTTP request. If the actual
@@ -461,7 +461,7 @@ class AttributeContext$Type extends MessageType<AttributeContext> {
         ]);
     }
     create(value?: PartialMessage<AttributeContext>): AttributeContext {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<AttributeContext>(this, message, value);
         return message;
@@ -547,7 +547,7 @@ class AttributeContext_Peer$Type extends MessageType<AttributeContext_Peer> {
         ]);
     }
     create(value?: PartialMessage<AttributeContext_Peer>): AttributeContext_Peer {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.ip = "";
         message.port = 0n;
         message.labels = {};
@@ -641,7 +641,7 @@ class AttributeContext_Api$Type extends MessageType<AttributeContext_Api> {
         ]);
     }
     create(value?: PartialMessage<AttributeContext_Api>): AttributeContext_Api {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.service = "";
         message.operation = "";
         message.protocol = "";
@@ -713,7 +713,7 @@ class AttributeContext_Auth$Type extends MessageType<AttributeContext_Auth> {
         ]);
     }
     create(value?: PartialMessage<AttributeContext_Auth>): AttributeContext_Auth {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.principal = "";
         message.audiences = [];
         message.presenter = "";
@@ -731,7 +731,7 @@ class AttributeContext_Auth$Type extends MessageType<AttributeContext_Auth> {
                     message.principal = reader.string();
                     break;
                 case /* repeated string audiences */ 2:
-                    message.audiences.push(reader.string());
+                    message.audiences?.push?.(reader.string());
                     break;
                 case /* string presenter */ 3:
                     message.presenter = reader.string();
@@ -740,7 +740,7 @@ class AttributeContext_Auth$Type extends MessageType<AttributeContext_Auth> {
                     message.claims = Struct.internalBinaryRead(reader, reader.uint32(), options, message.claims);
                     break;
                 case /* repeated string access_levels */ 5:
-                    message.accessLevels.push(reader.string());
+                    message.accessLevels?.push?.(reader.string());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -758,8 +758,8 @@ class AttributeContext_Auth$Type extends MessageType<AttributeContext_Auth> {
         if (message.principal !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.principal);
         /* repeated string audiences = 2; */
-        for (let i = 0; i < message.audiences.length; i++)
-            writer.tag(2, WireType.LengthDelimited).string(message.audiences[i]);
+        for (let i = 0; i < (message.audiences?.length || 0); i++)
+            writer.tag(2, WireType.LengthDelimited).string(message.audiences?.[i] as any);
         /* string presenter = 3; */
         if (message.presenter !== "")
             writer.tag(3, WireType.LengthDelimited).string(message.presenter);
@@ -767,8 +767,8 @@ class AttributeContext_Auth$Type extends MessageType<AttributeContext_Auth> {
         if (message.claims)
             Struct.internalBinaryWrite(message.claims, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
         /* repeated string access_levels = 5; */
-        for (let i = 0; i < message.accessLevels.length; i++)
-            writer.tag(5, WireType.LengthDelimited).string(message.accessLevels[i]);
+        for (let i = 0; i < (message.accessLevels?.length || 0); i++)
+            writer.tag(5, WireType.LengthDelimited).string(message.accessLevels?.[i] as any);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -798,7 +798,7 @@ class AttributeContext_Request$Type extends MessageType<AttributeContext_Request
         ]);
     }
     create(value?: PartialMessage<AttributeContext_Request>): AttributeContext_Request {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.id = "";
         message.method = "";
         message.headers = {};
@@ -939,7 +939,7 @@ class AttributeContext_Response$Type extends MessageType<AttributeContext_Respon
         ]);
     }
     create(value?: PartialMessage<AttributeContext_Response>): AttributeContext_Response {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.code = 0n;
         message.size = 0n;
         message.headers = {};
@@ -1025,7 +1025,7 @@ class AttributeContext_Resource$Type extends MessageType<AttributeContext_Resour
         ]);
     }
     create(value?: PartialMessage<AttributeContext_Resource>): AttributeContext_Resource {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.service = "";
         message.name = "";
         message.type = "";

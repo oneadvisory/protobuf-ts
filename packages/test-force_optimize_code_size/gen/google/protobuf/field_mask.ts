@@ -247,7 +247,7 @@ export interface FieldMask {
      *
      * @generated from protobuf field: repeated string paths = 1;
      */
-    paths: string[];
+    paths?: string[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class FieldMask$Type extends MessageType<FieldMask> {
@@ -261,11 +261,11 @@ class FieldMask$Type extends MessageType<FieldMask> {
      */
     internalJsonWrite(message: FieldMask, options: JsonWriteOptions): JsonValue {
         const invalidFieldMaskJsonRegex = /[A-Z]|(_([.0-9_]|$))/g;
-        return message.paths.map(p => {
+        return message.paths?.map(p => {
             if (invalidFieldMaskJsonRegex.test(p))
                 throw new Error("Unable to encode FieldMask to JSON. lowerCamelCase of path name \"" + p + "\" is irreversible.");
             return lowerCamelCase(p);
-        }).join(",");
+        }).join(",") ?? "";
     }
     /**
      * Decode `FieldMask` from JSON object.

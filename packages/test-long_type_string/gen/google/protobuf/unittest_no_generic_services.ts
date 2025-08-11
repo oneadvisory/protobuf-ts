@@ -54,7 +54,7 @@ class TestMessage$Type extends MessageType<TestMessage> {
         ]);
     }
     create(value?: PartialMessage<TestMessage>): TestMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestMessage>(this, message, value);
         return message;
@@ -96,5 +96,5 @@ export const TestMessage = new TestMessage$Type();
  * @generated ServiceType for protobuf service protobuf_unittest.no_generic_services_test.TestService
  */
 export const TestService = new ServiceType("protobuf_unittest.no_generic_services_test.TestService", [
-    { name: "Foo", options: {}, I: TestMessage, O: TestMessage }
+    { name: "Foo" as const, options: {} as const, I: TestMessage, O: TestMessage }
 ]);

@@ -105,7 +105,7 @@ class ExampleRequest$Type extends MessageType<ExampleRequest> {
         ]);
     }
     create(value?: PartialMessage<ExampleRequest>): ExampleRequest {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.question = "";
         message.pleaseFail = 0;
         message.pleaseDelayResponseMs = 0;
@@ -176,7 +176,7 @@ class ExampleResponse$Type extends MessageType<ExampleResponse> {
         ]);
     }
     create(value?: PartialMessage<ExampleResponse>): ExampleResponse {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.answer = "";
         message.yourRequestHeaders = {};
         message.yourDeadline = "";
@@ -256,8 +256,8 @@ export const ExampleResponse = new ExampleResponse$Type();
  * @generated ServiceType for protobuf service spec.ExampleService
  */
 export const ExampleService = new ServiceType("spec.ExampleService", [
-    { name: "Unary", options: {}, I: ExampleRequest, O: ExampleResponse },
-    { name: "ServerStream", serverStreaming: true, options: {}, I: ExampleRequest, O: ExampleResponse },
-    { name: "ClientStream", clientStreaming: true, options: {}, I: ExampleRequest, O: ExampleResponse },
-    { name: "Bidi", serverStreaming: true, clientStreaming: true, options: {}, I: ExampleRequest, O: ExampleResponse }
+    { name: "Unary" as const, options: {} as const, I: ExampleRequest, O: ExampleResponse },
+    { name: "ServerStream" as const, serverStreaming: true as const, options: {} as const, I: ExampleRequest, O: ExampleResponse },
+    { name: "ClientStream" as const, clientStreaming: true as const, options: {} as const, I: ExampleRequest, O: ExampleResponse },
+    { name: "Bidi" as const, serverStreaming: true as const, clientStreaming: true as const, options: {} as const, I: ExampleRequest, O: ExampleResponse }
 ]);

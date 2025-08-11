@@ -133,196 +133,154 @@ export interface RepeatedWellKnownTypes {
     /**
      * @generated from protobuf field: repeated google.protobuf.Any any_field = 1;
      */
-    anyField: Any[];
+    anyField?: Any[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Api api_field = 2;
      */
-    apiField: Api[];
+    apiField?: Api[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Duration duration_field = 3;
      */
-    durationField: Duration[];
+    durationField?: Duration[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Empty empty_field = 4;
      */
-    emptyField: Empty[];
+    emptyField?: Empty[];
     /**
      * @generated from protobuf field: repeated google.protobuf.FieldMask field_mask_field = 5;
      */
-    fieldMaskField: FieldMask[];
+    fieldMaskField?: FieldMask[];
     /**
      * @generated from protobuf field: repeated google.protobuf.SourceContext source_context_field = 6;
      */
-    sourceContextField: SourceContext[];
+    sourceContextField?: SourceContext[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Struct struct_field = 7;
      */
-    structField: Struct[];
+    structField?: Struct[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Timestamp timestamp_field = 8;
      */
-    timestampField: Timestamp[];
+    timestampField?: Timestamp[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Type type_field = 9;
      */
-    typeField: Type[];
+    typeField?: Type[];
     /**
      * These don't actually make a lot of sense, but they're not prohibited...
      *
      * @generated from protobuf field: repeated google.protobuf.DoubleValue double_field = 10;
      */
-    doubleField: DoubleValue[];
+    doubleField?: DoubleValue[];
     /**
      * @generated from protobuf field: repeated google.protobuf.FloatValue float_field = 11;
      */
-    floatField: FloatValue[];
+    floatField?: FloatValue[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Int64Value int64_field = 12;
      */
-    int64Field: Int64Value[];
+    int64Field?: Int64Value[];
     /**
      * @generated from protobuf field: repeated google.protobuf.UInt64Value uint64_field = 13;
      */
-    uint64Field: UInt64Value[];
+    uint64Field?: UInt64Value[];
     /**
      * @generated from protobuf field: repeated google.protobuf.Int32Value int32_field = 14;
      */
-    int32Field: Int32Value[];
+    int32Field?: Int32Value[];
     /**
      * @generated from protobuf field: repeated google.protobuf.UInt32Value uint32_field = 15;
      */
-    uint32Field: UInt32Value[];
+    uint32Field?: UInt32Value[];
     /**
      * @generated from protobuf field: repeated google.protobuf.BoolValue bool_field = 16;
      */
-    boolField: BoolValue[];
+    boolField?: BoolValue[];
     /**
      * @generated from protobuf field: repeated google.protobuf.StringValue string_field = 17;
      */
-    stringField: StringValue[];
+    stringField?: StringValue[];
     /**
      * @generated from protobuf field: repeated google.protobuf.BytesValue bytes_field = 18;
      */
-    bytesField: BytesValue[];
+    bytesField?: BytesValue[];
 }
 /**
  * @generated from protobuf message protobuf_unittest.OneofWellKnownTypes
  */
 export interface OneofWellKnownTypes {
     /**
-     * @generated from protobuf oneof: oneof_field;
+     * @generated from protobuf field: google.protobuf.Any any_field = 1;
      */
-    oneofField: {
-        oneofKind: "anyField";
-        /**
-         * @generated from protobuf field: google.protobuf.Any any_field = 1;
-         */
-        anyField: Any;
-    } | {
-        oneofKind: "apiField";
-        /**
-         * @generated from protobuf field: google.protobuf.Api api_field = 2;
-         */
-        apiField: Api;
-    } | {
-        oneofKind: "durationField";
-        /**
-         * @generated from protobuf field: google.protobuf.Duration duration_field = 3;
-         */
-        durationField: Duration;
-    } | {
-        oneofKind: "emptyField";
-        /**
-         * @generated from protobuf field: google.protobuf.Empty empty_field = 4;
-         */
-        emptyField: Empty;
-    } | {
-        oneofKind: "fieldMaskField";
-        /**
-         * @generated from protobuf field: google.protobuf.FieldMask field_mask_field = 5;
-         */
-        fieldMaskField: FieldMask;
-    } | {
-        oneofKind: "sourceContextField";
-        /**
-         * @generated from protobuf field: google.protobuf.SourceContext source_context_field = 6;
-         */
-        sourceContextField: SourceContext;
-    } | {
-        oneofKind: "structField";
-        /**
-         * @generated from protobuf field: google.protobuf.Struct struct_field = 7;
-         */
-        structField: Struct;
-    } | {
-        oneofKind: "timestampField";
-        /**
-         * @generated from protobuf field: google.protobuf.Timestamp timestamp_field = 8;
-         */
-        timestampField: Timestamp;
-    } | {
-        oneofKind: "typeField";
-        /**
-         * @generated from protobuf field: google.protobuf.Type type_field = 9;
-         */
-        typeField: Type;
-    } | {
-        oneofKind: "doubleField";
-        /**
-         * @generated from protobuf field: google.protobuf.DoubleValue double_field = 10;
-         */
-        doubleField: DoubleValue;
-    } | {
-        oneofKind: "floatField";
-        /**
-         * @generated from protobuf field: google.protobuf.FloatValue float_field = 11;
-         */
-        floatField: FloatValue;
-    } | {
-        oneofKind: "int64Field";
-        /**
-         * @generated from protobuf field: google.protobuf.Int64Value int64_field = 12;
-         */
-        int64Field: Int64Value;
-    } | {
-        oneofKind: "uint64Field";
-        /**
-         * @generated from protobuf field: google.protobuf.UInt64Value uint64_field = 13;
-         */
-        uint64Field: UInt64Value;
-    } | {
-        oneofKind: "int32Field";
-        /**
-         * @generated from protobuf field: google.protobuf.Int32Value int32_field = 14;
-         */
-        int32Field: Int32Value;
-    } | {
-        oneofKind: "uint32Field";
-        /**
-         * @generated from protobuf field: google.protobuf.UInt32Value uint32_field = 15;
-         */
-        uint32Field: UInt32Value;
-    } | {
-        oneofKind: "boolField";
-        /**
-         * @generated from protobuf field: google.protobuf.BoolValue bool_field = 16;
-         */
-        boolField: BoolValue;
-    } | {
-        oneofKind: "stringField";
-        /**
-         * @generated from protobuf field: google.protobuf.StringValue string_field = 17;
-         */
-        stringField: StringValue;
-    } | {
-        oneofKind: "bytesField";
-        /**
-         * @generated from protobuf field: google.protobuf.BytesValue bytes_field = 18;
-         */
-        bytesField: BytesValue;
-    } | {
-        oneofKind: undefined;
-    };
+    anyField?: Any;
+    /**
+     * @generated from protobuf field: google.protobuf.Api api_field = 2;
+     */
+    apiField?: Api;
+    /**
+     * @generated from protobuf field: google.protobuf.Duration duration_field = 3;
+     */
+    durationField?: Duration;
+    /**
+     * @generated from protobuf field: google.protobuf.Empty empty_field = 4;
+     */
+    emptyField?: Empty;
+    /**
+     * @generated from protobuf field: google.protobuf.FieldMask field_mask_field = 5;
+     */
+    fieldMaskField?: FieldMask;
+    /**
+     * @generated from protobuf field: google.protobuf.SourceContext source_context_field = 6;
+     */
+    sourceContextField?: SourceContext;
+    /**
+     * @generated from protobuf field: google.protobuf.Struct struct_field = 7;
+     */
+    structField?: Struct;
+    /**
+     * @generated from protobuf field: google.protobuf.Timestamp timestamp_field = 8;
+     */
+    timestampField?: Timestamp;
+    /**
+     * @generated from protobuf field: google.protobuf.Type type_field = 9;
+     */
+    typeField?: Type;
+    /**
+     * @generated from protobuf field: google.protobuf.DoubleValue double_field = 10;
+     */
+    doubleField?: DoubleValue;
+    /**
+     * @generated from protobuf field: google.protobuf.FloatValue float_field = 11;
+     */
+    floatField?: FloatValue;
+    /**
+     * @generated from protobuf field: google.protobuf.Int64Value int64_field = 12;
+     */
+    int64Field?: Int64Value;
+    /**
+     * @generated from protobuf field: google.protobuf.UInt64Value uint64_field = 13;
+     */
+    uint64Field?: UInt64Value;
+    /**
+     * @generated from protobuf field: google.protobuf.Int32Value int32_field = 14;
+     */
+    int32Field?: Int32Value;
+    /**
+     * @generated from protobuf field: google.protobuf.UInt32Value uint32_field = 15;
+     */
+    uint32Field?: UInt32Value;
+    /**
+     * @generated from protobuf field: google.protobuf.BoolValue bool_field = 16;
+     */
+    boolField?: BoolValue;
+    /**
+     * @generated from protobuf field: google.protobuf.StringValue string_field = 17;
+     */
+    stringField?: StringValue;
+    /**
+     * @generated from protobuf field: google.protobuf.BytesValue bytes_field = 18;
+     */
+    bytesField?: BytesValue;
 }
 /**
  * A map field for each well-known type. We only
@@ -467,7 +425,7 @@ class TestWellKnownTypes$Type extends MessageType<TestWellKnownTypes> {
         ]);
     }
     create(value?: PartialMessage<TestWellKnownTypes>): TestWellKnownTypes {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestWellKnownTypes>(this, message, value);
         return message;
@@ -638,7 +596,7 @@ class RepeatedWellKnownTypes$Type extends MessageType<RepeatedWellKnownTypes> {
         ]);
     }
     create(value?: PartialMessage<RepeatedWellKnownTypes>): RepeatedWellKnownTypes {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.anyField = [];
         message.apiField = [];
         message.durationField = [];
@@ -667,58 +625,58 @@ class RepeatedWellKnownTypes$Type extends MessageType<RepeatedWellKnownTypes> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* repeated google.protobuf.Any any_field */ 1:
-                    message.anyField.push(Any.internalBinaryRead(reader, reader.uint32(), options));
+                    message.anyField?.push?.(Any.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.Api api_field */ 2:
-                    message.apiField.push(Api.internalBinaryRead(reader, reader.uint32(), options));
+                    message.apiField?.push?.(Api.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.Duration duration_field */ 3:
-                    message.durationField.push(Duration.internalBinaryRead(reader, reader.uint32(), options));
+                    message.durationField?.push?.(Duration.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.Empty empty_field */ 4:
-                    message.emptyField.push(Empty.internalBinaryRead(reader, reader.uint32(), options));
+                    message.emptyField?.push?.(Empty.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.FieldMask field_mask_field */ 5:
-                    message.fieldMaskField.push(FieldMask.internalBinaryRead(reader, reader.uint32(), options));
+                    message.fieldMaskField?.push?.(FieldMask.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.SourceContext source_context_field */ 6:
-                    message.sourceContextField.push(SourceContext.internalBinaryRead(reader, reader.uint32(), options));
+                    message.sourceContextField?.push?.(SourceContext.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.Struct struct_field */ 7:
-                    message.structField.push(Struct.internalBinaryRead(reader, reader.uint32(), options));
+                    message.structField?.push?.(Struct.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.Timestamp timestamp_field */ 8:
-                    message.timestampField.push(Timestamp.internalBinaryRead(reader, reader.uint32(), options));
+                    message.timestampField?.push?.(Timestamp.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.Type type_field */ 9:
-                    message.typeField.push(Type.internalBinaryRead(reader, reader.uint32(), options));
+                    message.typeField?.push?.(Type.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.DoubleValue double_field */ 10:
-                    message.doubleField.push(DoubleValue.internalBinaryRead(reader, reader.uint32(), options));
+                    message.doubleField?.push?.(DoubleValue.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.FloatValue float_field */ 11:
-                    message.floatField.push(FloatValue.internalBinaryRead(reader, reader.uint32(), options));
+                    message.floatField?.push?.(FloatValue.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.Int64Value int64_field */ 12:
-                    message.int64Field.push(Int64Value.internalBinaryRead(reader, reader.uint32(), options));
+                    message.int64Field?.push?.(Int64Value.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.UInt64Value uint64_field */ 13:
-                    message.uint64Field.push(UInt64Value.internalBinaryRead(reader, reader.uint32(), options));
+                    message.uint64Field?.push?.(UInt64Value.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.Int32Value int32_field */ 14:
-                    message.int32Field.push(Int32Value.internalBinaryRead(reader, reader.uint32(), options));
+                    message.int32Field?.push?.(Int32Value.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.UInt32Value uint32_field */ 15:
-                    message.uint32Field.push(UInt32Value.internalBinaryRead(reader, reader.uint32(), options));
+                    message.uint32Field?.push?.(UInt32Value.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.BoolValue bool_field */ 16:
-                    message.boolField.push(BoolValue.internalBinaryRead(reader, reader.uint32(), options));
+                    message.boolField?.push?.(BoolValue.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.StringValue string_field */ 17:
-                    message.stringField.push(StringValue.internalBinaryRead(reader, reader.uint32(), options));
+                    message.stringField?.push?.(StringValue.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* repeated google.protobuf.BytesValue bytes_field */ 18:
-                    message.bytesField.push(BytesValue.internalBinaryRead(reader, reader.uint32(), options));
+                    message.bytesField?.push?.(BytesValue.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -733,59 +691,59 @@ class RepeatedWellKnownTypes$Type extends MessageType<RepeatedWellKnownTypes> {
     }
     internalBinaryWrite(message: RepeatedWellKnownTypes, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated google.protobuf.Any any_field = 1; */
-        for (let i = 0; i < message.anyField.length; i++)
-            Any.internalBinaryWrite(message.anyField[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.anyField?.length || 0); i++)
+            Any.internalBinaryWrite(message.anyField?.[i] as any, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Api api_field = 2; */
-        for (let i = 0; i < message.apiField.length; i++)
-            Api.internalBinaryWrite(message.apiField[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.apiField?.length || 0); i++)
+            Api.internalBinaryWrite(message.apiField?.[i] as any, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Duration duration_field = 3; */
-        for (let i = 0; i < message.durationField.length; i++)
-            Duration.internalBinaryWrite(message.durationField[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.durationField?.length || 0); i++)
+            Duration.internalBinaryWrite(message.durationField?.[i] as any, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Empty empty_field = 4; */
-        for (let i = 0; i < message.emptyField.length; i++)
-            Empty.internalBinaryWrite(message.emptyField[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.emptyField?.length || 0); i++)
+            Empty.internalBinaryWrite(message.emptyField?.[i] as any, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.FieldMask field_mask_field = 5; */
-        for (let i = 0; i < message.fieldMaskField.length; i++)
-            FieldMask.internalBinaryWrite(message.fieldMaskField[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.fieldMaskField?.length || 0); i++)
+            FieldMask.internalBinaryWrite(message.fieldMaskField?.[i] as any, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.SourceContext source_context_field = 6; */
-        for (let i = 0; i < message.sourceContextField.length; i++)
-            SourceContext.internalBinaryWrite(message.sourceContextField[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.sourceContextField?.length || 0); i++)
+            SourceContext.internalBinaryWrite(message.sourceContextField?.[i] as any, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Struct struct_field = 7; */
-        for (let i = 0; i < message.structField.length; i++)
-            Struct.internalBinaryWrite(message.structField[i], writer.tag(7, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.structField?.length || 0); i++)
+            Struct.internalBinaryWrite(message.structField?.[i] as any, writer.tag(7, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Timestamp timestamp_field = 8; */
-        for (let i = 0; i < message.timestampField.length; i++)
-            Timestamp.internalBinaryWrite(message.timestampField[i], writer.tag(8, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.timestampField?.length || 0); i++)
+            Timestamp.internalBinaryWrite(message.timestampField?.[i] as any, writer.tag(8, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Type type_field = 9; */
-        for (let i = 0; i < message.typeField.length; i++)
-            Type.internalBinaryWrite(message.typeField[i], writer.tag(9, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.typeField?.length || 0); i++)
+            Type.internalBinaryWrite(message.typeField?.[i] as any, writer.tag(9, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.DoubleValue double_field = 10; */
-        for (let i = 0; i < message.doubleField.length; i++)
-            DoubleValue.internalBinaryWrite(message.doubleField[i], writer.tag(10, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.doubleField?.length || 0); i++)
+            DoubleValue.internalBinaryWrite(message.doubleField?.[i] as any, writer.tag(10, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.FloatValue float_field = 11; */
-        for (let i = 0; i < message.floatField.length; i++)
-            FloatValue.internalBinaryWrite(message.floatField[i], writer.tag(11, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.floatField?.length || 0); i++)
+            FloatValue.internalBinaryWrite(message.floatField?.[i] as any, writer.tag(11, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Int64Value int64_field = 12; */
-        for (let i = 0; i < message.int64Field.length; i++)
-            Int64Value.internalBinaryWrite(message.int64Field[i], writer.tag(12, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.int64Field?.length || 0); i++)
+            Int64Value.internalBinaryWrite(message.int64Field?.[i] as any, writer.tag(12, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.UInt64Value uint64_field = 13; */
-        for (let i = 0; i < message.uint64Field.length; i++)
-            UInt64Value.internalBinaryWrite(message.uint64Field[i], writer.tag(13, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.uint64Field?.length || 0); i++)
+            UInt64Value.internalBinaryWrite(message.uint64Field?.[i] as any, writer.tag(13, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.Int32Value int32_field = 14; */
-        for (let i = 0; i < message.int32Field.length; i++)
-            Int32Value.internalBinaryWrite(message.int32Field[i], writer.tag(14, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.int32Field?.length || 0); i++)
+            Int32Value.internalBinaryWrite(message.int32Field?.[i] as any, writer.tag(14, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.UInt32Value uint32_field = 15; */
-        for (let i = 0; i < message.uint32Field.length; i++)
-            UInt32Value.internalBinaryWrite(message.uint32Field[i], writer.tag(15, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.uint32Field?.length || 0); i++)
+            UInt32Value.internalBinaryWrite(message.uint32Field?.[i] as any, writer.tag(15, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.BoolValue bool_field = 16; */
-        for (let i = 0; i < message.boolField.length; i++)
-            BoolValue.internalBinaryWrite(message.boolField[i], writer.tag(16, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.boolField?.length || 0); i++)
+            BoolValue.internalBinaryWrite(message.boolField?.[i] as any, writer.tag(16, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.StringValue string_field = 17; */
-        for (let i = 0; i < message.stringField.length; i++)
-            StringValue.internalBinaryWrite(message.stringField[i], writer.tag(17, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.stringField?.length || 0); i++)
+            StringValue.internalBinaryWrite(message.stringField?.[i] as any, writer.tag(17, WireType.LengthDelimited).fork(), options).join();
         /* repeated google.protobuf.BytesValue bytes_field = 18; */
-        for (let i = 0; i < message.bytesField.length; i++)
-            BytesValue.internalBinaryWrite(message.bytesField[i], writer.tag(18, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.bytesField?.length || 0); i++)
+            BytesValue.internalBinaryWrite(message.bytesField?.[i] as any, writer.tag(18, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -821,8 +779,7 @@ class OneofWellKnownTypes$Type extends MessageType<OneofWellKnownTypes> {
         ]);
     }
     create(value?: PartialMessage<OneofWellKnownTypes>): OneofWellKnownTypes {
-        const message = globalThis.Object.create((this.messagePrototype!));
-        message.oneofField = { oneofKind: undefined };
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<OneofWellKnownTypes>(this, message, value);
         return message;
@@ -833,112 +790,58 @@ class OneofWellKnownTypes$Type extends MessageType<OneofWellKnownTypes> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* google.protobuf.Any any_field */ 1:
-                    message.oneofField = {
-                        oneofKind: "anyField",
-                        anyField: Any.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).anyField)
-                    };
+                    message.anyField = Any.internalBinaryRead(reader, reader.uint32(), options, (message as any).anyField);
                     break;
                 case /* google.protobuf.Api api_field */ 2:
-                    message.oneofField = {
-                        oneofKind: "apiField",
-                        apiField: Api.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).apiField)
-                    };
+                    message.apiField = Api.internalBinaryRead(reader, reader.uint32(), options, (message as any).apiField);
                     break;
                 case /* google.protobuf.Duration duration_field */ 3:
-                    message.oneofField = {
-                        oneofKind: "durationField",
-                        durationField: Duration.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).durationField)
-                    };
+                    message.durationField = Duration.internalBinaryRead(reader, reader.uint32(), options, (message as any).durationField);
                     break;
                 case /* google.protobuf.Empty empty_field */ 4:
-                    message.oneofField = {
-                        oneofKind: "emptyField",
-                        emptyField: Empty.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).emptyField)
-                    };
+                    message.emptyField = Empty.internalBinaryRead(reader, reader.uint32(), options, (message as any).emptyField);
                     break;
                 case /* google.protobuf.FieldMask field_mask_field */ 5:
-                    message.oneofField = {
-                        oneofKind: "fieldMaskField",
-                        fieldMaskField: FieldMask.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).fieldMaskField)
-                    };
+                    message.fieldMaskField = FieldMask.internalBinaryRead(reader, reader.uint32(), options, (message as any).fieldMaskField);
                     break;
                 case /* google.protobuf.SourceContext source_context_field */ 6:
-                    message.oneofField = {
-                        oneofKind: "sourceContextField",
-                        sourceContextField: SourceContext.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).sourceContextField)
-                    };
+                    message.sourceContextField = SourceContext.internalBinaryRead(reader, reader.uint32(), options, (message as any).sourceContextField);
                     break;
                 case /* google.protobuf.Struct struct_field */ 7:
-                    message.oneofField = {
-                        oneofKind: "structField",
-                        structField: Struct.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).structField)
-                    };
+                    message.structField = Struct.internalBinaryRead(reader, reader.uint32(), options, (message as any).structField);
                     break;
                 case /* google.protobuf.Timestamp timestamp_field */ 8:
-                    message.oneofField = {
-                        oneofKind: "timestampField",
-                        timestampField: Timestamp.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).timestampField)
-                    };
+                    message.timestampField = Timestamp.internalBinaryRead(reader, reader.uint32(), options, (message as any).timestampField);
                     break;
                 case /* google.protobuf.Type type_field */ 9:
-                    message.oneofField = {
-                        oneofKind: "typeField",
-                        typeField: Type.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).typeField)
-                    };
+                    message.typeField = Type.internalBinaryRead(reader, reader.uint32(), options, (message as any).typeField);
                     break;
                 case /* google.protobuf.DoubleValue double_field */ 10:
-                    message.oneofField = {
-                        oneofKind: "doubleField",
-                        doubleField: DoubleValue.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).doubleField)
-                    };
+                    message.doubleField = DoubleValue.internalBinaryRead(reader, reader.uint32(), options, (message as any).doubleField);
                     break;
                 case /* google.protobuf.FloatValue float_field */ 11:
-                    message.oneofField = {
-                        oneofKind: "floatField",
-                        floatField: FloatValue.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).floatField)
-                    };
+                    message.floatField = FloatValue.internalBinaryRead(reader, reader.uint32(), options, (message as any).floatField);
                     break;
                 case /* google.protobuf.Int64Value int64_field */ 12:
-                    message.oneofField = {
-                        oneofKind: "int64Field",
-                        int64Field: Int64Value.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).int64Field)
-                    };
+                    message.int64Field = Int64Value.internalBinaryRead(reader, reader.uint32(), options, (message as any).int64Field);
                     break;
                 case /* google.protobuf.UInt64Value uint64_field */ 13:
-                    message.oneofField = {
-                        oneofKind: "uint64Field",
-                        uint64Field: UInt64Value.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).uint64Field)
-                    };
+                    message.uint64Field = UInt64Value.internalBinaryRead(reader, reader.uint32(), options, (message as any).uint64Field);
                     break;
                 case /* google.protobuf.Int32Value int32_field */ 14:
-                    message.oneofField = {
-                        oneofKind: "int32Field",
-                        int32Field: Int32Value.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).int32Field)
-                    };
+                    message.int32Field = Int32Value.internalBinaryRead(reader, reader.uint32(), options, (message as any).int32Field);
                     break;
                 case /* google.protobuf.UInt32Value uint32_field */ 15:
-                    message.oneofField = {
-                        oneofKind: "uint32Field",
-                        uint32Field: UInt32Value.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).uint32Field)
-                    };
+                    message.uint32Field = UInt32Value.internalBinaryRead(reader, reader.uint32(), options, (message as any).uint32Field);
                     break;
                 case /* google.protobuf.BoolValue bool_field */ 16:
-                    message.oneofField = {
-                        oneofKind: "boolField",
-                        boolField: BoolValue.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).boolField)
-                    };
+                    message.boolField = BoolValue.internalBinaryRead(reader, reader.uint32(), options, (message as any).boolField);
                     break;
                 case /* google.protobuf.StringValue string_field */ 17:
-                    message.oneofField = {
-                        oneofKind: "stringField",
-                        stringField: StringValue.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).stringField)
-                    };
+                    message.stringField = StringValue.internalBinaryRead(reader, reader.uint32(), options, (message as any).stringField);
                     break;
                 case /* google.protobuf.BytesValue bytes_field */ 18:
-                    message.oneofField = {
-                        oneofKind: "bytesField",
-                        bytesField: BytesValue.internalBinaryRead(reader, reader.uint32(), options, (message.oneofField as any).bytesField)
-                    };
+                    message.bytesField = BytesValue.internalBinaryRead(reader, reader.uint32(), options, (message as any).bytesField);
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -953,59 +856,59 @@ class OneofWellKnownTypes$Type extends MessageType<OneofWellKnownTypes> {
     }
     internalBinaryWrite(message: OneofWellKnownTypes, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* google.protobuf.Any any_field = 1; */
-        if (message.oneofField.oneofKind === "anyField")
-            Any.internalBinaryWrite(message.oneofField.anyField, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        if ("anyField" in message && message.anyField != null)
+            Any.internalBinaryWrite(message.anyField, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Api api_field = 2; */
-        if (message.oneofField.oneofKind === "apiField")
-            Api.internalBinaryWrite(message.oneofField.apiField, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        if ("apiField" in message && message.apiField != null)
+            Api.internalBinaryWrite(message.apiField, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Duration duration_field = 3; */
-        if (message.oneofField.oneofKind === "durationField")
-            Duration.internalBinaryWrite(message.oneofField.durationField, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        if ("durationField" in message && message.durationField != null)
+            Duration.internalBinaryWrite(message.durationField, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Empty empty_field = 4; */
-        if (message.oneofField.oneofKind === "emptyField")
-            Empty.internalBinaryWrite(message.oneofField.emptyField, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        if ("emptyField" in message && message.emptyField != null)
+            Empty.internalBinaryWrite(message.emptyField, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.FieldMask field_mask_field = 5; */
-        if (message.oneofField.oneofKind === "fieldMaskField")
-            FieldMask.internalBinaryWrite(message.oneofField.fieldMaskField, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        if ("fieldMaskField" in message && message.fieldMaskField != null)
+            FieldMask.internalBinaryWrite(message.fieldMaskField, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.SourceContext source_context_field = 6; */
-        if (message.oneofField.oneofKind === "sourceContextField")
-            SourceContext.internalBinaryWrite(message.oneofField.sourceContextField, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        if ("sourceContextField" in message && message.sourceContextField != null)
+            SourceContext.internalBinaryWrite(message.sourceContextField, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Struct struct_field = 7; */
-        if (message.oneofField.oneofKind === "structField")
-            Struct.internalBinaryWrite(message.oneofField.structField, writer.tag(7, WireType.LengthDelimited).fork(), options).join();
+        if ("structField" in message && message.structField != null)
+            Struct.internalBinaryWrite(message.structField, writer.tag(7, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Timestamp timestamp_field = 8; */
-        if (message.oneofField.oneofKind === "timestampField")
-            Timestamp.internalBinaryWrite(message.oneofField.timestampField, writer.tag(8, WireType.LengthDelimited).fork(), options).join();
+        if ("timestampField" in message && message.timestampField != null)
+            Timestamp.internalBinaryWrite(message.timestampField, writer.tag(8, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Type type_field = 9; */
-        if (message.oneofField.oneofKind === "typeField")
-            Type.internalBinaryWrite(message.oneofField.typeField, writer.tag(9, WireType.LengthDelimited).fork(), options).join();
+        if ("typeField" in message && message.typeField != null)
+            Type.internalBinaryWrite(message.typeField, writer.tag(9, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.DoubleValue double_field = 10; */
-        if (message.oneofField.oneofKind === "doubleField")
-            DoubleValue.internalBinaryWrite(message.oneofField.doubleField, writer.tag(10, WireType.LengthDelimited).fork(), options).join();
+        if ("doubleField" in message && message.doubleField != null)
+            DoubleValue.internalBinaryWrite(message.doubleField, writer.tag(10, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.FloatValue float_field = 11; */
-        if (message.oneofField.oneofKind === "floatField")
-            FloatValue.internalBinaryWrite(message.oneofField.floatField, writer.tag(11, WireType.LengthDelimited).fork(), options).join();
+        if ("floatField" in message && message.floatField != null)
+            FloatValue.internalBinaryWrite(message.floatField, writer.tag(11, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Int64Value int64_field = 12; */
-        if (message.oneofField.oneofKind === "int64Field")
-            Int64Value.internalBinaryWrite(message.oneofField.int64Field, writer.tag(12, WireType.LengthDelimited).fork(), options).join();
+        if ("int64Field" in message && message.int64Field != null)
+            Int64Value.internalBinaryWrite(message.int64Field, writer.tag(12, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.UInt64Value uint64_field = 13; */
-        if (message.oneofField.oneofKind === "uint64Field")
-            UInt64Value.internalBinaryWrite(message.oneofField.uint64Field, writer.tag(13, WireType.LengthDelimited).fork(), options).join();
+        if ("uint64Field" in message && message.uint64Field != null)
+            UInt64Value.internalBinaryWrite(message.uint64Field, writer.tag(13, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Int32Value int32_field = 14; */
-        if (message.oneofField.oneofKind === "int32Field")
-            Int32Value.internalBinaryWrite(message.oneofField.int32Field, writer.tag(14, WireType.LengthDelimited).fork(), options).join();
+        if ("int32Field" in message && message.int32Field != null)
+            Int32Value.internalBinaryWrite(message.int32Field, writer.tag(14, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.UInt32Value uint32_field = 15; */
-        if (message.oneofField.oneofKind === "uint32Field")
-            UInt32Value.internalBinaryWrite(message.oneofField.uint32Field, writer.tag(15, WireType.LengthDelimited).fork(), options).join();
+        if ("uint32Field" in message && message.uint32Field != null)
+            UInt32Value.internalBinaryWrite(message.uint32Field, writer.tag(15, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.BoolValue bool_field = 16; */
-        if (message.oneofField.oneofKind === "boolField")
-            BoolValue.internalBinaryWrite(message.oneofField.boolField, writer.tag(16, WireType.LengthDelimited).fork(), options).join();
+        if ("boolField" in message && message.boolField != null)
+            BoolValue.internalBinaryWrite(message.boolField, writer.tag(16, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.StringValue string_field = 17; */
-        if (message.oneofField.oneofKind === "stringField")
-            StringValue.internalBinaryWrite(message.oneofField.stringField, writer.tag(17, WireType.LengthDelimited).fork(), options).join();
+        if ("stringField" in message && message.stringField != null)
+            StringValue.internalBinaryWrite(message.stringField, writer.tag(17, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.BytesValue bytes_field = 18; */
-        if (message.oneofField.oneofKind === "bytesField")
-            BytesValue.internalBinaryWrite(message.oneofField.bytesField, writer.tag(18, WireType.LengthDelimited).fork(), options).join();
+        if ("bytesField" in message && message.bytesField != null)
+            BytesValue.internalBinaryWrite(message.bytesField, writer.tag(18, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1041,7 +944,7 @@ class MapWellKnownTypes$Type extends MessageType<MapWellKnownTypes> {
         ]);
     }
     create(value?: PartialMessage<MapWellKnownTypes>): MapWellKnownTypes {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.anyField = {};
         message.apiField = {};
         message.durationField = {};

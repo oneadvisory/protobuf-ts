@@ -4,6 +4,7 @@ import {Int32Value, StringValue} from "../gen/google/protobuf/wrappers";
 import {AllStyleServiceClient} from "../gen/service-style-all.client";
 
 // Copied from test-default/generated-client-style-call.spec.ts. Do not edit.
+// @ts-ignore
 globalThis.AbortController = AbortController; // AbortController polyfill via https://github.com/mysticatea/abort-controller
 
 
@@ -81,7 +82,7 @@ describe('generated client style call', () => {
             setTimeout(() => {
                 abort.abort();
             }, 5)
-            const call = client.unary({value: "abc"}, {abort: abort.signal});
+            const call = client.unary({value: "abc"}, {abort: abort.signal as any});
             await expectAsync(call).toBeRejectedWithError("user cancel")
         });
 
@@ -93,7 +94,7 @@ describe('generated client style call', () => {
             setTimeout(() => {
                 abort.abort();
             }, 5)
-            const call = client.unary({value: "abc"}, {abort: abort.signal});
+            const call = client.unary({value: "abc"}, {abort: abort.signal as any});
             await expectAsync(call.headers).toBeRejectedWithError("user cancel")
             await expectAsync(call.response).toBeRejectedWithError("user cancel")
             await expectAsync(call.status).toBeRejectedWithError("user cancel")
@@ -137,7 +138,7 @@ describe('generated client style call', () => {
                 }
             } catch (error) {
                 expect(error).toBeInstanceOf(RpcError);
-                expect(error.message).toBe("response err");
+                expect((error as Error).message).toBe("response err");
             }
         });
 
@@ -153,7 +154,7 @@ describe('generated client style call', () => {
             setTimeout(() => {
                 abort.abort();
             }, 5)
-            const call = client.serverStream({value: "abc"}, {abort: abort.signal});
+            const call = client.serverStream({value: "abc"}, {abort: abort.signal as any});
             await expectAsync(call).toBeRejectedWithError("user cancel")
         });
 
@@ -169,13 +170,13 @@ describe('generated client style call', () => {
             setTimeout(() => {
                 abort.abort();
             }, 1)
-            const call = client.serverStream({value: "abc"}, {abort: abort.signal});
+            const call = client.serverStream({value: "abc"}, {abort: abort.signal as any});
             try {
                 for await (let msg of call.responses) {
                 }
                 fail("missing error");
             } catch (e) {
-                expect(e.code).toBe("CANCELLED");
+                expect((e as RpcError).code).toBe("CANCELLED");
             }
         });
 
@@ -191,7 +192,7 @@ describe('generated client style call', () => {
             setTimeout(() => {
                 abort.abort();
             }, 5)
-            const call = client.serverStream({value: "abc"}, {abort: abort.signal});
+            const call = client.serverStream({value: "abc"}, {abort: abort.signal as any});
             await expectAsync(call.headers).toBeRejectedWithError("user cancel")
             await expectAsync(call.status).toBeRejectedWithError("user cancel")
             await expectAsync(call.trailers).toBeRejectedWithError("user cancel")

@@ -176,7 +176,7 @@ class LongsMessage$Type extends MessageType<LongsMessage> {
         ]);
     }
     create(value?: PartialMessage<LongsMessage>): LongsMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.fixed64FieldMin = 0n;
         message.fixed64FieldMax = 0n;
         message.int64FieldMin = 0n;

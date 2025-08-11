@@ -58,7 +58,7 @@ export interface Status {
      *
      * @generated from protobuf field: repeated google.protobuf.Any details = 3;
      */
-    details: Any[];
+    details?: Any[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class Status$Type extends MessageType<Status> {
@@ -70,7 +70,7 @@ class Status$Type extends MessageType<Status> {
         ]);
     }
     create(value?: PartialMessage<Status>): Status {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.code = 0;
         message.message = "";
         message.details = [];
@@ -90,7 +90,7 @@ class Status$Type extends MessageType<Status> {
                     message.message = reader.string();
                     break;
                 case /* repeated google.protobuf.Any details */ 3:
-                    message.details.push(Any.internalBinaryRead(reader, reader.uint32(), options));
+                    message.details?.push?.(Any.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -111,8 +111,8 @@ class Status$Type extends MessageType<Status> {
         if (message.message !== "")
             writer.tag(2, WireType.LengthDelimited).string(message.message);
         /* repeated google.protobuf.Any details = 3; */
-        for (let i = 0; i < message.details.length; i++)
-            Any.internalBinaryWrite(message.details[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        for (let i = 0; i < (message.details?.length || 0); i++)
+            Any.internalBinaryWrite(message.details?.[i] as any, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

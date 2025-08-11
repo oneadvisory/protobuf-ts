@@ -31,7 +31,7 @@ describe('spec.AnnotatedService', function () {
             expect(rule).toBeDefined();
             if (rule) {
                 let selector: string = rule.selector;
-                let bindings: HttpRule[] = rule.additionalBindings;
+                let bindings: HttpRule[] = rule.additionalBindings ?? [];
                 expect(selector).toBeDefined();
                 expect(bindings).toBeDefined();
             }
@@ -62,20 +62,11 @@ describe('spec.AnnotatedService', function () {
             if (mi !== undefined && mi.options !== undefined && mi.options["google.api.http"] !== undefined) {
                 const rule = HttpRule.fromJson(mi.options["google.api.http"]);
                 expect(rule).toEqual(HttpRule.create({
-                    pattern: {
-                        oneofKind: "get",
-                        get: "/v1/{name=messages/*}"
-                    },
+                    get: "/v1/{name=messages/*}",
                     additionalBindings: [{
-                        pattern: {
-                            oneofKind: "get",
-                            get: "xxx"
-                        }
+                        get: "xxx"
                     }, {
-                        pattern: {
-                            oneofKind: "get",
-                            get: "yyy"
-                        }
+                        get: "yyy"
                     }]
                 }));
             }

@@ -33,7 +33,7 @@ class CommonMessage$Type extends MessageType<CommonMessage> {
         ]);
     }
     create(value?: PartialMessage<CommonMessage>): CommonMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.a = "";
         if (value !== undefined)
             reflectionMergePartial<CommonMessage>(this, message, value);

@@ -1,4 +1,4 @@
-import {IMessageType, MESSAGE_TYPE} from './message-type-contract';
+import {type IMessageType, MESSAGE_TYPE} from './message-type-contract';
 
 /**
  * The interface that models storing type in a symbol property.

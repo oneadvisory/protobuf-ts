@@ -50,7 +50,7 @@ function callUnary(client: IExampleServiceClient) {
         console.log("got status: ", arg1)
     });
 
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
         call.on('status', () => resolve());
     });
 }
@@ -91,7 +91,7 @@ function callServerStream(client: IExampleServiceClient) {
         console.log("got end event")
     });
 
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
         call.on('end', () => resolve());
     });
 }
@@ -164,7 +164,7 @@ function callClientStream(client: IExampleServiceClient) {
     call.end();
 
 
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
         call.on('status', () => resolve());
     });
 }
@@ -229,7 +229,7 @@ function callBidi(client: IExampleServiceClient) {
         console.log("got end event")
     });
 
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
         call.on('end', () => resolve());
     });
 }

@@ -1,5 +1,5 @@
 import {reflectionScalarDefault} from "./reflection-scalar-default";
-import type {UnknownMessage, UnknownOneofGroup} from "./unknown-types";
+import type {UnknownMessage} from "./unknown-types";
 import type {IMessageType} from './message-type-contract';
 import {MESSAGE_TYPE} from './message-type-contract';
 
@@ -26,7 +26,7 @@ export function reflectionCreate<T extends object>(type: IMessageType<T>): T {
         if (field.opt)
             continue;
         if (field.oneof)
-            msg[field.oneof] = {oneofKind: undefined} as UnknownOneofGroup;
+            continue
         else if (field.repeat)
             msg[name] = [];
         else

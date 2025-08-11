@@ -123,7 +123,7 @@ class Quaternion$Type extends MessageType<Quaternion> {
         ]);
     }
     create(value?: PartialMessage<Quaternion>): Quaternion {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.x = 0;
         message.y = 0;
         message.z = 0;

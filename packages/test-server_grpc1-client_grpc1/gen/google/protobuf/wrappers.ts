@@ -214,7 +214,7 @@ class DoubleValue$Type extends MessageType<DoubleValue> {
         return target;
     }
     create(value?: PartialMessage<DoubleValue>): DoubleValue {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.value = 0;
         if (value !== undefined)
             reflectionMergePartial<DoubleValue>(this, message, value);
@@ -276,7 +276,7 @@ class FloatValue$Type extends MessageType<FloatValue> {
         return target;
     }
     create(value?: PartialMessage<FloatValue>): FloatValue {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.value = 0;
         if (value !== undefined)
             reflectionMergePartial<FloatValue>(this, message, value);
@@ -338,7 +338,7 @@ class Int64Value$Type extends MessageType<Int64Value> {
         return target;
     }
     create(value?: PartialMessage<Int64Value>): Int64Value {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.value = 0n;
         if (value !== undefined)
             reflectionMergePartial<Int64Value>(this, message, value);
@@ -400,7 +400,7 @@ class UInt64Value$Type extends MessageType<UInt64Value> {
         return target;
     }
     create(value?: PartialMessage<UInt64Value>): UInt64Value {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.value = 0n;
         if (value !== undefined)
             reflectionMergePartial<UInt64Value>(this, message, value);
@@ -462,7 +462,7 @@ class Int32Value$Type extends MessageType<Int32Value> {
         return target;
     }
     create(value?: PartialMessage<Int32Value>): Int32Value {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.value = 0;
         if (value !== undefined)
             reflectionMergePartial<Int32Value>(this, message, value);
@@ -524,7 +524,7 @@ class UInt32Value$Type extends MessageType<UInt32Value> {
         return target;
     }
     create(value?: PartialMessage<UInt32Value>): UInt32Value {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.value = 0;
         if (value !== undefined)
             reflectionMergePartial<UInt32Value>(this, message, value);
@@ -586,7 +586,7 @@ class BoolValue$Type extends MessageType<BoolValue> {
         return target;
     }
     create(value?: PartialMessage<BoolValue>): BoolValue {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.value = false;
         if (value !== undefined)
             reflectionMergePartial<BoolValue>(this, message, value);
@@ -648,7 +648,7 @@ class StringValue$Type extends MessageType<StringValue> {
         return target;
     }
     create(value?: PartialMessage<StringValue>): StringValue {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.value = "";
         if (value !== undefined)
             reflectionMergePartial<StringValue>(this, message, value);
@@ -710,7 +710,7 @@ class BytesValue$Type extends MessageType<BytesValue> {
         return target;
     }
     create(value?: PartialMessage<BytesValue>): BytesValue {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.value = new Uint8Array(0);
         if (value !== undefined)
             reflectionMergePartial<BytesValue>(this, message, value);
@@ -737,7 +737,7 @@ class BytesValue$Type extends MessageType<BytesValue> {
     }
     internalBinaryWrite(message: BytesValue, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* bytes value = 1; */
-        if (message.value.length)
+        if (message.value?.length)
             writer.tag(1, WireType.LengthDelimited).bytes(message.value);
         let u = options.writeUnknownFields;
         if (u !== false)

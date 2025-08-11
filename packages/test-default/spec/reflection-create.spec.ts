@@ -113,7 +113,6 @@ describe('reflectionCreate()', function () {
             expect(message.mapStringForeignMessage).toEqual({});
             expect(message.mapStringNestedEnum).toEqual({});
             expect(message.mapStringForeignEnum).toEqual({});
-            expect(message.oneofField).toEqual({oneofKind: undefined});
             expect(message.repeatedBoolWrapper).toEqual([]);
             expect(message.repeatedBoolWrapper).toEqual([]);
             expect(message.repeatedInt32Wrapper).toEqual([]);

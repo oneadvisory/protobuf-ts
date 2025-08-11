@@ -44,7 +44,7 @@
     "node-fetch": "^2.6.0",
     "tslib": ">=1.6.1",
     "tsx": "^4.19.3",
-    "typescript": ">=3.8.3 <4"
+    "typescript": "5.x.x"
   },
   "dependencies": {
     "@protobuf-ts/runtime": "^2.11.1",

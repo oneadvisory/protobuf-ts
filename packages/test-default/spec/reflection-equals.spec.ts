@@ -77,10 +77,7 @@ describe('reflectionEquals()', function () {
 
     it('oneof scalars are equal', () => {
         const make = (): OneofScalarMemberMessage => ({
-            result: {
-                oneofKind: "value",
-                value: 42
-            }
+            value: 42,
         });
         const eq = reflectionEquals(
             OneofScalarMemberMessage,

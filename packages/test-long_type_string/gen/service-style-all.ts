@@ -8,8 +8,8 @@ import { ServiceType } from "@protobuf-ts/runtime-rpc";
  * @generated ServiceType for protobuf service spec.AllStyleService
  */
 export const AllStyleService = new ServiceType("spec.AllStyleService", [
-    { name: "Unary", options: {}, I: StringValue, O: Int32Value },
-    { name: "ServerStream", serverStreaming: true, options: {}, I: StringValue, O: Int32Value },
-    { name: "ClientStream", clientStreaming: true, options: {}, I: StringValue, O: Int32Value },
-    { name: "Bidi", serverStreaming: true, clientStreaming: true, options: {}, I: StringValue, O: Int32Value }
+    { name: "Unary" as const, options: {} as const, I: StringValue, O: Int32Value },
+    { name: "ServerStream" as const, serverStreaming: true as const, options: {} as const, I: StringValue, O: Int32Value },
+    { name: "ClientStream" as const, clientStreaming: true as const, options: {} as const, I: StringValue, O: Int32Value },
+    { name: "Bidi" as const, serverStreaming: true as const, clientStreaming: true as const, options: {} as const, I: StringValue, O: Int32Value }
 ]);

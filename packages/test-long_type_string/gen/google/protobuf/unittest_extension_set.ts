@@ -47,7 +47,7 @@ class TestExtensionSet$Type extends MessageType<TestExtensionSet> {
         super("protobuf_unittest.TestExtensionSet", []);
     }
     create(value?: PartialMessage<TestExtensionSet>): TestExtensionSet {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestExtensionSet>(this, message, value);
         return message;
@@ -87,7 +87,7 @@ class TestExtensionSetContainer$Type extends MessageType<TestExtensionSetContain
         ]);
     }
     create(value?: PartialMessage<TestExtensionSetContainer>): TestExtensionSetContainer {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestExtensionSetContainer>(this, message, value);
         return message;

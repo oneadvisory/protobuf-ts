@@ -137,9 +137,9 @@ function mapUnary<I extends object, O extends object>(serviceInfo: ServiceInfo, 
 
             return callback({
                 code: grpc.status.INTERNAL,
-                message: e.message,
-                name: e.name,
-                stack: e.stack
+                message: (e as Error).message,
+                name: (e as Error).name,
+                stack: (e as Error).stack
             });
         }
 
@@ -198,7 +198,7 @@ function mapServerStreaming<I extends object, O extends object>(serviceInfo: Ser
                 return call.destroy(e);
             }
 
-            return call.destroy(e);
+            return call.destroy(e as any);
         }
 
         const grpcStatusCode = rpcCodeToGrpc(context.status.code);
@@ -270,9 +270,9 @@ function mapClientStreaming<I extends object, O extends object>(serviceInfo: Ser
 
             return callback({
                 code: grpc.status.INTERNAL,
-                message: e.message,
-                name: e.name,
-                stack: e.stack
+                message: (e as Error).message,
+                name: (e as Error).name,
+                stack: (e as Error).stack
             });
         }
 
@@ -354,7 +354,7 @@ function mapBidi<I extends object, O extends object>(serviceInfo: ServiceInfo, m
                 return call.destroy(e);
             }
 
-            return call.destroy(e);
+            return call.destroy(e as any);
         }
 
         const grpcStatusCode = rpcCodeToGrpc(context.status.code);

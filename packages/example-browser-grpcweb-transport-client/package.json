@@ -21,6 +21,6 @@
     "@protobuf-ts/plugin": "^2.11.1",
     "@protobuf-ts/protoc": "^2.11.1",
     "esbuild": "^0.25.0",
-    "typescript": "^3.9.5"
+    "typescript": "5.x.x"
   }
 }

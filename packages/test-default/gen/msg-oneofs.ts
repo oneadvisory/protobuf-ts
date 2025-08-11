@@ -17,29 +17,17 @@ import { MessageType } from "@protobuf-ts/runtime";
  */
 export interface OneofScalarMemberMessage {
     /**
-     * Only one of (or none of) the fields below can be selected
+     * Contains the value if result available
      *
-     * @generated from protobuf oneof: result;
+     * @generated from protobuf field: int32 value = 1;
      */
-    result: {
-        oneofKind: "value";
-        /**
-         * Contains the value if result available
-         *
-         * @generated from protobuf field: int32 value = 1;
-         */
-        value: number;
-    } | {
-        oneofKind: "error";
-        /**
-         * Contains error message if result not available
-         *
-         * @generated from protobuf field: string error = 2;
-         */
-        error: string;
-    } | {
-        oneofKind: undefined;
-    };
+    value?: number;
+    /**
+     * Contains error message if result not available
+     *
+     * @generated from protobuf field: string error = 2;
+     */
+    error?: string;
 }
 /**
  * Oneof with 2 message members
@@ -48,23 +36,13 @@ export interface OneofScalarMemberMessage {
  */
 export interface OneofMessageMemberMessage {
     /**
-     * @generated from protobuf oneof: objects;
+     * @generated from protobuf field: spec.OneofMessageMemberMessage.TestMessageA a = 1;
      */
-    objects: {
-        oneofKind: "a";
-        /**
-         * @generated from protobuf field: spec.OneofMessageMemberMessage.TestMessageA a = 1;
-         */
-        a: OneofMessageMemberMessage_TestMessageA;
-    } | {
-        oneofKind: "b";
-        /**
-         * @generated from protobuf field: spec.OneofMessageMemberMessage.TestMessageB b = 2;
-         */
-        b: OneofMessageMemberMessage_TestMessageB;
-    } | {
-        oneofKind: undefined;
-    };
+    a?: OneofMessageMemberMessage_TestMessageA;
+    /**
+     * @generated from protobuf field: spec.OneofMessageMemberMessage.TestMessageB b = 2;
+     */
+    b?: OneofMessageMemberMessage_TestMessageB;
 }
 /**
  * @generated from protobuf message spec.OneofMessageMemberMessage.TestMessageA
@@ -93,8 +71,7 @@ class OneofScalarMemberMessage$Type extends MessageType<OneofScalarMemberMessage
         ]);
     }
     create(value?: PartialMessage<OneofScalarMemberMessage>): OneofScalarMemberMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
-        message.result = { oneofKind: undefined };
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<OneofScalarMemberMessage>(this, message, value);
         return message;
@@ -105,16 +82,10 @@ class OneofScalarMemberMessage$Type extends MessageType<OneofScalarMemberMessage
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* int32 value */ 1:
-                    message.result = {
-                        oneofKind: "value",
-                        value: reader.int32()
-                    };
+                    message.value = reader.int32();
                     break;
                 case /* string error */ 2:
-                    message.result = {
-                        oneofKind: "error",
-                        error: reader.string()
-                    };
+                    message.error = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -129,11 +100,11 @@ class OneofScalarMemberMessage$Type extends MessageType<OneofScalarMemberMessage
     }
     internalBinaryWrite(message: OneofScalarMemberMessage, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* int32 value = 1; */
-        if (message.result.oneofKind === "value")
-            writer.tag(1, WireType.Varint).int32(message.result.value);
+        if ("value" in message && message.value != null)
+            writer.tag(1, WireType.Varint).int32(message.value);
         /* string error = 2; */
-        if (message.result.oneofKind === "error")
-            writer.tag(2, WireType.LengthDelimited).string(message.result.error);
+        if ("error" in message && message.error != null)
+            writer.tag(2, WireType.LengthDelimited).string(message.error);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -153,8 +124,7 @@ class OneofMessageMemberMessage$Type extends MessageType<OneofMessageMemberMessa
         ]);
     }
     create(value?: PartialMessage<OneofMessageMemberMessage>): OneofMessageMemberMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
-        message.objects = { oneofKind: undefined };
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<OneofMessageMemberMessage>(this, message, value);
         return message;
@@ -165,16 +135,10 @@ class OneofMessageMemberMessage$Type extends MessageType<OneofMessageMemberMessa
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* spec.OneofMessageMemberMessage.TestMessageA a */ 1:
-                    message.objects = {
-                        oneofKind: "a",
-                        a: OneofMessageMemberMessage_TestMessageA.internalBinaryRead(reader, reader.uint32(), options, (message.objects as any).a)
-                    };
+                    message.a = OneofMessageMemberMessage_TestMessageA.internalBinaryRead(reader, reader.uint32(), options, (message as any).a);
                     break;
                 case /* spec.OneofMessageMemberMessage.TestMessageB b */ 2:
-                    message.objects = {
-                        oneofKind: "b",
-                        b: OneofMessageMemberMessage_TestMessageB.internalBinaryRead(reader, reader.uint32(), options, (message.objects as any).b)
-                    };
+                    message.b = OneofMessageMemberMessage_TestMessageB.internalBinaryRead(reader, reader.uint32(), options, (message as any).b);
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -189,11 +153,11 @@ class OneofMessageMemberMessage$Type extends MessageType<OneofMessageMemberMessa
     }
     internalBinaryWrite(message: OneofMessageMemberMessage, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* spec.OneofMessageMemberMessage.TestMessageA a = 1; */
-        if (message.objects.oneofKind === "a")
-            OneofMessageMemberMessage_TestMessageA.internalBinaryWrite(message.objects.a, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        if ("a" in message && message.a != null)
+            OneofMessageMemberMessage_TestMessageA.internalBinaryWrite(message.a, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* spec.OneofMessageMemberMessage.TestMessageB b = 2; */
-        if (message.objects.oneofKind === "b")
-            OneofMessageMemberMessage_TestMessageB.internalBinaryWrite(message.objects.b, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        if ("b" in message && message.b != null)
+            OneofMessageMemberMessage_TestMessageB.internalBinaryWrite(message.b, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -212,7 +176,7 @@ class OneofMessageMemberMessage_TestMessageA$Type extends MessageType<OneofMessa
         ]);
     }
     create(value?: PartialMessage<OneofMessageMemberMessage_TestMessageA>): OneofMessageMemberMessage_TestMessageA {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         if (value !== undefined)
             reflectionMergePartial<OneofMessageMemberMessage_TestMessageA>(this, message, value);
@@ -259,7 +223,7 @@ class OneofMessageMemberMessage_TestMessageB$Type extends MessageType<OneofMessa
         ]);
     }
     create(value?: PartialMessage<OneofMessageMemberMessage_TestMessageB>): OneofMessageMemberMessage_TestMessageB {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.name = "";
         if (value !== undefined)
             reflectionMergePartial<OneofMessageMemberMessage_TestMessageB>(this, message, value);

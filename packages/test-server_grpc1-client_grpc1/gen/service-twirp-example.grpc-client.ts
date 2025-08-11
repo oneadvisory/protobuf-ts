@@ -45,6 +45,6 @@ export class HaberdasherClient extends grpc.Client implements IHaberdasherClient
      */
     makeHat(input: Size, metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: Hat) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: Hat) => void), callback?: ((err: grpc.ServiceError | null, value?: Hat) => void)): grpc.ClientUnaryCall {
         const method = Haberdasher.methods[0];
-        return this.makeUnaryRequest<Size, Hat>(`/${Haberdasher.typeName}/${method.name}`, (value: Size): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Hat => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), (options as any), (callback as any));
+        return this.makeUnaryRequest<Size, Hat>(`/${Haberdasher.typeName}/${method.name}`, (value: Size): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Hat => method.O.fromBinary(value, this._binaryOptions), input, metadata as any, options as any, callback as any);
     }
 }

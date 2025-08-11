@@ -44,33 +44,23 @@ export interface MyMessage {
     /**
      * @generated from protobuf field: repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_e = 2;
      */
-    repeatedE: MyEnum[];
+    repeatedE?: MyEnum[];
     /**
      * @generated from protobuf field: repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_e = 3 [packed = true];
      */
-    repeatedPackedE: MyEnum[];
+    repeatedPackedE?: MyEnum[];
     /**
      * @generated from protobuf field: repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_unexpected_e = 4;
      */
-    repeatedPackedUnexpectedE: MyEnum[]; // not packed
+    repeatedPackedUnexpectedE?: MyEnum[]; // not packed
     /**
-     * @generated from protobuf oneof: o;
+     * @generated from protobuf field: proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_1 = 5;
      */
-    o: {
-        oneofKind: "oneofE1";
-        /**
-         * @generated from protobuf field: proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_1 = 5;
-         */
-        oneofE1: MyEnum;
-    } | {
-        oneofKind: "oneofE2";
-        /**
-         * @generated from protobuf field: proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_2 = 6;
-         */
-        oneofE2: MyEnum;
-    } | {
-        oneofKind: undefined;
-    };
+    oneofE1?: MyEnum;
+    /**
+     * @generated from protobuf field: proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_2 = 6;
+     */
+    oneofE2?: MyEnum;
 }
 /**
  * @generated from protobuf enum proto2_preserve_unknown_enum_unittest.MyEnum

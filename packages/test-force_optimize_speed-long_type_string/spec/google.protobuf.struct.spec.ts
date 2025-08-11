@@ -7,34 +7,28 @@ describe('google.protobuf.Struct', function () {
 
     let fixMessage: Struct = {
         fields: {
-            "bool": {kind: {oneofKind: 'boolValue', boolValue: true}},
-            "null": {kind: {oneofKind: 'nullValue', nullValue: NullValue.NULL_VALUE}},
-            "string": {kind: {oneofKind: 'stringValue', stringValue: "a string"}},
-            "number": {kind: {oneofKind: 'numberValue', numberValue: 123}},
+            "bool": {boolValue: true},
+            "null": {nullValue: NullValue.NULL_VALUE},
+            "string": {stringValue: "a string"},
+            "number": {numberValue: 123},
             "list": {
-                kind: {
-                    oneofKind: 'listValue',
-                    listValue: {
+                listValue: {
                         values: [
-                            {kind: {oneofKind: 'boolValue', boolValue: true}},
-                            {kind: {oneofKind: 'nullValue', nullValue: NullValue.NULL_VALUE}},
-                            {kind: {oneofKind: 'stringValue', stringValue: "a string"}},
-                            {kind: {oneofKind: 'numberValue', numberValue: 123}},
+                            {boolValue: true},
+                            {nullValue: NullValue.NULL_VALUE},
+                            {stringValue: "a string"},
+                            {numberValue: 123},
                         ]
                     }
-                }
             },
             "struct": {
-                kind: {
-                    oneofKind: 'structValue',
-                    structValue: {
-                        fields: {
-                            "bool": {kind: {oneofKind: 'boolValue', boolValue: true}},
-                            "null": {kind: {oneofKind: 'nullValue', nullValue: NullValue.NULL_VALUE}},
-                            "string": {kind: {oneofKind: 'stringValue', stringValue: "a string"}},
-                            "number": {kind: {oneofKind: 'numberValue', numberValue: 123}},
+                structValue: {
+                    fields: {
+                            "bool": {boolValue: true},
+                            "null": {nullValue: NullValue.NULL_VALUE},
+                            "string": {stringValue: "a string"},
+                            "number": {numberValue: 123},
                         }
-                    }
                 }
             },
         }

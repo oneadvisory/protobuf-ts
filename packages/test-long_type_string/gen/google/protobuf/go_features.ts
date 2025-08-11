@@ -69,7 +69,7 @@ class GoFeatures$Type extends MessageType<GoFeatures> {
         ]);
     }
     create(value?: PartialMessage<GoFeatures>): GoFeatures {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<GoFeatures>(this, message, value);
         return message;

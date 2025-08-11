@@ -64,7 +64,7 @@ class SourceContext$Type extends MessageType<SourceContext> {
         ]);
     }
     create(value?: PartialMessage<SourceContext>): SourceContext {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.fileName = "";
         if (value !== undefined)
             reflectionMergePartial<SourceContext>(this, message, value);

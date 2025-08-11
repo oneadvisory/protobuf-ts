@@ -32,7 +32,7 @@ class OptimizeForCodeSizeMessage$Type extends MessageType<OptimizeForCodeSizeMes
         ]);
     }
     create(value?: PartialMessage<OptimizeForCodeSizeMessage>): OptimizeForCodeSizeMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.doubleField = 0;
         message.floatField = 0;
         if (value !== undefined)

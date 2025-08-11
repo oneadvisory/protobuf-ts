@@ -50,27 +50,27 @@ export class AllStyleServiceClient extends grpc.Client implements IAllStyleServi
      */
     unary(input: StringValue, metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: Int32Value) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: Int32Value) => void), callback?: ((err: grpc.ServiceError | null, value?: Int32Value) => void)): grpc.ClientUnaryCall {
         const method = AllStyleService.methods[0];
-        return this.makeUnaryRequest<StringValue, Int32Value>(`/${AllStyleService.typeName}/${method.name}`, (value: StringValue): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Int32Value => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), (options as any), (callback as any));
+        return this.makeUnaryRequest<StringValue, Int32Value>(`/${AllStyleService.typeName}/${method.name}`, (value: StringValue): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Int32Value => method.O.fromBinary(value, this._binaryOptions), input, metadata as any, options as any, callback as any);
     }
     /**
      * @generated from protobuf rpc: ServerStream;
      */
     serverStream(input: StringValue, metadata?: grpc.Metadata | grpc.CallOptions, options?: grpc.CallOptions): grpc.ClientReadableStream<Int32Value> {
         const method = AllStyleService.methods[1];
-        return this.makeServerStreamRequest<StringValue, Int32Value>(`/${AllStyleService.typeName}/${method.name}`, (value: StringValue): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Int32Value => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), options);
+        return this.makeServerStreamRequest<StringValue, Int32Value>(`/${AllStyleService.typeName}/${method.name}`, (value: StringValue): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Int32Value => method.O.fromBinary(value, this._binaryOptions), input, metadata as any, options);
     }
     /**
      * @generated from protobuf rpc: ClientStream;
      */
     clientStream(metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: Int32Value) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: Int32Value) => void), callback?: ((err: grpc.ServiceError | null, value?: Int32Value) => void)): grpc.ClientWritableStream<StringValue> {
         const method = AllStyleService.methods[2];
-        return this.makeClientStreamRequest<StringValue, Int32Value>(`/${AllStyleService.typeName}/${method.name}`, (value: StringValue): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Int32Value => method.O.fromBinary(value, this._binaryOptions), (metadata as any), (options as any), (callback as any));
+        return this.makeClientStreamRequest<StringValue, Int32Value>(`/${AllStyleService.typeName}/${method.name}`, (value: StringValue): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Int32Value => method.O.fromBinary(value, this._binaryOptions), metadata as any, options as any, callback as any);
     }
     /**
      * @generated from protobuf rpc: Bidi;
      */
     bidi(metadata?: grpc.Metadata | grpc.CallOptions, options?: grpc.CallOptions): grpc.ClientDuplexStream<StringValue, Int32Value> {
         const method = AllStyleService.methods[3];
-        return this.makeBidiStreamRequest<StringValue, Int32Value>(`/${AllStyleService.typeName}/${method.name}`, (value: StringValue): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Int32Value => method.O.fromBinary(value, this._binaryOptions), (metadata as any), options);
+        return this.makeBidiStreamRequest<StringValue, Int32Value>(`/${AllStyleService.typeName}/${method.name}`, (value: StringValue): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): Int32Value => method.O.fromBinary(value, this._binaryOptions), metadata as any, options);
     }
 }

@@ -7,7 +7,7 @@ describe('google.protobuf.FieldMask', function () {
         it('converts snake_case to camelCase', function () {
             let mask: FieldMask = { paths: [] };
             function snakeToCamel(s: string) {
-                mask.paths[0] = s;
+                mask.paths![0] = s;
                 return FieldMask.toJson(mask);
             }
             expect(snakeToCamel('foo_bar')).toBe('fooBar');
@@ -51,7 +51,7 @@ describe('google.protobuf.FieldMask', function () {
         // Based on https://github.com/protocolbuffers/protobuf/blob/e8ae137c96444ea313485ed1118c5e43b2099cf1/src/google/protobuf/util/field_mask_util_test.cc#L84-L90
         it('converts camelCase to snake_case', function () {
             function camelToSnake(s: string) {
-                return FieldMask.fromJson(s).paths[0];
+                return FieldMask.fromJson(s)?.paths?.[0];
             }
             expect(camelToSnake('fooBar')).toBe('foo_bar');
             expect(camelToSnake('FooBar')).toBe('_foo_bar');

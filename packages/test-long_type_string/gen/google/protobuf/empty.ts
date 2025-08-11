@@ -60,7 +60,7 @@ class Empty$Type extends MessageType<Empty> {
         super("google.protobuf.Empty", []);
     }
     create(value?: PartialMessage<Empty>): Empty {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<Empty>(this, message, value);
         return message;

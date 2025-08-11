@@ -17,7 +17,7 @@ export interface TestInvalidFeatures {
     /**
      * @generated from protobuf field: repeated int32 repeated_feature = 1;
      */
-    repeatedFeature: number[];
+    repeatedFeature?: number[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class TestInvalidFeatures$Type extends MessageType<TestInvalidFeatures> {

@@ -74,63 +74,63 @@ export interface RepeatedScalarValuesMessage {
     /**
      * @generated from protobuf field: repeated double double_field = 1;
      */
-    doubleField: number[];
+    doubleField?: number[];
     /**
      * @generated from protobuf field: repeated float float_field = 2;
      */
-    floatField: number[];
+    floatField?: number[];
     /**
      * @generated from protobuf field: repeated int64 int64_field = 3;
      */
-    int64Field: bigint[];
+    int64Field?: bigint[];
     /**
      * @generated from protobuf field: repeated uint64 uint64_field = 4;
      */
-    uint64Field: bigint[];
+    uint64Field?: bigint[];
     /**
      * @generated from protobuf field: repeated int32 int32_field = 5;
      */
-    int32Field: number[];
+    int32Field?: number[];
     /**
      * @generated from protobuf field: repeated fixed64 fixed64_field = 6;
      */
-    fixed64Field: bigint[];
+    fixed64Field?: bigint[];
     /**
      * @generated from protobuf field: repeated fixed32 fixed32_field = 7;
      */
-    fixed32Field: number[];
+    fixed32Field?: number[];
     /**
      * @generated from protobuf field: repeated bool bool_field = 8;
      */
-    boolField: boolean[];
+    boolField?: boolean[];
     /**
      * @generated from protobuf field: repeated string string_field = 9;
      */
-    stringField: string[];
+    stringField?: string[];
     /**
      * @generated from protobuf field: repeated bytes bytes_field = 11;
      */
-    bytesField: Uint8Array[];
+    bytesField?: Uint8Array[];
     /**
      * @generated from protobuf field: repeated uint32 uint32_field = 12;
      */
-    uint32Field: number[];
+    uint32Field?: number[];
     /**
      * @generated from protobuf field: repeated sfixed32 sfixed32_field = 14;
      */
-    sfixed32Field: number[];
+    sfixed32Field?: number[];
     /**
      * @generated from protobuf field: repeated sfixed64 sfixed64_field = 15;
      */
-    sfixed64Field: bigint[];
+    sfixed64Field?: bigint[];
     /**
      * @generated from protobuf field: repeated sint32 sint32_field = 16;
      */
-    sint32Field: number[];
+    sint32Field?: number[];
     /**
      * @generated from protobuf field: repeated sint64 sint64_field = 17;
      */
-    sint64Field: bigint[];
+    sint64Field?: bigint[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class ScalarValuesMessage$Type extends MessageType<ScalarValuesMessage> {

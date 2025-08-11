@@ -3,7 +3,7 @@
 // webpack verbose output hints that this should be useful
 
 // Convenience JSON typings and corresponding type guards
-export {JsonValue, JsonObject, typeofJsonValue, isJsonObject} from './json-typings';
+export {type JsonValue, type JsonObject, typeofJsonValue, isJsonObject} from './json-typings';
 
 // Base 64 encoding
 export {base64decode, base64encode} from './base64';
@@ -14,11 +14,11 @@ export {utf8read} from './protobufjs-utf8';
 // Binary format contracts, options for reading and writing, for example
 export {
     WireType,
-    BinaryReadOptions,
-    BinaryWriteOptions,
+    type BinaryReadOptions,
+    type BinaryWriteOptions,
     mergeBinaryOptions,
-    IBinaryWriter,
-    IBinaryReader,
+    type IBinaryWriter,
+    type IBinaryReader,
     UnknownFieldHandler,
 } from './binary-format-contract';
 
@@ -33,11 +33,11 @@ export {PbLong, PbULong} from './pb-long';
 
 // JSON format contracts, options for reading and writing, for example
 export {
-    JsonReadOptions, JsonWriteOptions, JsonWriteStringOptions, jsonReadOptions, jsonWriteOptions, mergeJsonOptions
+    type JsonReadOptions, type JsonWriteOptions, type JsonWriteStringOptions, jsonReadOptions, jsonWriteOptions, mergeJsonOptions
 } from './json-format-contract';
 
 // Message type contract
-export {IMessageType, PartialMessage, MESSAGE_TYPE} from './message-type-contract';
+export {type IMessageType, type PartialMessage, MESSAGE_TYPE} from './message-type-contract';
 
 // Message type implementation via reflection
 export {MessageType} from './message-type';
@@ -47,10 +47,10 @@ export {
     ScalarType,
     LongType,
     RepeatType,
-    MessageInfo,
-    EnumInfo,
-    FieldInfo,
-    PartialFieldInfo,
+    type MessageInfo,
+    type EnumInfo,
+    type FieldInfo,
+    type PartialFieldInfo,
     normalizeFieldInfo,
     readFieldOptions,
     readFieldOption,
@@ -59,11 +59,11 @@ export {
 
 // Types for messsage objects type at runtime, when concrete type is unknown.
 export {
-    UnknownEnum,
-    UnknownMap,
-    UnknownMessage,
-    UnknownOneofGroup,
-    UnknownScalar
+    type UnknownEnum,
+    type UnknownMap,
+    type UnknownMessage,
+    type UnknownOneofGroup,
+    type UnknownScalar
 } from './unknown-types';
 
 // Message operations via reflection
@@ -76,13 +76,10 @@ export {ReflectionBinaryReader} from './reflection-binary-reader';
 export {ReflectionBinaryWriter} from './reflection-binary-writer';
 export {ReflectionJsonReader} from './reflection-json-reader';
 export {ReflectionJsonWriter} from './reflection-json-writer';
-export {containsMessageType, MessageTypeContainer} from './reflection-contains-message-type';
-
-// Oneof helpers
-export {isOneofGroup, setOneofValue, getOneofValue, clearOneofValue, getSelectedOneofValue} from './oneof';
+export {containsMessageType, type MessageTypeContainer} from './reflection-contains-message-type';
 
 // Enum object type guard and reflection util, may be interesting to the user.
-export {EnumObjectValue, listEnumValues, listEnumNames, listEnumNumbers, isEnumObject} from './enum-object';
+export {type EnumObjectValue, listEnumValues, listEnumNames, listEnumNumbers, isEnumObject} from './enum-object';
 
 // lowerCamelCase() is exported for plugin, rpc-runtime and other rpc packages
 export {lowerCamelCase} from './lower-camel-case';

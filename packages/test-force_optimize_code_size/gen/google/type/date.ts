@@ -80,7 +80,9 @@ class Date$Type extends MessageType<Date> {
      */
     fromJsDate(date: globalThis.Date): Date {
         return {
-            year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate(),
+            year: date.getFullYear(),
+            month: date.getMonth() + 1,
+            day: date.getDate(),
         };
     }
 }

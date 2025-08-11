@@ -68,7 +68,7 @@ class Proto2OptionalsMessage$Type extends MessageType<Proto2OptionalsMessage> {
         ]);
     }
     create(value?: PartialMessage<Proto2OptionalsMessage>): Proto2OptionalsMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<Proto2OptionalsMessage>(this, message, value);
         return message;
@@ -132,7 +132,7 @@ class Proto2OptionalsMessage_TestMessage$Type extends MessageType<Proto2Optional
         ]);
     }
     create(value?: PartialMessage<Proto2OptionalsMessage_TestMessage>): Proto2OptionalsMessage_TestMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.field = "";
         if (value !== undefined)
             reflectionMergePartial<Proto2OptionalsMessage_TestMessage>(this, message, value);

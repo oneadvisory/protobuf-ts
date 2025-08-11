@@ -206,7 +206,7 @@ class TestProto3Optional$Type extends MessageType<TestProto3Optional> {
         ]);
     }
     create(value?: PartialMessage<TestProto3Optional>): TestProto3Optional {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.singularInt32 = 0;
         message.singularInt64 = 0n;
         if (value !== undefined)
@@ -374,7 +374,7 @@ class TestProto3Optional_NestedMessage$Type extends MessageType<TestProto3Option
         ]);
     }
     create(value?: PartialMessage<TestProto3Optional_NestedMessage>): TestProto3Optional_NestedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestProto3Optional_NestedMessage>(this, message, value);
         return message;
@@ -421,7 +421,7 @@ class TestProto3OptionalMessage$Type extends MessageType<TestProto3OptionalMessa
         ]);
     }
     create(value?: PartialMessage<TestProto3OptionalMessage>): TestProto3OptionalMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<TestProto3OptionalMessage>(this, message, value);
         return message;
@@ -473,7 +473,7 @@ class TestProto3OptionalMessage_NestedMessage$Type extends MessageType<TestProto
         ]);
     }
     create(value?: PartialMessage<TestProto3OptionalMessage_NestedMessage>): TestProto3OptionalMessage_NestedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         message.s = "";
         if (value !== undefined)
             reflectionMergePartial<TestProto3OptionalMessage_NestedMessage>(this, message, value);
@@ -518,7 +518,7 @@ class Proto3OptionalExtensions$Type extends MessageType<Proto3OptionalExtensions
         super("protobuf_unittest.Proto3OptionalExtensions", [], { "protobuf_unittest.Proto3OptionalExtensions.ext_no_optional": 8, "protobuf_unittest.Proto3OptionalExtensions.ext_with_optional": 16 });
     }
     create(value?: PartialMessage<Proto3OptionalExtensions>): Proto3OptionalExtensions {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<Proto3OptionalExtensions>(this, message, value);
         return message;

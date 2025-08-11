@@ -82,7 +82,7 @@ class ImportedMessage$Type extends MessageType<ImportedMessage> {
         ]);
     }
     create(value?: PartialMessage<ImportedMessage>): ImportedMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<ImportedMessage>(this, message, value);
         return message;
@@ -126,7 +126,7 @@ class MessageCustomOption$Type extends MessageType<MessageCustomOption> {
         super("protobuf_unittest.lazy_imports.MessageCustomOption", []);
     }
     create(value?: PartialMessage<MessageCustomOption>): MessageCustomOption {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<MessageCustomOption>(this, message, value);
         return message;
@@ -164,7 +164,7 @@ class MessageCustomOption2$Type extends MessageType<MessageCustomOption2> {
         super("protobuf_unittest.lazy_imports.MessageCustomOption2", [], { "protobuf_unittest.lazy_imports.lazy_enum_option": "LAZY_ENUM_0" });
     }
     create(value?: PartialMessage<MessageCustomOption2>): MessageCustomOption2 {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<MessageCustomOption2>(this, message, value);
         return message;

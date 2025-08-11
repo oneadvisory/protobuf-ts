@@ -17,8 +17,8 @@ export function reflectionEquals(info: MessageInfo, a: UnknownMessage | undefine
         return false;
     for (let field of info.fields) {
         let localName = field.localName;
-        let val_a = field.oneof ? (a[field.oneof] as UnknownOneofGroup)[localName] : a[localName];
-        let val_b = field.oneof ? (b[field.oneof] as UnknownOneofGroup)[localName] : b[localName];
+        let val_a = a[localName];
+        let val_b = b[localName];
         switch (field.kind) {
             case "enum":
             case "scalar":

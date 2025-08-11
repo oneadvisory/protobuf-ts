@@ -32,7 +32,7 @@ export interface Http {
      *
      * @generated from protobuf field: repeated google.api.HttpRule rules = 1;
      */
-    rules: HttpRule[];
+    rules?: HttpRule[];
     /**
      * When set to true, URL path parameters will be fully URI-decoded except in
      * cases of single segment matches in reserved expansion, where "%2F" will be
@@ -328,67 +328,45 @@ export interface HttpRule {
      */
     selector: string;
     /**
-     * Determines the URL pattern is matched by this rules. This pattern can be
-     * used with any of the {get|put|post|delete|patch} methods. A custom method
-     * can be defined using the 'custom' field.
+     * Maps to HTTP GET. Used for listing and getting information about
+     * resources.
      *
-     * @generated from protobuf oneof: pattern;
+     * @generated from protobuf field: string get = 2;
      */
-    pattern: {
-        oneofKind: "get";
-        /**
-         * Maps to HTTP GET. Used for listing and getting information about
-         * resources.
-         *
-         * @generated from protobuf field: string get = 2;
-         */
-        get: string;
-    } | {
-        oneofKind: "put";
-        /**
-         * Maps to HTTP PUT. Used for replacing a resource.
-         *
-         * @generated from protobuf field: string put = 3;
-         */
-        put: string;
-    } | {
-        oneofKind: "post";
-        /**
-         * Maps to HTTP POST. Used for creating a resource or performing an action.
-         *
-         * @generated from protobuf field: string post = 4;
-         */
-        post: string;
-    } | {
-        oneofKind: "delete";
-        /**
-         * Maps to HTTP DELETE. Used for deleting a resource.
-         *
-         * @generated from protobuf field: string delete = 5;
-         */
-        delete: string;
-    } | {
-        oneofKind: "patch";
-        /**
-         * Maps to HTTP PATCH. Used for updating a resource.
-         *
-         * @generated from protobuf field: string patch = 6;
-         */
-        patch: string;
-    } | {
-        oneofKind: "custom";
-        /**
-         * The custom pattern is used for specifying an HTTP method that is not
-         * included in the `pattern` field, such as HEAD, or "*" to leave the
-         * HTTP method unspecified for this rule. The wild-card rule is useful
-         * for services that provide content to Web (HTML) clients.
-         *
-         * @generated from protobuf field: google.api.CustomHttpPattern custom = 8;
-         */
-        custom: CustomHttpPattern;
-    } | {
-        oneofKind: undefined;
-    };
+    get?: string;
+    /**
+     * Maps to HTTP PUT. Used for replacing a resource.
+     *
+     * @generated from protobuf field: string put = 3;
+     */
+    put?: string;
+    /**
+     * Maps to HTTP POST. Used for creating a resource or performing an action.
+     *
+     * @generated from protobuf field: string post = 4;
+     */
+    post?: string;
+    /**
+     * Maps to HTTP DELETE. Used for deleting a resource.
+     *
+     * @generated from protobuf field: string delete = 5;
+     */
+    delete?: string;
+    /**
+     * Maps to HTTP PATCH. Used for updating a resource.
+     *
+     * @generated from protobuf field: string patch = 6;
+     */
+    patch?: string;
+    /**
+     * The custom pattern is used for specifying an HTTP method that is not
+     * included in the `pattern` field, such as HEAD, or "*" to leave the
+     * HTTP method unspecified for this rule. The wild-card rule is useful
+     * for services that provide content to Web (HTML) clients.
+     *
+     * @generated from protobuf field: google.api.CustomHttpPattern custom = 8;
+     */
+    custom?: CustomHttpPattern;
     /**
      * The name of the request field whose value is mapped to the HTTP request
      * body, or `*` for mapping all request fields not captured by the path
@@ -418,7 +396,7 @@ export interface HttpRule {
      *
      * @generated from protobuf field: repeated google.api.HttpRule additional_bindings = 11;
      */
-    additionalBindings: HttpRule[];
+    additionalBindings?: HttpRule[];
 }
 /**
  * A custom pattern is used for defining custom HTTP verb.

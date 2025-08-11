@@ -31,7 +31,7 @@ class EmptyMessage$Type extends MessageType<EmptyMessage> {
         ]);
     }
     create(value?: PartialMessage<EmptyMessage>): EmptyMessage {
-        const message = globalThis.Object.create((this.messagePrototype!));
+        const message = globalThis.Object.create(this.messagePrototype!);
         if (value !== undefined)
             reflectionMergePartial<EmptyMessage>(this, message, value);
         return message;
