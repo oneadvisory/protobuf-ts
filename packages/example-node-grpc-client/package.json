@@ -1,6 +1,6 @@
 {
   "name": "@oneadvisory/protobuf-ts-example-node-grpc-client",
-  "version": "2.11.1",
+  "version": "3.0.0",
   "description": "",
   "private": true,
   "scripts": {
@@ -14,15 +14,15 @@
   "homepage": "https://github.com/oneadvisory/protobuf-ts",
   "dependencies": {
     "@grpc/grpc-js": "^1.2.2",
-    "@oneadvisory/protobuf-ts-plugin": "^2.11.1",
-    "@oneadvisory/protobuf-ts-protoc": "^2.11.1",
-    "@oneadvisory/protobuf-ts-runtime": "^2.11.1",
-    "@oneadvisory/protobuf-ts-runtime-rpc": "^2.11.1",
+    "@oneadvisory/protobuf-ts-plugin": "^3.0.0",
+    "@oneadvisory/protobuf-ts-protoc": "^3.0.0",
+    "@oneadvisory/protobuf-ts-runtime": "^3.0.0",
+    "@oneadvisory/protobuf-ts-runtime-rpc": "^3.0.0",
     "ts-node": "^8.10.2",
     "typescript": "5.x.x"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.50.1",
-    "@oneadvisory/protobuf-ts-plugin": "^2.11.1"
+    "@oneadvisory/protobuf-ts-plugin": "^3.0.0"
   }
 }

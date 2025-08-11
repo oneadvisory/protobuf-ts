@@ -1,6 +1,6 @@
 {
   "name": "@oneadvisory/protobuf-ts-example-browser-grpcweb-transport-client",
-  "version": "2.11.1",
+  "version": "3.0.0",
   "description": "",
   "private": true,
   "scripts": {
@@ -13,13 +13,13 @@
   "license": "Apache-2.0",
   "homepage": "https://github.com/oneadvisory/protobuf-ts",
   "dependencies": {
-    "@oneadvisory/protobuf-ts-grpcweb-transport": "^2.11.1",
-    "@oneadvisory/protobuf-ts-runtime": "^2.11.1",
-    "@oneadvisory/protobuf-ts-runtime-rpc": "^2.11.1"
+    "@oneadvisory/protobuf-ts-grpcweb-transport": "^3.0.0",
+    "@oneadvisory/protobuf-ts-runtime": "^3.0.0",
+    "@oneadvisory/protobuf-ts-runtime-rpc": "^3.0.0"
   },
   "devDependencies": {
-    "@oneadvisory/protobuf-ts-plugin": "^2.11.1",
-    "@oneadvisory/protobuf-ts-protoc": "^2.11.1",
+    "@oneadvisory/protobuf-ts-plugin": "^3.0.0",
+    "@oneadvisory/protobuf-ts-protoc": "^3.0.0",
     "esbuild": "^0.25.0",
     "typescript": "5.x.x"
   }

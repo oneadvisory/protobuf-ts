@@ -1,6 +1,6 @@
 {
   "name": "@oneadvisory/protobuf-ts-example-node-grpcweb-transport-client",
-  "version": "2.11.1",
+  "version": "3.0.0",
   "description": "",
   "private": true,
   "scripts": {
@@ -14,9 +14,9 @@
   "homepage": "https://github.com/oneadvisory/protobuf-ts",
   "dependencies": {
     "@grpc/grpc-js": "^1.2.2",
-    "@oneadvisory/protobuf-ts-grpcweb-transport": "^2.11.1",
-    "@oneadvisory/protobuf-ts-runtime": "^2.11.1",
-    "@oneadvisory/protobuf-ts-runtime-rpc": "^2.11.1",
+    "@oneadvisory/protobuf-ts-grpcweb-transport": "^3.0.0",
+    "@oneadvisory/protobuf-ts-runtime": "^3.0.0",
+    "@oneadvisory/protobuf-ts-runtime-rpc": "^3.0.0",
     "@types/node-fetch": "^2.5.8",
     "abort-controller": "^3.0.0",
     "node-fetch": "^2.6.1",
@@ -25,6 +25,6 @@
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.50.1",
-    "@oneadvisory/protobuf-ts-plugin": "^2.11.1"
+    "@oneadvisory/protobuf-ts-plugin": "^3.0.0"
   }
 }

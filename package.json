@@ -8,7 +8,7 @@
     "clean": "git clean -Xdf",
     "all": "turbo run --ui tui build generate test",
     "affected": "turbo run --affected --ui tui build generate test",
-    "setversion": "fnm exec --using v22 node scripts/set-version.mjs",
+    "setversion": "node scripts/set-version.mjs",
     "postsetversion": "npm run all",
     "publish": "./scripts/publish.bash"
   },
