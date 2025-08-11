@@ -235,14 +235,6 @@ function ensureNamedImportPresent(
   }
   let as: string | undefined;
   if (taken.includes(importName)) {
-    console.error(
-      'taken',
-      taken,
-      importName,
-      importFrom,
-      isTypeOnly,
-      all.find((ni) => ni.name === importName && ni.from === importFrom)
-    );
     let i = 0;
     as = importName;
     while (taken.includes(as)) {
