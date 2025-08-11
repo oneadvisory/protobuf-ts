@@ -587,6 +587,14 @@ export class InternalBinaryRead implements CustomMethodGenerator {
     );
     return [
       ts.factory.createExpressionStatement(
+        ts.factory.createBinaryExpression(
+          fieldPropertyAccess,
+          ts.factory.createToken(ts.SyntaxKind.QuestionQuestionEqualsToken),
+          ts.factory.createArrayLiteralExpression([])
+        )
+      ),
+
+      ts.factory.createExpressionStatement(
         ts.factory.createCallChain(
           ts.factory.createPropertyAccessChain(
             fieldPropertyAccess,
@@ -737,6 +745,13 @@ export class InternalBinaryRead implements CustomMethodGenerator {
         // message.${fieldName}.push(reader.${readerMethod}());
         return [
           ts.factory.createExpressionStatement(
+            ts.factory.createBinaryExpression(
+              fieldPropertyAccess,
+              ts.factory.createToken(ts.SyntaxKind.QuestionQuestionEqualsToken),
+              ts.factory.createArrayLiteralExpression([])
+            )
+          ),
+          ts.factory.createExpressionStatement(
             ts.factory.createCallChain(
               ts.factory.createPropertyAccessChain(
                 fieldPropertyAccess,
@@ -753,6 +768,14 @@ export class InternalBinaryRead implements CustomMethodGenerator {
       default:
         // maybe packed
         return [
+          ts.factory.createExpressionStatement(
+            ts.factory.createBinaryExpression(
+              fieldPropertyAccess,
+              ts.factory.createToken(ts.SyntaxKind.QuestionQuestionEqualsToken),
+              ts.factory.createArrayLiteralExpression([])
+            )
+          ),
+
           ts.factory.createIfStatement(
             ts.factory.createBinaryExpression(
               ts.factory.createIdentifier('wireType'),
