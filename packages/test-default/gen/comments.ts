@@ -125,46 +125,30 @@ export interface GoogleCommentExample {
  *
  * @generated from protobuf enum spec.EnumWithComments
  */
-export enum EnumWithComments {
-    /**
-     * Comment before enum value.
-     *
-     * Comment next to enum value.
-     *
-     * @generated from protobuf enum value: VALUE = 0;
-     */
-    VALUE = 0
-}
+export type EnumWithComments = "VALUE";
+export const EnumWithComments = {
+    VALUE: "VALUE"
+} as const;
 /**
  * Leading comment for deprecated enum
  *
  * @deprecated
  * @generated from protobuf enum spec.DeprecatedEnumWithComment
  */
-export enum DeprecatedEnumWithComment {
-    /**
-     * @generated from protobuf enum value: DEPRECATED_ENUM_WITH_COMMENT_A = 0;
-     */
-    DEPRECATED_ENUM_WITH_COMMENT_A = 0,
-    /**
-     * @generated from protobuf enum value: DEPRECATED_ENUM_WITH_COMMENT_B = 1;
-     */
-    DEPRECATED_ENUM_WITH_COMMENT_B = 1
-}
+export type DeprecatedEnumWithComment = "DEPRECATED_ENUM_WITH_COMMENT_A" | "DEPRECATED_ENUM_WITH_COMMENT_B";
+export const DeprecatedEnumWithComment = {
+    DEPRECATED_ENUM_WITH_COMMENT_A: "DEPRECATED_ENUM_WITH_COMMENT_A",
+    DEPRECATED_ENUM_WITH_COMMENT_B: "DEPRECATED_ENUM_WITH_COMMENT_B"
+} as const;
 /**
  * @deprecated
  * @generated from protobuf enum spec.DeprecatedEnumNoComment
  */
-export enum DeprecatedEnumNoComment {
-    /**
-     * @generated from protobuf enum value: DEPRECATED_ENUM_NO_COMMENT_A = 0;
-     */
-    DEPRECATED_ENUM_NO_COMMENT_A = 0,
-    /**
-     * @generated from protobuf enum value: DEPRECATED_ENUM_NO_COMMENT_B = 1;
-     */
-    DEPRECATED_ENUM_NO_COMMENT_B = 1
-}
+export type DeprecatedEnumNoComment = "DEPRECATED_ENUM_NO_COMMENT_A" | "DEPRECATED_ENUM_NO_COMMENT_B";
+export const DeprecatedEnumNoComment = {
+    DEPRECATED_ENUM_NO_COMMENT_A: "DEPRECATED_ENUM_NO_COMMENT_A",
+    DEPRECATED_ENUM_NO_COMMENT_B: "DEPRECATED_ENUM_NO_COMMENT_B"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class MessageWithComments$Type extends MessageType<MessageWithComments> {
     constructor() {

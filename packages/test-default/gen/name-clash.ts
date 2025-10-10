@@ -324,44 +324,15 @@ export interface NoClashEnumWrap {
 /**
  * @generated from protobuf enum spec.NoClashEnumWrap.X
  */
-export enum NoClashEnumWrap_X {
-    /**
-     * ok as object property
-     *
-     * @generated from protobuf enum value: instanceof = 0;
-     */
-    instanceof = 0,
-    /**
-     * ok as object property
-     *
-     * @generated from protobuf enum value: switch = 1;
-     */
-    switch = 1,
-    /**
-     * ok as object property
-     *
-     * @generated from protobuf enum value: case = 3;
-     */
-    case = 3,
-    /**
-     * ok as object property
-     *
-     * @generated from protobuf enum value: function = 4;
-     */
-    function = 4,
-    /**
-     * ok as object property
-     *
-     * @generated from protobuf enum value: interface = 5;
-     */
-    interface = 5,
-    /**
-     * ok as object property
-     *
-     * @generated from protobuf enum value: return = 6;
-     */
-    return = 6
-}
+export type NoClashEnumWrap_X = "instanceof" | "switch" | "case" | "function" | "interface" | "return";
+export const NoClashEnumWrap_X = {
+    instanceof: "instanceof",
+    switch: "switch",
+    case: "case",
+    function: "function",
+    interface: "interface",
+    return: "return"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ReservedFieldNames$Type extends MessageType$<ReservedFieldNames> {
     constructor() {

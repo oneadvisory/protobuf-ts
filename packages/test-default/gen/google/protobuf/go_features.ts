@@ -38,28 +38,13 @@ export interface GoFeatures {
 /**
  * @generated from protobuf enum pb.GoFeatures.APILevel
  */
-export enum GoFeatures_APILevel {
-    /**
-     * API_LEVEL_UNSPECIFIED results in selecting the OPEN API,
-     * but needs to be a separate value to distinguish between
-     * an explicitly set api level or a missing api level.
-     *
-     * @generated from protobuf enum value: API_LEVEL_UNSPECIFIED = 0;
-     */
-    API_LEVEL_UNSPECIFIED = 0,
-    /**
-     * @generated from protobuf enum value: API_OPEN = 1;
-     */
-    API_OPEN = 1,
-    /**
-     * @generated from protobuf enum value: API_HYBRID = 2;
-     */
-    API_HYBRID = 2,
-    /**
-     * @generated from protobuf enum value: API_OPAQUE = 3;
-     */
-    API_OPAQUE = 3
-}
+export type GoFeatures_APILevel = "API_LEVEL_UNSPECIFIED" | "API_OPEN" | "API_HYBRID" | "API_OPAQUE";
+export const GoFeatures_APILevel = {
+    API_LEVEL_UNSPECIFIED: "API_LEVEL_UNSPECIFIED",
+    API_OPEN: "API_OPEN",
+    API_HYBRID: "API_HYBRID",
+    API_OPAQUE: "API_OPAQUE"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class GoFeatures$Type extends MessageType<GoFeatures> {
     constructor() {

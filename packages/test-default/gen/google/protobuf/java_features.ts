@@ -42,28 +42,12 @@ export interface JavaFeatures {
  *
  * @generated from protobuf enum pb.JavaFeatures.Utf8Validation
  */
-export enum JavaFeatures_Utf8Validation {
-    /**
-     * Invalid default, which should never be used.
-     *
-     * @generated from protobuf enum value: UTF8_VALIDATION_UNKNOWN = 0;
-     */
-    UTF8_VALIDATION_UNKNOWN = 0,
-    /**
-     * Respect the UTF8 validation behavior specified by the global
-     * utf8_validation feature.
-     *
-     * @generated from protobuf enum value: DEFAULT = 1;
-     */
-    DEFAULT = 1,
-    /**
-     * Verifies UTF8 validity overriding the global utf8_validation
-     * feature. This represents the legacy java_string_check_utf8 option.
-     *
-     * @generated from protobuf enum value: VERIFY = 2;
-     */
-    VERIFY = 2
-}
+export type JavaFeatures_Utf8Validation = "UTF8_VALIDATION_UNKNOWN" | "DEFAULT" | "VERIFY";
+export const JavaFeatures_Utf8Validation = {
+    UTF8_VALIDATION_UNKNOWN: "UTF8_VALIDATION_UNKNOWN",
+    DEFAULT: "DEFAULT",
+    VERIFY: "VERIFY"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class JavaFeatures$Type extends MessageType<JavaFeatures> {
     constructor() {

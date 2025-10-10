@@ -48,32 +48,21 @@ export interface DeprecatedFieldMessage {
  * @deprecated
  * @generated from protobuf enum spec.DeprecatedEnum
  */
-export enum DeprecatedEnum {
-    /**
-     * @generated from protobuf enum value: DEPRECATED_ENUM_A = 0;
-     */
-    DEPRECATED_ENUM_A = 0,
-    /**
-     * @generated from protobuf enum value: DEPRECATED_ENUM_B = 1;
-     */
-    DEPRECATED_ENUM_B = 1
-}
+export type DeprecatedEnum = "DEPRECATED_ENUM_A" | "DEPRECATED_ENUM_B";
+export const DeprecatedEnum = {
+    DEPRECATED_ENUM_A: "DEPRECATED_ENUM_A",
+    DEPRECATED_ENUM_B: "DEPRECATED_ENUM_B"
+} as const;
 /**
  * Only a single enum value is deprecated
  *
  * @generated from protobuf enum spec.DeprecatedValueEnum
  */
-export enum DeprecatedValueEnum {
-    /**
-     * @generated from protobuf enum value: DEPRECATED_VALUE_ENUM_UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
-    /**
-     * @deprecated
-     * @generated from protobuf enum value: DEPRECATED_VALUE_ENUM_DEPRECATED_VALUE = 1 [deprecated = true];
-     */
-    DEPRECATED_VALUE = 1
-}
+export type DeprecatedValueEnum = "UNSPECIFIED" | "DEPRECATED_VALUE";
+export const DeprecatedValueEnum = {
+    UNSPECIFIED: "UNSPECIFIED",
+    DEPRECATED_VALUE: "DEPRECATED_VALUE"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class DeprecatedMessage$Type extends MessageType<DeprecatedMessage> {
     constructor() {

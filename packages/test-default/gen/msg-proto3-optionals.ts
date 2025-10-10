@@ -43,20 +43,12 @@ export interface Proto3OptionalsMessage_TestMessage {
 /**
  * @generated from protobuf enum spec.Proto3OptionalsMessage.TestEnum
  */
-export enum Proto3OptionalsMessage_TestEnum {
-    /**
-     * @generated from protobuf enum value: ANY = 0;
-     */
-    ANY = 0,
-    /**
-     * @generated from protobuf enum value: YES = 1;
-     */
-    YES = 1,
-    /**
-     * @generated from protobuf enum value: NO = 2;
-     */
-    NO = 2
-}
+export type Proto3OptionalsMessage_TestEnum = "ANY" | "YES" | "NO";
+export const Proto3OptionalsMessage_TestEnum = {
+    ANY: "ANY",
+    YES: "YES",
+    NO: "NO"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class Proto3OptionalsMessage$Type extends MessageType<Proto3OptionalsMessage> {
     constructor() {

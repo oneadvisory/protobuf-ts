@@ -166,153 +166,40 @@ export interface Field {
  *
  * @generated from protobuf enum google.protobuf.Field.Kind
  */
-export enum Field_Kind {
-    /**
-     * Field type unknown.
-     *
-     * @generated from protobuf enum value: TYPE_UNKNOWN = 0;
-     */
-    TYPE_UNKNOWN = 0,
-    /**
-     * Field type double.
-     *
-     * @generated from protobuf enum value: TYPE_DOUBLE = 1;
-     */
-    TYPE_DOUBLE = 1,
-    /**
-     * Field type float.
-     *
-     * @generated from protobuf enum value: TYPE_FLOAT = 2;
-     */
-    TYPE_FLOAT = 2,
-    /**
-     * Field type int64.
-     *
-     * @generated from protobuf enum value: TYPE_INT64 = 3;
-     */
-    TYPE_INT64 = 3,
-    /**
-     * Field type uint64.
-     *
-     * @generated from protobuf enum value: TYPE_UINT64 = 4;
-     */
-    TYPE_UINT64 = 4,
-    /**
-     * Field type int32.
-     *
-     * @generated from protobuf enum value: TYPE_INT32 = 5;
-     */
-    TYPE_INT32 = 5,
-    /**
-     * Field type fixed64.
-     *
-     * @generated from protobuf enum value: TYPE_FIXED64 = 6;
-     */
-    TYPE_FIXED64 = 6,
-    /**
-     * Field type fixed32.
-     *
-     * @generated from protobuf enum value: TYPE_FIXED32 = 7;
-     */
-    TYPE_FIXED32 = 7,
-    /**
-     * Field type bool.
-     *
-     * @generated from protobuf enum value: TYPE_BOOL = 8;
-     */
-    TYPE_BOOL = 8,
-    /**
-     * Field type string.
-     *
-     * @generated from protobuf enum value: TYPE_STRING = 9;
-     */
-    TYPE_STRING = 9,
-    /**
-     * Field type group. Proto2 syntax only, and deprecated.
-     *
-     * @generated from protobuf enum value: TYPE_GROUP = 10;
-     */
-    TYPE_GROUP = 10,
-    /**
-     * Field type message.
-     *
-     * @generated from protobuf enum value: TYPE_MESSAGE = 11;
-     */
-    TYPE_MESSAGE = 11,
-    /**
-     * Field type bytes.
-     *
-     * @generated from protobuf enum value: TYPE_BYTES = 12;
-     */
-    TYPE_BYTES = 12,
-    /**
-     * Field type uint32.
-     *
-     * @generated from protobuf enum value: TYPE_UINT32 = 13;
-     */
-    TYPE_UINT32 = 13,
-    /**
-     * Field type enum.
-     *
-     * @generated from protobuf enum value: TYPE_ENUM = 14;
-     */
-    TYPE_ENUM = 14,
-    /**
-     * Field type sfixed32.
-     *
-     * @generated from protobuf enum value: TYPE_SFIXED32 = 15;
-     */
-    TYPE_SFIXED32 = 15,
-    /**
-     * Field type sfixed64.
-     *
-     * @generated from protobuf enum value: TYPE_SFIXED64 = 16;
-     */
-    TYPE_SFIXED64 = 16,
-    /**
-     * Field type sint32.
-     *
-     * @generated from protobuf enum value: TYPE_SINT32 = 17;
-     */
-    TYPE_SINT32 = 17,
-    /**
-     * Field type sint64.
-     *
-     * @generated from protobuf enum value: TYPE_SINT64 = 18;
-     */
-    TYPE_SINT64 = 18
-}
+export type Field_Kind = "TYPE_UNKNOWN" | "TYPE_DOUBLE" | "TYPE_FLOAT" | "TYPE_INT64" | "TYPE_UINT64" | "TYPE_INT32" | "TYPE_FIXED64" | "TYPE_FIXED32" | "TYPE_BOOL" | "TYPE_STRING" | "TYPE_GROUP" | "TYPE_MESSAGE" | "TYPE_BYTES" | "TYPE_UINT32" | "TYPE_ENUM" | "TYPE_SFIXED32" | "TYPE_SFIXED64" | "TYPE_SINT32" | "TYPE_SINT64";
+export const Field_Kind = {
+    TYPE_UNKNOWN: "TYPE_UNKNOWN",
+    TYPE_DOUBLE: "TYPE_DOUBLE",
+    TYPE_FLOAT: "TYPE_FLOAT",
+    TYPE_INT64: "TYPE_INT64",
+    TYPE_UINT64: "TYPE_UINT64",
+    TYPE_INT32: "TYPE_INT32",
+    TYPE_FIXED64: "TYPE_FIXED64",
+    TYPE_FIXED32: "TYPE_FIXED32",
+    TYPE_BOOL: "TYPE_BOOL",
+    TYPE_STRING: "TYPE_STRING",
+    TYPE_GROUP: "TYPE_GROUP",
+    TYPE_MESSAGE: "TYPE_MESSAGE",
+    TYPE_BYTES: "TYPE_BYTES",
+    TYPE_UINT32: "TYPE_UINT32",
+    TYPE_ENUM: "TYPE_ENUM",
+    TYPE_SFIXED32: "TYPE_SFIXED32",
+    TYPE_SFIXED64: "TYPE_SFIXED64",
+    TYPE_SINT32: "TYPE_SINT32",
+    TYPE_SINT64: "TYPE_SINT64"
+} as const;
 /**
  * Whether a field is optional, required, or repeated.
  *
  * @generated from protobuf enum google.protobuf.Field.Cardinality
  */
-export enum Field_Cardinality {
-    /**
-     * For fields with unknown cardinality.
-     *
-     * @generated from protobuf enum value: CARDINALITY_UNKNOWN = 0;
-     */
-    UNKNOWN = 0,
-    /**
-     * For optional fields.
-     *
-     * @generated from protobuf enum value: CARDINALITY_OPTIONAL = 1;
-     */
-    OPTIONAL = 1,
-    /**
-     * For required fields. Proto2 syntax only.
-     *
-     * @generated from protobuf enum value: CARDINALITY_REQUIRED = 2;
-     */
-    REQUIRED = 2,
-    /**
-     * For repeated fields.
-     *
-     * @generated from protobuf enum value: CARDINALITY_REPEATED = 3;
-     */
-    REPEATED = 3
-}
+export type Field_Cardinality = "UNKNOWN" | "OPTIONAL" | "REQUIRED" | "REPEATED";
+export const Field_Cardinality = {
+    UNKNOWN: "UNKNOWN",
+    OPTIONAL: "OPTIONAL",
+    REQUIRED: "REQUIRED",
+    REPEATED: "REPEATED"
+} as const;
 /**
  * Enum type definition.
  *
@@ -412,26 +299,12 @@ export interface Option {
  *
  * @generated from protobuf enum google.protobuf.Syntax
  */
-export enum Syntax {
-    /**
-     * Syntax `proto2`.
-     *
-     * @generated from protobuf enum value: SYNTAX_PROTO2 = 0;
-     */
-    PROTO2 = 0,
-    /**
-     * Syntax `proto3`.
-     *
-     * @generated from protobuf enum value: SYNTAX_PROTO3 = 1;
-     */
-    PROTO3 = 1,
-    /**
-     * Syntax `editions`.
-     *
-     * @generated from protobuf enum value: SYNTAX_EDITIONS = 2;
-     */
-    EDITIONS = 2
-}
+export type Syntax = "PROTO2" | "PROTO3" | "EDITIONS";
+export const Syntax = {
+    PROTO2: "PROTO2",
+    PROTO3: "PROTO3",
+    EDITIONS: "EDITIONS"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class Type$Type extends MessageType<Type> {
     constructor() {

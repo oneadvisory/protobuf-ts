@@ -121,20 +121,12 @@ export interface EnumMapMessage {
 /**
  * @generated from protobuf enum spec.EnumMapMessage.MyEnum
  */
-export enum EnumMapMessage_MyEnum {
-    /**
-     * @generated from protobuf enum value: ANY = 0;
-     */
-    ANY = 0,
-    /**
-     * @generated from protobuf enum value: YES = 1;
-     */
-    YES = 1,
-    /**
-     * @generated from protobuf enum value: NO = 2;
-     */
-    NO = 2
-}
+export type EnumMapMessage_MyEnum = "ANY" | "YES" | "NO";
+export const EnumMapMessage_MyEnum = {
+    ANY: "ANY",
+    YES: "YES",
+    NO: "NO"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ScalarMapsMessage$Type extends MessageType<ScalarMapsMessage> {
     constructor() {

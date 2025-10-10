@@ -73,20 +73,12 @@ export interface MyMessage {
 /**
  * @generated from protobuf enum proto2_preserve_unknown_enum_unittest.MyEnum
  */
-export enum MyEnum {
-    /**
-     * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
-    /**
-     * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
-    /**
-     * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2
-}
+export type MyEnum = "FOO" | "BAR" | "BAZ";
+export const MyEnum = {
+    FOO: "FOO",
+    BAR: "BAR",
+    BAZ: "BAZ"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class MyMessage$Type extends MessageType<MyMessage> {
     constructor() {

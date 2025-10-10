@@ -252,20 +252,12 @@ export interface CodeGeneratorResponse_File {
  *
  * @generated from protobuf enum google.protobuf.compiler.CodeGeneratorResponse.Feature
  */
-export enum CodeGeneratorResponse_Feature {
-    /**
-     * @generated from protobuf enum value: FEATURE_NONE = 0;
-     */
-    NONE = 0,
-    /**
-     * @generated from protobuf enum value: FEATURE_PROTO3_OPTIONAL = 1;
-     */
-    PROTO3_OPTIONAL = 1,
-    /**
-     * @generated from protobuf enum value: FEATURE_SUPPORTS_EDITIONS = 2;
-     */
-    SUPPORTS_EDITIONS = 2
-}
+export type CodeGeneratorResponse_Feature = "NONE" | "PROTO3_OPTIONAL" | "SUPPORTS_EDITIONS";
+export const CodeGeneratorResponse_Feature = {
+    NONE: "NONE",
+    PROTO3_OPTIONAL: "PROTO3_OPTIONAL",
+    SUPPORTS_EDITIONS: "SUPPORTS_EDITIONS"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class Version$Type extends MessageType<Version> {
     constructor() {

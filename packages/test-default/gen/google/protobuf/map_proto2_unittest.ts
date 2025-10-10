@@ -333,41 +333,22 @@ export interface TestProto2BytesMap {
 /**
  * @generated from protobuf enum protobuf_unittest.Proto2MapEnum
  */
-export enum Proto2MapEnum {
-    /**
-     * @generated from protobuf enum value: PROTO2_MAP_ENUM_FOO = 0;
-     */
-    FOO = 0,
-    /**
-     * @generated from protobuf enum value: PROTO2_MAP_ENUM_BAR = 1;
-     */
-    BAR = 1,
-    /**
-     * @generated from protobuf enum value: PROTO2_MAP_ENUM_BAZ = 2;
-     */
-    BAZ = 2
-}
+export type Proto2MapEnum = "FOO" | "BAR" | "BAZ";
+export const Proto2MapEnum = {
+    FOO: "FOO",
+    BAR: "BAR",
+    BAZ: "BAZ"
+} as const;
 /**
  * @generated from protobuf enum protobuf_unittest.Proto2MapEnumPlusExtra
  */
-export enum Proto2MapEnumPlusExtra {
-    /**
-     * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_FOO = 0;
-     */
-    E_PROTO2_MAP_ENUM_FOO = 0,
-    /**
-     * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_BAR = 1;
-     */
-    E_PROTO2_MAP_ENUM_BAR = 1,
-    /**
-     * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_BAZ = 2;
-     */
-    E_PROTO2_MAP_ENUM_BAZ = 2,
-    /**
-     * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_EXTRA = 3;
-     */
-    E_PROTO2_MAP_ENUM_EXTRA = 3
-}
+export type Proto2MapEnumPlusExtra = "E_PROTO2_MAP_ENUM_FOO" | "E_PROTO2_MAP_ENUM_BAR" | "E_PROTO2_MAP_ENUM_BAZ" | "E_PROTO2_MAP_ENUM_EXTRA";
+export const Proto2MapEnumPlusExtra = {
+    E_PROTO2_MAP_ENUM_FOO: "E_PROTO2_MAP_ENUM_FOO",
+    E_PROTO2_MAP_ENUM_BAR: "E_PROTO2_MAP_ENUM_BAR",
+    E_PROTO2_MAP_ENUM_BAZ: "E_PROTO2_MAP_ENUM_BAZ",
+    E_PROTO2_MAP_ENUM_EXTRA: "E_PROTO2_MAP_ENUM_EXTRA"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestEnumMap$Type extends MessageType<TestEnumMap> {
     constructor() {

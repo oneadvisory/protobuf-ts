@@ -74,26 +74,12 @@ export interface ExampleResponse {
 /**
  * @generated from protobuf enum spec.FailRequest
  */
-export enum FailRequest {
-    /**
-     * don't fail
-     *
-     * @generated from protobuf enum value: FAIL_REQUEST_NONE = 0;
-     */
-    FAIL_REQUEST_NONE = 0,
-    /**
-     * send an error status trailer after sending a message
-     *
-     * @generated from protobuf enum value: MESSAGE_THEN_ERROR_STATUS = 1;
-     */
-    MESSAGE_THEN_ERROR_STATUS = 1,
-    /**
-     * send an error status, don't send any message
-     *
-     * @generated from protobuf enum value: ERROR_STATUS_ONLY = 2;
-     */
-    ERROR_STATUS_ONLY = 2
-}
+export type FailRequest = "FAIL_REQUEST_NONE" | "MESSAGE_THEN_ERROR_STATUS" | "ERROR_STATUS_ONLY";
+export const FailRequest = {
+    FAIL_REQUEST_NONE: "FAIL_REQUEST_NONE",
+    MESSAGE_THEN_ERROR_STATUS: "MESSAGE_THEN_ERROR_STATUS",
+    ERROR_STATUS_ONLY: "ERROR_STATUS_ONLY"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ExampleRequest$Type extends MessageType<ExampleRequest> {
     constructor() {

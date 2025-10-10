@@ -56,54 +56,30 @@ export interface ParentMessage_ChildMessage_GrandChildMessage {
 /**
  * @generated from protobuf enum spec.ParentMessage.ChildMessage.GrandChildMessage.GrandChildEnum
  */
-export enum ParentMessage_ChildMessage_GrandChildMessage_GrandChildEnum {
-    /**
-     * @generated from protobuf enum value: ANY = 0;
-     */
-    ANY = 0,
-    /**
-     * @generated from protobuf enum value: YES = 1;
-     */
-    YES = 1,
-    /**
-     * @generated from protobuf enum value: NO = 2;
-     */
-    NO = 2
-}
+export type ParentMessage_ChildMessage_GrandChildMessage_GrandChildEnum = "ANY" | "YES" | "NO";
+export const ParentMessage_ChildMessage_GrandChildMessage_GrandChildEnum = {
+    ANY: "ANY",
+    YES: "YES",
+    NO: "NO"
+} as const;
 /**
  * @generated from protobuf enum spec.ParentMessage.ChildMessage.ChildEnum
  */
-export enum ParentMessage_ChildMessage_ChildEnum {
-    /**
-     * @generated from protobuf enum value: ANY = 0;
-     */
-    ANY = 0,
-    /**
-     * @generated from protobuf enum value: YES = 1;
-     */
-    YES = 1,
-    /**
-     * @generated from protobuf enum value: NO = 2;
-     */
-    NO = 2
-}
+export type ParentMessage_ChildMessage_ChildEnum = "ANY" | "YES" | "NO";
+export const ParentMessage_ChildMessage_ChildEnum = {
+    ANY: "ANY",
+    YES: "YES",
+    NO: "NO"
+} as const;
 /**
  * @generated from protobuf enum spec.ParentMessage.ParentEnum
  */
-export enum ParentMessage_ParentEnum {
-    /**
-     * @generated from protobuf enum value: ANY = 0;
-     */
-    ANY = 0,
-    /**
-     * @generated from protobuf enum value: YES = 1;
-     */
-    YES = 1,
-    /**
-     * @generated from protobuf enum value: NO = 2;
-     */
-    NO = 2
-}
+export type ParentMessage_ParentEnum = "ANY" | "YES" | "NO";
+export const ParentMessage_ParentEnum = {
+    ANY: "ANY",
+    YES: "YES",
+    NO: "NO"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ParentMessage$Type extends MessageType<ParentMessage> {
     constructor() {

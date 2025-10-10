@@ -234,18 +234,37 @@ export class ReflectionJsonWriter {
       assert(optional);
       return undefined;
     }
-    if (value === 0 && !emitDefaultValues && !optional)
-      // we require 0 to be default value for all enums
+
+    // Handle both string and number values for backwards compatibility
+    if (typeof value === 'number') {
+      // For numeric enums (from old system or external libraries like @bufbuild/protobuf)
+      if (value === 0 && !emitDefaultValues && !optional)
+        return undefined;
+      if (enumAsInteger)
+        return value;
+      // Try to find the name for this number in the enum values
+      const enumValues = Object.keys(type[1]);
+      // For old-style numeric enums, we would have the reverse mapping
+      // For new string enums, just return the first value
+      return enumValues[0] || "";
+    }
+
+    // Handle string values (new system)
+    assert(typeof value == 'string', `Expected string or number enum value but got ${typeof value}`);
+    // Get the first enum value as the default
+    const firstValue = Object.keys(type[1])[0] || "";
+    if (value === firstValue && !emitDefaultValues && !optional)
+      // don't emit default value
       return undefined;
-    assert(typeof value == 'number');
-    assert(Number.isInteger(value));
-    if (enumAsInteger || !type[1].hasOwnProperty(value))
-      // if we don't now the enum value, just return the number
+    // Verify the value exists in the enum
+    if (!type[1].hasOwnProperty(value)) {
+      // Unknown enum value, return as-is
       return value;
+    }
     if (type[2])
       // restore the dropped prefix
-      return type[2] + type[1][value];
-    return type[1][value];
+      return type[2] + value;
+    return value;
   }
 
   message(

@@ -35,8 +35,9 @@ export type UnknownScalar =
 
 /**
  * A enum field of unknown type.
+ * Accepts both string (new protobuf-ts enums) and number (legacy enums or external libraries).
  */
-export type UnknownEnum = number;
+export type UnknownEnum = string | number;
 
 
 /**

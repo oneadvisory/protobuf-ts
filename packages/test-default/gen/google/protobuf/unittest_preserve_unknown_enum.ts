@@ -102,41 +102,22 @@ export interface MyMessagePlusExtra {
 /**
  * @generated from protobuf enum proto3_preserve_unknown_enum_unittest.MyEnum
  */
-export enum MyEnum {
-    /**
-     * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
-    /**
-     * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
-    /**
-     * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2
-}
+export type MyEnum = "FOO" | "BAR" | "BAZ";
+export const MyEnum = {
+    FOO: "FOO",
+    BAR: "BAR",
+    BAZ: "BAZ"
+} as const;
 /**
  * @generated from protobuf enum proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra
  */
-export enum MyEnumPlusExtra {
-    /**
-     * @generated from protobuf enum value: E_FOO = 0;
-     */
-    E_FOO = 0,
-    /**
-     * @generated from protobuf enum value: E_BAR = 1;
-     */
-    E_BAR = 1,
-    /**
-     * @generated from protobuf enum value: E_BAZ = 2;
-     */
-    E_BAZ = 2,
-    /**
-     * @generated from protobuf enum value: E_EXTRA = 3;
-     */
-    E_EXTRA = 3
-}
+export type MyEnumPlusExtra = "E_FOO" | "E_BAR" | "E_BAZ" | "E_EXTRA";
+export const MyEnumPlusExtra = {
+    E_FOO: "E_FOO",
+    E_BAR: "E_BAR",
+    E_BAZ: "E_BAZ",
+    E_EXTRA: "E_EXTRA"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class MyMessage$Type extends MessageType<MyMessage> {
     constructor() {

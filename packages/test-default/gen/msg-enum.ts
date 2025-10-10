@@ -34,64 +34,32 @@ export interface EnumFieldMessage {
 /**
  * @generated from protobuf enum spec.EnumFieldMessage.TestEnum
  */
-export enum EnumFieldMessage_TestEnum {
-    /**
-     * @generated from protobuf enum value: ANY = 0;
-     */
-    ANY = 0,
-    /**
-     * @generated from protobuf enum value: YES = 1;
-     */
-    YES = 1,
-    /**
-     * @generated from protobuf enum value: NO = 2;
-     */
-    NO = 2
-}
+export type EnumFieldMessage_TestEnum = "ANY" | "YES" | "NO";
+export const EnumFieldMessage_TestEnum = {
+    ANY: "ANY",
+    YES: "YES",
+    NO: "NO"
+} as const;
 /**
  * @generated from protobuf enum spec.SimpleEnum
  */
-export enum SimpleEnum {
-    /**
-     * this is the default value
-     * and this comment has more
-     * than one line
-     *
-     * @generated from protobuf enum value: ANY = 0;
-     */
-    ANY = 0,
-    /**
-     * value for positive outcome
-     *
-     * @generated from protobuf enum value: YES = 1;
-     */
-    YES = 1,
-    /**
-     * negative value
-     *
-     * @generated from protobuf enum value: NO = 2;
-     */
-    NO = 2
-}
+export type SimpleEnum = "ANY" | "YES" | "NO";
+export const SimpleEnum = {
+    ANY: "ANY",
+    YES: "YES",
+    NO: "NO"
+} as const;
 /**
  * Both B and C have the same numerical value.
  *
  * @generated from protobuf enum spec.AliasEnum
  */
-export enum AliasEnum {
-    /**
-     * @generated from protobuf enum value: A = 0;
-     */
-    A = 0,
-    /**
-     * @generated from protobuf enum value: B = 1;
-     */
-    B = 1,
-    /**
-     * @generated from protobuf enum value: B = 1;
-     */
-    C = 1
-}
+export type AliasEnum = "A" | "B" | "C";
+export const AliasEnum = {
+    A: "A",
+    B: "B",
+    C: "C"
+} as const;
 /**
  * The generated enum values should drop the "PREFIX_"
  * part at the top if the target language allows
@@ -99,20 +67,12 @@ export enum AliasEnum {
  *
  * @generated from protobuf enum spec.PrefixEnum
  */
-export enum PrefixEnum {
-    /**
-     * @generated from protobuf enum value: PREFIX_ENUM_ANY = 0;
-     */
-    ANY = 0,
-    /**
-     * @generated from protobuf enum value: PREFIX_ENUM_YES = 1;
-     */
-    YES = 1,
-    /**
-     * @generated from protobuf enum value: PREFIX_ENUM_NO = 2;
-     */
-    NO = 2
-}
+export type PrefixEnum = "ANY" | "YES" | "NO";
+export const PrefixEnum = {
+    ANY: "ANY",
+    YES: "YES",
+    NO: "NO"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class EnumFieldMessage$Type extends MessageType<EnumFieldMessage> {
     constructor() {

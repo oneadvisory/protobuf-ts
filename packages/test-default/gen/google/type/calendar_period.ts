@@ -24,57 +24,14 @@
  *
  * @generated from protobuf enum google.type.CalendarPeriod
  */
-export enum CalendarPeriod {
-    /**
-     * Undefined period, raises an error.
-     *
-     * @generated from protobuf enum value: CALENDAR_PERIOD_UNSPECIFIED = 0;
-     */
-    CALENDAR_PERIOD_UNSPECIFIED = 0,
-    /**
-     * A day.
-     *
-     * @generated from protobuf enum value: DAY = 1;
-     */
-    DAY = 1,
-    /**
-     * A week. Weeks begin on Monday, following
-     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_week_date).
-     *
-     * @generated from protobuf enum value: WEEK = 2;
-     */
-    WEEK = 2,
-    /**
-     * A fortnight. The first calendar fortnight of the year begins at the start
-     * of week 1 according to
-     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_week_date).
-     *
-     * @generated from protobuf enum value: FORTNIGHT = 3;
-     */
-    FORTNIGHT = 3,
-    /**
-     * A month.
-     *
-     * @generated from protobuf enum value: MONTH = 4;
-     */
-    MONTH = 4,
-    /**
-     * A quarter. Quarters start on dates 1-Jan, 1-Apr, 1-Jul, and 1-Oct of each
-     * year.
-     *
-     * @generated from protobuf enum value: QUARTER = 5;
-     */
-    QUARTER = 5,
-    /**
-     * A half-year. Half-years start on dates 1-Jan and 1-Jul.
-     *
-     * @generated from protobuf enum value: HALF = 6;
-     */
-    HALF = 6,
-    /**
-     * A year.
-     *
-     * @generated from protobuf enum value: YEAR = 7;
-     */
-    YEAR = 7
-}
+export type CalendarPeriod = "CALENDAR_PERIOD_UNSPECIFIED" | "DAY" | "WEEK" | "FORTNIGHT" | "MONTH" | "QUARTER" | "HALF" | "YEAR";
+export const CalendarPeriod = {
+    CALENDAR_PERIOD_UNSPECIFIED: "CALENDAR_PERIOD_UNSPECIFIED",
+    DAY: "DAY",
+    WEEK: "WEEK",
+    FORTNIGHT: "FORTNIGHT",
+    MONTH: "MONTH",
+    QUARTER: "QUARTER",
+    HALF: "HALF",
+    YEAR: "YEAR"
+} as const;

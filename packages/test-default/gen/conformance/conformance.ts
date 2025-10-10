@@ -234,75 +234,26 @@ export interface JspbEncodingConfig {
 /**
  * @generated from protobuf enum conformance.WireFormat
  */
-export enum WireFormat {
-    /**
-     * @generated from protobuf enum value: UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
-    /**
-     * @generated from protobuf enum value: PROTOBUF = 1;
-     */
-    PROTOBUF = 1,
-    /**
-     * @generated from protobuf enum value: JSON = 2;
-     */
-    JSON = 2,
-    /**
-     * Only used inside Google. Opensource testees just skip it.
-     *
-     * @generated from protobuf enum value: JSPB = 3;
-     */
-    JSPB = 3,
-    /**
-     * @generated from protobuf enum value: TEXT_FORMAT = 4;
-     */
-    TEXT_FORMAT = 4
-}
+export type WireFormat = "UNSPECIFIED" | "PROTOBUF" | "JSON" | "JSPB" | "TEXT_FORMAT";
+export const WireFormat = {
+    UNSPECIFIED: "UNSPECIFIED",
+    PROTOBUF: "PROTOBUF",
+    JSON: "JSON",
+    JSPB: "JSPB",
+    TEXT_FORMAT: "TEXT_FORMAT"
+} as const;
 /**
  * @generated from protobuf enum conformance.TestCategory
  */
-export enum TestCategory {
-    /**
-     * @generated from protobuf enum value: UNSPECIFIED_TEST = 0;
-     */
-    UNSPECIFIED_TEST = 0,
-    /**
-     * Test binary wire format.
-     *
-     * @generated from protobuf enum value: BINARY_TEST = 1;
-     */
-    BINARY_TEST = 1,
-    /**
-     * Test json wire format.
-     *
-     * @generated from protobuf enum value: JSON_TEST = 2;
-     */
-    JSON_TEST = 2,
-    /**
-     * Similar to JSON_TEST. However, during parsing json, testee should ignore
-     * unknown fields. This feature is optional. Each implementation can decide
-     * whether to support it.  See
-     * https://developers.google.com/protocol-buffers/docs/proto3#json_options
-     * for more detail.
-     *
-     * @generated from protobuf enum value: JSON_IGNORE_UNKNOWN_PARSING_TEST = 3;
-     */
-    JSON_IGNORE_UNKNOWN_PARSING_TEST = 3,
-    /**
-     * Test jspb wire format. Only used inside Google. Opensource testees just
-     * skip it.
-     *
-     * @generated from protobuf enum value: JSPB_TEST = 4;
-     */
-    JSPB_TEST = 4,
-    /**
-     * Test text format. For cpp, java and python, testees can already deal with
-     * this type. Testees of other languages can simply skip it.
-     *
-     * @generated from protobuf enum value: TEXT_FORMAT_TEST = 5;
-     */
-    TEXT_FORMAT_TEST = 5
-}
+export type TestCategory = "UNSPECIFIED_TEST" | "BINARY_TEST" | "JSON_TEST" | "JSON_IGNORE_UNKNOWN_PARSING_TEST" | "JSPB_TEST" | "TEXT_FORMAT_TEST";
+export const TestCategory = {
+    UNSPECIFIED_TEST: "UNSPECIFIED_TEST",
+    BINARY_TEST: "BINARY_TEST",
+    JSON_TEST: "JSON_TEST",
+    JSON_IGNORE_UNKNOWN_PARSING_TEST: "JSON_IGNORE_UNKNOWN_PARSING_TEST",
+    JSPB_TEST: "JSPB_TEST",
+    TEXT_FORMAT_TEST: "TEXT_FORMAT_TEST"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestStatus$Type extends MessageType<TestStatus> {
     constructor() {

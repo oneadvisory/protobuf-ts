@@ -50,24 +50,13 @@ export interface ImportMessageLite {
 /**
  * @generated from protobuf enum protobuf_unittest_import.ImportEnumLite
  */
-export enum ImportEnumLite {
-    /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * @generated from protobuf enum value: IMPORT_LITE_FOO = 7;
-     */
-    IMPORT_LITE_FOO = 7,
-    /**
-     * @generated from protobuf enum value: IMPORT_LITE_BAR = 8;
-     */
-    IMPORT_LITE_BAR = 8,
-    /**
-     * @generated from protobuf enum value: IMPORT_LITE_BAZ = 9;
-     */
-    IMPORT_LITE_BAZ = 9
-}
+export type ImportEnumLite = "UNSPECIFIED$" | "IMPORT_LITE_FOO" | "IMPORT_LITE_BAR" | "IMPORT_LITE_BAZ";
+export const ImportEnumLite = {
+    UNSPECIFIED$: "UNSPECIFIED$",
+    IMPORT_LITE_FOO: "IMPORT_LITE_FOO",
+    IMPORT_LITE_BAR: "IMPORT_LITE_BAR",
+    IMPORT_LITE_BAZ: "IMPORT_LITE_BAZ"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ImportMessageLite$Type extends MessageType<ImportMessageLite> {
     constructor() {

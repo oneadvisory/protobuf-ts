@@ -36,16 +36,11 @@ export interface TestMessage {
 /**
  * @generated from protobuf enum protobuf_unittest.no_generic_services_test.TestEnum
  */
-export enum TestEnum {
-    /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * @generated from protobuf enum value: FOO = 1;
-     */
-    FOO = 1
-}
+export type TestEnum = "UNSPECIFIED$" | "FOO";
+export const TestEnum = {
+    UNSPECIFIED$: "UNSPECIFIED$",
+    FOO: "FOO"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestMessage$Type extends MessageType<TestMessage> {
     constructor() {

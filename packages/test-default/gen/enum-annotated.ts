@@ -4,13 +4,8 @@
 /**
  * @generated from protobuf enum spec.AnnotatedEnum
  */
-export enum AnnotatedEnum {
-    /**
-     * @generated from protobuf enum value: UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
-    /**
-     * @generated from protobuf enum value: FOO = 1;
-     */
-    FOO = 1
-}
+export type AnnotatedEnum = "UNSPECIFIED" | "FOO";
+export const AnnotatedEnum = {
+    UNSPECIFIED: "UNSPECIFIED",
+    FOO: "FOO"
+} as const;

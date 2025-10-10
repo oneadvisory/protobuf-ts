@@ -392,24 +392,13 @@ export interface TestAllTypesLite_RepeatedGroup {
 /**
  * @generated from protobuf enum protobuf_unittest.TestAllTypesLite.NestedEnum
  */
-export enum TestAllTypesLite_NestedEnum {
-    /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * @generated from protobuf enum value: FOO = 1;
-     */
-    FOO = 1,
-    /**
-     * @generated from protobuf enum value: BAR = 2;
-     */
-    BAR = 2,
-    /**
-     * @generated from protobuf enum value: BAZ = 3;
-     */
-    BAZ = 3
-}
+export type TestAllTypesLite_NestedEnum = "UNSPECIFIED$" | "FOO" | "BAR" | "BAZ";
+export const TestAllTypesLite_NestedEnum = {
+    UNSPECIFIED$: "UNSPECIFIED$",
+    FOO: "FOO",
+    BAR: "BAR",
+    BAZ: "BAZ"
+} as const;
 /**
  * @generated from protobuf message protobuf_unittest.ForeignMessageLite
  */
@@ -821,83 +810,42 @@ export interface DupEnum {
 /**
  * @generated from protobuf enum protobuf_unittest.DupEnum.TestEnumWithDupValueLite
  */
-export enum DupEnum_TestEnumWithDupValueLite {
-    /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * @generated from protobuf enum value: FOO1 = 1;
-     */
-    FOO1 = 1,
-    /**
-     * @generated from protobuf enum value: BAR1 = 2;
-     */
-    BAR1 = 2,
-    /**
-     * @generated from protobuf enum value: BAZ = 3;
-     */
-    BAZ = 3,
-    /**
-     * @generated from protobuf enum value: FOO1 = 1;
-     */
-    FOO2 = 1,
-    /**
-     * @generated from protobuf enum value: BAR1 = 2;
-     */
-    BAR2 = 2
-}
+export type DupEnum_TestEnumWithDupValueLite = "UNSPECIFIED$" | "FOO1" | "BAR1" | "BAZ" | "FOO2" | "BAR2";
+export const DupEnum_TestEnumWithDupValueLite = {
+    UNSPECIFIED$: "UNSPECIFIED$",
+    FOO1: "FOO1",
+    BAR1: "BAR1",
+    BAZ: "BAZ",
+    FOO2: "FOO2",
+    BAR2: "BAR2"
+} as const;
 /**
  * @generated from protobuf enum protobuf_unittest.ForeignEnumLite
  */
-export enum ForeignEnumLite {
-    /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * @generated from protobuf enum value: FOREIGN_LITE_FOO = 4;
-     */
-    FOREIGN_LITE_FOO = 4,
-    /**
-     * @generated from protobuf enum value: FOREIGN_LITE_BAZ = 6;
-     */
-    FOREIGN_LITE_BAZ = 6,
-    /**
-     * @generated from protobuf enum value: FOREIGN_LITE_BAR = 5;
-     */
-    FOREIGN_LITE_BAR = 5
-}
+export type ForeignEnumLite = "UNSPECIFIED$" | "FOREIGN_LITE_FOO" | "FOREIGN_LITE_BAZ" | "FOREIGN_LITE_BAR";
+export const ForeignEnumLite = {
+    UNSPECIFIED$: "UNSPECIFIED$",
+    FOREIGN_LITE_FOO: "FOREIGN_LITE_FOO",
+    FOREIGN_LITE_BAZ: "FOREIGN_LITE_BAZ",
+    FOREIGN_LITE_BAR: "FOREIGN_LITE_BAR"
+} as const;
 /**
  * @generated from protobuf enum protobuf_unittest.V1EnumLite
  */
-export enum V1EnumLite {
-    /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * @generated from protobuf enum value: V1_FIRST = 1;
-     */
-    V1_FIRST = 1
-}
+export type V1EnumLite = "UNSPECIFIED$" | "V1_FIRST";
+export const V1EnumLite = {
+    UNSPECIFIED$: "UNSPECIFIED$",
+    V1_FIRST: "V1_FIRST"
+} as const;
 /**
  * @generated from protobuf enum protobuf_unittest.V2EnumLite
  */
-export enum V2EnumLite {
-    /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * @generated from protobuf enum value: V2_FIRST = 1;
-     */
-    V2_FIRST = 1,
-    /**
-     * @generated from protobuf enum value: V2_SECOND = 2;
-     */
-    V2_SECOND = 2
-}
+export type V2EnumLite = "UNSPECIFIED$" | "V2_FIRST" | "V2_SECOND";
+export const V2EnumLite = {
+    UNSPECIFIED$: "UNSPECIFIED$",
+    V2_FIRST: "V2_FIRST",
+    V2_SECOND: "V2_SECOND"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
     constructor() {

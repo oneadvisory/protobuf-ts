@@ -37,43 +37,24 @@ export interface ImportMessage {
 /**
  * @generated from protobuf enum protobuf_unittest_import.ImportEnum
  */
-export enum ImportEnum {
-    /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * @generated from protobuf enum value: IMPORT_FOO = 7;
-     */
-    IMPORT_FOO = 7,
-    /**
-     * @generated from protobuf enum value: IMPORT_BAR = 8;
-     */
-    IMPORT_BAR = 8,
-    /**
-     * @generated from protobuf enum value: IMPORT_BAZ = 9;
-     */
-    IMPORT_BAZ = 9
-}
+export type ImportEnum = "UNSPECIFIED$" | "IMPORT_FOO" | "IMPORT_BAR" | "IMPORT_BAZ";
+export const ImportEnum = {
+    UNSPECIFIED$: "UNSPECIFIED$",
+    IMPORT_FOO: "IMPORT_FOO",
+    IMPORT_BAR: "IMPORT_BAR",
+    IMPORT_BAZ: "IMPORT_BAZ"
+} as const;
 /**
  * To use an enum in a map, it must has the first value as 0.
  *
  * @generated from protobuf enum protobuf_unittest_import.ImportEnumForMap
  */
-export enum ImportEnumForMap {
-    /**
-     * @generated from protobuf enum value: UNKNOWN = 0;
-     */
-    UNKNOWN = 0,
-    /**
-     * @generated from protobuf enum value: FOO = 1;
-     */
-    FOO = 1,
-    /**
-     * @generated from protobuf enum value: BAR = 2;
-     */
-    BAR = 2
-}
+export type ImportEnumForMap = "UNKNOWN" | "FOO" | "BAR";
+export const ImportEnumForMap = {
+    UNKNOWN: "UNKNOWN",
+    FOO: "FOO",
+    BAR: "BAR"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ImportMessage$Type extends MessageType<ImportMessage> {
     constructor() {
