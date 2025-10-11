@@ -22,16 +22,47 @@
  * a canonical start. Grammatically, "the start of the current
  * `CalendarPeriod`." All calendar times begin at midnight UTC.
  *
- * @generated from protobuf enum google.type.CalendarPeriod
+ * @generated from protobuf enum google.type.CalendarPeriod:
+ *
+ * enum CalendarPeriod {
+ *  CALENDAR_PERIOD_UNSPECIFIED = 0;  // Undefined period, raises an error.
+ *  DAY = 1;  // A day.
+ *  WEEK = 2;  // A week. Weeks begin on Monday, following
+ *  FORTNIGHT = 3;  // A fortnight. The first calendar fortnight of the year begins at the start
+ *  MONTH = 4;  // A month.
+ *  QUARTER = 5;  // A quarter. Quarters start on dates 1-Jan, 1-Apr, 1-Jul, and 1-Oct of each
+ *  HALF = 6;  // A half-year. Half-years start on dates 1-Jan and 1-Jul.
+ *  YEAR = 7;  // A year.
+ * }
  */
 export type CalendarPeriod = "CALENDAR_PERIOD_UNSPECIFIED" | "DAY" | "WEEK" | "FORTNIGHT" | "MONTH" | "QUARTER" | "HALF" | "YEAR";
 export const CalendarPeriod = {
-    CALENDAR_PERIOD_UNSPECIFIED: "CALENDAR_PERIOD_UNSPECIFIED",
-    DAY: "DAY",
-    WEEK: "WEEK",
-    FORTNIGHT: "FORTNIGHT",
-    MONTH: "MONTH",
-    QUARTER: "QUARTER",
-    HALF: "HALF",
-    YEAR: "YEAR"
+    /** Undefined period, raises an error.
+     *
+     * @generated from protobuf enum value: CALENDAR_PERIOD_UNSPECIFIED = 0; */ CALENDAR_PERIOD_UNSPECIFIED: "CALENDAR_PERIOD_UNSPECIFIED",
+    /** A day.
+     *
+     * @generated from protobuf enum value: DAY = 1; */ DAY: "DAY",
+    /** A week. Weeks begin on Monday, following
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_week_date).
+     *
+     * @generated from protobuf enum value: WEEK = 2; */ WEEK: "WEEK",
+    /** A fortnight. The first calendar fortnight of the year begins at the start
+     * of week 1 according to
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_week_date).
+     *
+     * @generated from protobuf enum value: FORTNIGHT = 3; */ FORTNIGHT: "FORTNIGHT",
+    /** A month.
+     *
+     * @generated from protobuf enum value: MONTH = 4; */ MONTH: "MONTH",
+    /** A quarter. Quarters start on dates 1-Jan, 1-Apr, 1-Jul, and 1-Oct of each
+     * year.
+     *
+     * @generated from protobuf enum value: QUARTER = 5; */ QUARTER: "QUARTER",
+    /** A half-year. Half-years start on dates 1-Jan and 1-Jul.
+     *
+     * @generated from protobuf enum value: HALF = 6; */ HALF: "HALF",
+    /** A year.
+     *
+     * @generated from protobuf enum value: YEAR = 7; */ YEAR: "YEAR"
 } as const;

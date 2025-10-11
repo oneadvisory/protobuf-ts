@@ -41,13 +41,25 @@ export interface Proto2OptionalsMessage_TestMessage {
     field: string;
 }
 /**
- * @generated from protobuf enum spec.Proto2OptionalsMessage.TestEnum
+ * @generated from protobuf enum spec.Proto2OptionalsMessage.TestEnum:
+ *
+ * enum TestEnum {
+ *  ANY = 0;
+ *  YES = 1;
+ *  NO = 2;
+ * }
  */
 export type Proto2OptionalsMessage_TestEnum = "ANY" | "YES" | "NO";
 export const Proto2OptionalsMessage_TestEnum = {
-    ANY: "ANY",
-    YES: "YES",
-    NO: "NO"
+    /**
+     * @generated from protobuf enum value: ANY = 0;
+     */ ANY: "ANY",
+    /**
+     * @generated from protobuf enum value: YES = 1;
+     */ YES: "YES",
+    /**
+     * @generated from protobuf enum value: NO = 2;
+     */ NO: "NO"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class Proto2OptionalsMessage$Type extends MessageType<Proto2OptionalsMessage> {

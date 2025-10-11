@@ -46,22 +46,40 @@ export interface DeprecatedFieldMessage {
  * The entire enum is deprecated
  *
  * @deprecated
- * @generated from protobuf enum spec.DeprecatedEnum
+ * @generated from protobuf enum spec.DeprecatedEnum:
+ *
+ * enum DeprecatedEnum {
+ *  DEPRECATED_ENUM_A = 0;
+ *  DEPRECATED_ENUM_B = 1;
+ * }
  */
 export type DeprecatedEnum = "DEPRECATED_ENUM_A" | "DEPRECATED_ENUM_B";
 export const DeprecatedEnum = {
-    DEPRECATED_ENUM_A: "DEPRECATED_ENUM_A",
-    DEPRECATED_ENUM_B: "DEPRECATED_ENUM_B"
+    /**
+     * @generated from protobuf enum value: DEPRECATED_ENUM_A = 0;
+     */ DEPRECATED_ENUM_A: "DEPRECATED_ENUM_A",
+    /**
+     * @generated from protobuf enum value: DEPRECATED_ENUM_B = 1;
+     */ DEPRECATED_ENUM_B: "DEPRECATED_ENUM_B"
 } as const;
 /**
  * Only a single enum value is deprecated
  *
- * @generated from protobuf enum spec.DeprecatedValueEnum
+ * @generated from protobuf enum spec.DeprecatedValueEnum:
+ *
+ * enum DeprecatedValueEnum {
+ *  DEPRECATED_VALUE_ENUM_UNSPECIFIED = 0;
+ *  DEPRECATED_VALUE_ENUM_DEPRECATED_VALUE = 1;
+ * }
  */
 export type DeprecatedValueEnum = "UNSPECIFIED" | "DEPRECATED_VALUE";
 export const DeprecatedValueEnum = {
-    UNSPECIFIED: "UNSPECIFIED",
-    DEPRECATED_VALUE: "DEPRECATED_VALUE"
+    /**
+     * @generated from protobuf enum value: DEPRECATED_VALUE_ENUM_UNSPECIFIED = 0;
+     */ UNSPECIFIED: "UNSPECIFIED",
+    /**
+     * @generated from protobuf enum value: DEPRECATED_VALUE_ENUM_DEPRECATED_VALUE = 1;
+     */ DEPRECATED_VALUE: "DEPRECATED_VALUE"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class DeprecatedMessage$Type extends MessageType<DeprecatedMessage> {

@@ -54,31 +54,67 @@ export interface ParentMessage_ChildMessage_GrandChildMessage {
     grandChild: string;
 }
 /**
- * @generated from protobuf enum spec.ParentMessage.ChildMessage.GrandChildMessage.GrandChildEnum
+ * @generated from protobuf enum spec.ParentMessage.ChildMessage.GrandChildMessage.GrandChildEnum:
+ *
+ * enum GrandChildEnum {
+ *  ANY = 0;
+ *  YES = 1;
+ *  NO = 2;
+ * }
  */
 export type ParentMessage_ChildMessage_GrandChildMessage_GrandChildEnum = "ANY" | "YES" | "NO";
 export const ParentMessage_ChildMessage_GrandChildMessage_GrandChildEnum = {
-    ANY: "ANY",
-    YES: "YES",
-    NO: "NO"
+    /**
+     * @generated from protobuf enum value: ANY = 0;
+     */ ANY: "ANY",
+    /**
+     * @generated from protobuf enum value: YES = 1;
+     */ YES: "YES",
+    /**
+     * @generated from protobuf enum value: NO = 2;
+     */ NO: "NO"
 } as const;
 /**
- * @generated from protobuf enum spec.ParentMessage.ChildMessage.ChildEnum
+ * @generated from protobuf enum spec.ParentMessage.ChildMessage.ChildEnum:
+ *
+ * enum ChildEnum {
+ *  ANY = 0;
+ *  YES = 1;
+ *  NO = 2;
+ * }
  */
 export type ParentMessage_ChildMessage_ChildEnum = "ANY" | "YES" | "NO";
 export const ParentMessage_ChildMessage_ChildEnum = {
-    ANY: "ANY",
-    YES: "YES",
-    NO: "NO"
+    /**
+     * @generated from protobuf enum value: ANY = 0;
+     */ ANY: "ANY",
+    /**
+     * @generated from protobuf enum value: YES = 1;
+     */ YES: "YES",
+    /**
+     * @generated from protobuf enum value: NO = 2;
+     */ NO: "NO"
 } as const;
 /**
- * @generated from protobuf enum spec.ParentMessage.ParentEnum
+ * @generated from protobuf enum spec.ParentMessage.ParentEnum:
+ *
+ * enum ParentEnum {
+ *  ANY = 0;
+ *  YES = 1;
+ *  NO = 2;
+ * }
  */
 export type ParentMessage_ParentEnum = "ANY" | "YES" | "NO";
 export const ParentMessage_ParentEnum = {
-    ANY: "ANY",
-    YES: "YES",
-    NO: "NO"
+    /**
+     * @generated from protobuf enum value: ANY = 0;
+     */ ANY: "ANY",
+    /**
+     * @generated from protobuf enum value: YES = 1;
+     */ YES: "YES",
+    /**
+     * @generated from protobuf enum value: NO = 2;
+     */ NO: "NO"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ParentMessage$Type extends MessageType<ParentMessage> {

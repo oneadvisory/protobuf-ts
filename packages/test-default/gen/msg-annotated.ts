@@ -97,13 +97,25 @@ export interface AnnotatedMessage {
 /**
  * Used for options
  *
- * @generated from protobuf enum spec.OptionEnum
+ * @generated from protobuf enum spec.OptionEnum:
+ *
+ * enum OptionEnum {
+ *  OPTION_ENUM_UNSPECIFIED = 0;
+ *  OPTION_ENUM_YES = 1;
+ *  OPTION_ENUM_NO = 2;
+ * }
  */
 export type OptionEnum = "UNSPECIFIED" | "YES" | "NO";
 export const OptionEnum = {
-    UNSPECIFIED: "UNSPECIFIED",
-    YES: "YES",
-    NO: "NO"
+    /**
+     * @generated from protobuf enum value: OPTION_ENUM_UNSPECIFIED = 0;
+     */ UNSPECIFIED: "UNSPECIFIED",
+    /**
+     * @generated from protobuf enum value: OPTION_ENUM_YES = 1;
+     */ YES: "YES",
+    /**
+     * @generated from protobuf enum value: OPTION_ENUM_NO = 2;
+     */ NO: "NO"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class FieldUiBehaviour$Type extends MessageType<FieldUiBehaviour> {

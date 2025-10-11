@@ -20,21 +20,63 @@
 /**
  * Represents a month in the Gregorian calendar.
  *
- * @generated from protobuf enum google.type.Month
+ * @generated from protobuf enum google.type.Month:
+ *
+ * enum Month {
+ *  MONTH_UNSPECIFIED = 0;  // The unspecifed month.
+ *  JANUARY = 1;  // The month of January.
+ *  FEBRUARY = 2;  // The month of February.
+ *  MARCH = 3;  // The month of March.
+ *  APRIL = 4;  // The month of April.
+ *  MAY = 5;  // The month of May.
+ *  JUNE = 6;  // The month of June.
+ *  JULY = 7;  // The month of July.
+ *  AUGUST = 8;  // The month of August.
+ *  SEPTEMBER = 9;  // The month of September.
+ *  OCTOBER = 10;  // The month of October.
+ *  NOVEMBER = 11;  // The month of November.
+ *  DECEMBER = 12;  // The month of December.
+ * }
  */
 export type Month = "MONTH_UNSPECIFIED" | "JANUARY" | "FEBRUARY" | "MARCH" | "APRIL" | "MAY" | "JUNE" | "JULY" | "AUGUST" | "SEPTEMBER" | "OCTOBER" | "NOVEMBER" | "DECEMBER";
 export const Month = {
-    MONTH_UNSPECIFIED: "MONTH_UNSPECIFIED",
-    JANUARY: "JANUARY",
-    FEBRUARY: "FEBRUARY",
-    MARCH: "MARCH",
-    APRIL: "APRIL",
-    MAY: "MAY",
-    JUNE: "JUNE",
-    JULY: "JULY",
-    AUGUST: "AUGUST",
-    SEPTEMBER: "SEPTEMBER",
-    OCTOBER: "OCTOBER",
-    NOVEMBER: "NOVEMBER",
-    DECEMBER: "DECEMBER"
+    /** The unspecifed month.
+     *
+     * @generated from protobuf enum value: MONTH_UNSPECIFIED = 0; */ MONTH_UNSPECIFIED: "MONTH_UNSPECIFIED",
+    /** The month of January.
+     *
+     * @generated from protobuf enum value: JANUARY = 1; */ JANUARY: "JANUARY",
+    /** The month of February.
+     *
+     * @generated from protobuf enum value: FEBRUARY = 2; */ FEBRUARY: "FEBRUARY",
+    /** The month of March.
+     *
+     * @generated from protobuf enum value: MARCH = 3; */ MARCH: "MARCH",
+    /** The month of April.
+     *
+     * @generated from protobuf enum value: APRIL = 4; */ APRIL: "APRIL",
+    /** The month of May.
+     *
+     * @generated from protobuf enum value: MAY = 5; */ MAY: "MAY",
+    /** The month of June.
+     *
+     * @generated from protobuf enum value: JUNE = 6; */ JUNE: "JUNE",
+    /** The month of July.
+     *
+     * @generated from protobuf enum value: JULY = 7; */ JULY: "JULY",
+    /** The month of August.
+     *
+     * @generated from protobuf enum value: AUGUST = 8; */ AUGUST: "AUGUST",
+    /** The month of September.
+     *
+     * @generated from protobuf enum value: SEPTEMBER = 9; */ SEPTEMBER: "SEPTEMBER",
+    /** The month of October.
+     *
+     * @generated from protobuf enum value: OCTOBER = 10; */ OCTOBER: "OCTOBER",
+    /** The month of November.
+     *
+     * @generated from protobuf enum value: NOVEMBER = 11; */ NOVEMBER: "NOVEMBER",
+    /** The month of December.
+     *
+     * @generated from protobuf enum value: DECEMBER = 12; */ DECEMBER: "DECEMBER"
 } as const;

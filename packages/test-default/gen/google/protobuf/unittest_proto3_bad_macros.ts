@@ -17,60 +17,171 @@
 /**
  * This generates `GID_MAX`, which is a macro in some circumstances.
  *
- * @generated from protobuf enum protobuf_unittest.GID
+ * @generated from protobuf enum protobuf_unittest.GID:
+ *
+ * enum GID {
+ *  GID_UNUSED = 0;
+ * }
  */
 export type GID = "GID_UNUSED";
 export const GID = {
-    GID_UNUSED: "GID_UNUSED"
+    /**
+     * @generated from protobuf enum value: GID_UNUSED = 0;
+     */ GID_UNUSED: "GID_UNUSED"
 } as const;
 /**
  * This generates `UID_MAX`, which is a mcro in some circumstances.
  *
- * @generated from protobuf enum protobuf_unittest.UID
+ * @generated from protobuf enum protobuf_unittest.UID:
+ *
+ * enum UID {
+ *  UID_UNUSED = 0;
+ * }
  */
 export type UID = "UID_UNUSED";
 export const UID = {
-    UID_UNUSED: "UID_UNUSED"
+    /**
+     * @generated from protobuf enum value: UID_UNUSED = 0;
+     */ UID_UNUSED: "UID_UNUSED"
 } as const;
 /**
  * Just a container for bad macro names. Some of these do not follow the normal
  * naming conventions, this is intentional, we just want to trigger a build
  * failure if the macro is left defined.
  *
- * @generated from protobuf enum protobuf_unittest.BadNames
+ * @generated from protobuf enum protobuf_unittest.BadNames:
+ *
+ * enum BadNames {
+ *  PACKAGE = 0;  // autoheader defines this in some circumstances.
+ *  PACKED = 1;  // The comment says "a few common headers define this".
+ *  linux = 2;  // Defined in many Linux system headers.
+ *  DOMAIN = 3;  // This is often a macro in `<math.h>`.
+ *  TRUE = 4;  // These are defined in both Windows and macOS headers.
+ *  FALSE = 5;
+ *  CREATE_NEW = 6;  // Sometimes defined in Windows system headers.
+ *  DELETE = 7;
+ *  DOUBLE_CLICK = 8;
+ *  ERROR = 9;
+ *  ERROR_BUSY = 10;
+ *  ERROR_INSTALL_FAILED = 11;
+ *  ERROR_NOT_FOUND = 12;
+ *  GetClassName = 13;
+ *  GetCurrentTime = 14;
+ *  GetMessage = 15;
+ *  GetObject = 16;
+ *  IGNORE = 17;
+ *  IN = 18;
+ *  INPUT_KEYBOARD = 19;
+ *  NO_ERROR = 20;
+ *  OUT = 21;
+ *  OPTIONAL = 22;
+ *  NEAR = 23;
+ *  NO_DATA = 24;
+ *  REASON_UNKNOWN = 25;
+ *  SERVICE_DISABLED = 26;
+ *  SEVERITY_ERROR = 27;
+ *  STATUS_PENDING = 28;
+ *  STRICT = 29;
+ *  TYPE_BOOL = 30;  // Sometimed defined in macOS system headers.
+ *  DEBUG = 31;  // Defined in macOS, Windows, and Linux headers.
+ * }
  */
 export type BadNames = "PACKAGE" | "PACKED" | "linux" | "DOMAIN" | "TRUE" | "FALSE" | "CREATE_NEW" | "DELETE" | "DOUBLE_CLICK" | "ERROR" | "ERROR_BUSY" | "ERROR_INSTALL_FAILED" | "ERROR_NOT_FOUND" | "GetClassName" | "GetCurrentTime" | "GetMessage" | "GetObject" | "IGNORE" | "IN" | "INPUT_KEYBOARD" | "NO_ERROR" | "OUT" | "OPTIONAL" | "NEAR" | "NO_DATA" | "REASON_UNKNOWN" | "SERVICE_DISABLED" | "SEVERITY_ERROR" | "STATUS_PENDING" | "STRICT" | "TYPE_BOOL" | "DEBUG";
 export const BadNames = {
-    PACKAGE: "PACKAGE",
-    PACKED: "PACKED",
-    linux: "linux",
-    DOMAIN: "DOMAIN",
-    TRUE: "TRUE",
-    FALSE: "FALSE",
-    CREATE_NEW: "CREATE_NEW",
-    DELETE: "DELETE",
-    DOUBLE_CLICK: "DOUBLE_CLICK",
-    ERROR: "ERROR",
-    ERROR_BUSY: "ERROR_BUSY",
-    ERROR_INSTALL_FAILED: "ERROR_INSTALL_FAILED",
-    ERROR_NOT_FOUND: "ERROR_NOT_FOUND",
-    GetClassName: "GetClassName",
-    GetCurrentTime: "GetCurrentTime",
-    GetMessage: "GetMessage",
-    GetObject: "GetObject",
-    IGNORE: "IGNORE",
-    IN: "IN",
-    INPUT_KEYBOARD: "INPUT_KEYBOARD",
-    NO_ERROR: "NO_ERROR",
-    OUT: "OUT",
-    OPTIONAL: "OPTIONAL",
-    NEAR: "NEAR",
-    NO_DATA: "NO_DATA",
-    REASON_UNKNOWN: "REASON_UNKNOWN",
-    SERVICE_DISABLED: "SERVICE_DISABLED",
-    SEVERITY_ERROR: "SEVERITY_ERROR",
-    STATUS_PENDING: "STATUS_PENDING",
-    STRICT: "STRICT",
-    TYPE_BOOL: "TYPE_BOOL",
-    DEBUG: "DEBUG"
+    /** autoheader defines this in some circumstances.
+     *
+     * @generated from protobuf enum value: PACKAGE = 0; */ PACKAGE: "PACKAGE",
+    /** The comment says "a few common headers define this".
+     *
+     * @generated from protobuf enum value: PACKED = 1; */ PACKED: "PACKED",
+    /** Defined in many Linux system headers.
+     *
+     * @generated from protobuf enum value: linux = 2; */ linux: "linux",
+    /** This is often a macro in `<math.h>`.
+     *
+     * @generated from protobuf enum value: DOMAIN = 3; */ DOMAIN: "DOMAIN",
+    /** These are defined in both Windows and macOS headers.
+     *
+     * @generated from protobuf enum value: TRUE = 4; */ TRUE: "TRUE",
+    /**
+     * @generated from protobuf enum value: FALSE = 5;
+     */ FALSE: "FALSE",
+    /** Sometimes defined in Windows system headers.
+     *
+     * @generated from protobuf enum value: CREATE_NEW = 6; */ CREATE_NEW: "CREATE_NEW",
+    /**
+     * @generated from protobuf enum value: DELETE = 7;
+     */ DELETE: "DELETE",
+    /**
+     * @generated from protobuf enum value: DOUBLE_CLICK = 8;
+     */ DOUBLE_CLICK: "DOUBLE_CLICK",
+    /**
+     * @generated from protobuf enum value: ERROR = 9;
+     */ ERROR: "ERROR",
+    /**
+     * @generated from protobuf enum value: ERROR_BUSY = 10;
+     */ ERROR_BUSY: "ERROR_BUSY",
+    /**
+     * @generated from protobuf enum value: ERROR_INSTALL_FAILED = 11;
+     */ ERROR_INSTALL_FAILED: "ERROR_INSTALL_FAILED",
+    /**
+     * @generated from protobuf enum value: ERROR_NOT_FOUND = 12;
+     */ ERROR_NOT_FOUND: "ERROR_NOT_FOUND",
+    /**
+     * @generated from protobuf enum value: GetClassName = 13;
+     */ GetClassName: "GetClassName",
+    /**
+     * @generated from protobuf enum value: GetCurrentTime = 14;
+     */ GetCurrentTime: "GetCurrentTime",
+    /**
+     * @generated from protobuf enum value: GetMessage = 15;
+     */ GetMessage: "GetMessage",
+    /**
+     * @generated from protobuf enum value: GetObject = 16;
+     */ GetObject: "GetObject",
+    /**
+     * @generated from protobuf enum value: IGNORE = 17;
+     */ IGNORE: "IGNORE",
+    /**
+     * @generated from protobuf enum value: IN = 18;
+     */ IN: "IN",
+    /**
+     * @generated from protobuf enum value: INPUT_KEYBOARD = 19;
+     */ INPUT_KEYBOARD: "INPUT_KEYBOARD",
+    /**
+     * @generated from protobuf enum value: NO_ERROR = 20;
+     */ NO_ERROR: "NO_ERROR",
+    /**
+     * @generated from protobuf enum value: OUT = 21;
+     */ OUT: "OUT",
+    /**
+     * @generated from protobuf enum value: OPTIONAL = 22;
+     */ OPTIONAL: "OPTIONAL",
+    /**
+     * @generated from protobuf enum value: NEAR = 23;
+     */ NEAR: "NEAR",
+    /**
+     * @generated from protobuf enum value: NO_DATA = 24;
+     */ NO_DATA: "NO_DATA",
+    /**
+     * @generated from protobuf enum value: REASON_UNKNOWN = 25;
+     */ REASON_UNKNOWN: "REASON_UNKNOWN",
+    /**
+     * @generated from protobuf enum value: SERVICE_DISABLED = 26;
+     */ SERVICE_DISABLED: "SERVICE_DISABLED",
+    /**
+     * @generated from protobuf enum value: SEVERITY_ERROR = 27;
+     */ SEVERITY_ERROR: "SEVERITY_ERROR",
+    /**
+     * @generated from protobuf enum value: STATUS_PENDING = 28;
+     */ STATUS_PENDING: "STATUS_PENDING",
+    /**
+     * @generated from protobuf enum value: STRICT = 29;
+     */ STRICT: "STRICT",
+    /** Sometimed defined in macOS system headers.
+     *
+     * @generated from protobuf enum value: TYPE_BOOL = 30; */ TYPE_BOOL: "TYPE_BOOL",
+    /** Defined in macOS, Windows, and Linux headers.
+     *
+     * @generated from protobuf enum value: DEBUG = 31; */ DEBUG: "DEBUG"
 } as const;

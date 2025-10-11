@@ -1,5 +1,4 @@
 import * as ts from 'typescript';
-import { addCommentBlockAsJsDoc } from './typescript-comments';
 
 /**
  * Creates a string literal union type declaration for enums.
@@ -38,6 +37,7 @@ export class TypescriptUnionBuilder {
       unionType
     );
 
+    // Comments will be added by the enum generator
     return typeAlias;
   }
 

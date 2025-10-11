@@ -41,14 +41,29 @@ export interface CppFeatures {
     enumNameUsesStringView?: boolean;
 }
 /**
- * @generated from protobuf enum pb.CppFeatures.StringType
+ * @generated from protobuf enum pb.CppFeatures.StringType:
+ *
+ * enum StringType {
+ *  STRING_TYPE_UNKNOWN = 0;
+ *  VIEW = 1;
+ *  CORD = 2;
+ *  STRING = 3;
+ * }
  */
 export type CppFeatures_StringType = "STRING_TYPE_UNKNOWN" | "VIEW" | "CORD" | "STRING";
 export const CppFeatures_StringType = {
-    STRING_TYPE_UNKNOWN: "STRING_TYPE_UNKNOWN",
-    VIEW: "VIEW",
-    CORD: "CORD",
-    STRING: "STRING"
+    /**
+     * @generated from protobuf enum value: STRING_TYPE_UNKNOWN = 0;
+     */ STRING_TYPE_UNKNOWN: "STRING_TYPE_UNKNOWN",
+    /**
+     * @generated from protobuf enum value: VIEW = 1;
+     */ VIEW: "VIEW",
+    /**
+     * @generated from protobuf enum value: CORD = 2;
+     */ CORD: "CORD",
+    /**
+     * @generated from protobuf enum value: STRING = 3;
+     */ STRING: "STRING"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class CppFeatures$Type extends MessageType<CppFeatures> {

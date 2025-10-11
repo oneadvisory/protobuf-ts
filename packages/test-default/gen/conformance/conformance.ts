@@ -232,27 +232,72 @@ export interface JspbEncodingConfig {
 //     iOS apps, where fork/stdin/stdout are not available.
 
 /**
- * @generated from protobuf enum conformance.WireFormat
+ * @generated from protobuf enum conformance.WireFormat:
+ *
+ * enum WireFormat {
+ *  UNSPECIFIED = 0;
+ *  PROTOBUF = 1;
+ *  JSON = 2;
+ *  JSPB = 3;  // Only used inside Google. Opensource testees just skip it.
+ *  TEXT_FORMAT = 4;
+ * }
  */
 export type WireFormat = "UNSPECIFIED" | "PROTOBUF" | "JSON" | "JSPB" | "TEXT_FORMAT";
 export const WireFormat = {
-    UNSPECIFIED: "UNSPECIFIED",
-    PROTOBUF: "PROTOBUF",
-    JSON: "JSON",
-    JSPB: "JSPB",
-    TEXT_FORMAT: "TEXT_FORMAT"
+    /**
+     * @generated from protobuf enum value: UNSPECIFIED = 0;
+     */ UNSPECIFIED: "UNSPECIFIED",
+    /**
+     * @generated from protobuf enum value: PROTOBUF = 1;
+     */ PROTOBUF: "PROTOBUF",
+    /**
+     * @generated from protobuf enum value: JSON = 2;
+     */ JSON: "JSON",
+    /** Only used inside Google. Opensource testees just skip it.
+     *
+     * @generated from protobuf enum value: JSPB = 3; */ JSPB: "JSPB",
+    /**
+     * @generated from protobuf enum value: TEXT_FORMAT = 4;
+     */ TEXT_FORMAT: "TEXT_FORMAT"
 } as const;
 /**
- * @generated from protobuf enum conformance.TestCategory
+ * @generated from protobuf enum conformance.TestCategory:
+ *
+ * enum TestCategory {
+ *  UNSPECIFIED_TEST = 0;
+ *  BINARY_TEST = 1;  // Test binary wire format.
+ *  JSON_TEST = 2;  // Test json wire format.
+ *  JSON_IGNORE_UNKNOWN_PARSING_TEST = 3;  // Similar to JSON_TEST. However, during parsing json, testee should ignore
+ *  JSPB_TEST = 4;  // Test jspb wire format. Only used inside Google. Opensource testees just
+ *  TEXT_FORMAT_TEST = 5;  // Test text format. For cpp, java and python, testees can already deal with
+ * }
  */
 export type TestCategory = "UNSPECIFIED_TEST" | "BINARY_TEST" | "JSON_TEST" | "JSON_IGNORE_UNKNOWN_PARSING_TEST" | "JSPB_TEST" | "TEXT_FORMAT_TEST";
 export const TestCategory = {
-    UNSPECIFIED_TEST: "UNSPECIFIED_TEST",
-    BINARY_TEST: "BINARY_TEST",
-    JSON_TEST: "JSON_TEST",
-    JSON_IGNORE_UNKNOWN_PARSING_TEST: "JSON_IGNORE_UNKNOWN_PARSING_TEST",
-    JSPB_TEST: "JSPB_TEST",
-    TEXT_FORMAT_TEST: "TEXT_FORMAT_TEST"
+    /**
+     * @generated from protobuf enum value: UNSPECIFIED_TEST = 0;
+     */ UNSPECIFIED_TEST: "UNSPECIFIED_TEST",
+    /** Test binary wire format.
+     *
+     * @generated from protobuf enum value: BINARY_TEST = 1; */ BINARY_TEST: "BINARY_TEST",
+    /** Test json wire format.
+     *
+     * @generated from protobuf enum value: JSON_TEST = 2; */ JSON_TEST: "JSON_TEST",
+    /** Similar to JSON_TEST. However, during parsing json, testee should ignore
+     * unknown fields. This feature is optional. Each implementation can decide
+     * whether to support it.  See
+     * https://developers.google.com/protocol-buffers/docs/proto3#json_options
+     * for more detail.
+     *
+     * @generated from protobuf enum value: JSON_IGNORE_UNKNOWN_PARSING_TEST = 3; */ JSON_IGNORE_UNKNOWN_PARSING_TEST: "JSON_IGNORE_UNKNOWN_PARSING_TEST",
+    /** Test jspb wire format. Only used inside Google. Opensource testees just
+     * skip it.
+     *
+     * @generated from protobuf enum value: JSPB_TEST = 4; */ JSPB_TEST: "JSPB_TEST",
+    /** Test text format. For cpp, java and python, testees can already deal with
+     * this type. Testees of other languages can simply skip it.
+     *
+     * @generated from protobuf enum value: TEXT_FORMAT_TEST = 5; */ TEXT_FORMAT_TEST: "TEXT_FORMAT_TEST"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestStatus$Type extends MessageType<TestStatus> {

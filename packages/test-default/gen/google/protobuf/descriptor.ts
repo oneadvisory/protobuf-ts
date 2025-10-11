@@ -303,12 +303,21 @@ export interface ExtensionRangeOptions_Declaration {
 /**
  * The verification state of the extension range.
  *
- * @generated from protobuf enum google.protobuf.ExtensionRangeOptions.VerificationState
+ * @generated from protobuf enum google.protobuf.ExtensionRangeOptions.VerificationState:
+ *
+ * enum VerificationState {
+ *  DECLARATION = 0;  // All the extensions of the range must be declared.
+ *  UNVERIFIED = 1;
+ * }
  */
 export type ExtensionRangeOptions_VerificationState = "DECLARATION" | "UNVERIFIED";
 export const ExtensionRangeOptions_VerificationState = {
-    DECLARATION: "DECLARATION",
-    UNVERIFIED: "UNVERIFIED"
+    /** All the extensions of the range must be declared.
+     *
+     * @generated from protobuf enum value: DECLARATION = 0; */ DECLARATION: "DECLARATION",
+    /**
+     * @generated from protobuf enum value: UNVERIFIED = 1;
+     */ UNVERIFIED: "UNVERIFIED"
 } as const;
 /**
  * Describes a field within a message.
@@ -409,39 +418,123 @@ export interface FieldDescriptorProto {
     proto3Optional?: boolean;
 }
 /**
- * @generated from protobuf enum google.protobuf.FieldDescriptorProto.Type
+ * @generated from protobuf enum google.protobuf.FieldDescriptorProto.Type:
+ *
+ * enum Type {
+ *  TYPE_UNSPECIFIED$ = 0;
+ *  TYPE_DOUBLE = 1;  // 0 is reserved for errors.
+ *  TYPE_FLOAT = 2;
+ *  TYPE_INT64 = 3;  // Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
+ *  TYPE_UINT64 = 4;
+ *  TYPE_INT32 = 5;  // Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
+ *  TYPE_FIXED64 = 6;
+ *  TYPE_FIXED32 = 7;
+ *  TYPE_BOOL = 8;
+ *  TYPE_STRING = 9;
+ *  TYPE_GROUP = 10;  // Tag-delimited aggregate.
+ *  TYPE_MESSAGE = 11;  // Length-delimited aggregate.
+ *  TYPE_BYTES = 12;  // New in version 2.
+ *  TYPE_UINT32 = 13;
+ *  TYPE_ENUM = 14;
+ *  TYPE_SFIXED32 = 15;
+ *  TYPE_SFIXED64 = 16;
+ *  TYPE_SINT32 = 17;  // Uses ZigZag encoding.
+ *  TYPE_SINT64 = 18;  // Uses ZigZag encoding.
+ * }
  */
 export type FieldDescriptorProto_Type = "UNSPECIFIED$" | "DOUBLE" | "FLOAT" | "INT64" | "UINT64" | "INT32" | "FIXED64" | "FIXED32" | "BOOL" | "STRING" | "GROUP" | "MESSAGE" | "BYTES" | "UINT32" | "ENUM" | "SFIXED32" | "SFIXED64" | "SINT32" | "SINT64";
 export const FieldDescriptorProto_Type = {
-    UNSPECIFIED$: "UNSPECIFIED$",
-    DOUBLE: "DOUBLE",
-    FLOAT: "FLOAT",
-    INT64: "INT64",
-    UINT64: "UINT64",
-    INT32: "INT32",
-    FIXED64: "FIXED64",
-    FIXED32: "FIXED32",
-    BOOL: "BOOL",
-    STRING: "STRING",
-    GROUP: "GROUP",
-    MESSAGE: "MESSAGE",
-    BYTES: "BYTES",
-    UINT32: "UINT32",
-    ENUM: "ENUM",
-    SFIXED32: "SFIXED32",
-    SFIXED64: "SFIXED64",
-    SINT32: "SINT32",
-    SINT64: "SINT64"
+    /**
+     * @generated from protobuf enum value: TYPE_UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
+    /** 0 is reserved for errors.
+     * Order is weird for historical reasons.
+     *
+     * @generated from protobuf enum value: TYPE_DOUBLE = 1; */ DOUBLE: "DOUBLE",
+    /**
+     * @generated from protobuf enum value: TYPE_FLOAT = 2;
+     */ FLOAT: "FLOAT",
+    /** Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
+     * negative values are likely.
+     *
+     * @generated from protobuf enum value: TYPE_INT64 = 3; */ INT64: "INT64",
+    /**
+     * @generated from protobuf enum value: TYPE_UINT64 = 4;
+     */ UINT64: "UINT64",
+    /** Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
+     * negative values are likely.
+     *
+     * @generated from protobuf enum value: TYPE_INT32 = 5; */ INT32: "INT32",
+    /**
+     * @generated from protobuf enum value: TYPE_FIXED64 = 6;
+     */ FIXED64: "FIXED64",
+    /**
+     * @generated from protobuf enum value: TYPE_FIXED32 = 7;
+     */ FIXED32: "FIXED32",
+    /**
+     * @generated from protobuf enum value: TYPE_BOOL = 8;
+     */ BOOL: "BOOL",
+    /**
+     * @generated from protobuf enum value: TYPE_STRING = 9;
+     */ STRING: "STRING",
+    /** Tag-delimited aggregate.
+     * Group type is deprecated and not supported after google.protobuf. However, Proto3
+     * implementations should still be able to parse the group wire format and
+     * treat group fields as unknown fields.  In Editions, the group wire format
+     * can be enabled via the `message_encoding` feature.
+     *
+     * @generated from protobuf enum value: TYPE_GROUP = 10; */ GROUP: "GROUP",
+    /** Length-delimited aggregate.
+     *
+     * @generated from protobuf enum value: TYPE_MESSAGE = 11; */ MESSAGE: "MESSAGE",
+    /** New in version 2.
+     *
+     * @generated from protobuf enum value: TYPE_BYTES = 12; */ BYTES: "BYTES",
+    /**
+     * @generated from protobuf enum value: TYPE_UINT32 = 13;
+     */ UINT32: "UINT32",
+    /**
+     * @generated from protobuf enum value: TYPE_ENUM = 14;
+     */ ENUM: "ENUM",
+    /**
+     * @generated from protobuf enum value: TYPE_SFIXED32 = 15;
+     */ SFIXED32: "SFIXED32",
+    /**
+     * @generated from protobuf enum value: TYPE_SFIXED64 = 16;
+     */ SFIXED64: "SFIXED64",
+    /** Uses ZigZag encoding.
+     *
+     * @generated from protobuf enum value: TYPE_SINT32 = 17; */ SINT32: "SINT32",
+    /** Uses ZigZag encoding.
+     *
+     * @generated from protobuf enum value: TYPE_SINT64 = 18; */ SINT64: "SINT64"
 } as const;
 /**
- * @generated from protobuf enum google.protobuf.FieldDescriptorProto.Label
+ * @generated from protobuf enum google.protobuf.FieldDescriptorProto.Label:
+ *
+ * enum Label {
+ *  LABEL_UNSPECIFIED$ = 0;
+ *  LABEL_OPTIONAL = 1;  // 0 is reserved for errors
+ *  LABEL_REPEATED = 3;
+ *  LABEL_REQUIRED = 2;  // The required label is only allowed in google.protobuf.  In proto3 and Editions
+ * }
  */
 export type FieldDescriptorProto_Label = "UNSPECIFIED$" | "OPTIONAL" | "REPEATED" | "REQUIRED";
 export const FieldDescriptorProto_Label = {
-    UNSPECIFIED$: "UNSPECIFIED$",
-    OPTIONAL: "OPTIONAL",
-    REPEATED: "REPEATED",
-    REQUIRED: "REQUIRED"
+    /**
+     * @generated from protobuf enum value: LABEL_UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
+    /** 0 is reserved for errors
+     *
+     * @generated from protobuf enum value: LABEL_OPTIONAL = 1; */ OPTIONAL: "OPTIONAL",
+    /**
+     * @generated from protobuf enum value: LABEL_REPEATED = 3;
+     */ REPEATED: "REPEATED",
+    /** The required label is only allowed in google.protobuf.  In proto3 and Editions
+     * it's explicitly prohibited.  In Editions, the `field_presence` feature
+     * can be used to get this behavior.
+     *
+     * @generated from protobuf enum value: LABEL_REQUIRED = 2; */ REQUIRED: "REQUIRED"
 } as const;
 /**
  * Describes a oneof.
@@ -799,14 +892,31 @@ export interface FileOptions {
 /**
  * Generated classes can be optimized for speed or code size.
  *
- * @generated from protobuf enum google.protobuf.FileOptions.OptimizeMode
+ * @generated from protobuf enum google.protobuf.FileOptions.OptimizeMode:
+ *
+ * enum OptimizeMode {
+ *  UNSPECIFIED$ = 0;
+ *  SPEED = 1;  // Generate complete code for parsing, serialization,
+ *  CODE_SIZE = 2;  // etc.
+ *  LITE_RUNTIME = 3;  // Generate code using MessageLite and the lite runtime.
+ * }
  */
 export type FileOptions_OptimizeMode = "UNSPECIFIED$" | "SPEED" | "CODE_SIZE" | "LITE_RUNTIME";
 export const FileOptions_OptimizeMode = {
-    UNSPECIFIED$: "UNSPECIFIED$",
-    SPEED: "SPEED",
-    CODE_SIZE: "CODE_SIZE",
-    LITE_RUNTIME: "LITE_RUNTIME"
+    /**
+     * @generated from protobuf enum value: UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
+    /** Generate complete code for parsing, serialization,
+     *
+     * @generated from protobuf enum value: SPEED = 1; */ SPEED: "SPEED",
+    /** etc.
+     *
+     * Use ReflectionOps to implement these methods.
+     *
+     * @generated from protobuf enum value: CODE_SIZE = 2; */ CODE_SIZE: "CODE_SIZE",
+    /** Generate code using MessageLite and the lite runtime.
+     *
+     * @generated from protobuf enum value: LITE_RUNTIME = 3; */ LITE_RUNTIME: "LITE_RUNTIME"
 } as const;
 /**
  * @generated from protobuf message google.protobuf.MessageOptions
@@ -1088,53 +1198,127 @@ export interface FieldOptions_FeatureSupport {
     editionRemoved?: Edition;
 }
 /**
- * @generated from protobuf enum google.protobuf.FieldOptions.CType
+ * @generated from protobuf enum google.protobuf.FieldOptions.CType:
+ *
+ * enum CType {
+ *  STRING = 0;  // Default mode.
+ *  CORD = 1;  // The option [ctype=CORD] may be applied to a non-repeated field of type
+ *  STRING_PIECE = 2;
+ * }
  */
 export type FieldOptions_CType = "STRING" | "CORD" | "STRING_PIECE";
 export const FieldOptions_CType = {
-    STRING: "STRING",
-    CORD: "CORD",
-    STRING_PIECE: "STRING_PIECE"
+    /** Default mode.
+     *
+     * @generated from protobuf enum value: STRING = 0; */ STRING: "STRING",
+    /** The option [ctype=CORD] may be applied to a non-repeated field of type
+     * "bytes". It indicates that in C++, the data should be stored in a Cord
+     * instead of a string.  For very large strings, this may reduce memory
+     * fragmentation. It may also allow better performance when parsing from a
+     * Cord, or when parsing with aliasing enabled, as the parsed Cord may then
+     * alias the original buffer.
+     *
+     * @generated from protobuf enum value: CORD = 1; */ CORD: "CORD",
+    /**
+     * @generated from protobuf enum value: STRING_PIECE = 2;
+     */ STRING_PIECE: "STRING_PIECE"
 } as const;
 /**
- * @generated from protobuf enum google.protobuf.FieldOptions.JSType
+ * @generated from protobuf enum google.protobuf.FieldOptions.JSType:
+ *
+ * enum JSType {
+ *  JS_NORMAL = 0;  // Use the default type.
+ *  JS_STRING = 1;  // Use JavaScript strings.
+ *  JS_NUMBER = 2;  // Use JavaScript numbers.
+ * }
  */
 export type FieldOptions_JSType = "JS_NORMAL" | "JS_STRING" | "JS_NUMBER";
 export const FieldOptions_JSType = {
-    JS_NORMAL: "JS_NORMAL",
-    JS_STRING: "JS_STRING",
-    JS_NUMBER: "JS_NUMBER"
+    /** Use the default type.
+     *
+     * @generated from protobuf enum value: JS_NORMAL = 0; */ JS_NORMAL: "JS_NORMAL",
+    /** Use JavaScript strings.
+     *
+     * @generated from protobuf enum value: JS_STRING = 1; */ JS_STRING: "JS_STRING",
+    /** Use JavaScript numbers.
+     *
+     * @generated from protobuf enum value: JS_NUMBER = 2; */ JS_NUMBER: "JS_NUMBER"
 } as const;
 /**
  * If set to RETENTION_SOURCE, the option will be omitted from the binary.
  *
- * @generated from protobuf enum google.protobuf.FieldOptions.OptionRetention
+ * @generated from protobuf enum google.protobuf.FieldOptions.OptionRetention:
+ *
+ * enum OptionRetention {
+ *  RETENTION_UNKNOWN = 0;
+ *  RETENTION_RUNTIME = 1;
+ *  RETENTION_SOURCE = 2;
+ * }
  */
 export type FieldOptions_OptionRetention = "RETENTION_UNKNOWN" | "RETENTION_RUNTIME" | "RETENTION_SOURCE";
 export const FieldOptions_OptionRetention = {
-    RETENTION_UNKNOWN: "RETENTION_UNKNOWN",
-    RETENTION_RUNTIME: "RETENTION_RUNTIME",
-    RETENTION_SOURCE: "RETENTION_SOURCE"
+    /**
+     * @generated from protobuf enum value: RETENTION_UNKNOWN = 0;
+     */ RETENTION_UNKNOWN: "RETENTION_UNKNOWN",
+    /**
+     * @generated from protobuf enum value: RETENTION_RUNTIME = 1;
+     */ RETENTION_RUNTIME: "RETENTION_RUNTIME",
+    /**
+     * @generated from protobuf enum value: RETENTION_SOURCE = 2;
+     */ RETENTION_SOURCE: "RETENTION_SOURCE"
 } as const;
 /**
  * This indicates the types of entities that the field may apply to when used
  * as an option. If it is unset, then the field may be freely used as an
  * option on any kind of entity.
  *
- * @generated from protobuf enum google.protobuf.FieldOptions.OptionTargetType
+ * @generated from protobuf enum google.protobuf.FieldOptions.OptionTargetType:
+ *
+ * enum OptionTargetType {
+ *  TARGET_TYPE_UNKNOWN = 0;
+ *  TARGET_TYPE_FILE = 1;
+ *  TARGET_TYPE_EXTENSION_RANGE = 2;
+ *  TARGET_TYPE_MESSAGE = 3;
+ *  TARGET_TYPE_FIELD = 4;
+ *  TARGET_TYPE_ONEOF = 5;
+ *  TARGET_TYPE_ENUM = 6;
+ *  TARGET_TYPE_ENUM_ENTRY = 7;
+ *  TARGET_TYPE_SERVICE = 8;
+ *  TARGET_TYPE_METHOD = 9;
+ * }
  */
 export type FieldOptions_OptionTargetType = "TARGET_TYPE_UNKNOWN" | "TARGET_TYPE_FILE" | "TARGET_TYPE_EXTENSION_RANGE" | "TARGET_TYPE_MESSAGE" | "TARGET_TYPE_FIELD" | "TARGET_TYPE_ONEOF" | "TARGET_TYPE_ENUM" | "TARGET_TYPE_ENUM_ENTRY" | "TARGET_TYPE_SERVICE" | "TARGET_TYPE_METHOD";
 export const FieldOptions_OptionTargetType = {
-    TARGET_TYPE_UNKNOWN: "TARGET_TYPE_UNKNOWN",
-    TARGET_TYPE_FILE: "TARGET_TYPE_FILE",
-    TARGET_TYPE_EXTENSION_RANGE: "TARGET_TYPE_EXTENSION_RANGE",
-    TARGET_TYPE_MESSAGE: "TARGET_TYPE_MESSAGE",
-    TARGET_TYPE_FIELD: "TARGET_TYPE_FIELD",
-    TARGET_TYPE_ONEOF: "TARGET_TYPE_ONEOF",
-    TARGET_TYPE_ENUM: "TARGET_TYPE_ENUM",
-    TARGET_TYPE_ENUM_ENTRY: "TARGET_TYPE_ENUM_ENTRY",
-    TARGET_TYPE_SERVICE: "TARGET_TYPE_SERVICE",
-    TARGET_TYPE_METHOD: "TARGET_TYPE_METHOD"
+    /**
+     * @generated from protobuf enum value: TARGET_TYPE_UNKNOWN = 0;
+     */ TARGET_TYPE_UNKNOWN: "TARGET_TYPE_UNKNOWN",
+    /**
+     * @generated from protobuf enum value: TARGET_TYPE_FILE = 1;
+     */ TARGET_TYPE_FILE: "TARGET_TYPE_FILE",
+    /**
+     * @generated from protobuf enum value: TARGET_TYPE_EXTENSION_RANGE = 2;
+     */ TARGET_TYPE_EXTENSION_RANGE: "TARGET_TYPE_EXTENSION_RANGE",
+    /**
+     * @generated from protobuf enum value: TARGET_TYPE_MESSAGE = 3;
+     */ TARGET_TYPE_MESSAGE: "TARGET_TYPE_MESSAGE",
+    /**
+     * @generated from protobuf enum value: TARGET_TYPE_FIELD = 4;
+     */ TARGET_TYPE_FIELD: "TARGET_TYPE_FIELD",
+    /**
+     * @generated from protobuf enum value: TARGET_TYPE_ONEOF = 5;
+     */ TARGET_TYPE_ONEOF: "TARGET_TYPE_ONEOF",
+    /**
+     * @generated from protobuf enum value: TARGET_TYPE_ENUM = 6;
+     */ TARGET_TYPE_ENUM: "TARGET_TYPE_ENUM",
+    /**
+     * @generated from protobuf enum value: TARGET_TYPE_ENUM_ENTRY = 7;
+     */ TARGET_TYPE_ENUM_ENTRY: "TARGET_TYPE_ENUM_ENTRY",
+    /**
+     * @generated from protobuf enum value: TARGET_TYPE_SERVICE = 8;
+     */ TARGET_TYPE_SERVICE: "TARGET_TYPE_SERVICE",
+    /**
+     * @generated from protobuf enum value: TARGET_TYPE_METHOD = 9;
+     */ TARGET_TYPE_METHOD: "TARGET_TYPE_METHOD"
 } as const;
 /**
  * @generated from protobuf message google.protobuf.OneofOptions
@@ -1309,13 +1493,25 @@ export interface MethodOptions {
  * or neither? HTTP based RPC implementation may choose GET verb for safe
  * methods, and PUT verb for idempotent methods instead of the default POST.
  *
- * @generated from protobuf enum google.protobuf.MethodOptions.IdempotencyLevel
+ * @generated from protobuf enum google.protobuf.MethodOptions.IdempotencyLevel:
+ *
+ * enum IdempotencyLevel {
+ *  IDEMPOTENCY_UNKNOWN = 0;
+ *  NO_SIDE_EFFECTS = 1;  // implies idempotent
+ *  IDEMPOTENT = 2;  // idempotent, but may have side effects
+ * }
  */
 export type MethodOptions_IdempotencyLevel = "IDEMPOTENCY_UNKNOWN" | "NO_SIDE_EFFECTS" | "IDEMPOTENT";
 export const MethodOptions_IdempotencyLevel = {
-    IDEMPOTENCY_UNKNOWN: "IDEMPOTENCY_UNKNOWN",
-    NO_SIDE_EFFECTS: "NO_SIDE_EFFECTS",
-    IDEMPOTENT: "IDEMPOTENT"
+    /**
+     * @generated from protobuf enum value: IDEMPOTENCY_UNKNOWN = 0;
+     */ IDEMPOTENCY_UNKNOWN: "IDEMPOTENCY_UNKNOWN",
+    /** implies idempotent
+     *
+     * @generated from protobuf enum value: NO_SIDE_EFFECTS = 1; */ NO_SIDE_EFFECTS: "NO_SIDE_EFFECTS",
+    /** idempotent, but may have side effects
+     *
+     * @generated from protobuf enum value: IDEMPOTENT = 2; */ IDEMPOTENT: "IDEMPOTENT"
 } as const;
 /**
  * A message representing a option the parser does not recognize. This only
@@ -1419,59 +1615,134 @@ export interface FeatureSet {
     jsonFormat?: FeatureSet_JsonFormat;
 }
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.FieldPresence
+ * @generated from protobuf enum google.protobuf.FeatureSet.FieldPresence:
+ *
+ * enum FieldPresence {
+ *  FIELD_PRESENCE_UNKNOWN = 0;
+ *  EXPLICIT = 1;
+ *  IMPLICIT = 2;
+ *  LEGACY_REQUIRED = 3;
+ * }
  */
 export type FeatureSet_FieldPresence = "FIELD_PRESENCE_UNKNOWN" | "EXPLICIT" | "IMPLICIT" | "LEGACY_REQUIRED";
 export const FeatureSet_FieldPresence = {
-    FIELD_PRESENCE_UNKNOWN: "FIELD_PRESENCE_UNKNOWN",
-    EXPLICIT: "EXPLICIT",
-    IMPLICIT: "IMPLICIT",
-    LEGACY_REQUIRED: "LEGACY_REQUIRED"
+    /**
+     * @generated from protobuf enum value: FIELD_PRESENCE_UNKNOWN = 0;
+     */ FIELD_PRESENCE_UNKNOWN: "FIELD_PRESENCE_UNKNOWN",
+    /**
+     * @generated from protobuf enum value: EXPLICIT = 1;
+     */ EXPLICIT: "EXPLICIT",
+    /**
+     * @generated from protobuf enum value: IMPLICIT = 2;
+     */ IMPLICIT: "IMPLICIT",
+    /**
+     * @generated from protobuf enum value: LEGACY_REQUIRED = 3;
+     */ LEGACY_REQUIRED: "LEGACY_REQUIRED"
 } as const;
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.EnumType
+ * @generated from protobuf enum google.protobuf.FeatureSet.EnumType:
+ *
+ * enum EnumType {
+ *  ENUM_TYPE_UNKNOWN = 0;
+ *  OPEN = 1;
+ *  CLOSED = 2;
+ * }
  */
 export type FeatureSet_EnumType = "ENUM_TYPE_UNKNOWN" | "OPEN" | "CLOSED";
 export const FeatureSet_EnumType = {
-    ENUM_TYPE_UNKNOWN: "ENUM_TYPE_UNKNOWN",
-    OPEN: "OPEN",
-    CLOSED: "CLOSED"
+    /**
+     * @generated from protobuf enum value: ENUM_TYPE_UNKNOWN = 0;
+     */ ENUM_TYPE_UNKNOWN: "ENUM_TYPE_UNKNOWN",
+    /**
+     * @generated from protobuf enum value: OPEN = 1;
+     */ OPEN: "OPEN",
+    /**
+     * @generated from protobuf enum value: CLOSED = 2;
+     */ CLOSED: "CLOSED"
 } as const;
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.RepeatedFieldEncoding
+ * @generated from protobuf enum google.protobuf.FeatureSet.RepeatedFieldEncoding:
+ *
+ * enum RepeatedFieldEncoding {
+ *  REPEATED_FIELD_ENCODING_UNKNOWN = 0;
+ *  PACKED = 1;
+ *  EXPANDED = 2;
+ * }
  */
 export type FeatureSet_RepeatedFieldEncoding = "REPEATED_FIELD_ENCODING_UNKNOWN" | "PACKED" | "EXPANDED";
 export const FeatureSet_RepeatedFieldEncoding = {
-    REPEATED_FIELD_ENCODING_UNKNOWN: "REPEATED_FIELD_ENCODING_UNKNOWN",
-    PACKED: "PACKED",
-    EXPANDED: "EXPANDED"
+    /**
+     * @generated from protobuf enum value: REPEATED_FIELD_ENCODING_UNKNOWN = 0;
+     */ REPEATED_FIELD_ENCODING_UNKNOWN: "REPEATED_FIELD_ENCODING_UNKNOWN",
+    /**
+     * @generated from protobuf enum value: PACKED = 1;
+     */ PACKED: "PACKED",
+    /**
+     * @generated from protobuf enum value: EXPANDED = 2;
+     */ EXPANDED: "EXPANDED"
 } as const;
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.Utf8Validation
+ * @generated from protobuf enum google.protobuf.FeatureSet.Utf8Validation:
+ *
+ * enum Utf8Validation {
+ *  UTF8_VALIDATION_UNKNOWN = 0;
+ *  VERIFY = 2;
+ *  NONE = 3;
+ * }
  */
 export type FeatureSet_Utf8Validation = "UTF8_VALIDATION_UNKNOWN" | "VERIFY" | "NONE";
 export const FeatureSet_Utf8Validation = {
-    UTF8_VALIDATION_UNKNOWN: "UTF8_VALIDATION_UNKNOWN",
-    VERIFY: "VERIFY",
-    NONE: "NONE"
+    /**
+     * @generated from protobuf enum value: UTF8_VALIDATION_UNKNOWN = 0;
+     */ UTF8_VALIDATION_UNKNOWN: "UTF8_VALIDATION_UNKNOWN",
+    /**
+     * @generated from protobuf enum value: VERIFY = 2;
+     */ VERIFY: "VERIFY",
+    /**
+     * @generated from protobuf enum value: NONE = 3;
+     */ NONE: "NONE"
 } as const;
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.MessageEncoding
+ * @generated from protobuf enum google.protobuf.FeatureSet.MessageEncoding:
+ *
+ * enum MessageEncoding {
+ *  MESSAGE_ENCODING_UNKNOWN = 0;
+ *  LENGTH_PREFIXED = 1;
+ *  DELIMITED = 2;
+ * }
  */
 export type FeatureSet_MessageEncoding = "MESSAGE_ENCODING_UNKNOWN" | "LENGTH_PREFIXED" | "DELIMITED";
 export const FeatureSet_MessageEncoding = {
-    MESSAGE_ENCODING_UNKNOWN: "MESSAGE_ENCODING_UNKNOWN",
-    LENGTH_PREFIXED: "LENGTH_PREFIXED",
-    DELIMITED: "DELIMITED"
+    /**
+     * @generated from protobuf enum value: MESSAGE_ENCODING_UNKNOWN = 0;
+     */ MESSAGE_ENCODING_UNKNOWN: "MESSAGE_ENCODING_UNKNOWN",
+    /**
+     * @generated from protobuf enum value: LENGTH_PREFIXED = 1;
+     */ LENGTH_PREFIXED: "LENGTH_PREFIXED",
+    /**
+     * @generated from protobuf enum value: DELIMITED = 2;
+     */ DELIMITED: "DELIMITED"
 } as const;
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.JsonFormat
+ * @generated from protobuf enum google.protobuf.FeatureSet.JsonFormat:
+ *
+ * enum JsonFormat {
+ *  JSON_FORMAT_UNKNOWN = 0;
+ *  ALLOW = 1;
+ *  LEGACY_BEST_EFFORT = 2;
+ * }
  */
 export type FeatureSet_JsonFormat = "JSON_FORMAT_UNKNOWN" | "ALLOW" | "LEGACY_BEST_EFFORT";
 export const FeatureSet_JsonFormat = {
-    JSON_FORMAT_UNKNOWN: "JSON_FORMAT_UNKNOWN",
-    ALLOW: "ALLOW",
-    LEGACY_BEST_EFFORT: "LEGACY_BEST_EFFORT"
+    /**
+     * @generated from protobuf enum value: JSON_FORMAT_UNKNOWN = 0;
+     */ JSON_FORMAT_UNKNOWN: "JSON_FORMAT_UNKNOWN",
+    /**
+     * @generated from protobuf enum value: ALLOW = 1;
+     */ ALLOW: "ALLOW",
+    /**
+     * @generated from protobuf enum value: LEGACY_BEST_EFFORT = 2;
+     */ LEGACY_BEST_EFFORT: "LEGACY_BEST_EFFORT"
 } as const;
 /**
  * A compiled specification for the defaults of a set of features.  These
@@ -1746,33 +2017,93 @@ export interface GeneratedCodeInfo_Annotation {
  * Represents the identified object's effect on the element in the original
  * .proto file.
  *
- * @generated from protobuf enum google.protobuf.GeneratedCodeInfo.Annotation.Semantic
+ * @generated from protobuf enum google.protobuf.GeneratedCodeInfo.Annotation.Semantic:
+ *
+ * enum Semantic {
+ *  NONE = 0;  // There is no effect or the effect is indescribable.
+ *  SET = 1;  // The element is set or otherwise mutated.
+ *  ALIAS = 2;  // An alias to the element is returned.
+ * }
  */
 export type GeneratedCodeInfo_Annotation_Semantic = "NONE" | "SET" | "ALIAS";
 export const GeneratedCodeInfo_Annotation_Semantic = {
-    NONE: "NONE",
-    SET: "SET",
-    ALIAS: "ALIAS"
+    /** There is no effect or the effect is indescribable.
+     *
+     * @generated from protobuf enum value: NONE = 0; */ NONE: "NONE",
+    /** The element is set or otherwise mutated.
+     *
+     * @generated from protobuf enum value: SET = 1; */ SET: "SET",
+    /** An alias to the element is returned.
+     *
+     * @generated from protobuf enum value: ALIAS = 2; */ ALIAS: "ALIAS"
 } as const;
 /**
  * The full set of known editions.
  *
- * @generated from protobuf enum google.protobuf.Edition
+ * @generated from protobuf enum google.protobuf.Edition:
+ *
+ * enum Edition {
+ *  EDITION_UNKNOWN = 0;  // A placeholder for an unknown edition value.
+ *  EDITION_LEGACY = 900;  // A placeholder edition for specifying default behaviors *before* a feature
+ *  EDITION_PROTO2 = 998;  // Legacy syntax "editions".  These pre-date editions, but behave much like
+ *  EDITION_PROTO3 = 999;
+ *  EDITION_2023 = 1000;  // Editions that have been released.  The specific values are arbitrary and
+ *  EDITION_2024 = 1001;
+ *  EDITION_1_TEST_ONLY = 1;  // Placeholder editions for testing feature resolution.  These should not be
+ *  EDITION_2_TEST_ONLY = 2;
+ *  EDITION_99997_TEST_ONLY = 99997;
+ *  EDITION_99998_TEST_ONLY = 99998;
+ *  EDITION_99999_TEST_ONLY = 99999;
+ *  EDITION_MAX = 2147483647;  // Placeholder for specifying unbounded edition support.  This should only
+ * }
  */
 export type Edition = "EDITION_UNKNOWN" | "EDITION_LEGACY" | "EDITION_PROTO2" | "EDITION_PROTO3" | "EDITION_2023" | "EDITION_2024" | "EDITION_1_TEST_ONLY" | "EDITION_2_TEST_ONLY" | "EDITION_99997_TEST_ONLY" | "EDITION_99998_TEST_ONLY" | "EDITION_99999_TEST_ONLY" | "EDITION_MAX";
 export const Edition = {
-    EDITION_UNKNOWN: "EDITION_UNKNOWN",
-    EDITION_LEGACY: "EDITION_LEGACY",
-    EDITION_PROTO2: "EDITION_PROTO2",
-    EDITION_PROTO3: "EDITION_PROTO3",
-    EDITION_2023: "EDITION_2023",
-    EDITION_2024: "EDITION_2024",
-    EDITION_1_TEST_ONLY: "EDITION_1_TEST_ONLY",
-    EDITION_2_TEST_ONLY: "EDITION_2_TEST_ONLY",
-    EDITION_99997_TEST_ONLY: "EDITION_99997_TEST_ONLY",
-    EDITION_99998_TEST_ONLY: "EDITION_99998_TEST_ONLY",
-    EDITION_99999_TEST_ONLY: "EDITION_99999_TEST_ONLY",
-    EDITION_MAX: "EDITION_MAX"
+    /** A placeholder for an unknown edition value.
+     *
+     * @generated from protobuf enum value: EDITION_UNKNOWN = 0; */ EDITION_UNKNOWN: "EDITION_UNKNOWN",
+    /** A placeholder edition for specifying default behaviors *before* a feature
+     * was first introduced.  This is effectively an "infinite past".
+     *
+     * @generated from protobuf enum value: EDITION_LEGACY = 900; */ EDITION_LEGACY: "EDITION_LEGACY",
+    /** Legacy syntax "editions".  These pre-date editions, but behave much like
+     * distinct editions.  These can't be used to specify the edition of proto
+     * files, but feature definitions must supply proto2/proto3 defaults for
+     * backwards compatibility.
+     *
+     * @generated from protobuf enum value: EDITION_PROTO2 = 998; */ EDITION_PROTO2: "EDITION_PROTO2",
+    /**
+     * @generated from protobuf enum value: EDITION_PROTO3 = 999;
+     */ EDITION_PROTO3: "EDITION_PROTO3",
+    /** Editions that have been released.  The specific values are arbitrary and
+     * should not be depended on, but they will always be time-ordered for easy
+     * comparison.
+     *
+     * @generated from protobuf enum value: EDITION_2023 = 1000; */ EDITION_2023: "EDITION_2023",
+    /**
+     * @generated from protobuf enum value: EDITION_2024 = 1001;
+     */ EDITION_2024: "EDITION_2024",
+    /** Placeholder editions for testing feature resolution.  These should not be
+     * used or relied on outside of tests.
+     *
+     * @generated from protobuf enum value: EDITION_1_TEST_ONLY = 1; */ EDITION_1_TEST_ONLY: "EDITION_1_TEST_ONLY",
+    /**
+     * @generated from protobuf enum value: EDITION_2_TEST_ONLY = 2;
+     */ EDITION_2_TEST_ONLY: "EDITION_2_TEST_ONLY",
+    /**
+     * @generated from protobuf enum value: EDITION_99997_TEST_ONLY = 99997;
+     */ EDITION_99997_TEST_ONLY: "EDITION_99997_TEST_ONLY",
+    /**
+     * @generated from protobuf enum value: EDITION_99998_TEST_ONLY = 99998;
+     */ EDITION_99998_TEST_ONLY: "EDITION_99998_TEST_ONLY",
+    /**
+     * @generated from protobuf enum value: EDITION_99999_TEST_ONLY = 99999;
+     */ EDITION_99999_TEST_ONLY: "EDITION_99999_TEST_ONLY",
+    /** Placeholder for specifying unbounded edition support.  This should only
+     * ever be used by plugins that can expect to never require any changes to
+     * support a new edition.
+     *
+     * @generated from protobuf enum value: EDITION_MAX = 2147483647; */ EDITION_MAX: "EDITION_MAX"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class FileDescriptorSet$Type extends MessageType<FileDescriptorSet> {

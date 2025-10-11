@@ -62,18 +62,30 @@ export interface TopLevelMessage {
 export interface TopLevelMessage_NestedMessage {
 }
 /**
- * @generated from protobuf enum protobuf_unittest.TopLevelMessage.NestedEnum
+ * @generated from protobuf enum protobuf_unittest.TopLevelMessage.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  NESTED_UNKNOWN = 0;
+ * }
  */
 export type TopLevelMessage_NestedEnum = "NESTED_UNKNOWN";
 export const TopLevelMessage_NestedEnum = {
-    NESTED_UNKNOWN: "NESTED_UNKNOWN"
+    /**
+     * @generated from protobuf enum value: NESTED_UNKNOWN = 0;
+     */ NESTED_UNKNOWN: "NESTED_UNKNOWN"
 } as const;
 /**
- * @generated from protobuf enum protobuf_unittest.TopLevelEnum
+ * @generated from protobuf enum protobuf_unittest.TopLevelEnum:
+ *
+ * enum TopLevelEnum {
+ *  TOP_LEVEL_UNKNOWN = 0;
+ * }
  */
 export type TopLevelEnum = "TOP_LEVEL_UNKNOWN";
 export const TopLevelEnum = {
-    TOP_LEVEL_UNKNOWN: "TOP_LEVEL_UNKNOWN"
+    /**
+     * @generated from protobuf enum value: TOP_LEVEL_UNKNOWN = 0;
+     */ TOP_LEVEL_UNKNOWN: "TOP_LEVEL_UNKNOWN"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class OptionsMessage$Type extends MessageType<OptionsMessage> {

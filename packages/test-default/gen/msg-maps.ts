@@ -119,13 +119,25 @@ export interface EnumMapMessage {
     };
 }
 /**
- * @generated from protobuf enum spec.EnumMapMessage.MyEnum
+ * @generated from protobuf enum spec.EnumMapMessage.MyEnum:
+ *
+ * enum MyEnum {
+ *  ANY = 0;
+ *  YES = 1;
+ *  NO = 2;
+ * }
  */
 export type EnumMapMessage_MyEnum = "ANY" | "YES" | "NO";
 export const EnumMapMessage_MyEnum = {
-    ANY: "ANY",
-    YES: "YES",
-    NO: "NO"
+    /**
+     * @generated from protobuf enum value: ANY = 0;
+     */ ANY: "ANY",
+    /**
+     * @generated from protobuf enum value: YES = 1;
+     */ YES: "YES",
+    /**
+     * @generated from protobuf enum value: NO = 2;
+     */ NO: "NO"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ScalarMapsMessage$Type extends MessageType<ScalarMapsMessage> {

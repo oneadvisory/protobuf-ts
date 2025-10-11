@@ -123,31 +123,57 @@ export interface GoogleCommentExample {
  *
  * Comment between start of enum and first value.
  *
- * @generated from protobuf enum spec.EnumWithComments
+ * @generated from protobuf enum spec.EnumWithComments:
+ *
+ * enum EnumWithComments {
+ *  VALUE = 0;  // Comment before enum value.
+ * }
  */
 export type EnumWithComments = "VALUE";
 export const EnumWithComments = {
-    VALUE: "VALUE"
+    /** Comment before enum value.
+     *
+     * Comment next to enum value.
+     *
+     * @generated from protobuf enum value: VALUE = 0; */ VALUE: "VALUE"
 } as const;
 /**
  * Leading comment for deprecated enum
  *
  * @deprecated
- * @generated from protobuf enum spec.DeprecatedEnumWithComment
+ * @generated from protobuf enum spec.DeprecatedEnumWithComment:
+ *
+ * enum DeprecatedEnumWithComment {
+ *  DEPRECATED_ENUM_WITH_COMMENT_A = 0;
+ *  DEPRECATED_ENUM_WITH_COMMENT_B = 1;
+ * }
  */
 export type DeprecatedEnumWithComment = "DEPRECATED_ENUM_WITH_COMMENT_A" | "DEPRECATED_ENUM_WITH_COMMENT_B";
 export const DeprecatedEnumWithComment = {
-    DEPRECATED_ENUM_WITH_COMMENT_A: "DEPRECATED_ENUM_WITH_COMMENT_A",
-    DEPRECATED_ENUM_WITH_COMMENT_B: "DEPRECATED_ENUM_WITH_COMMENT_B"
+    /**
+     * @generated from protobuf enum value: DEPRECATED_ENUM_WITH_COMMENT_A = 0;
+     */ DEPRECATED_ENUM_WITH_COMMENT_A: "DEPRECATED_ENUM_WITH_COMMENT_A",
+    /**
+     * @generated from protobuf enum value: DEPRECATED_ENUM_WITH_COMMENT_B = 1;
+     */ DEPRECATED_ENUM_WITH_COMMENT_B: "DEPRECATED_ENUM_WITH_COMMENT_B"
 } as const;
 /**
  * @deprecated
- * @generated from protobuf enum spec.DeprecatedEnumNoComment
+ * @generated from protobuf enum spec.DeprecatedEnumNoComment:
+ *
+ * enum DeprecatedEnumNoComment {
+ *  DEPRECATED_ENUM_NO_COMMENT_A = 0;
+ *  DEPRECATED_ENUM_NO_COMMENT_B = 1;
+ * }
  */
 export type DeprecatedEnumNoComment = "DEPRECATED_ENUM_NO_COMMENT_A" | "DEPRECATED_ENUM_NO_COMMENT_B";
 export const DeprecatedEnumNoComment = {
-    DEPRECATED_ENUM_NO_COMMENT_A: "DEPRECATED_ENUM_NO_COMMENT_A",
-    DEPRECATED_ENUM_NO_COMMENT_B: "DEPRECATED_ENUM_NO_COMMENT_B"
+    /**
+     * @generated from protobuf enum value: DEPRECATED_ENUM_NO_COMMENT_A = 0;
+     */ DEPRECATED_ENUM_NO_COMMENT_A: "DEPRECATED_ENUM_NO_COMMENT_A",
+    /**
+     * @generated from protobuf enum value: DEPRECATED_ENUM_NO_COMMENT_B = 1;
+     */ DEPRECATED_ENUM_NO_COMMENT_B: "DEPRECATED_ENUM_NO_COMMENT_B"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class MessageWithComments$Type extends MessageType<MessageWithComments> {

@@ -280,15 +280,33 @@ export interface TestAllTypes_NestedMessage {
     bb: number;
 }
 /**
- * @generated from protobuf enum proto3_unittest.TestAllTypes.NestedEnum
+ * @generated from protobuf enum proto3_unittest.TestAllTypes.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  ZERO = 0;
+ *  FOO = 1;
+ *  BAR = 2;
+ *  BAZ = 3;
+ *  NEG = -1;  // Intentionally negative.
+ * }
  */
 export type TestAllTypes_NestedEnum = "ZERO" | "FOO" | "BAR" | "BAZ" | "NEG";
 export const TestAllTypes_NestedEnum = {
-    ZERO: "ZERO",
-    FOO: "FOO",
-    BAR: "BAR",
-    BAZ: "BAZ",
-    NEG: "NEG"
+    /**
+     * @generated from protobuf enum value: ZERO = 0;
+     */ ZERO: "ZERO",
+    /**
+     * @generated from protobuf enum value: FOO = 1;
+     */ FOO: "FOO",
+    /**
+     * @generated from protobuf enum value: BAR = 2;
+     */ BAR: "BAR",
+    /**
+     * @generated from protobuf enum value: BAZ = 3;
+     */ BAZ: "BAZ",
+    /** Intentionally negative.
+     *
+     * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
 } as const;
 // Test messages for packed fields
 
@@ -477,14 +495,29 @@ export interface TestOneof2 {
     fooEnum?: TestOneof2_NestedEnum;
 }
 /**
- * @generated from protobuf enum proto3_unittest.TestOneof2.NestedEnum
+ * @generated from protobuf enum proto3_unittest.TestOneof2.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  UNKNOWN = 0;
+ *  FOO = 1;
+ *  BAR = 2;
+ *  BAZ = 3;
+ * }
  */
 export type TestOneof2_NestedEnum = "UNKNOWN" | "FOO" | "BAR" | "BAZ";
 export const TestOneof2_NestedEnum = {
-    UNKNOWN: "UNKNOWN",
-    FOO: "FOO",
-    BAR: "BAR",
-    BAZ: "BAZ"
+    /**
+     * @generated from protobuf enum value: UNKNOWN = 0;
+     */ UNKNOWN: "UNKNOWN",
+    /**
+     * @generated from protobuf enum value: FOO = 1;
+     */ FOO: "FOO",
+    /**
+     * @generated from protobuf enum value: BAR = 2;
+     */ BAR: "BAR",
+    /**
+     * @generated from protobuf enum value: BAZ = 3;
+     */ BAZ: "BAZ"
 } as const;
 /**
  * If bool fields are incorrectly assumed to have hasbits, InternalSwap would
@@ -776,15 +809,33 @@ export interface TestHasbits {
     child?: TestAllTypes;
 }
 /**
- * @generated from protobuf enum proto3_unittest.ForeignEnum
+ * @generated from protobuf enum proto3_unittest.ForeignEnum:
+ *
+ * enum ForeignEnum {
+ *  FOREIGN_ZERO = 0;
+ *  FOREIGN_FOO = 4;
+ *  FOREIGN_BAR = 5;
+ *  FOREIGN_BAZ = 6;
+ *  FOREIGN_LARGE = 123456;  // Large enough to escape the Boxed Integer cache.
+ * }
  */
 export type ForeignEnum = "FOREIGN_ZERO" | "FOREIGN_FOO" | "FOREIGN_BAR" | "FOREIGN_BAZ" | "FOREIGN_LARGE";
 export const ForeignEnum = {
-    FOREIGN_ZERO: "FOREIGN_ZERO",
-    FOREIGN_FOO: "FOREIGN_FOO",
-    FOREIGN_BAR: "FOREIGN_BAR",
-    FOREIGN_BAZ: "FOREIGN_BAZ",
-    FOREIGN_LARGE: "FOREIGN_LARGE"
+    /**
+     * @generated from protobuf enum value: FOREIGN_ZERO = 0;
+     */ FOREIGN_ZERO: "FOREIGN_ZERO",
+    /**
+     * @generated from protobuf enum value: FOREIGN_FOO = 4;
+     */ FOREIGN_FOO: "FOREIGN_FOO",
+    /**
+     * @generated from protobuf enum value: FOREIGN_BAR = 5;
+     */ FOREIGN_BAR: "FOREIGN_BAR",
+    /**
+     * @generated from protobuf enum value: FOREIGN_BAZ = 6;
+     */ FOREIGN_BAZ: "FOREIGN_BAZ",
+    /** Large enough to escape the Boxed Integer cache.
+     *
+     * @generated from protobuf enum value: FOREIGN_LARGE = 123456; */ FOREIGN_LARGE: "FOREIGN_LARGE"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestAllTypes$Type extends MessageType<TestAllTypes> {

@@ -138,11 +138,17 @@ export interface ListValue {
  *
  * The JSON representation for `NullValue` is JSON `null`.
  *
- * @generated from protobuf enum google.protobuf.NullValue
+ * @generated from protobuf enum google.protobuf.NullValue:
+ *
+ * enum NullValue {
+ *  NULL_VALUE = 0;  // Null value.
+ * }
  */
 export type NullValue = "NULL_VALUE";
 export const NullValue = {
-    NULL_VALUE: "NULL_VALUE"
+    /** Null value.
+     *
+     * @generated from protobuf enum value: NULL_VALUE = 0; */ NULL_VALUE: "NULL_VALUE"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class Struct$Type extends MessageType<Struct> {
