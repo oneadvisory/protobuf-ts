@@ -35,45 +35,53 @@ export interface ImportMessage {
     d?: number;
 }
 /**
- * @generated from protobuf enum protobuf_unittest_import.ImportEnum
+ * @generated from protobuf enum protobuf_unittest_import.ImportEnum:
+ *
+ * enum ImportEnum {
+ *  UNSPECIFIED$ = 0;
+ *  IMPORT_FOO = 7;
+ *  IMPORT_BAR = 8;
+ *  IMPORT_BAZ = 9;
+ * }
  */
-export enum ImportEnum {
+export type ImportEnum = "UNSPECIFIED$" | "IMPORT_FOO" | "IMPORT_BAR" | "IMPORT_BAZ";
+export const ImportEnum = {
     /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
+     * @generated from protobuf enum value: UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
     /**
      * @generated from protobuf enum value: IMPORT_FOO = 7;
-     */
-    IMPORT_FOO = 7,
+     */ IMPORT_FOO: "IMPORT_FOO",
     /**
      * @generated from protobuf enum value: IMPORT_BAR = 8;
-     */
-    IMPORT_BAR = 8,
+     */ IMPORT_BAR: "IMPORT_BAR",
     /**
      * @generated from protobuf enum value: IMPORT_BAZ = 9;
-     */
-    IMPORT_BAZ = 9
-}
+     */ IMPORT_BAZ: "IMPORT_BAZ"
+} as const;
 /**
  * To use an enum in a map, it must has the first value as 0.
  *
- * @generated from protobuf enum protobuf_unittest_import.ImportEnumForMap
+ * @generated from protobuf enum protobuf_unittest_import.ImportEnumForMap:
+ *
+ * enum ImportEnumForMap {
+ *  UNKNOWN = 0;
+ *  FOO = 1;
+ *  BAR = 2;
+ * }
  */
-export enum ImportEnumForMap {
+export type ImportEnumForMap = "UNKNOWN" | "FOO" | "BAR";
+export const ImportEnumForMap = {
     /**
      * @generated from protobuf enum value: UNKNOWN = 0;
-     */
-    UNKNOWN = 0,
+     */ UNKNOWN: "UNKNOWN",
     /**
      * @generated from protobuf enum value: FOO = 1;
-     */
-    FOO = 1,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 2;
-     */
-    BAR = 2
-}
+     */ BAR: "BAR"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ImportMessage$Type extends MessageType<ImportMessage> {
     constructor() {

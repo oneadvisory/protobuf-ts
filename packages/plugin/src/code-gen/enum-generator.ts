@@ -7,7 +7,7 @@ import { Interpreter } from '../interpreter';
 import { createLocalTypeName } from './local-type-name';
 import { TypeScriptImports } from '../framework/typescript-imports';
 import { SymbolTable } from '../framework/symbol-table';
-import { TypescriptEnumBuilder } from '../framework/typescript-enum-builder';
+import { TypescriptUnionBuilder } from '../framework/typescript-union-builder';
 
 export class EnumGenerator {
   constructor(
@@ -32,14 +32,16 @@ export class EnumGenerator {
    *   }
    * ```
    *
-   * We generate the following enum:
+   * We generate the following type and const object:
    *
    * ```typescript
-   *   enum MyEnum {
-   *       ANY = 0,
-   *       YES = 1,
-   *       NO = 2
-   *   }
+   *   export type MyEnum = "ANY" | "YES" | "NO";
+   *
+   *   export const MyEnum = {
+   *     ANY: "ANY",
+   *     YES: "YES",
+   *     NO: "NO"
+   *   } as const;
    * ```
    *
    * We drop a shared prefix, for example:
@@ -54,36 +56,251 @@ export class EnumGenerator {
    * Becomes:
    *
    * ```typescript
-   *   enum MyEnum {
-   *       FOO = 0,
-   *       BAR = 1,
-   *   }
+   *   export type MyEnum = "FOO" | "BAR";
+   *
+   *   export const MyEnum = {
+   *     FOO: "FOO",
+   *     BAR: "BAR"
+   *   } as const;
    * ```
    *
    */
   generateEnum(
     source: TypescriptFile,
     descriptor: DescEnum
-  ): ts.EnumDeclaration {
-    let enumObject = this.interpreter.getEnumInfo(descriptor)[1],
-      builder = new TypescriptEnumBuilder();
+  ): ts.TypeAliasDeclaration {
+    let enumInfo = this.interpreter.getEnumInfo(descriptor);
+    let enumObject = enumInfo[1];
+    let prefix = enumInfo[2]; // optional shared prefix that was stripped
+    let unionBuilder = new TypescriptUnionBuilder();
+
+    const enumValues: Array<{
+      name: string;
+      comments?: string;
+      number: number;
+      originalName: string;
+    }> = [];
+
     for (let ev of rt.listEnumValues(enumObject)) {
-      let evDescriptor = descriptor.values.find((v) => v.number === ev.number);
-      let comments = evDescriptor
+      // Restore the prefix to get the original protobuf name for lookup
+      let originalName = prefix ? prefix + ev.name : ev.name;
+      let evDescriptor = descriptor.values.find((v) => v.name === originalName);
+
+      // Get user comments only (without @generated tags)
+      let userComments: string | undefined;
+      if (evDescriptor) {
+        const enumValueComments = this.comments['getComments'](evDescriptor);
+        userComments = enumValueComments.leading ?? '';
+        if (enumValueComments.trailing) {
+          if (userComments.length > 0) {
+            userComments += '\n\n';
+          }
+          userComments += enumValueComments.trailing;
+        }
+        if (userComments.length === 0) {
+          userComments = undefined;
+        }
+      }
+
+      let number = evDescriptor ? evDescriptor.number : 0;
+
+      // Still add the full comment block to unionBuilder for backward compat
+      let fullComments = evDescriptor
         ? this.comments.getCommentBlock(evDescriptor, true)
         : '@generated synthetic value - protobuf-ts requires all enums to have a 0 value';
-      builder.add(ev.name, ev.number, comments);
+      unionBuilder.add(ev.name, fullComments);
+
+      enumValues.push({
+        name: ev.name,
+        comments: userComments,
+        number,
+        originalName,
+      });
     }
-    let statement = builder.build(this.imports.type(source, descriptor), [
+
+    const typeName = this.imports.type(source, descriptor);
+
+    // Generate the type alias: export type MyEnum = "VALUE1" | "VALUE2";
+    let typeStatement = unionBuilder.build(typeName, [
       ts.factory.createModifier(ts.SyntaxKind.ExportKeyword),
     ]);
-    // add to our file
-    source.addStatement(statement);
-    this.comments.addCommentsForDescriptor(
-      statement,
+
+    // Build custom comment with enum definition
+    const enumDefinition = this.buildEnumDefinition(descriptor, enumValues);
+    const fullComment = this.buildTypeAliasComment(
       descriptor,
-      'appendToLeadingBlock'
+      enumDefinition
     );
-    return statement;
+
+    // Add leading detached comments
+    const comments = this.comments['getComments'](descriptor);
+    if (comments.leadingDetached && comments.leadingDetached.length > 0) {
+      const { addCommentBlocksAsLeadingDetachedLines } = require('../framework/typescript-comments');
+      addCommentBlocksAsLeadingDetachedLines(typeStatement, ...comments.leadingDetached);
+    }
+
+    // Add main JSDoc comment
+    const { addCommentBlockAsJsDoc } = require('../framework/typescript-comments');
+    addCommentBlockAsJsDoc(typeStatement, fullComment);
+
+    // Add to our file
+    source.addStatement(typeStatement);
+
+    // Generate the const object for runtime: export const MyEnum = { VALUE1: "VALUE1", ... } as const;
+    const constObject = this.generateEnumConstObject(typeName, enumValues);
+    source.addStatement(constObject);
+
+    return typeStatement;
+  }
+
+  /**
+   * Builds the protobuf enum definition as a code block string.
+   * Example output:
+   * enum NestedEnum {
+   *   ZERO = 0;
+   *   FOO = 1;
+   *   NEG = -1;  // Intentionally negative.
+   * }
+   */
+  private buildEnumDefinition(
+    descriptor: DescEnum,
+    enumValues: Array<{
+      name: string;
+      comments?: string;
+      number: number;
+      originalName: string;
+    }>
+  ): string {
+    const lines: string[] = [];
+    lines.push(`enum ${descriptor.name} {`);
+
+    for (const { originalName, number, comments } of enumValues) {
+      let line = `  ${originalName} = ${number};`;
+
+      // Add inline comment if user comment exists
+      if (comments) {
+        // Get just the first line of user comment for inline display
+        const firstLine = comments.split('\n')[0].trim();
+        line += `  // ${firstLine}`;
+      }
+
+      lines.push(line);
+    }
+
+    lines.push('}');
+    return lines.join('\n');
+  }
+
+  /**
+   * Builds the full JSDoc comment for the type alias, including
+   * the enum definition code block.
+   */
+  private buildTypeAliasComment(
+    descriptor: DescEnum,
+    enumDefinition: string
+  ): string {
+    // Get base comments (leading, trailing, deprecated, etc.)
+    const comments = this.comments['getComments'](descriptor);
+    let commentBlock = comments.leading ?? '';
+
+    // Add trailing comments to the leading block
+    if (comments.trailing) {
+      if (commentBlock.length > 0) {
+        commentBlock += '\n\n';
+      }
+      commentBlock += comments.trailing;
+    }
+
+    // Add space before @generated tag if there were comments
+    if (commentBlock.length > 0) {
+      commentBlock += '\n\n';
+    }
+
+    // Add deprecated tag if applicable
+    if (descriptor.deprecated) {
+      commentBlock += '@deprecated\n';
+    }
+
+    // Add @generated tag with enum definition
+    commentBlock += `@generated from protobuf ${descriptor.toString()}:\n\n`;
+    commentBlock += enumDefinition;
+
+    return commentBlock;
+  }
+
+  private generateEnumConstObject(
+    name: string | ts.Identifier,
+    values: Array<{
+      name: string;
+      comments?: string;
+      number: number;
+      originalName: string;
+    }>
+  ): ts.VariableStatement {
+    // Create properties: VALUE1: "VALUE1", VALUE2: "VALUE2", ...
+    const properties: ts.PropertyAssignment[] = values.map(
+      ({ name, comments, number, originalName }) => {
+        const property = ts.factory.createPropertyAssignment(
+          ts.factory.createIdentifier(name),
+          ts.factory.createStringLiteral(name)
+        );
+
+        // Build the JSDoc comment
+        let commentText: string;
+        if (comments) {
+          // User comment exists: format as compact JSDoc with user comment first
+          const cleanComment = comments!.trim();
+          const commentLines = cleanComment
+            .split('\n')
+            .map((line) => line.trim());
+          const formattedUserComment = commentLines.join('\n * ');
+          commentText = `* ${formattedUserComment}\n *\n * @generated from protobuf enum value: ${originalName} = ${number}; `;
+        } else {
+          // No user comment: just the @generated line in expanded format
+          commentText = `*\n * @generated from protobuf enum value: ${originalName} = ${number};\n `;
+        }
+
+        ts.addSyntheticLeadingComment(
+          property,
+          ts.SyntaxKind.MultiLineCommentTrivia,
+          commentText,
+          false
+        );
+
+        return property;
+      }
+    );
+
+    // Create the object literal
+    const objectLiteral = ts.factory.createObjectLiteralExpression(
+      properties,
+      true  // multiLine
+    );
+
+    // Add 'as const' assertion
+    const asConstExpression = ts.factory.createAsExpression(
+      objectLiteral,
+      ts.factory.createTypeReferenceNode(
+        ts.factory.createIdentifier('const'),
+        undefined
+      )
+    );
+
+    // Create: const MyEnum = { ... } as const;
+    const variableDeclaration = ts.factory.createVariableDeclaration(
+      name,
+      undefined,
+      undefined,
+      asConstExpression
+    );
+
+    // Wrap in variable statement with export
+    return ts.factory.createVariableStatement(
+      [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+      ts.factory.createVariableDeclarationList(
+        [variableDeclaration],
+        ts.NodeFlags.Const
+      )
+    );
   }
 }

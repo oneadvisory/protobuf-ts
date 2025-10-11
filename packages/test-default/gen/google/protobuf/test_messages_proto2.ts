@@ -687,28 +687,30 @@ export interface TestAllTypesProto2_MessageSetCorrectExtension2 {
     i?: number;
 }
 /**
- * @generated from protobuf enum protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum
+ * @generated from protobuf enum protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  FOO = 0;
+ *  BAR = 1;
+ *  BAZ = 2;
+ *  NEG = -1;  // Intentionally negative.
+ * }
  */
-export enum TestAllTypesProto2_NestedEnum {
+export type TestAllTypesProto2_NestedEnum = "FOO" | "BAR" | "BAZ" | "NEG";
+export const TestAllTypesProto2_NestedEnum = {
     /**
      * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2,
-    /**
-     * Intentionally negative.
+     */ BAZ: "BAZ",
+    /** Intentionally negative.
      *
-     * @generated from protobuf enum value: NEG = -1;
-     */
-    NEG = -1
-}
+     * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
+} as const;
 /**
  * @generated from protobuf message protobuf_test_messages.proto2.ForeignMessageProto2
  */
@@ -776,18 +778,22 @@ export interface NullHypothesisProto2 {
 export interface EnumOnlyProto2 {
 }
 /**
- * @generated from protobuf enum protobuf_test_messages.proto2.EnumOnlyProto2.Bool
+ * @generated from protobuf enum protobuf_test_messages.proto2.EnumOnlyProto2.Bool:
+ *
+ * enum Bool {
+ *  kFalse = 0;
+ *  kTrue = 1;
+ * }
  */
-export enum EnumOnlyProto2_Bool {
+export type EnumOnlyProto2_Bool = "kFalse" | "kTrue";
+export const EnumOnlyProto2_Bool = {
     /**
      * @generated from protobuf enum value: kFalse = 0;
-     */
-    kFalse = 0,
+     */ kFalse: "kFalse",
     /**
      * @generated from protobuf enum value: kTrue = 1;
-     */
-    kTrue = 1
-}
+     */ kTrue: "kTrue"
+} as const;
 /**
  * @generated from protobuf message protobuf_test_messages.proto2.OneStringProto2
  */
@@ -1033,45 +1039,51 @@ export interface TestAllRequiredTypesProto2_MessageSetCorrectExtension2 {
     i: number;
 }
 /**
- * @generated from protobuf enum protobuf_test_messages.proto2.TestAllRequiredTypesProto2.NestedEnum
+ * @generated from protobuf enum protobuf_test_messages.proto2.TestAllRequiredTypesProto2.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  FOO = 0;
+ *  BAR = 1;
+ *  BAZ = 2;
+ *  NEG = -1;  // Intentionally negative.
+ * }
  */
-export enum TestAllRequiredTypesProto2_NestedEnum {
+export type TestAllRequiredTypesProto2_NestedEnum = "FOO" | "BAR" | "BAZ" | "NEG";
+export const TestAllRequiredTypesProto2_NestedEnum = {
     /**
      * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2,
-    /**
-     * Intentionally negative.
+     */ BAZ: "BAZ",
+    /** Intentionally negative.
      *
-     * @generated from protobuf enum value: NEG = -1;
-     */
-    NEG = -1
-}
+     * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
+} as const;
 /**
- * @generated from protobuf enum protobuf_test_messages.proto2.ForeignEnumProto2
+ * @generated from protobuf enum protobuf_test_messages.proto2.ForeignEnumProto2:
+ *
+ * enum ForeignEnumProto2 {
+ *  FOREIGN_FOO = 0;
+ *  FOREIGN_BAR = 1;
+ *  FOREIGN_BAZ = 2;
+ * }
  */
-export enum ForeignEnumProto2 {
+export type ForeignEnumProto2 = "FOREIGN_FOO" | "FOREIGN_BAR" | "FOREIGN_BAZ";
+export const ForeignEnumProto2 = {
     /**
      * @generated from protobuf enum value: FOREIGN_FOO = 0;
-     */
-    FOREIGN_FOO = 0,
+     */ FOREIGN_FOO: "FOREIGN_FOO",
     /**
      * @generated from protobuf enum value: FOREIGN_BAR = 1;
-     */
-    FOREIGN_BAR = 1,
+     */ FOREIGN_BAR: "FOREIGN_BAR",
     /**
      * @generated from protobuf enum value: FOREIGN_BAZ = 2;
-     */
-    FOREIGN_BAZ = 2
-}
+     */ FOREIGN_BAZ: "FOREIGN_BAZ"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
     constructor() {

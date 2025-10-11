@@ -20,55 +20,43 @@
 /**
  * Represents a day of week.
  *
- * @generated from protobuf enum google.type.DayOfWeek
+ * @generated from protobuf enum google.type.DayOfWeek:
+ *
+ * enum DayOfWeek {
+ *  DAY_OF_WEEK_UNSPECIFIED = 0;  // The unspecified day-of-week.
+ *  MONDAY = 1;  // The day-of-week of Monday.
+ *  TUESDAY = 2;  // The day-of-week of Tuesday.
+ *  WEDNESDAY = 3;  // The day-of-week of Wednesday.
+ *  THURSDAY = 4;  // The day-of-week of Thursday.
+ *  FRIDAY = 5;  // The day-of-week of Friday.
+ *  SATURDAY = 6;  // The day-of-week of Saturday.
+ *  SUNDAY = 7;  // The day-of-week of Sunday.
+ * }
  */
-export enum DayOfWeek {
-    /**
-     * The unspecified day-of-week.
+export type DayOfWeek = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export const DayOfWeek = {
+    /** The unspecified day-of-week.
      *
-     * @generated from protobuf enum value: DAY_OF_WEEK_UNSPECIFIED = 0;
-     */
-    DAY_OF_WEEK_UNSPECIFIED = 0,
-    /**
-     * The day-of-week of Monday.
+     * @generated from protobuf enum value: DAY_OF_WEEK_UNSPECIFIED = 0; */ DAY_OF_WEEK_UNSPECIFIED: "DAY_OF_WEEK_UNSPECIFIED",
+    /** The day-of-week of Monday.
      *
-     * @generated from protobuf enum value: MONDAY = 1;
-     */
-    MONDAY = 1,
-    /**
-     * The day-of-week of Tuesday.
+     * @generated from protobuf enum value: MONDAY = 1; */ MONDAY: "MONDAY",
+    /** The day-of-week of Tuesday.
      *
-     * @generated from protobuf enum value: TUESDAY = 2;
-     */
-    TUESDAY = 2,
-    /**
-     * The day-of-week of Wednesday.
+     * @generated from protobuf enum value: TUESDAY = 2; */ TUESDAY: "TUESDAY",
+    /** The day-of-week of Wednesday.
      *
-     * @generated from protobuf enum value: WEDNESDAY = 3;
-     */
-    WEDNESDAY = 3,
-    /**
-     * The day-of-week of Thursday.
+     * @generated from protobuf enum value: WEDNESDAY = 3; */ WEDNESDAY: "WEDNESDAY",
+    /** The day-of-week of Thursday.
      *
-     * @generated from protobuf enum value: THURSDAY = 4;
-     */
-    THURSDAY = 4,
-    /**
-     * The day-of-week of Friday.
+     * @generated from protobuf enum value: THURSDAY = 4; */ THURSDAY: "THURSDAY",
+    /** The day-of-week of Friday.
      *
-     * @generated from protobuf enum value: FRIDAY = 5;
-     */
-    FRIDAY = 5,
-    /**
-     * The day-of-week of Saturday.
+     * @generated from protobuf enum value: FRIDAY = 5; */ FRIDAY: "FRIDAY",
+    /** The day-of-week of Saturday.
      *
-     * @generated from protobuf enum value: SATURDAY = 6;
-     */
-    SATURDAY = 6,
-    /**
-     * The day-of-week of Sunday.
+     * @generated from protobuf enum value: SATURDAY = 6; */ SATURDAY: "SATURDAY",
+    /** The day-of-week of Sunday.
      *
-     * @generated from protobuf enum value: SUNDAY = 7;
-     */
-    SUNDAY = 7
-}
+     * @generated from protobuf enum value: SUNDAY = 7; */ SUNDAY: "SUNDAY"
+} as const;

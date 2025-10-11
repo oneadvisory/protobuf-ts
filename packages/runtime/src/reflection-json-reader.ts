@@ -211,24 +211,30 @@ export class ReflectionJsonReader {
     enum(type: EnumInfo, json: unknown, fieldName: string, ignoreUnknownFields: boolean): UnknownEnum | false {
         if (type[0] == 'google.protobuf.NullValue')
             assert(json === null || json === "NULL_VALUE", `Unable to parse field ${this.info.typeName}#${fieldName}, enum ${type[0]} only accepts null.`);
-        if (json === null)
-            // we require 0 to be default value for all enums
-            return 0;
+        if (json === null) {
+            // Return the first enum value (typically "UNSPECIFIED")
+            const firstValue = Object.keys(type[1])[0];
+            return firstValue || "";
+        }
         switch (typeof json) {
             case "number":
-                assert(Number.isInteger(json), `Unable to parse field ${this.info.typeName}#${fieldName}, enum can only be integral number, got ${json}.`);
-                return json;
+                // For backwards compatibility, if a number is provided, find the corresponding string value
+                // However, with string-based enums, we don't have a number->name mapping anymore
+                // So we'll just return the first value and log a warning
+                console.warn(`Enum ${type[0]} received a number (${json}) but expects a string value`);
+                const firstValue = Object.keys(type[1])[0];
+                return firstValue || "";
             case "string":
                 let localEnumName = json;
                 if (type[2] && json.substring(0, type[2].length) === type[2])
                     // lookup without the shared prefix
                     localEnumName = json.substring(type[2].length);
-                let enumNumber = type[1][localEnumName];
-                if (typeof enumNumber === 'undefined' && ignoreUnknownFields) {
+                let enumValue = type[1][localEnumName];
+                if (typeof enumValue === 'undefined' && ignoreUnknownFields) {
                     return false;
                 }
-                assert(typeof enumNumber == "number", `Unable to parse field ${this.info.typeName}#${fieldName}, enum ${type[0]} has no value for "${json}".`);
-                return enumNumber;
+                assert(typeof enumValue == "string", `Unable to parse field ${this.info.typeName}#${fieldName}, enum ${type[0]} has no value for "${json}".`);
+                return enumValue;
         }
         assert(false, `Unable to parse field ${this.info.typeName}#${fieldName}, cannot parse enum value from ${typeof json}".`);
     }

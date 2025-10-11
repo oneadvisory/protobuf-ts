@@ -40,30 +40,28 @@ export interface JavaFeatures {
  * The UTF8 validation strategy to use.  See go/editions-utf8-validation for
  * more information on this feature.
  *
- * @generated from protobuf enum pb.JavaFeatures.Utf8Validation
+ * @generated from protobuf enum pb.JavaFeatures.Utf8Validation:
+ *
+ * enum Utf8Validation {
+ *  UTF8_VALIDATION_UNKNOWN = 0;  // Invalid default, which should never be used.
+ *  DEFAULT = 1;  // Respect the UTF8 validation behavior specified by the global
+ *  VERIFY = 2;  // Verifies UTF8 validity overriding the global utf8_validation
+ * }
  */
-export enum JavaFeatures_Utf8Validation {
-    /**
-     * Invalid default, which should never be used.
+export type JavaFeatures_Utf8Validation = "UTF8_VALIDATION_UNKNOWN" | "DEFAULT" | "VERIFY";
+export const JavaFeatures_Utf8Validation = {
+    /** Invalid default, which should never be used.
      *
-     * @generated from protobuf enum value: UTF8_VALIDATION_UNKNOWN = 0;
-     */
-    UTF8_VALIDATION_UNKNOWN = 0,
-    /**
-     * Respect the UTF8 validation behavior specified by the global
+     * @generated from protobuf enum value: UTF8_VALIDATION_UNKNOWN = 0; */ UTF8_VALIDATION_UNKNOWN: "UTF8_VALIDATION_UNKNOWN",
+    /** Respect the UTF8 validation behavior specified by the global
      * utf8_validation feature.
      *
-     * @generated from protobuf enum value: DEFAULT = 1;
-     */
-    DEFAULT = 1,
-    /**
-     * Verifies UTF8 validity overriding the global utf8_validation
+     * @generated from protobuf enum value: DEFAULT = 1; */ DEFAULT: "DEFAULT",
+    /** Verifies UTF8 validity overriding the global utf8_validation
      * feature. This represents the legacy java_string_check_utf8 option.
      *
-     * @generated from protobuf enum value: VERIFY = 2;
-     */
-    VERIFY = 2
-}
+     * @generated from protobuf enum value: VERIFY = 2; */ VERIFY: "VERIFY"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class JavaFeatures$Type extends MessageType<JavaFeatures> {
     constructor() {

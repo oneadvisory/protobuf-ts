@@ -331,43 +331,51 @@ export interface TestProto2BytesMap {
     };
 }
 /**
- * @generated from protobuf enum protobuf_unittest.Proto2MapEnum
+ * @generated from protobuf enum protobuf_unittest.Proto2MapEnum:
+ *
+ * enum Proto2MapEnum {
+ *  PROTO2_MAP_ENUM_FOO = 0;
+ *  PROTO2_MAP_ENUM_BAR = 1;
+ *  PROTO2_MAP_ENUM_BAZ = 2;
+ * }
  */
-export enum Proto2MapEnum {
+export type Proto2MapEnum = "FOO" | "BAR" | "BAZ";
+export const Proto2MapEnum = {
     /**
      * @generated from protobuf enum value: PROTO2_MAP_ENUM_FOO = 0;
-     */
-    FOO = 0,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: PROTO2_MAP_ENUM_BAR = 1;
-     */
-    BAR = 1,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: PROTO2_MAP_ENUM_BAZ = 2;
-     */
-    BAZ = 2
-}
+     */ BAZ: "BAZ"
+} as const;
 /**
- * @generated from protobuf enum protobuf_unittest.Proto2MapEnumPlusExtra
+ * @generated from protobuf enum protobuf_unittest.Proto2MapEnumPlusExtra:
+ *
+ * enum Proto2MapEnumPlusExtra {
+ *  E_PROTO2_MAP_ENUM_FOO = 0;
+ *  E_PROTO2_MAP_ENUM_BAR = 1;
+ *  E_PROTO2_MAP_ENUM_BAZ = 2;
+ *  E_PROTO2_MAP_ENUM_EXTRA = 3;
+ * }
  */
-export enum Proto2MapEnumPlusExtra {
+export type Proto2MapEnumPlusExtra = "E_PROTO2_MAP_ENUM_FOO" | "E_PROTO2_MAP_ENUM_BAR" | "E_PROTO2_MAP_ENUM_BAZ" | "E_PROTO2_MAP_ENUM_EXTRA";
+export const Proto2MapEnumPlusExtra = {
     /**
      * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_FOO = 0;
-     */
-    E_PROTO2_MAP_ENUM_FOO = 0,
+     */ E_PROTO2_MAP_ENUM_FOO: "E_PROTO2_MAP_ENUM_FOO",
     /**
      * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_BAR = 1;
-     */
-    E_PROTO2_MAP_ENUM_BAR = 1,
+     */ E_PROTO2_MAP_ENUM_BAR: "E_PROTO2_MAP_ENUM_BAR",
     /**
      * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_BAZ = 2;
-     */
-    E_PROTO2_MAP_ENUM_BAZ = 2,
+     */ E_PROTO2_MAP_ENUM_BAZ: "E_PROTO2_MAP_ENUM_BAZ",
     /**
      * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_EXTRA = 3;
-     */
-    E_PROTO2_MAP_ENUM_EXTRA = 3
-}
+     */ E_PROTO2_MAP_ENUM_EXTRA: "E_PROTO2_MAP_ENUM_EXTRA"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestEnumMap$Type extends MessageType<TestEnumMap> {
     constructor() {

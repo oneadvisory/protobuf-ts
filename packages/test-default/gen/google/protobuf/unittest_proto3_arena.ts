@@ -299,32 +299,34 @@ export interface TestAllTypes_NestedMessage {
     bb: number;
 }
 /**
- * @generated from protobuf enum proto3_arena_unittest.TestAllTypes.NestedEnum
+ * @generated from protobuf enum proto3_arena_unittest.TestAllTypes.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  ZERO = 0;
+ *  FOO = 1;
+ *  BAR = 2;
+ *  BAZ = 3;
+ *  NEG = -1;  // Intentionally negative.
+ * }
  */
-export enum TestAllTypes_NestedEnum {
+export type TestAllTypes_NestedEnum = "ZERO" | "FOO" | "BAR" | "BAZ" | "NEG";
+export const TestAllTypes_NestedEnum = {
     /**
      * @generated from protobuf enum value: ZERO = 0;
-     */
-    ZERO = 0,
+     */ ZERO: "ZERO",
     /**
      * @generated from protobuf enum value: FOO = 1;
-     */
-    FOO = 1,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 2;
-     */
-    BAR = 2,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 3;
-     */
-    BAZ = 3,
-    /**
-     * Intentionally negative.
+     */ BAZ: "BAZ",
+    /** Intentionally negative.
      *
-     * @generated from protobuf enum value: NEG = -1;
-     */
-    NEG = -1
-}
+     * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
+} as const;
 // Test messages for packed fields
 
 /**
@@ -515,26 +517,30 @@ export interface TestPickleNestedMessage_NestedMessage_NestedNestedMessage {
     cc: number;
 }
 /**
- * @generated from protobuf enum proto3_arena_unittest.ForeignEnum
+ * @generated from protobuf enum proto3_arena_unittest.ForeignEnum:
+ *
+ * enum ForeignEnum {
+ *  FOREIGN_ZERO = 0;
+ *  FOREIGN_FOO = 4;
+ *  FOREIGN_BAR = 5;
+ *  FOREIGN_BAZ = 6;
+ * }
  */
-export enum ForeignEnum {
+export type ForeignEnum = "FOREIGN_ZERO" | "FOREIGN_FOO" | "FOREIGN_BAR" | "FOREIGN_BAZ";
+export const ForeignEnum = {
     /**
      * @generated from protobuf enum value: FOREIGN_ZERO = 0;
-     */
-    FOREIGN_ZERO = 0,
+     */ FOREIGN_ZERO: "FOREIGN_ZERO",
     /**
      * @generated from protobuf enum value: FOREIGN_FOO = 4;
-     */
-    FOREIGN_FOO = 4,
+     */ FOREIGN_FOO: "FOREIGN_FOO",
     /**
      * @generated from protobuf enum value: FOREIGN_BAR = 5;
-     */
-    FOREIGN_BAR = 5,
+     */ FOREIGN_BAR: "FOREIGN_BAR",
     /**
      * @generated from protobuf enum value: FOREIGN_BAZ = 6;
-     */
-    FOREIGN_BAZ = 6
-}
+     */ FOREIGN_BAZ: "FOREIGN_BAZ"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestAllTypes$Type extends MessageType<TestAllTypes> {
     constructor() {

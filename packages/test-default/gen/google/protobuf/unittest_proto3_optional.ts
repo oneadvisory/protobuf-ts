@@ -125,32 +125,34 @@ export interface TestProto3Optional_NestedMessage {
     bb?: number;
 }
 /**
- * @generated from protobuf enum protobuf_unittest.TestProto3Optional.NestedEnum
+ * @generated from protobuf enum protobuf_unittest.TestProto3Optional.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  UNSPECIFIED = 0;
+ *  FOO = 1;
+ *  BAR = 2;
+ *  BAZ = 3;
+ *  NEG = -1;  // Intentionally negative.
+ * }
  */
-export enum TestProto3Optional_NestedEnum {
+export type TestProto3Optional_NestedEnum = "UNSPECIFIED" | "FOO" | "BAR" | "BAZ" | "NEG";
+export const TestProto3Optional_NestedEnum = {
     /**
      * @generated from protobuf enum value: UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
+     */ UNSPECIFIED: "UNSPECIFIED",
     /**
      * @generated from protobuf enum value: FOO = 1;
-     */
-    FOO = 1,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 2;
-     */
-    BAR = 2,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 3;
-     */
-    BAZ = 3,
-    /**
-     * Intentionally negative.
+     */ BAZ: "BAZ",
+    /** Intentionally negative.
      *
-     * @generated from protobuf enum value: NEG = -1;
-     */
-    NEG = -1
-}
+     * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
+} as const;
 /**
  * @generated from protobuf message protobuf_unittest.TestProto3OptionalMessage
  */

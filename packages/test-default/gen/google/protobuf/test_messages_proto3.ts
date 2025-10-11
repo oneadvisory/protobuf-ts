@@ -726,57 +726,63 @@ export interface TestAllTypesProto3_NestedMessage {
     corecursive?: TestAllTypesProto3;
 }
 /**
- * @generated from protobuf enum protobuf_test_messages.proto3.TestAllTypesProto3.NestedEnum
+ * @generated from protobuf enum protobuf_test_messages.proto3.TestAllTypesProto3.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  FOO = 0;
+ *  BAR = 1;
+ *  BAZ = 2;
+ *  NEG = -1;  // Intentionally negative.
+ * }
  */
-export enum TestAllTypesProto3_NestedEnum {
+export type TestAllTypesProto3_NestedEnum = "FOO" | "BAR" | "BAZ" | "NEG";
+export const TestAllTypesProto3_NestedEnum = {
     /**
      * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2,
-    /**
-     * Intentionally negative.
+     */ BAZ: "BAZ",
+    /** Intentionally negative.
      *
-     * @generated from protobuf enum value: NEG = -1;
-     */
-    NEG = -1
-}
+     * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
+} as const;
 /**
- * @generated from protobuf enum protobuf_test_messages.proto3.TestAllTypesProto3.AliasedEnum
+ * @generated from protobuf enum protobuf_test_messages.proto3.TestAllTypesProto3.AliasedEnum:
+ *
+ * enum AliasedEnum {
+ *  ALIAS_FOO = 0;
+ *  ALIAS_BAR = 1;
+ *  ALIAS_BAZ = 2;
+ *  MOO = 2;
+ *  moo = 2;
+ *  bAz = 2;
+ * }
  */
-export enum TestAllTypesProto3_AliasedEnum {
+export type TestAllTypesProto3_AliasedEnum = "ALIAS_FOO" | "ALIAS_BAR" | "ALIAS_BAZ" | "MOO" | "moo" | "bAz";
+export const TestAllTypesProto3_AliasedEnum = {
     /**
      * @generated from protobuf enum value: ALIAS_FOO = 0;
-     */
-    ALIAS_FOO = 0,
+     */ ALIAS_FOO: "ALIAS_FOO",
     /**
      * @generated from protobuf enum value: ALIAS_BAR = 1;
-     */
-    ALIAS_BAR = 1,
+     */ ALIAS_BAR: "ALIAS_BAR",
     /**
      * @generated from protobuf enum value: ALIAS_BAZ = 2;
-     */
-    ALIAS_BAZ = 2,
+     */ ALIAS_BAZ: "ALIAS_BAZ",
     /**
-     * @generated from protobuf enum value: ALIAS_BAZ = 2;
-     */
-    MOO = 2,
+     * @generated from protobuf enum value: MOO = 2;
+     */ MOO: "MOO",
     /**
-     * @generated from protobuf enum value: ALIAS_BAZ = 2;
-     */
-    moo = 2,
+     * @generated from protobuf enum value: moo = 2;
+     */ moo: "moo",
     /**
-     * @generated from protobuf enum value: ALIAS_BAZ = 2;
-     */
-    bAz = 2
-}
+     * @generated from protobuf enum value: bAz = 2;
+     */ bAz: "bAz"
+} as const;
 /**
  * @generated from protobuf message protobuf_test_messages.proto3.ForeignMessage
  */
@@ -797,35 +803,43 @@ export interface NullHypothesisProto3 {
 export interface EnumOnlyProto3 {
 }
 /**
- * @generated from protobuf enum protobuf_test_messages.proto3.EnumOnlyProto3.Bool
+ * @generated from protobuf enum protobuf_test_messages.proto3.EnumOnlyProto3.Bool:
+ *
+ * enum Bool {
+ *  kFalse = 0;
+ *  kTrue = 1;
+ * }
  */
-export enum EnumOnlyProto3_Bool {
+export type EnumOnlyProto3_Bool = "kFalse" | "kTrue";
+export const EnumOnlyProto3_Bool = {
     /**
      * @generated from protobuf enum value: kFalse = 0;
-     */
-    kFalse = 0,
+     */ kFalse: "kFalse",
     /**
      * @generated from protobuf enum value: kTrue = 1;
-     */
-    kTrue = 1
-}
+     */ kTrue: "kTrue"
+} as const;
 /**
- * @generated from protobuf enum protobuf_test_messages.proto3.ForeignEnum
+ * @generated from protobuf enum protobuf_test_messages.proto3.ForeignEnum:
+ *
+ * enum ForeignEnum {
+ *  FOREIGN_FOO = 0;
+ *  FOREIGN_BAR = 1;
+ *  FOREIGN_BAZ = 2;
+ * }
  */
-export enum ForeignEnum {
+export type ForeignEnum = "FOREIGN_FOO" | "FOREIGN_BAR" | "FOREIGN_BAZ";
+export const ForeignEnum = {
     /**
      * @generated from protobuf enum value: FOREIGN_FOO = 0;
-     */
-    FOREIGN_FOO = 0,
+     */ FOREIGN_FOO: "FOREIGN_FOO",
     /**
      * @generated from protobuf enum value: FOREIGN_BAR = 1;
-     */
-    FOREIGN_BAR = 1,
+     */ FOREIGN_BAR: "FOREIGN_BAR",
     /**
      * @generated from protobuf enum value: FOREIGN_BAZ = 2;
-     */
-    FOREIGN_BAZ = 2
-}
+     */ FOREIGN_BAZ: "FOREIGN_BAZ"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestAllTypesProto3$Type extends MessageType<TestAllTypesProto3> {
     constructor() {

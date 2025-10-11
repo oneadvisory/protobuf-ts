@@ -25,27 +25,41 @@
  * `OUT_OF_RANGE` over `FAILED_PRECONDITION` if both codes apply.
  * Similarly prefer `NOT_FOUND` or `ALREADY_EXISTS` over `FAILED_PRECONDITION`.
  *
- * @generated from protobuf enum google.rpc.Code
+ * @generated from protobuf enum google.rpc.Code:
+ *
+ * enum Code {
+ *  OK = 0;  // Not an error; returned on success
+ *  CANCELLED = 1;  // The operation was cancelled, typically by the caller.
+ *  UNKNOWN = 2;  // Unknown error.  For example, this error may be returned when
+ *  INVALID_ARGUMENT = 3;  // The client specified an invalid argument.  Note that this differs
+ *  DEADLINE_EXCEEDED = 4;  // The deadline expired before the operation could complete. For operations
+ *  NOT_FOUND = 5;  // Some requested entity (e.g., file or directory) was not found.
+ *  ALREADY_EXISTS = 6;  // The entity that a client attempted to create (e.g., file or directory)
+ *  PERMISSION_DENIED = 7;  // The caller does not have permission to execute the specified
+ *  UNAUTHENTICATED = 16;  // The request does not have valid authentication credentials for the
+ *  RESOURCE_EXHAUSTED = 8;  // Some resource has been exhausted, perhaps a per-user quota, or
+ *  FAILED_PRECONDITION = 9;  // The operation was rejected because the system is not in a state
+ *  ABORTED = 10;  // The operation was aborted, typically due to a concurrency issue such as
+ *  OUT_OF_RANGE = 11;  // The operation was attempted past the valid range.  E.g., seeking or
+ *  UNIMPLEMENTED = 12;  // The operation is not implemented or is not supported/enabled in this
+ *  INTERNAL = 13;  // Internal errors.  This means that some invariants expected by the
+ *  UNAVAILABLE = 14;  // The service is currently unavailable.  This is most likely a
+ *  DATA_LOSS = 15;  // Unrecoverable data loss or corruption.
+ * }
  */
-export enum Code {
-    /**
-     * Not an error; returned on success
+export type Code = "OK" | "CANCELLED" | "UNKNOWN" | "INVALID_ARGUMENT" | "DEADLINE_EXCEEDED" | "NOT_FOUND" | "ALREADY_EXISTS" | "PERMISSION_DENIED" | "UNAUTHENTICATED" | "RESOURCE_EXHAUSTED" | "FAILED_PRECONDITION" | "ABORTED" | "OUT_OF_RANGE" | "UNIMPLEMENTED" | "INTERNAL" | "UNAVAILABLE" | "DATA_LOSS";
+export const Code = {
+    /** Not an error; returned on success
      *
      * HTTP Mapping: 200 OK
      *
-     * @generated from protobuf enum value: OK = 0;
-     */
-    OK = 0,
-    /**
-     * The operation was cancelled, typically by the caller.
+     * @generated from protobuf enum value: OK = 0; */ OK: "OK",
+    /** The operation was cancelled, typically by the caller.
      *
      * HTTP Mapping: 499 Client Closed Request
      *
-     * @generated from protobuf enum value: CANCELLED = 1;
-     */
-    CANCELLED = 1,
-    /**
-     * Unknown error.  For example, this error may be returned when
+     * @generated from protobuf enum value: CANCELLED = 1; */ CANCELLED: "CANCELLED",
+    /** Unknown error.  For example, this error may be returned when
      * a `Status` value received from another address space belongs to
      * an error space that is not known in this address space.  Also
      * errors raised by APIs that do not return enough error information
@@ -53,22 +67,16 @@ export enum Code {
      *
      * HTTP Mapping: 500 Internal Server Error
      *
-     * @generated from protobuf enum value: UNKNOWN = 2;
-     */
-    UNKNOWN = 2,
-    /**
-     * The client specified an invalid argument.  Note that this differs
+     * @generated from protobuf enum value: UNKNOWN = 2; */ UNKNOWN: "UNKNOWN",
+    /** The client specified an invalid argument.  Note that this differs
      * from `FAILED_PRECONDITION`.  `INVALID_ARGUMENT` indicates arguments
      * that are problematic regardless of the state of the system
      * (e.g., a malformed file name).
      *
      * HTTP Mapping: 400 Bad Request
      *
-     * @generated from protobuf enum value: INVALID_ARGUMENT = 3;
-     */
-    INVALID_ARGUMENT = 3,
-    /**
-     * The deadline expired before the operation could complete. For operations
+     * @generated from protobuf enum value: INVALID_ARGUMENT = 3; */ INVALID_ARGUMENT: "INVALID_ARGUMENT",
+    /** The deadline expired before the operation could complete. For operations
      * that change the state of the system, this error may be returned
      * even if the operation has completed successfully.  For example, a
      * successful response from a server could have been delayed long
@@ -76,11 +84,8 @@ export enum Code {
      *
      * HTTP Mapping: 504 Gateway Timeout
      *
-     * @generated from protobuf enum value: DEADLINE_EXCEEDED = 4;
-     */
-    DEADLINE_EXCEEDED = 4,
-    /**
-     * Some requested entity (e.g., file or directory) was not found.
+     * @generated from protobuf enum value: DEADLINE_EXCEEDED = 4; */ DEADLINE_EXCEEDED: "DEADLINE_EXCEEDED",
+    /** Some requested entity (e.g., file or directory) was not found.
      *
      * Note to server developers: if a request is denied for an entire class
      * of users, such as gradual feature rollout or undocumented whitelist,
@@ -90,20 +95,14 @@ export enum Code {
      *
      * HTTP Mapping: 404 Not Found
      *
-     * @generated from protobuf enum value: NOT_FOUND = 5;
-     */
-    NOT_FOUND = 5,
-    /**
-     * The entity that a client attempted to create (e.g., file or directory)
+     * @generated from protobuf enum value: NOT_FOUND = 5; */ NOT_FOUND: "NOT_FOUND",
+    /** The entity that a client attempted to create (e.g., file or directory)
      * already exists.
      *
      * HTTP Mapping: 409 Conflict
      *
-     * @generated from protobuf enum value: ALREADY_EXISTS = 6;
-     */
-    ALREADY_EXISTS = 6,
-    /**
-     * The caller does not have permission to execute the specified
+     * @generated from protobuf enum value: ALREADY_EXISTS = 6; */ ALREADY_EXISTS: "ALREADY_EXISTS",
+    /** The caller does not have permission to execute the specified
      * operation. `PERMISSION_DENIED` must not be used for rejections
      * caused by exhausting some resource (use `RESOURCE_EXHAUSTED`
      * instead for those errors). `PERMISSION_DENIED` must not be
@@ -114,52 +113,40 @@ export enum Code {
      *
      * HTTP Mapping: 403 Forbidden
      *
-     * @generated from protobuf enum value: PERMISSION_DENIED = 7;
-     */
-    PERMISSION_DENIED = 7,
-    /**
-     * The request does not have valid authentication credentials for the
+     * @generated from protobuf enum value: PERMISSION_DENIED = 7; */ PERMISSION_DENIED: "PERMISSION_DENIED",
+    /** The request does not have valid authentication credentials for the
      * operation.
      *
      * HTTP Mapping: 401 Unauthorized
      *
-     * @generated from protobuf enum value: UNAUTHENTICATED = 16;
-     */
-    UNAUTHENTICATED = 16,
-    /**
-     * Some resource has been exhausted, perhaps a per-user quota, or
+     * @generated from protobuf enum value: UNAUTHENTICATED = 16; */ UNAUTHENTICATED: "UNAUTHENTICATED",
+    /** Some resource has been exhausted, perhaps a per-user quota, or
      * perhaps the entire file system is out of space.
      *
      * HTTP Mapping: 429 Too Many Requests
      *
-     * @generated from protobuf enum value: RESOURCE_EXHAUSTED = 8;
-     */
-    RESOURCE_EXHAUSTED = 8,
-    /**
-     * The operation was rejected because the system is not in a state
+     * @generated from protobuf enum value: RESOURCE_EXHAUSTED = 8; */ RESOURCE_EXHAUSTED: "RESOURCE_EXHAUSTED",
+    /** The operation was rejected because the system is not in a state
      * required for the operation's execution.  For example, the directory
      * to be deleted is non-empty, an rmdir operation is applied to
      * a non-directory, etc.
      *
      * Service implementors can use the following guidelines to decide
      * between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:
-     *  (a) Use `UNAVAILABLE` if the client can retry just the failing call.
-     *  (b) Use `ABORTED` if the client should retry at a higher level
-     *      (e.g., when a client-specified test-and-set fails, indicating the
-     *      client should restart a read-modify-write sequence).
-     *  (c) Use `FAILED_PRECONDITION` if the client should not retry until
-     *      the system state has been explicitly fixed.  E.g., if an "rmdir"
-     *      fails because the directory is non-empty, `FAILED_PRECONDITION`
-     *      should be returned since the client should not retry unless
-     *      the files are deleted from the directory.
+     * (a) Use `UNAVAILABLE` if the client can retry just the failing call.
+     * (b) Use `ABORTED` if the client should retry at a higher level
+     * (e.g., when a client-specified test-and-set fails, indicating the
+     * client should restart a read-modify-write sequence).
+     * (c) Use `FAILED_PRECONDITION` if the client should not retry until
+     * the system state has been explicitly fixed.  E.g., if an "rmdir"
+     * fails because the directory is non-empty, `FAILED_PRECONDITION`
+     * should be returned since the client should not retry unless
+     * the files are deleted from the directory.
      *
      * HTTP Mapping: 400 Bad Request
      *
-     * @generated from protobuf enum value: FAILED_PRECONDITION = 9;
-     */
-    FAILED_PRECONDITION = 9,
-    /**
-     * The operation was aborted, typically due to a concurrency issue such as
+     * @generated from protobuf enum value: FAILED_PRECONDITION = 9; */ FAILED_PRECONDITION: "FAILED_PRECONDITION",
+    /** The operation was aborted, typically due to a concurrency issue such as
      * a sequencer check failure or transaction abort.
      *
      * See the guidelines above for deciding between `FAILED_PRECONDITION`,
@@ -167,11 +154,8 @@ export enum Code {
      *
      * HTTP Mapping: 409 Conflict
      *
-     * @generated from protobuf enum value: ABORTED = 10;
-     */
-    ABORTED = 10,
-    /**
-     * The operation was attempted past the valid range.  E.g., seeking or
+     * @generated from protobuf enum value: ABORTED = 10; */ ABORTED: "ABORTED",
+    /** The operation was attempted past the valid range.  E.g., seeking or
      * reading past end-of-file.
      *
      * Unlike `INVALID_ARGUMENT`, this error indicates a problem that may
@@ -189,30 +173,21 @@ export enum Code {
      *
      * HTTP Mapping: 400 Bad Request
      *
-     * @generated from protobuf enum value: OUT_OF_RANGE = 11;
-     */
-    OUT_OF_RANGE = 11,
-    /**
-     * The operation is not implemented or is not supported/enabled in this
+     * @generated from protobuf enum value: OUT_OF_RANGE = 11; */ OUT_OF_RANGE: "OUT_OF_RANGE",
+    /** The operation is not implemented or is not supported/enabled in this
      * service.
      *
      * HTTP Mapping: 501 Not Implemented
      *
-     * @generated from protobuf enum value: UNIMPLEMENTED = 12;
-     */
-    UNIMPLEMENTED = 12,
-    /**
-     * Internal errors.  This means that some invariants expected by the
+     * @generated from protobuf enum value: UNIMPLEMENTED = 12; */ UNIMPLEMENTED: "UNIMPLEMENTED",
+    /** Internal errors.  This means that some invariants expected by the
      * underlying system have been broken.  This error code is reserved
      * for serious errors.
      *
      * HTTP Mapping: 500 Internal Server Error
      *
-     * @generated from protobuf enum value: INTERNAL = 13;
-     */
-    INTERNAL = 13,
-    /**
-     * The service is currently unavailable.  This is most likely a
+     * @generated from protobuf enum value: INTERNAL = 13; */ INTERNAL: "INTERNAL",
+    /** The service is currently unavailable.  This is most likely a
      * transient condition, which can be corrected by retrying with
      * a backoff. Note that it is not always safe to retry
      * non-idempotent operations.
@@ -222,15 +197,10 @@ export enum Code {
      *
      * HTTP Mapping: 503 Service Unavailable
      *
-     * @generated from protobuf enum value: UNAVAILABLE = 14;
-     */
-    UNAVAILABLE = 14,
-    /**
-     * Unrecoverable data loss or corruption.
+     * @generated from protobuf enum value: UNAVAILABLE = 14; */ UNAVAILABLE: "UNAVAILABLE",
+    /** Unrecoverable data loss or corruption.
      *
      * HTTP Mapping: 500 Internal Server Error
      *
-     * @generated from protobuf enum value: DATA_LOSS = 15;
-     */
-    DATA_LOSS = 15
-}
+     * @generated from protobuf enum value: DATA_LOSS = 15; */ DATA_LOSS: "DATA_LOSS"
+} as const;

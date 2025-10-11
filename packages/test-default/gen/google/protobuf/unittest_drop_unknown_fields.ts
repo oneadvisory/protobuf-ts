@@ -55,22 +55,26 @@ export interface Foo {
     enumValue: Foo_NestedEnum;
 }
 /**
- * @generated from protobuf enum unittest_drop_unknown_fields.Foo.NestedEnum
+ * @generated from protobuf enum unittest_drop_unknown_fields.Foo.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  FOO = 0;
+ *  BAR = 1;
+ *  BAZ = 2;
+ * }
  */
-export enum Foo_NestedEnum {
+export type Foo_NestedEnum = "FOO" | "BAR" | "BAZ";
+export const Foo_NestedEnum = {
     /**
      * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2
-}
+     */ BAZ: "BAZ"
+} as const;
 /**
  * @generated from protobuf message unittest_drop_unknown_fields.FooWithExtraFields
  */
@@ -89,26 +93,30 @@ export interface FooWithExtraFields {
     extraInt32Value: number;
 }
 /**
- * @generated from protobuf enum unittest_drop_unknown_fields.FooWithExtraFields.NestedEnum
+ * @generated from protobuf enum unittest_drop_unknown_fields.FooWithExtraFields.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  FOO = 0;
+ *  BAR = 1;
+ *  BAZ = 2;
+ *  QUX = 3;
+ * }
  */
-export enum FooWithExtraFields_NestedEnum {
+export type FooWithExtraFields_NestedEnum = "FOO" | "BAR" | "BAZ" | "QUX";
+export const FooWithExtraFields_NestedEnum = {
     /**
      * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2,
+     */ BAZ: "BAZ",
     /**
      * @generated from protobuf enum value: QUX = 3;
-     */
-    QUX = 3
-}
+     */ QUX: "QUX"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class Foo$Type extends MessageType<Foo> {
     constructor() {

@@ -100,43 +100,51 @@ export interface MyMessagePlusExtra {
     oneofE2?: MyEnumPlusExtra;
 }
 /**
- * @generated from protobuf enum proto3_preserve_unknown_enum_unittest.MyEnum
+ * @generated from protobuf enum proto3_preserve_unknown_enum_unittest.MyEnum:
+ *
+ * enum MyEnum {
+ *  FOO = 0;
+ *  BAR = 1;
+ *  BAZ = 2;
+ * }
  */
-export enum MyEnum {
+export type MyEnum = "FOO" | "BAR" | "BAZ";
+export const MyEnum = {
     /**
      * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2
-}
+     */ BAZ: "BAZ"
+} as const;
 /**
- * @generated from protobuf enum proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra
+ * @generated from protobuf enum proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra:
+ *
+ * enum MyEnumPlusExtra {
+ *  E_FOO = 0;
+ *  E_BAR = 1;
+ *  E_BAZ = 2;
+ *  E_EXTRA = 3;
+ * }
  */
-export enum MyEnumPlusExtra {
+export type MyEnumPlusExtra = "E_FOO" | "E_BAR" | "E_BAZ" | "E_EXTRA";
+export const MyEnumPlusExtra = {
     /**
      * @generated from protobuf enum value: E_FOO = 0;
-     */
-    E_FOO = 0,
+     */ E_FOO: "E_FOO",
     /**
      * @generated from protobuf enum value: E_BAR = 1;
-     */
-    E_BAR = 1,
+     */ E_BAR: "E_BAR",
     /**
      * @generated from protobuf enum value: E_BAZ = 2;
-     */
-    E_BAZ = 2,
+     */ E_BAZ: "E_BAZ",
     /**
      * @generated from protobuf enum value: E_EXTRA = 3;
-     */
-    E_EXTRA = 3
-}
+     */ E_EXTRA: "E_EXTRA"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class MyMessage$Type extends MessageType<MyMessage> {
     constructor() {
