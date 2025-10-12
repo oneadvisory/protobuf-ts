@@ -84,12 +84,22 @@ export const FailRequest = {
      *
      * @generated from protobuf enum value: ERROR_STATUS_ONLY = 2; */ ERROR_STATUS_ONLY: "ERROR_STATUS_ONLY"
 } as const;
+export const FailRequest$stringToNumber = {
+    FAIL_REQUEST_NONE: 0,
+    MESSAGE_THEN_ERROR_STATUS: 1,
+    ERROR_STATUS_ONLY: 2
+} as const;
+export const FailRequest$numberToString = {
+    0: "FAIL_REQUEST_NONE",
+    1: "MESSAGE_THEN_ERROR_STATUS",
+    2: "ERROR_STATUS_ONLY"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ExampleRequest$Type extends MessageType<ExampleRequest> {
     constructor() {
         super("spec.ExampleRequest", [
             { no: 1, name: "question", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 2, name: "please_fail", kind: "enum", T: () => ["spec.FailRequest", FailRequest] },
+            { no: 2, name: "please_fail", kind: "enum", T: () => ["spec.FailRequest", FailRequest, undefined, FailRequest$stringToNumber] },
             { no: 3, name: "please_delay_response_ms", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "disable_sending_example_response_headers", kind: "scalar", T: 8 /*ScalarType.BOOL*/ }
         ]);
@@ -106,7 +116,7 @@ class ExampleResponse$Type extends MessageType<ExampleResponse> {
             { no: 1, name: "answer", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "your_request_headers", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "scalar", T: 9 /*ScalarType.STRING*/ } },
             { no: 3, name: "your_deadline", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "your_fail_request", kind: "enum", T: () => ["spec.FailRequest", FailRequest] }
+            { no: 4, name: "your_fail_request", kind: "enum", T: () => ["spec.FailRequest", FailRequest, undefined, FailRequest$stringToNumber] }
         ]);
     }
 }

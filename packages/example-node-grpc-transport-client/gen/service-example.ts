@@ -94,12 +94,22 @@ export const FailRequest = {
      *
      * @generated from protobuf enum value: ERROR_STATUS_ONLY = 2; */ ERROR_STATUS_ONLY: "ERROR_STATUS_ONLY"
 } as const;
+export const FailRequest$stringToNumber = {
+    FAIL_REQUEST_NONE: 0,
+    MESSAGE_THEN_ERROR_STATUS: 1,
+    ERROR_STATUS_ONLY: 2
+} as const;
+export const FailRequest$numberToString = {
+    0: "FAIL_REQUEST_NONE",
+    1: "MESSAGE_THEN_ERROR_STATUS",
+    2: "ERROR_STATUS_ONLY"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ExampleRequest$Type extends MessageType<ExampleRequest> {
     constructor() {
         super("spec.ExampleRequest", [
             { no: 1, name: "question", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 2, name: "please_fail", kind: "enum", T: () => ["spec.FailRequest", FailRequest, undefined, { FAIL_REQUEST_NONE: 0, MESSAGE_THEN_ERROR_STATUS: 1, ERROR_STATUS_ONLY: 2 }] },
+            { no: 2, name: "please_fail", kind: "enum", T: () => ["spec.FailRequest", FailRequest, undefined, FailRequest$stringToNumber] },
             { no: 3, name: "please_delay_response_ms", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "disable_sending_example_response_headers", kind: "scalar", T: 8 /*ScalarType.BOOL*/ }
         ]);
@@ -123,7 +133,7 @@ class ExampleRequest$Type extends MessageType<ExampleRequest> {
                     message.question = reader.string();
                     break;
                 case /* spec.FailRequest please_fail */ 2:
-                    message.pleaseFail = enumNumberToString({ FAIL_REQUEST_NONE: 0, MESSAGE_THEN_ERROR_STATUS: 1, ERROR_STATUS_ONLY: 2 }, reader.int32()) as any;
+                    message.pleaseFail = enumNumberToString(FailRequest$numberToString, reader.int32()) as any;
                     break;
                 case /* int32 please_delay_response_ms */ 3:
                     message.pleaseDelayResponseMs = reader.int32();
@@ -148,7 +158,7 @@ class ExampleRequest$Type extends MessageType<ExampleRequest> {
             writer.tag(1, WireType.LengthDelimited).string(message.question);
         /* spec.FailRequest please_fail = 2; */
         if (message.pleaseFail !== "FAIL_REQUEST_NONE")
-            writer.tag(2, WireType.Varint).int32(enumStringToNumber({ FAIL_REQUEST_NONE: 0, MESSAGE_THEN_ERROR_STATUS: 1, ERROR_STATUS_ONLY: 2 }, message.pleaseFail));
+            writer.tag(2, WireType.Varint).int32(enumStringToNumber(FailRequest$stringToNumber, message.pleaseFail));
         /* int32 please_delay_response_ms = 3; */
         if (message.pleaseDelayResponseMs !== 0)
             writer.tag(3, WireType.Varint).int32(message.pleaseDelayResponseMs);
@@ -172,7 +182,7 @@ class ExampleResponse$Type extends MessageType<ExampleResponse> {
             { no: 1, name: "answer", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "your_request_headers", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "scalar", T: 9 /*ScalarType.STRING*/ } },
             { no: 3, name: "your_deadline", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "your_fail_request", kind: "enum", T: () => ["spec.FailRequest", FailRequest, undefined, { FAIL_REQUEST_NONE: 0, MESSAGE_THEN_ERROR_STATUS: 1, ERROR_STATUS_ONLY: 2 }] }
+            { no: 4, name: "your_fail_request", kind: "enum", T: () => ["spec.FailRequest", FailRequest, undefined, FailRequest$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<ExampleResponse>): ExampleResponse {
@@ -200,7 +210,7 @@ class ExampleResponse$Type extends MessageType<ExampleResponse> {
                     message.yourDeadline = reader.string();
                     break;
                 case /* spec.FailRequest your_fail_request */ 4:
-                    message.yourFailRequest = enumNumberToString({ FAIL_REQUEST_NONE: 0, MESSAGE_THEN_ERROR_STATUS: 1, ERROR_STATUS_ONLY: 2 }, reader.int32()) as any;
+                    message.yourFailRequest = enumNumberToString(FailRequest$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -241,7 +251,7 @@ class ExampleResponse$Type extends MessageType<ExampleResponse> {
             writer.tag(3, WireType.LengthDelimited).string(message.yourDeadline);
         /* spec.FailRequest your_fail_request = 4; */
         if (message.yourFailRequest !== "FAIL_REQUEST_NONE")
-            writer.tag(4, WireType.Varint).int32(enumStringToNumber({ FAIL_REQUEST_NONE: 0, MESSAGE_THEN_ERROR_STATUS: 1, ERROR_STATUS_ONLY: 2 }, message.yourFailRequest));
+            writer.tag(4, WireType.Varint).int32(enumStringToNumber(FailRequest$stringToNumber, message.yourFailRequest));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
