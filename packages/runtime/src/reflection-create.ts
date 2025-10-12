@@ -2,6 +2,7 @@ import {reflectionScalarDefault} from "./reflection-scalar-default";
 import type {UnknownMessage} from "./unknown-types";
 import type {IMessageType} from './message-type-contract';
 import {MESSAGE_TYPE} from './message-type-contract';
+import {getFirstEnumValue} from "./enum-helpers";
 
 /**
  * Creates an instance of the generic message, using the field
@@ -35,8 +36,8 @@ export function reflectionCreate<T extends object>(type: IMessageType<T>): T {
                     msg[name] = reflectionScalarDefault(field.T, field.L);
                     break;
                 case "enum":
-                    // we require 0 to be default value for all enums
-                    msg[name] = 0;
+                    // For string-based enums, use the first enum value
+                    msg[name] = getFirstEnumValue(field.T());
                     break;
                 case "map":
                     msg[name] = {};

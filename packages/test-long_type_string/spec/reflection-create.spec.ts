@@ -44,9 +44,9 @@ describe('reflectionCreate()', function () {
       expect(message.optionalBool).toBe(false);
       expect(message.optionalBytes).toEqual(new Uint8Array(0));
       expect(message.optionalBytes).toEqual(new Uint8Array(0));
-      expect(message.optionalNestedEnum).toBe(0);
-      expect(message.optionalForeignEnum).toBe(0);
-      expect(message.optionalAliasedEnum).toBe(0);
+      expect(message.optionalNestedEnum).toBe("FOO");
+      expect(message.optionalForeignEnum).toBe("FOREIGN_FOO");
+      expect(message.optionalAliasedEnum).toBe("ALIAS_FOO");
       expect(message.optionalStringPiece).toBe('');
       expect(message.optionalCord).toBe('');
       expect(message.repeatedInt32).toEqual([]);

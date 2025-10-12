@@ -9,9 +9,11 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -153,6 +155,20 @@ export const TestProto3Optional_NestedEnum = {
      *
      * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
 } as const;
+export const TestProto3Optional_NestedEnum$stringToNumber = {
+    UNSPECIFIED: 0,
+    FOO: 1,
+    BAR: 2,
+    BAZ: 3,
+    NEG: -1
+} as const;
+export const TestProto3Optional_NestedEnum$numberToString = {
+    0: "UNSPECIFIED",
+    1: "FOO",
+    2: "BAR",
+    3: "BAZ",
+    [-1]: "NEG"
+} as const;
 /**
  * @generated from protobuf message protobuf_unittest.TestProto3OptionalMessage
  */
@@ -202,7 +218,7 @@ class TestProto3Optional$Type extends MessageType<TestProto3Optional> {
             { no: 16, name: "optional_cord", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 18, name: "optional_nested_message", kind: "message", T: () => TestProto3Optional_NestedMessage },
             { no: 19, name: "lazy_nested_message", kind: "message", T: () => TestProto3Optional_NestedMessage },
-            { no: 21, name: "optional_nested_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.TestProto3Optional.NestedEnum", TestProto3Optional_NestedEnum] },
+            { no: 21, name: "optional_nested_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.TestProto3Optional.NestedEnum", TestProto3Optional_NestedEnum, undefined, TestProto3Optional_NestedEnum$stringToNumber] },
             { no: 22, name: "singular_int32", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 23, name: "singular_int64", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
@@ -275,7 +291,7 @@ class TestProto3Optional$Type extends MessageType<TestProto3Optional> {
                     message.lazyNestedMessage = TestProto3Optional_NestedMessage.internalBinaryRead(reader, reader.uint32(), options, message.lazyNestedMessage);
                     break;
                 case /* optional protobuf_unittest.TestProto3Optional.NestedEnum optional_nested_enum */ 21:
-                    message.optionalNestedEnum = reader.int32();
+                    message.optionalNestedEnum = enumNumberToString(TestProto3Optional_NestedEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* int32 singular_int32 */ 22:
                     message.singularInt32 = reader.int32();
@@ -351,7 +367,7 @@ class TestProto3Optional$Type extends MessageType<TestProto3Optional> {
             TestProto3Optional_NestedMessage.internalBinaryWrite(message.lazyNestedMessage, writer.tag(19, WireType.LengthDelimited).fork(), options).join();
         /* optional protobuf_unittest.TestProto3Optional.NestedEnum optional_nested_enum = 21; */
         if (message.optionalNestedEnum !== undefined)
-            writer.tag(21, WireType.Varint).int32(message.optionalNestedEnum);
+            writer.tag(21, WireType.Varint).int32(enumStringToNumber(TestProto3Optional_NestedEnum$stringToNumber, message.optionalNestedEnum));
         /* int32 singular_int32 = 22; */
         if (message.singularInt32 !== 0)
             writer.tag(22, WireType.Varint).int32(message.singularInt32);

@@ -6,6 +6,7 @@ import type {IMessageType} from "./message-type-contract";
 import {assert} from "./assert";
 import {PbLong, PbULong} from "./pb-long";
 import type {UnknownMessage, UnknownOneofGroup} from "./unknown-types";
+import {enumStringToNumber} from "./enum-helpers";
 
 
 /**
@@ -49,19 +50,37 @@ export class ReflectionBinaryWriter {
             // we have handled oneof above. we just have to honor `emitDefault`.
             switch (field.kind) {
                 case "scalar":
-                case "enum":
-                    let T = field.kind == "enum" ? ScalarType.INT32 : field.T;
                     if (repeated) {
                         assert(Array.isArray(value));
                         if (repeated == RepeatType.PACKED)
-                            this.packed(writer, T, field.no, value);
+                            this.packed(writer, field.T, field.no, value);
                         else
                             for (const item of value)
-                                this.scalar(writer, T, field.no, item, true);
+                                this.scalar(writer, field.T, field.no, item, true);
                     } else if (value === undefined)
                         assert(field.opt || field.oneof);
                     else
-                        this.scalar(writer, T, field.no, value, emitDefault || field.opt);
+                        this.scalar(writer, field.T, field.no, value, emitDefault || field.opt);
+                    break;
+
+                case "enum":
+                    const enumInfo = field.T();
+                    const stringToNumber = enumInfo[3] ?? {};
+                    if (repeated) {
+                        assert(Array.isArray(value));
+                        // Convert string values to numbers for writing
+                        const numericValues = (value as string[]).map(v => enumStringToNumber(stringToNumber, v));
+                        if (repeated == RepeatType.PACKED)
+                            this.packed(writer, ScalarType.INT32, field.no, numericValues);
+                        else
+                            for (const item of numericValues)
+                                this.scalar(writer, ScalarType.INT32, field.no, item, true);
+                    } else if (value === undefined)
+                        assert(field.opt || field.oneof);
+                    else {
+                        const numericValue = enumStringToNumber(stringToNumber, value as string);
+                        this.scalar(writer, ScalarType.INT32, field.no, numericValue, emitDefault || field.opt);
+                    }
                     break;
 
                 case "message":
@@ -118,7 +137,10 @@ export class ReflectionBinaryWriter {
                 this.scalar(writer, field.V.T, 2, value, true);
                 break;
             case 'enum':
-                this.scalar(writer, ScalarType.INT32, 2, value, true);
+                const enumInfo = field.V.T();
+                const stringToNumber = enumInfo[3] ?? {};
+                const numericValue = enumStringToNumber(stringToNumber, value);
+                this.scalar(writer, ScalarType.INT32, 2, numericValue, true);
                 break;
             case 'message':
                 this.message(writer, options, field.V.T(), 2, value);

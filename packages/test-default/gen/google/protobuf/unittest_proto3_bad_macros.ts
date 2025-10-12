@@ -29,6 +29,12 @@ export const GID = {
      * @generated from protobuf enum value: GID_UNUSED = 0;
      */ GID_UNUSED: "GID_UNUSED"
 } as const;
+export const GID$stringToNumber = {
+    GID_UNUSED: 0
+} as const;
+export const GID$numberToString = {
+    0: "GID_UNUSED"
+} as const;
 /**
  * This generates `UID_MAX`, which is a mcro in some circumstances.
  *
@@ -43,6 +49,12 @@ export const UID = {
     /**
      * @generated from protobuf enum value: UID_UNUSED = 0;
      */ UID_UNUSED: "UID_UNUSED"
+} as const;
+export const UID$stringToNumber = {
+    UID_UNUSED: 0
+} as const;
+export const UID$numberToString = {
+    0: "UID_UNUSED"
 } as const;
 /**
  * Just a container for bad macro names. Some of these do not follow the normal
@@ -184,4 +196,72 @@ export const BadNames = {
     /** Defined in macOS, Windows, and Linux headers.
      *
      * @generated from protobuf enum value: DEBUG = 31; */ DEBUG: "DEBUG"
+} as const;
+export const BadNames$stringToNumber = {
+    PACKAGE: 0,
+    PACKED: 1,
+    linux: 2,
+    DOMAIN: 3,
+    TRUE: 4,
+    FALSE: 5,
+    CREATE_NEW: 6,
+    DELETE: 7,
+    DOUBLE_CLICK: 8,
+    ERROR: 9,
+    ERROR_BUSY: 10,
+    ERROR_INSTALL_FAILED: 11,
+    ERROR_NOT_FOUND: 12,
+    GetClassName: 13,
+    GetCurrentTime: 14,
+    GetMessage: 15,
+    GetObject: 16,
+    IGNORE: 17,
+    IN: 18,
+    INPUT_KEYBOARD: 19,
+    NO_ERROR: 20,
+    OUT: 21,
+    OPTIONAL: 22,
+    NEAR: 23,
+    NO_DATA: 24,
+    REASON_UNKNOWN: 25,
+    SERVICE_DISABLED: 26,
+    SEVERITY_ERROR: 27,
+    STATUS_PENDING: 28,
+    STRICT: 29,
+    TYPE_BOOL: 30,
+    DEBUG: 31
+} as const;
+export const BadNames$numberToString = {
+    0: "PACKAGE",
+    1: "PACKED",
+    2: "linux",
+    3: "DOMAIN",
+    4: "TRUE",
+    5: "FALSE",
+    6: "CREATE_NEW",
+    7: "DELETE",
+    8: "DOUBLE_CLICK",
+    9: "ERROR",
+    10: "ERROR_BUSY",
+    11: "ERROR_INSTALL_FAILED",
+    12: "ERROR_NOT_FOUND",
+    13: "GetClassName",
+    14: "GetCurrentTime",
+    15: "GetMessage",
+    16: "GetObject",
+    17: "IGNORE",
+    18: "IN",
+    19: "INPUT_KEYBOARD",
+    20: "NO_ERROR",
+    21: "OUT",
+    22: "OPTIONAL",
+    23: "NEAR",
+    24: "NO_DATA",
+    25: "REASON_UNKNOWN",
+    26: "SERVICE_DISABLED",
+    27: "SEVERITY_ERROR",
+    28: "STATUS_PENDING",
+    29: "STRICT",
+    30: "TYPE_BOOL",
+    31: "DEBUG"
 } as const;

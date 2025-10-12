@@ -1,6 +1,5 @@
 import * as grpc from "@grpc/grpc-js";
 import {RpcMetadata} from "@oneadvisory/protobuf-ts-runtime-rpc";
-import {listEnumValues} from "@oneadvisory/protobuf-ts-runtime";
 import {MetadataOptions} from "@grpc/grpc-js";
 
 
@@ -27,8 +26,8 @@ export function isServiceError(arg: any): arg is grpc.ServiceError {
  * Parse a gRPC status code from a string.
  */
 export function rpcCodeToGrpc(from: string): grpc.status | undefined {
-    let v = listEnumValues(grpc.status).find(v => v.name === from);
-    return v ? v.number : undefined;
+    const value = (grpc.status as any)[from];
+    return typeof value === 'number' ? value : undefined;
 }
 
 /**

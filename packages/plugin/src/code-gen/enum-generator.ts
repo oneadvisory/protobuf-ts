@@ -150,6 +150,34 @@ export class EnumGenerator {
     const constObject = this.generateEnumConstObject(typeName, enumValues);
     source.addStatement(constObject);
 
+    // Generate the stringToNumber mapping constant: const MyEnum$stringToNumber = { VALUE1: 0, VALUE2: 1, ... } as const;
+    const stringToNumberConst = this.generateStringToNumberConstant(
+      typeName,
+      enumValues
+    );
+    source.addStatement(stringToNumberConst);
+    // Register the stringToNumber constant in the symbol table with 'stringToNumber' kind
+    this.symbols.register(
+      `${typeName}$stringToNumber`,
+      descriptor,
+      source,
+      'stringToNumber'
+    );
+
+    // Generate the numberToString mapping constant: const MyEnum$numberToString = { 0: "VALUE1", 1: "VALUE2", ... } as const;
+    const numberToStringConst = this.generateNumberToStringConstant(
+      typeName,
+      enumValues
+    );
+    source.addStatement(numberToStringConst);
+    // Register the numberToString constant in the symbol table with 'numberToString' kind
+    this.symbols.register(
+      `${typeName}$numberToString`,
+      descriptor,
+      source,
+      'numberToString'
+    );
+
     return typeStatement;
   }
 
@@ -289,6 +317,165 @@ export class EnumGenerator {
     // Create: const MyEnum = { ... } as const;
     const variableDeclaration = ts.factory.createVariableDeclaration(
       name,
+      undefined,
+      undefined,
+      asConstExpression
+    );
+
+    // Wrap in variable statement with export
+    return ts.factory.createVariableStatement(
+      [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+      ts.factory.createVariableDeclarationList(
+        [variableDeclaration],
+        ts.NodeFlags.Const
+      )
+    );
+  }
+
+  /**
+   * Generate the stringToNumber mapping constant for binary serialization.
+   * Example output:
+   * const MyEnum$stringToNumber = { VALUE1: 0, VALUE2: 1, ... } as const;
+   */
+  private generateStringToNumberConstant(
+    name: string | ts.Identifier,
+    values: Array<{
+      name: string;
+      comments?: string;
+      number: number;
+      originalName: string;
+    }>
+  ): ts.VariableStatement {
+    // Create properties: VALUE1: 0, VALUE2: 1, ...
+    const properties: ts.PropertyAssignment[] = values.map(({ name, number }) => {
+      // Handle negative numbers with prefix unary expression
+      const numberExpression =
+        number < 0
+          ? ts.factory.createPrefixUnaryExpression(
+              ts.SyntaxKind.MinusToken,
+              ts.factory.createNumericLiteral(`${-number}`)
+            )
+          : ts.factory.createNumericLiteral(`${number}`);
+
+      return ts.factory.createPropertyAssignment(
+        ts.factory.createIdentifier(name),
+        numberExpression
+      );
+    });
+
+    // Create the object literal
+    const objectLiteral = ts.factory.createObjectLiteralExpression(
+      properties,
+      true // multiLine
+    );
+
+    // Add 'as const' assertion
+    const asConstExpression = ts.factory.createAsExpression(
+      objectLiteral,
+      ts.factory.createTypeReferenceNode(
+        ts.factory.createIdentifier('const'),
+        undefined
+      )
+    );
+
+    // Create variable name: MyEnum$stringToNumber
+    const variableName =
+      typeof name === 'string'
+        ? `${name}$stringToNumber`
+        : ts.factory.createIdentifier(
+            `${name.text}$stringToNumber`
+          );
+
+    // Create: const MyEnum$stringToNumber = { ... } as const;
+    const variableDeclaration = ts.factory.createVariableDeclaration(
+      variableName,
+      undefined,
+      undefined,
+      asConstExpression
+    );
+
+    // Wrap in variable statement with export
+    return ts.factory.createVariableStatement(
+      [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+      ts.factory.createVariableDeclarationList(
+        [variableDeclaration],
+        ts.NodeFlags.Const
+      )
+    );
+  }
+
+  /**
+   * Generate the numberToString mapping constant for binary deserialization.
+   * Example output:
+   * const MyEnum$numberToString = { 0: "VALUE1", 1: "VALUE2", ... } as const;
+   *
+   * Note: For alias enums (multiple strings with same number), only the first
+   * string is included in the map.
+   */
+  private generateNumberToStringConstant(
+    name: string | ts.Identifier,
+    values: Array<{
+      name: string;
+      comments?: string;
+      number: number;
+      originalName: string;
+    }>
+  ): ts.VariableStatement {
+    // Create properties: 0: "VALUE1", 1: "VALUE2", ...
+    // For alias enums, only include the first string for each unique number
+    const numberMap = new Map<number, string>();
+    for (const { name, number } of values) {
+      if (!numberMap.has(number)) {
+        numberMap.set(number, name);
+      }
+    }
+
+    const properties: ts.PropertyAssignment[] = Array.from(numberMap.entries()).map(
+      ([number, name]) => {
+        // Handle negative numbers with prefix unary expression for the key
+        const keyExpression =
+          number < 0
+            ? ts.factory.createComputedPropertyName(
+                ts.factory.createPrefixUnaryExpression(
+                  ts.SyntaxKind.MinusToken,
+                  ts.factory.createNumericLiteral(`${-number}`)
+                )
+              )
+            : ts.factory.createIdentifier(`${number}`);
+
+        return ts.factory.createPropertyAssignment(
+          keyExpression,
+          ts.factory.createStringLiteral(name)
+        );
+      }
+    );
+
+    // Create the object literal
+    const objectLiteral = ts.factory.createObjectLiteralExpression(
+      properties,
+      true // multiLine
+    );
+
+    // Add 'as const' assertion
+    const asConstExpression = ts.factory.createAsExpression(
+      objectLiteral,
+      ts.factory.createTypeReferenceNode(
+        ts.factory.createIdentifier('const'),
+        undefined
+      )
+    );
+
+    // Create variable name: MyEnum$numberToString
+    const variableName =
+      typeof name === 'string'
+        ? `${name}$numberToString`
+        : ts.factory.createIdentifier(
+            `${name.text}$numberToString`
+          );
+
+    // Create: const MyEnum$numberToString = { ... } as const;
+    const variableDeclaration = ts.factory.createVariableDeclaration(
+      variableName,
       undefined,
       undefined,
       asConstExpression

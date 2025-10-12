@@ -57,6 +57,14 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
         this.options.runtimeImportPath,
         true
       );
+    // Register enum conversion helper only if message has enum fields
+    if (this.hasEnumFields(descMessage)) {
+      this.imports.name(
+        source,
+        'enumStringToNumber',
+        this.options.runtimeImportPath
+      );
+    }
     return ts.factory.createMethodDeclaration(
       undefined,
       undefined,
@@ -290,6 +298,17 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
       );
     }
 
+    // For enum fields, convert string to number
+    let valueExpression: ts.Expression = fieldPropertyAccess;
+    if (field.kind === 'enum') {
+      const enumInfo = field.T();
+      valueExpression = ts.factory.createCallExpression(
+        ts.factory.createIdentifier('enumStringToNumber'),
+        undefined,
+        [this.getStringToNumberIdentifier(source, enumInfo), fieldPropertyAccess]
+      );
+    }
+
     // if ( <shouldWriteCondition> )
     let statement = ts.factory.createIfStatement(
       shouldWriteCondition,
@@ -303,7 +322,7 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
             this.wireTypeForSingleScalar(type)
           ),
           type,
-          fieldPropertyAccess
+          valueExpression
         )
       ),
       undefined
@@ -333,6 +352,20 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
       field.kind == 'enum' ? rt.ScalarType.INT32 : field.T;
 
     if (field.repeat === rt.RepeatType.PACKED) {
+      // For enum fields, convert string array to number array
+      let elementExpression: ts.Expression = ts.factory.createElementAccessExpression(
+        fieldPropertyAccess,
+        ts.factory.createIdentifier('i')
+      );
+      if (field.kind === 'enum') {
+        const enumInfo = field.T();
+        elementExpression = ts.factory.createCallExpression(
+          ts.factory.createIdentifier('enumStringToNumber'),
+          undefined,
+          [this.getStringToNumberIdentifier(source, enumInfo), elementExpression]
+        );
+      }
+
       // if (message.int32Field.length) {
       statement = ts.factory.createIfStatement(
         ts.factory.createPropertyAccessChain(
@@ -378,16 +411,9 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
               ts.factory.createPostfixIncrement(
                 ts.factory.createIdentifier('i')
               ),
-              // writer.int32(message.int32Field[i]);
+              // writer.int32(enumStringToNumber(mapping, message.enumField[i]));
               ts.factory.createExpressionStatement(
-                this.makeWriterCall(
-                  'writer',
-                  type,
-                  ts.factory.createElementAccessExpression(
-                    fieldPropertyAccess,
-                    ts.factory.createIdentifier('i')
-                  )
-                )
+                this.makeWriterCall('writer', type, elementExpression)
               )
             ),
             // writer.join();
@@ -401,6 +427,32 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
       );
     } else {
       // never packed
+      let valueExpression: ts.Expression = ts.factory.createAsExpression(
+        ts.factory.createElementAccessChain(
+          fieldPropertyAccess,
+          ts.factory.createToken(ts.SyntaxKind.QuestionDotToken),
+          ts.factory.createIdentifier('i')
+        ),
+        ts.factory.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
+      );
+      if (field.kind === 'enum') {
+        const enumInfo = field.T();
+        valueExpression = ts.factory.createCallExpression(
+          ts.factory.createIdentifier('enumStringToNumber'),
+          undefined,
+          [
+            this.getStringToNumberIdentifier(source, enumInfo),
+            ts.factory.createAsExpression(
+              ts.factory.createElementAccessChain(
+                fieldPropertyAccess,
+                ts.factory.createToken(ts.SyntaxKind.QuestionDotToken),
+                ts.factory.createIdentifier('i')
+              ),
+              ts.factory.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
+            ),
+          ]
+        );
+      }
 
       // for (let i = 0; i < message.bytesField.length; i++)
       statement = ts.factory.createForStatement(
@@ -438,14 +490,7 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
               this.wireTypeForSingleScalar(type)
             ),
             type,
-            ts.factory.createAsExpression(
-              ts.factory.createElementAccessChain(
-                fieldPropertyAccess,
-                ts.factory.createToken(ts.SyntaxKind.QuestionDotToken),
-                ts.factory.createIdentifier('i')
-              ),
-              ts.factory.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
-            )
+            valueExpression
           )
         )
       );
@@ -472,6 +517,21 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
     let type = field.kind == 'enum' ? rt.ScalarType.INT32 : field.T;
 
     let groupPropertyAccess = ts.factory.createIdentifier('message');
+    let fieldAccess = ts.factory.createPropertyAccessExpression(
+      groupPropertyAccess,
+      field.localName
+    );
+
+    // For enum fields, convert string to number
+    let valueExpression: ts.Expression = fieldAccess;
+    if (field.kind === 'enum') {
+      const enumInfo = field.T();
+      valueExpression = ts.factory.createCallExpression(
+        ts.factory.createIdentifier('enumStringToNumber'),
+        undefined,
+        [this.getStringToNumberIdentifier(source, enumInfo), fieldAccess]
+      );
+    }
 
     let statement = ts.factory.createIfStatement(
       // if ('value' in message.)
@@ -482,10 +542,7 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
           groupPropertyAccess
         ),
         ts.factory.createBinaryExpression(
-          ts.factory.createPropertyAccessExpression(
-            groupPropertyAccess,
-            field.localName
-          ),
+          fieldAccess,
           ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
           ts.factory.createNull()
         )
@@ -500,10 +557,7 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
             this.wireTypeForSingleScalar(type)
           ),
           type,
-          ts.factory.createPropertyAccessExpression(
-            groupPropertyAccess,
-            field.localName
-          )
+          valueExpression
         )
       ),
       undefined
@@ -858,6 +912,17 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
       let mapEntryValueScalarType: rt.ScalarType =
         field.V.kind == 'enum' ? rt.ScalarType.INT32 : field.V.T;
 
+      // For enum map values, convert string to number
+      let finalMapEntryValueRead = mapEntryValueRead;
+      if (field.V.kind === 'enum') {
+        const enumInfo = field.V.T();
+        finalMapEntryValueRead = ts.factory.createCallExpression(
+          ts.factory.createIdentifier('enumStringToNumber'),
+          undefined,
+          [this.getStringToNumberIdentifier(source, enumInfo), mapEntryValueRead]
+        );
+      }
+
       // *rolleyes*
       forBody = ts.factory.createExpressionStatement(
         this.makeWriterCall(
@@ -892,7 +957,7 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
             ),
             // .string(message.strStrField[k]) // MapEntry value value
             mapEntryValueScalarType,
-            mapEntryValueRead
+            finalMapEntryValueRead
           ),
           'join'
         )
@@ -1034,5 +1099,43 @@ export class InternalBinaryWrite implements CustomMethodGenerator {
         break;
     }
     return wireType;
+  }
+
+  /**
+   * Check if a message has any enum fields (including map values)
+   */
+  private hasEnumFields(descMessage: DescMessage): boolean {
+    const messageType = this.interpreter.getMessageType(descMessage);
+    for (const field of messageType.fields) {
+      if (field.kind === 'enum') {
+        return true;
+      }
+      if (field.kind === 'map' && field.V.kind === 'enum') {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Get an identifier for the stringToNumber constant of an enum.
+   * This will handle imports automatically if the enum is in a different file.
+   */
+  private getStringToNumberIdentifier(
+    source: TypescriptFile,
+    enumInfo: rt.EnumInfo
+  ): ts.Identifier {
+    const enumTypeName = enumInfo[0];
+    const enumDescriptor = this.registry.getEnum(enumTypeName);
+    assert(enumDescriptor, `Enum descriptor not found for ${enumTypeName}`);
+
+    // Use the imports system to get the constant name (handles imports automatically)
+    const stringToNumberConstName = this.imports.type(
+      source,
+      enumDescriptor,
+      'stringToNumber'
+    );
+
+    return ts.factory.createIdentifier(stringToNumberConstName);
   }
 }

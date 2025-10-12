@@ -360,6 +360,16 @@ export const Proto2MapEnumLite = {
      * @generated from protobuf enum value: PROTO2_MAP_ENUM_BAZ_LITE = 2;
      */ PROTO2_MAP_ENUM_BAZ_LITE: "PROTO2_MAP_ENUM_BAZ_LITE"
 } as const;
+export const Proto2MapEnumLite$stringToNumber = {
+    PROTO2_MAP_ENUM_FOO_LITE: 0,
+    PROTO2_MAP_ENUM_BAR_LITE: 1,
+    PROTO2_MAP_ENUM_BAZ_LITE: 2
+} as const;
+export const Proto2MapEnumLite$numberToString = {
+    0: "PROTO2_MAP_ENUM_FOO_LITE",
+    1: "PROTO2_MAP_ENUM_BAR_LITE",
+    2: "PROTO2_MAP_ENUM_BAZ_LITE"
+} as const;
 /**
  * @generated from protobuf enum protobuf_unittest.Proto2MapEnumPlusExtraLite:
  *
@@ -385,6 +395,18 @@ export const Proto2MapEnumPlusExtraLite = {
      * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_EXTRA_LITE = 3;
      */ E_PROTO2_MAP_ENUM_EXTRA_LITE: "E_PROTO2_MAP_ENUM_EXTRA_LITE"
 } as const;
+export const Proto2MapEnumPlusExtraLite$stringToNumber = {
+    E_PROTO2_MAP_ENUM_FOO_LITE: 0,
+    E_PROTO2_MAP_ENUM_BAR_LITE: 1,
+    E_PROTO2_MAP_ENUM_BAZ_LITE: 2,
+    E_PROTO2_MAP_ENUM_EXTRA_LITE: 3
+} as const;
+export const Proto2MapEnumPlusExtraLite$numberToString = {
+    0: "E_PROTO2_MAP_ENUM_FOO_LITE",
+    1: "E_PROTO2_MAP_ENUM_BAR_LITE",
+    2: "E_PROTO2_MAP_ENUM_BAZ_LITE",
+    3: "E_PROTO2_MAP_ENUM_EXTRA_LITE"
+} as const;
 /**
  * @generated from protobuf enum protobuf_unittest.MapEnumLite:
  *
@@ -406,6 +428,16 @@ export const MapEnumLite = {
      * @generated from protobuf enum value: MAP_ENUM_BAZ_LITE = 2;
      */ MAP_ENUM_BAZ_LITE: "MAP_ENUM_BAZ_LITE"
 } as const;
+export const MapEnumLite$stringToNumber = {
+    MAP_ENUM_FOO_LITE: 0,
+    MAP_ENUM_BAR_LITE: 1,
+    MAP_ENUM_BAZ_LITE: 2
+} as const;
+export const MapEnumLite$numberToString = {
+    0: "MAP_ENUM_FOO_LITE",
+    1: "MAP_ENUM_BAR_LITE",
+    2: "MAP_ENUM_BAZ_LITE"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestMapLite$Type extends MessageType<TestMapLite> {
     constructor() {
@@ -425,7 +457,7 @@ class TestMapLite$Type extends MessageType<TestMapLite> {
             { no: 13, name: "map_bool_bool", kind: "map", K: 8 /*ScalarType.BOOL*/, V: { kind: "scalar", T: 8 /*ScalarType.BOOL*/ } },
             { no: 14, name: "map_string_string", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "scalar", T: 9 /*ScalarType.STRING*/ } },
             { no: 15, name: "map_int32_bytes", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "scalar", T: 12 /*ScalarType.BYTES*/ } },
-            { no: 16, name: "map_int32_enum", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.MapEnumLite", MapEnumLite] } },
+            { no: 16, name: "map_int32_enum", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.MapEnumLite", MapEnumLite, undefined, MapEnumLite$stringToNumber] } },
             { no: 17, name: "map_int32_foreign_message", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "message", T: () => ForeignMessageLite } },
             { no: 18, name: "teboring", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "scalar", T: 5 /*ScalarType.INT32*/ } }
         ]);
@@ -454,7 +486,7 @@ class TestArenaMapLite$Type extends MessageType<TestArenaMapLite> {
             { no: 13, name: "map_bool_bool", kind: "map", K: 8 /*ScalarType.BOOL*/, V: { kind: "scalar", T: 8 /*ScalarType.BOOL*/ } },
             { no: 14, name: "map_string_string", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "scalar", T: 9 /*ScalarType.STRING*/ } },
             { no: 15, name: "map_int32_bytes", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "scalar", T: 12 /*ScalarType.BYTES*/ } },
-            { no: 16, name: "map_int32_enum", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.MapEnumLite", MapEnumLite] } },
+            { no: 16, name: "map_int32_enum", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.MapEnumLite", MapEnumLite, undefined, MapEnumLite$stringToNumber] } },
             { no: 17, name: "map_int32_foreign_message", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "message", T: () => ForeignMessageArenaLite } }
         ]);
     }
@@ -479,8 +511,8 @@ export const TestRequiredMessageMapLite = new TestRequiredMessageMapLite$Type();
 class TestEnumMapLite$Type extends MessageType<TestEnumMapLite> {
     constructor() {
         super("protobuf_unittest.TestEnumMapLite", [
-            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumLite", Proto2MapEnumLite] } },
-            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumLite", Proto2MapEnumLite] } }
+            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumLite", Proto2MapEnumLite, undefined, Proto2MapEnumLite$stringToNumber] } },
+            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumLite", Proto2MapEnumLite, undefined, Proto2MapEnumLite$stringToNumber] } }
         ]);
     }
 }
@@ -492,8 +524,8 @@ export const TestEnumMapLite = new TestEnumMapLite$Type();
 class TestEnumMapPlusExtraLite$Type extends MessageType<TestEnumMapPlusExtraLite> {
     constructor() {
         super("protobuf_unittest.TestEnumMapPlusExtraLite", [
-            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtraLite", Proto2MapEnumPlusExtraLite] } },
-            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtraLite", Proto2MapEnumPlusExtraLite] } }
+            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtraLite", Proto2MapEnumPlusExtraLite, undefined, Proto2MapEnumPlusExtraLite$stringToNumber] } },
+            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtraLite", Proto2MapEnumPlusExtraLite, undefined, Proto2MapEnumPlusExtraLite$stringToNumber] } }
         ]);
     }
 }

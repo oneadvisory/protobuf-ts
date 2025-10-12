@@ -41,6 +41,8 @@
 // A valid .proto file can be translated directly to a FileDescriptorProto
 // without any other information (e.g. without reading its imports).
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
@@ -303,20 +305,30 @@ export interface ExtensionRangeOptions_Declaration {
 /**
  * The verification state of the extension range.
  *
- * @generated from protobuf enum google.protobuf.ExtensionRangeOptions.VerificationState
+ * @generated from protobuf enum google.protobuf.ExtensionRangeOptions.VerificationState:
+ *
+ * enum VerificationState {
+ *  DECLARATION = 0;  // All the extensions of the range must be declared.
+ *  UNVERIFIED = 1;
+ * }
  */
-export enum ExtensionRangeOptions_VerificationState {
-    /**
-     * All the extensions of the range must be declared.
+export type ExtensionRangeOptions_VerificationState = "DECLARATION" | "UNVERIFIED";
+export const ExtensionRangeOptions_VerificationState = {
+    /** All the extensions of the range must be declared.
      *
-     * @generated from protobuf enum value: DECLARATION = 0;
-     */
-    DECLARATION = 0,
+     * @generated from protobuf enum value: DECLARATION = 0; */ DECLARATION: "DECLARATION",
     /**
      * @generated from protobuf enum value: UNVERIFIED = 1;
-     */
-    UNVERIFIED = 1
-}
+     */ UNVERIFIED: "UNVERIFIED"
+} as const;
+export const ExtensionRangeOptions_VerificationState$stringToNumber = {
+    DECLARATION: 0,
+    UNVERIFIED: 1
+} as const;
+export const ExtensionRangeOptions_VerificationState$numberToString = {
+    0: "DECLARATION",
+    1: "UNVERIFIED"
+} as const;
 /**
  * Describes a field within a message.
  *
@@ -416,136 +428,178 @@ export interface FieldDescriptorProto {
     proto3Optional?: boolean;
 }
 /**
- * @generated from protobuf enum google.protobuf.FieldDescriptorProto.Type
+ * @generated from protobuf enum google.protobuf.FieldDescriptorProto.Type:
+ *
+ * enum Type {
+ *  TYPE_UNSPECIFIED$ = 0;
+ *  TYPE_DOUBLE = 1;  // 0 is reserved for errors.
+ *  TYPE_FLOAT = 2;
+ *  TYPE_INT64 = 3;  // Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
+ *  TYPE_UINT64 = 4;
+ *  TYPE_INT32 = 5;  // Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
+ *  TYPE_FIXED64 = 6;
+ *  TYPE_FIXED32 = 7;
+ *  TYPE_BOOL = 8;
+ *  TYPE_STRING = 9;
+ *  TYPE_GROUP = 10;  // Tag-delimited aggregate.
+ *  TYPE_MESSAGE = 11;  // Length-delimited aggregate.
+ *  TYPE_BYTES = 12;  // New in version 2.
+ *  TYPE_UINT32 = 13;
+ *  TYPE_ENUM = 14;
+ *  TYPE_SFIXED32 = 15;
+ *  TYPE_SFIXED64 = 16;
+ *  TYPE_SINT32 = 17;  // Uses ZigZag encoding.
+ *  TYPE_SINT64 = 18;  // Uses ZigZag encoding.
+ * }
  */
-export enum FieldDescriptorProto_Type {
+export type FieldDescriptorProto_Type = "UNSPECIFIED$" | "DOUBLE" | "FLOAT" | "INT64" | "UINT64" | "INT32" | "FIXED64" | "FIXED32" | "BOOL" | "STRING" | "GROUP" | "MESSAGE" | "BYTES" | "UINT32" | "ENUM" | "SFIXED32" | "SFIXED64" | "SINT32" | "SINT64";
+export const FieldDescriptorProto_Type = {
     /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * 0 is reserved for errors.
+     * @generated from protobuf enum value: TYPE_UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
+    /** 0 is reserved for errors.
      * Order is weird for historical reasons.
      *
-     * @generated from protobuf enum value: TYPE_DOUBLE = 1;
-     */
-    DOUBLE = 1,
+     * @generated from protobuf enum value: TYPE_DOUBLE = 1; */ DOUBLE: "DOUBLE",
     /**
      * @generated from protobuf enum value: TYPE_FLOAT = 2;
-     */
-    FLOAT = 2,
-    /**
-     * Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
+     */ FLOAT: "FLOAT",
+    /** Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
      * negative values are likely.
      *
-     * @generated from protobuf enum value: TYPE_INT64 = 3;
-     */
-    INT64 = 3,
+     * @generated from protobuf enum value: TYPE_INT64 = 3; */ INT64: "INT64",
     /**
      * @generated from protobuf enum value: TYPE_UINT64 = 4;
-     */
-    UINT64 = 4,
-    /**
-     * Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
+     */ UINT64: "UINT64",
+    /** Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
      * negative values are likely.
      *
-     * @generated from protobuf enum value: TYPE_INT32 = 5;
-     */
-    INT32 = 5,
+     * @generated from protobuf enum value: TYPE_INT32 = 5; */ INT32: "INT32",
     /**
      * @generated from protobuf enum value: TYPE_FIXED64 = 6;
-     */
-    FIXED64 = 6,
+     */ FIXED64: "FIXED64",
     /**
      * @generated from protobuf enum value: TYPE_FIXED32 = 7;
-     */
-    FIXED32 = 7,
+     */ FIXED32: "FIXED32",
     /**
      * @generated from protobuf enum value: TYPE_BOOL = 8;
-     */
-    BOOL = 8,
+     */ BOOL: "BOOL",
     /**
      * @generated from protobuf enum value: TYPE_STRING = 9;
-     */
-    STRING = 9,
-    /**
-     * Tag-delimited aggregate.
+     */ STRING: "STRING",
+    /** Tag-delimited aggregate.
      * Group type is deprecated and not supported after google.protobuf. However, Proto3
      * implementations should still be able to parse the group wire format and
      * treat group fields as unknown fields.  In Editions, the group wire format
      * can be enabled via the `message_encoding` feature.
      *
-     * @generated from protobuf enum value: TYPE_GROUP = 10;
-     */
-    GROUP = 10,
-    /**
-     * Length-delimited aggregate.
+     * @generated from protobuf enum value: TYPE_GROUP = 10; */ GROUP: "GROUP",
+    /** Length-delimited aggregate.
      *
-     * @generated from protobuf enum value: TYPE_MESSAGE = 11;
-     */
-    MESSAGE = 11,
-    /**
-     * New in version 2.
+     * @generated from protobuf enum value: TYPE_MESSAGE = 11; */ MESSAGE: "MESSAGE",
+    /** New in version 2.
      *
-     * @generated from protobuf enum value: TYPE_BYTES = 12;
-     */
-    BYTES = 12,
+     * @generated from protobuf enum value: TYPE_BYTES = 12; */ BYTES: "BYTES",
     /**
      * @generated from protobuf enum value: TYPE_UINT32 = 13;
-     */
-    UINT32 = 13,
+     */ UINT32: "UINT32",
     /**
      * @generated from protobuf enum value: TYPE_ENUM = 14;
-     */
-    ENUM = 14,
+     */ ENUM: "ENUM",
     /**
      * @generated from protobuf enum value: TYPE_SFIXED32 = 15;
-     */
-    SFIXED32 = 15,
+     */ SFIXED32: "SFIXED32",
     /**
      * @generated from protobuf enum value: TYPE_SFIXED64 = 16;
-     */
-    SFIXED64 = 16,
-    /**
-     * Uses ZigZag encoding.
+     */ SFIXED64: "SFIXED64",
+    /** Uses ZigZag encoding.
      *
-     * @generated from protobuf enum value: TYPE_SINT32 = 17;
-     */
-    SINT32 = 17,
-    /**
-     * Uses ZigZag encoding.
+     * @generated from protobuf enum value: TYPE_SINT32 = 17; */ SINT32: "SINT32",
+    /** Uses ZigZag encoding.
      *
-     * @generated from protobuf enum value: TYPE_SINT64 = 18;
-     */
-    SINT64 = 18
-}
+     * @generated from protobuf enum value: TYPE_SINT64 = 18; */ SINT64: "SINT64"
+} as const;
+export const FieldDescriptorProto_Type$stringToNumber = {
+    UNSPECIFIED$: 0,
+    DOUBLE: 1,
+    FLOAT: 2,
+    INT64: 3,
+    UINT64: 4,
+    INT32: 5,
+    FIXED64: 6,
+    FIXED32: 7,
+    BOOL: 8,
+    STRING: 9,
+    GROUP: 10,
+    MESSAGE: 11,
+    BYTES: 12,
+    UINT32: 13,
+    ENUM: 14,
+    SFIXED32: 15,
+    SFIXED64: 16,
+    SINT32: 17,
+    SINT64: 18
+} as const;
+export const FieldDescriptorProto_Type$numberToString = {
+    0: "UNSPECIFIED$",
+    1: "DOUBLE",
+    2: "FLOAT",
+    3: "INT64",
+    4: "UINT64",
+    5: "INT32",
+    6: "FIXED64",
+    7: "FIXED32",
+    8: "BOOL",
+    9: "STRING",
+    10: "GROUP",
+    11: "MESSAGE",
+    12: "BYTES",
+    13: "UINT32",
+    14: "ENUM",
+    15: "SFIXED32",
+    16: "SFIXED64",
+    17: "SINT32",
+    18: "SINT64"
+} as const;
 /**
- * @generated from protobuf enum google.protobuf.FieldDescriptorProto.Label
+ * @generated from protobuf enum google.protobuf.FieldDescriptorProto.Label:
+ *
+ * enum Label {
+ *  LABEL_UNSPECIFIED$ = 0;
+ *  LABEL_OPTIONAL = 1;  // 0 is reserved for errors
+ *  LABEL_REPEATED = 3;
+ *  LABEL_REQUIRED = 2;  // The required label is only allowed in google.protobuf.  In proto3 and Editions
+ * }
  */
-export enum FieldDescriptorProto_Label {
+export type FieldDescriptorProto_Label = "UNSPECIFIED$" | "OPTIONAL" | "REPEATED" | "REQUIRED";
+export const FieldDescriptorProto_Label = {
     /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * 0 is reserved for errors
+     * @generated from protobuf enum value: LABEL_UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
+    /** 0 is reserved for errors
      *
-     * @generated from protobuf enum value: LABEL_OPTIONAL = 1;
-     */
-    OPTIONAL = 1,
+     * @generated from protobuf enum value: LABEL_OPTIONAL = 1; */ OPTIONAL: "OPTIONAL",
     /**
      * @generated from protobuf enum value: LABEL_REPEATED = 3;
-     */
-    REPEATED = 3,
-    /**
-     * The required label is only allowed in google.protobuf.  In proto3 and Editions
+     */ REPEATED: "REPEATED",
+    /** The required label is only allowed in google.protobuf.  In proto3 and Editions
      * it's explicitly prohibited.  In Editions, the `field_presence` feature
      * can be used to get this behavior.
      *
-     * @generated from protobuf enum value: LABEL_REQUIRED = 2;
-     */
-    REQUIRED = 2
-}
+     * @generated from protobuf enum value: LABEL_REQUIRED = 2; */ REQUIRED: "REQUIRED"
+} as const;
+export const FieldDescriptorProto_Label$stringToNumber = {
+    UNSPECIFIED$: 0,
+    OPTIONAL: 1,
+    REPEATED: 3,
+    REQUIRED: 2
+} as const;
+export const FieldDescriptorProto_Label$numberToString = {
+    0: "UNSPECIFIED$",
+    1: "OPTIONAL",
+    3: "REPEATED",
+    2: "REQUIRED"
+} as const;
 /**
  * Describes a oneof.
  *
@@ -902,34 +956,44 @@ export interface FileOptions {
 /**
  * Generated classes can be optimized for speed or code size.
  *
- * @generated from protobuf enum google.protobuf.FileOptions.OptimizeMode
+ * @generated from protobuf enum google.protobuf.FileOptions.OptimizeMode:
+ *
+ * enum OptimizeMode {
+ *  UNSPECIFIED$ = 0;
+ *  SPEED = 1;  // Generate complete code for parsing, serialization,
+ *  CODE_SIZE = 2;  // etc.
+ *  LITE_RUNTIME = 3;  // Generate code using MessageLite and the lite runtime.
+ * }
  */
-export enum FileOptions_OptimizeMode {
+export type FileOptions_OptimizeMode = "UNSPECIFIED$" | "SPEED" | "CODE_SIZE" | "LITE_RUNTIME";
+export const FileOptions_OptimizeMode = {
     /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
-    /**
-     * Generate complete code for parsing, serialization,
+     * @generated from protobuf enum value: UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
+    /** Generate complete code for parsing, serialization,
      *
-     * @generated from protobuf enum value: SPEED = 1;
-     */
-    SPEED = 1,
-    /**
-     * etc.
+     * @generated from protobuf enum value: SPEED = 1; */ SPEED: "SPEED",
+    /** etc.
      *
      * Use ReflectionOps to implement these methods.
      *
-     * @generated from protobuf enum value: CODE_SIZE = 2;
-     */
-    CODE_SIZE = 2,
-    /**
-     * Generate code using MessageLite and the lite runtime.
+     * @generated from protobuf enum value: CODE_SIZE = 2; */ CODE_SIZE: "CODE_SIZE",
+    /** Generate code using MessageLite and the lite runtime.
      *
-     * @generated from protobuf enum value: LITE_RUNTIME = 3;
-     */
-    LITE_RUNTIME = 3
-}
+     * @generated from protobuf enum value: LITE_RUNTIME = 3; */ LITE_RUNTIME: "LITE_RUNTIME"
+} as const;
+export const FileOptions_OptimizeMode$stringToNumber = {
+    UNSPECIFIED$: 0,
+    SPEED: 1,
+    CODE_SIZE: 2,
+    LITE_RUNTIME: 3
+} as const;
+export const FileOptions_OptimizeMode$numberToString = {
+    0: "UNSPECIFIED$",
+    1: "SPEED",
+    2: "CODE_SIZE",
+    3: "LITE_RUNTIME"
+} as const;
 /**
  * @generated from protobuf message google.protobuf.MessageOptions
  */
@@ -1210,122 +1274,182 @@ export interface FieldOptions_FeatureSupport {
     editionRemoved?: Edition;
 }
 /**
- * @generated from protobuf enum google.protobuf.FieldOptions.CType
+ * @generated from protobuf enum google.protobuf.FieldOptions.CType:
+ *
+ * enum CType {
+ *  STRING = 0;  // Default mode.
+ *  CORD = 1;  // The option [ctype=CORD] may be applied to a non-repeated field of type
+ *  STRING_PIECE = 2;
+ * }
  */
-export enum FieldOptions_CType {
-    /**
-     * Default mode.
+export type FieldOptions_CType = "STRING" | "CORD" | "STRING_PIECE";
+export const FieldOptions_CType = {
+    /** Default mode.
      *
-     * @generated from protobuf enum value: STRING = 0;
-     */
-    STRING = 0,
-    /**
-     * The option [ctype=CORD] may be applied to a non-repeated field of type
+     * @generated from protobuf enum value: STRING = 0; */ STRING: "STRING",
+    /** The option [ctype=CORD] may be applied to a non-repeated field of type
      * "bytes". It indicates that in C++, the data should be stored in a Cord
      * instead of a string.  For very large strings, this may reduce memory
      * fragmentation. It may also allow better performance when parsing from a
      * Cord, or when parsing with aliasing enabled, as the parsed Cord may then
      * alias the original buffer.
      *
-     * @generated from protobuf enum value: CORD = 1;
-     */
-    CORD = 1,
+     * @generated from protobuf enum value: CORD = 1; */ CORD: "CORD",
     /**
      * @generated from protobuf enum value: STRING_PIECE = 2;
-     */
-    STRING_PIECE = 2
-}
+     */ STRING_PIECE: "STRING_PIECE"
+} as const;
+export const FieldOptions_CType$stringToNumber = {
+    STRING: 0,
+    CORD: 1,
+    STRING_PIECE: 2
+} as const;
+export const FieldOptions_CType$numberToString = {
+    0: "STRING",
+    1: "CORD",
+    2: "STRING_PIECE"
+} as const;
 /**
- * @generated from protobuf enum google.protobuf.FieldOptions.JSType
+ * @generated from protobuf enum google.protobuf.FieldOptions.JSType:
+ *
+ * enum JSType {
+ *  JS_NORMAL = 0;  // Use the default type.
+ *  JS_STRING = 1;  // Use JavaScript strings.
+ *  JS_NUMBER = 2;  // Use JavaScript numbers.
+ * }
  */
-export enum FieldOptions_JSType {
-    /**
-     * Use the default type.
+export type FieldOptions_JSType = "JS_NORMAL" | "JS_STRING" | "JS_NUMBER";
+export const FieldOptions_JSType = {
+    /** Use the default type.
      *
-     * @generated from protobuf enum value: JS_NORMAL = 0;
-     */
-    JS_NORMAL = 0,
-    /**
-     * Use JavaScript strings.
+     * @generated from protobuf enum value: JS_NORMAL = 0; */ JS_NORMAL: "JS_NORMAL",
+    /** Use JavaScript strings.
      *
-     * @generated from protobuf enum value: JS_STRING = 1;
-     */
-    JS_STRING = 1,
-    /**
-     * Use JavaScript numbers.
+     * @generated from protobuf enum value: JS_STRING = 1; */ JS_STRING: "JS_STRING",
+    /** Use JavaScript numbers.
      *
-     * @generated from protobuf enum value: JS_NUMBER = 2;
-     */
-    JS_NUMBER = 2
-}
+     * @generated from protobuf enum value: JS_NUMBER = 2; */ JS_NUMBER: "JS_NUMBER"
+} as const;
+export const FieldOptions_JSType$stringToNumber = {
+    JS_NORMAL: 0,
+    JS_STRING: 1,
+    JS_NUMBER: 2
+} as const;
+export const FieldOptions_JSType$numberToString = {
+    0: "JS_NORMAL",
+    1: "JS_STRING",
+    2: "JS_NUMBER"
+} as const;
 /**
  * If set to RETENTION_SOURCE, the option will be omitted from the binary.
  *
- * @generated from protobuf enum google.protobuf.FieldOptions.OptionRetention
+ * @generated from protobuf enum google.protobuf.FieldOptions.OptionRetention:
+ *
+ * enum OptionRetention {
+ *  RETENTION_UNKNOWN = 0;
+ *  RETENTION_RUNTIME = 1;
+ *  RETENTION_SOURCE = 2;
+ * }
  */
-export enum FieldOptions_OptionRetention {
+export type FieldOptions_OptionRetention = "RETENTION_UNKNOWN" | "RETENTION_RUNTIME" | "RETENTION_SOURCE";
+export const FieldOptions_OptionRetention = {
     /**
      * @generated from protobuf enum value: RETENTION_UNKNOWN = 0;
-     */
-    RETENTION_UNKNOWN = 0,
+     */ RETENTION_UNKNOWN: "RETENTION_UNKNOWN",
     /**
      * @generated from protobuf enum value: RETENTION_RUNTIME = 1;
-     */
-    RETENTION_RUNTIME = 1,
+     */ RETENTION_RUNTIME: "RETENTION_RUNTIME",
     /**
      * @generated from protobuf enum value: RETENTION_SOURCE = 2;
-     */
-    RETENTION_SOURCE = 2
-}
+     */ RETENTION_SOURCE: "RETENTION_SOURCE"
+} as const;
+export const FieldOptions_OptionRetention$stringToNumber = {
+    RETENTION_UNKNOWN: 0,
+    RETENTION_RUNTIME: 1,
+    RETENTION_SOURCE: 2
+} as const;
+export const FieldOptions_OptionRetention$numberToString = {
+    0: "RETENTION_UNKNOWN",
+    1: "RETENTION_RUNTIME",
+    2: "RETENTION_SOURCE"
+} as const;
 /**
  * This indicates the types of entities that the field may apply to when used
  * as an option. If it is unset, then the field may be freely used as an
  * option on any kind of entity.
  *
- * @generated from protobuf enum google.protobuf.FieldOptions.OptionTargetType
+ * @generated from protobuf enum google.protobuf.FieldOptions.OptionTargetType:
+ *
+ * enum OptionTargetType {
+ *  TARGET_TYPE_UNKNOWN = 0;
+ *  TARGET_TYPE_FILE = 1;
+ *  TARGET_TYPE_EXTENSION_RANGE = 2;
+ *  TARGET_TYPE_MESSAGE = 3;
+ *  TARGET_TYPE_FIELD = 4;
+ *  TARGET_TYPE_ONEOF = 5;
+ *  TARGET_TYPE_ENUM = 6;
+ *  TARGET_TYPE_ENUM_ENTRY = 7;
+ *  TARGET_TYPE_SERVICE = 8;
+ *  TARGET_TYPE_METHOD = 9;
+ * }
  */
-export enum FieldOptions_OptionTargetType {
+export type FieldOptions_OptionTargetType = "TARGET_TYPE_UNKNOWN" | "TARGET_TYPE_FILE" | "TARGET_TYPE_EXTENSION_RANGE" | "TARGET_TYPE_MESSAGE" | "TARGET_TYPE_FIELD" | "TARGET_TYPE_ONEOF" | "TARGET_TYPE_ENUM" | "TARGET_TYPE_ENUM_ENTRY" | "TARGET_TYPE_SERVICE" | "TARGET_TYPE_METHOD";
+export const FieldOptions_OptionTargetType = {
     /**
      * @generated from protobuf enum value: TARGET_TYPE_UNKNOWN = 0;
-     */
-    TARGET_TYPE_UNKNOWN = 0,
+     */ TARGET_TYPE_UNKNOWN: "TARGET_TYPE_UNKNOWN",
     /**
      * @generated from protobuf enum value: TARGET_TYPE_FILE = 1;
-     */
-    TARGET_TYPE_FILE = 1,
+     */ TARGET_TYPE_FILE: "TARGET_TYPE_FILE",
     /**
      * @generated from protobuf enum value: TARGET_TYPE_EXTENSION_RANGE = 2;
-     */
-    TARGET_TYPE_EXTENSION_RANGE = 2,
+     */ TARGET_TYPE_EXTENSION_RANGE: "TARGET_TYPE_EXTENSION_RANGE",
     /**
      * @generated from protobuf enum value: TARGET_TYPE_MESSAGE = 3;
-     */
-    TARGET_TYPE_MESSAGE = 3,
+     */ TARGET_TYPE_MESSAGE: "TARGET_TYPE_MESSAGE",
     /**
      * @generated from protobuf enum value: TARGET_TYPE_FIELD = 4;
-     */
-    TARGET_TYPE_FIELD = 4,
+     */ TARGET_TYPE_FIELD: "TARGET_TYPE_FIELD",
     /**
      * @generated from protobuf enum value: TARGET_TYPE_ONEOF = 5;
-     */
-    TARGET_TYPE_ONEOF = 5,
+     */ TARGET_TYPE_ONEOF: "TARGET_TYPE_ONEOF",
     /**
      * @generated from protobuf enum value: TARGET_TYPE_ENUM = 6;
-     */
-    TARGET_TYPE_ENUM = 6,
+     */ TARGET_TYPE_ENUM: "TARGET_TYPE_ENUM",
     /**
      * @generated from protobuf enum value: TARGET_TYPE_ENUM_ENTRY = 7;
-     */
-    TARGET_TYPE_ENUM_ENTRY = 7,
+     */ TARGET_TYPE_ENUM_ENTRY: "TARGET_TYPE_ENUM_ENTRY",
     /**
      * @generated from protobuf enum value: TARGET_TYPE_SERVICE = 8;
-     */
-    TARGET_TYPE_SERVICE = 8,
+     */ TARGET_TYPE_SERVICE: "TARGET_TYPE_SERVICE",
     /**
      * @generated from protobuf enum value: TARGET_TYPE_METHOD = 9;
-     */
-    TARGET_TYPE_METHOD = 9
-}
+     */ TARGET_TYPE_METHOD: "TARGET_TYPE_METHOD"
+} as const;
+export const FieldOptions_OptionTargetType$stringToNumber = {
+    TARGET_TYPE_UNKNOWN: 0,
+    TARGET_TYPE_FILE: 1,
+    TARGET_TYPE_EXTENSION_RANGE: 2,
+    TARGET_TYPE_MESSAGE: 3,
+    TARGET_TYPE_FIELD: 4,
+    TARGET_TYPE_ONEOF: 5,
+    TARGET_TYPE_ENUM: 6,
+    TARGET_TYPE_ENUM_ENTRY: 7,
+    TARGET_TYPE_SERVICE: 8,
+    TARGET_TYPE_METHOD: 9
+} as const;
+export const FieldOptions_OptionTargetType$numberToString = {
+    0: "TARGET_TYPE_UNKNOWN",
+    1: "TARGET_TYPE_FILE",
+    2: "TARGET_TYPE_EXTENSION_RANGE",
+    3: "TARGET_TYPE_MESSAGE",
+    4: "TARGET_TYPE_FIELD",
+    5: "TARGET_TYPE_ONEOF",
+    6: "TARGET_TYPE_ENUM",
+    7: "TARGET_TYPE_ENUM_ENTRY",
+    8: "TARGET_TYPE_SERVICE",
+    9: "TARGET_TYPE_METHOD"
+} as const;
 /**
  * @generated from protobuf message google.protobuf.OneofOptions
  */
@@ -1499,26 +1623,36 @@ export interface MethodOptions {
  * or neither? HTTP based RPC implementation may choose GET verb for safe
  * methods, and PUT verb for idempotent methods instead of the default POST.
  *
- * @generated from protobuf enum google.protobuf.MethodOptions.IdempotencyLevel
+ * @generated from protobuf enum google.protobuf.MethodOptions.IdempotencyLevel:
+ *
+ * enum IdempotencyLevel {
+ *  IDEMPOTENCY_UNKNOWN = 0;
+ *  NO_SIDE_EFFECTS = 1;  // implies idempotent
+ *  IDEMPOTENT = 2;  // idempotent, but may have side effects
+ * }
  */
-export enum MethodOptions_IdempotencyLevel {
+export type MethodOptions_IdempotencyLevel = "IDEMPOTENCY_UNKNOWN" | "NO_SIDE_EFFECTS" | "IDEMPOTENT";
+export const MethodOptions_IdempotencyLevel = {
     /**
      * @generated from protobuf enum value: IDEMPOTENCY_UNKNOWN = 0;
-     */
-    IDEMPOTENCY_UNKNOWN = 0,
-    /**
-     * implies idempotent
+     */ IDEMPOTENCY_UNKNOWN: "IDEMPOTENCY_UNKNOWN",
+    /** implies idempotent
      *
-     * @generated from protobuf enum value: NO_SIDE_EFFECTS = 1;
-     */
-    NO_SIDE_EFFECTS = 1,
-    /**
-     * idempotent, but may have side effects
+     * @generated from protobuf enum value: NO_SIDE_EFFECTS = 1; */ NO_SIDE_EFFECTS: "NO_SIDE_EFFECTS",
+    /** idempotent, but may have side effects
      *
-     * @generated from protobuf enum value: IDEMPOTENT = 2;
-     */
-    IDEMPOTENT = 2
-}
+     * @generated from protobuf enum value: IDEMPOTENT = 2; */ IDEMPOTENT: "IDEMPOTENT"
+} as const;
+export const MethodOptions_IdempotencyLevel$stringToNumber = {
+    IDEMPOTENCY_UNKNOWN: 0,
+    NO_SIDE_EFFECTS: 1,
+    IDEMPOTENT: 2
+} as const;
+export const MethodOptions_IdempotencyLevel$numberToString = {
+    0: "IDEMPOTENCY_UNKNOWN",
+    1: "NO_SIDE_EFFECTS",
+    2: "IDEMPOTENT"
+} as const;
 /**
  * A message representing a option the parser does not recognize. This only
  * appears in options protos created by the compiler::Parser class.
@@ -1621,111 +1755,197 @@ export interface FeatureSet {
     jsonFormat?: FeatureSet_JsonFormat;
 }
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.FieldPresence
+ * @generated from protobuf enum google.protobuf.FeatureSet.FieldPresence:
+ *
+ * enum FieldPresence {
+ *  FIELD_PRESENCE_UNKNOWN = 0;
+ *  EXPLICIT = 1;
+ *  IMPLICIT = 2;
+ *  LEGACY_REQUIRED = 3;
+ * }
  */
-export enum FeatureSet_FieldPresence {
+export type FeatureSet_FieldPresence = "FIELD_PRESENCE_UNKNOWN" | "EXPLICIT" | "IMPLICIT" | "LEGACY_REQUIRED";
+export const FeatureSet_FieldPresence = {
     /**
      * @generated from protobuf enum value: FIELD_PRESENCE_UNKNOWN = 0;
-     */
-    FIELD_PRESENCE_UNKNOWN = 0,
+     */ FIELD_PRESENCE_UNKNOWN: "FIELD_PRESENCE_UNKNOWN",
     /**
      * @generated from protobuf enum value: EXPLICIT = 1;
-     */
-    EXPLICIT = 1,
+     */ EXPLICIT: "EXPLICIT",
     /**
      * @generated from protobuf enum value: IMPLICIT = 2;
-     */
-    IMPLICIT = 2,
+     */ IMPLICIT: "IMPLICIT",
     /**
      * @generated from protobuf enum value: LEGACY_REQUIRED = 3;
-     */
-    LEGACY_REQUIRED = 3
-}
+     */ LEGACY_REQUIRED: "LEGACY_REQUIRED"
+} as const;
+export const FeatureSet_FieldPresence$stringToNumber = {
+    FIELD_PRESENCE_UNKNOWN: 0,
+    EXPLICIT: 1,
+    IMPLICIT: 2,
+    LEGACY_REQUIRED: 3
+} as const;
+export const FeatureSet_FieldPresence$numberToString = {
+    0: "FIELD_PRESENCE_UNKNOWN",
+    1: "EXPLICIT",
+    2: "IMPLICIT",
+    3: "LEGACY_REQUIRED"
+} as const;
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.EnumType
+ * @generated from protobuf enum google.protobuf.FeatureSet.EnumType:
+ *
+ * enum EnumType {
+ *  ENUM_TYPE_UNKNOWN = 0;
+ *  OPEN = 1;
+ *  CLOSED = 2;
+ * }
  */
-export enum FeatureSet_EnumType {
+export type FeatureSet_EnumType = "ENUM_TYPE_UNKNOWN" | "OPEN" | "CLOSED";
+export const FeatureSet_EnumType = {
     /**
      * @generated from protobuf enum value: ENUM_TYPE_UNKNOWN = 0;
-     */
-    ENUM_TYPE_UNKNOWN = 0,
+     */ ENUM_TYPE_UNKNOWN: "ENUM_TYPE_UNKNOWN",
     /**
      * @generated from protobuf enum value: OPEN = 1;
-     */
-    OPEN = 1,
+     */ OPEN: "OPEN",
     /**
      * @generated from protobuf enum value: CLOSED = 2;
-     */
-    CLOSED = 2
-}
+     */ CLOSED: "CLOSED"
+} as const;
+export const FeatureSet_EnumType$stringToNumber = {
+    ENUM_TYPE_UNKNOWN: 0,
+    OPEN: 1,
+    CLOSED: 2
+} as const;
+export const FeatureSet_EnumType$numberToString = {
+    0: "ENUM_TYPE_UNKNOWN",
+    1: "OPEN",
+    2: "CLOSED"
+} as const;
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.RepeatedFieldEncoding
+ * @generated from protobuf enum google.protobuf.FeatureSet.RepeatedFieldEncoding:
+ *
+ * enum RepeatedFieldEncoding {
+ *  REPEATED_FIELD_ENCODING_UNKNOWN = 0;
+ *  PACKED = 1;
+ *  EXPANDED = 2;
+ * }
  */
-export enum FeatureSet_RepeatedFieldEncoding {
+export type FeatureSet_RepeatedFieldEncoding = "REPEATED_FIELD_ENCODING_UNKNOWN" | "PACKED" | "EXPANDED";
+export const FeatureSet_RepeatedFieldEncoding = {
     /**
      * @generated from protobuf enum value: REPEATED_FIELD_ENCODING_UNKNOWN = 0;
-     */
-    REPEATED_FIELD_ENCODING_UNKNOWN = 0,
+     */ REPEATED_FIELD_ENCODING_UNKNOWN: "REPEATED_FIELD_ENCODING_UNKNOWN",
     /**
      * @generated from protobuf enum value: PACKED = 1;
-     */
-    PACKED = 1,
+     */ PACKED: "PACKED",
     /**
      * @generated from protobuf enum value: EXPANDED = 2;
-     */
-    EXPANDED = 2
-}
+     */ EXPANDED: "EXPANDED"
+} as const;
+export const FeatureSet_RepeatedFieldEncoding$stringToNumber = {
+    REPEATED_FIELD_ENCODING_UNKNOWN: 0,
+    PACKED: 1,
+    EXPANDED: 2
+} as const;
+export const FeatureSet_RepeatedFieldEncoding$numberToString = {
+    0: "REPEATED_FIELD_ENCODING_UNKNOWN",
+    1: "PACKED",
+    2: "EXPANDED"
+} as const;
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.Utf8Validation
+ * @generated from protobuf enum google.protobuf.FeatureSet.Utf8Validation:
+ *
+ * enum Utf8Validation {
+ *  UTF8_VALIDATION_UNKNOWN = 0;
+ *  VERIFY = 2;
+ *  NONE = 3;
+ * }
  */
-export enum FeatureSet_Utf8Validation {
+export type FeatureSet_Utf8Validation = "UTF8_VALIDATION_UNKNOWN" | "VERIFY" | "NONE";
+export const FeatureSet_Utf8Validation = {
     /**
      * @generated from protobuf enum value: UTF8_VALIDATION_UNKNOWN = 0;
-     */
-    UTF8_VALIDATION_UNKNOWN = 0,
+     */ UTF8_VALIDATION_UNKNOWN: "UTF8_VALIDATION_UNKNOWN",
     /**
      * @generated from protobuf enum value: VERIFY = 2;
-     */
-    VERIFY = 2,
+     */ VERIFY: "VERIFY",
     /**
      * @generated from protobuf enum value: NONE = 3;
-     */
-    NONE = 3
-}
+     */ NONE: "NONE"
+} as const;
+export const FeatureSet_Utf8Validation$stringToNumber = {
+    UTF8_VALIDATION_UNKNOWN: 0,
+    VERIFY: 2,
+    NONE: 3
+} as const;
+export const FeatureSet_Utf8Validation$numberToString = {
+    0: "UTF8_VALIDATION_UNKNOWN",
+    2: "VERIFY",
+    3: "NONE"
+} as const;
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.MessageEncoding
+ * @generated from protobuf enum google.protobuf.FeatureSet.MessageEncoding:
+ *
+ * enum MessageEncoding {
+ *  MESSAGE_ENCODING_UNKNOWN = 0;
+ *  LENGTH_PREFIXED = 1;
+ *  DELIMITED = 2;
+ * }
  */
-export enum FeatureSet_MessageEncoding {
+export type FeatureSet_MessageEncoding = "MESSAGE_ENCODING_UNKNOWN" | "LENGTH_PREFIXED" | "DELIMITED";
+export const FeatureSet_MessageEncoding = {
     /**
      * @generated from protobuf enum value: MESSAGE_ENCODING_UNKNOWN = 0;
-     */
-    MESSAGE_ENCODING_UNKNOWN = 0,
+     */ MESSAGE_ENCODING_UNKNOWN: "MESSAGE_ENCODING_UNKNOWN",
     /**
      * @generated from protobuf enum value: LENGTH_PREFIXED = 1;
-     */
-    LENGTH_PREFIXED = 1,
+     */ LENGTH_PREFIXED: "LENGTH_PREFIXED",
     /**
      * @generated from protobuf enum value: DELIMITED = 2;
-     */
-    DELIMITED = 2
-}
+     */ DELIMITED: "DELIMITED"
+} as const;
+export const FeatureSet_MessageEncoding$stringToNumber = {
+    MESSAGE_ENCODING_UNKNOWN: 0,
+    LENGTH_PREFIXED: 1,
+    DELIMITED: 2
+} as const;
+export const FeatureSet_MessageEncoding$numberToString = {
+    0: "MESSAGE_ENCODING_UNKNOWN",
+    1: "LENGTH_PREFIXED",
+    2: "DELIMITED"
+} as const;
 /**
- * @generated from protobuf enum google.protobuf.FeatureSet.JsonFormat
+ * @generated from protobuf enum google.protobuf.FeatureSet.JsonFormat:
+ *
+ * enum JsonFormat {
+ *  JSON_FORMAT_UNKNOWN = 0;
+ *  ALLOW = 1;
+ *  LEGACY_BEST_EFFORT = 2;
+ * }
  */
-export enum FeatureSet_JsonFormat {
+export type FeatureSet_JsonFormat = "JSON_FORMAT_UNKNOWN" | "ALLOW" | "LEGACY_BEST_EFFORT";
+export const FeatureSet_JsonFormat = {
     /**
      * @generated from protobuf enum value: JSON_FORMAT_UNKNOWN = 0;
-     */
-    JSON_FORMAT_UNKNOWN = 0,
+     */ JSON_FORMAT_UNKNOWN: "JSON_FORMAT_UNKNOWN",
     /**
      * @generated from protobuf enum value: ALLOW = 1;
-     */
-    ALLOW = 1,
+     */ ALLOW: "ALLOW",
     /**
      * @generated from protobuf enum value: LEGACY_BEST_EFFORT = 2;
-     */
-    LEGACY_BEST_EFFORT = 2
-}
+     */ LEGACY_BEST_EFFORT: "LEGACY_BEST_EFFORT"
+} as const;
+export const FeatureSet_JsonFormat$stringToNumber = {
+    JSON_FORMAT_UNKNOWN: 0,
+    ALLOW: 1,
+    LEGACY_BEST_EFFORT: 2
+} as const;
+export const FeatureSet_JsonFormat$numberToString = {
+    0: "JSON_FORMAT_UNKNOWN",
+    1: "ALLOW",
+    2: "LEGACY_BEST_EFFORT"
+} as const;
 /**
  * A compiled specification for the defaults of a set of features.  These
  * messages are generated from FeatureSet extensions and can be used to seed
@@ -1999,104 +2219,132 @@ export interface GeneratedCodeInfo_Annotation {
  * Represents the identified object's effect on the element in the original
  * .proto file.
  *
- * @generated from protobuf enum google.protobuf.GeneratedCodeInfo.Annotation.Semantic
+ * @generated from protobuf enum google.protobuf.GeneratedCodeInfo.Annotation.Semantic:
+ *
+ * enum Semantic {
+ *  NONE = 0;  // There is no effect or the effect is indescribable.
+ *  SET = 1;  // The element is set or otherwise mutated.
+ *  ALIAS = 2;  // An alias to the element is returned.
+ * }
  */
-export enum GeneratedCodeInfo_Annotation_Semantic {
-    /**
-     * There is no effect or the effect is indescribable.
+export type GeneratedCodeInfo_Annotation_Semantic = "NONE" | "SET" | "ALIAS";
+export const GeneratedCodeInfo_Annotation_Semantic = {
+    /** There is no effect or the effect is indescribable.
      *
-     * @generated from protobuf enum value: NONE = 0;
-     */
-    NONE = 0,
-    /**
-     * The element is set or otherwise mutated.
+     * @generated from protobuf enum value: NONE = 0; */ NONE: "NONE",
+    /** The element is set or otherwise mutated.
      *
-     * @generated from protobuf enum value: SET = 1;
-     */
-    SET = 1,
-    /**
-     * An alias to the element is returned.
+     * @generated from protobuf enum value: SET = 1; */ SET: "SET",
+    /** An alias to the element is returned.
      *
-     * @generated from protobuf enum value: ALIAS = 2;
-     */
-    ALIAS = 2
-}
+     * @generated from protobuf enum value: ALIAS = 2; */ ALIAS: "ALIAS"
+} as const;
+export const GeneratedCodeInfo_Annotation_Semantic$stringToNumber = {
+    NONE: 0,
+    SET: 1,
+    ALIAS: 2
+} as const;
+export const GeneratedCodeInfo_Annotation_Semantic$numberToString = {
+    0: "NONE",
+    1: "SET",
+    2: "ALIAS"
+} as const;
 /**
  * The full set of known editions.
  *
- * @generated from protobuf enum google.protobuf.Edition
+ * @generated from protobuf enum google.protobuf.Edition:
+ *
+ * enum Edition {
+ *  EDITION_UNKNOWN = 0;  // A placeholder for an unknown edition value.
+ *  EDITION_LEGACY = 900;  // A placeholder edition for specifying default behaviors *before* a feature
+ *  EDITION_PROTO2 = 998;  // Legacy syntax "editions".  These pre-date editions, but behave much like
+ *  EDITION_PROTO3 = 999;
+ *  EDITION_2023 = 1000;  // Editions that have been released.  The specific values are arbitrary and
+ *  EDITION_2024 = 1001;
+ *  EDITION_1_TEST_ONLY = 1;  // Placeholder editions for testing feature resolution.  These should not be
+ *  EDITION_2_TEST_ONLY = 2;
+ *  EDITION_99997_TEST_ONLY = 99997;
+ *  EDITION_99998_TEST_ONLY = 99998;
+ *  EDITION_99999_TEST_ONLY = 99999;
+ *  EDITION_MAX = 2147483647;  // Placeholder for specifying unbounded edition support.  This should only
+ * }
  */
-export enum Edition {
-    /**
-     * A placeholder for an unknown edition value.
+export type Edition = "EDITION_UNKNOWN" | "EDITION_LEGACY" | "EDITION_PROTO2" | "EDITION_PROTO3" | "EDITION_2023" | "EDITION_2024" | "EDITION_1_TEST_ONLY" | "EDITION_2_TEST_ONLY" | "EDITION_99997_TEST_ONLY" | "EDITION_99998_TEST_ONLY" | "EDITION_99999_TEST_ONLY" | "EDITION_MAX";
+export const Edition = {
+    /** A placeholder for an unknown edition value.
      *
-     * @generated from protobuf enum value: EDITION_UNKNOWN = 0;
-     */
-    EDITION_UNKNOWN = 0,
-    /**
-     * A placeholder edition for specifying default behaviors *before* a feature
+     * @generated from protobuf enum value: EDITION_UNKNOWN = 0; */ EDITION_UNKNOWN: "EDITION_UNKNOWN",
+    /** A placeholder edition for specifying default behaviors *before* a feature
      * was first introduced.  This is effectively an "infinite past".
      *
-     * @generated from protobuf enum value: EDITION_LEGACY = 900;
-     */
-    EDITION_LEGACY = 900,
-    /**
-     * Legacy syntax "editions".  These pre-date editions, but behave much like
+     * @generated from protobuf enum value: EDITION_LEGACY = 900; */ EDITION_LEGACY: "EDITION_LEGACY",
+    /** Legacy syntax "editions".  These pre-date editions, but behave much like
      * distinct editions.  These can't be used to specify the edition of proto
      * files, but feature definitions must supply proto2/proto3 defaults for
      * backwards compatibility.
      *
-     * @generated from protobuf enum value: EDITION_PROTO2 = 998;
-     */
-    EDITION_PROTO2 = 998,
+     * @generated from protobuf enum value: EDITION_PROTO2 = 998; */ EDITION_PROTO2: "EDITION_PROTO2",
     /**
      * @generated from protobuf enum value: EDITION_PROTO3 = 999;
-     */
-    EDITION_PROTO3 = 999,
-    /**
-     * Editions that have been released.  The specific values are arbitrary and
+     */ EDITION_PROTO3: "EDITION_PROTO3",
+    /** Editions that have been released.  The specific values are arbitrary and
      * should not be depended on, but they will always be time-ordered for easy
      * comparison.
      *
-     * @generated from protobuf enum value: EDITION_2023 = 1000;
-     */
-    EDITION_2023 = 1000,
+     * @generated from protobuf enum value: EDITION_2023 = 1000; */ EDITION_2023: "EDITION_2023",
     /**
      * @generated from protobuf enum value: EDITION_2024 = 1001;
-     */
-    EDITION_2024 = 1001,
-    /**
-     * Placeholder editions for testing feature resolution.  These should not be
+     */ EDITION_2024: "EDITION_2024",
+    /** Placeholder editions for testing feature resolution.  These should not be
      * used or relied on outside of tests.
      *
-     * @generated from protobuf enum value: EDITION_1_TEST_ONLY = 1;
-     */
-    EDITION_1_TEST_ONLY = 1,
+     * @generated from protobuf enum value: EDITION_1_TEST_ONLY = 1; */ EDITION_1_TEST_ONLY: "EDITION_1_TEST_ONLY",
     /**
      * @generated from protobuf enum value: EDITION_2_TEST_ONLY = 2;
-     */
-    EDITION_2_TEST_ONLY = 2,
+     */ EDITION_2_TEST_ONLY: "EDITION_2_TEST_ONLY",
     /**
      * @generated from protobuf enum value: EDITION_99997_TEST_ONLY = 99997;
-     */
-    EDITION_99997_TEST_ONLY = 99997,
+     */ EDITION_99997_TEST_ONLY: "EDITION_99997_TEST_ONLY",
     /**
      * @generated from protobuf enum value: EDITION_99998_TEST_ONLY = 99998;
-     */
-    EDITION_99998_TEST_ONLY = 99998,
+     */ EDITION_99998_TEST_ONLY: "EDITION_99998_TEST_ONLY",
     /**
      * @generated from protobuf enum value: EDITION_99999_TEST_ONLY = 99999;
-     */
-    EDITION_99999_TEST_ONLY = 99999,
-    /**
-     * Placeholder for specifying unbounded edition support.  This should only
+     */ EDITION_99999_TEST_ONLY: "EDITION_99999_TEST_ONLY",
+    /** Placeholder for specifying unbounded edition support.  This should only
      * ever be used by plugins that can expect to never require any changes to
      * support a new edition.
      *
-     * @generated from protobuf enum value: EDITION_MAX = 2147483647;
-     */
-    EDITION_MAX = 2147483647
-}
+     * @generated from protobuf enum value: EDITION_MAX = 2147483647; */ EDITION_MAX: "EDITION_MAX"
+} as const;
+export const Edition$stringToNumber = {
+    EDITION_UNKNOWN: 0,
+    EDITION_LEGACY: 900,
+    EDITION_PROTO2: 998,
+    EDITION_PROTO3: 999,
+    EDITION_2023: 1000,
+    EDITION_2024: 1001,
+    EDITION_1_TEST_ONLY: 1,
+    EDITION_2_TEST_ONLY: 2,
+    EDITION_99997_TEST_ONLY: 99997,
+    EDITION_99998_TEST_ONLY: 99998,
+    EDITION_99999_TEST_ONLY: 99999,
+    EDITION_MAX: 2147483647
+} as const;
+export const Edition$numberToString = {
+    0: "EDITION_UNKNOWN",
+    900: "EDITION_LEGACY",
+    998: "EDITION_PROTO2",
+    999: "EDITION_PROTO3",
+    1000: "EDITION_2023",
+    1001: "EDITION_2024",
+    1: "EDITION_1_TEST_ONLY",
+    2: "EDITION_2_TEST_ONLY",
+    99997: "EDITION_99997_TEST_ONLY",
+    99998: "EDITION_99998_TEST_ONLY",
+    99999: "EDITION_99999_TEST_ONLY",
+    2147483647: "EDITION_MAX"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class FileDescriptorSet$Type extends MessageType<FileDescriptorSet> {
     constructor() {
@@ -2160,7 +2408,7 @@ class FileDescriptorProto$Type extends MessageType<FileDescriptorProto> {
             { no: 8, name: "options", kind: "message", T: () => FileOptions },
             { no: 9, name: "source_code_info", kind: "message", T: () => SourceCodeInfo },
             { no: 12, name: "syntax", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 14, name: "edition", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition] }
+            { no: 14, name: "edition", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition, undefined, Edition$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<FileDescriptorProto>): FileDescriptorProto {
@@ -2226,7 +2474,7 @@ class FileDescriptorProto$Type extends MessageType<FileDescriptorProto> {
                     message.syntax = reader.string();
                     break;
                 case /* optional google.protobuf.Edition edition */ 14:
-                    message.edition = reader.int32();
+                    message.edition = enumNumberToString(Edition$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2278,7 +2526,7 @@ class FileDescriptorProto$Type extends MessageType<FileDescriptorProto> {
             writer.tag(12, WireType.LengthDelimited).string(message.syntax);
         /* optional google.protobuf.Edition edition = 14; */
         if (message.edition !== undefined)
-            writer.tag(14, WireType.Varint).int32(message.edition);
+            writer.tag(14, WireType.Varint).int32(enumStringToNumber(Edition$stringToNumber, message.edition));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2526,7 +2774,7 @@ class ExtensionRangeOptions$Type extends MessageType<ExtensionRangeOptions> {
             { no: 999, name: "uninterpreted_option", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => UninterpretedOption },
             { no: 2, name: "declaration", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExtensionRangeOptions_Declaration },
             { no: 50, name: "features", kind: "message", T: () => FeatureSet },
-            { no: 3, name: "verification", kind: "enum", opt: true, T: () => ["google.protobuf.ExtensionRangeOptions.VerificationState", ExtensionRangeOptions_VerificationState] }
+            { no: 3, name: "verification", kind: "enum", opt: true, T: () => ["google.protobuf.ExtensionRangeOptions.VerificationState", ExtensionRangeOptions_VerificationState, undefined, ExtensionRangeOptions_VerificationState$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<ExtensionRangeOptions>): ExtensionRangeOptions {
@@ -2552,7 +2800,7 @@ class ExtensionRangeOptions$Type extends MessageType<ExtensionRangeOptions> {
                     message.features = FeatureSet.internalBinaryRead(reader, reader.uint32(), options, message.features);
                     break;
                 case /* optional google.protobuf.ExtensionRangeOptions.VerificationState verification = 3 [default = UNVERIFIED] */ 3:
-                    message.verification = reader.int32();
+                    message.verification = enumNumberToString(ExtensionRangeOptions_VerificationState$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2571,7 +2819,7 @@ class ExtensionRangeOptions$Type extends MessageType<ExtensionRangeOptions> {
             ExtensionRangeOptions_Declaration.internalBinaryWrite(message.declaration?.[i] as any, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* optional google.protobuf.ExtensionRangeOptions.VerificationState verification = 3 [default = UNVERIFIED]; */
         if (message.verification !== undefined)
-            writer.tag(3, WireType.Varint).int32(message.verification);
+            writer.tag(3, WireType.Varint).int32(enumStringToNumber(ExtensionRangeOptions_VerificationState$stringToNumber, message.verification));
         /* optional google.protobuf.FeatureSet features = 50; */
         if (message.features)
             FeatureSet.internalBinaryWrite(message.features, writer.tag(50, WireType.LengthDelimited).fork(), options).join();
@@ -2668,8 +2916,8 @@ class FieldDescriptorProto$Type extends MessageType<FieldDescriptorProto> {
         super("google.protobuf.FieldDescriptorProto", [
             { no: 1, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "number", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "label", kind: "enum", opt: true, T: () => ["google.protobuf.FieldDescriptorProto.Label", FieldDescriptorProto_Label, "LABEL_"] },
-            { no: 5, name: "type", kind: "enum", opt: true, T: () => ["google.protobuf.FieldDescriptorProto.Type", FieldDescriptorProto_Type, "TYPE_"] },
+            { no: 4, name: "label", kind: "enum", opt: true, T: () => ["google.protobuf.FieldDescriptorProto.Label", FieldDescriptorProto_Label, "LABEL_", FieldDescriptorProto_Label$stringToNumber] },
+            { no: 5, name: "type", kind: "enum", opt: true, T: () => ["google.protobuf.FieldDescriptorProto.Type", FieldDescriptorProto_Type, "TYPE_", FieldDescriptorProto_Type$stringToNumber] },
             { no: 6, name: "type_name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "extendee", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 7, name: "default_value", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
@@ -2697,10 +2945,10 @@ class FieldDescriptorProto$Type extends MessageType<FieldDescriptorProto> {
                     message.number = reader.int32();
                     break;
                 case /* optional google.protobuf.FieldDescriptorProto.Label label */ 4:
-                    message.label = reader.int32();
+                    message.label = enumNumberToString(FieldDescriptorProto_Label$numberToString, reader.int32()) as any;
                     break;
                 case /* optional google.protobuf.FieldDescriptorProto.Type type */ 5:
-                    message.type = reader.int32();
+                    message.type = enumNumberToString(FieldDescriptorProto_Type$numberToString, reader.int32()) as any;
                     break;
                 case /* optional string type_name */ 6:
                     message.typeName = reader.string();
@@ -2746,10 +2994,10 @@ class FieldDescriptorProto$Type extends MessageType<FieldDescriptorProto> {
             writer.tag(3, WireType.Varint).int32(message.number);
         /* optional google.protobuf.FieldDescriptorProto.Label label = 4; */
         if (message.label !== undefined)
-            writer.tag(4, WireType.Varint).int32(message.label);
+            writer.tag(4, WireType.Varint).int32(enumStringToNumber(FieldDescriptorProto_Label$stringToNumber, message.label));
         /* optional google.protobuf.FieldDescriptorProto.Type type = 5; */
         if (message.type !== undefined)
-            writer.tag(5, WireType.Varint).int32(message.type);
+            writer.tag(5, WireType.Varint).int32(enumStringToNumber(FieldDescriptorProto_Type$stringToNumber, message.type));
         /* optional string type_name = 6; */
         if (message.typeName !== undefined)
             writer.tag(6, WireType.LengthDelimited).string(message.typeName);
@@ -3172,7 +3420,7 @@ class FileOptions$Type extends MessageType<FileOptions> {
             { no: 10, name: "java_multiple_files", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 20, name: "java_generate_equals_and_hash", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 27, name: "java_string_check_utf8", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 9, name: "optimize_for", kind: "enum", opt: true, T: () => ["google.protobuf.FileOptions.OptimizeMode", FileOptions_OptimizeMode] },
+            { no: 9, name: "optimize_for", kind: "enum", opt: true, T: () => ["google.protobuf.FileOptions.OptimizeMode", FileOptions_OptimizeMode, undefined, FileOptions_OptimizeMode$stringToNumber] },
             { no: 11, name: "go_package", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 16, name: "cc_generic_services", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 17, name: "java_generic_services", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
@@ -3218,7 +3466,7 @@ class FileOptions$Type extends MessageType<FileOptions> {
                     message.javaStringCheckUtf8 = reader.bool();
                     break;
                 case /* optional google.protobuf.FileOptions.OptimizeMode optimize_for = 9 [default = SPEED] */ 9:
-                    message.optimizeFor = reader.int32();
+                    message.optimizeFor = enumNumberToString(FileOptions_OptimizeMode$numberToString, reader.int32()) as any;
                     break;
                 case /* optional string go_package */ 11:
                     message.goPackage = reader.string();
@@ -3285,7 +3533,7 @@ class FileOptions$Type extends MessageType<FileOptions> {
             writer.tag(8, WireType.LengthDelimited).string(message.javaOuterClassname);
         /* optional google.protobuf.FileOptions.OptimizeMode optimize_for = 9 [default = SPEED]; */
         if (message.optimizeFor !== undefined)
-            writer.tag(9, WireType.Varint).int32(message.optimizeFor);
+            writer.tag(9, WireType.Varint).int32(enumStringToNumber(FileOptions_OptimizeMode$stringToNumber, message.optimizeFor));
         /* optional bool java_multiple_files = 10 [default = false]; */
         if (message.javaMultipleFiles !== undefined)
             writer.tag(10, WireType.Varint).bool(message.javaMultipleFiles);
@@ -3443,16 +3691,16 @@ export const MessageOptions = new MessageOptions$Type();
 class FieldOptions$Type extends MessageType<FieldOptions> {
     constructor() {
         super("google.protobuf.FieldOptions", [
-            { no: 1, name: "ctype", kind: "enum", opt: true, T: () => ["google.protobuf.FieldOptions.CType", FieldOptions_CType] },
+            { no: 1, name: "ctype", kind: "enum", opt: true, T: () => ["google.protobuf.FieldOptions.CType", FieldOptions_CType, undefined, FieldOptions_CType$stringToNumber] },
             { no: 2, name: "packed", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 6, name: "jstype", kind: "enum", opt: true, T: () => ["google.protobuf.FieldOptions.JSType", FieldOptions_JSType] },
+            { no: 6, name: "jstype", kind: "enum", opt: true, T: () => ["google.protobuf.FieldOptions.JSType", FieldOptions_JSType, undefined, FieldOptions_JSType$stringToNumber] },
             { no: 5, name: "lazy", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 15, name: "unverified_lazy", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 3, name: "deprecated", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 10, name: "weak", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 16, name: "debug_redact", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 17, name: "retention", kind: "enum", opt: true, T: () => ["google.protobuf.FieldOptions.OptionRetention", FieldOptions_OptionRetention] },
-            { no: 19, name: "targets", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["google.protobuf.FieldOptions.OptionTargetType", FieldOptions_OptionTargetType] },
+            { no: 17, name: "retention", kind: "enum", opt: true, T: () => ["google.protobuf.FieldOptions.OptionRetention", FieldOptions_OptionRetention, undefined, FieldOptions_OptionRetention$stringToNumber] },
+            { no: 19, name: "targets", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["google.protobuf.FieldOptions.OptionTargetType", FieldOptions_OptionTargetType, undefined, FieldOptions_OptionTargetType$stringToNumber] },
             { no: 20, name: "edition_defaults", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FieldOptions_EditionDefault },
             { no: 21, name: "features", kind: "message", T: () => FeatureSet },
             { no: 22, name: "feature_support", kind: "message", T: () => FieldOptions_FeatureSupport },
@@ -3474,13 +3722,13 @@ class FieldOptions$Type extends MessageType<FieldOptions> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* optional google.protobuf.FieldOptions.CType ctype = 1 [default = STRING] */ 1:
-                    message.ctype = reader.int32();
+                    message.ctype = enumNumberToString(FieldOptions_CType$numberToString, reader.int32()) as any;
                     break;
                 case /* optional bool packed */ 2:
                     message.packed = reader.bool();
                     break;
                 case /* optional google.protobuf.FieldOptions.JSType jstype = 6 [default = JS_NORMAL] */ 6:
-                    message.jstype = reader.int32();
+                    message.jstype = enumNumberToString(FieldOptions_JSType$numberToString, reader.int32()) as any;
                     break;
                 case /* optional bool lazy = 5 [default = false] */ 5:
                     message.lazy = reader.bool();
@@ -3498,14 +3746,14 @@ class FieldOptions$Type extends MessageType<FieldOptions> {
                     message.debugRedact = reader.bool();
                     break;
                 case /* optional google.protobuf.FieldOptions.OptionRetention retention */ 17:
-                    message.retention = reader.int32();
+                    message.retention = enumNumberToString(FieldOptions_OptionRetention$numberToString, reader.int32()) as any;
                     break;
                 case /* repeated google.protobuf.FieldOptions.OptionTargetType targets */ 19:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.targets?.push?.(reader.int32());
+                            message.targets?.push?.(enumNumberToString(FieldOptions_OptionTargetType$numberToString, reader.int32()) as any);
                     else
-                        message.targets?.push?.(reader.int32());
+                        message.targets?.push?.(enumNumberToString(FieldOptions_OptionTargetType$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated google.protobuf.FieldOptions.EditionDefault edition_defaults */ 20:
                     message.editionDefaults?.push?.(FieldOptions_EditionDefault.internalBinaryRead(reader, reader.uint32(), options));
@@ -3533,7 +3781,7 @@ class FieldOptions$Type extends MessageType<FieldOptions> {
     internalBinaryWrite(message: FieldOptions, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* optional google.protobuf.FieldOptions.CType ctype = 1 [default = STRING]; */
         if (message.ctype !== undefined)
-            writer.tag(1, WireType.Varint).int32(message.ctype);
+            writer.tag(1, WireType.Varint).int32(enumStringToNumber(FieldOptions_CType$stringToNumber, message.ctype));
         /* optional bool packed = 2; */
         if (message.packed !== undefined)
             writer.tag(2, WireType.Varint).bool(message.packed);
@@ -3545,7 +3793,7 @@ class FieldOptions$Type extends MessageType<FieldOptions> {
             writer.tag(5, WireType.Varint).bool(message.lazy);
         /* optional google.protobuf.FieldOptions.JSType jstype = 6 [default = JS_NORMAL]; */
         if (message.jstype !== undefined)
-            writer.tag(6, WireType.Varint).int32(message.jstype);
+            writer.tag(6, WireType.Varint).int32(enumStringToNumber(FieldOptions_JSType$stringToNumber, message.jstype));
         /* optional bool weak = 10 [default = false]; */
         if (message.weak !== undefined)
             writer.tag(10, WireType.Varint).bool(message.weak);
@@ -3557,10 +3805,10 @@ class FieldOptions$Type extends MessageType<FieldOptions> {
             writer.tag(16, WireType.Varint).bool(message.debugRedact);
         /* optional google.protobuf.FieldOptions.OptionRetention retention = 17; */
         if (message.retention !== undefined)
-            writer.tag(17, WireType.Varint).int32(message.retention);
+            writer.tag(17, WireType.Varint).int32(enumStringToNumber(FieldOptions_OptionRetention$stringToNumber, message.retention));
         /* repeated google.protobuf.FieldOptions.OptionTargetType targets = 19; */
         for (let i = 0; i < (message.targets?.length || 0); i++)
-            writer.tag(19, WireType.Varint).int32(message.targets?.[i] as any);
+            writer.tag(19, WireType.Varint).int32(enumStringToNumber(FieldOptions_OptionTargetType$stringToNumber, message.targets?.[i] as any));
         /* repeated google.protobuf.FieldOptions.EditionDefault edition_defaults = 20; */
         for (let i = 0; i < (message.editionDefaults?.length || 0); i++)
             FieldOptions_EditionDefault.internalBinaryWrite(message.editionDefaults?.[i] as any, writer.tag(20, WireType.LengthDelimited).fork(), options).join();
@@ -3587,7 +3835,7 @@ export const FieldOptions = new FieldOptions$Type();
 class FieldOptions_EditionDefault$Type extends MessageType<FieldOptions_EditionDefault> {
     constructor() {
         super("google.protobuf.FieldOptions.EditionDefault", [
-            { no: 3, name: "edition", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition] },
+            { no: 3, name: "edition", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition, undefined, Edition$stringToNumber] },
             { no: 2, name: "value", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
@@ -3603,7 +3851,7 @@ class FieldOptions_EditionDefault$Type extends MessageType<FieldOptions_EditionD
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* optional google.protobuf.Edition edition */ 3:
-                    message.edition = reader.int32();
+                    message.edition = enumNumberToString(Edition$numberToString, reader.int32()) as any;
                     break;
                 case /* optional string value */ 2:
                     message.value = reader.string();
@@ -3625,7 +3873,7 @@ class FieldOptions_EditionDefault$Type extends MessageType<FieldOptions_EditionD
             writer.tag(2, WireType.LengthDelimited).string(message.value);
         /* optional google.protobuf.Edition edition = 3; */
         if (message.edition !== undefined)
-            writer.tag(3, WireType.Varint).int32(message.edition);
+            writer.tag(3, WireType.Varint).int32(enumStringToNumber(Edition$stringToNumber, message.edition));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3640,10 +3888,10 @@ export const FieldOptions_EditionDefault = new FieldOptions_EditionDefault$Type(
 class FieldOptions_FeatureSupport$Type extends MessageType<FieldOptions_FeatureSupport> {
     constructor() {
         super("google.protobuf.FieldOptions.FeatureSupport", [
-            { no: 1, name: "edition_introduced", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition] },
-            { no: 2, name: "edition_deprecated", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition] },
+            { no: 1, name: "edition_introduced", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition, undefined, Edition$stringToNumber] },
+            { no: 2, name: "edition_deprecated", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition, undefined, Edition$stringToNumber] },
             { no: 3, name: "deprecation_warning", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "edition_removed", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition] }
+            { no: 4, name: "edition_removed", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition, undefined, Edition$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<FieldOptions_FeatureSupport>): FieldOptions_FeatureSupport {
@@ -3658,16 +3906,16 @@ class FieldOptions_FeatureSupport$Type extends MessageType<FieldOptions_FeatureS
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* optional google.protobuf.Edition edition_introduced */ 1:
-                    message.editionIntroduced = reader.int32();
+                    message.editionIntroduced = enumNumberToString(Edition$numberToString, reader.int32()) as any;
                     break;
                 case /* optional google.protobuf.Edition edition_deprecated */ 2:
-                    message.editionDeprecated = reader.int32();
+                    message.editionDeprecated = enumNumberToString(Edition$numberToString, reader.int32()) as any;
                     break;
                 case /* optional string deprecation_warning */ 3:
                     message.deprecationWarning = reader.string();
                     break;
                 case /* optional google.protobuf.Edition edition_removed */ 4:
-                    message.editionRemoved = reader.int32();
+                    message.editionRemoved = enumNumberToString(Edition$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3683,16 +3931,16 @@ class FieldOptions_FeatureSupport$Type extends MessageType<FieldOptions_FeatureS
     internalBinaryWrite(message: FieldOptions_FeatureSupport, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* optional google.protobuf.Edition edition_introduced = 1; */
         if (message.editionIntroduced !== undefined)
-            writer.tag(1, WireType.Varint).int32(message.editionIntroduced);
+            writer.tag(1, WireType.Varint).int32(enumStringToNumber(Edition$stringToNumber, message.editionIntroduced));
         /* optional google.protobuf.Edition edition_deprecated = 2; */
         if (message.editionDeprecated !== undefined)
-            writer.tag(2, WireType.Varint).int32(message.editionDeprecated);
+            writer.tag(2, WireType.Varint).int32(enumStringToNumber(Edition$stringToNumber, message.editionDeprecated));
         /* optional string deprecation_warning = 3; */
         if (message.deprecationWarning !== undefined)
             writer.tag(3, WireType.LengthDelimited).string(message.deprecationWarning);
         /* optional google.protobuf.Edition edition_removed = 4; */
         if (message.editionRemoved !== undefined)
-            writer.tag(4, WireType.Varint).int32(message.editionRemoved);
+            writer.tag(4, WireType.Varint).int32(enumStringToNumber(Edition$stringToNumber, message.editionRemoved));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3973,7 +4221,7 @@ class MethodOptions$Type extends MessageType<MethodOptions> {
     constructor() {
         super("google.protobuf.MethodOptions", [
             { no: 33, name: "deprecated", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 34, name: "idempotency_level", kind: "enum", opt: true, T: () => ["google.protobuf.MethodOptions.IdempotencyLevel", MethodOptions_IdempotencyLevel] },
+            { no: 34, name: "idempotency_level", kind: "enum", opt: true, T: () => ["google.protobuf.MethodOptions.IdempotencyLevel", MethodOptions_IdempotencyLevel, undefined, MethodOptions_IdempotencyLevel$stringToNumber] },
             { no: 35, name: "features", kind: "message", T: () => FeatureSet },
             { no: 999, name: "uninterpreted_option", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => UninterpretedOption }
         ]);
@@ -3994,7 +4242,7 @@ class MethodOptions$Type extends MessageType<MethodOptions> {
                     message.deprecated = reader.bool();
                     break;
                 case /* optional google.protobuf.MethodOptions.IdempotencyLevel idempotency_level = 34 [default = IDEMPOTENCY_UNKNOWN] */ 34:
-                    message.idempotencyLevel = reader.int32();
+                    message.idempotencyLevel = enumNumberToString(MethodOptions_IdempotencyLevel$numberToString, reader.int32()) as any;
                     break;
                 case /* optional google.protobuf.FeatureSet features */ 35:
                     message.features = FeatureSet.internalBinaryRead(reader, reader.uint32(), options, message.features);
@@ -4019,7 +4267,7 @@ class MethodOptions$Type extends MessageType<MethodOptions> {
             writer.tag(33, WireType.Varint).bool(message.deprecated);
         /* optional google.protobuf.MethodOptions.IdempotencyLevel idempotency_level = 34 [default = IDEMPOTENCY_UNKNOWN]; */
         if (message.idempotencyLevel !== undefined)
-            writer.tag(34, WireType.Varint).int32(message.idempotencyLevel);
+            writer.tag(34, WireType.Varint).int32(enumStringToNumber(MethodOptions_IdempotencyLevel$stringToNumber, message.idempotencyLevel));
         /* optional google.protobuf.FeatureSet features = 35; */
         if (message.features)
             FeatureSet.internalBinaryWrite(message.features, writer.tag(35, WireType.LengthDelimited).fork(), options).join();
@@ -4184,12 +4432,12 @@ export const UninterpretedOption_NamePart = new UninterpretedOption_NamePart$Typ
 class FeatureSet$Type extends MessageType<FeatureSet> {
     constructor() {
         super("google.protobuf.FeatureSet", [
-            { no: 1, name: "field_presence", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.FieldPresence", FeatureSet_FieldPresence] },
-            { no: 2, name: "enum_type", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.EnumType", FeatureSet_EnumType] },
-            { no: 3, name: "repeated_field_encoding", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.RepeatedFieldEncoding", FeatureSet_RepeatedFieldEncoding] },
-            { no: 4, name: "utf8_validation", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.Utf8Validation", FeatureSet_Utf8Validation] },
-            { no: 5, name: "message_encoding", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.MessageEncoding", FeatureSet_MessageEncoding] },
-            { no: 6, name: "json_format", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.JsonFormat", FeatureSet_JsonFormat] }
+            { no: 1, name: "field_presence", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.FieldPresence", FeatureSet_FieldPresence, undefined, FeatureSet_FieldPresence$stringToNumber] },
+            { no: 2, name: "enum_type", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.EnumType", FeatureSet_EnumType, undefined, FeatureSet_EnumType$stringToNumber] },
+            { no: 3, name: "repeated_field_encoding", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.RepeatedFieldEncoding", FeatureSet_RepeatedFieldEncoding, undefined, FeatureSet_RepeatedFieldEncoding$stringToNumber] },
+            { no: 4, name: "utf8_validation", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.Utf8Validation", FeatureSet_Utf8Validation, undefined, FeatureSet_Utf8Validation$stringToNumber] },
+            { no: 5, name: "message_encoding", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.MessageEncoding", FeatureSet_MessageEncoding, undefined, FeatureSet_MessageEncoding$stringToNumber] },
+            { no: 6, name: "json_format", kind: "enum", opt: true, T: () => ["google.protobuf.FeatureSet.JsonFormat", FeatureSet_JsonFormat, undefined, FeatureSet_JsonFormat$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<FeatureSet>): FeatureSet {
@@ -4204,22 +4452,22 @@ class FeatureSet$Type extends MessageType<FeatureSet> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* optional google.protobuf.FeatureSet.FieldPresence field_presence */ 1:
-                    message.fieldPresence = reader.int32();
+                    message.fieldPresence = enumNumberToString(FeatureSet_FieldPresence$numberToString, reader.int32()) as any;
                     break;
                 case /* optional google.protobuf.FeatureSet.EnumType enum_type */ 2:
-                    message.enumType = reader.int32();
+                    message.enumType = enumNumberToString(FeatureSet_EnumType$numberToString, reader.int32()) as any;
                     break;
                 case /* optional google.protobuf.FeatureSet.RepeatedFieldEncoding repeated_field_encoding */ 3:
-                    message.repeatedFieldEncoding = reader.int32();
+                    message.repeatedFieldEncoding = enumNumberToString(FeatureSet_RepeatedFieldEncoding$numberToString, reader.int32()) as any;
                     break;
                 case /* optional google.protobuf.FeatureSet.Utf8Validation utf8_validation */ 4:
-                    message.utf8Validation = reader.int32();
+                    message.utf8Validation = enumNumberToString(FeatureSet_Utf8Validation$numberToString, reader.int32()) as any;
                     break;
                 case /* optional google.protobuf.FeatureSet.MessageEncoding message_encoding */ 5:
-                    message.messageEncoding = reader.int32();
+                    message.messageEncoding = enumNumberToString(FeatureSet_MessageEncoding$numberToString, reader.int32()) as any;
                     break;
                 case /* optional google.protobuf.FeatureSet.JsonFormat json_format */ 6:
-                    message.jsonFormat = reader.int32();
+                    message.jsonFormat = enumNumberToString(FeatureSet_JsonFormat$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -4235,22 +4483,22 @@ class FeatureSet$Type extends MessageType<FeatureSet> {
     internalBinaryWrite(message: FeatureSet, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* optional google.protobuf.FeatureSet.FieldPresence field_presence = 1; */
         if (message.fieldPresence !== undefined)
-            writer.tag(1, WireType.Varint).int32(message.fieldPresence);
+            writer.tag(1, WireType.Varint).int32(enumStringToNumber(FeatureSet_FieldPresence$stringToNumber, message.fieldPresence));
         /* optional google.protobuf.FeatureSet.EnumType enum_type = 2; */
         if (message.enumType !== undefined)
-            writer.tag(2, WireType.Varint).int32(message.enumType);
+            writer.tag(2, WireType.Varint).int32(enumStringToNumber(FeatureSet_EnumType$stringToNumber, message.enumType));
         /* optional google.protobuf.FeatureSet.RepeatedFieldEncoding repeated_field_encoding = 3; */
         if (message.repeatedFieldEncoding !== undefined)
-            writer.tag(3, WireType.Varint).int32(message.repeatedFieldEncoding);
+            writer.tag(3, WireType.Varint).int32(enumStringToNumber(FeatureSet_RepeatedFieldEncoding$stringToNumber, message.repeatedFieldEncoding));
         /* optional google.protobuf.FeatureSet.Utf8Validation utf8_validation = 4; */
         if (message.utf8Validation !== undefined)
-            writer.tag(4, WireType.Varint).int32(message.utf8Validation);
+            writer.tag(4, WireType.Varint).int32(enumStringToNumber(FeatureSet_Utf8Validation$stringToNumber, message.utf8Validation));
         /* optional google.protobuf.FeatureSet.MessageEncoding message_encoding = 5; */
         if (message.messageEncoding !== undefined)
-            writer.tag(5, WireType.Varint).int32(message.messageEncoding);
+            writer.tag(5, WireType.Varint).int32(enumStringToNumber(FeatureSet_MessageEncoding$stringToNumber, message.messageEncoding));
         /* optional google.protobuf.FeatureSet.JsonFormat json_format = 6; */
         if (message.jsonFormat !== undefined)
-            writer.tag(6, WireType.Varint).int32(message.jsonFormat);
+            writer.tag(6, WireType.Varint).int32(enumStringToNumber(FeatureSet_JsonFormat$stringToNumber, message.jsonFormat));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -4266,8 +4514,8 @@ class FeatureSetDefaults$Type extends MessageType<FeatureSetDefaults> {
     constructor() {
         super("google.protobuf.FeatureSetDefaults", [
             { no: 1, name: "defaults", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FeatureSetDefaults_FeatureSetEditionDefault },
-            { no: 4, name: "minimum_edition", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition] },
-            { no: 5, name: "maximum_edition", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition] }
+            { no: 4, name: "minimum_edition", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition, undefined, Edition$stringToNumber] },
+            { no: 5, name: "maximum_edition", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition, undefined, Edition$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<FeatureSetDefaults>): FeatureSetDefaults {
@@ -4286,10 +4534,10 @@ class FeatureSetDefaults$Type extends MessageType<FeatureSetDefaults> {
                     message.defaults?.push?.(FeatureSetDefaults_FeatureSetEditionDefault.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional google.protobuf.Edition minimum_edition */ 4:
-                    message.minimumEdition = reader.int32();
+                    message.minimumEdition = enumNumberToString(Edition$numberToString, reader.int32()) as any;
                     break;
                 case /* optional google.protobuf.Edition maximum_edition */ 5:
-                    message.maximumEdition = reader.int32();
+                    message.maximumEdition = enumNumberToString(Edition$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -4308,10 +4556,10 @@ class FeatureSetDefaults$Type extends MessageType<FeatureSetDefaults> {
             FeatureSetDefaults_FeatureSetEditionDefault.internalBinaryWrite(message.defaults?.[i] as any, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional google.protobuf.Edition minimum_edition = 4; */
         if (message.minimumEdition !== undefined)
-            writer.tag(4, WireType.Varint).int32(message.minimumEdition);
+            writer.tag(4, WireType.Varint).int32(enumStringToNumber(Edition$stringToNumber, message.minimumEdition));
         /* optional google.protobuf.Edition maximum_edition = 5; */
         if (message.maximumEdition !== undefined)
-            writer.tag(5, WireType.Varint).int32(message.maximumEdition);
+            writer.tag(5, WireType.Varint).int32(enumStringToNumber(Edition$stringToNumber, message.maximumEdition));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -4326,7 +4574,7 @@ export const FeatureSetDefaults = new FeatureSetDefaults$Type();
 class FeatureSetDefaults_FeatureSetEditionDefault$Type extends MessageType<FeatureSetDefaults_FeatureSetEditionDefault> {
     constructor() {
         super("google.protobuf.FeatureSetDefaults.FeatureSetEditionDefault", [
-            { no: 3, name: "edition", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition] },
+            { no: 3, name: "edition", kind: "enum", opt: true, T: () => ["google.protobuf.Edition", Edition, undefined, Edition$stringToNumber] },
             { no: 4, name: "overridable_features", kind: "message", T: () => FeatureSet },
             { no: 5, name: "fixed_features", kind: "message", T: () => FeatureSet }
         ]);
@@ -4343,7 +4591,7 @@ class FeatureSetDefaults_FeatureSetEditionDefault$Type extends MessageType<Featu
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* optional google.protobuf.Edition edition */ 3:
-                    message.edition = reader.int32();
+                    message.edition = enumNumberToString(Edition$numberToString, reader.int32()) as any;
                     break;
                 case /* optional google.protobuf.FeatureSet overridable_features */ 4:
                     message.overridableFeatures = FeatureSet.internalBinaryRead(reader, reader.uint32(), options, message.overridableFeatures);
@@ -4365,7 +4613,7 @@ class FeatureSetDefaults_FeatureSetEditionDefault$Type extends MessageType<Featu
     internalBinaryWrite(message: FeatureSetDefaults_FeatureSetEditionDefault, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* optional google.protobuf.Edition edition = 3; */
         if (message.edition !== undefined)
-            writer.tag(3, WireType.Varint).int32(message.edition);
+            writer.tag(3, WireType.Varint).int32(enumStringToNumber(Edition$stringToNumber, message.edition));
         /* optional google.protobuf.FeatureSet overridable_features = 4; */
         if (message.overridableFeatures)
             FeatureSet.internalBinaryWrite(message.overridableFeatures, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
@@ -4577,7 +4825,7 @@ class GeneratedCodeInfo_Annotation$Type extends MessageType<GeneratedCodeInfo_An
             { no: 2, name: "source_file", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "begin", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "end", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "semantic", kind: "enum", opt: true, T: () => ["google.protobuf.GeneratedCodeInfo.Annotation.Semantic", GeneratedCodeInfo_Annotation_Semantic] }
+            { no: 5, name: "semantic", kind: "enum", opt: true, T: () => ["google.protobuf.GeneratedCodeInfo.Annotation.Semantic", GeneratedCodeInfo_Annotation_Semantic, undefined, GeneratedCodeInfo_Annotation_Semantic$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<GeneratedCodeInfo_Annotation>): GeneratedCodeInfo_Annotation {
@@ -4609,7 +4857,7 @@ class GeneratedCodeInfo_Annotation$Type extends MessageType<GeneratedCodeInfo_An
                     message.end = reader.int32();
                     break;
                 case /* optional google.protobuf.GeneratedCodeInfo.Annotation.Semantic semantic */ 5:
-                    message.semantic = reader.int32();
+                    message.semantic = enumNumberToString(GeneratedCodeInfo_Annotation_Semantic$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -4641,7 +4889,7 @@ class GeneratedCodeInfo_Annotation$Type extends MessageType<GeneratedCodeInfo_An
             writer.tag(4, WireType.Varint).int32(message.end);
         /* optional google.protobuf.GeneratedCodeInfo.Annotation.Semantic semantic = 5; */
         if (message.semantic !== undefined)
-            writer.tag(5, WireType.Varint).int32(message.semantic);
+            writer.tag(5, WireType.Varint).int32(enumStringToNumber(GeneratedCodeInfo_Annotation_Semantic$stringToNumber, message.semantic));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

@@ -32,14 +32,18 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
+import { Syntax$numberToString } from "./type";
 import type { PartialMessage } from "@oneadvisory/protobuf-ts-runtime";
 import { reflectionMergePartial } from "@oneadvisory/protobuf-ts-runtime";
+import { Syntax$stringToNumber } from "./type";
 import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 import { Syntax } from "./type";
 import { SourceContext } from "./source_context";
@@ -278,7 +282,7 @@ class Api$Type extends MessageType<Api> {
             { no: 4, name: "version", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 5, name: "source_context", kind: "message", T: () => SourceContext },
             { no: 6, name: "mixins", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Mixin },
-            { no: 7, name: "syntax", kind: "enum", T: () => ["google.protobuf.Syntax", Syntax, "SYNTAX_"] }
+            { no: 7, name: "syntax", kind: "enum", T: () => ["google.protobuf.Syntax", Syntax, "SYNTAX_", Syntax$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<Api>): Api {
@@ -288,7 +292,7 @@ class Api$Type extends MessageType<Api> {
         message.options = [];
         message.version = "";
         message.mixins = [];
-        message.syntax = 0;
+        message.syntax = "PROTO2";
         if (value !== undefined)
             reflectionMergePartial<Api>(this, message, value);
         return message;
@@ -317,7 +321,7 @@ class Api$Type extends MessageType<Api> {
                     message.mixins?.push?.(Mixin.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* google.protobuf.Syntax syntax */ 7:
-                    message.syntax = reader.int32();
+                    message.syntax = enumNumberToString(Syntax$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -350,8 +354,8 @@ class Api$Type extends MessageType<Api> {
         for (let i = 0; i < (message.mixins?.length || 0); i++)
             Mixin.internalBinaryWrite(message.mixins?.[i] as any, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Syntax syntax = 7; */
-        if (message.syntax !== 0)
-            writer.tag(7, WireType.Varint).int32(message.syntax);
+        if (message.syntax !== "PROTO2")
+            writer.tag(7, WireType.Varint).int32(enumStringToNumber(Syntax$stringToNumber, message.syntax));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -372,7 +376,7 @@ class Method$Type extends MessageType<Method> {
             { no: 4, name: "response_type_url", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 5, name: "response_streaming", kind: "scalar", T: 8 /*ScalarType.BOOL*/ },
             { no: 6, name: "options", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Option },
-            { no: 7, name: "syntax", kind: "enum", T: () => ["google.protobuf.Syntax", Syntax, "SYNTAX_"] }
+            { no: 7, name: "syntax", kind: "enum", T: () => ["google.protobuf.Syntax", Syntax, "SYNTAX_", Syntax$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<Method>): Method {
@@ -383,7 +387,7 @@ class Method$Type extends MessageType<Method> {
         message.responseTypeUrl = "";
         message.responseStreaming = false;
         message.options = [];
-        message.syntax = 0;
+        message.syntax = "PROTO2";
         if (value !== undefined)
             reflectionMergePartial<Method>(this, message, value);
         return message;
@@ -412,7 +416,7 @@ class Method$Type extends MessageType<Method> {
                     message.options?.push?.(Option.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* google.protobuf.Syntax syntax */ 7:
-                    message.syntax = reader.int32();
+                    message.syntax = enumNumberToString(Syntax$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -445,8 +449,8 @@ class Method$Type extends MessageType<Method> {
         for (let i = 0; i < (message.options?.length || 0); i++)
             Option.internalBinaryWrite(message.options?.[i] as any, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Syntax syntax = 7; */
-        if (message.syntax !== 0)
-            writer.tag(7, WireType.Varint).int32(message.syntax);
+        if (message.syntax !== "PROTO2")
+            writer.tag(7, WireType.Varint).int32(enumStringToNumber(Syntax$stringToNumber, message.syntax));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

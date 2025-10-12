@@ -56,7 +56,16 @@ export type EnumInfo = readonly [
     /**
      * The prefix shared by all original enum values
      */
-    string?
+    string?,
+
+    /**
+     * Map from enum string values to their wire format numbers
+     * e.g., { "VALUE1": 0, "VALUE2": 1 }
+     * This is used for binary serialization/deserialization
+     */
+    {
+        [k: string]: number;
+    }?
 ];
 
 

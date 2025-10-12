@@ -48,26 +48,42 @@ export interface ImportMessageLite {
     d?: number;
 }
 /**
- * @generated from protobuf enum protobuf_unittest_import.ImportEnumLite
+ * @generated from protobuf enum protobuf_unittest_import.ImportEnumLite:
+ *
+ * enum ImportEnumLite {
+ *  UNSPECIFIED$ = 0;
+ *  IMPORT_LITE_FOO = 7;
+ *  IMPORT_LITE_BAR = 8;
+ *  IMPORT_LITE_BAZ = 9;
+ * }
  */
-export enum ImportEnumLite {
+export type ImportEnumLite = "UNSPECIFIED$" | "IMPORT_LITE_FOO" | "IMPORT_LITE_BAR" | "IMPORT_LITE_BAZ";
+export const ImportEnumLite = {
     /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
+     * @generated from protobuf enum value: UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
     /**
      * @generated from protobuf enum value: IMPORT_LITE_FOO = 7;
-     */
-    IMPORT_LITE_FOO = 7,
+     */ IMPORT_LITE_FOO: "IMPORT_LITE_FOO",
     /**
      * @generated from protobuf enum value: IMPORT_LITE_BAR = 8;
-     */
-    IMPORT_LITE_BAR = 8,
+     */ IMPORT_LITE_BAR: "IMPORT_LITE_BAR",
     /**
      * @generated from protobuf enum value: IMPORT_LITE_BAZ = 9;
-     */
-    IMPORT_LITE_BAZ = 9
-}
+     */ IMPORT_LITE_BAZ: "IMPORT_LITE_BAZ"
+} as const;
+export const ImportEnumLite$stringToNumber = {
+    UNSPECIFIED$: 0,
+    IMPORT_LITE_FOO: 7,
+    IMPORT_LITE_BAR: 8,
+    IMPORT_LITE_BAZ: 9
+} as const;
+export const ImportEnumLite$numberToString = {
+    0: "UNSPECIFIED$",
+    7: "IMPORT_LITE_FOO",
+    8: "IMPORT_LITE_BAR",
+    9: "IMPORT_LITE_BAZ"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ImportMessageLite$Type extends MessageType<ImportMessageLite> {
     constructor() {

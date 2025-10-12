@@ -81,6 +81,9 @@ export {containsMessageType, type MessageTypeContainer} from './reflection-conta
 // Enum object type guard and reflection util, may be interesting to the user.
 export {type EnumObjectValue, listEnumValues, listEnumNames, listEnumNumbers, isEnumObject} from './enum-object';
 
+// Enum conversion helpers for binary serialization
+export {getFirstEnumValue, enumNumberToString, enumStringToNumber} from './enum-helpers';
+
 // lowerCamelCase() is exported for plugin, rpc-runtime and other rpc packages
 export {lowerCamelCase} from './lower-camel-case';
 

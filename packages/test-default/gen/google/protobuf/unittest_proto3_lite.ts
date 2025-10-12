@@ -315,6 +315,20 @@ export const TestAllTypes_NestedEnum = {
      *
      * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
 } as const;
+export const TestAllTypes_NestedEnum$stringToNumber = {
+    ZERO: 0,
+    FOO: 1,
+    BAR: 2,
+    BAZ: 3,
+    NEG: -1
+} as const;
+export const TestAllTypes_NestedEnum$numberToString = {
+    0: "ZERO",
+    1: "FOO",
+    2: "BAR",
+    3: "BAZ",
+    [-1]: "NEG"
+} as const;
 // Test messages for packed fields
 
 /**
@@ -500,6 +514,18 @@ export const ForeignEnum = {
      * @generated from protobuf enum value: FOREIGN_BAZ = 6;
      */ FOREIGN_BAZ: "FOREIGN_BAZ"
 } as const;
+export const ForeignEnum$stringToNumber = {
+    FOREIGN_ZERO: 0,
+    FOREIGN_FOO: 4,
+    FOREIGN_BAR: 5,
+    FOREIGN_BAZ: 6
+} as const;
+export const ForeignEnum$numberToString = {
+    0: "FOREIGN_ZERO",
+    4: "FOREIGN_FOO",
+    5: "FOREIGN_BAR",
+    6: "FOREIGN_BAZ"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestAllTypes$Type extends MessageType<TestAllTypes> {
     constructor() {
@@ -522,8 +548,8 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
             { no: 18, name: "optional_nested_message", kind: "message", T: () => TestAllTypes_NestedMessage },
             { no: 19, name: "optional_foreign_message", kind: "message", T: () => ForeignMessage },
             { no: 20, name: "optional_import_message", kind: "message", T: () => ImportMessage },
-            { no: 21, name: "optional_nested_enum", kind: "enum", T: () => ["proto3_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum] },
-            { no: 22, name: "optional_foreign_enum", kind: "enum", T: () => ["proto3_lite_unittest.ForeignEnum", ForeignEnum] },
+            { no: 21, name: "optional_nested_enum", kind: "enum", T: () => ["proto3_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum, undefined, TestAllTypes_NestedEnum$stringToNumber] },
+            { no: 22, name: "optional_foreign_enum", kind: "enum", T: () => ["proto3_lite_unittest.ForeignEnum", ForeignEnum, undefined, ForeignEnum$stringToNumber] },
             { no: 24, name: "optional_string_piece", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 25, name: "optional_cord", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 26, name: "optional_public_import_message", kind: "message", T: () => PublicImportMessage },
@@ -546,8 +572,8 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
             { no: 48, name: "repeated_nested_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TestAllTypes_NestedMessage },
             { no: 49, name: "repeated_foreign_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ForeignMessage },
             { no: 50, name: "repeated_import_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ImportMessage },
-            { no: 51, name: "repeated_nested_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum] },
-            { no: 52, name: "repeated_foreign_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_lite_unittest.ForeignEnum", ForeignEnum] },
+            { no: 51, name: "repeated_nested_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum, undefined, TestAllTypes_NestedEnum$stringToNumber] },
+            { no: 52, name: "repeated_foreign_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_lite_unittest.ForeignEnum", ForeignEnum, undefined, ForeignEnum$stringToNumber] },
             { no: 54, name: "repeated_string_piece", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 55, name: "repeated_cord", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 57, name: "repeated_lazy_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TestAllTypes_NestedMessage },
@@ -591,7 +617,7 @@ class TestPackedTypes$Type extends MessageType<TestPackedTypes> {
             { no: 100, name: "packed_float", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 2 /*ScalarType.FLOAT*/ },
             { no: 101, name: "packed_double", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
             { no: 102, name: "packed_bool", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 8 /*ScalarType.BOOL*/ },
-            { no: 103, name: "packed_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_lite_unittest.ForeignEnum", ForeignEnum] }
+            { no: 103, name: "packed_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_lite_unittest.ForeignEnum", ForeignEnum, undefined, ForeignEnum$stringToNumber] }
         ]);
     }
 }
@@ -616,7 +642,7 @@ class TestUnpackedTypes$Type extends MessageType<TestUnpackedTypes> {
             { no: 11, name: "repeated_float", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 2 /*ScalarType.FLOAT*/ },
             { no: 12, name: "repeated_double", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
             { no: 13, name: "repeated_bool", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 8 /*ScalarType.BOOL*/ },
-            { no: 14, name: "repeated_nested_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["proto3_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum] }
+            { no: 14, name: "repeated_nested_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["proto3_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum, undefined, TestAllTypes_NestedEnum$stringToNumber] }
         ]);
     }
 }

@@ -62,6 +62,14 @@ export const DeprecatedEnum = {
      * @generated from protobuf enum value: DEPRECATED_ENUM_B = 1;
      */ DEPRECATED_ENUM_B: "DEPRECATED_ENUM_B"
 } as const;
+export const DeprecatedEnum$stringToNumber = {
+    DEPRECATED_ENUM_A: 0,
+    DEPRECATED_ENUM_B: 1
+} as const;
+export const DeprecatedEnum$numberToString = {
+    0: "DEPRECATED_ENUM_A",
+    1: "DEPRECATED_ENUM_B"
+} as const;
 /**
  * Only a single enum value is deprecated
  *
@@ -80,6 +88,14 @@ export const DeprecatedValueEnum = {
     /**
      * @generated from protobuf enum value: DEPRECATED_VALUE_ENUM_DEPRECATED_VALUE = 1;
      */ DEPRECATED_VALUE: "DEPRECATED_VALUE"
+} as const;
+export const DeprecatedValueEnum$stringToNumber = {
+    UNSPECIFIED: 0,
+    DEPRECATED_VALUE: 1
+} as const;
+export const DeprecatedValueEnum$numberToString = {
+    0: "UNSPECIFIED",
+    1: "DEPRECATED_VALUE"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class DeprecatedMessage$Type extends MessageType<DeprecatedMessage> {

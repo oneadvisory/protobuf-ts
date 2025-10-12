@@ -74,6 +74,12 @@ export const TopLevelMessage_NestedEnum = {
      * @generated from protobuf enum value: NESTED_UNKNOWN = 0;
      */ NESTED_UNKNOWN: "NESTED_UNKNOWN"
 } as const;
+export const TopLevelMessage_NestedEnum$stringToNumber = {
+    NESTED_UNKNOWN: 0
+} as const;
+export const TopLevelMessage_NestedEnum$numberToString = {
+    0: "NESTED_UNKNOWN"
+} as const;
 /**
  * @generated from protobuf enum protobuf_unittest.TopLevelEnum:
  *
@@ -86,6 +92,12 @@ export const TopLevelEnum = {
     /**
      * @generated from protobuf enum value: TOP_LEVEL_UNKNOWN = 0;
      */ TOP_LEVEL_UNKNOWN: "TOP_LEVEL_UNKNOWN"
+} as const;
+export const TopLevelEnum$stringToNumber = {
+    TOP_LEVEL_UNKNOWN: 0
+} as const;
+export const TopLevelEnum$numberToString = {
+    0: "TOP_LEVEL_UNKNOWN"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class OptionsMessage$Type extends MessageType<OptionsMessage> {

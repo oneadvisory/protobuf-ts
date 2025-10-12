@@ -64,34 +64,32 @@ export interface ExampleResponse {
     yourFailRequest: FailRequest;
 }
 /**
- * @generated from protobuf enum spec.FailRequest
+ * @generated from protobuf enum spec.FailRequest:
+ *
+ * enum FailRequest {
+ *  FAIL_REQUEST_NONE = 0;  // don't fail
+ *  MESSAGE_THEN_ERROR_STATUS = 1;  // send an error status trailer after sending a message
+ *  ERROR_STATUS_ONLY = 2;  // send an error status, don't send any message
+ * }
  */
-export enum FailRequest {
-    /**
-     * don't fail
+export type FailRequest = "FAIL_REQUEST_NONE" | "MESSAGE_THEN_ERROR_STATUS" | "ERROR_STATUS_ONLY";
+export const FailRequest = {
+    /** don't fail
      *
-     * @generated from protobuf enum value: FAIL_REQUEST_NONE = 0;
-     */
-    FAIL_REQUEST_NONE = 0,
-    /**
-     * send an error status trailer after sending a message
+     * @generated from protobuf enum value: FAIL_REQUEST_NONE = 0; */ FAIL_REQUEST_NONE: "FAIL_REQUEST_NONE",
+    /** send an error status trailer after sending a message
      *
-     * @generated from protobuf enum value: MESSAGE_THEN_ERROR_STATUS = 1;
-     */
-    MESSAGE_THEN_ERROR_STATUS = 1,
-    /**
-     * send an error status, don't send any message
+     * @generated from protobuf enum value: MESSAGE_THEN_ERROR_STATUS = 1; */ MESSAGE_THEN_ERROR_STATUS: "MESSAGE_THEN_ERROR_STATUS",
+    /** send an error status, don't send any message
      *
-     * @generated from protobuf enum value: ERROR_STATUS_ONLY = 2;
-     */
-    ERROR_STATUS_ONLY = 2
-}
+     * @generated from protobuf enum value: ERROR_STATUS_ONLY = 2; */ ERROR_STATUS_ONLY: "ERROR_STATUS_ONLY"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ExampleRequest$Type extends MessageType<ExampleRequest> {
     constructor() {
         super("spec.ExampleRequest", [
             { no: 1, name: "question", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 2, name: "please_fail", kind: "enum", T: () => ["spec.FailRequest", FailRequest] },
+            { no: 2, name: "please_fail", kind: "enum", T: () => ["spec.FailRequest", FailRequest, { FAIL_REQUEST_NONE: 0, MESSAGE_THEN_ERROR_STATUS: 1, ERROR_STATUS_ONLY: 2 }] },
             { no: 3, name: "please_delay_response_ms", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "disable_sending_example_response_headers", kind: "scalar", T: 8 /*ScalarType.BOOL*/ }
         ]);
@@ -108,7 +106,7 @@ class ExampleResponse$Type extends MessageType<ExampleResponse> {
             { no: 1, name: "answer", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "your_request_headers", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "scalar", T: 9 /*ScalarType.STRING*/ } },
             { no: 3, name: "your_deadline", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "your_fail_request", kind: "enum", T: () => ["spec.FailRequest", FailRequest] }
+            { no: 4, name: "your_fail_request", kind: "enum", T: () => ["spec.FailRequest", FailRequest, { FAIL_REQUEST_NONE: 0, MESSAGE_THEN_ERROR_STATUS: 1, ERROR_STATUS_ONLY: 2 }] }
         ]);
     }
 }

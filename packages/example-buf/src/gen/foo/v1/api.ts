@@ -2,9 +2,11 @@
 // @generated from protobuf file "foo/v1/api.proto" (package "foo.v1", syntax proto3)
 // tslint:disable
 import { ServiceType } from "@oneadvisory/protobuf-ts-runtime-rpc";
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";

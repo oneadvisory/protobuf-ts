@@ -209,7 +209,7 @@ export class FieldInfoGenerator {
     source: TypescriptFile,
     ei: rt.EnumInfo
   ): ts.ArrowFunction {
-    const [pbTypeName, , sharedPrefix] = ei;
+    const [pbTypeName, , sharedPrefix, stringToNumber] = ei;
     const descriptor = this.registry.getEnum(pbTypeName);
     assert(descriptor);
     let generatedEnum = this.imports.type(source, descriptor),
@@ -217,8 +217,22 @@ export class FieldInfoGenerator {
         ts.factory.createStringLiteral(pbTypeName),
         ts.factory.createIdentifier(generatedEnum),
       ];
+    // If stringToNumber is present but no sharedPrefix, we need to add undefined placeholder
     if (sharedPrefix) {
       enumInfoLiteral.push(ts.factory.createStringLiteral(sharedPrefix));
+    } else if (stringToNumber) {
+      enumInfoLiteral.push(ts.factory.createIdentifier('undefined'));
+    }
+    // Add string-to-number mapping if present
+    if (stringToNumber) {
+      // Reference the generated stringToNumber constant instead of inlining
+      // Use the same pattern as enum type reference but with 'stringToNumber' kind
+      const stringToNumberConstName = this.imports.type(
+        source,
+        descriptor,
+        'stringToNumber'
+      );
+      enumInfoLiteral.push(ts.factory.createIdentifier(stringToNumberConstName));
     }
     return ts.factory.createArrowFunction(
       undefined,

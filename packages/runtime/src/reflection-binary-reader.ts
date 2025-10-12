@@ -5,6 +5,7 @@ import {LongType, ScalarType} from "./reflection-info";
 import {reflectionLongConvert} from "./reflection-long-convert";
 import {reflectionScalarDefault} from "./reflection-scalar-default";
 import type {UnknownMap, UnknownMessage, UnknownOneofGroup, UnknownScalar} from "./unknown-types";
+import {enumNumberToString, getFirstEnumValue, stringToNumberToNumberToString} from "./enum-helpers";
 
 
 /**
@@ -66,19 +67,38 @@ export class ReflectionBinaryReader {
             // we have handled oneof above, we just have read the value into `target[localName]`
             switch (field.kind) {
                 case "scalar":
-                case "enum":
-                    let T = field.kind == "enum" ? ScalarType.INT32 : field.T;
-                    let L = field.kind == "scalar" ? field.L : undefined;
                     if (repeated) {
                         let arr = target[localName] as any[]; // safe to assume presence of array, oneof cannot contain repeated values
-                        if (wireType == WireType.LengthDelimited && T != ScalarType.STRING && T != ScalarType.BYTES) {
+                        if (wireType == WireType.LengthDelimited && field.T != ScalarType.STRING && field.T != ScalarType.BYTES) {
                             let e = reader.uint32() + reader.pos;
                             while (reader.pos < e)
-                                arr.push(this.scalar(reader, T, L));
+                                arr.push(this.scalar(reader, field.T, field.L));
                         } else
-                            arr.push(this.scalar(reader, T, L));
+                            arr.push(this.scalar(reader, field.T, field.L));
                     } else
-                        target[localName] = this.scalar(reader, T, L);
+                        target[localName] = this.scalar(reader, field.T, field.L);
+                    break;
+
+                case "enum":
+                    const enumInfo = field.T();
+                    const stringToNumber = enumInfo[3] ?? {};
+                    const numberToString = stringToNumberToNumberToString(stringToNumber);
+                    if (repeated) {
+                        let arr = target[localName] as any[]; // safe to assume presence of array, oneof cannot contain repeated values
+                        if (wireType == WireType.LengthDelimited) {
+                            let e = reader.uint32() + reader.pos;
+                            while (reader.pos < e) {
+                                const num = reader.int32();
+                                arr.push(enumNumberToString(numberToString, num));
+                            }
+                        } else {
+                            const num = reader.int32();
+                            arr.push(enumNumberToString(numberToString, num));
+                        }
+                    } else {
+                        const num = reader.int32();
+                        target[localName] = enumNumberToString(numberToString, num);
+                    }
                     break;
 
                 case "message":
@@ -126,7 +146,11 @@ export class ReflectionBinaryReader {
                             val = this.scalar(reader, field.V.T, field.V.L);
                             break;
                         case "enum":
-                            val = reader.int32();
+                            const enumInfo = field.V.T();
+                            const stringToNumber = enumInfo[3] ?? {};
+                            const numberToString = stringToNumberToNumberToString(stringToNumber);
+                            const num = reader.int32();
+                            val = enumNumberToString(numberToString, num);
                             break;
                         case "message":
                             val = field.V.T().internalBinaryRead(reader, reader.uint32(), options);
@@ -148,7 +172,7 @@ export class ReflectionBinaryReader {
                     val = reflectionScalarDefault(field.V.T, field.V.L);
                     break;
                 case "enum":
-                    val = 0;
+                    val = getFirstEnumValue(field.V.T());
                     break;
                 case "message":
                     val = field.V.T().create();

@@ -32,9 +32,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -248,6 +250,48 @@ export const Field_Kind = {
      *
      * @generated from protobuf enum value: TYPE_SINT64 = 18; */ TYPE_SINT64: "TYPE_SINT64"
 } as const;
+export const Field_Kind$stringToNumber = {
+    TYPE_UNKNOWN: 0,
+    TYPE_DOUBLE: 1,
+    TYPE_FLOAT: 2,
+    TYPE_INT64: 3,
+    TYPE_UINT64: 4,
+    TYPE_INT32: 5,
+    TYPE_FIXED64: 6,
+    TYPE_FIXED32: 7,
+    TYPE_BOOL: 8,
+    TYPE_STRING: 9,
+    TYPE_GROUP: 10,
+    TYPE_MESSAGE: 11,
+    TYPE_BYTES: 12,
+    TYPE_UINT32: 13,
+    TYPE_ENUM: 14,
+    TYPE_SFIXED32: 15,
+    TYPE_SFIXED64: 16,
+    TYPE_SINT32: 17,
+    TYPE_SINT64: 18
+} as const;
+export const Field_Kind$numberToString = {
+    0: "TYPE_UNKNOWN",
+    1: "TYPE_DOUBLE",
+    2: "TYPE_FLOAT",
+    3: "TYPE_INT64",
+    4: "TYPE_UINT64",
+    5: "TYPE_INT32",
+    6: "TYPE_FIXED64",
+    7: "TYPE_FIXED32",
+    8: "TYPE_BOOL",
+    9: "TYPE_STRING",
+    10: "TYPE_GROUP",
+    11: "TYPE_MESSAGE",
+    12: "TYPE_BYTES",
+    13: "TYPE_UINT32",
+    14: "TYPE_ENUM",
+    15: "TYPE_SFIXED32",
+    16: "TYPE_SFIXED64",
+    17: "TYPE_SINT32",
+    18: "TYPE_SINT64"
+} as const;
 /**
  * Whether a field is optional, required, or repeated.
  *
@@ -274,6 +318,18 @@ export const Field_Cardinality = {
     /** For repeated fields.
      *
      * @generated from protobuf enum value: CARDINALITY_REPEATED = 3; */ REPEATED: "REPEATED"
+} as const;
+export const Field_Cardinality$stringToNumber = {
+    UNKNOWN: 0,
+    OPTIONAL: 1,
+    REQUIRED: 2,
+    REPEATED: 3
+} as const;
+export const Field_Cardinality$numberToString = {
+    0: "UNKNOWN",
+    1: "OPTIONAL",
+    2: "REQUIRED",
+    3: "REPEATED"
 } as const;
 /**
  * Enum type definition.
@@ -392,6 +448,16 @@ export const Syntax = {
      *
      * @generated from protobuf enum value: SYNTAX_EDITIONS = 2; */ EDITIONS: "EDITIONS"
 } as const;
+export const Syntax$stringToNumber = {
+    PROTO2: 0,
+    PROTO3: 1,
+    EDITIONS: 2
+} as const;
+export const Syntax$numberToString = {
+    0: "PROTO2",
+    1: "PROTO3",
+    2: "EDITIONS"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class Type$Type extends MessageType<Type> {
     constructor() {
@@ -401,7 +467,7 @@ class Type$Type extends MessageType<Type> {
             { no: 3, name: "oneofs", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 4, name: "options", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Option },
             { no: 5, name: "source_context", kind: "message", T: () => SourceContext },
-            { no: 6, name: "syntax", kind: "enum", T: () => ["google.protobuf.Syntax", Syntax, "SYNTAX_"] },
+            { no: 6, name: "syntax", kind: "enum", T: () => ["google.protobuf.Syntax", Syntax, "SYNTAX_", Syntax$stringToNumber] },
             { no: 7, name: "edition", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
@@ -411,7 +477,7 @@ class Type$Type extends MessageType<Type> {
         message.fields = [];
         message.oneofs = [];
         message.options = [];
-        message.syntax = 0;
+        message.syntax = "PROTO2";
         message.edition = "";
         if (value !== undefined)
             reflectionMergePartial<Type>(this, message, value);
@@ -438,7 +504,7 @@ class Type$Type extends MessageType<Type> {
                     message.sourceContext = SourceContext.internalBinaryRead(reader, reader.uint32(), options, message.sourceContext);
                     break;
                 case /* google.protobuf.Syntax syntax */ 6:
-                    message.syntax = reader.int32();
+                    message.syntax = enumNumberToString(Syntax$numberToString, reader.int32()) as any;
                     break;
                 case /* string edition */ 7:
                     message.edition = reader.string();
@@ -471,8 +537,8 @@ class Type$Type extends MessageType<Type> {
         if (message.sourceContext)
             SourceContext.internalBinaryWrite(message.sourceContext, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Syntax syntax = 6; */
-        if (message.syntax !== 0)
-            writer.tag(6, WireType.Varint).int32(message.syntax);
+        if (message.syntax !== "PROTO2")
+            writer.tag(6, WireType.Varint).int32(enumStringToNumber(Syntax$stringToNumber, message.syntax));
         /* string edition = 7; */
         if (message.edition !== "")
             writer.tag(7, WireType.LengthDelimited).string(message.edition);
@@ -490,8 +556,8 @@ export const Type = new Type$Type();
 class Field$Type extends MessageType<Field> {
     constructor() {
         super("google.protobuf.Field", [
-            { no: 1, name: "kind", kind: "enum", T: () => ["google.protobuf.Field.Kind", Field_Kind] },
-            { no: 2, name: "cardinality", kind: "enum", T: () => ["google.protobuf.Field.Cardinality", Field_Cardinality, "CARDINALITY_"] },
+            { no: 1, name: "kind", kind: "enum", T: () => ["google.protobuf.Field.Kind", Field_Kind, undefined, Field_Kind$stringToNumber] },
+            { no: 2, name: "cardinality", kind: "enum", T: () => ["google.protobuf.Field.Cardinality", Field_Cardinality, "CARDINALITY_", Field_Cardinality$stringToNumber] },
             { no: 3, name: "number", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 6, name: "type_url", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
@@ -504,8 +570,8 @@ class Field$Type extends MessageType<Field> {
     }
     create(value?: PartialMessage<Field>): Field {
         const message = globalThis.Object.create(this.messagePrototype!);
-        message.kind = 0;
-        message.cardinality = 0;
+        message.kind = "TYPE_UNKNOWN";
+        message.cardinality = "UNKNOWN";
         message.number = 0;
         message.name = "";
         message.typeUrl = "";
@@ -524,10 +590,10 @@ class Field$Type extends MessageType<Field> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* google.protobuf.Field.Kind kind */ 1:
-                    message.kind = reader.int32();
+                    message.kind = enumNumberToString(Field_Kind$numberToString, reader.int32()) as any;
                     break;
                 case /* google.protobuf.Field.Cardinality cardinality */ 2:
-                    message.cardinality = reader.int32();
+                    message.cardinality = enumNumberToString(Field_Cardinality$numberToString, reader.int32()) as any;
                     break;
                 case /* int32 number */ 3:
                     message.number = reader.int32();
@@ -566,11 +632,11 @@ class Field$Type extends MessageType<Field> {
     }
     internalBinaryWrite(message: Field, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* google.protobuf.Field.Kind kind = 1; */
-        if (message.kind !== 0)
-            writer.tag(1, WireType.Varint).int32(message.kind);
+        if (message.kind !== "TYPE_UNKNOWN")
+            writer.tag(1, WireType.Varint).int32(enumStringToNumber(Field_Kind$stringToNumber, message.kind));
         /* google.protobuf.Field.Cardinality cardinality = 2; */
-        if (message.cardinality !== 0)
-            writer.tag(2, WireType.Varint).int32(message.cardinality);
+        if (message.cardinality !== "UNKNOWN")
+            writer.tag(2, WireType.Varint).int32(enumStringToNumber(Field_Cardinality$stringToNumber, message.cardinality));
         /* int32 number = 3; */
         if (message.number !== 0)
             writer.tag(3, WireType.Varint).int32(message.number);
@@ -613,7 +679,7 @@ class Enum$Type extends MessageType<Enum> {
             { no: 2, name: "enumvalue", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => EnumValue },
             { no: 3, name: "options", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Option },
             { no: 4, name: "source_context", kind: "message", T: () => SourceContext },
-            { no: 5, name: "syntax", kind: "enum", T: () => ["google.protobuf.Syntax", Syntax, "SYNTAX_"] },
+            { no: 5, name: "syntax", kind: "enum", T: () => ["google.protobuf.Syntax", Syntax, "SYNTAX_", Syntax$stringToNumber] },
             { no: 6, name: "edition", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
@@ -622,7 +688,7 @@ class Enum$Type extends MessageType<Enum> {
         message.name = "";
         message.enumvalue = [];
         message.options = [];
-        message.syntax = 0;
+        message.syntax = "PROTO2";
         message.edition = "";
         if (value !== undefined)
             reflectionMergePartial<Enum>(this, message, value);
@@ -646,7 +712,7 @@ class Enum$Type extends MessageType<Enum> {
                     message.sourceContext = SourceContext.internalBinaryRead(reader, reader.uint32(), options, message.sourceContext);
                     break;
                 case /* google.protobuf.Syntax syntax */ 5:
-                    message.syntax = reader.int32();
+                    message.syntax = enumNumberToString(Syntax$numberToString, reader.int32()) as any;
                     break;
                 case /* string edition */ 6:
                     message.edition = reader.string();
@@ -676,8 +742,8 @@ class Enum$Type extends MessageType<Enum> {
         if (message.sourceContext)
             SourceContext.internalBinaryWrite(message.sourceContext, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
         /* google.protobuf.Syntax syntax = 5; */
-        if (message.syntax !== 0)
-            writer.tag(5, WireType.Varint).int32(message.syntax);
+        if (message.syntax !== "PROTO2")
+            writer.tag(5, WireType.Varint).int32(enumStringToNumber(Syntax$stringToNumber, message.syntax));
         /* string edition = 6; */
         if (message.edition !== "")
             writer.tag(6, WireType.LengthDelimited).string(message.edition);

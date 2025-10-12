@@ -50,6 +50,14 @@ export const TestEnum = {
      * @generated from protobuf enum value: FOO = 1;
      */ FOO: "FOO"
 } as const;
+export const TestEnum$stringToNumber = {
+    UNSPECIFIED$: 0,
+    FOO: 1
+} as const;
+export const TestEnum$numberToString = {
+    0: "UNSPECIFIED$",
+    1: "FOO"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestMessage$Type extends MessageType<TestMessage> {
     constructor() {

@@ -56,3 +56,11 @@ export const LazyEnum = {
      * @generated from protobuf enum value: LAZY_ENUM_1 = 1;
      */ LAZY_ENUM_1: "LAZY_ENUM_1"
 } as const;
+export const LazyEnum$stringToNumber = {
+    LAZY_ENUM_0: 0,
+    LAZY_ENUM_1: 1
+} as const;
+export const LazyEnum$numberToString = {
+    0: "LAZY_ENUM_0",
+    1: "LAZY_ENUM_1"
+} as const;

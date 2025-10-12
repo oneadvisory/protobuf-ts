@@ -84,6 +84,14 @@ export class InternalBinaryRead implements CustomMethodGenerator {
         this.options.runtimeImportPath,
         true
       );
+    // Register enum conversion helper only if message has enum fields
+    if (this.hasEnumFields(descMessage)) {
+      this.imports.name(
+        source,
+        'enumNumberToString',
+        this.options.runtimeImportPath
+      );
+    }
     return ts.factory.createMethodDeclaration(
       undefined,
       undefined,
@@ -254,9 +262,9 @@ export class InternalBinaryRead implements CustomMethodGenerator {
               fieldPropertyAccess
             );
           } else if (fieldInfo.oneof !== undefined) {
-            statements = this.scalarOneof(fieldInfo);
+            statements = this.scalarOneof(source, fieldInfo);
           } else {
-            statements = this.scalar(fieldInfo, fieldPropertyAccess);
+            statements = this.scalar(source, fieldInfo, fieldPropertyAccess);
           }
           break;
 
@@ -594,7 +602,9 @@ export class InternalBinaryRead implements CustomMethodGenerator {
   }
 
   // message.doubleField = reader.double();
+  // message.enumField = enumNumberToString(numberToString, reader.int32());
   private scalar(
+    source: TypescriptFile,
     field: rt.FieldInfo & {
       kind: 'scalar' | 'enum';
       oneof: undefined;
@@ -602,9 +612,29 @@ export class InternalBinaryRead implements CustomMethodGenerator {
     },
     fieldPropertyAccess: ts.PropertyAccessExpression
   ): ts.Statement[] {
-    let type = field.kind == 'enum' ? rt.ScalarType.INT32 : field.T;
-    let longType = field.kind == 'enum' ? undefined : field.L;
-    let readerCall = this.makeReaderCall('reader', type, longType);
+    let readerCall: ts.Expression;
+
+    if (field.kind == 'enum') {
+      // For enums, wrap reader.int32() with enumNumberToString()
+      const enumInfo = field.T();
+      const int32Call = this.makeReaderCall('reader', rt.ScalarType.INT32, undefined);
+      const enumCall = ts.factory.createCallExpression(
+        ts.factory.createIdentifier('enumNumberToString'),
+        undefined,
+        [
+          this.getNumberToStringIdentifier(source, enumInfo),
+          int32Call
+        ]
+      );
+      // Cast to any to avoid TypeScript literal union type errors
+      readerCall = ts.factory.createAsExpression(
+        enumCall,
+        ts.factory.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
+      );
+    } else {
+      readerCall = this.makeReaderCall('reader', field.T, field.L);
+    }
+
     return [
       ts.factory.createExpressionStatement(
         ts.factory.createBinaryExpression(
@@ -621,14 +651,36 @@ export class InternalBinaryRead implements CustomMethodGenerator {
   //     err: reader.string()
   // };
   private scalarOneof(
+    source: TypescriptFile,
     field: rt.FieldInfo & {
       kind: 'scalar' | 'enum';
       oneof: string;
       repeat: undefined | rt.RepeatType.NO;
     }
   ): ts.Statement[] {
-    let type = field.kind == 'enum' ? rt.ScalarType.INT32 : field.T;
-    let longType = field.kind == 'enum' ? undefined : field.L;
+    let readerCall: ts.Expression;
+
+    if (field.kind == 'enum') {
+      // For enums, wrap reader.int32() with enumNumberToString()
+      const enumInfo = field.T();
+      const int32Call = this.makeReaderCall('reader', rt.ScalarType.INT32, undefined);
+      const enumCall = ts.factory.createCallExpression(
+        ts.factory.createIdentifier('enumNumberToString'),
+        undefined,
+        [
+          this.getNumberToStringIdentifier(source, enumInfo),
+          int32Call
+        ]
+      );
+      // Cast to any to avoid TypeScript literal union type errors
+      readerCall = ts.factory.createAsExpression(
+        enumCall,
+        ts.factory.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
+      );
+    } else {
+      readerCall = this.makeReaderCall('reader', field.T, field.L);
+    }
+
     return [
       ts.factory.createExpressionStatement(
         ts.factory.createBinaryExpression(
@@ -637,7 +689,7 @@ export class InternalBinaryRead implements CustomMethodGenerator {
             field.localName
           ),
           ts.factory.createToken(ts.SyntaxKind.EqualsToken),
-          this.makeReaderCall('reader', type, longType)
+          readerCall
         )
       ),
     ];
@@ -660,6 +712,24 @@ export class InternalBinaryRead implements CustomMethodGenerator {
     let type = field.kind == 'enum' ? rt.ScalarType.INT32 : field.T;
     let longType = field.kind == 'enum' ? undefined : field.L;
 
+    // Helper function to wrap reader call with enum conversion if needed
+    const makeValueExpression = (readerCall: ts.Expression): ts.Expression => {
+      if (field.kind == 'enum') {
+        const enumInfo = field.T();
+        const enumCall = ts.factory.createCallExpression(
+          ts.factory.createIdentifier('enumNumberToString'),
+          undefined,
+          [this.getNumberToStringIdentifier(source, enumInfo), readerCall]
+        );
+        // Cast to any to avoid TypeScript literal union type errors
+        return ts.factory.createAsExpression(
+          enumCall,
+          ts.factory.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
+        );
+      }
+      return readerCall;
+    };
+
     switch (type) {
       case rt.ScalarType.STRING:
       case rt.ScalarType.BYTES:
@@ -675,7 +745,7 @@ export class InternalBinaryRead implements CustomMethodGenerator {
               ),
               ts.factory.createToken(ts.SyntaxKind.QuestionDotToken),
               undefined,
-              [this.makeReaderCall('reader', type, longType)]
+              [makeValueExpression(this.makeReaderCall('reader', type, longType))]
             )
           ),
         ];
@@ -739,7 +809,7 @@ export class InternalBinaryRead implements CustomMethodGenerator {
                   ),
                   ts.factory.createToken(ts.SyntaxKind.QuestionDotToken),
                   undefined,
-                  [this.makeReaderCall('reader', type, longType)]
+                  [makeValueExpression(this.makeReaderCall('reader', type, longType))]
                 )
               )
             ),
@@ -752,7 +822,7 @@ export class InternalBinaryRead implements CustomMethodGenerator {
                 ),
                 ts.factory.createToken(ts.SyntaxKind.QuestionDotToken),
                 undefined,
-                [this.makeReaderCall('reader', type, longType)]
+                [makeValueExpression(this.makeReaderCall('reader', type, longType))]
               )
             )
           ),
@@ -894,9 +964,17 @@ export class InternalBinaryRead implements CustomMethodGenerator {
         break;
 
       case 'enum':
-        readValueExpression = this.makeReaderCall(
-          'reader',
-          rt.ScalarType.INT32
+        const enumInfo = field.V.T();
+        const int32Call = this.makeReaderCall('reader', rt.ScalarType.INT32);
+        const enumCall = ts.factory.createCallExpression(
+          ts.factory.createIdentifier('enumNumberToString'),
+          undefined,
+          [this.getNumberToStringIdentifier(source, enumInfo), int32Call]
+        );
+        // Cast to any to avoid TypeScript literal union type errors
+        readValueExpression = ts.factory.createAsExpression(
+          enumCall,
+          ts.factory.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
         );
         break;
 
@@ -1119,9 +1197,12 @@ export class InternalBinaryRead implements CustomMethodGenerator {
           this.createScalarDefaultValue(V.T, V.L)
         );
       case 'enum':
-        return typescriptLiteralFromValue(
-          this.createScalarDefaultValue(rt.ScalarType.INT32)
-        );
+        // Use the first enum string value as default
+        const enumInfo = V.T();
+        const enumObject = enumInfo[1];
+        const firstKey = Object.keys(enumObject)[0];
+        const firstValue = firstKey ? enumObject[firstKey] : "";
+        return typescriptLiteralFromValue(firstValue);
       case 'message':
         const descMessage = this.registry.getMessage(V.T().typeName);
         assert(descMessage);
@@ -1205,5 +1286,65 @@ export class InternalBinaryRead implements CustomMethodGenerator {
         break;
     }
     return ts.factory.createCallExpression(convertMethodProp, undefined, []);
+  }
+
+  /**
+   * Check if a message has any enum fields (including map values)
+   */
+  private hasEnumFields(descMessage: DescMessage): boolean {
+    const messageType = this.interpreter.getMessageType(descMessage);
+    for (const field of messageType.fields) {
+      if (field.kind === 'enum') {
+        return true;
+      }
+      if (field.kind === 'map' && field.V.kind === 'enum') {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Get an identifier for the stringToNumber constant of an enum.
+   * This will handle imports automatically if the enum is in a different file.
+   */
+  private getStringToNumberIdentifier(
+    source: TypescriptFile,
+    enumInfo: rt.EnumInfo
+  ): ts.Identifier {
+    const enumTypeName = enumInfo[0];
+    const enumDescriptor = this.registry.getEnum(enumTypeName);
+    assert(enumDescriptor, `Enum descriptor not found for ${enumTypeName}`);
+
+    // Use the imports system to get the constant name (handles imports automatically)
+    const stringToNumberConstName = this.imports.type(
+      source,
+      enumDescriptor,
+      'stringToNumber'
+    );
+
+    return ts.factory.createIdentifier(stringToNumberConstName);
+  }
+
+  /**
+   * Get an identifier for the numberToString constant of an enum.
+   * This will handle imports automatically if the enum is in a different file.
+   */
+  private getNumberToStringIdentifier(
+    source: TypescriptFile,
+    enumInfo: rt.EnumInfo
+  ): ts.Identifier {
+    const enumTypeName = enumInfo[0];
+    const enumDescriptor = this.registry.getEnum(enumTypeName);
+    assert(enumDescriptor, `Enum descriptor not found for ${enumTypeName}`);
+
+    // Use the imports system to get the constant name (handles imports automatically)
+    const numberToStringConstName = this.imports.type(
+      source,
+      enumDescriptor,
+      'numberToString'
+    );
+
+    return ts.factory.createIdentifier(numberToStringConstName);
   }
 }

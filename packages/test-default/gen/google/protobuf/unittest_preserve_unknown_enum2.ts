@@ -32,8 +32,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -91,16 +93,26 @@ export const MyEnum = {
      * @generated from protobuf enum value: BAZ = 2;
      */ BAZ: "BAZ"
 } as const;
+export const MyEnum$stringToNumber = {
+    FOO: 0,
+    BAR: 1,
+    BAZ: 2
+} as const;
+export const MyEnum$numberToString = {
+    0: "FOO",
+    1: "BAR",
+    2: "BAZ"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class MyMessage$Type extends MessageType<MyMessage> {
     constructor() {
         super("proto2_preserve_unknown_enum_unittest.MyMessage", [
-            { no: 1, name: "e", kind: "enum", opt: true, T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum] },
-            { no: 2, name: "repeated_e", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum] },
-            { no: 3, name: "repeated_packed_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum] },
-            { no: 4, name: "repeated_packed_unexpected_e", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum] },
-            { no: 5, name: "oneof_e_1", kind: "enum", oneof: "o", T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum] },
-            { no: 6, name: "oneof_e_2", kind: "enum", oneof: "o", T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum] }
+            { no: 1, name: "e", kind: "enum", opt: true, T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] },
+            { no: 2, name: "repeated_e", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] },
+            { no: 3, name: "repeated_packed_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] },
+            { no: 4, name: "repeated_packed_unexpected_e", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] },
+            { no: 5, name: "oneof_e_1", kind: "enum", oneof: "o", T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] },
+            { no: 6, name: "oneof_e_2", kind: "enum", oneof: "o", T: () => ["proto2_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<MyMessage>): MyMessage {
@@ -118,34 +130,34 @@ class MyMessage$Type extends MessageType<MyMessage> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* optional proto2_preserve_unknown_enum_unittest.MyEnum e */ 1:
-                    message.e = reader.int32();
+                    message.e = enumNumberToString(MyEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_e */ 2:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedE?.push?.(reader.int32());
+                            message.repeatedE?.push?.(enumNumberToString(MyEnum$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedE?.push?.(reader.int32());
+                        message.repeatedE?.push?.(enumNumberToString(MyEnum$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_e = 3 [packed = true] */ 3:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedPackedE?.push?.(reader.int32());
+                            message.repeatedPackedE?.push?.(enumNumberToString(MyEnum$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedPackedE?.push?.(reader.int32());
+                        message.repeatedPackedE?.push?.(enumNumberToString(MyEnum$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_unexpected_e */ 4:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedPackedUnexpectedE?.push?.(reader.int32());
+                            message.repeatedPackedUnexpectedE?.push?.(enumNumberToString(MyEnum$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedPackedUnexpectedE?.push?.(reader.int32());
+                        message.repeatedPackedUnexpectedE?.push?.(enumNumberToString(MyEnum$numberToString, reader.int32()) as any);
                     break;
                 case /* proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_1 */ 5:
-                    message.oneofE1 = reader.int32();
+                    message.oneofE1 = enumNumberToString(MyEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_2 */ 6:
-                    message.oneofE2 = reader.int32();
+                    message.oneofE2 = enumNumberToString(MyEnum$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -161,26 +173,26 @@ class MyMessage$Type extends MessageType<MyMessage> {
     internalBinaryWrite(message: MyMessage, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* optional proto2_preserve_unknown_enum_unittest.MyEnum e = 1; */
         if (message.e !== undefined)
-            writer.tag(1, WireType.Varint).int32(message.e);
+            writer.tag(1, WireType.Varint).int32(enumStringToNumber(MyEnum$stringToNumber, message.e));
         /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_e = 2; */
         for (let i = 0; i < (message.repeatedE?.length || 0); i++)
-            writer.tag(2, WireType.Varint).int32(message.repeatedE?.[i] as any);
+            writer.tag(2, WireType.Varint).int32(enumStringToNumber(MyEnum$stringToNumber, message.repeatedE?.[i] as any));
         /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_e = 3 [packed = true]; */
         if (message.repeatedPackedE?.length) {
             writer.tag(3, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedPackedE.length; i++)
-                writer.int32(message.repeatedPackedE[i]);
+                writer.int32(enumStringToNumber(MyEnum$stringToNumber, message.repeatedPackedE[i]));
             writer.join();
         }
         /* repeated proto2_preserve_unknown_enum_unittest.MyEnum repeated_packed_unexpected_e = 4; */
         for (let i = 0; i < (message.repeatedPackedUnexpectedE?.length || 0); i++)
-            writer.tag(4, WireType.Varint).int32(message.repeatedPackedUnexpectedE?.[i] as any);
+            writer.tag(4, WireType.Varint).int32(enumStringToNumber(MyEnum$stringToNumber, message.repeatedPackedUnexpectedE?.[i] as any));
         /* proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_1 = 5; */
         if ("oneofE1" in message && message.oneofE1 != null)
-            writer.tag(5, WireType.Varint).int32(message.oneofE1);
+            writer.tag(5, WireType.Varint).int32(enumStringToNumber(MyEnum$stringToNumber, message.oneofE1));
         /* proto2_preserve_unknown_enum_unittest.MyEnum oneof_e_2 = 6; */
         if ("oneofE2" in message && message.oneofE2 != null)
-            writer.tag(6, WireType.Varint).int32(message.oneofE2);
+            writer.tag(6, WireType.Varint).int32(enumStringToNumber(MyEnum$stringToNumber, message.oneofE2));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

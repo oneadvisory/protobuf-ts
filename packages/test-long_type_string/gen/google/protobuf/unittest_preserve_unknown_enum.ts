@@ -32,8 +32,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -100,58 +102,88 @@ export interface MyMessagePlusExtra {
     oneofE2?: MyEnumPlusExtra;
 }
 /**
- * @generated from protobuf enum proto3_preserve_unknown_enum_unittest.MyEnum
+ * @generated from protobuf enum proto3_preserve_unknown_enum_unittest.MyEnum:
+ *
+ * enum MyEnum {
+ *  FOO = 0;
+ *  BAR = 1;
+ *  BAZ = 2;
+ * }
  */
-export enum MyEnum {
+export type MyEnum = "FOO" | "BAR" | "BAZ";
+export const MyEnum = {
     /**
      * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2
-}
+     */ BAZ: "BAZ"
+} as const;
+export const MyEnum$stringToNumber = {
+    FOO: 0,
+    BAR: 1,
+    BAZ: 2
+} as const;
+export const MyEnum$numberToString = {
+    0: "FOO",
+    1: "BAR",
+    2: "BAZ"
+} as const;
 /**
- * @generated from protobuf enum proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra
+ * @generated from protobuf enum proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra:
+ *
+ * enum MyEnumPlusExtra {
+ *  E_FOO = 0;
+ *  E_BAR = 1;
+ *  E_BAZ = 2;
+ *  E_EXTRA = 3;
+ * }
  */
-export enum MyEnumPlusExtra {
+export type MyEnumPlusExtra = "E_FOO" | "E_BAR" | "E_BAZ" | "E_EXTRA";
+export const MyEnumPlusExtra = {
     /**
      * @generated from protobuf enum value: E_FOO = 0;
-     */
-    E_FOO = 0,
+     */ E_FOO: "E_FOO",
     /**
      * @generated from protobuf enum value: E_BAR = 1;
-     */
-    E_BAR = 1,
+     */ E_BAR: "E_BAR",
     /**
      * @generated from protobuf enum value: E_BAZ = 2;
-     */
-    E_BAZ = 2,
+     */ E_BAZ: "E_BAZ",
     /**
      * @generated from protobuf enum value: E_EXTRA = 3;
-     */
-    E_EXTRA = 3
-}
+     */ E_EXTRA: "E_EXTRA"
+} as const;
+export const MyEnumPlusExtra$stringToNumber = {
+    E_FOO: 0,
+    E_BAR: 1,
+    E_BAZ: 2,
+    E_EXTRA: 3
+} as const;
+export const MyEnumPlusExtra$numberToString = {
+    0: "E_FOO",
+    1: "E_BAR",
+    2: "E_BAZ",
+    3: "E_EXTRA"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class MyMessage$Type extends MessageType<MyMessage> {
     constructor() {
         super("proto3_preserve_unknown_enum_unittest.MyMessage", [
-            { no: 1, name: "e", kind: "enum", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnum", MyEnum] },
-            { no: 2, name: "repeated_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnum", MyEnum] },
-            { no: 3, name: "repeated_packed_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnum", MyEnum] },
-            { no: 4, name: "repeated_packed_unexpected_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra] },
-            { no: 5, name: "oneof_e_1", kind: "enum", oneof: "o", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnum", MyEnum] },
-            { no: 6, name: "oneof_e_2", kind: "enum", oneof: "o", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnum", MyEnum] }
+            { no: 1, name: "e", kind: "enum", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] },
+            { no: 2, name: "repeated_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] },
+            { no: 3, name: "repeated_packed_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] },
+            { no: 4, name: "repeated_packed_unexpected_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra, undefined, MyEnumPlusExtra$stringToNumber] },
+            { no: 5, name: "oneof_e_1", kind: "enum", oneof: "o", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] },
+            { no: 6, name: "oneof_e_2", kind: "enum", oneof: "o", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnum", MyEnum, undefined, MyEnum$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<MyMessage>): MyMessage {
         const message = globalThis.Object.create(this.messagePrototype!);
-        message.e = 0;
+        message.e = "FOO";
         message.repeatedE = [];
         message.repeatedPackedE = [];
         message.repeatedPackedUnexpectedE = [];
@@ -165,34 +197,34 @@ class MyMessage$Type extends MessageType<MyMessage> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* proto3_preserve_unknown_enum_unittest.MyEnum e */ 1:
-                    message.e = reader.int32();
+                    message.e = enumNumberToString(MyEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* repeated proto3_preserve_unknown_enum_unittest.MyEnum repeated_e */ 2:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedE?.push?.(reader.int32());
+                            message.repeatedE?.push?.(enumNumberToString(MyEnum$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedE?.push?.(reader.int32());
+                        message.repeatedE?.push?.(enumNumberToString(MyEnum$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated proto3_preserve_unknown_enum_unittest.MyEnum repeated_packed_e = 3 [packed = true] */ 3:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedPackedE?.push?.(reader.int32());
+                            message.repeatedPackedE?.push?.(enumNumberToString(MyEnum$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedPackedE?.push?.(reader.int32());
+                        message.repeatedPackedE?.push?.(enumNumberToString(MyEnum$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra repeated_packed_unexpected_e */ 4:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedPackedUnexpectedE?.push?.(reader.int32());
+                            message.repeatedPackedUnexpectedE?.push?.(enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedPackedUnexpectedE?.push?.(reader.int32());
+                        message.repeatedPackedUnexpectedE?.push?.(enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any);
                     break;
                 case /* proto3_preserve_unknown_enum_unittest.MyEnum oneof_e_1 */ 5:
-                    message.oneofE1 = reader.int32();
+                    message.oneofE1 = enumNumberToString(MyEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* proto3_preserve_unknown_enum_unittest.MyEnum oneof_e_2 */ 6:
-                    message.oneofE2 = reader.int32();
+                    message.oneofE2 = enumNumberToString(MyEnum$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -207,35 +239,35 @@ class MyMessage$Type extends MessageType<MyMessage> {
     }
     internalBinaryWrite(message: MyMessage, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* proto3_preserve_unknown_enum_unittest.MyEnum e = 1; */
-        if (message.e !== 0)
-            writer.tag(1, WireType.Varint).int32(message.e);
+        if (message.e !== "FOO")
+            writer.tag(1, WireType.Varint).int32(enumStringToNumber(MyEnum$stringToNumber, message.e));
         /* repeated proto3_preserve_unknown_enum_unittest.MyEnum repeated_e = 2; */
         if (message.repeatedE?.length) {
             writer.tag(2, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedE.length; i++)
-                writer.int32(message.repeatedE[i]);
+                writer.int32(enumStringToNumber(MyEnum$stringToNumber, message.repeatedE[i]));
             writer.join();
         }
         /* repeated proto3_preserve_unknown_enum_unittest.MyEnum repeated_packed_e = 3 [packed = true]; */
         if (message.repeatedPackedE?.length) {
             writer.tag(3, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedPackedE.length; i++)
-                writer.int32(message.repeatedPackedE[i]);
+                writer.int32(enumStringToNumber(MyEnum$stringToNumber, message.repeatedPackedE[i]));
             writer.join();
         }
         /* repeated proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra repeated_packed_unexpected_e = 4; */
         if (message.repeatedPackedUnexpectedE?.length) {
             writer.tag(4, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedPackedUnexpectedE.length; i++)
-                writer.int32(message.repeatedPackedUnexpectedE[i]);
+                writer.int32(enumStringToNumber(MyEnumPlusExtra$stringToNumber, message.repeatedPackedUnexpectedE[i]));
             writer.join();
         }
         /* proto3_preserve_unknown_enum_unittest.MyEnum oneof_e_1 = 5; */
         if ("oneofE1" in message && message.oneofE1 != null)
-            writer.tag(5, WireType.Varint).int32(message.oneofE1);
+            writer.tag(5, WireType.Varint).int32(enumStringToNumber(MyEnum$stringToNumber, message.oneofE1));
         /* proto3_preserve_unknown_enum_unittest.MyEnum oneof_e_2 = 6; */
         if ("oneofE2" in message && message.oneofE2 != null)
-            writer.tag(6, WireType.Varint).int32(message.oneofE2);
+            writer.tag(6, WireType.Varint).int32(enumStringToNumber(MyEnum$stringToNumber, message.oneofE2));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -250,17 +282,17 @@ export const MyMessage = new MyMessage$Type();
 class MyMessagePlusExtra$Type extends MessageType<MyMessagePlusExtra> {
     constructor() {
         super("proto3_preserve_unknown_enum_unittest.MyMessagePlusExtra", [
-            { no: 1, name: "e", kind: "enum", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra] },
-            { no: 2, name: "repeated_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra] },
-            { no: 3, name: "repeated_packed_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra] },
-            { no: 4, name: "repeated_packed_unexpected_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra] },
-            { no: 5, name: "oneof_e_1", kind: "enum", oneof: "o", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra] },
-            { no: 6, name: "oneof_e_2", kind: "enum", oneof: "o", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra] }
+            { no: 1, name: "e", kind: "enum", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra, undefined, MyEnumPlusExtra$stringToNumber] },
+            { no: 2, name: "repeated_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra, undefined, MyEnumPlusExtra$stringToNumber] },
+            { no: 3, name: "repeated_packed_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra, undefined, MyEnumPlusExtra$stringToNumber] },
+            { no: 4, name: "repeated_packed_unexpected_e", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra, undefined, MyEnumPlusExtra$stringToNumber] },
+            { no: 5, name: "oneof_e_1", kind: "enum", oneof: "o", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra, undefined, MyEnumPlusExtra$stringToNumber] },
+            { no: 6, name: "oneof_e_2", kind: "enum", oneof: "o", T: () => ["proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra", MyEnumPlusExtra, undefined, MyEnumPlusExtra$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<MyMessagePlusExtra>): MyMessagePlusExtra {
         const message = globalThis.Object.create(this.messagePrototype!);
-        message.e = 0;
+        message.e = "E_FOO";
         message.repeatedE = [];
         message.repeatedPackedE = [];
         message.repeatedPackedUnexpectedE = [];
@@ -274,34 +306,34 @@ class MyMessagePlusExtra$Type extends MessageType<MyMessagePlusExtra> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra e */ 1:
-                    message.e = reader.int32();
+                    message.e = enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 case /* repeated proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra repeated_e */ 2:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedE?.push?.(reader.int32());
+                            message.repeatedE?.push?.(enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedE?.push?.(reader.int32());
+                        message.repeatedE?.push?.(enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra repeated_packed_e = 3 [packed = true] */ 3:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedPackedE?.push?.(reader.int32());
+                            message.repeatedPackedE?.push?.(enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedPackedE?.push?.(reader.int32());
+                        message.repeatedPackedE?.push?.(enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra repeated_packed_unexpected_e = 4 [packed = true] */ 4:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedPackedUnexpectedE?.push?.(reader.int32());
+                            message.repeatedPackedUnexpectedE?.push?.(enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedPackedUnexpectedE?.push?.(reader.int32());
+                        message.repeatedPackedUnexpectedE?.push?.(enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any);
                     break;
                 case /* proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra oneof_e_1 */ 5:
-                    message.oneofE1 = reader.int32();
+                    message.oneofE1 = enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 case /* proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra oneof_e_2 */ 6:
-                    message.oneofE2 = reader.int32();
+                    message.oneofE2 = enumNumberToString(MyEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -316,35 +348,35 @@ class MyMessagePlusExtra$Type extends MessageType<MyMessagePlusExtra> {
     }
     internalBinaryWrite(message: MyMessagePlusExtra, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra e = 1; */
-        if (message.e !== 0)
-            writer.tag(1, WireType.Varint).int32(message.e);
+        if (message.e !== "E_FOO")
+            writer.tag(1, WireType.Varint).int32(enumStringToNumber(MyEnumPlusExtra$stringToNumber, message.e));
         /* repeated proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra repeated_e = 2; */
         if (message.repeatedE?.length) {
             writer.tag(2, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedE.length; i++)
-                writer.int32(message.repeatedE[i]);
+                writer.int32(enumStringToNumber(MyEnumPlusExtra$stringToNumber, message.repeatedE[i]));
             writer.join();
         }
         /* repeated proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra repeated_packed_e = 3 [packed = true]; */
         if (message.repeatedPackedE?.length) {
             writer.tag(3, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedPackedE.length; i++)
-                writer.int32(message.repeatedPackedE[i]);
+                writer.int32(enumStringToNumber(MyEnumPlusExtra$stringToNumber, message.repeatedPackedE[i]));
             writer.join();
         }
         /* repeated proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra repeated_packed_unexpected_e = 4 [packed = true]; */
         if (message.repeatedPackedUnexpectedE?.length) {
             writer.tag(4, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedPackedUnexpectedE.length; i++)
-                writer.int32(message.repeatedPackedUnexpectedE[i]);
+                writer.int32(enumStringToNumber(MyEnumPlusExtra$stringToNumber, message.repeatedPackedUnexpectedE[i]));
             writer.join();
         }
         /* proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra oneof_e_1 = 5; */
         if ("oneofE1" in message && message.oneofE1 != null)
-            writer.tag(5, WireType.Varint).int32(message.oneofE1);
+            writer.tag(5, WireType.Varint).int32(enumStringToNumber(MyEnumPlusExtra$stringToNumber, message.oneofE1));
         /* proto3_preserve_unknown_enum_unittest.MyEnumPlusExtra oneof_e_2 = 6; */
         if ("oneofE2" in message && message.oneofE2 != null)
-            writer.tag(6, WireType.Varint).int32(message.oneofE2);
+            writer.tag(6, WireType.Varint).int32(enumStringToNumber(MyEnumPlusExtra$stringToNumber, message.oneofE2));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
