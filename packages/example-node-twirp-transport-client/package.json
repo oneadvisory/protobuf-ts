@@ -1,6 +1,6 @@
 {
   "name": "@oneadvisory/protobuf-ts-example-node-twirp-transport-client",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "",
   "private": true,
   "scripts": {
@@ -12,9 +12,9 @@
   "license": "Apache-2.0",
   "homepage": "https://github.com/oneadvisory/protobuf-ts",
   "dependencies": {
-    "@oneadvisory/protobuf-ts-runtime": "^3.0.0",
-    "@oneadvisory/protobuf-ts-runtime-rpc": "^3.0.0",
-    "@oneadvisory/protobuf-ts-twirp-transport": "^3.0.0",
+    "@oneadvisory/protobuf-ts-runtime": "^4.0.0",
+    "@oneadvisory/protobuf-ts-runtime-rpc": "^4.0.0",
+    "@oneadvisory/protobuf-ts-twirp-transport": "^4.0.0",
     "@types/node-fetch": "^2.5.8",
     "abort-controller": "^3.0.0",
     "node-fetch": "^2.6.0",
@@ -23,6 +23,6 @@
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.50.1",
-    "@oneadvisory/protobuf-ts-plugin": "^3.0.0"
+    "@oneadvisory/protobuf-ts-plugin": "^4.0.0"
   }
 }
