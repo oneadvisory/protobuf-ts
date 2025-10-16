@@ -40,15 +40,27 @@
 // A proto file we will use for unit testing.
 //
 /**
- * @generated from protobuf enum protobuf_unittest.lazy_imports.LazyEnum
+ * @generated from protobuf enum protobuf_unittest.lazy_imports.LazyEnum:
+ *
+ * enum LazyEnum {
+ *  LAZY_ENUM_0 = 0;
+ *  LAZY_ENUM_1 = 1;
+ * }
  */
-export enum LazyEnum {
+export type LazyEnum = "LAZY_ENUM_0" | "LAZY_ENUM_1";
+export const LazyEnum = {
     /**
      * @generated from protobuf enum value: LAZY_ENUM_0 = 0;
-     */
-    LAZY_ENUM_0 = 0,
+     */ LAZY_ENUM_0: "LAZY_ENUM_0",
     /**
      * @generated from protobuf enum value: LAZY_ENUM_1 = 1;
-     */
-    LAZY_ENUM_1 = 1
-}
+     */ LAZY_ENUM_1: "LAZY_ENUM_1"
+} as const;
+export const LazyEnum$stringToNumber = {
+    LAZY_ENUM_0: 0,
+    LAZY_ENUM_1: 1
+} as const;
+export const LazyEnum$numberToString = {
+    0: "LAZY_ENUM_0",
+    1: "LAZY_ENUM_1"
+} as const;

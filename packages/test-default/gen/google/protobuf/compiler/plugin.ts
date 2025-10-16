@@ -270,6 +270,16 @@ export const CodeGeneratorResponse_Feature = {
      * @generated from protobuf enum value: FEATURE_SUPPORTS_EDITIONS = 2;
      */ SUPPORTS_EDITIONS: "SUPPORTS_EDITIONS"
 } as const;
+export const CodeGeneratorResponse_Feature$stringToNumber = {
+    NONE: 0,
+    PROTO3_OPTIONAL: 1,
+    SUPPORTS_EDITIONS: 2
+} as const;
+export const CodeGeneratorResponse_Feature$numberToString = {
+    0: "NONE",
+    1: "PROTO3_OPTIONAL",
+    2: "SUPPORTS_EDITIONS"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class Version$Type extends MessageType<Version> {
     constructor() {

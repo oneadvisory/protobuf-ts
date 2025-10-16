@@ -60,3 +60,23 @@ export const DayOfWeek = {
      *
      * @generated from protobuf enum value: SUNDAY = 7; */ SUNDAY: "SUNDAY"
 } as const;
+export const DayOfWeek$stringToNumber = {
+    DAY_OF_WEEK_UNSPECIFIED: 0,
+    MONDAY: 1,
+    TUESDAY: 2,
+    WEDNESDAY: 3,
+    THURSDAY: 4,
+    FRIDAY: 5,
+    SATURDAY: 6,
+    SUNDAY: 7
+} as const;
+export const DayOfWeek$numberToString = {
+    0: "DAY_OF_WEEK_UNSPECIFIED",
+    1: "MONDAY",
+    2: "TUESDAY",
+    3: "WEDNESDAY",
+    4: "THURSDAY",
+    5: "FRIDAY",
+    6: "SATURDAY",
+    7: "SUNDAY"
+} as const;

@@ -9,6 +9,8 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
@@ -260,6 +262,20 @@ export const WireFormat = {
      * @generated from protobuf enum value: TEXT_FORMAT = 4;
      */ TEXT_FORMAT: "TEXT_FORMAT"
 } as const;
+export const WireFormat$stringToNumber = {
+    UNSPECIFIED: 0,
+    PROTOBUF: 1,
+    JSON: 2,
+    JSPB: 3,
+    TEXT_FORMAT: 4
+} as const;
+export const WireFormat$numberToString = {
+    0: "UNSPECIFIED",
+    1: "PROTOBUF",
+    2: "JSON",
+    3: "JSPB",
+    4: "TEXT_FORMAT"
+} as const;
 /**
  * @generated from protobuf enum conformance.TestCategory:
  *
@@ -298,6 +314,22 @@ export const TestCategory = {
      * this type. Testees of other languages can simply skip it.
      *
      * @generated from protobuf enum value: TEXT_FORMAT_TEST = 5; */ TEXT_FORMAT_TEST: "TEXT_FORMAT_TEST"
+} as const;
+export const TestCategory$stringToNumber = {
+    UNSPECIFIED_TEST: 0,
+    BINARY_TEST: 1,
+    JSON_TEST: 2,
+    JSON_IGNORE_UNKNOWN_PARSING_TEST: 3,
+    JSPB_TEST: 4,
+    TEXT_FORMAT_TEST: 5
+} as const;
+export const TestCategory$numberToString = {
+    0: "UNSPECIFIED_TEST",
+    1: "BINARY_TEST",
+    2: "JSON_TEST",
+    3: "JSON_IGNORE_UNKNOWN_PARSING_TEST",
+    4: "JSPB_TEST",
+    5: "TEXT_FORMAT_TEST"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestStatus$Type extends MessageType<TestStatus> {
@@ -417,18 +449,18 @@ class ConformanceRequest$Type extends MessageType<ConformanceRequest> {
             { no: 2, name: "json_payload", kind: "scalar", oneof: "payload", T: 9 /*ScalarType.STRING*/ },
             { no: 7, name: "jspb_payload", kind: "scalar", oneof: "payload", T: 9 /*ScalarType.STRING*/ },
             { no: 8, name: "text_payload", kind: "scalar", oneof: "payload", T: 9 /*ScalarType.STRING*/ },
-            { no: 3, name: "requested_output_format", kind: "enum", T: () => ["conformance.WireFormat", WireFormat] },
+            { no: 3, name: "requested_output_format", kind: "enum", T: () => ["conformance.WireFormat", WireFormat, undefined, WireFormat$stringToNumber] },
             { no: 4, name: "message_type", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 5, name: "test_category", kind: "enum", T: () => ["conformance.TestCategory", TestCategory] },
+            { no: 5, name: "test_category", kind: "enum", T: () => ["conformance.TestCategory", TestCategory, undefined, TestCategory$stringToNumber] },
             { no: 6, name: "jspb_encoding_options", kind: "message", T: () => JspbEncodingConfig },
             { no: 9, name: "print_unknown_fields", kind: "scalar", T: 8 /*ScalarType.BOOL*/ }
         ]);
     }
     create(value?: PartialMessage<ConformanceRequest>): ConformanceRequest {
         const message = globalThis.Object.create(this.messagePrototype!);
-        message.requestedOutputFormat = 0;
+        message.requestedOutputFormat = "UNSPECIFIED";
         message.messageType = "";
-        message.testCategory = 0;
+        message.testCategory = "UNSPECIFIED_TEST";
         message.printUnknownFields = false;
         if (value !== undefined)
             reflectionMergePartial<ConformanceRequest>(this, message, value);
@@ -452,13 +484,13 @@ class ConformanceRequest$Type extends MessageType<ConformanceRequest> {
                     message.textPayload = reader.string();
                     break;
                 case /* conformance.WireFormat requested_output_format */ 3:
-                    message.requestedOutputFormat = reader.int32();
+                    message.requestedOutputFormat = enumNumberToString(WireFormat$numberToString, reader.int32()) as any;
                     break;
                 case /* string message_type */ 4:
                     message.messageType = reader.string();
                     break;
                 case /* conformance.TestCategory test_category */ 5:
-                    message.testCategory = reader.int32();
+                    message.testCategory = enumNumberToString(TestCategory$numberToString, reader.int32()) as any;
                     break;
                 case /* conformance.JspbEncodingConfig jspb_encoding_options */ 6:
                     message.jspbEncodingOptions = JspbEncodingConfig.internalBinaryRead(reader, reader.uint32(), options, message.jspbEncodingOptions);
@@ -485,14 +517,14 @@ class ConformanceRequest$Type extends MessageType<ConformanceRequest> {
         if ("jsonPayload" in message && message.jsonPayload != null)
             writer.tag(2, WireType.LengthDelimited).string(message.jsonPayload);
         /* conformance.WireFormat requested_output_format = 3; */
-        if (message.requestedOutputFormat !== 0)
-            writer.tag(3, WireType.Varint).int32(message.requestedOutputFormat);
+        if (message.requestedOutputFormat !== "UNSPECIFIED")
+            writer.tag(3, WireType.Varint).int32(enumStringToNumber(WireFormat$stringToNumber, message.requestedOutputFormat));
         /* string message_type = 4; */
         if (message.messageType !== "")
             writer.tag(4, WireType.LengthDelimited).string(message.messageType);
         /* conformance.TestCategory test_category = 5; */
-        if (message.testCategory !== 0)
-            writer.tag(5, WireType.Varint).int32(message.testCategory);
+        if (message.testCategory !== "UNSPECIFIED_TEST")
+            writer.tag(5, WireType.Varint).int32(enumStringToNumber(TestCategory$stringToNumber, message.testCategory));
         /* conformance.JspbEncodingConfig jspb_encoding_options = 6; */
         if (message.jspbEncodingOptions)
             JspbEncodingConfig.internalBinaryWrite(message.jspbEncodingOptions, writer.tag(6, WireType.LengthDelimited).fork(), options).join();

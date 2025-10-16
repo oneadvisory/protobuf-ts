@@ -9,9 +9,11 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -36,36 +38,50 @@ export interface GoFeatures {
     apiLevel?: GoFeatures_APILevel;
 }
 /**
- * @generated from protobuf enum pb.GoFeatures.APILevel
+ * @generated from protobuf enum pb.GoFeatures.APILevel:
+ *
+ * enum APILevel {
+ *  API_LEVEL_UNSPECIFIED = 0;  // API_LEVEL_UNSPECIFIED results in selecting the OPEN API,
+ *  API_OPEN = 1;
+ *  API_HYBRID = 2;
+ *  API_OPAQUE = 3;
+ * }
  */
-export enum GoFeatures_APILevel {
-    /**
-     * API_LEVEL_UNSPECIFIED results in selecting the OPEN API,
+export type GoFeatures_APILevel = "API_LEVEL_UNSPECIFIED" | "API_OPEN" | "API_HYBRID" | "API_OPAQUE";
+export const GoFeatures_APILevel = {
+    /** API_LEVEL_UNSPECIFIED results in selecting the OPEN API,
      * but needs to be a separate value to distinguish between
      * an explicitly set api level or a missing api level.
      *
-     * @generated from protobuf enum value: API_LEVEL_UNSPECIFIED = 0;
-     */
-    API_LEVEL_UNSPECIFIED = 0,
+     * @generated from protobuf enum value: API_LEVEL_UNSPECIFIED = 0; */ API_LEVEL_UNSPECIFIED: "API_LEVEL_UNSPECIFIED",
     /**
      * @generated from protobuf enum value: API_OPEN = 1;
-     */
-    API_OPEN = 1,
+     */ API_OPEN: "API_OPEN",
     /**
      * @generated from protobuf enum value: API_HYBRID = 2;
-     */
-    API_HYBRID = 2,
+     */ API_HYBRID: "API_HYBRID",
     /**
      * @generated from protobuf enum value: API_OPAQUE = 3;
-     */
-    API_OPAQUE = 3
-}
+     */ API_OPAQUE: "API_OPAQUE"
+} as const;
+export const GoFeatures_APILevel$stringToNumber = {
+    API_LEVEL_UNSPECIFIED: 0,
+    API_OPEN: 1,
+    API_HYBRID: 2,
+    API_OPAQUE: 3
+} as const;
+export const GoFeatures_APILevel$numberToString = {
+    0: "API_LEVEL_UNSPECIFIED",
+    1: "API_OPEN",
+    2: "API_HYBRID",
+    3: "API_OPAQUE"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class GoFeatures$Type extends MessageType<GoFeatures> {
     constructor() {
         super("pb.GoFeatures", [
             { no: 1, name: "legacy_unmarshal_json_enum", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 2, name: "api_level", kind: "enum", opt: true, T: () => ["pb.GoFeatures.APILevel", GoFeatures_APILevel] }
+            { no: 2, name: "api_level", kind: "enum", opt: true, T: () => ["pb.GoFeatures.APILevel", GoFeatures_APILevel, undefined, GoFeatures_APILevel$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<GoFeatures>): GoFeatures {
@@ -83,7 +99,7 @@ class GoFeatures$Type extends MessageType<GoFeatures> {
                     message.legacyUnmarshalJsonEnum = reader.bool();
                     break;
                 case /* optional pb.GoFeatures.APILevel api_level */ 2:
-                    message.apiLevel = reader.int32();
+                    message.apiLevel = enumNumberToString(GoFeatures_APILevel$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -102,7 +118,7 @@ class GoFeatures$Type extends MessageType<GoFeatures> {
             writer.tag(1, WireType.Varint).bool(message.legacyUnmarshalJsonEnum);
         /* optional pb.GoFeatures.APILevel api_level = 2; */
         if (message.apiLevel !== undefined)
-            writer.tag(2, WireType.Varint).int32(message.apiLevel);
+            writer.tag(2, WireType.Varint).int32(enumStringToNumber(GoFeatures_APILevel$stringToNumber, message.apiLevel));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

@@ -563,10 +563,8 @@ export class Interpreter {
       }
       builder.add(name, enumValueDescriptor.number);
     }
-    let enumInfo: rt.EnumInfo = [descriptor.typeName, builder.build()];
-    if (sharedPrefix) {
-      enumInfo = [enumInfo[0], enumInfo[1], sharedPrefix];
-    }
+    const { enumObject, stringToNumber } = builder.build();
+    let enumInfo: rt.EnumInfo = [descriptor.typeName, enumObject, sharedPrefix, stringToNumber];
     return enumInfo;
   }
 
@@ -680,7 +678,7 @@ export class RuntimeEnumBuilder {
     return true;
   }
 
-  build(): rt.EnumInfo[1] {
+  build(): { enumObject: rt.EnumInfo[1]; stringToNumber: Record<string, number> } {
     if (
       this.values.map((v) => v.name).some((name, i, a) => a.indexOf(name) !== i)
     ) {
@@ -690,10 +688,12 @@ export class RuntimeEnumBuilder {
       throw new Error('cannot create empty enum object');
     }
     // Create a string-based enum object: { "VALUE1": "VALUE1", "VALUE2": "VALUE2" }
-    let object: rt.EnumInfo[1] = {};
+    let enumObject: rt.EnumInfo[1] = {};
+    let stringToNumber: Record<string, number> = {};
     for (let v of this.values) {
-      object[v.name] = v.name;
+      enumObject[v.name] = v.name;
+      stringToNumber[v.name] = v.number;
     }
-    return object;
+    return { enumObject, stringToNumber };
   }
 }

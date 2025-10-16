@@ -66,3 +66,23 @@ export const CalendarPeriod = {
      *
      * @generated from protobuf enum value: YEAR = 7; */ YEAR: "YEAR"
 } as const;
+export const CalendarPeriod$stringToNumber = {
+    CALENDAR_PERIOD_UNSPECIFIED: 0,
+    DAY: 1,
+    WEEK: 2,
+    FORTNIGHT: 3,
+    MONTH: 4,
+    QUARTER: 5,
+    HALF: 6,
+    YEAR: 7
+} as const;
+export const CalendarPeriod$numberToString = {
+    0: "CALENDAR_PERIOD_UNSPECIFIED",
+    1: "DAY",
+    2: "WEEK",
+    3: "FORTNIGHT",
+    4: "MONTH",
+    5: "QUARTER",
+    6: "HALF",
+    7: "YEAR"
+} as const;

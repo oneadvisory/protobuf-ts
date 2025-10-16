@@ -80,3 +80,33 @@ export const Month = {
      *
      * @generated from protobuf enum value: DECEMBER = 12; */ DECEMBER: "DECEMBER"
 } as const;
+export const Month$stringToNumber = {
+    MONTH_UNSPECIFIED: 0,
+    JANUARY: 1,
+    FEBRUARY: 2,
+    MARCH: 3,
+    APRIL: 4,
+    MAY: 5,
+    JUNE: 6,
+    JULY: 7,
+    AUGUST: 8,
+    SEPTEMBER: 9,
+    OCTOBER: 10,
+    NOVEMBER: 11,
+    DECEMBER: 12
+} as const;
+export const Month$numberToString = {
+    0: "MONTH_UNSPECIFIED",
+    1: "JANUARY",
+    2: "FEBRUARY",
+    3: "MARCH",
+    4: "APRIL",
+    5: "MAY",
+    6: "JUNE",
+    7: "JULY",
+    8: "AUGUST",
+    9: "SEPTEMBER",
+    10: "OCTOBER",
+    11: "NOVEMBER",
+    12: "DECEMBER"
+} as const;

@@ -137,6 +137,12 @@ export const EnumWithComments = {
      *
      * @generated from protobuf enum value: VALUE = 0; */ VALUE: "VALUE"
 } as const;
+export const EnumWithComments$stringToNumber = {
+    VALUE: 0
+} as const;
+export const EnumWithComments$numberToString = {
+    0: "VALUE"
+} as const;
 /**
  * Leading comment for deprecated enum
  *
@@ -157,6 +163,14 @@ export const DeprecatedEnumWithComment = {
      * @generated from protobuf enum value: DEPRECATED_ENUM_WITH_COMMENT_B = 1;
      */ DEPRECATED_ENUM_WITH_COMMENT_B: "DEPRECATED_ENUM_WITH_COMMENT_B"
 } as const;
+export const DeprecatedEnumWithComment$stringToNumber = {
+    DEPRECATED_ENUM_WITH_COMMENT_A: 0,
+    DEPRECATED_ENUM_WITH_COMMENT_B: 1
+} as const;
+export const DeprecatedEnumWithComment$numberToString = {
+    0: "DEPRECATED_ENUM_WITH_COMMENT_A",
+    1: "DEPRECATED_ENUM_WITH_COMMENT_B"
+} as const;
 /**
  * @deprecated
  * @generated from protobuf enum spec.DeprecatedEnumNoComment:
@@ -174,6 +188,14 @@ export const DeprecatedEnumNoComment = {
     /**
      * @generated from protobuf enum value: DEPRECATED_ENUM_NO_COMMENT_B = 1;
      */ DEPRECATED_ENUM_NO_COMMENT_B: "DEPRECATED_ENUM_NO_COMMENT_B"
+} as const;
+export const DeprecatedEnumNoComment$stringToNumber = {
+    DEPRECATED_ENUM_NO_COMMENT_A: 0,
+    DEPRECATED_ENUM_NO_COMMENT_B: 1
+} as const;
+export const DeprecatedEnumNoComment$numberToString = {
+    0: "DEPRECATED_ENUM_NO_COMMENT_A",
+    1: "DEPRECATED_ENUM_NO_COMMENT_B"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class MessageWithComments$Type extends MessageType<MessageWithComments> {

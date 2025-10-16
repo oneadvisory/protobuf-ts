@@ -37,6 +37,7 @@
 //
 // This is like unittest.proto but with optimize_for = LITE_RUNTIME.
 //
+import { ImportEnumLite$stringToNumber } from "./unittest_import_lite";
 import { MessageType } from "@oneadvisory/protobuf-ts-runtime";
 import { PublicImportMessageLite } from "./unittest_import_public_lite";
 import { ImportEnumLite } from "./unittest_import_lite";
@@ -390,26 +391,42 @@ export interface TestAllTypesLite_RepeatedGroup {
     a?: number;
 }
 /**
- * @generated from protobuf enum protobuf_unittest.TestAllTypesLite.NestedEnum
+ * @generated from protobuf enum protobuf_unittest.TestAllTypesLite.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  UNSPECIFIED$ = 0;
+ *  FOO = 1;
+ *  BAR = 2;
+ *  BAZ = 3;
+ * }
  */
-export enum TestAllTypesLite_NestedEnum {
+export type TestAllTypesLite_NestedEnum = "UNSPECIFIED$" | "FOO" | "BAR" | "BAZ";
+export const TestAllTypesLite_NestedEnum = {
     /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
+     * @generated from protobuf enum value: UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
     /**
      * @generated from protobuf enum value: FOO = 1;
-     */
-    FOO = 1,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 2;
-     */
-    BAR = 2,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 3;
-     */
-    BAZ = 3
-}
+     */ BAZ: "BAZ"
+} as const;
+export const TestAllTypesLite_NestedEnum$stringToNumber = {
+    UNSPECIFIED$: 0,
+    FOO: 1,
+    BAR: 2,
+    BAZ: 3
+} as const;
+export const TestAllTypesLite_NestedEnum$numberToString = {
+    0: "UNSPECIFIED$",
+    1: "FOO",
+    2: "BAR",
+    3: "BAZ"
+} as const;
 /**
  * @generated from protobuf message protobuf_unittest.ForeignMessageLite
  */
@@ -819,85 +836,145 @@ export interface NonPackedFixed32 {
 export interface DupEnum {
 }
 /**
- * @generated from protobuf enum protobuf_unittest.DupEnum.TestEnumWithDupValueLite
+ * @generated from protobuf enum protobuf_unittest.DupEnum.TestEnumWithDupValueLite:
+ *
+ * enum TestEnumWithDupValueLite {
+ *  UNSPECIFIED$ = 0;
+ *  FOO1 = 1;
+ *  BAR1 = 2;
+ *  BAZ = 3;
+ *  FOO2 = 1;
+ *  BAR2 = 2;
+ * }
  */
-export enum DupEnum_TestEnumWithDupValueLite {
+export type DupEnum_TestEnumWithDupValueLite = "UNSPECIFIED$" | "FOO1" | "BAR1" | "BAZ" | "FOO2" | "BAR2";
+export const DupEnum_TestEnumWithDupValueLite = {
     /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
+     * @generated from protobuf enum value: UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
     /**
      * @generated from protobuf enum value: FOO1 = 1;
-     */
-    FOO1 = 1,
+     */ FOO1: "FOO1",
     /**
      * @generated from protobuf enum value: BAR1 = 2;
-     */
-    BAR1 = 2,
+     */ BAR1: "BAR1",
     /**
      * @generated from protobuf enum value: BAZ = 3;
-     */
-    BAZ = 3,
+     */ BAZ: "BAZ",
     /**
-     * @generated from protobuf enum value: FOO1 = 1;
-     */
-    FOO2 = 1,
+     * @generated from protobuf enum value: FOO2 = 1;
+     */ FOO2: "FOO2",
     /**
-     * @generated from protobuf enum value: BAR1 = 2;
-     */
-    BAR2 = 2
-}
+     * @generated from protobuf enum value: BAR2 = 2;
+     */ BAR2: "BAR2"
+} as const;
+export const DupEnum_TestEnumWithDupValueLite$stringToNumber = {
+    UNSPECIFIED$: 0,
+    FOO1: 1,
+    BAR1: 2,
+    BAZ: 3,
+    FOO2: 1,
+    BAR2: 2
+} as const;
+export const DupEnum_TestEnumWithDupValueLite$numberToString = {
+    0: "UNSPECIFIED$",
+    1: "FOO1",
+    2: "BAR1",
+    3: "BAZ"
+} as const;
 /**
- * @generated from protobuf enum protobuf_unittest.ForeignEnumLite
+ * @generated from protobuf enum protobuf_unittest.ForeignEnumLite:
+ *
+ * enum ForeignEnumLite {
+ *  UNSPECIFIED$ = 0;
+ *  FOREIGN_LITE_FOO = 4;
+ *  FOREIGN_LITE_BAZ = 6;
+ *  FOREIGN_LITE_BAR = 5;
+ * }
  */
-export enum ForeignEnumLite {
+export type ForeignEnumLite = "UNSPECIFIED$" | "FOREIGN_LITE_FOO" | "FOREIGN_LITE_BAZ" | "FOREIGN_LITE_BAR";
+export const ForeignEnumLite = {
     /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
+     * @generated from protobuf enum value: UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
     /**
      * @generated from protobuf enum value: FOREIGN_LITE_FOO = 4;
-     */
-    FOREIGN_LITE_FOO = 4,
+     */ FOREIGN_LITE_FOO: "FOREIGN_LITE_FOO",
     /**
      * @generated from protobuf enum value: FOREIGN_LITE_BAZ = 6;
-     */
-    FOREIGN_LITE_BAZ = 6,
+     */ FOREIGN_LITE_BAZ: "FOREIGN_LITE_BAZ",
     /**
      * @generated from protobuf enum value: FOREIGN_LITE_BAR = 5;
-     */
-    FOREIGN_LITE_BAR = 5
-}
+     */ FOREIGN_LITE_BAR: "FOREIGN_LITE_BAR"
+} as const;
+export const ForeignEnumLite$stringToNumber = {
+    UNSPECIFIED$: 0,
+    FOREIGN_LITE_FOO: 4,
+    FOREIGN_LITE_BAZ: 6,
+    FOREIGN_LITE_BAR: 5
+} as const;
+export const ForeignEnumLite$numberToString = {
+    0: "UNSPECIFIED$",
+    4: "FOREIGN_LITE_FOO",
+    6: "FOREIGN_LITE_BAZ",
+    5: "FOREIGN_LITE_BAR"
+} as const;
 /**
- * @generated from protobuf enum protobuf_unittest.V1EnumLite
+ * @generated from protobuf enum protobuf_unittest.V1EnumLite:
+ *
+ * enum V1EnumLite {
+ *  UNSPECIFIED$ = 0;
+ *  V1_FIRST = 1;
+ * }
  */
-export enum V1EnumLite {
+export type V1EnumLite = "UNSPECIFIED$" | "V1_FIRST";
+export const V1EnumLite = {
     /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
+     * @generated from protobuf enum value: UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
     /**
      * @generated from protobuf enum value: V1_FIRST = 1;
-     */
-    V1_FIRST = 1
-}
+     */ V1_FIRST: "V1_FIRST"
+} as const;
+export const V1EnumLite$stringToNumber = {
+    UNSPECIFIED$: 0,
+    V1_FIRST: 1
+} as const;
+export const V1EnumLite$numberToString = {
+    0: "UNSPECIFIED$",
+    1: "V1_FIRST"
+} as const;
 /**
- * @generated from protobuf enum protobuf_unittest.V2EnumLite
+ * @generated from protobuf enum protobuf_unittest.V2EnumLite:
+ *
+ * enum V2EnumLite {
+ *  UNSPECIFIED$ = 0;
+ *  V2_FIRST = 1;
+ *  V2_SECOND = 2;
+ * }
  */
-export enum V2EnumLite {
+export type V2EnumLite = "UNSPECIFIED$" | "V2_FIRST" | "V2_SECOND";
+export const V2EnumLite = {
     /**
-     * @generated synthetic value - protobuf-ts requires all enums to have a 0 value
-     */
-    UNSPECIFIED$ = 0,
+     * @generated from protobuf enum value: UNSPECIFIED$ = 0;
+     */ UNSPECIFIED$: "UNSPECIFIED$",
     /**
      * @generated from protobuf enum value: V2_FIRST = 1;
-     */
-    V2_FIRST = 1,
+     */ V2_FIRST: "V2_FIRST",
     /**
      * @generated from protobuf enum value: V2_SECOND = 2;
-     */
-    V2_SECOND = 2
-}
+     */ V2_SECOND: "V2_SECOND"
+} as const;
+export const V2EnumLite$stringToNumber = {
+    UNSPECIFIED$: 0,
+    V2_FIRST: 1,
+    V2_SECOND: 2
+} as const;
+export const V2EnumLite$numberToString = {
+    0: "UNSPECIFIED$",
+    1: "V2_FIRST",
+    2: "V2_SECOND"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
     constructor() {
@@ -920,9 +997,9 @@ class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
             { no: 18, name: "optional_nested_message", kind: "message", T: () => TestAllTypesLite_NestedMessage },
             { no: 19, name: "optional_foreign_message", kind: "message", T: () => ForeignMessageLite },
             { no: 20, name: "optional_import_message", kind: "message", T: () => ImportMessageLite },
-            { no: 21, name: "optional_nested_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.TestAllTypesLite.NestedEnum", TestAllTypesLite_NestedEnum] },
-            { no: 22, name: "optional_foreign_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.ForeignEnumLite", ForeignEnumLite] },
-            { no: 23, name: "optional_import_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest_import.ImportEnumLite", ImportEnumLite] },
+            { no: 21, name: "optional_nested_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.TestAllTypesLite.NestedEnum", TestAllTypesLite_NestedEnum, undefined, TestAllTypesLite_NestedEnum$stringToNumber] },
+            { no: 22, name: "optional_foreign_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.ForeignEnumLite", ForeignEnumLite, undefined, ForeignEnumLite$stringToNumber] },
+            { no: 23, name: "optional_import_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest_import.ImportEnumLite", ImportEnumLite, undefined, ImportEnumLite$stringToNumber] },
             { no: 24, name: "optional_string_piece", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 25, name: "optional_cord", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 26, name: "optional_public_import_message", kind: "message", T: () => PublicImportMessageLite },
@@ -945,9 +1022,9 @@ class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
             { no: 48, name: "repeated_nested_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TestAllTypesLite_NestedMessage },
             { no: 49, name: "repeated_foreign_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ForeignMessageLite },
             { no: 50, name: "repeated_import_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ImportMessageLite },
-            { no: 51, name: "repeated_nested_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_unittest.TestAllTypesLite.NestedEnum", TestAllTypesLite_NestedEnum] },
-            { no: 52, name: "repeated_foreign_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_unittest.ForeignEnumLite", ForeignEnumLite] },
-            { no: 53, name: "repeated_import_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_unittest_import.ImportEnumLite", ImportEnumLite] },
+            { no: 51, name: "repeated_nested_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_unittest.TestAllTypesLite.NestedEnum", TestAllTypesLite_NestedEnum, undefined, TestAllTypesLite_NestedEnum$stringToNumber] },
+            { no: 52, name: "repeated_foreign_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_unittest.ForeignEnumLite", ForeignEnumLite, undefined, ForeignEnumLite$stringToNumber] },
+            { no: 53, name: "repeated_import_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_unittest_import.ImportEnumLite", ImportEnumLite, undefined, ImportEnumLite$stringToNumber] },
             { no: 54, name: "repeated_string_piece", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 55, name: "repeated_cord", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 57, name: "repeated_lazy_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TestAllTypesLite_NestedMessage },
@@ -966,9 +1043,9 @@ class TestAllTypesLite$Type extends MessageType<TestAllTypesLite> {
             { no: 73, name: "default_bool", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 74, name: "default_string", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 75, name: "default_bytes", kind: "scalar", opt: true, T: 12 /*ScalarType.BYTES*/ },
-            { no: 81, name: "default_nested_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.TestAllTypesLite.NestedEnum", TestAllTypesLite_NestedEnum] },
-            { no: 82, name: "default_foreign_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.ForeignEnumLite", ForeignEnumLite] },
-            { no: 83, name: "default_import_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest_import.ImportEnumLite", ImportEnumLite] },
+            { no: 81, name: "default_nested_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.TestAllTypesLite.NestedEnum", TestAllTypesLite_NestedEnum, undefined, TestAllTypesLite_NestedEnum$stringToNumber] },
+            { no: 82, name: "default_foreign_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.ForeignEnumLite", ForeignEnumLite, undefined, ForeignEnumLite$stringToNumber] },
+            { no: 83, name: "default_import_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest_import.ImportEnumLite", ImportEnumLite, undefined, ImportEnumLite$stringToNumber] },
             { no: 84, name: "default_string_piece", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 85, name: "default_cord", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 111, name: "oneof_uint32", kind: "scalar", oneof: "oneofField", T: 13 /*ScalarType.UINT32*/ },
@@ -1050,7 +1127,7 @@ class TestPackedTypesLite$Type extends MessageType<TestPackedTypesLite> {
             { no: 100, name: "packed_float", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 2 /*ScalarType.FLOAT*/ },
             { no: 101, name: "packed_double", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
             { no: 102, name: "packed_bool", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 8 /*ScalarType.BOOL*/ },
-            { no: 103, name: "packed_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["protobuf_unittest.ForeignEnumLite", ForeignEnumLite] }
+            { no: 103, name: "packed_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["protobuf_unittest.ForeignEnumLite", ForeignEnumLite, undefined, ForeignEnumLite$stringToNumber] }
         ]);
     }
 }
@@ -1230,7 +1307,7 @@ class V1MessageLite$Type extends MessageType<V1MessageLite> {
     constructor() {
         super("protobuf_unittest.V1MessageLite", [
             { no: 1, name: "int_field", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "enum_field", kind: "enum", opt: true, T: () => ["protobuf_unittest.V1EnumLite", V1EnumLite] }
+            { no: 2, name: "enum_field", kind: "enum", opt: true, T: () => ["protobuf_unittest.V1EnumLite", V1EnumLite, undefined, V1EnumLite$stringToNumber] }
         ]);
     }
 }
@@ -1243,7 +1320,7 @@ class V2MessageLite$Type extends MessageType<V2MessageLite> {
     constructor() {
         super("protobuf_unittest.V2MessageLite", [
             { no: 1, name: "int_field", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "enum_field", kind: "enum", opt: true, T: () => ["protobuf_unittest.V2EnumLite", V2EnumLite] }
+            { no: 2, name: "enum_field", kind: "enum", opt: true, T: () => ["protobuf_unittest.V2EnumLite", V2EnumLite, undefined, V2EnumLite$stringToNumber] }
         ]);
     }
 }
@@ -1259,7 +1336,7 @@ class TestHugeFieldNumbersLite$Type extends MessageType<TestHugeFieldNumbersLite
             { no: 536870001, name: "fixed_32", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 536870002, name: "repeated_int32", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 536870003, name: "packed_int32", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 536870004, name: "optional_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.ForeignEnumLite", ForeignEnumLite] },
+            { no: 536870004, name: "optional_enum", kind: "enum", opt: true, T: () => ["protobuf_unittest.ForeignEnumLite", ForeignEnumLite, undefined, ForeignEnumLite$stringToNumber] },
             { no: 536870005, name: "optional_string", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 536870006, name: "optional_bytes", kind: "scalar", opt: true, T: 12 /*ScalarType.BYTES*/ },
             { no: 536870007, name: "optional_message", kind: "message", T: () => ForeignMessageLite },
@@ -1299,7 +1376,7 @@ class TestOneofParsingLite$Type extends MessageType<TestOneofParsingLite> {
             { no: 6, name: "oneof_bytes_cord", kind: "scalar", oneof: "oneofField", T: 12 /*ScalarType.BYTES*/ },
             { no: 7, name: "oneof_string_string_piece", kind: "scalar", oneof: "oneofField", T: 9 /*ScalarType.STRING*/ },
             { no: 8, name: "oneof_bytes_string_piece", kind: "scalar", oneof: "oneofField", T: 12 /*ScalarType.BYTES*/ },
-            { no: 9, name: "oneof_enum", kind: "enum", oneof: "oneofField", T: () => ["protobuf_unittest.V2EnumLite", V2EnumLite] }
+            { no: 9, name: "oneof_enum", kind: "enum", oneof: "oneofField", T: () => ["protobuf_unittest.V2EnumLite", V2EnumLite, undefined, V2EnumLite$stringToNumber] }
         ]);
     }
 }

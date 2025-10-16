@@ -117,6 +117,16 @@ export const OptionEnum = {
      * @generated from protobuf enum value: OPTION_ENUM_NO = 2;
      */ NO: "NO"
 } as const;
+export const OptionEnum$stringToNumber = {
+    UNSPECIFIED: 0,
+    YES: 1,
+    NO: 2
+} as const;
+export const OptionEnum$numberToString = {
+    0: "UNSPECIFIED",
+    1: "YES",
+    2: "NO"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class FieldUiBehaviour$Type extends MessageType<FieldUiBehaviour> {
     constructor() {
@@ -250,9 +260,9 @@ class AnnotatedMessage$Type extends MessageType<AnnotatedMessage> {
             { no: 2, name: "user_name", kind: "scalar", T: 9 /*ScalarType.STRING*/, options: { "spec.field_ui": { label: "User name", required: true, autocomplete: { serviceName: "example.SomeService", methodName: "autocompleteUsername", requestFieldName: "entered_text" } } } },
             { no: 3, name: "ann_scalar", kind: "scalar", T: 5 /*ScalarType.INT32*/, options: { "spec.opt_bool": true, "spec.opt_uint32": 123, "spec.opt_uint64": "123456", "spec.opt_string": "my string" } },
             { no: 4, name: "ann_repeated_scalar", kind: "scalar", T: 5 /*ScalarType.INT32*/, options: { "spec.opt_repeated_bool": [true, false], "spec.opt_repeated_uint32": [123, 456], "spec.opt_repeated_uint64": ["123456", "789101112"], "spec.opt_repeated_string": ["hello...", "...world"] } },
-            { no: 5, name: "ann_enum", kind: "scalar", T: 5 /*ScalarType.INT32*/, options: { "spec.opt_enum": "UNSPECIFIED" } },
-            { no: 6, name: "ann_enum_zero", kind: "scalar", T: 5 /*ScalarType.INT32*/, options: { "spec.opt_enum": "UNSPECIFIED" } },
-            { no: 7, name: "ann_repeated_enum", kind: "scalar", T: 5 /*ScalarType.INT32*/, options: { "spec.opt_repeated_enum": ["UNSPECIFIED", "UNSPECIFIED"] } },
+            { no: 5, name: "ann_enum", kind: "scalar", T: 5 /*ScalarType.INT32*/, options: { "spec.opt_enum": "OPTION_ENUM_YES" } },
+            { no: 6, name: "ann_enum_zero", kind: "scalar", T: 5 /*ScalarType.INT32*/, options: { "spec.opt_enum": "OPTION_ENUM_UNSPECIFIED" } },
+            { no: 7, name: "ann_repeated_enum", kind: "scalar", T: 5 /*ScalarType.INT32*/, options: { "spec.opt_repeated_enum": ["OPTION_ENUM_YES", "OPTION_ENUM_NO"] } },
             { no: 10, name: "ann_local", kind: "scalar", T: 5 /*ScalarType.INT32*/, options: { "spec.AnnotatedMessage.local_opt": true } }
         ], { "spec.opt_example": true });
     }

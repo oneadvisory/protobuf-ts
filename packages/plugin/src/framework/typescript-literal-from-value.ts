@@ -63,6 +63,12 @@ export function typescriptLiteralFromValue(
           ts.factory.createIdentifier('Number'),
           ts.factory.createIdentifier('NEGATIVE_INFINITY')
         );
+      } else if (value < 0) {
+        // Negative numbers must be created with prefix unary expression
+        return ts.factory.createPrefixUnaryExpression(
+          ts.SyntaxKind.MinusToken,
+          ts.factory.createNumericLiteral(`${-value}`)
+        );
       }
       return ts.factory.createNumericLiteral(`${value}`);
     case 'object':

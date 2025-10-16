@@ -59,6 +59,18 @@ export const ImportEnum = {
      * @generated from protobuf enum value: IMPORT_BAZ = 9;
      */ IMPORT_BAZ: "IMPORT_BAZ"
 } as const;
+export const ImportEnum$stringToNumber = {
+    UNSPECIFIED$: 0,
+    IMPORT_FOO: 7,
+    IMPORT_BAR: 8,
+    IMPORT_BAZ: 9
+} as const;
+export const ImportEnum$numberToString = {
+    0: "UNSPECIFIED$",
+    7: "IMPORT_FOO",
+    8: "IMPORT_BAR",
+    9: "IMPORT_BAZ"
+} as const;
 /**
  * To use an enum in a map, it must has the first value as 0.
  *
@@ -81,6 +93,16 @@ export const ImportEnumForMap = {
     /**
      * @generated from protobuf enum value: BAR = 2;
      */ BAR: "BAR"
+} as const;
+export const ImportEnumForMap$stringToNumber = {
+    UNKNOWN: 0,
+    FOO: 1,
+    BAR: 2
+} as const;
+export const ImportEnumForMap$numberToString = {
+    0: "UNKNOWN",
+    1: "FOO",
+    2: "BAR"
 } as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ImportMessage$Type extends MessageType<ImportMessage> {

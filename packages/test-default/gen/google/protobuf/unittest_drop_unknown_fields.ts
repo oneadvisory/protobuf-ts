@@ -32,9 +32,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -74,6 +76,16 @@ export const Foo_NestedEnum = {
     /**
      * @generated from protobuf enum value: BAZ = 2;
      */ BAZ: "BAZ"
+} as const;
+export const Foo_NestedEnum$stringToNumber = {
+    FOO: 0,
+    BAR: 1,
+    BAZ: 2
+} as const;
+export const Foo_NestedEnum$numberToString = {
+    0: "FOO",
+    1: "BAR",
+    2: "BAZ"
 } as const;
 /**
  * @generated from protobuf message unittest_drop_unknown_fields.FooWithExtraFields
@@ -117,18 +129,30 @@ export const FooWithExtraFields_NestedEnum = {
      * @generated from protobuf enum value: QUX = 3;
      */ QUX: "QUX"
 } as const;
+export const FooWithExtraFields_NestedEnum$stringToNumber = {
+    FOO: 0,
+    BAR: 1,
+    BAZ: 2,
+    QUX: 3
+} as const;
+export const FooWithExtraFields_NestedEnum$numberToString = {
+    0: "FOO",
+    1: "BAR",
+    2: "BAZ",
+    3: "QUX"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class Foo$Type extends MessageType<Foo> {
     constructor() {
         super("unittest_drop_unknown_fields.Foo", [
             { no: 1, name: "int32_value", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "enum_value", kind: "enum", T: () => ["unittest_drop_unknown_fields.Foo.NestedEnum", Foo_NestedEnum] }
+            { no: 2, name: "enum_value", kind: "enum", T: () => ["unittest_drop_unknown_fields.Foo.NestedEnum", Foo_NestedEnum, undefined, Foo_NestedEnum$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<Foo>): Foo {
         const message = globalThis.Object.create(this.messagePrototype!);
         message.int32Value = 0;
-        message.enumValue = 0;
+        message.enumValue = "FOO";
         if (value !== undefined)
             reflectionMergePartial<Foo>(this, message, value);
         return message;
@@ -142,7 +166,7 @@ class Foo$Type extends MessageType<Foo> {
                     message.int32Value = reader.int32();
                     break;
                 case /* unittest_drop_unknown_fields.Foo.NestedEnum enum_value */ 2:
-                    message.enumValue = reader.int32();
+                    message.enumValue = enumNumberToString(Foo_NestedEnum$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -160,8 +184,8 @@ class Foo$Type extends MessageType<Foo> {
         if (message.int32Value !== 0)
             writer.tag(1, WireType.Varint).int32(message.int32Value);
         /* unittest_drop_unknown_fields.Foo.NestedEnum enum_value = 2; */
-        if (message.enumValue !== 0)
-            writer.tag(2, WireType.Varint).int32(message.enumValue);
+        if (message.enumValue !== "FOO")
+            writer.tag(2, WireType.Varint).int32(enumStringToNumber(Foo_NestedEnum$stringToNumber, message.enumValue));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -177,14 +201,14 @@ class FooWithExtraFields$Type extends MessageType<FooWithExtraFields> {
     constructor() {
         super("unittest_drop_unknown_fields.FooWithExtraFields", [
             { no: 1, name: "int32_value", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "enum_value", kind: "enum", T: () => ["unittest_drop_unknown_fields.FooWithExtraFields.NestedEnum", FooWithExtraFields_NestedEnum] },
+            { no: 2, name: "enum_value", kind: "enum", T: () => ["unittest_drop_unknown_fields.FooWithExtraFields.NestedEnum", FooWithExtraFields_NestedEnum, undefined, FooWithExtraFields_NestedEnum$stringToNumber] },
             { no: 3, name: "extra_int32_value", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<FooWithExtraFields>): FooWithExtraFields {
         const message = globalThis.Object.create(this.messagePrototype!);
         message.int32Value = 0;
-        message.enumValue = 0;
+        message.enumValue = "FOO";
         message.extraInt32Value = 0;
         if (value !== undefined)
             reflectionMergePartial<FooWithExtraFields>(this, message, value);
@@ -199,7 +223,7 @@ class FooWithExtraFields$Type extends MessageType<FooWithExtraFields> {
                     message.int32Value = reader.int32();
                     break;
                 case /* unittest_drop_unknown_fields.FooWithExtraFields.NestedEnum enum_value */ 2:
-                    message.enumValue = reader.int32();
+                    message.enumValue = enumNumberToString(FooWithExtraFields_NestedEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* int32 extra_int32_value */ 3:
                     message.extraInt32Value = reader.int32();
@@ -220,8 +244,8 @@ class FooWithExtraFields$Type extends MessageType<FooWithExtraFields> {
         if (message.int32Value !== 0)
             writer.tag(1, WireType.Varint).int32(message.int32Value);
         /* unittest_drop_unknown_fields.FooWithExtraFields.NestedEnum enum_value = 2; */
-        if (message.enumValue !== 0)
-            writer.tag(2, WireType.Varint).int32(message.enumValue);
+        if (message.enumValue !== "FOO")
+            writer.tag(2, WireType.Varint).int32(enumStringToNumber(FooWithExtraFields_NestedEnum$stringToNumber, message.enumValue));
         /* int32 extra_int32_value = 3; */
         if (message.extraInt32Value !== 0)
             writer.tag(3, WireType.Varint).int32(message.extraInt32Value);

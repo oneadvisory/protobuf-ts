@@ -1,25 +1,41 @@
 import {isEnumObject, listEnumNames, listEnumNumbers, listEnumValues} from "../src";
 
-enum EnumWithAlias { ANY = 0, YES = 1, YEAH = 1 }
-enum StringEnum { ANY = 0, YES = "YES" }
-enum No0Enum { YES = 1 }
+// Mock string-based enum objects (matching new protobuf-ts format)
+const ValidEnum = {
+  ANY: "ANY",
+  YES: "YES",
+  YEAH: "YEAH"
+} as const;
+
+// Invalid enum: mixed types
+const MixedEnum = {
+  ANY: "ANY",
+  YES: 123  // Invalid: not a string
+} as const;
+
+// Invalid enum: values don't match keys
+const MismatchedEnum = {
+  ANY: "WRONG",
+  YES: "ALSO_WRONG"
+} as const;
 
 
 describe('isEnumObject()', function () {
 
-    it('works with enum aliases', () => {
-
-        expect(isEnumObject(EnumWithAlias)).toBeTrue();
+    it('accepts valid string-based enum', () => {
+        expect(isEnumObject(ValidEnum)).toBeTrue();
     });
 
-    it('rejects string enum', () => {
-
-        expect(isEnumObject(StringEnum)).toBeFalse();
+    it('rejects mixed type enum', () => {
+        expect(isEnumObject(MixedEnum)).toBeFalse();
     });
 
-    it('rejects missing 0', () => {
+    it('rejects mismatched enum', () => {
+        expect(isEnumObject(MismatchedEnum)).toBeFalse();
+    });
 
-        expect(isEnumObject(No0Enum)).toBeFalse();
+    it('rejects empty object', () => {
+        expect(isEnumObject({})).toBeFalse();
     });
 
 });
@@ -27,22 +43,21 @@ describe('isEnumObject()', function () {
 
 describe('listEnumValues()', function () {
 
-    it('works with enum aliases', () => {
-
+    it('works with string-based enum', () => {
         let expected: any = [
-            {name: "ANY", number: 0},
-            {name: "YES", number: 1},
-            {name: "YEAH", number: 1},
+            {name: "ANY"},
+            {name: "YES"},
+            {name: "YEAH"},
         ];
-        expect(listEnumValues(EnumWithAlias)).toEqual(expected);
+        expect(listEnumValues(ValidEnum)).toEqual(expected);
     });
 
-    it('throws for string enum', () => {
-        expect(() => listEnumValues(StringEnum)).toThrowError();
+    it('throws for mixed type enum', () => {
+        expect(() => listEnumValues(MixedEnum)).toThrowError();
     });
 
-    it('throws for enum without 0', () => {
-        expect(() => listEnumValues(StringEnum)).toThrowError();
+    it('throws for mismatched enum', () => {
+        expect(() => listEnumValues(MismatchedEnum)).toThrowError();
     });
 
 });
@@ -51,9 +66,13 @@ describe('listEnumValues()', function () {
 
 describe('listEnumNumbers()', function () {
 
-    it('works with enum aliases', () => {
-        let expected: any = [0, 1];
-        expect(listEnumNumbers(EnumWithAlias)).toEqual(expected);
+    it('returns empty array for string-based enums (deprecated)', () => {
+        let expected: any = [];
+        expect(listEnumNumbers(ValidEnum)).toEqual(expected);
+    });
+
+    it('throws for invalid enum', () => {
+        expect(() => listEnumNumbers(MixedEnum)).toThrowError();
     });
 
 });
@@ -62,9 +81,13 @@ describe('listEnumNumbers()', function () {
 
 describe('listEnumNames()', function () {
 
-    it('works with enum aliases', () => {
+    it('works with string-based enum', () => {
         let expected: any = ["ANY", "YES", "YEAH"];
-        expect(listEnumNames(EnumWithAlias)).toEqual(expected);
+        expect(listEnumNames(ValidEnum)).toEqual(expected);
+    });
+
+    it('throws for invalid enum', () => {
+        expect(() => listEnumNames(MixedEnum)).toThrowError();
     });
 
 });

@@ -9,9 +9,13 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 //
+import { ImportEnumForMap$numberToString } from "./unittest_import";
+import { ImportEnumForMap$stringToNumber } from "./unittest_import";
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -351,6 +355,16 @@ export const Proto2MapEnum = {
      * @generated from protobuf enum value: PROTO2_MAP_ENUM_BAZ = 2;
      */ BAZ: "BAZ"
 } as const;
+export const Proto2MapEnum$stringToNumber = {
+    FOO: 0,
+    BAR: 1,
+    BAZ: 2
+} as const;
+export const Proto2MapEnum$numberToString = {
+    0: "FOO",
+    1: "BAR",
+    2: "BAZ"
+} as const;
 /**
  * @generated from protobuf enum protobuf_unittest.Proto2MapEnumPlusExtra:
  *
@@ -376,24 +390,36 @@ export const Proto2MapEnumPlusExtra = {
      * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_EXTRA = 3;
      */ E_PROTO2_MAP_ENUM_EXTRA: "E_PROTO2_MAP_ENUM_EXTRA"
 } as const;
+export const Proto2MapEnumPlusExtra$stringToNumber = {
+    E_PROTO2_MAP_ENUM_FOO: 0,
+    E_PROTO2_MAP_ENUM_BAR: 1,
+    E_PROTO2_MAP_ENUM_BAZ: 2,
+    E_PROTO2_MAP_ENUM_EXTRA: 3
+} as const;
+export const Proto2MapEnumPlusExtra$numberToString = {
+    0: "E_PROTO2_MAP_ENUM_FOO",
+    1: "E_PROTO2_MAP_ENUM_BAR",
+    2: "E_PROTO2_MAP_ENUM_BAZ",
+    3: "E_PROTO2_MAP_ENUM_EXTRA"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestEnumMap$Type extends MessageType<TestEnumMap> {
     constructor() {
         super("protobuf_unittest.TestEnumMap", [
-            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 200, name: "unknown_map_field_int64", kind: "map", K: 3 /*ScalarType.INT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 201, name: "unknown_map_field_uint64", kind: "map", K: 4 /*ScalarType.UINT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 202, name: "unknown_map_field_int32", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 203, name: "unknown_map_field_uint32", kind: "map", K: 13 /*ScalarType.UINT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 204, name: "unknown_map_field_fixed32", kind: "map", K: 7 /*ScalarType.FIXED32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 205, name: "unknown_map_field_fixed64", kind: "map", K: 6 /*ScalarType.FIXED64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 206, name: "unknown_map_field_bool", kind: "map", K: 8 /*ScalarType.BOOL*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 207, name: "unknown_map_field_string", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 208, name: "unknown_map_field_sint32", kind: "map", K: 17 /*ScalarType.SINT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 209, name: "unknown_map_field_sint64", kind: "map", K: 18 /*ScalarType.SINT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 210, name: "unknown_map_field_sfixed32", kind: "map", K: 15 /*ScalarType.SFIXED32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } },
-            { no: 211, name: "unknown_map_field_sfixed64", kind: "map", K: 16 /*ScalarType.SFIXED64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_"] } }
+            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 200, name: "unknown_map_field_int64", kind: "map", K: 3 /*ScalarType.INT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 201, name: "unknown_map_field_uint64", kind: "map", K: 4 /*ScalarType.UINT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 202, name: "unknown_map_field_int32", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 203, name: "unknown_map_field_uint32", kind: "map", K: 13 /*ScalarType.UINT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 204, name: "unknown_map_field_fixed32", kind: "map", K: 7 /*ScalarType.FIXED32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 205, name: "unknown_map_field_fixed64", kind: "map", K: 6 /*ScalarType.FIXED64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 206, name: "unknown_map_field_bool", kind: "map", K: 8 /*ScalarType.BOOL*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 207, name: "unknown_map_field_string", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 208, name: "unknown_map_field_sint32", kind: "map", K: 17 /*ScalarType.SINT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 209, name: "unknown_map_field_sint64", kind: "map", K: 18 /*ScalarType.SINT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 210, name: "unknown_map_field_sfixed32", kind: "map", K: 15 /*ScalarType.SFIXED32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } },
+            { no: 211, name: "unknown_map_field_sfixed64", kind: "map", K: 16 /*ScalarType.SFIXED64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnum", Proto2MapEnum, "PROTO2_MAP_ENUM_", Proto2MapEnum$stringToNumber] } }
         ]);
     }
     create(value?: PartialMessage<TestEnumMap>): TestEnumMap {
@@ -483,12 +509,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.known_map_field");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "FOO";
     }
     private binaryReadMap102(map: TestEnumMap["unknownMapField"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapField"] | undefined, val: TestEnumMap["unknownMapField"][any] | undefined;
@@ -499,12 +525,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "FOO";
     }
     private binaryReadMap200(map: TestEnumMap["unknownMapFieldInt64"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldInt64"] | undefined, val: TestEnumMap["unknownMapFieldInt64"][any] | undefined;
@@ -515,12 +541,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.int64().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_int64");
             }
         }
-        map[key ?? "0"] = val ?? 0;
+        map[key ?? "0"] = val ?? "FOO";
     }
     private binaryReadMap201(map: TestEnumMap["unknownMapFieldUint64"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldUint64"] | undefined, val: TestEnumMap["unknownMapFieldUint64"][any] | undefined;
@@ -531,12 +557,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.uint64().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_uint64");
             }
         }
-        map[key ?? "0"] = val ?? 0;
+        map[key ?? "0"] = val ?? "FOO";
     }
     private binaryReadMap202(map: TestEnumMap["unknownMapFieldInt32"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldInt32"] | undefined, val: TestEnumMap["unknownMapFieldInt32"][any] | undefined;
@@ -547,12 +573,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_int32");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "FOO";
     }
     private binaryReadMap203(map: TestEnumMap["unknownMapFieldUint32"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldUint32"] | undefined, val: TestEnumMap["unknownMapFieldUint32"][any] | undefined;
@@ -563,12 +589,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.uint32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_uint32");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "FOO";
     }
     private binaryReadMap204(map: TestEnumMap["unknownMapFieldFixed32"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldFixed32"] | undefined, val: TestEnumMap["unknownMapFieldFixed32"][any] | undefined;
@@ -579,12 +605,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.fixed32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_fixed32");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "FOO";
     }
     private binaryReadMap205(map: TestEnumMap["unknownMapFieldFixed64"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldFixed64"] | undefined, val: TestEnumMap["unknownMapFieldFixed64"][any] | undefined;
@@ -595,12 +621,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.fixed64().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_fixed64");
             }
         }
-        map[key ?? "0"] = val ?? 0;
+        map[key ?? "0"] = val ?? "FOO";
     }
     private binaryReadMap206(map: TestEnumMap["unknownMapFieldBool"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldBool"] | undefined, val: TestEnumMap["unknownMapFieldBool"][any] | undefined;
@@ -611,12 +637,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.bool().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_bool");
             }
         }
-        map[key ?? "false"] = val ?? 0;
+        map[key ?? "false"] = val ?? "FOO";
     }
     private binaryReadMap207(map: TestEnumMap["unknownMapFieldString"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldString"] | undefined, val: TestEnumMap["unknownMapFieldString"][any] | undefined;
@@ -627,12 +653,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.string();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_string");
             }
         }
-        map[key ?? ""] = val ?? 0;
+        map[key ?? ""] = val ?? "FOO";
     }
     private binaryReadMap208(map: TestEnumMap["unknownMapFieldSint32"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldSint32"] | undefined, val: TestEnumMap["unknownMapFieldSint32"][any] | undefined;
@@ -643,12 +669,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.sint32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_sint32");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "FOO";
     }
     private binaryReadMap209(map: TestEnumMap["unknownMapFieldSint64"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldSint64"] | undefined, val: TestEnumMap["unknownMapFieldSint64"][any] | undefined;
@@ -659,12 +685,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.sint64().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_sint64");
             }
         }
-        map[key ?? "0"] = val ?? 0;
+        map[key ?? "0"] = val ?? "FOO";
     }
     private binaryReadMap210(map: TestEnumMap["unknownMapFieldSfixed32"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldSfixed32"] | undefined, val: TestEnumMap["unknownMapFieldSfixed32"][any] | undefined;
@@ -675,12 +701,12 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.sfixed32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_sfixed32");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "FOO";
     }
     private binaryReadMap211(map: TestEnumMap["unknownMapFieldSfixed64"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMap["unknownMapFieldSfixed64"] | undefined, val: TestEnumMap["unknownMapFieldSfixed64"][any] | undefined;
@@ -691,56 +717,56 @@ class TestEnumMap$Type extends MessageType<TestEnumMap> {
                     key = reader.sfixed64().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMap.unknown_map_field_sfixed64");
             }
         }
-        map[key ?? "0"] = val ?? 0;
+        map[key ?? "0"] = val ?? "FOO";
     }
     internalBinaryWrite(message: TestEnumMap, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* map<int32, protobuf_unittest.Proto2MapEnum> known_map_field = 101; */
         for (let k of globalThis.Object.keys(message.knownMapField))
-            writer.tag(101, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.knownMapField[k as any]).join();
+            writer.tag(101, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.knownMapField[k as any])).join();
         /* map<int32, protobuf_unittest.Proto2MapEnum> unknown_map_field = 102; */
         for (let k of globalThis.Object.keys(message.unknownMapField))
-            writer.tag(102, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapField[k as any]).join();
+            writer.tag(102, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapField[k as any])).join();
         /* map<int64, protobuf_unittest.Proto2MapEnum> unknown_map_field_int64 = 200; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldInt64))
-            writer.tag(200, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int64(k).tag(2, WireType.Varint).int32(message.unknownMapFieldInt64[k]).join();
+            writer.tag(200, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int64(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldInt64[k])).join();
         /* map<uint64, protobuf_unittest.Proto2MapEnum> unknown_map_field_uint64 = 201; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldUint64))
-            writer.tag(201, WireType.LengthDelimited).fork().tag(1, WireType.Varint).uint64(k).tag(2, WireType.Varint).int32(message.unknownMapFieldUint64[k]).join();
+            writer.tag(201, WireType.LengthDelimited).fork().tag(1, WireType.Varint).uint64(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldUint64[k])).join();
         /* map<int32, protobuf_unittest.Proto2MapEnum> unknown_map_field_int32 = 202; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldInt32))
-            writer.tag(202, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapFieldInt32[k as any]).join();
+            writer.tag(202, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldInt32[k as any])).join();
         /* map<uint32, protobuf_unittest.Proto2MapEnum> unknown_map_field_uint32 = 203; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldUint32))
-            writer.tag(203, WireType.LengthDelimited).fork().tag(1, WireType.Varint).uint32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapFieldUint32[k as any]).join();
+            writer.tag(203, WireType.LengthDelimited).fork().tag(1, WireType.Varint).uint32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldUint32[k as any])).join();
         /* map<fixed32, protobuf_unittest.Proto2MapEnum> unknown_map_field_fixed32 = 204; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldFixed32))
-            writer.tag(204, WireType.LengthDelimited).fork().tag(1, WireType.Bit32).fixed32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapFieldFixed32[k as any]).join();
+            writer.tag(204, WireType.LengthDelimited).fork().tag(1, WireType.Bit32).fixed32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldFixed32[k as any])).join();
         /* map<fixed64, protobuf_unittest.Proto2MapEnum> unknown_map_field_fixed64 = 205; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldFixed64))
-            writer.tag(205, WireType.LengthDelimited).fork().tag(1, WireType.Bit64).fixed64(k).tag(2, WireType.Varint).int32(message.unknownMapFieldFixed64[k]).join();
+            writer.tag(205, WireType.LengthDelimited).fork().tag(1, WireType.Bit64).fixed64(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldFixed64[k])).join();
         /* map<bool, protobuf_unittest.Proto2MapEnum> unknown_map_field_bool = 206; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldBool))
-            writer.tag(206, WireType.LengthDelimited).fork().tag(1, WireType.Varint).bool(k === "true").tag(2, WireType.Varint).int32(message.unknownMapFieldBool[k]).join();
+            writer.tag(206, WireType.LengthDelimited).fork().tag(1, WireType.Varint).bool(k === "true").tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldBool[k])).join();
         /* map<string, protobuf_unittest.Proto2MapEnum> unknown_map_field_string = 207; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldString))
-            writer.tag(207, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k).tag(2, WireType.Varint).int32(message.unknownMapFieldString[k]).join();
+            writer.tag(207, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldString[k])).join();
         /* map<sint32, protobuf_unittest.Proto2MapEnum> unknown_map_field_sint32 = 208; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldSint32))
-            writer.tag(208, WireType.LengthDelimited).fork().tag(1, WireType.Varint).sint32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapFieldSint32[k as any]).join();
+            writer.tag(208, WireType.LengthDelimited).fork().tag(1, WireType.Varint).sint32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldSint32[k as any])).join();
         /* map<sint64, protobuf_unittest.Proto2MapEnum> unknown_map_field_sint64 = 209; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldSint64))
-            writer.tag(209, WireType.LengthDelimited).fork().tag(1, WireType.Varint).sint64(k).tag(2, WireType.Varint).int32(message.unknownMapFieldSint64[k]).join();
+            writer.tag(209, WireType.LengthDelimited).fork().tag(1, WireType.Varint).sint64(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldSint64[k])).join();
         /* map<sfixed32, protobuf_unittest.Proto2MapEnum> unknown_map_field_sfixed32 = 210; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldSfixed32))
-            writer.tag(210, WireType.LengthDelimited).fork().tag(1, WireType.Bit32).sfixed32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapFieldSfixed32[k as any]).join();
+            writer.tag(210, WireType.LengthDelimited).fork().tag(1, WireType.Bit32).sfixed32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldSfixed32[k as any])).join();
         /* map<sfixed64, protobuf_unittest.Proto2MapEnum> unknown_map_field_sfixed64 = 211; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldSfixed64))
-            writer.tag(211, WireType.LengthDelimited).fork().tag(1, WireType.Bit64).sfixed64(k).tag(2, WireType.Varint).int32(message.unknownMapFieldSfixed64[k]).join();
+            writer.tag(211, WireType.LengthDelimited).fork().tag(1, WireType.Bit64).sfixed64(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnum$stringToNumber, message.unknownMapFieldSfixed64[k])).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -755,20 +781,20 @@ export const TestEnumMap = new TestEnumMap$Type();
 class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
     constructor() {
         super("protobuf_unittest.TestEnumMapPlusExtra", [
-            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 200, name: "unknown_map_field_int64", kind: "map", K: 3 /*ScalarType.INT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 201, name: "unknown_map_field_uint64", kind: "map", K: 4 /*ScalarType.UINT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 202, name: "unknown_map_field_int32", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 203, name: "unknown_map_field_uint32", kind: "map", K: 13 /*ScalarType.UINT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 204, name: "unknown_map_field_fixed32", kind: "map", K: 7 /*ScalarType.FIXED32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 205, name: "unknown_map_field_fixed64", kind: "map", K: 6 /*ScalarType.FIXED64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 206, name: "unknown_map_field_bool", kind: "map", K: 8 /*ScalarType.BOOL*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 207, name: "unknown_map_field_string", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 208, name: "unknown_map_field_sint32", kind: "map", K: 17 /*ScalarType.SINT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 209, name: "unknown_map_field_sint64", kind: "map", K: 18 /*ScalarType.SINT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 210, name: "unknown_map_field_sfixed32", kind: "map", K: 15 /*ScalarType.SFIXED32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } },
-            { no: 211, name: "unknown_map_field_sfixed64", kind: "map", K: 16 /*ScalarType.SFIXED64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra] } }
+            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 200, name: "unknown_map_field_int64", kind: "map", K: 3 /*ScalarType.INT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 201, name: "unknown_map_field_uint64", kind: "map", K: 4 /*ScalarType.UINT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 202, name: "unknown_map_field_int32", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 203, name: "unknown_map_field_uint32", kind: "map", K: 13 /*ScalarType.UINT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 204, name: "unknown_map_field_fixed32", kind: "map", K: 7 /*ScalarType.FIXED32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 205, name: "unknown_map_field_fixed64", kind: "map", K: 6 /*ScalarType.FIXED64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 206, name: "unknown_map_field_bool", kind: "map", K: 8 /*ScalarType.BOOL*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 207, name: "unknown_map_field_string", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 208, name: "unknown_map_field_sint32", kind: "map", K: 17 /*ScalarType.SINT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 209, name: "unknown_map_field_sint64", kind: "map", K: 18 /*ScalarType.SINT64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 210, name: "unknown_map_field_sfixed32", kind: "map", K: 15 /*ScalarType.SFIXED32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } },
+            { no: 211, name: "unknown_map_field_sfixed64", kind: "map", K: 16 /*ScalarType.SFIXED64*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtra", Proto2MapEnumPlusExtra, undefined, Proto2MapEnumPlusExtra$stringToNumber] } }
         ]);
     }
     create(value?: PartialMessage<TestEnumMapPlusExtra>): TestEnumMapPlusExtra {
@@ -858,12 +884,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.known_map_field");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap102(map: TestEnumMapPlusExtra["unknownMapField"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapField"] | undefined, val: TestEnumMapPlusExtra["unknownMapField"][any] | undefined;
@@ -874,12 +900,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap200(map: TestEnumMapPlusExtra["unknownMapFieldInt64"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldInt64"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldInt64"][any] | undefined;
@@ -890,12 +916,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.int64().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_int64");
             }
         }
-        map[key ?? "0"] = val ?? 0;
+        map[key ?? "0"] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap201(map: TestEnumMapPlusExtra["unknownMapFieldUint64"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldUint64"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldUint64"][any] | undefined;
@@ -906,12 +932,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.uint64().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_uint64");
             }
         }
-        map[key ?? "0"] = val ?? 0;
+        map[key ?? "0"] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap202(map: TestEnumMapPlusExtra["unknownMapFieldInt32"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldInt32"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldInt32"][any] | undefined;
@@ -922,12 +948,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_int32");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap203(map: TestEnumMapPlusExtra["unknownMapFieldUint32"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldUint32"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldUint32"][any] | undefined;
@@ -938,12 +964,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.uint32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_uint32");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap204(map: TestEnumMapPlusExtra["unknownMapFieldFixed32"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldFixed32"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldFixed32"][any] | undefined;
@@ -954,12 +980,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.fixed32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_fixed32");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap205(map: TestEnumMapPlusExtra["unknownMapFieldFixed64"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldFixed64"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldFixed64"][any] | undefined;
@@ -970,12 +996,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.fixed64().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_fixed64");
             }
         }
-        map[key ?? "0"] = val ?? 0;
+        map[key ?? "0"] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap206(map: TestEnumMapPlusExtra["unknownMapFieldBool"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldBool"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldBool"][any] | undefined;
@@ -986,12 +1012,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.bool().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_bool");
             }
         }
-        map[key ?? "false"] = val ?? 0;
+        map[key ?? "false"] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap207(map: TestEnumMapPlusExtra["unknownMapFieldString"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldString"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldString"][any] | undefined;
@@ -1002,12 +1028,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.string();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_string");
             }
         }
-        map[key ?? ""] = val ?? 0;
+        map[key ?? ""] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap208(map: TestEnumMapPlusExtra["unknownMapFieldSint32"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldSint32"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldSint32"][any] | undefined;
@@ -1018,12 +1044,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.sint32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_sint32");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap209(map: TestEnumMapPlusExtra["unknownMapFieldSint64"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldSint64"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldSint64"][any] | undefined;
@@ -1034,12 +1060,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.sint64().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_sint64");
             }
         }
-        map[key ?? "0"] = val ?? 0;
+        map[key ?? "0"] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap210(map: TestEnumMapPlusExtra["unknownMapFieldSfixed32"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldSfixed32"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldSfixed32"][any] | undefined;
@@ -1050,12 +1076,12 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.sfixed32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_sfixed32");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     private binaryReadMap211(map: TestEnumMapPlusExtra["unknownMapFieldSfixed64"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtra["unknownMapFieldSfixed64"] | undefined, val: TestEnumMapPlusExtra["unknownMapFieldSfixed64"][any] | undefined;
@@ -1066,56 +1092,56 @@ class TestEnumMapPlusExtra$Type extends MessageType<TestEnumMapPlusExtra> {
                     key = reader.sfixed64().toString();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtra$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtra.unknown_map_field_sfixed64");
             }
         }
-        map[key ?? "0"] = val ?? 0;
+        map[key ?? "0"] = val ?? "E_PROTO2_MAP_ENUM_FOO";
     }
     internalBinaryWrite(message: TestEnumMapPlusExtra, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* map<int32, protobuf_unittest.Proto2MapEnumPlusExtra> known_map_field = 101; */
         for (let k of globalThis.Object.keys(message.knownMapField))
-            writer.tag(101, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.knownMapField[k as any]).join();
+            writer.tag(101, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.knownMapField[k as any])).join();
         /* map<int32, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field = 102; */
         for (let k of globalThis.Object.keys(message.unknownMapField))
-            writer.tag(102, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapField[k as any]).join();
+            writer.tag(102, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapField[k as any])).join();
         /* map<int64, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_int64 = 200; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldInt64))
-            writer.tag(200, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int64(k).tag(2, WireType.Varint).int32(message.unknownMapFieldInt64[k]).join();
+            writer.tag(200, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int64(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldInt64[k])).join();
         /* map<uint64, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_uint64 = 201; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldUint64))
-            writer.tag(201, WireType.LengthDelimited).fork().tag(1, WireType.Varint).uint64(k).tag(2, WireType.Varint).int32(message.unknownMapFieldUint64[k]).join();
+            writer.tag(201, WireType.LengthDelimited).fork().tag(1, WireType.Varint).uint64(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldUint64[k])).join();
         /* map<int32, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_int32 = 202; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldInt32))
-            writer.tag(202, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapFieldInt32[k as any]).join();
+            writer.tag(202, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldInt32[k as any])).join();
         /* map<uint32, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_uint32 = 203; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldUint32))
-            writer.tag(203, WireType.LengthDelimited).fork().tag(1, WireType.Varint).uint32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapFieldUint32[k as any]).join();
+            writer.tag(203, WireType.LengthDelimited).fork().tag(1, WireType.Varint).uint32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldUint32[k as any])).join();
         /* map<fixed32, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_fixed32 = 204; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldFixed32))
-            writer.tag(204, WireType.LengthDelimited).fork().tag(1, WireType.Bit32).fixed32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapFieldFixed32[k as any]).join();
+            writer.tag(204, WireType.LengthDelimited).fork().tag(1, WireType.Bit32).fixed32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldFixed32[k as any])).join();
         /* map<fixed64, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_fixed64 = 205; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldFixed64))
-            writer.tag(205, WireType.LengthDelimited).fork().tag(1, WireType.Bit64).fixed64(k).tag(2, WireType.Varint).int32(message.unknownMapFieldFixed64[k]).join();
+            writer.tag(205, WireType.LengthDelimited).fork().tag(1, WireType.Bit64).fixed64(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldFixed64[k])).join();
         /* map<bool, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_bool = 206; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldBool))
-            writer.tag(206, WireType.LengthDelimited).fork().tag(1, WireType.Varint).bool(k === "true").tag(2, WireType.Varint).int32(message.unknownMapFieldBool[k]).join();
+            writer.tag(206, WireType.LengthDelimited).fork().tag(1, WireType.Varint).bool(k === "true").tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldBool[k])).join();
         /* map<string, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_string = 207; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldString))
-            writer.tag(207, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k).tag(2, WireType.Varint).int32(message.unknownMapFieldString[k]).join();
+            writer.tag(207, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldString[k])).join();
         /* map<sint32, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_sint32 = 208; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldSint32))
-            writer.tag(208, WireType.LengthDelimited).fork().tag(1, WireType.Varint).sint32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapFieldSint32[k as any]).join();
+            writer.tag(208, WireType.LengthDelimited).fork().tag(1, WireType.Varint).sint32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldSint32[k as any])).join();
         /* map<sint64, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_sint64 = 209; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldSint64))
-            writer.tag(209, WireType.LengthDelimited).fork().tag(1, WireType.Varint).sint64(k).tag(2, WireType.Varint).int32(message.unknownMapFieldSint64[k]).join();
+            writer.tag(209, WireType.LengthDelimited).fork().tag(1, WireType.Varint).sint64(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldSint64[k])).join();
         /* map<sfixed32, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_sfixed32 = 210; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldSfixed32))
-            writer.tag(210, WireType.LengthDelimited).fork().tag(1, WireType.Bit32).sfixed32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapFieldSfixed32[k as any]).join();
+            writer.tag(210, WireType.LengthDelimited).fork().tag(1, WireType.Bit32).sfixed32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldSfixed32[k as any])).join();
         /* map<sfixed64, protobuf_unittest.Proto2MapEnumPlusExtra> unknown_map_field_sfixed64 = 211; */
         for (let k of globalThis.Object.keys(message.unknownMapFieldSfixed64))
-            writer.tag(211, WireType.LengthDelimited).fork().tag(1, WireType.Bit64).sfixed64(k).tag(2, WireType.Varint).int32(message.unknownMapFieldSfixed64[k]).join();
+            writer.tag(211, WireType.LengthDelimited).fork().tag(1, WireType.Bit64).sfixed64(k).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtra$stringToNumber, message.unknownMapFieldSfixed64[k])).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1130,7 +1156,7 @@ export const TestEnumMapPlusExtra = new TestEnumMapPlusExtra$Type();
 class TestImportEnumMap$Type extends MessageType<TestImportEnumMap> {
     constructor() {
         super("protobuf_unittest.TestImportEnumMap", [
-            { no: 1, name: "import_enum_amp", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest_import.ImportEnumForMap", ImportEnumForMap] } }
+            { no: 1, name: "import_enum_amp", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest_import.ImportEnumForMap", ImportEnumForMap, undefined, ImportEnumForMap$stringToNumber] } }
         ]);
     }
     create(value?: PartialMessage<TestImportEnumMap>): TestImportEnumMap {
@@ -1168,17 +1194,17 @@ class TestImportEnumMap$Type extends MessageType<TestImportEnumMap> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(ImportEnumForMap$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestImportEnumMap.import_enum_amp");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "UNKNOWN";
     }
     internalBinaryWrite(message: TestImportEnumMap, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* map<int32, protobuf_unittest_import.ImportEnumForMap> import_enum_amp = 1; */
         for (let k of globalThis.Object.keys(message.importEnumAmp))
-            writer.tag(1, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.importEnumAmp[k as any]).join();
+            writer.tag(1, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(ImportEnumForMap$stringToNumber, message.importEnumAmp[k as any])).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

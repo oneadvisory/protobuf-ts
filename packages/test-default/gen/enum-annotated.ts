@@ -18,3 +18,11 @@ export const AnnotatedEnum = {
      * @generated from protobuf enum value: FOO = 1;
      */ FOO: "FOO"
 } as const;
+export const AnnotatedEnum$stringToNumber = {
+    UNSPECIFIED: 0,
+    FOO: 1
+} as const;
+export const AnnotatedEnum$numberToString = {
+    0: "UNSPECIFIED",
+    1: "FOO"
+} as const;

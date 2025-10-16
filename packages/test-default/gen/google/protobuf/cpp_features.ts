@@ -9,9 +9,11 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -65,12 +67,24 @@ export const CppFeatures_StringType = {
      * @generated from protobuf enum value: STRING = 3;
      */ STRING: "STRING"
 } as const;
+export const CppFeatures_StringType$stringToNumber = {
+    STRING_TYPE_UNKNOWN: 0,
+    VIEW: 1,
+    CORD: 2,
+    STRING: 3
+} as const;
+export const CppFeatures_StringType$numberToString = {
+    0: "STRING_TYPE_UNKNOWN",
+    1: "VIEW",
+    2: "CORD",
+    3: "STRING"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class CppFeatures$Type extends MessageType<CppFeatures> {
     constructor() {
         super("pb.CppFeatures", [
             { no: 1, name: "legacy_closed_enum", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 2, name: "string_type", kind: "enum", opt: true, T: () => ["pb.CppFeatures.StringType", CppFeatures_StringType] },
+            { no: 2, name: "string_type", kind: "enum", opt: true, T: () => ["pb.CppFeatures.StringType", CppFeatures_StringType, undefined, CppFeatures_StringType$stringToNumber] },
             { no: 3, name: "enum_name_uses_string_view", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ }
         ]);
     }
@@ -89,7 +103,7 @@ class CppFeatures$Type extends MessageType<CppFeatures> {
                     message.legacyClosedEnum = reader.bool();
                     break;
                 case /* optional pb.CppFeatures.StringType string_type */ 2:
-                    message.stringType = reader.int32();
+                    message.stringType = enumNumberToString(CppFeatures_StringType$numberToString, reader.int32()) as any;
                     break;
                 case /* optional bool enum_name_uses_string_view */ 3:
                     message.enumNameUsesStringView = reader.bool();
@@ -111,7 +125,7 @@ class CppFeatures$Type extends MessageType<CppFeatures> {
             writer.tag(1, WireType.Varint).bool(message.legacyClosedEnum);
         /* optional pb.CppFeatures.StringType string_type = 2; */
         if (message.stringType !== undefined)
-            writer.tag(2, WireType.Varint).int32(message.stringType);
+            writer.tag(2, WireType.Varint).int32(enumStringToNumber(CppFeatures_StringType$stringToNumber, message.stringType));
         /* optional bool enum_name_uses_string_view = 3; */
         if (message.enumNameUsesStringView !== undefined)
             writer.tag(3, WireType.Varint).bool(message.enumNameUsesStringView);

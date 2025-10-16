@@ -104,7 +104,7 @@ export class ReflectionJsonWriter {
         case 'enum':
           const enumInfo = field.V.T();
           for (const [entryKey, entryValue] of Object.entries(value)) {
-            assert(entryValue === undefined || typeof entryValue == 'number');
+            assert(entryValue === undefined || typeof entryValue == 'string' || typeof entryValue == 'number');
             const val = this.enum(
               enumInfo,
               entryValue,
@@ -144,7 +144,7 @@ export class ReflectionJsonWriter {
         case 'enum':
           const enumInfo = field.T();
           for (let i = 0; i < value.length; i++) {
-            assert(value[i] === undefined || typeof value[i] == 'number');
+            assert(value[i] === undefined || typeof value[i] == 'string' || typeof value[i] == 'number');
             const val = this.enum(
               enumInfo,
               value[i],

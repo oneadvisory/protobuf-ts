@@ -32,6 +32,8 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
@@ -150,6 +152,12 @@ export const NullValue = {
      *
      * @generated from protobuf enum value: NULL_VALUE = 0; */ NULL_VALUE: "NULL_VALUE"
 } as const;
+export const NullValue$stringToNumber = {
+    NULL_VALUE: 0
+} as const;
+export const NullValue$numberToString = {
+    0: "NULL_VALUE"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class Struct$Type extends MessageType<Struct> {
     constructor() {
@@ -244,7 +252,7 @@ export const Struct = new Struct$Type();
 class Value$Type extends MessageType<Value> {
     constructor() {
         super("google.protobuf.Value", [
-            { no: 1, name: "null_value", kind: "enum", oneof: "kind", T: () => ["google.protobuf.NullValue", NullValue] },
+            { no: 1, name: "null_value", kind: "enum", oneof: "kind", T: () => ["google.protobuf.NullValue", NullValue, undefined, NullValue$stringToNumber] },
             { no: 2, name: "number_value", kind: "scalar", oneof: "kind", T: 1 /*ScalarType.DOUBLE*/ },
             { no: 3, name: "string_value", kind: "scalar", oneof: "kind", T: 9 /*ScalarType.STRING*/ },
             { no: 4, name: "bool_value", kind: "scalar", oneof: "kind", T: 8 /*ScalarType.BOOL*/ },
@@ -328,7 +336,7 @@ class Value$Type extends MessageType<Value> {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* google.protobuf.NullValue null_value */ 1:
-                    message.nullValue = reader.int32();
+                    message.nullValue = enumNumberToString(NullValue$numberToString, reader.int32()) as any;
                     break;
                 case /* double number_value */ 2:
                     message.numberValue = reader.double();
@@ -359,7 +367,7 @@ class Value$Type extends MessageType<Value> {
     internalBinaryWrite(message: Value, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* google.protobuf.NullValue null_value = 1; */
         if ("nullValue" in message && message.nullValue != null)
-            writer.tag(1, WireType.Varint).int32(message.nullValue);
+            writer.tag(1, WireType.Varint).int32(enumStringToNumber(NullValue$stringToNumber, message.nullValue));
         /* double number_value = 2; */
         if ("numberValue" in message && message.numberValue != null)
             writer.tag(2, WireType.Bit64).double(message.numberValue);

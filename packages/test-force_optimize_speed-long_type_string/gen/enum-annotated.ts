@@ -2,15 +2,27 @@
 // @generated from protobuf file "enum-annotated.proto" (package "spec", syntax proto3)
 // tslint:disable
 /**
- * @generated from protobuf enum spec.AnnotatedEnum
+ * @generated from protobuf enum spec.AnnotatedEnum:
+ *
+ * enum AnnotatedEnum {
+ *  UNSPECIFIED = 0;
+ *  FOO = 1;
+ * }
  */
-export enum AnnotatedEnum {
+export type AnnotatedEnum = "UNSPECIFIED" | "FOO";
+export const AnnotatedEnum = {
     /**
      * @generated from protobuf enum value: UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
+     */ UNSPECIFIED: "UNSPECIFIED",
     /**
      * @generated from protobuf enum value: FOO = 1;
-     */
-    FOO = 1
-}
+     */ FOO: "FOO"
+} as const;
+export const AnnotatedEnum$stringToNumber = {
+    UNSPECIFIED: 0,
+    FOO: 1
+} as const;
+export const AnnotatedEnum$numberToString = {
+    0: "UNSPECIFIED",
+    1: "FOO"
+} as const;

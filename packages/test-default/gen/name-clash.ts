@@ -354,6 +354,22 @@ export const NoClashEnumWrap_X = {
      *
      * @generated from protobuf enum value: return = 6; */ return: "return"
 } as const;
+export const NoClashEnumWrap_X$stringToNumber = {
+    instanceof: 0,
+    switch: 1,
+    case: 3,
+    function: 4,
+    interface: 5,
+    return: 6
+} as const;
+export const NoClashEnumWrap_X$numberToString = {
+    0: "instanceof",
+    1: "switch",
+    3: "case",
+    4: "function",
+    5: "interface",
+    6: "return"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class ReservedFieldNames$Type extends MessageType$<ReservedFieldNames> {
     constructor() {

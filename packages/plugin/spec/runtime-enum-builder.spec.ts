@@ -17,15 +17,17 @@ describe('RuntimeEnumBuilder', function () {
     builder.add('UNSPECIFIED', 0);
     builder.add('YES', 1);
     builder.add('NO', 2);
-    let eo = builder.build();
-    expect(isEnumObject(eo)).toBeTrue();
+    let result = builder.build();
+    expect(isEnumObject(result.enumObject)).toBeTrue();
     expect(builder.isValid()).toBeTrue();
-    expect(eo['UNSPECIFIED']).toBe(0);
-    expect(eo['YES']).toBe(1);
-    expect(eo['NO']).toBe(2);
-    expect(eo[0]).toBe('UNSPECIFIED');
-    expect(eo[1]).toBe('YES');
-    expect(eo[2]).toBe('NO');
+    // String-based enum format: keys map to themselves
+    expect(result.enumObject['UNSPECIFIED']).toBe('UNSPECIFIED');
+    expect(result.enumObject['YES']).toBe('YES');
+    expect(result.enumObject['NO']).toBe('NO');
+    // Check number mapping
+    expect(result.stringToNumber['UNSPECIFIED']).toBe(0);
+    expect(result.stringToNumber['YES']).toBe(1);
+    expect(result.stringToNumber['NO']).toBe(2);
   });
 
   it('should throw on duplicate name', () => {
@@ -35,18 +37,16 @@ describe('RuntimeEnumBuilder', function () {
     expect(builder.isValid()).toBeFalse();
   });
 
-  it('should build() valid', () => {
+  it('should build() valid (duplicate test)', () => {
     builder.add('UNSPECIFIED', 0);
     builder.add('YES', 1);
     builder.add('NO', 2);
-    let eo = builder.build();
-    expect(isEnumObject(eo)).toBeTrue();
+    let result = builder.build();
+    expect(isEnumObject(result.enumObject)).toBeTrue();
     expect(builder.isValid()).toBeTrue();
-    expect(eo['UNSPECIFIED']).toBe(0);
-    expect(eo['YES']).toBe(1);
-    expect(eo['NO']).toBe(2);
-    expect(eo[0]).toBe('UNSPECIFIED');
-    expect(eo[1]).toBe('YES');
-    expect(eo[2]).toBe('NO');
+    // String-based enum format: keys map to themselves
+    expect(result.enumObject['UNSPECIFIED']).toBe('UNSPECIFIED');
+    expect(result.enumObject['YES']).toBe('YES');
+    expect(result.enumObject['NO']).toBe('NO');
   });
 });

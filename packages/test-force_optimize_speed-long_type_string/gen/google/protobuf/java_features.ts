@@ -9,9 +9,11 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -40,36 +42,44 @@ export interface JavaFeatures {
  * The UTF8 validation strategy to use.  See go/editions-utf8-validation for
  * more information on this feature.
  *
- * @generated from protobuf enum pb.JavaFeatures.Utf8Validation
+ * @generated from protobuf enum pb.JavaFeatures.Utf8Validation:
+ *
+ * enum Utf8Validation {
+ *  UTF8_VALIDATION_UNKNOWN = 0;  // Invalid default, which should never be used.
+ *  DEFAULT = 1;  // Respect the UTF8 validation behavior specified by the global
+ *  VERIFY = 2;  // Verifies UTF8 validity overriding the global utf8_validation
+ * }
  */
-export enum JavaFeatures_Utf8Validation {
-    /**
-     * Invalid default, which should never be used.
+export type JavaFeatures_Utf8Validation = "UTF8_VALIDATION_UNKNOWN" | "DEFAULT" | "VERIFY";
+export const JavaFeatures_Utf8Validation = {
+    /** Invalid default, which should never be used.
      *
-     * @generated from protobuf enum value: UTF8_VALIDATION_UNKNOWN = 0;
-     */
-    UTF8_VALIDATION_UNKNOWN = 0,
-    /**
-     * Respect the UTF8 validation behavior specified by the global
+     * @generated from protobuf enum value: UTF8_VALIDATION_UNKNOWN = 0; */ UTF8_VALIDATION_UNKNOWN: "UTF8_VALIDATION_UNKNOWN",
+    /** Respect the UTF8 validation behavior specified by the global
      * utf8_validation feature.
      *
-     * @generated from protobuf enum value: DEFAULT = 1;
-     */
-    DEFAULT = 1,
-    /**
-     * Verifies UTF8 validity overriding the global utf8_validation
+     * @generated from protobuf enum value: DEFAULT = 1; */ DEFAULT: "DEFAULT",
+    /** Verifies UTF8 validity overriding the global utf8_validation
      * feature. This represents the legacy java_string_check_utf8 option.
      *
-     * @generated from protobuf enum value: VERIFY = 2;
-     */
-    VERIFY = 2
-}
+     * @generated from protobuf enum value: VERIFY = 2; */ VERIFY: "VERIFY"
+} as const;
+export const JavaFeatures_Utf8Validation$stringToNumber = {
+    UTF8_VALIDATION_UNKNOWN: 0,
+    DEFAULT: 1,
+    VERIFY: 2
+} as const;
+export const JavaFeatures_Utf8Validation$numberToString = {
+    0: "UTF8_VALIDATION_UNKNOWN",
+    1: "DEFAULT",
+    2: "VERIFY"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class JavaFeatures$Type extends MessageType<JavaFeatures> {
     constructor() {
         super("pb.JavaFeatures", [
             { no: 1, name: "legacy_closed_enum", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 2, name: "utf8_validation", kind: "enum", opt: true, T: () => ["pb.JavaFeatures.Utf8Validation", JavaFeatures_Utf8Validation] }
+            { no: 2, name: "utf8_validation", kind: "enum", opt: true, T: () => ["pb.JavaFeatures.Utf8Validation", JavaFeatures_Utf8Validation, undefined, JavaFeatures_Utf8Validation$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<JavaFeatures>): JavaFeatures {
@@ -87,7 +97,7 @@ class JavaFeatures$Type extends MessageType<JavaFeatures> {
                     message.legacyClosedEnum = reader.bool();
                     break;
                 case /* optional pb.JavaFeatures.Utf8Validation utf8_validation */ 2:
-                    message.utf8Validation = reader.int32();
+                    message.utf8Validation = enumNumberToString(JavaFeatures_Utf8Validation$numberToString, reader.int32()) as any;
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -106,7 +116,7 @@ class JavaFeatures$Type extends MessageType<JavaFeatures> {
             writer.tag(1, WireType.Varint).bool(message.legacyClosedEnum);
         /* optional pb.JavaFeatures.Utf8Validation utf8_validation = 2; */
         if (message.utf8Validation !== undefined)
-            writer.tag(2, WireType.Varint).int32(message.utf8Validation);
+            writer.tag(2, WireType.Varint).int32(enumStringToNumber(JavaFeatures_Utf8Validation$stringToNumber, message.utf8Validation));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

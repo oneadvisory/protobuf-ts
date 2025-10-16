@@ -17,8 +17,10 @@
 //
 // LINT: ALLOW_GROUPS
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -687,28 +689,42 @@ export interface TestAllTypesProto2_MessageSetCorrectExtension2 {
     i?: number;
 }
 /**
- * @generated from protobuf enum protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum
+ * @generated from protobuf enum protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  FOO = 0;
+ *  BAR = 1;
+ *  BAZ = 2;
+ *  NEG = -1;  // Intentionally negative.
+ * }
  */
-export enum TestAllTypesProto2_NestedEnum {
+export type TestAllTypesProto2_NestedEnum = "FOO" | "BAR" | "BAZ" | "NEG";
+export const TestAllTypesProto2_NestedEnum = {
     /**
      * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2,
-    /**
-     * Intentionally negative.
+     */ BAZ: "BAZ",
+    /** Intentionally negative.
      *
-     * @generated from protobuf enum value: NEG = -1;
-     */
-    NEG = -1
-}
+     * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
+} as const;
+export const TestAllTypesProto2_NestedEnum$stringToNumber = {
+    FOO: 0,
+    BAR: 1,
+    BAZ: 2,
+    NEG: -1
+} as const;
+export const TestAllTypesProto2_NestedEnum$numberToString = {
+    0: "FOO",
+    1: "BAR",
+    2: "BAZ",
+    [-1]: "NEG"
+} as const;
 /**
  * @generated from protobuf message protobuf_test_messages.proto2.ForeignMessageProto2
  */
@@ -776,18 +792,30 @@ export interface NullHypothesisProto2 {
 export interface EnumOnlyProto2 {
 }
 /**
- * @generated from protobuf enum protobuf_test_messages.proto2.EnumOnlyProto2.Bool
+ * @generated from protobuf enum protobuf_test_messages.proto2.EnumOnlyProto2.Bool:
+ *
+ * enum Bool {
+ *  kFalse = 0;
+ *  kTrue = 1;
+ * }
  */
-export enum EnumOnlyProto2_Bool {
+export type EnumOnlyProto2_Bool = "kFalse" | "kTrue";
+export const EnumOnlyProto2_Bool = {
     /**
      * @generated from protobuf enum value: kFalse = 0;
-     */
-    kFalse = 0,
+     */ kFalse: "kFalse",
     /**
      * @generated from protobuf enum value: kTrue = 1;
-     */
-    kTrue = 1
-}
+     */ kTrue: "kTrue"
+} as const;
+export const EnumOnlyProto2_Bool$stringToNumber = {
+    kFalse: 0,
+    kTrue: 1
+} as const;
+export const EnumOnlyProto2_Bool$numberToString = {
+    0: "kFalse",
+    1: "kTrue"
+} as const;
 /**
  * @generated from protobuf message protobuf_test_messages.proto2.OneStringProto2
  */
@@ -1033,45 +1061,73 @@ export interface TestAllRequiredTypesProto2_MessageSetCorrectExtension2 {
     i: number;
 }
 /**
- * @generated from protobuf enum protobuf_test_messages.proto2.TestAllRequiredTypesProto2.NestedEnum
+ * @generated from protobuf enum protobuf_test_messages.proto2.TestAllRequiredTypesProto2.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  FOO = 0;
+ *  BAR = 1;
+ *  BAZ = 2;
+ *  NEG = -1;  // Intentionally negative.
+ * }
  */
-export enum TestAllRequiredTypesProto2_NestedEnum {
+export type TestAllRequiredTypesProto2_NestedEnum = "FOO" | "BAR" | "BAZ" | "NEG";
+export const TestAllRequiredTypesProto2_NestedEnum = {
     /**
      * @generated from protobuf enum value: FOO = 0;
-     */
-    FOO = 0,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 1;
-     */
-    BAR = 1,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 2;
-     */
-    BAZ = 2,
-    /**
-     * Intentionally negative.
+     */ BAZ: "BAZ",
+    /** Intentionally negative.
      *
-     * @generated from protobuf enum value: NEG = -1;
-     */
-    NEG = -1
-}
+     * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
+} as const;
+export const TestAllRequiredTypesProto2_NestedEnum$stringToNumber = {
+    FOO: 0,
+    BAR: 1,
+    BAZ: 2,
+    NEG: -1
+} as const;
+export const TestAllRequiredTypesProto2_NestedEnum$numberToString = {
+    0: "FOO",
+    1: "BAR",
+    2: "BAZ",
+    [-1]: "NEG"
+} as const;
 /**
- * @generated from protobuf enum protobuf_test_messages.proto2.ForeignEnumProto2
+ * @generated from protobuf enum protobuf_test_messages.proto2.ForeignEnumProto2:
+ *
+ * enum ForeignEnumProto2 {
+ *  FOREIGN_FOO = 0;
+ *  FOREIGN_BAR = 1;
+ *  FOREIGN_BAZ = 2;
+ * }
  */
-export enum ForeignEnumProto2 {
+export type ForeignEnumProto2 = "FOREIGN_FOO" | "FOREIGN_BAR" | "FOREIGN_BAZ";
+export const ForeignEnumProto2 = {
     /**
      * @generated from protobuf enum value: FOREIGN_FOO = 0;
-     */
-    FOREIGN_FOO = 0,
+     */ FOREIGN_FOO: "FOREIGN_FOO",
     /**
      * @generated from protobuf enum value: FOREIGN_BAR = 1;
-     */
-    FOREIGN_BAR = 1,
+     */ FOREIGN_BAR: "FOREIGN_BAR",
     /**
      * @generated from protobuf enum value: FOREIGN_BAZ = 2;
-     */
-    FOREIGN_BAZ = 2
-}
+     */ FOREIGN_BAZ: "FOREIGN_BAZ"
+} as const;
+export const ForeignEnumProto2$stringToNumber = {
+    FOREIGN_FOO: 0,
+    FOREIGN_BAR: 1,
+    FOREIGN_BAZ: 2
+} as const;
+export const ForeignEnumProto2$numberToString = {
+    0: "FOREIGN_FOO",
+    1: "FOREIGN_BAR",
+    2: "FOREIGN_BAZ"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
     constructor() {
@@ -1093,8 +1149,8 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
             { no: 15, name: "optional_bytes", kind: "scalar", opt: true, T: 12 /*ScalarType.BYTES*/ },
             { no: 18, name: "optional_nested_message", kind: "message", T: () => TestAllTypesProto2_NestedMessage },
             { no: 19, name: "optional_foreign_message", kind: "message", T: () => ForeignMessageProto2 },
-            { no: 21, name: "optional_nested_enum", kind: "enum", opt: true, T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum] },
-            { no: 22, name: "optional_foreign_enum", kind: "enum", opt: true, T: () => ["protobuf_test_messages.proto2.ForeignEnumProto2", ForeignEnumProto2] },
+            { no: 21, name: "optional_nested_enum", kind: "enum", opt: true, T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum, undefined, TestAllTypesProto2_NestedEnum$stringToNumber] },
+            { no: 22, name: "optional_foreign_enum", kind: "enum", opt: true, T: () => ["protobuf_test_messages.proto2.ForeignEnumProto2", ForeignEnumProto2, undefined, ForeignEnumProto2$stringToNumber] },
             { no: 24, name: "optional_string_piece", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 25, name: "optional_cord", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 27, name: "recursive_message", kind: "message", T: () => TestAllTypesProto2 },
@@ -1115,8 +1171,8 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
             { no: 45, name: "repeated_bytes", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 12 /*ScalarType.BYTES*/ },
             { no: 48, name: "repeated_nested_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TestAllTypesProto2_NestedMessage },
             { no: 49, name: "repeated_foreign_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ForeignMessageProto2 },
-            { no: 51, name: "repeated_nested_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum] },
-            { no: 52, name: "repeated_foreign_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_test_messages.proto2.ForeignEnumProto2", ForeignEnumProto2] },
+            { no: 51, name: "repeated_nested_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum, undefined, TestAllTypesProto2_NestedEnum$stringToNumber] },
+            { no: 52, name: "repeated_foreign_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_test_messages.proto2.ForeignEnumProto2", ForeignEnumProto2, undefined, ForeignEnumProto2$stringToNumber] },
             { no: 54, name: "repeated_string_piece", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 55, name: "repeated_cord", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 75, name: "packed_int32", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 5 /*ScalarType.INT32*/ },
@@ -1132,7 +1188,7 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
             { no: 85, name: "packed_float", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 2 /*ScalarType.FLOAT*/ },
             { no: 86, name: "packed_double", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
             { no: 87, name: "packed_bool", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 8 /*ScalarType.BOOL*/ },
-            { no: 88, name: "packed_nested_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum] },
+            { no: 88, name: "packed_nested_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum, undefined, TestAllTypesProto2_NestedEnum$stringToNumber] },
             { no: 89, name: "unpacked_int32", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 90, name: "unpacked_int64", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/ },
             { no: 91, name: "unpacked_uint32", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 13 /*ScalarType.UINT32*/ },
@@ -1146,7 +1202,7 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
             { no: 99, name: "unpacked_float", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 2 /*ScalarType.FLOAT*/ },
             { no: 100, name: "unpacked_double", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
             { no: 101, name: "unpacked_bool", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 8 /*ScalarType.BOOL*/ },
-            { no: 102, name: "unpacked_nested_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum] },
+            { no: 102, name: "unpacked_nested_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum, undefined, TestAllTypesProto2_NestedEnum$stringToNumber] },
             { no: 56, name: "map_int32_int32", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "scalar", T: 5 /*ScalarType.INT32*/ } },
             { no: 57, name: "map_int64_int64", kind: "map", K: 3 /*ScalarType.INT64*/, V: { kind: "scalar", T: 3 /*ScalarType.INT64*/ } },
             { no: 58, name: "map_uint32_uint32", kind: "map", K: 13 /*ScalarType.UINT32*/, V: { kind: "scalar", T: 13 /*ScalarType.UINT32*/ } },
@@ -1164,8 +1220,8 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
             { no: 70, name: "map_string_bytes", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "scalar", T: 12 /*ScalarType.BYTES*/ } },
             { no: 71, name: "map_string_nested_message", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "message", T: () => TestAllTypesProto2_NestedMessage } },
             { no: 72, name: "map_string_foreign_message", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "message", T: () => ForeignMessageProto2 } },
-            { no: 73, name: "map_string_nested_enum", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "enum", T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum] } },
-            { no: 74, name: "map_string_foreign_enum", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "enum", T: () => ["protobuf_test_messages.proto2.ForeignEnumProto2", ForeignEnumProto2] } },
+            { no: 73, name: "map_string_nested_enum", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "enum", T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum, undefined, TestAllTypesProto2_NestedEnum$stringToNumber] } },
+            { no: 74, name: "map_string_foreign_enum", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "enum", T: () => ["protobuf_test_messages.proto2.ForeignEnumProto2", ForeignEnumProto2, undefined, ForeignEnumProto2$stringToNumber] } },
             { no: 111, name: "oneof_uint32", kind: "scalar", oneof: "oneofField", T: 13 /*ScalarType.UINT32*/ },
             { no: 112, name: "oneof_nested_message", kind: "message", oneof: "oneofField", T: () => TestAllTypesProto2_NestedMessage },
             { no: 113, name: "oneof_string", kind: "scalar", oneof: "oneofField", T: 9 /*ScalarType.STRING*/ },
@@ -1174,7 +1230,7 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
             { no: 116, name: "oneof_uint64", kind: "scalar", oneof: "oneofField", T: 4 /*ScalarType.UINT64*/ },
             { no: 117, name: "oneof_float", kind: "scalar", oneof: "oneofField", T: 2 /*ScalarType.FLOAT*/ },
             { no: 118, name: "oneof_double", kind: "scalar", oneof: "oneofField", T: 1 /*ScalarType.DOUBLE*/ },
-            { no: 119, name: "oneof_enum", kind: "enum", oneof: "oneofField", T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum] },
+            { no: 119, name: "oneof_enum", kind: "enum", oneof: "oneofField", T: () => ["protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum", TestAllTypesProto2_NestedEnum, undefined, TestAllTypesProto2_NestedEnum$stringToNumber] },
             { no: 241, name: "default_int32", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 242, name: "default_int64", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/ },
             { no: 243, name: "default_uint32", kind: "scalar", opt: true, T: 13 /*ScalarType.UINT32*/ },
@@ -1341,10 +1397,10 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
                     message.optionalForeignMessage = ForeignMessageProto2.internalBinaryRead(reader, reader.uint32(), options, message.optionalForeignMessage);
                     break;
                 case /* optional protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum optional_nested_enum */ 21:
-                    message.optionalNestedEnum = reader.int32();
+                    message.optionalNestedEnum = enumNumberToString(TestAllTypesProto2_NestedEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* optional protobuf_test_messages.proto2.ForeignEnumProto2 optional_foreign_enum */ 22:
-                    message.optionalForeignEnum = reader.int32();
+                    message.optionalForeignEnum = enumNumberToString(ForeignEnumProto2$numberToString, reader.int32()) as any;
                     break;
                 case /* optional string optional_string_piece */ 24:
                     message.optionalStringPiece = reader.string();
@@ -1461,16 +1517,16 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
                 case /* repeated protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum repeated_nested_enum */ 51:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedNestedEnum?.push?.(reader.int32());
+                            message.repeatedNestedEnum?.push?.(enumNumberToString(TestAllTypesProto2_NestedEnum$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedNestedEnum?.push?.(reader.int32());
+                        message.repeatedNestedEnum?.push?.(enumNumberToString(TestAllTypesProto2_NestedEnum$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated protobuf_test_messages.proto2.ForeignEnumProto2 repeated_foreign_enum */ 52:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedForeignEnum?.push?.(reader.int32());
+                            message.repeatedForeignEnum?.push?.(enumNumberToString(ForeignEnumProto2$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedForeignEnum?.push?.(reader.int32());
+                        message.repeatedForeignEnum?.push?.(enumNumberToString(ForeignEnumProto2$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated string repeated_string_piece */ 54:
                     message.repeatedStringPiece?.push?.(reader.string());
@@ -1572,9 +1628,9 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
                 case /* repeated protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum packed_nested_enum = 88 [packed = true] */ 88:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedNestedEnum?.push?.(reader.int32());
+                            message.packedNestedEnum?.push?.(enumNumberToString(TestAllTypesProto2_NestedEnum$numberToString, reader.int32()) as any);
                     else
-                        message.packedNestedEnum?.push?.(reader.int32());
+                        message.packedNestedEnum?.push?.(enumNumberToString(TestAllTypesProto2_NestedEnum$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated int32 unpacked_int32 = 89 [packed = false] */ 89:
                     if (wireType === WireType.LengthDelimited)
@@ -1670,9 +1726,9 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
                 case /* repeated protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum unpacked_nested_enum = 102 [packed = false] */ 102:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.unpackedNestedEnum?.push?.(reader.int32());
+                            message.unpackedNestedEnum?.push?.(enumNumberToString(TestAllTypesProto2_NestedEnum$numberToString, reader.int32()) as any);
                     else
-                        message.unpackedNestedEnum?.push?.(reader.int32());
+                        message.unpackedNestedEnum?.push?.(enumNumberToString(TestAllTypesProto2_NestedEnum$numberToString, reader.int32()) as any);
                     break;
                 case /* map<int32, int32> map_int32_int32 */ 56:
                     this.binaryReadMap56(message.mapInt32Int32, reader, options);
@@ -1756,7 +1812,7 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
                     message.oneofDouble = reader.double();
                     break;
                 case /* protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum oneof_enum */ 119:
-                    message.oneofEnum = reader.int32();
+                    message.oneofEnum = enumNumberToString(TestAllTypesProto2_NestedEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* optional int32 default_int32 = 241 [default = -123456789] */ 241:
                     message.defaultInt32 = reader.int32();
@@ -2149,12 +2205,12 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
                     key = reader.string();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(TestAllTypesProto2_NestedEnum$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_test_messages.proto2.TestAllTypesProto2.map_string_nested_enum");
             }
         }
-        map[key ?? ""] = val ?? 0;
+        map[key ?? ""] = val ?? "FOO";
     }
     private binaryReadMap74(map: TestAllTypesProto2["mapStringForeignEnum"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestAllTypesProto2["mapStringForeignEnum"] | undefined, val: TestAllTypesProto2["mapStringForeignEnum"][any] | undefined;
@@ -2165,12 +2221,12 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
                     key = reader.string();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(ForeignEnumProto2$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_test_messages.proto2.TestAllTypesProto2.map_string_foreign_enum");
             }
         }
-        map[key ?? ""] = val ?? 0;
+        map[key ?? ""] = val ?? "FOREIGN_FOO";
     }
     internalBinaryWrite(message: TestAllTypesProto2, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* optional int32 optional_int32 = 1; */
@@ -2226,10 +2282,10 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
             ForeignMessageProto2.internalBinaryWrite(message.optionalForeignMessage, writer.tag(19, WireType.LengthDelimited).fork(), options).join();
         /* optional protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum optional_nested_enum = 21; */
         if (message.optionalNestedEnum !== undefined)
-            writer.tag(21, WireType.Varint).int32(message.optionalNestedEnum);
+            writer.tag(21, WireType.Varint).int32(enumStringToNumber(TestAllTypesProto2_NestedEnum$stringToNumber, message.optionalNestedEnum));
         /* optional protobuf_test_messages.proto2.ForeignEnumProto2 optional_foreign_enum = 22; */
         if (message.optionalForeignEnum !== undefined)
-            writer.tag(22, WireType.Varint).int32(message.optionalForeignEnum);
+            writer.tag(22, WireType.Varint).int32(enumStringToNumber(ForeignEnumProto2$stringToNumber, message.optionalForeignEnum));
         /* optional string optional_string_piece = 24; */
         if (message.optionalStringPiece !== undefined)
             writer.tag(24, WireType.LengthDelimited).string(message.optionalStringPiece);
@@ -2292,10 +2348,10 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
             ForeignMessageProto2.internalBinaryWrite(message.repeatedForeignMessage?.[i] as any, writer.tag(49, WireType.LengthDelimited).fork(), options).join();
         /* repeated protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum repeated_nested_enum = 51; */
         for (let i = 0; i < (message.repeatedNestedEnum?.length || 0); i++)
-            writer.tag(51, WireType.Varint).int32(message.repeatedNestedEnum?.[i] as any);
+            writer.tag(51, WireType.Varint).int32(enumStringToNumber(TestAllTypesProto2_NestedEnum$stringToNumber, message.repeatedNestedEnum?.[i] as any));
         /* repeated protobuf_test_messages.proto2.ForeignEnumProto2 repeated_foreign_enum = 52; */
         for (let i = 0; i < (message.repeatedForeignEnum?.length || 0); i++)
-            writer.tag(52, WireType.Varint).int32(message.repeatedForeignEnum?.[i] as any);
+            writer.tag(52, WireType.Varint).int32(enumStringToNumber(ForeignEnumProto2$stringToNumber, message.repeatedForeignEnum?.[i] as any));
         /* repeated string repeated_string_piece = 54; */
         for (let i = 0; i < (message.repeatedStringPiece?.length || 0); i++)
             writer.tag(54, WireType.LengthDelimited).string(message.repeatedStringPiece?.[i] as any);
@@ -2363,10 +2419,10 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
         }
         /* map<string, protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum> map_string_nested_enum = 73; */
         for (let k of globalThis.Object.keys(message.mapStringNestedEnum))
-            writer.tag(73, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k).tag(2, WireType.Varint).int32(message.mapStringNestedEnum[k]).join();
+            writer.tag(73, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k).tag(2, WireType.Varint).int32(enumStringToNumber(TestAllTypesProto2_NestedEnum$stringToNumber, message.mapStringNestedEnum[k])).join();
         /* map<string, protobuf_test_messages.proto2.ForeignEnumProto2> map_string_foreign_enum = 74; */
         for (let k of globalThis.Object.keys(message.mapStringForeignEnum))
-            writer.tag(74, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k).tag(2, WireType.Varint).int32(message.mapStringForeignEnum[k]).join();
+            writer.tag(74, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k).tag(2, WireType.Varint).int32(enumStringToNumber(ForeignEnumProto2$stringToNumber, message.mapStringForeignEnum[k])).join();
         /* repeated int32 packed_int32 = 75 [packed = true]; */
         if (message.packedInt32?.length) {
             writer.tag(75, WireType.LengthDelimited).fork();
@@ -2462,7 +2518,7 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
         if (message.packedNestedEnum?.length) {
             writer.tag(88, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedNestedEnum.length; i++)
-                writer.int32(message.packedNestedEnum[i]);
+                writer.int32(enumStringToNumber(TestAllTypesProto2_NestedEnum$stringToNumber, message.packedNestedEnum[i]));
             writer.join();
         }
         /* repeated int32 unpacked_int32 = 89 [packed = false]; */
@@ -2506,7 +2562,7 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
             writer.tag(101, WireType.Varint).bool(message.unpackedBool?.[i] as any);
         /* repeated protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum unpacked_nested_enum = 102 [packed = false]; */
         for (let i = 0; i < (message.unpackedNestedEnum?.length || 0); i++)
-            writer.tag(102, WireType.Varint).int32(message.unpackedNestedEnum?.[i] as any);
+            writer.tag(102, WireType.Varint).int32(enumStringToNumber(TestAllTypesProto2_NestedEnum$stringToNumber, message.unpackedNestedEnum?.[i] as any));
         /* uint32 oneof_uint32 = 111; */
         if ("oneofUint32" in message && message.oneofUint32 != null)
             writer.tag(111, WireType.Varint).uint32(message.oneofUint32);
@@ -2533,7 +2589,7 @@ class TestAllTypesProto2$Type extends MessageType<TestAllTypesProto2> {
             writer.tag(118, WireType.Bit64).double(message.oneofDouble);
         /* protobuf_test_messages.proto2.TestAllTypesProto2.NestedEnum oneof_enum = 119; */
         if ("oneofEnum" in message && message.oneofEnum != null)
-            writer.tag(119, WireType.Varint).int32(message.oneofEnum);
+            writer.tag(119, WireType.Varint).int32(enumStringToNumber(TestAllTypesProto2_NestedEnum$stringToNumber, message.oneofEnum));
         /* optional int32 default_int32 = 241 [default = -123456789]; */
         if (message.defaultInt32 !== undefined)
             writer.tag(241, WireType.Varint).int32(message.defaultInt32);
@@ -3360,8 +3416,8 @@ class TestAllRequiredTypesProto2$Type extends MessageType<TestAllRequiredTypesPr
             { no: 15, name: "required_bytes", kind: "scalar", T: 12 /*ScalarType.BYTES*/ },
             { no: 18, name: "required_nested_message", kind: "message", T: () => TestAllRequiredTypesProto2_NestedMessage },
             { no: 19, name: "required_foreign_message", kind: "message", T: () => ForeignMessageProto2 },
-            { no: 21, name: "required_nested_enum", kind: "enum", T: () => ["protobuf_test_messages.proto2.TestAllRequiredTypesProto2.NestedEnum", TestAllRequiredTypesProto2_NestedEnum] },
-            { no: 22, name: "required_foreign_enum", kind: "enum", T: () => ["protobuf_test_messages.proto2.ForeignEnumProto2", ForeignEnumProto2] },
+            { no: 21, name: "required_nested_enum", kind: "enum", T: () => ["protobuf_test_messages.proto2.TestAllRequiredTypesProto2.NestedEnum", TestAllRequiredTypesProto2_NestedEnum, undefined, TestAllRequiredTypesProto2_NestedEnum$stringToNumber] },
+            { no: 22, name: "required_foreign_enum", kind: "enum", T: () => ["protobuf_test_messages.proto2.ForeignEnumProto2", ForeignEnumProto2, undefined, ForeignEnumProto2$stringToNumber] },
             { no: 24, name: "required_string_piece", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 25, name: "required_cord", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 27, name: "recursive_message", kind: "message", T: () => TestAllRequiredTypesProto2 },
@@ -3400,8 +3456,8 @@ class TestAllRequiredTypesProto2$Type extends MessageType<TestAllRequiredTypesPr
         message.requiredBool = false;
         message.requiredString = "";
         message.requiredBytes = new Uint8Array(0);
-        message.requiredNestedEnum = 0;
-        message.requiredForeignEnum = 0;
+        message.requiredNestedEnum = "FOO";
+        message.requiredForeignEnum = "FOREIGN_FOO";
         message.requiredStringPiece = "";
         message.requiredCord = "";
         message.defaultInt32 = 0;
@@ -3480,10 +3536,10 @@ class TestAllRequiredTypesProto2$Type extends MessageType<TestAllRequiredTypesPr
                     message.requiredForeignMessage = ForeignMessageProto2.internalBinaryRead(reader, reader.uint32(), options, message.requiredForeignMessage);
                     break;
                 case /* required protobuf_test_messages.proto2.TestAllRequiredTypesProto2.NestedEnum required_nested_enum */ 21:
-                    message.requiredNestedEnum = reader.int32();
+                    message.requiredNestedEnum = enumNumberToString(TestAllRequiredTypesProto2_NestedEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* required protobuf_test_messages.proto2.ForeignEnumProto2 required_foreign_enum */ 22:
-                    message.requiredForeignEnum = reader.int32();
+                    message.requiredForeignEnum = enumNumberToString(ForeignEnumProto2$numberToString, reader.int32()) as any;
                     break;
                 case /* required string required_string_piece */ 24:
                     message.requiredStringPiece = reader.string();
@@ -3606,11 +3662,11 @@ class TestAllRequiredTypesProto2$Type extends MessageType<TestAllRequiredTypesPr
         if (message.requiredForeignMessage)
             ForeignMessageProto2.internalBinaryWrite(message.requiredForeignMessage, writer.tag(19, WireType.LengthDelimited).fork(), options).join();
         /* required protobuf_test_messages.proto2.TestAllRequiredTypesProto2.NestedEnum required_nested_enum = 21; */
-        if (message.requiredNestedEnum !== 0)
-            writer.tag(21, WireType.Varint).int32(message.requiredNestedEnum);
+        if (message.requiredNestedEnum !== "FOO")
+            writer.tag(21, WireType.Varint).int32(enumStringToNumber(TestAllRequiredTypesProto2_NestedEnum$stringToNumber, message.requiredNestedEnum));
         /* required protobuf_test_messages.proto2.ForeignEnumProto2 required_foreign_enum = 22; */
-        if (message.requiredForeignEnum !== 0)
-            writer.tag(22, WireType.Varint).int32(message.requiredForeignEnum);
+        if (message.requiredForeignEnum !== "FOREIGN_FOO")
+            writer.tag(22, WireType.Varint).int32(enumStringToNumber(ForeignEnumProto2$stringToNumber, message.requiredForeignEnum));
         /* required string required_string_piece = 24; */
         if (message.requiredStringPiece !== "")
             writer.tag(24, WireType.LengthDelimited).string(message.requiredStringPiece);

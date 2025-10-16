@@ -62,23 +62,43 @@ export interface TopLevelMessage {
 export interface TopLevelMessage_NestedMessage {
 }
 /**
- * @generated from protobuf enum protobuf_unittest.TopLevelMessage.NestedEnum
+ * @generated from protobuf enum protobuf_unittest.TopLevelMessage.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  NESTED_UNKNOWN = 0;
+ * }
  */
-export enum TopLevelMessage_NestedEnum {
+export type TopLevelMessage_NestedEnum = "NESTED_UNKNOWN";
+export const TopLevelMessage_NestedEnum = {
     /**
      * @generated from protobuf enum value: NESTED_UNKNOWN = 0;
-     */
-    NESTED_UNKNOWN = 0
-}
+     */ NESTED_UNKNOWN: "NESTED_UNKNOWN"
+} as const;
+export const TopLevelMessage_NestedEnum$stringToNumber = {
+    NESTED_UNKNOWN: 0
+} as const;
+export const TopLevelMessage_NestedEnum$numberToString = {
+    0: "NESTED_UNKNOWN"
+} as const;
 /**
- * @generated from protobuf enum protobuf_unittest.TopLevelEnum
+ * @generated from protobuf enum protobuf_unittest.TopLevelEnum:
+ *
+ * enum TopLevelEnum {
+ *  TOP_LEVEL_UNKNOWN = 0;
+ * }
  */
-export enum TopLevelEnum {
+export type TopLevelEnum = "TOP_LEVEL_UNKNOWN";
+export const TopLevelEnum = {
     /**
      * @generated from protobuf enum value: TOP_LEVEL_UNKNOWN = 0;
-     */
-    TOP_LEVEL_UNKNOWN = 0
-}
+     */ TOP_LEVEL_UNKNOWN: "TOP_LEVEL_UNKNOWN"
+} as const;
+export const TopLevelEnum$stringToNumber = {
+    TOP_LEVEL_UNKNOWN: 0
+} as const;
+export const TopLevelEnum$numberToString = {
+    0: "TOP_LEVEL_UNKNOWN"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class OptionsMessage$Type extends MessageType<OptionsMessage> {
     constructor() {

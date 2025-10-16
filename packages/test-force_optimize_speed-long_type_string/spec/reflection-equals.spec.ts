@@ -4,15 +4,17 @@ import {
   reflectionEquals,
   ScalarType,
 } from '@oneadvisory/protobuf-ts-runtime';
-import { EnumFieldMessage } from '../gen/msg-enum';
+import { EnumFieldMessage, SimpleEnum, AliasEnum, PrefixEnum } from '../gen/msg-enum';
 import { OneofScalarMemberMessage } from '../gen/msg-oneofs';
 
 // Copied from test-default/reflection-equals.spec.ts. Do not edit.
-enum TestEnum {
-  A = 0,
-  B = 1,
-  C = 2,
-}
+// Use string literal union enum for testing
+type TestEnum = "A" | "B" | "C";
+const TestEnum = {
+  A: "A",
+  B: "B",
+  C: "C"
+} as const;
 
 describe('reflectionEquals()', function () {
   beforeEach(function () {
@@ -65,17 +67,17 @@ describe('reflectionEquals()', function () {
             no: 2,
             name: 'unit',
             kind: 'enum',
-            T: () => ['spec.TestEnum', TestEnum],
+            T: () => ['spec.TestEnum', TestEnum, undefined, { A: 0, B: 1, C: 2 }],
           }),
         ],
         options: {},
       },
       {
-        unit: 1,
+        unit: TestEnum.B,
         value: 429,
       },
       {
-        unit: 1,
+        unit: TestEnum.B,
         value: 458,
       }
     );
@@ -122,10 +124,10 @@ describe('reflectionEquals()', function () {
 
   it('enum messages are equal', () => {
     const make = (): EnumFieldMessage => ({
-      enumField: 1,
-      repeatedEnumField: [0, 1, 2],
-      aliasEnumField: 1,
-      prefixEnumField: 2,
+      enumField: SimpleEnum.YES,
+      repeatedEnumField: [SimpleEnum.ANY, SimpleEnum.YES, SimpleEnum.NO],
+      aliasEnumField: AliasEnum.B,
+      prefixEnumField: PrefixEnum.NO,
     });
 
     const eq = reflectionEquals(

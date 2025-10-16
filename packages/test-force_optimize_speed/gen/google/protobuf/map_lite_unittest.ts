@@ -32,9 +32,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
 import { WireType } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -348,60 +350,104 @@ export interface ForeignMessageArenaLite {
     c?: number;
 }
 /**
- * @generated from protobuf enum protobuf_unittest.Proto2MapEnumLite
+ * @generated from protobuf enum protobuf_unittest.Proto2MapEnumLite:
+ *
+ * enum Proto2MapEnumLite {
+ *  PROTO2_MAP_ENUM_FOO_LITE = 0;
+ *  PROTO2_MAP_ENUM_BAR_LITE = 1;
+ *  PROTO2_MAP_ENUM_BAZ_LITE = 2;
+ * }
  */
-export enum Proto2MapEnumLite {
+export type Proto2MapEnumLite = "PROTO2_MAP_ENUM_FOO_LITE" | "PROTO2_MAP_ENUM_BAR_LITE" | "PROTO2_MAP_ENUM_BAZ_LITE";
+export const Proto2MapEnumLite = {
     /**
      * @generated from protobuf enum value: PROTO2_MAP_ENUM_FOO_LITE = 0;
-     */
-    PROTO2_MAP_ENUM_FOO_LITE = 0,
+     */ PROTO2_MAP_ENUM_FOO_LITE: "PROTO2_MAP_ENUM_FOO_LITE",
     /**
      * @generated from protobuf enum value: PROTO2_MAP_ENUM_BAR_LITE = 1;
-     */
-    PROTO2_MAP_ENUM_BAR_LITE = 1,
+     */ PROTO2_MAP_ENUM_BAR_LITE: "PROTO2_MAP_ENUM_BAR_LITE",
     /**
      * @generated from protobuf enum value: PROTO2_MAP_ENUM_BAZ_LITE = 2;
-     */
-    PROTO2_MAP_ENUM_BAZ_LITE = 2
-}
+     */ PROTO2_MAP_ENUM_BAZ_LITE: "PROTO2_MAP_ENUM_BAZ_LITE"
+} as const;
+export const Proto2MapEnumLite$stringToNumber = {
+    PROTO2_MAP_ENUM_FOO_LITE: 0,
+    PROTO2_MAP_ENUM_BAR_LITE: 1,
+    PROTO2_MAP_ENUM_BAZ_LITE: 2
+} as const;
+export const Proto2MapEnumLite$numberToString = {
+    0: "PROTO2_MAP_ENUM_FOO_LITE",
+    1: "PROTO2_MAP_ENUM_BAR_LITE",
+    2: "PROTO2_MAP_ENUM_BAZ_LITE"
+} as const;
 /**
- * @generated from protobuf enum protobuf_unittest.Proto2MapEnumPlusExtraLite
+ * @generated from protobuf enum protobuf_unittest.Proto2MapEnumPlusExtraLite:
+ *
+ * enum Proto2MapEnumPlusExtraLite {
+ *  E_PROTO2_MAP_ENUM_FOO_LITE = 0;
+ *  E_PROTO2_MAP_ENUM_BAR_LITE = 1;
+ *  E_PROTO2_MAP_ENUM_BAZ_LITE = 2;
+ *  E_PROTO2_MAP_ENUM_EXTRA_LITE = 3;
+ * }
  */
-export enum Proto2MapEnumPlusExtraLite {
+export type Proto2MapEnumPlusExtraLite = "E_PROTO2_MAP_ENUM_FOO_LITE" | "E_PROTO2_MAP_ENUM_BAR_LITE" | "E_PROTO2_MAP_ENUM_BAZ_LITE" | "E_PROTO2_MAP_ENUM_EXTRA_LITE";
+export const Proto2MapEnumPlusExtraLite = {
     /**
      * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_FOO_LITE = 0;
-     */
-    E_PROTO2_MAP_ENUM_FOO_LITE = 0,
+     */ E_PROTO2_MAP_ENUM_FOO_LITE: "E_PROTO2_MAP_ENUM_FOO_LITE",
     /**
      * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_BAR_LITE = 1;
-     */
-    E_PROTO2_MAP_ENUM_BAR_LITE = 1,
+     */ E_PROTO2_MAP_ENUM_BAR_LITE: "E_PROTO2_MAP_ENUM_BAR_LITE",
     /**
      * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_BAZ_LITE = 2;
-     */
-    E_PROTO2_MAP_ENUM_BAZ_LITE = 2,
+     */ E_PROTO2_MAP_ENUM_BAZ_LITE: "E_PROTO2_MAP_ENUM_BAZ_LITE",
     /**
      * @generated from protobuf enum value: E_PROTO2_MAP_ENUM_EXTRA_LITE = 3;
-     */
-    E_PROTO2_MAP_ENUM_EXTRA_LITE = 3
-}
+     */ E_PROTO2_MAP_ENUM_EXTRA_LITE: "E_PROTO2_MAP_ENUM_EXTRA_LITE"
+} as const;
+export const Proto2MapEnumPlusExtraLite$stringToNumber = {
+    E_PROTO2_MAP_ENUM_FOO_LITE: 0,
+    E_PROTO2_MAP_ENUM_BAR_LITE: 1,
+    E_PROTO2_MAP_ENUM_BAZ_LITE: 2,
+    E_PROTO2_MAP_ENUM_EXTRA_LITE: 3
+} as const;
+export const Proto2MapEnumPlusExtraLite$numberToString = {
+    0: "E_PROTO2_MAP_ENUM_FOO_LITE",
+    1: "E_PROTO2_MAP_ENUM_BAR_LITE",
+    2: "E_PROTO2_MAP_ENUM_BAZ_LITE",
+    3: "E_PROTO2_MAP_ENUM_EXTRA_LITE"
+} as const;
 /**
- * @generated from protobuf enum protobuf_unittest.MapEnumLite
+ * @generated from protobuf enum protobuf_unittest.MapEnumLite:
+ *
+ * enum MapEnumLite {
+ *  MAP_ENUM_FOO_LITE = 0;
+ *  MAP_ENUM_BAR_LITE = 1;
+ *  MAP_ENUM_BAZ_LITE = 2;
+ * }
  */
-export enum MapEnumLite {
+export type MapEnumLite = "MAP_ENUM_FOO_LITE" | "MAP_ENUM_BAR_LITE" | "MAP_ENUM_BAZ_LITE";
+export const MapEnumLite = {
     /**
      * @generated from protobuf enum value: MAP_ENUM_FOO_LITE = 0;
-     */
-    MAP_ENUM_FOO_LITE = 0,
+     */ MAP_ENUM_FOO_LITE: "MAP_ENUM_FOO_LITE",
     /**
      * @generated from protobuf enum value: MAP_ENUM_BAR_LITE = 1;
-     */
-    MAP_ENUM_BAR_LITE = 1,
+     */ MAP_ENUM_BAR_LITE: "MAP_ENUM_BAR_LITE",
     /**
      * @generated from protobuf enum value: MAP_ENUM_BAZ_LITE = 2;
-     */
-    MAP_ENUM_BAZ_LITE = 2
-}
+     */ MAP_ENUM_BAZ_LITE: "MAP_ENUM_BAZ_LITE"
+} as const;
+export const MapEnumLite$stringToNumber = {
+    MAP_ENUM_FOO_LITE: 0,
+    MAP_ENUM_BAR_LITE: 1,
+    MAP_ENUM_BAZ_LITE: 2
+} as const;
+export const MapEnumLite$numberToString = {
+    0: "MAP_ENUM_FOO_LITE",
+    1: "MAP_ENUM_BAR_LITE",
+    2: "MAP_ENUM_BAZ_LITE"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestMapLite$Type extends MessageType<TestMapLite> {
     constructor() {
@@ -421,7 +467,7 @@ class TestMapLite$Type extends MessageType<TestMapLite> {
             { no: 13, name: "map_bool_bool", kind: "map", K: 8 /*ScalarType.BOOL*/, V: { kind: "scalar", T: 8 /*ScalarType.BOOL*/ } },
             { no: 14, name: "map_string_string", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "scalar", T: 9 /*ScalarType.STRING*/ } },
             { no: 15, name: "map_int32_bytes", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "scalar", T: 12 /*ScalarType.BYTES*/ } },
-            { no: 16, name: "map_int32_enum", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.MapEnumLite", MapEnumLite] } },
+            { no: 16, name: "map_int32_enum", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.MapEnumLite", MapEnumLite, undefined, MapEnumLite$stringToNumber] } },
             { no: 17, name: "map_int32_foreign_message", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "message", T: () => ForeignMessageLite } },
             { no: 18, name: "teboring", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "scalar", T: 5 /*ScalarType.INT32*/ } }
         ]);
@@ -769,12 +815,12 @@ class TestMapLite$Type extends MessageType<TestMapLite> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(MapEnumLite$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestMapLite.map_int32_enum");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "MAP_ENUM_FOO_LITE";
     }
     private binaryReadMap17(map: TestMapLite["mapInt32ForeignMessage"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestMapLite["mapInt32ForeignMessage"] | undefined, val: TestMapLite["mapInt32ForeignMessage"][any] | undefined;
@@ -856,7 +902,7 @@ class TestMapLite$Type extends MessageType<TestMapLite> {
             writer.tag(15, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.LengthDelimited).bytes(message.mapInt32Bytes[k as any]).join();
         /* map<int32, protobuf_unittest.MapEnumLite> map_int32_enum = 16; */
         for (let k of globalThis.Object.keys(message.mapInt32Enum))
-            writer.tag(16, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.mapInt32Enum[k as any]).join();
+            writer.tag(16, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(MapEnumLite$stringToNumber, message.mapInt32Enum[k as any])).join();
         /* map<int32, protobuf_unittest.ForeignMessageLite> map_int32_foreign_message = 17; */
         for (let k of globalThis.Object.keys(message.mapInt32ForeignMessage)) {
             writer.tag(17, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k));
@@ -896,7 +942,7 @@ class TestArenaMapLite$Type extends MessageType<TestArenaMapLite> {
             { no: 13, name: "map_bool_bool", kind: "map", K: 8 /*ScalarType.BOOL*/, V: { kind: "scalar", T: 8 /*ScalarType.BOOL*/ } },
             { no: 14, name: "map_string_string", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "scalar", T: 9 /*ScalarType.STRING*/ } },
             { no: 15, name: "map_int32_bytes", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "scalar", T: 12 /*ScalarType.BYTES*/ } },
-            { no: 16, name: "map_int32_enum", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.MapEnumLite", MapEnumLite] } },
+            { no: 16, name: "map_int32_enum", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.MapEnumLite", MapEnumLite, undefined, MapEnumLite$stringToNumber] } },
             { no: 17, name: "map_int32_foreign_message", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "message", T: () => ForeignMessageArenaLite } }
         ]);
     }
@@ -1239,12 +1285,12 @@ class TestArenaMapLite$Type extends MessageType<TestArenaMapLite> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(MapEnumLite$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestArenaMapLite.map_int32_enum");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "MAP_ENUM_FOO_LITE";
     }
     private binaryReadMap17(map: TestArenaMapLite["mapInt32ForeignMessage"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestArenaMapLite["mapInt32ForeignMessage"] | undefined, val: TestArenaMapLite["mapInt32ForeignMessage"][any] | undefined;
@@ -1310,7 +1356,7 @@ class TestArenaMapLite$Type extends MessageType<TestArenaMapLite> {
             writer.tag(15, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.LengthDelimited).bytes(message.mapInt32Bytes[k as any]).join();
         /* map<int32, protobuf_unittest.MapEnumLite> map_int32_enum = 16; */
         for (let k of globalThis.Object.keys(message.mapInt32Enum))
-            writer.tag(16, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.mapInt32Enum[k as any]).join();
+            writer.tag(16, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(MapEnumLite$stringToNumber, message.mapInt32Enum[k as any])).join();
         /* map<int32, protobuf_unittest.ForeignMessageArenaLite> map_int32_foreign_message = 17; */
         for (let k of globalThis.Object.keys(message.mapInt32ForeignMessage)) {
             writer.tag(17, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k));
@@ -1399,8 +1445,8 @@ export const TestRequiredMessageMapLite = new TestRequiredMessageMapLite$Type();
 class TestEnumMapLite$Type extends MessageType<TestEnumMapLite> {
     constructor() {
         super("protobuf_unittest.TestEnumMapLite", [
-            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumLite", Proto2MapEnumLite] } },
-            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumLite", Proto2MapEnumLite] } }
+            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumLite", Proto2MapEnumLite, undefined, Proto2MapEnumLite$stringToNumber] } },
+            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumLite", Proto2MapEnumLite, undefined, Proto2MapEnumLite$stringToNumber] } }
         ]);
     }
     create(value?: PartialMessage<TestEnumMapLite>): TestEnumMapLite {
@@ -1442,12 +1488,12 @@ class TestEnumMapLite$Type extends MessageType<TestEnumMapLite> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumLite$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapLite.known_map_field");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "PROTO2_MAP_ENUM_FOO_LITE";
     }
     private binaryReadMap102(map: TestEnumMapLite["unknownMapField"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapLite["unknownMapField"] | undefined, val: TestEnumMapLite["unknownMapField"][any] | undefined;
@@ -1458,20 +1504,20 @@ class TestEnumMapLite$Type extends MessageType<TestEnumMapLite> {
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumLite$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapLite.unknown_map_field");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "PROTO2_MAP_ENUM_FOO_LITE";
     }
     internalBinaryWrite(message: TestEnumMapLite, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* map<int32, protobuf_unittest.Proto2MapEnumLite> known_map_field = 101; */
         for (let k of globalThis.Object.keys(message.knownMapField))
-            writer.tag(101, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.knownMapField[k as any]).join();
+            writer.tag(101, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumLite$stringToNumber, message.knownMapField[k as any])).join();
         /* map<int32, protobuf_unittest.Proto2MapEnumLite> unknown_map_field = 102; */
         for (let k of globalThis.Object.keys(message.unknownMapField))
-            writer.tag(102, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapField[k as any]).join();
+            writer.tag(102, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumLite$stringToNumber, message.unknownMapField[k as any])).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1486,8 +1532,8 @@ export const TestEnumMapLite = new TestEnumMapLite$Type();
 class TestEnumMapPlusExtraLite$Type extends MessageType<TestEnumMapPlusExtraLite> {
     constructor() {
         super("protobuf_unittest.TestEnumMapPlusExtraLite", [
-            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtraLite", Proto2MapEnumPlusExtraLite] } },
-            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtraLite", Proto2MapEnumPlusExtraLite] } }
+            { no: 101, name: "known_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtraLite", Proto2MapEnumPlusExtraLite, undefined, Proto2MapEnumPlusExtraLite$stringToNumber] } },
+            { no: 102, name: "unknown_map_field", kind: "map", K: 5 /*ScalarType.INT32*/, V: { kind: "enum", T: () => ["protobuf_unittest.Proto2MapEnumPlusExtraLite", Proto2MapEnumPlusExtraLite, undefined, Proto2MapEnumPlusExtraLite$stringToNumber] } }
         ]);
     }
     create(value?: PartialMessage<TestEnumMapPlusExtraLite>): TestEnumMapPlusExtraLite {
@@ -1529,12 +1575,12 @@ class TestEnumMapPlusExtraLite$Type extends MessageType<TestEnumMapPlusExtraLite
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtraLite$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtraLite.known_map_field");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "E_PROTO2_MAP_ENUM_FOO_LITE";
     }
     private binaryReadMap102(map: TestEnumMapPlusExtraLite["unknownMapField"], reader: IBinaryReader, options: BinaryReadOptions): void {
         let len = reader.uint32(), end = reader.pos + len, key: keyof TestEnumMapPlusExtraLite["unknownMapField"] | undefined, val: TestEnumMapPlusExtraLite["unknownMapField"][any] | undefined;
@@ -1545,20 +1591,20 @@ class TestEnumMapPlusExtraLite$Type extends MessageType<TestEnumMapPlusExtraLite
                     key = reader.int32();
                     break;
                 case 2:
-                    val = reader.int32();
+                    val = enumNumberToString(Proto2MapEnumPlusExtraLite$numberToString, reader.int32()) as any;
                     break;
                 default: throw new globalThis.Error("unknown map entry field for protobuf_unittest.TestEnumMapPlusExtraLite.unknown_map_field");
             }
         }
-        map[key ?? 0] = val ?? 0;
+        map[key ?? 0] = val ?? "E_PROTO2_MAP_ENUM_FOO_LITE";
     }
     internalBinaryWrite(message: TestEnumMapPlusExtraLite, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* map<int32, protobuf_unittest.Proto2MapEnumPlusExtraLite> known_map_field = 101; */
         for (let k of globalThis.Object.keys(message.knownMapField))
-            writer.tag(101, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.knownMapField[k as any]).join();
+            writer.tag(101, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtraLite$stringToNumber, message.knownMapField[k as any])).join();
         /* map<int32, protobuf_unittest.Proto2MapEnumPlusExtraLite> unknown_map_field = 102; */
         for (let k of globalThis.Object.keys(message.unknownMapField))
-            writer.tag(102, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(message.unknownMapField[k as any]).join();
+            writer.tag(102, WireType.LengthDelimited).fork().tag(1, WireType.Varint).int32(parseInt(k)).tag(2, WireType.Varint).int32(enumStringToNumber(Proto2MapEnumPlusExtraLite$stringToNumber, message.unknownMapField[k as any])).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

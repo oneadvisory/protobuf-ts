@@ -32,8 +32,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { enumStringToNumber } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryWriteOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryWriter } from "@oneadvisory/protobuf-ts-runtime";
+import { enumNumberToString } from "@oneadvisory/protobuf-ts-runtime";
 import type { BinaryReadOptions } from "@oneadvisory/protobuf-ts-runtime";
 import type { IBinaryReader } from "@oneadvisory/protobuf-ts-runtime";
 import { UnknownFieldHandler } from "@oneadvisory/protobuf-ts-runtime";
@@ -295,32 +297,48 @@ export interface TestAllTypes_NestedMessage {
     bb: number;
 }
 /**
- * @generated from protobuf enum proto3_arena_lite_unittest.TestAllTypes.NestedEnum
+ * @generated from protobuf enum proto3_arena_lite_unittest.TestAllTypes.NestedEnum:
+ *
+ * enum NestedEnum {
+ *  ZERO = 0;
+ *  FOO = 1;
+ *  BAR = 2;
+ *  BAZ = 3;
+ *  NEG = -1;  // Intentionally negative.
+ * }
  */
-export enum TestAllTypes_NestedEnum {
+export type TestAllTypes_NestedEnum = "ZERO" | "FOO" | "BAR" | "BAZ" | "NEG";
+export const TestAllTypes_NestedEnum = {
     /**
      * @generated from protobuf enum value: ZERO = 0;
-     */
-    ZERO = 0,
+     */ ZERO: "ZERO",
     /**
      * @generated from protobuf enum value: FOO = 1;
-     */
-    FOO = 1,
+     */ FOO: "FOO",
     /**
      * @generated from protobuf enum value: BAR = 2;
-     */
-    BAR = 2,
+     */ BAR: "BAR",
     /**
      * @generated from protobuf enum value: BAZ = 3;
-     */
-    BAZ = 3,
-    /**
-     * Intentionally negative.
+     */ BAZ: "BAZ",
+    /** Intentionally negative.
      *
-     * @generated from protobuf enum value: NEG = -1;
-     */
-    NEG = -1
-}
+     * @generated from protobuf enum value: NEG = -1; */ NEG: "NEG"
+} as const;
+export const TestAllTypes_NestedEnum$stringToNumber = {
+    ZERO: 0,
+    FOO: 1,
+    BAR: 2,
+    BAZ: 3,
+    NEG: -1
+} as const;
+export const TestAllTypes_NestedEnum$numberToString = {
+    0: "ZERO",
+    1: "FOO",
+    2: "BAR",
+    3: "BAZ",
+    [-1]: "NEG"
+} as const;
 // Test messages for packed fields
 
 /**
@@ -482,26 +500,42 @@ export interface ForeignMessage {
 export interface TestEmptyMessage {
 }
 /**
- * @generated from protobuf enum proto3_arena_lite_unittest.ForeignEnum
+ * @generated from protobuf enum proto3_arena_lite_unittest.ForeignEnum:
+ *
+ * enum ForeignEnum {
+ *  FOREIGN_ZERO = 0;
+ *  FOREIGN_FOO = 4;
+ *  FOREIGN_BAR = 5;
+ *  FOREIGN_BAZ = 6;
+ * }
  */
-export enum ForeignEnum {
+export type ForeignEnum = "FOREIGN_ZERO" | "FOREIGN_FOO" | "FOREIGN_BAR" | "FOREIGN_BAZ";
+export const ForeignEnum = {
     /**
      * @generated from protobuf enum value: FOREIGN_ZERO = 0;
-     */
-    FOREIGN_ZERO = 0,
+     */ FOREIGN_ZERO: "FOREIGN_ZERO",
     /**
      * @generated from protobuf enum value: FOREIGN_FOO = 4;
-     */
-    FOREIGN_FOO = 4,
+     */ FOREIGN_FOO: "FOREIGN_FOO",
     /**
      * @generated from protobuf enum value: FOREIGN_BAR = 5;
-     */
-    FOREIGN_BAR = 5,
+     */ FOREIGN_BAR: "FOREIGN_BAR",
     /**
      * @generated from protobuf enum value: FOREIGN_BAZ = 6;
-     */
-    FOREIGN_BAZ = 6
-}
+     */ FOREIGN_BAZ: "FOREIGN_BAZ"
+} as const;
+export const ForeignEnum$stringToNumber = {
+    FOREIGN_ZERO: 0,
+    FOREIGN_FOO: 4,
+    FOREIGN_BAR: 5,
+    FOREIGN_BAZ: 6
+} as const;
+export const ForeignEnum$numberToString = {
+    0: "FOREIGN_ZERO",
+    4: "FOREIGN_FOO",
+    5: "FOREIGN_BAR",
+    6: "FOREIGN_BAZ"
+} as const;
 // @generated message type with reflection information, may provide speed optimized methods
 class TestAllTypes$Type extends MessageType<TestAllTypes> {
     constructor() {
@@ -524,8 +558,8 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
             { no: 18, name: "optional_nested_message", kind: "message", T: () => TestAllTypes_NestedMessage },
             { no: 19, name: "optional_foreign_message", kind: "message", T: () => ForeignMessage },
             { no: 20, name: "optional_import_message", kind: "message", T: () => ImportMessage },
-            { no: 21, name: "optional_nested_enum", kind: "enum", T: () => ["proto3_arena_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum] },
-            { no: 22, name: "optional_foreign_enum", kind: "enum", T: () => ["proto3_arena_lite_unittest.ForeignEnum", ForeignEnum] },
+            { no: 21, name: "optional_nested_enum", kind: "enum", T: () => ["proto3_arena_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum, undefined, TestAllTypes_NestedEnum$stringToNumber] },
+            { no: 22, name: "optional_foreign_enum", kind: "enum", T: () => ["proto3_arena_lite_unittest.ForeignEnum", ForeignEnum, undefined, ForeignEnum$stringToNumber] },
             { no: 24, name: "optional_string_piece", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 25, name: "optional_cord", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 26, name: "optional_public_import_message", kind: "message", T: () => PublicImportMessage },
@@ -548,8 +582,8 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
             { no: 48, name: "repeated_nested_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TestAllTypes_NestedMessage },
             { no: 49, name: "repeated_foreign_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ForeignMessage },
             { no: 50, name: "repeated_import_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ImportMessage },
-            { no: 51, name: "repeated_nested_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_arena_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum] },
-            { no: 52, name: "repeated_foreign_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_arena_lite_unittest.ForeignEnum", ForeignEnum] },
+            { no: 51, name: "repeated_nested_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_arena_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum, undefined, TestAllTypes_NestedEnum$stringToNumber] },
+            { no: 52, name: "repeated_foreign_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_arena_lite_unittest.ForeignEnum", ForeignEnum, undefined, ForeignEnum$stringToNumber] },
             { no: 54, name: "repeated_string_piece", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 55, name: "repeated_cord", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 57, name: "repeated_lazy_message", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TestAllTypes_NestedMessage },
@@ -576,8 +610,8 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
         message.optionalBool = false;
         message.optionalString = "";
         message.optionalBytes = new Uint8Array(0);
-        message.optionalNestedEnum = 0;
-        message.optionalForeignEnum = 0;
+        message.optionalNestedEnum = "ZERO";
+        message.optionalForeignEnum = "FOREIGN_ZERO";
         message.optionalStringPiece = "";
         message.optionalCord = "";
         message.repeatedInt32 = [];
@@ -667,10 +701,10 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
                     message.optionalImportMessage = ImportMessage.internalBinaryRead(reader, reader.uint32(), options, message.optionalImportMessage);
                     break;
                 case /* proto3_arena_lite_unittest.TestAllTypes.NestedEnum optional_nested_enum */ 21:
-                    message.optionalNestedEnum = reader.int32();
+                    message.optionalNestedEnum = enumNumberToString(TestAllTypes_NestedEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* proto3_arena_lite_unittest.ForeignEnum optional_foreign_enum */ 22:
-                    message.optionalForeignEnum = reader.int32();
+                    message.optionalForeignEnum = enumNumberToString(ForeignEnum$numberToString, reader.int32()) as any;
                     break;
                 case /* string optional_string_piece */ 24:
                     message.optionalStringPiece = reader.string();
@@ -793,16 +827,16 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
                 case /* repeated proto3_arena_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum */ 51:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedNestedEnum?.push?.(reader.int32());
+                            message.repeatedNestedEnum?.push?.(enumNumberToString(TestAllTypes_NestedEnum$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedNestedEnum?.push?.(reader.int32());
+                        message.repeatedNestedEnum?.push?.(enumNumberToString(TestAllTypes_NestedEnum$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated proto3_arena_lite_unittest.ForeignEnum repeated_foreign_enum */ 52:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedForeignEnum?.push?.(reader.int32());
+                            message.repeatedForeignEnum?.push?.(enumNumberToString(ForeignEnum$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedForeignEnum?.push?.(reader.int32());
+                        message.repeatedForeignEnum?.push?.(enumNumberToString(ForeignEnum$numberToString, reader.int32()) as any);
                     break;
                 case /* repeated string repeated_string_piece */ 54:
                     message.repeatedStringPiece?.push?.(reader.string());
@@ -892,11 +926,11 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
         if (message.optionalImportMessage)
             ImportMessage.internalBinaryWrite(message.optionalImportMessage, writer.tag(20, WireType.LengthDelimited).fork(), options).join();
         /* proto3_arena_lite_unittest.TestAllTypes.NestedEnum optional_nested_enum = 21; */
-        if (message.optionalNestedEnum !== 0)
-            writer.tag(21, WireType.Varint).int32(message.optionalNestedEnum);
+        if (message.optionalNestedEnum !== "ZERO")
+            writer.tag(21, WireType.Varint).int32(enumStringToNumber(TestAllTypes_NestedEnum$stringToNumber, message.optionalNestedEnum));
         /* proto3_arena_lite_unittest.ForeignEnum optional_foreign_enum = 22; */
-        if (message.optionalForeignEnum !== 0)
-            writer.tag(22, WireType.Varint).int32(message.optionalForeignEnum);
+        if (message.optionalForeignEnum !== "FOREIGN_ZERO")
+            writer.tag(22, WireType.Varint).int32(enumStringToNumber(ForeignEnum$stringToNumber, message.optionalForeignEnum));
         /* string optional_string_piece = 24; */
         if (message.optionalStringPiece !== "")
             writer.tag(24, WireType.LengthDelimited).string(message.optionalStringPiece);
@@ -1019,14 +1053,14 @@ class TestAllTypes$Type extends MessageType<TestAllTypes> {
         if (message.repeatedNestedEnum?.length) {
             writer.tag(51, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedNestedEnum.length; i++)
-                writer.int32(message.repeatedNestedEnum[i]);
+                writer.int32(enumStringToNumber(TestAllTypes_NestedEnum$stringToNumber, message.repeatedNestedEnum[i]));
             writer.join();
         }
         /* repeated proto3_arena_lite_unittest.ForeignEnum repeated_foreign_enum = 52; */
         if (message.repeatedForeignEnum?.length) {
             writer.tag(52, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.repeatedForeignEnum.length; i++)
-                writer.int32(message.repeatedForeignEnum[i]);
+                writer.int32(enumStringToNumber(ForeignEnum$stringToNumber, message.repeatedForeignEnum[i]));
             writer.join();
         }
         /* repeated string repeated_string_piece = 54; */
@@ -1124,7 +1158,7 @@ class TestPackedTypes$Type extends MessageType<TestPackedTypes> {
             { no: 100, name: "packed_float", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 2 /*ScalarType.FLOAT*/ },
             { no: 101, name: "packed_double", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
             { no: 102, name: "packed_bool", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 8 /*ScalarType.BOOL*/ },
-            { no: 103, name: "packed_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_arena_lite_unittest.ForeignEnum", ForeignEnum] }
+            { no: 103, name: "packed_enum", kind: "enum", repeat: 1 /*RepeatType.PACKED*/, T: () => ["proto3_arena_lite_unittest.ForeignEnum", ForeignEnum, undefined, ForeignEnum$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<TestPackedTypes>): TestPackedTypes {
@@ -1246,9 +1280,9 @@ class TestPackedTypes$Type extends MessageType<TestPackedTypes> {
                 case /* repeated proto3_arena_lite_unittest.ForeignEnum packed_enum = 103 [packed = true] */ 103:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.packedEnum?.push?.(reader.int32());
+                            message.packedEnum?.push?.(enumNumberToString(ForeignEnum$numberToString, reader.int32()) as any);
                     else
-                        message.packedEnum?.push?.(reader.int32());
+                        message.packedEnum?.push?.(enumNumberToString(ForeignEnum$numberToString, reader.int32()) as any);
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1357,7 +1391,7 @@ class TestPackedTypes$Type extends MessageType<TestPackedTypes> {
         if (message.packedEnum?.length) {
             writer.tag(103, WireType.LengthDelimited).fork();
             for (let i = 0; i < message.packedEnum.length; i++)
-                writer.int32(message.packedEnum[i]);
+                writer.int32(enumStringToNumber(ForeignEnum$stringToNumber, message.packedEnum[i]));
             writer.join();
         }
         let u = options.writeUnknownFields;
@@ -1387,7 +1421,7 @@ class TestUnpackedTypes$Type extends MessageType<TestUnpackedTypes> {
             { no: 11, name: "repeated_float", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 2 /*ScalarType.FLOAT*/ },
             { no: 12, name: "repeated_double", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
             { no: 13, name: "repeated_bool", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 8 /*ScalarType.BOOL*/ },
-            { no: 14, name: "repeated_nested_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["proto3_arena_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum] }
+            { no: 14, name: "repeated_nested_enum", kind: "enum", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ["proto3_arena_lite_unittest.TestAllTypes.NestedEnum", TestAllTypes_NestedEnum, undefined, TestAllTypes_NestedEnum$stringToNumber] }
         ]);
     }
     create(value?: PartialMessage<TestUnpackedTypes>): TestUnpackedTypes {
@@ -1509,9 +1543,9 @@ class TestUnpackedTypes$Type extends MessageType<TestUnpackedTypes> {
                 case /* repeated proto3_arena_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum = 14 [packed = false] */ 14:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.repeatedNestedEnum?.push?.(reader.int32());
+                            message.repeatedNestedEnum?.push?.(enumNumberToString(TestAllTypes_NestedEnum$numberToString, reader.int32()) as any);
                     else
-                        message.repeatedNestedEnum?.push?.(reader.int32());
+                        message.repeatedNestedEnum?.push?.(enumNumberToString(TestAllTypes_NestedEnum$numberToString, reader.int32()) as any);
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1566,7 +1600,7 @@ class TestUnpackedTypes$Type extends MessageType<TestUnpackedTypes> {
             writer.tag(13, WireType.Varint).bool(message.repeatedBool?.[i] as any);
         /* repeated proto3_arena_lite_unittest.TestAllTypes.NestedEnum repeated_nested_enum = 14 [packed = false]; */
         for (let i = 0; i < (message.repeatedNestedEnum?.length || 0); i++)
-            writer.tag(14, WireType.Varint).int32(message.repeatedNestedEnum?.[i] as any);
+            writer.tag(14, WireType.Varint).int32(enumStringToNumber(TestAllTypes_NestedEnum$stringToNumber, message.repeatedNestedEnum?.[i] as any));
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
