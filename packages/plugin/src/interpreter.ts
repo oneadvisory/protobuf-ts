@@ -4,9 +4,7 @@ import {
   DescField,
   DescFile,
   DescMessage,
-  DescMethod,
   DescOneof,
-  DescService,
   FileRegistry,
   getOption,
   isFieldSet,
@@ -19,13 +17,9 @@ import {
   FieldOptionsSchema,
   FileOptionsSchema,
   MessageOptionsSchema,
-  MethodOptions_IdempotencyLevel,
-  MethodOptionsSchema,
-  ServiceOptionsSchema,
 } from '@bufbuild/protobuf/wkt';
 import * as rt from '@oneadvisory/protobuf-ts-runtime';
 import { assert } from '@oneadvisory/protobuf-ts-runtime';
-import * as rpc from '@oneadvisory/protobuf-ts-runtime-rpc';
 import { FieldInfoGenerator } from './code-gen/field-info-generator';
 import { exclude_options } from './gen/protobuf-ts_pb';
 
@@ -50,7 +44,6 @@ type JsonOptionsMap = {
  * information.
  */
 export class Interpreter {
-  private readonly serviceTypes = new Map<string, rpc.ServiceType>();
   private readonly messageTypes = new Map<
     string,
     rt.IMessageType<rt.UnknownMessage>
@@ -95,7 +88,7 @@ export class Interpreter {
    * supported.
    */
   private readOptions(
-    descriptor: DescField | DescMethod | DescFile | DescService | DescMessage,
+    descriptor: DescField | DescFile | DescMessage,
     excludeOptions: readonly string[]
   ): JsonOptionsMap | undefined {
     // the option to force exclude all options takes precedence
@@ -115,18 +108,14 @@ export class Interpreter {
       case 'field':
         optionsSchema = FieldOptionsSchema;
         break;
-      case 'rpc':
-        optionsSchema = MethodOptionsSchema;
-        break;
       case 'file':
         optionsSchema = FileOptionsSchema;
-        break;
-      case 'service':
-        optionsSchema = ServiceOptionsSchema;
         break;
       case 'message':
         optionsSchema = MessageOptionsSchema;
         break;
+      default:
+        throw new Error(`Unsupported descriptor kind: ${(descriptor as any).kind}`);
     }
 
     // create a synthetic type that has all extension fields for field options
@@ -230,33 +219,6 @@ export class Interpreter {
   }
 
   /**
-   * Get a runtime type for the given service type name or service descriptor.
-   * Creates the type if not created previously.
-   *
-   * Honors our file option "ts.exclude_options".
-   */
-  getServiceType(descriptorOrTypeName: string | DescService): rpc.ServiceType {
-    let descriptor =
-      typeof descriptorOrTypeName === 'string'
-        ? this.registry.getService(descriptorOrTypeName)
-        : descriptorOrTypeName;
-    assert(descriptor);
-    let type = this.serviceTypes.get(descriptor.typeName);
-    if (!type) {
-      const excludeOptions = getOption(descriptor.file, exclude_options).concat(
-        'ts.client'
-      );
-      type = this.buildServiceType(
-        descriptor.typeName,
-        descriptor.methods,
-        excludeOptions
-      );
-      this.serviceTypes.set(descriptor.typeName, type);
-    }
-    return type;
-  }
-
-  /**
    * Get runtime information for an enum.
    * Creates the info if not created previously.
    */
@@ -270,100 +232,6 @@ export class Interpreter {
       this.enumInfos.get(descriptor.typeName) ?? this.buildEnumInfo(descriptor);
     this.enumInfos.set(descriptor.typeName, enumInfo);
     return enumInfo;
-  }
-
-  private static createTypescriptNameForMethod(descriptor: DescMethod): string {
-    let escapeCharacter = '$';
-    let reservedClassProperties = [
-      // js built in
-      '__proto__',
-      'toString',
-      'name',
-      'constructor',
-      // generic clients
-      'methods',
-      'typeName',
-      'options',
-      '_transport',
-      // @grpc/grpc-js clients
-      'close',
-      'getChannel',
-      'waitForReady',
-      'makeUnaryRequest',
-      'makeClientStreamRequest',
-      'makeServerStreamRequest',
-      'makeBidiStreamRequest',
-    ];
-    let name = descriptor.name;
-    assert(name !== undefined);
-    name = rt.lowerCamelCase(name);
-    if (reservedClassProperties.includes(name)) {
-      name = name + escapeCharacter;
-    }
-    return name;
-  }
-
-  private buildServiceType(
-    typeName: string,
-    methods: DescMethod[],
-    excludeOptions: readonly string[]
-  ): rpc.ServiceType {
-    let desc = this.registry.getService(typeName);
-    assert(desc);
-    return new rpc.ServiceType(
-      typeName,
-      methods.map((m) => this.buildMethodInfo(m, excludeOptions)),
-      this.readOptions(desc, excludeOptions)
-    );
-  }
-
-  private buildMethodInfo(
-    methodDescriptor: DescMethod,
-    excludeOptions: readonly string[]
-  ): rpc.PartialMethodInfo {
-    let info: { [k: string]: any } = {};
-
-    // name: The name of the method as declared in .proto
-    info.name = methodDescriptor.name;
-
-    // localName: The name of the method in the runtime.
-    let localName = Interpreter.createTypescriptNameForMethod(methodDescriptor);
-    if (localName !== rt.lowerCamelCase(methodDescriptor.name)) {
-      info.localName = localName;
-    }
-
-    // idempotency: The idempotency level as specified in .proto.
-    switch (methodDescriptor.idempotency) {
-      case MethodOptions_IdempotencyLevel.IDEMPOTENCY_UNKNOWN:
-        break;
-      case MethodOptions_IdempotencyLevel.IDEMPOTENT:
-        info.idempotency = 'IDEMPOTENT';
-        break;
-      case MethodOptions_IdempotencyLevel.NO_SIDE_EFFECTS:
-        info.idempotency = 'NO_SIDE_EFFECTS';
-        break;
-    }
-
-    // serverStreaming: Was the rpc declared with server streaming?
-    if (methodDescriptor.proto.serverStreaming) {
-      info.serverStreaming = true;
-    }
-
-    // clientStreaming: Was the rpc declared with client streaming?
-    if (methodDescriptor.proto.clientStreaming) {
-      info.clientStreaming = true;
-    }
-
-    // I: The generated type handler for the input message.
-    info.I = this.getMessageType(methodDescriptor.input);
-
-    // O: The generated type handler for the output message.
-    info.O = this.getMessageType(methodDescriptor.output);
-
-    // options: Contains custom method options from the .proto source in JSON format.
-    info.options = this.readOptions(methodDescriptor, excludeOptions);
-
-    return info as rpc.PartialMethodInfo;
   }
 
   /**

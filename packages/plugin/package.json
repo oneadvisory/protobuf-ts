@@ -52,7 +52,6 @@
     "@bufbuild/protoplugin": "^2.4.0",
     "@oneadvisory/protobuf-ts-protoc": "^4.0.0",
     "@oneadvisory/protobuf-ts-runtime": "^4.0.0",
-    "@oneadvisory/protobuf-ts-runtime-rpc": "^4.0.0",
     "typescript": "^5.x.x"
   }
 }
