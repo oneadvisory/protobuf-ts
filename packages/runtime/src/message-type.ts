@@ -1,318 +1,91 @@
-import type {IMessageType, PartialMessage} from "./message-type-contract";
-import {MESSAGE_TYPE} from "./message-type-contract";
-import type {FieldInfo, PartialFieldInfo} from "./reflection-info";
+import type {FieldInfo, MessageInfo, PartialFieldInfo} from "./reflection-info";
 import {normalizeFieldInfo} from "./reflection-info";
-import {ReflectionTypeCheck} from "./reflection-type-check";
-import {ReflectionJsonReader} from "./reflection-json-reader";
-import {ReflectionJsonWriter} from "./reflection-json-writer";
-import {ReflectionBinaryReader} from "./reflection-binary-reader";
-import {ReflectionBinaryWriter} from "./reflection-binary-writer";
-import {reflectionCreate} from "./reflection-create";
-import {reflectionMergePartial} from "./reflection-merge-partial";
 import type {JsonValue} from "./json-typings";
-import {typeofJsonValue} from "./json-typings";
-import type {JsonReadOptions, JsonWriteOptions, JsonWriteStringOptions} from "./json-format-contract";
-import {jsonReadOptions, jsonWriteOptions,} from "./json-format-contract";
+import type {IMessageType, PartialMessage} from "./message-type-contract";
 import type {BinaryReadOptions, BinaryWriteOptions, IBinaryReader, IBinaryWriter} from "./binary-format-contract";
-import {reflectionEquals} from "./reflection-equals";
-import type {UnknownMessage} from "./unknown-types";
-import {binaryWriteOptions} from "./binary-writer";
-import {binaryReadOptions} from "./binary-reader";
-import {containsMessageType} from "./reflection-contains-message-type";
-
-const baseDescriptors = Object.getOwnPropertyDescriptors(Object.getPrototypeOf({})) as any
-const messageTypeDescriptor = baseDescriptors[MESSAGE_TYPE] = {} as {value?: unknown};
+import type {JsonReadOptions, JsonWriteOptions, JsonWriteStringOptions} from "./json-format-contract";
 
 /**
- * This standard message type provides reflection-based
- * operations to work with a message.
+ * Minimal MessageType stub for use by plugin during code generation.
+ * This is NOT used at runtime - only for reading proto options during compilation.
  */
 export class MessageType<T extends object> implements IMessageType<T> {
-
-    /**
-     * The protobuf type name of the message, including package and
-     * parent types if present.
-     *
-     * If the .proto file included a `package` statement,
-     * the type name will always start with a '.'.
-     *
-     * Examples:
-     * 'MyNamespaceLessMessage'
-     * '.my_package.MyMessage'
-     * '.my_package.ParentMessage.ChildMessage'
-     */
     readonly typeName: string;
-
-    /**
-     * Simple information for each message field, in the order
-     * of declaration in the .proto.
-     */
     readonly fields: readonly FieldInfo[];
+    readonly options: { [extensionName: string]: JsonValue };
 
-    /**
-     * Contains custom service options from the .proto source in JSON format.
-     */
-    readonly options: JsonOptionsMap;
-
-    /**
-     * Contains the prototype for messages returned by create() which
-     * includes the `MESSAGE_TYPE` symbol pointing back to `this`.
-     */
-    readonly messagePrototype?: Readonly<{}> | undefined;
-
-    protected readonly defaultCheckDepth = 16;
-    protected readonly refTypeCheck: ReflectionTypeCheck;
-    protected readonly refJsonReader: ReflectionJsonReader;
-    protected readonly refJsonWriter: ReflectionJsonWriter;
-    protected readonly refBinReader: ReflectionBinaryReader;
-    protected readonly refBinWriter: ReflectionBinaryWriter;
-
-    constructor(name: string, fields: readonly PartialFieldInfo[], options?: JsonOptionsMap) {
-        this.typeName = name;
+    constructor(
+        typeName: string,
+        fields: readonly PartialFieldInfo[],
+        options?: { [extensionName: string]: JsonValue }
+    ) {
+        this.typeName = typeName;
         this.fields = fields.map(normalizeFieldInfo);
         this.options = options ?? {};
-        messageTypeDescriptor.value = this;
-        this.messagePrototype = Object.create(null, baseDescriptors);
-        this.refTypeCheck = new ReflectionTypeCheck(this);
-        this.refJsonReader = new ReflectionJsonReader(this);
-        this.refJsonWriter = new ReflectionJsonWriter(this);
-        this.refBinReader = new ReflectionBinaryReader(this);
-        this.refBinWriter = new ReflectionBinaryWriter(this);
     }
 
-
-    /**
-     * Create a new message with default values.
-     *
-     * For example, a protobuf `string name = 1;` has the default value `""`.
-     */
-    create(): T;
-
-
-    /**
-     * Create a new message from partial data.
-     * Where a field is omitted, the default value is used.
-     *
-     * Unknown fields are discarded.
-     *
-     * `PartialMessage<T>` is similar to `Partial<T>`,
-     * but it is recursive, and it keeps `oneof` groups
-     * intact.
-     */
-    create(value: PartialMessage<T>): T;
-
-
-    create(value?: PartialMessage<T>): T {
-        let message = reflectionCreate(this);
-        if (value !== undefined) {
-            reflectionMergePartial<T>(this, message, value);
-        }
-        return message as T;
+    // Stub implementations - not actually functional, just to satisfy interface
+    create(_value?: PartialMessage<T>): T {
+        throw new Error("MessageType.create() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * Clone the message.
-     *
-     * Unknown fields are discarded.
-     */
-    clone(message: T): T {
-        let copy = this.create();
-        reflectionMergePartial<T>(this, copy, message);
-        return copy;
+    fromBinary(_data: Uint8Array, _options?: Partial<BinaryReadOptions>): T {
+        throw new Error("MessageType.fromBinary() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * Determines whether two message of the same type have the same field values.
-     * Checks for deep equality, traversing repeated fields, oneof groups, maps
-     * and messages recursively.
-     *
-     * Will also return true if both messages are `undefined`.
-     *
-     * This method checks the MESSAGE_TYPE symbol property added by create()
-     * since v2.0.3: It returns false if either of the two messages has the wrong
-     * type.
-     */
-    equals(a: T | undefined, b: T | undefined): boolean {
-        if (a === b) {
-            return true;
-        }
-        if (!a || !b) {
-            return false;
-        }
-        if (containsMessageType(a) && a[MESSAGE_TYPE].typeName !== this.typeName) {
-            return false;
-        }
-        if (containsMessageType(b) && b[MESSAGE_TYPE].typeName !== this.typeName) {
-            return false;
-        }
-        return reflectionEquals(this, a as UnknownMessage | undefined, b as UnknownMessage | undefined);
+    toBinary(_message: T, _options?: Partial<BinaryWriteOptions>): Uint8Array {
+        throw new Error("MessageType.toBinary() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * Is the given value a message of our type?
-     *
-     * This method checks the MESSAGE_TYPE symbol property added by create()
-     * since v2.0.3: It returns true if the value matches our message type,
-     * false otherwise.
-     *
-     * If the value does not have the MESSAGE_TYPE symbol, this method checks all
-     * field types recursively, and returns false if it contains [excess properties](https://www.typescriptlang.org/docs/handbook/interfaces.html#excess-property-checks).
-     */
-    is(arg: any, depth = this.defaultCheckDepth): arg is T {
-        if (typeof arg != 'object' || arg == null) {
-            return false;
-        }
-        if (containsMessageType(arg as object)) {
-            return arg[MESSAGE_TYPE].typeName === this.typeName;
-        }
-        return this.refTypeCheck.is(arg, depth, false);
+    fromJson(_json: JsonValue, _options?: Partial<JsonReadOptions>): T {
+        throw new Error("MessageType.fromJson() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * Is the given value assignable to our message type,
-     * regardless of [excess properties](https://www.typescriptlang.org/docs/handbook/interfaces.html#excess-property-checks)?
-     *
-     * This method checks the MESSAGE_TYPE symbol property added by create()
-     * since v2.0.3: It returns true if the value matches our message type.
-     *
-     * If the value does not have the MESSAGE_TYPE symbol, this method checks all
-     * field types recursively, and returns false if it's missing a mandatory property.
-     */
-    isAssignable(arg: any, depth = this.defaultCheckDepth): arg is T {
-        if (typeof arg != 'object' || arg == null) {
-            return false;
-        }
-        if (containsMessageType(arg as object) && arg[MESSAGE_TYPE].typeName === this.typeName) {
-            return true;
-        }
-        return this.refTypeCheck.is(arg, depth, true);
+    fromJsonString(_json: string, _options?: Partial<JsonReadOptions>): T {
+        throw new Error("MessageType.fromJsonString() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * Copy partial data into the target message.
-     */
-    mergePartial(target: T, source: PartialMessage<T>): void {
-        reflectionMergePartial<T>(this, target, source);
+    toJson(_message: T, _options?: Partial<JsonWriteOptions>): JsonValue {
+        throw new Error("MessageType.toJson() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * Create a new message from binary format.
-     */
-    fromBinary(data: Uint8Array, options?: Partial<BinaryReadOptions>): T {
-        let opt = binaryReadOptions(options);
-        return this.internalBinaryRead(opt.readerFactory(data), data.byteLength, opt);
+    toJsonString(_message: T, _options?: Partial<JsonWriteStringOptions>): string {
+        throw new Error("MessageType.toJsonString() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * Read a new message from a JSON value.
-     */
-    fromJson(json: JsonValue, options?: Partial<JsonReadOptions>): T {
-        return this.internalJsonRead(json, jsonReadOptions(options));
+    clone(_message: T): T {
+        throw new Error("MessageType.clone() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * Read a new message from a JSON string.
-     * This is equivalent to `T.fromJson(JSON.parse(json))`.
-     */
-    fromJsonString(json: string, options?: Partial<JsonReadOptions>): T {
-        let value = JSON.parse(json) as JsonValue;
-        return this.fromJson(value, options);
+    mergePartial(_target: T, _source: PartialMessage<T>): void {
+        throw new Error("MessageType.mergePartial() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * Write the message to canonical JSON value.
-     */
-    toJson(message: T, options?: Partial<JsonWriteOptions>): JsonValue {
-        return this.internalJsonWrite(message, jsonWriteOptions(options));
+    equals(_a: T | undefined, _b: T | undefined): boolean {
+        throw new Error("MessageType.equals() is not implemented - this is a stub for plugin use only");
     }
 
-    /**
-     * Convert the message to canonical JSON string.
-     * This is equivalent to `JSON.stringify(T.toJson(t))`
-     */
-    toJsonString(message: T, options?: Partial<JsonWriteStringOptions>): string {
-        let value = this.toJson(message, options);
-        return JSON.stringify(value, null, options?.prettySpaces ?? 0);
+    is(_arg: any, _depth?: number): _arg is T {
+        throw new Error("MessageType.is() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * Write the message to binary format.
-     */
-    toBinary(message: T, options?: Partial<BinaryWriteOptions>): Uint8Array {
-        let opt = binaryWriteOptions(options);
-        return this.internalBinaryWrite(message, opt.writerFactory(), opt).finish();
+    isAssignable(_arg: any, _depth?: number): _arg is T {
+        throw new Error("MessageType.isAssignable() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * This is an internal method. If you just want to read a message from
-     * JSON, use `fromJson()` or `fromJsonString()`.
-     *
-     * Reads JSON value and merges the fields into the target
-     * according to protobuf rules. If the target is omitted,
-     * a new instance is created first.
-     */
-    internalJsonRead(json: JsonValue, options: JsonReadOptions, target?: T): T {
-        if (json !== null && typeof json == "object" && !Array.isArray(json)) {
-            let message = target ?? this.create();
-            this.refJsonReader.read(json, message, options);
-            return message;
-        }
-        throw new Error(`Unable to parse message ${this.typeName} from JSON ${typeofJsonValue(json)}.`);
+    internalJsonRead(_json: JsonValue, _options: JsonReadOptions, _target?: T): T {
+        throw new Error("MessageType.internalJsonRead() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * This is an internal method. If you just want to write a message
-     * to JSON, use `toJson()` or `toJsonString().
-     *
-     * Writes JSON value and returns it.
-     */
-    internalJsonWrite(message: T, options: JsonWriteOptions): JsonValue {
-        return this.refJsonWriter.write(message, options);
+    internalJsonWrite(_message: T, _options: JsonWriteOptions): JsonValue {
+        throw new Error("MessageType.internalJsonWrite() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * This is an internal method. If you just want to write a message
-     * in binary format, use `toBinary()`.
-     *
-     * Serializes the message in binary format and appends it to the given
-     * writer. Returns passed writer.
-     */
-    internalBinaryWrite(message: T, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        this.refBinWriter.write(message, writer, options);
-        return writer;
+    internalBinaryWrite(_message: T, _writer: IBinaryWriter, _options: BinaryWriteOptions): IBinaryWriter {
+        throw new Error("MessageType.internalBinaryWrite() is not implemented - this is a stub for plugin use only");
     }
 
-
-    /**
-     * This is an internal method. If you just want to read a message from
-     * binary data, use `fromBinary()`.
-     *
-     * Reads data from binary format and merges the fields into
-     * the target according to protobuf rules. If the target is
-     * omitted, a new instance is created first.
-     */
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: T): T {
-        let message = target ?? this.create();
-        this.refBinReader.read(reader, message, options, length);
-        return message as T;
+    internalBinaryRead(_reader: IBinaryReader, _length: number, _options: BinaryReadOptions, _target?: T): T {
+        throw new Error("MessageType.internalBinaryRead() is not implemented - this is a stub for plugin use only");
     }
-
 }
-
-
-type JsonOptionsMap = {
-    [extensionName: string]: JsonValue;
-};
