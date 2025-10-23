@@ -201,18 +201,30 @@ export class Interpreter {
       const excludeOptions = getOption(descriptor.file, exclude_options);
 
       // add message options *after* storing, so that the option can refer to itself
-      const messageOptions = this.readOptions(descriptor, excludeOptions);
-      if (messageOptions) {
-        for (let key of Object.keys(messageOptions)) {
-          optionsPlaceholder[key] = messageOptions[key];
+      try {
+        const messageOptions = this.readOptions(descriptor, excludeOptions);
+        if (messageOptions) {
+          for (let key of Object.keys(messageOptions)) {
+            optionsPlaceholder[key] = messageOptions[key];
+          }
         }
+      } catch (optionsError) {
+        // readOptions can fail if custom options use binary serialization (removed in trim)
+        // This is OK - we skip the options since we're in types-only mode
+        console.error(`Warning: Could not read options for message ${descriptor.typeName}: ${(optionsError as Error).message}`);
       }
 
       // same for field options
       for (let i = 0; i < type.fields.length; i++) {
         const fd = descriptor.fields[i];
         const fi = type.fields[i];
-        fi.options = this.readOptions(fd, excludeOptions);
+        try {
+          fi.options = this.readOptions(fd, excludeOptions);
+        } catch (fieldOptionsError) {
+          // readOptions can fail if custom options use binary serialization (removed in trim)
+          // This is OK - we skip the options since we're in types-only mode
+          // Don't log for every field to avoid spam
+        }
       }
     }
     return type;

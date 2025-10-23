@@ -87,6 +87,9 @@ export class ProtobuftsPlugin extends PluginBaseProtobufES {
         // maintain them in a package - they are always generated
         // on demand.
         let tsFiles = fileTable.outFiles.concat();
+        // Convert registry.files to array once for efficiency
+        const allFiles = Array.from(registry.files);
+
         if (!options.generateDependencies) {
             tsFiles = tsFiles.filter(file => {
                 const protoFilename = file.descFile.proto.name;
@@ -94,6 +97,10 @@ export class ProtobuftsPlugin extends PluginBaseProtobufES {
                     return true;
                 }
                 if (WellKnownTypes.protoFilenames.includes(protoFilename)) {
+                    return true;
+                }
+                // Also keep files that are used by other files
+                if (this.isFileUsed(file.descFile, allFiles)) {
                     return true;
                 }
                 return false;
@@ -105,7 +112,7 @@ export class ProtobuftsPlugin extends PluginBaseProtobufES {
         // TODO why does the fallback condition include "used" files? isn't that what generateDependencies should do?
         tsFiles = tsFiles.filter(of =>
             request.fileToGenerate.includes(of.descFile.proto.name)
-            || this.isFileUsed(of.descFile, tsFiles.map(x => x.descFile))
+            || this.isFileUsed(of.descFile, allFiles)
         );
 
         return this.transpile(tsFiles, options);
