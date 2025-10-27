@@ -1,6 +1,6 @@
 {
   "name": "@oneadvisory/protobuf-ts-protoc",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Installs the protocol buffer compiler \"protoc\" for you.",
   "scripts": {
     "build": "node protoc.js --version"
