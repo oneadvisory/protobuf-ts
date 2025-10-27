@@ -63,6 +63,10 @@ export class ProtobuftsPlugin extends PluginBaseProtobufES {
                         break;
                     case "message":
                         genMessageInterface.registerSymbols(outMain, desc);
+                        // Register TimestampString symbol for google.protobuf.Timestamp
+                        if (desc.typeName === 'google.protobuf.Timestamp') {
+                            symbols.register('TimestampString', desc, outMain, 'TimestampString');
+                        }
                         break;
                 }
             }
@@ -77,6 +81,42 @@ export class ProtobuftsPlugin extends PluginBaseProtobufES {
                         genEnum.generateEnum(outMain, desc);
                         break;
                 }
+            }
+
+            // Add TimestampString type to google/protobuf/timestamp.ts
+            if (descFile.proto.name === 'google/protobuf/timestamp.proto') {
+                const timestampStringType = ts.factory.createTypeAliasDeclaration(
+                    [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+                    ts.factory.createIdentifier('TimestampString'),
+                    undefined,
+                    ts.factory.createIntersectionTypeNode([
+                        ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+                        ts.factory.createTypeLiteralNode([
+                            ts.factory.createPropertySignature(
+                                [ts.factory.createModifier(ts.SyntaxKind.ReadonlyKeyword)],
+                                ts.factory.createIdentifier('__timestampBrand'),
+                                undefined,
+                                ts.factory.createTypeOperatorNode(
+                                    ts.SyntaxKind.UniqueKeyword,
+                                    ts.factory.createKeywordTypeNode(ts.SyntaxKind.SymbolKeyword)
+                                )
+                            )
+                        ])
+                    ])
+                );
+                const commentText = [
+                    '/**',
+                    ' * TimestampString represents a google.protobuf.Timestamp as an ISO datetime string.',
+                    ' * This is the actual runtime type when using JSON encoding.',
+                    ' */'
+                ].join('\n');
+                ts.addSyntheticLeadingComment(
+                    timestampStringType,
+                    ts.SyntaxKind.MultiLineCommentTrivia,
+                    commentText.substring(3, commentText.length - 3),
+                    true
+                );
+                outMain.addStatement(timestampStringType);
             }
         }
 
