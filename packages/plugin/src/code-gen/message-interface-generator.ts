@@ -109,6 +109,7 @@ export class MessageInterfaceGenerator {
     isOneOf?: boolean
   ): ts.PropertySignature {
     let type: ts.TypeNode; // the property type, may be made optional or wrapped into array at the end
+    let isTimestampString = false; // Track if we're dealing with a TimestampString conversion
 
     switch (fieldInfo.kind) {
       case 'scalar':
@@ -120,7 +121,17 @@ export class MessageInterfaceGenerator {
         break;
 
       case 'message':
-        type = this.createMessageTypeNode(source, fieldInfo.T());
+        const messageType = fieldInfo.T();
+        // Use TimestampString for google.protobuf.Timestamp fields
+        if (messageType.typeName === 'google.protobuf.Timestamp') {
+          type = ts.factory.createTypeReferenceNode(
+            this.imports.typeByName(source, 'google.protobuf.Timestamp', 'TimestampString', true),
+            undefined
+          );
+          isTimestampString = true;
+        } else {
+          type = this.createMessageTypeNode(source, messageType);
+        }
         break;
 
       case 'map':
@@ -137,7 +148,16 @@ export class MessageInterfaceGenerator {
             valueType = this.createEnumTypeNode(source, fieldInfo.V.T());
             break;
           case 'message':
-            valueType = this.createMessageTypeNode(source, fieldInfo.V.T());
+            const mapValueType = fieldInfo.V.T();
+            // Use TimestampString for google.protobuf.Timestamp values in maps
+            if (mapValueType.typeName === 'google.protobuf.Timestamp') {
+              valueType = ts.factory.createTypeReferenceNode(
+                this.imports.typeByName(source, 'google.protobuf.Timestamp', 'TimestampString', true),
+                undefined
+              );
+            } else {
+              valueType = this.createMessageTypeNode(source, mapValueType);
+            }
             break;
         }
         type = ts.factory.createTypeLiteralNode([
@@ -167,10 +187,20 @@ export class MessageInterfaceGenerator {
     }
 
     // if optional, add question mark
-    let questionToken =
-      fieldInfo.opt || fieldInfo.repeat || isOneOf
-        ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
-        : undefined;
+    let questionToken;
+    if (isTimestampString) {
+      // For TimestampString, only add ? if explicitly marked as optional
+      questionToken =
+        descField.proto.proto3Optional || fieldInfo.repeat || isOneOf
+          ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
+          : undefined;
+    } else {
+      // Normal logic for other fields
+      questionToken =
+        fieldInfo.opt || fieldInfo.repeat || isOneOf
+          ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
+          : undefined;
+    }
 
     // create property
     const property = ts.factory.createPropertySignature(
