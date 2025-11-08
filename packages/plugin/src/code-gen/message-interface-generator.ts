@@ -109,7 +109,7 @@ export class MessageInterfaceGenerator {
     isOneOf?: boolean
   ): ts.PropertySignature {
     let type: ts.TypeNode; // the property type, may be made optional or wrapped into array at the end
-    let isTimestampString = false; // Track if we're dealing with a TimestampString conversion
+    let isBrandedStringType = false; // Track if we're dealing with a branded string type (Timestamp, Duration, wrapper values)
 
     switch (fieldInfo.kind) {
       case 'scalar':
@@ -122,13 +122,37 @@ export class MessageInterfaceGenerator {
 
       case 'message':
         const messageType = fieldInfo.T();
-        // Use TimestampString for google.protobuf.Timestamp fields
+        // Use branded string types for well-known types with special JSON encoding
         if (messageType.typeName === 'google.protobuf.Timestamp') {
           type = ts.factory.createTypeReferenceNode(
             this.imports.typeByName(source, 'google.protobuf.Timestamp', 'TimestampString', true),
             undefined
           );
-          isTimestampString = true;
+          isBrandedStringType = true;
+        } else if (messageType.typeName === 'google.protobuf.Duration') {
+          type = ts.factory.createTypeReferenceNode(
+            this.imports.typeByName(source, 'google.protobuf.Duration', 'DurationString', true),
+            undefined
+          );
+          isBrandedStringType = true;
+        } else if (messageType.typeName === 'google.protobuf.Int64Value') {
+          type = ts.factory.createTypeReferenceNode(
+            this.imports.typeByName(source, 'google.protobuf.Int64Value', 'Int64ValueString', true),
+            undefined
+          );
+          isBrandedStringType = true;
+        } else if (messageType.typeName === 'google.protobuf.UInt64Value') {
+          type = ts.factory.createTypeReferenceNode(
+            this.imports.typeByName(source, 'google.protobuf.UInt64Value', 'UInt64ValueString', true),
+            undefined
+          );
+          isBrandedStringType = true;
+        } else if (messageType.typeName === 'google.protobuf.BytesValue') {
+          type = ts.factory.createTypeReferenceNode(
+            this.imports.typeByName(source, 'google.protobuf.BytesValue', 'BytesValueString', true),
+            undefined
+          );
+          isBrandedStringType = true;
         } else {
           type = this.createMessageTypeNode(source, messageType);
         }
@@ -149,10 +173,30 @@ export class MessageInterfaceGenerator {
             break;
           case 'message':
             const mapValueType = fieldInfo.V.T();
-            // Use TimestampString for google.protobuf.Timestamp values in maps
+            // Use branded string types for well-known types with special JSON encoding in map values
             if (mapValueType.typeName === 'google.protobuf.Timestamp') {
               valueType = ts.factory.createTypeReferenceNode(
                 this.imports.typeByName(source, 'google.protobuf.Timestamp', 'TimestampString', true),
+                undefined
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.Duration') {
+              valueType = ts.factory.createTypeReferenceNode(
+                this.imports.typeByName(source, 'google.protobuf.Duration', 'DurationString', true),
+                undefined
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.Int64Value') {
+              valueType = ts.factory.createTypeReferenceNode(
+                this.imports.typeByName(source, 'google.protobuf.Int64Value', 'Int64ValueString', true),
+                undefined
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.UInt64Value') {
+              valueType = ts.factory.createTypeReferenceNode(
+                this.imports.typeByName(source, 'google.protobuf.UInt64Value', 'UInt64ValueString', true),
+                undefined
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.BytesValue') {
+              valueType = ts.factory.createTypeReferenceNode(
+                this.imports.typeByName(source, 'google.protobuf.BytesValue', 'BytesValueString', true),
                 undefined
               );
             } else {
@@ -188,8 +232,8 @@ export class MessageInterfaceGenerator {
 
     // if optional, add question mark
     let questionToken;
-    if (isTimestampString) {
-      // For TimestampString, only add ? if explicitly marked as optional
+    if (isBrandedStringType) {
+      // For branded string types (Timestamp, Duration, wrapper values), only add ? if explicitly marked as optional
       questionToken =
         descField.proto.proto3Optional || fieldInfo.repeat || isOneOf
           ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)

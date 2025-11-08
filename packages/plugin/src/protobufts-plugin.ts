@@ -63,9 +63,17 @@ export class ProtobuftsPlugin extends PluginBaseProtobufES {
                         break;
                     case "message":
                         genMessageInterface.registerSymbols(outMain, desc);
-                        // Register TimestampString symbol for google.protobuf.Timestamp
+                        // Register branded string symbols for well-known types with special JSON encoding
                         if (desc.typeName === 'google.protobuf.Timestamp') {
                             symbols.register('TimestampString', desc, outMain, 'TimestampString');
+                        } else if (desc.typeName === 'google.protobuf.Duration') {
+                            symbols.register('DurationString', desc, outMain, 'DurationString');
+                        } else if (desc.typeName === 'google.protobuf.Int64Value') {
+                            symbols.register('Int64ValueString', desc, outMain, 'Int64ValueString');
+                        } else if (desc.typeName === 'google.protobuf.UInt64Value') {
+                            symbols.register('UInt64ValueString', desc, outMain, 'UInt64ValueString');
+                        } else if (desc.typeName === 'google.protobuf.BytesValue') {
+                            symbols.register('BytesValueString', desc, outMain, 'BytesValueString');
                         }
                         break;
                 }
@@ -83,41 +91,8 @@ export class ProtobuftsPlugin extends PluginBaseProtobufES {
                 }
             }
 
-            // Add TimestampString type to google/protobuf/timestamp.ts
-            if (descFile.proto.name === 'google/protobuf/timestamp.proto') {
-                const timestampStringType = ts.factory.createTypeAliasDeclaration(
-                    [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-                    ts.factory.createIdentifier('TimestampString'),
-                    undefined,
-                    ts.factory.createIntersectionTypeNode([
-                        ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
-                        ts.factory.createTypeLiteralNode([
-                            ts.factory.createPropertySignature(
-                                [ts.factory.createModifier(ts.SyntaxKind.ReadonlyKeyword)],
-                                ts.factory.createIdentifier('__timestampBrand'),
-                                undefined,
-                                ts.factory.createTypeOperatorNode(
-                                    ts.SyntaxKind.UniqueKeyword,
-                                    ts.factory.createKeywordTypeNode(ts.SyntaxKind.SymbolKeyword)
-                                )
-                            )
-                        ])
-                    ])
-                );
-                const commentText = [
-                    '/**',
-                    ' * TimestampString represents a google.protobuf.Timestamp as an ISO datetime string.',
-                    ' * This is the actual runtime type when using JSON encoding.',
-                    ' */'
-                ].join('\n');
-                ts.addSyntheticLeadingComment(
-                    timestampStringType,
-                    ts.SyntaxKind.MultiLineCommentTrivia,
-                    commentText.substring(3, commentText.length - 3),
-                    true
-                );
-                outMain.addStatement(timestampStringType);
-            }
+            // Add branded string types for well-known types with special JSON encoding
+            this.addWellKnownTypeBrandedStrings(descFile, outMain);
         }
 
 
@@ -149,6 +124,93 @@ export class ProtobuftsPlugin extends PluginBaseProtobufES {
         );
 
         return this.transpile(tsFiles, options);
+    }
+
+    /**
+     * Helper to create a branded string type for well-known types
+     */
+    private createBrandedStringType(
+        typeName: string,
+        brandName: string,
+        comment: string
+    ): ts.TypeAliasDeclaration {
+        const typeDecl = ts.factory.createTypeAliasDeclaration(
+            [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+            ts.factory.createIdentifier(typeName),
+            undefined,
+            ts.factory.createIntersectionTypeNode([
+                ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+                ts.factory.createTypeLiteralNode([
+                    ts.factory.createPropertySignature(
+                        [ts.factory.createModifier(ts.SyntaxKind.ReadonlyKeyword)],
+                        ts.factory.createIdentifier(brandName),
+                        undefined,
+                        ts.factory.createTypeOperatorNode(
+                            ts.SyntaxKind.UniqueKeyword,
+                            ts.factory.createKeywordTypeNode(ts.SyntaxKind.SymbolKeyword)
+                        )
+                    )
+                ])
+            ])
+        );
+        const commentText = ['/**', ` * ${comment}`, ' */'].join('\n');
+        ts.addSyntheticLeadingComment(
+            typeDecl,
+            ts.SyntaxKind.MultiLineCommentTrivia,
+            commentText.substring(3, commentText.length - 3),
+            true
+        );
+        return typeDecl;
+    }
+
+    /**
+     * Add branded string types for well-known types with special JSON encoding
+     */
+    private addWellKnownTypeBrandedStrings(descFile: DescFile, outMain: OutFile): void {
+        const protoName = descFile.proto.name;
+
+        if (protoName === 'google/protobuf/timestamp.proto') {
+            outMain.addStatement(
+                this.createBrandedStringType(
+                    'TimestampString',
+                    '__timestampBrand',
+                    'TimestampString represents a google.protobuf.Timestamp as an RFC 3339 datetime string.\n * Format: "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z"\n * Example: "2017-01-15T01:30:15.01Z"\n * This is the actual runtime type when using JSON encoding.'
+                )
+            );
+        } else if (protoName === 'google/protobuf/duration.proto') {
+            outMain.addStatement(
+                this.createBrandedStringType(
+                    'DurationString',
+                    '__durationBrand',
+                    'DurationString represents a google.protobuf.Duration as a string with seconds suffix.\n * Format: "{seconds}s" with fractional seconds up to 9 digits\n * Examples: "3s", "3.000001s", "3.000000001s"\n * This is the actual runtime type when using JSON encoding.'
+                )
+            );
+        } else if (protoName === 'google/protobuf/wrappers.proto') {
+            // Int64Value wrapper
+            outMain.addStatement(
+                this.createBrandedStringType(
+                    'Int64ValueString',
+                    '__int64ValueBrand',
+                    'Int64ValueString represents a google.protobuf.Int64Value as a JSON string.\n * This is the actual runtime type when using JSON encoding for Int64Value.'
+                )
+            );
+            // UInt64Value wrapper
+            outMain.addStatement(
+                this.createBrandedStringType(
+                    'UInt64ValueString',
+                    '__uint64ValueBrand',
+                    'UInt64ValueString represents a google.protobuf.UInt64Value as a JSON string.\n * This is the actual runtime type when using JSON encoding for UInt64Value.'
+                )
+            );
+            // BytesValue wrapper
+            outMain.addStatement(
+                this.createBrandedStringType(
+                    'BytesValueString',
+                    '__bytesValueBrand',
+                    'BytesValueString represents a google.protobuf.BytesValue as a base64-encoded JSON string.\n * This is the actual runtime type when using JSON encoding for BytesValue.'
+                )
+            );
+        }
     }
 
 
