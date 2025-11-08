@@ -125,31 +125,56 @@ export class MessageInterfaceGenerator {
         // Use branded string types for well-known types with special JSON encoding
         if (messageType.typeName === 'google.protobuf.Timestamp') {
           type = ts.factory.createTypeReferenceNode(
-            this.imports.typeByName(source, 'google.protobuf.Timestamp', 'TimestampString', true),
+            this.imports.typeByName(
+              source,
+              'google.protobuf.Timestamp',
+              'TimestampString',
+              true
+            ),
             undefined
           );
           isBrandedStringType = true;
         } else if (messageType.typeName === 'google.protobuf.Duration') {
           type = ts.factory.createTypeReferenceNode(
-            this.imports.typeByName(source, 'google.protobuf.Duration', 'DurationString', true),
+            this.imports.typeByName(
+              source,
+              'google.protobuf.Duration',
+              'DurationString',
+              true
+            ),
             undefined
           );
           isBrandedStringType = true;
         } else if (messageType.typeName === 'google.protobuf.Int64Value') {
           type = ts.factory.createTypeReferenceNode(
-            this.imports.typeByName(source, 'google.protobuf.Int64Value', 'Int64ValueString', true),
+            this.imports.typeByName(
+              source,
+              'google.protobuf.Int64Value',
+              'Int64ValueString',
+              true
+            ),
             undefined
           );
           isBrandedStringType = true;
         } else if (messageType.typeName === 'google.protobuf.UInt64Value') {
           type = ts.factory.createTypeReferenceNode(
-            this.imports.typeByName(source, 'google.protobuf.UInt64Value', 'UInt64ValueString', true),
+            this.imports.typeByName(
+              source,
+              'google.protobuf.UInt64Value',
+              'UInt64ValueString',
+              true
+            ),
             undefined
           );
           isBrandedStringType = true;
         } else if (messageType.typeName === 'google.protobuf.BytesValue') {
           type = ts.factory.createTypeReferenceNode(
-            this.imports.typeByName(source, 'google.protobuf.BytesValue', 'BytesValueString', true),
+            this.imports.typeByName(
+              source,
+              'google.protobuf.BytesValue',
+              'BytesValueString',
+              true
+            ),
             undefined
           );
           isBrandedStringType = true;
@@ -176,27 +201,54 @@ export class MessageInterfaceGenerator {
             // Use branded string types for well-known types with special JSON encoding in map values
             if (mapValueType.typeName === 'google.protobuf.Timestamp') {
               valueType = ts.factory.createTypeReferenceNode(
-                this.imports.typeByName(source, 'google.protobuf.Timestamp', 'TimestampString', true),
+                this.imports.typeByName(
+                  source,
+                  'google.protobuf.Timestamp',
+                  'TimestampString',
+                  true
+                ),
                 undefined
               );
             } else if (mapValueType.typeName === 'google.protobuf.Duration') {
               valueType = ts.factory.createTypeReferenceNode(
-                this.imports.typeByName(source, 'google.protobuf.Duration', 'DurationString', true),
+                this.imports.typeByName(
+                  source,
+                  'google.protobuf.Duration',
+                  'DurationString',
+                  true
+                ),
                 undefined
               );
             } else if (mapValueType.typeName === 'google.protobuf.Int64Value') {
               valueType = ts.factory.createTypeReferenceNode(
-                this.imports.typeByName(source, 'google.protobuf.Int64Value', 'Int64ValueString', true),
+                this.imports.typeByName(
+                  source,
+                  'google.protobuf.Int64Value',
+                  'Int64ValueString',
+                  true
+                ),
                 undefined
               );
-            } else if (mapValueType.typeName === 'google.protobuf.UInt64Value') {
+            } else if (
+              mapValueType.typeName === 'google.protobuf.UInt64Value'
+            ) {
               valueType = ts.factory.createTypeReferenceNode(
-                this.imports.typeByName(source, 'google.protobuf.UInt64Value', 'UInt64ValueString', true),
+                this.imports.typeByName(
+                  source,
+                  'google.protobuf.UInt64Value',
+                  'UInt64ValueString',
+                  true
+                ),
                 undefined
               );
             } else if (mapValueType.typeName === 'google.protobuf.BytesValue') {
               valueType = ts.factory.createTypeReferenceNode(
-                this.imports.typeByName(source, 'google.protobuf.BytesValue', 'BytesValueString', true),
+                this.imports.typeByName(
+                  source,
+                  'google.protobuf.BytesValue',
+                  'BytesValueString',
+                  true
+                ),
                 undefined
               );
             } else {
