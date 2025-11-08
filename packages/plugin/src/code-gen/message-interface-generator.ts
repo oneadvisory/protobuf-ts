@@ -172,7 +172,7 @@ export class MessageInterfaceGenerator {
             this.imports.typeByName(
               source,
               'google.protobuf.BytesValue',
-              'BytesValueString',
+              'Base64String',
               true
             ),
             undefined
@@ -246,7 +246,7 @@ export class MessageInterfaceGenerator {
                 this.imports.typeByName(
                   source,
                   'google.protobuf.BytesValue',
-                  'BytesValueString',
+                  'Base64String',
                   true
                 ),
                 undefined
@@ -376,7 +376,11 @@ export class MessageInterfaceGenerator {
       case rt.ScalarType.STRING:
         return ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword);
       case rt.ScalarType.BYTES:
-        return ts.factory.createTypeReferenceNode('Uint8Array', undefined);
+        // Use Base64String branded type for bytes
+        return ts.factory.createTypeReferenceNode(
+          ts.factory.createIdentifier('Base64String'),
+          undefined
+        );
       case rt.ScalarType.DOUBLE:
       case rt.ScalarType.FLOAT:
       case rt.ScalarType.INT32:
