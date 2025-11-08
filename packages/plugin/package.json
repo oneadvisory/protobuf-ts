@@ -52,6 +52,7 @@
     "@bufbuild/protoplugin": "^2.4.0",
     "@oneadvisory/protobuf-ts-protoc": "^6.0.0",
     "@oneadvisory/protobuf-ts-runtime": "^6.0.0",
+    "type-fest": "^4.30.0",
     "typescript": "^5.x.x"
   }
 }
