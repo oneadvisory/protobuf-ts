@@ -24,5 +24,6 @@
     "typescript": "5.x.x"
   },
   "license": "(Apache-2.0 AND BSD-3-Clause)",
-  "packageManager": "npm@8.19.4"
+  "packageManager": "npm@8.19.4",
+  "version": "1.0.0"
 }
