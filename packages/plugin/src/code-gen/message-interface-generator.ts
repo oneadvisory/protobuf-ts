@@ -17,6 +17,7 @@ export class MessageInterfaceGenerator {
     private readonly interpreter: Interpreter,
     private readonly options: {
       normalLongType: rt.LongType;
+      runtimeImportPath: string;
     }
   ) {}
 
@@ -113,7 +114,7 @@ export class MessageInterfaceGenerator {
 
     switch (fieldInfo.kind) {
       case 'scalar':
-        type = this.createScalarTypeNode(fieldInfo.T, fieldInfo.L);
+        type = this.createScalarTypeNode(source, fieldInfo.T, fieldInfo.L);
         break;
 
       case 'enum':
@@ -125,10 +126,10 @@ export class MessageInterfaceGenerator {
         // Use branded string types for well-known types with special JSON encoding
         if (messageType.typeName === 'google.protobuf.Timestamp') {
           type = ts.factory.createTypeReferenceNode(
-            this.imports.typeByName(
+            this.imports.name(
               source,
-              'google.protobuf.Timestamp',
               'TimestampString',
+              this.options.runtimeImportPath,
               true
             ),
             undefined
@@ -136,10 +137,10 @@ export class MessageInterfaceGenerator {
           isBrandedStringType = true;
         } else if (messageType.typeName === 'google.protobuf.Duration') {
           type = ts.factory.createTypeReferenceNode(
-            this.imports.typeByName(
+            this.imports.name(
               source,
-              'google.protobuf.Duration',
               'DurationString',
+              this.options.runtimeImportPath,
               true
             ),
             undefined
@@ -147,10 +148,10 @@ export class MessageInterfaceGenerator {
           isBrandedStringType = true;
         } else if (messageType.typeName === 'google.protobuf.Int64Value') {
           type = ts.factory.createTypeReferenceNode(
-            this.imports.typeByName(
+            this.imports.name(
               source,
-              'google.protobuf.Int64Value',
               'Int64ValueString',
+              this.options.runtimeImportPath,
               true
             ),
             undefined
@@ -158,10 +159,10 @@ export class MessageInterfaceGenerator {
           isBrandedStringType = true;
         } else if (messageType.typeName === 'google.protobuf.UInt64Value') {
           type = ts.factory.createTypeReferenceNode(
-            this.imports.typeByName(
+            this.imports.name(
               source,
-              'google.protobuf.UInt64Value',
               'UInt64ValueString',
+              this.options.runtimeImportPath,
               true
             ),
             undefined
@@ -169,10 +170,62 @@ export class MessageInterfaceGenerator {
           isBrandedStringType = true;
         } else if (messageType.typeName === 'google.protobuf.BytesValue') {
           type = ts.factory.createTypeReferenceNode(
-            this.imports.typeByName(
+            this.imports.name(
               source,
-              'google.protobuf.BytesValue',
               'Base64String',
+              this.options.runtimeImportPath,
+              true
+            ),
+            undefined
+          );
+          isBrandedStringType = true;
+        } else if (
+          messageType.typeName === 'google.protobuf.DoubleValue' ||
+          messageType.typeName === 'google.protobuf.FloatValue' ||
+          messageType.typeName === 'google.protobuf.Int32Value' ||
+          messageType.typeName === 'google.protobuf.UInt32Value'
+        ) {
+          // Wrapper types with JSON number representation
+          type = ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword);
+          isBrandedStringType = true;
+        } else if (messageType.typeName === 'google.protobuf.BoolValue') {
+          // Wrapper type with JSON boolean representation
+          type = ts.factory.createKeywordTypeNode(ts.SyntaxKind.BooleanKeyword);
+          isBrandedStringType = true;
+        } else if (messageType.typeName === 'google.protobuf.StringValue') {
+          // Wrapper type with JSON string representation
+          type = ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword);
+          isBrandedStringType = true;
+        } else if (messageType.typeName === 'google.protobuf.FieldMask') {
+          // FieldMask with JSON string representation (comma-separated paths)
+          type = ts.factory.createTypeReferenceNode(
+            this.imports.name(
+              source,
+              'FieldMaskString',
+              this.options.runtimeImportPath,
+              true
+            ),
+            undefined
+          );
+        } else if (messageType.typeName === 'google.protobuf.Value') {
+          // Value can be any JSON value
+          type = ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword);
+        } else if (messageType.typeName === 'google.protobuf.NullValue') {
+          // NullValue is always null in JSON
+          type = ts.factory.createLiteralTypeNode(ts.factory.createNull());
+        } else if (messageType.typeName === 'google.protobuf.ListValue') {
+          // ListValue is an array of any JSON values
+          type = ts.factory.createArrayTypeNode(
+            ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword)
+          );
+          isBrandedStringType = true;
+        } else if (messageType.typeName === 'google.protobuf.Any') {
+          // Any with JSON representation as { $type: string, [key: string]: unknown }
+          type = ts.factory.createTypeReferenceNode(
+            this.imports.name(
+              source,
+              'AnyJson',
+              this.options.runtimeImportPath,
               true
             ),
             undefined
@@ -187,11 +240,19 @@ export class MessageInterfaceGenerator {
         let keyType =
           fieldInfo.K === rt.ScalarType.BOOL
             ? ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
-            : this.createScalarTypeNode(fieldInfo.K, rt.LongType.STRING);
+            : this.createScalarTypeNode(
+                source,
+                fieldInfo.K,
+                rt.LongType.STRING
+              );
         let valueType;
         switch (fieldInfo.V.kind) {
           case 'scalar':
-            valueType = this.createScalarTypeNode(fieldInfo.V.T, fieldInfo.V.L);
+            valueType = this.createScalarTypeNode(
+              source,
+              fieldInfo.V.T,
+              fieldInfo.V.L
+            );
             break;
           case 'enum':
             valueType = this.createEnumTypeNode(source, fieldInfo.V.T());
@@ -201,30 +262,30 @@ export class MessageInterfaceGenerator {
             // Use branded string types for well-known types with special JSON encoding in map values
             if (mapValueType.typeName === 'google.protobuf.Timestamp') {
               valueType = ts.factory.createTypeReferenceNode(
-                this.imports.typeByName(
+                this.imports.name(
                   source,
-                  'google.protobuf.Timestamp',
                   'TimestampString',
+                  this.options.runtimeImportPath,
                   true
                 ),
                 undefined
               );
             } else if (mapValueType.typeName === 'google.protobuf.Duration') {
               valueType = ts.factory.createTypeReferenceNode(
-                this.imports.typeByName(
+                this.imports.name(
                   source,
-                  'google.protobuf.Duration',
                   'DurationString',
+                  this.options.runtimeImportPath,
                   true
                 ),
                 undefined
               );
             } else if (mapValueType.typeName === 'google.protobuf.Int64Value') {
               valueType = ts.factory.createTypeReferenceNode(
-                this.imports.typeByName(
+                this.imports.name(
                   source,
-                  'google.protobuf.Int64Value',
                   'Int64ValueString',
+                  this.options.runtimeImportPath,
                   true
                 ),
                 undefined
@@ -233,20 +294,79 @@ export class MessageInterfaceGenerator {
               mapValueType.typeName === 'google.protobuf.UInt64Value'
             ) {
               valueType = ts.factory.createTypeReferenceNode(
-                this.imports.typeByName(
+                this.imports.name(
                   source,
-                  'google.protobuf.UInt64Value',
                   'UInt64ValueString',
+                  this.options.runtimeImportPath,
                   true
                 ),
                 undefined
               );
             } else if (mapValueType.typeName === 'google.protobuf.BytesValue') {
               valueType = ts.factory.createTypeReferenceNode(
-                this.imports.typeByName(
+                this.imports.name(
                   source,
-                  'google.protobuf.BytesValue',
                   'Base64String',
+                  this.options.runtimeImportPath,
+                  true
+                ),
+                undefined
+              );
+            } else if (
+              mapValueType.typeName === 'google.protobuf.DoubleValue' ||
+              mapValueType.typeName === 'google.protobuf.FloatValue' ||
+              mapValueType.typeName === 'google.protobuf.Int32Value' ||
+              mapValueType.typeName === 'google.protobuf.UInt32Value'
+            ) {
+              // Wrapper types with JSON number representation
+              valueType = ts.factory.createKeywordTypeNode(
+                ts.SyntaxKind.NumberKeyword
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.BoolValue') {
+              // Wrapper type with JSON boolean representation
+              valueType = ts.factory.createKeywordTypeNode(
+                ts.SyntaxKind.BooleanKeyword
+              );
+            } else if (
+              mapValueType.typeName === 'google.protobuf.StringValue'
+            ) {
+              // Wrapper type with JSON string representation
+              valueType = ts.factory.createKeywordTypeNode(
+                ts.SyntaxKind.StringKeyword
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.FieldMask') {
+              // FieldMask with JSON string representation (comma-separated paths)
+              valueType = ts.factory.createTypeReferenceNode(
+                this.imports.name(
+                  source,
+                  'FieldMaskString',
+                  this.options.runtimeImportPath,
+                  true
+                ),
+                undefined
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.Value') {
+              // Value can be any JSON value
+              valueType = ts.factory.createKeywordTypeNode(
+                ts.SyntaxKind.UnknownKeyword
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.NullValue') {
+              // NullValue is always null in JSON
+              valueType = ts.factory.createLiteralTypeNode(
+                ts.factory.createNull()
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.ListValue') {
+              // ListValue is an array of any JSON values
+              valueType = ts.factory.createArrayTypeNode(
+                ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword)
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.Any') {
+              // Any with JSON representation as { $type: string, [key: string]: unknown }
+              valueType = ts.factory.createTypeReferenceNode(
+                this.imports.name(
+                  source,
+                  'AnyJson',
+                  this.options.runtimeImportPath,
                   true
                 ),
                 undefined
@@ -367,6 +487,7 @@ export class MessageInterfaceGenerator {
   }
 
   private createScalarTypeNode(
+    source: TypescriptFile,
     scalarType: rt.ScalarType,
     longType?: rt.LongType
   ): ts.TypeNode {
@@ -391,23 +512,10 @@ export class MessageInterfaceGenerator {
         return ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword);
       case rt.ScalarType.SFIXED64:
       case rt.ScalarType.INT64:
-      case rt.ScalarType.UINT64:
       case rt.ScalarType.FIXED64:
       case rt.ScalarType.SINT64:
-        switch (longType ?? rt.LongType.STRING) {
-          case rt.LongType.STRING:
-            return ts.factory.createKeywordTypeNode(
-              ts.SyntaxKind.StringKeyword
-            );
-          case rt.LongType.NUMBER:
-            return ts.factory.createKeywordTypeNode(
-              ts.SyntaxKind.NumberKeyword
-            );
-          case rt.LongType.BIGINT:
-            return ts.factory.createKeywordTypeNode(
-              ts.SyntaxKind.BigIntKeyword
-            );
-        }
+      case rt.ScalarType.UINT64:
+        return ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword);
     }
   }
 
