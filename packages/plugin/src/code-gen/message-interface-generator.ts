@@ -207,6 +207,15 @@ export class MessageInterfaceGenerator {
             ),
             undefined
           );
+        } else if (messageType.typeName === 'google.protobuf.Struct') {
+          // Struct is a JSON object with string keys and any values
+          type = ts.factory.createTypeReferenceNode(
+            ts.factory.createIdentifier('Record'),
+            [
+              ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+              ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword),
+            ]
+          );
         } else if (messageType.typeName === 'google.protobuf.Value') {
           // Value can be any JSON value
           type = ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword);
@@ -218,7 +227,6 @@ export class MessageInterfaceGenerator {
           type = ts.factory.createArrayTypeNode(
             ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword)
           );
-          isBrandedStringType = true;
         } else if (messageType.typeName === 'google.protobuf.Any') {
           // Any with JSON representation as { $type: string, [key: string]: unknown }
           type = ts.factory.createTypeReferenceNode(
@@ -344,6 +352,17 @@ export class MessageInterfaceGenerator {
                   true
                 ),
                 undefined
+              );
+            } else if (mapValueType.typeName === 'google.protobuf.Struct') {
+              // Struct is a JSON object with string keys and any values
+              valueType = ts.factory.createTypeReferenceNode(
+                ts.factory.createIdentifier('Record'),
+                [
+                  ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+                  ts.factory.createKeywordTypeNode(
+                    ts.SyntaxKind.UnknownKeyword
+                  ),
+                ]
               );
             } else if (mapValueType.typeName === 'google.protobuf.Value') {
               // Value can be any JSON value
