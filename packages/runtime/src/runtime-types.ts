@@ -20,6 +20,6 @@ export type Int64ValueString = Tagged<string, 'Int64Value'>;
 export type UInt64ValueString = Tagged<string, 'UInt64Value'>;
 
 export type AnyJson = {
-  $type: string;
+  '@type': string;
   [key: string]: unknown;
 };
