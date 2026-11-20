@@ -32,6 +32,9 @@
   "module": "./build/es2015/index.js",
  "typings": "./build/types/index.d.ts",
   "sideEffects": false,
+  "dependencies": {
+    "type-fest": "^4.30.0"
+  },
   "devDependencies": {
     "@types/jasmine": "^3.5.10",
     "jasmine": "^3.5.0",
